@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/layout/navbar";
-import FaqButton from "@/components/ui/faq-button";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,13 +16,10 @@ export default function RootLayout({
     // route changes, so opt back in to keep page navigation an instant jump
     // while in-page anchors stay smooth.
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="min-h-screen">
-        <div className="flex min-h-screen">
-          <Navbar />
-          <main className="flex-1 px-8 py-10 lg:px-14">{children}</main>
-        </div>
-        <FaqButton />
-      </body>
+      {/* Chrome is per-section: the navbar + FAQ button shell lives in
+          src/app/(projects)/hooks-refresh/layout.tsx, and the home page brings
+          its own. The root owns only <html>/<body> and the base metadata. */}
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }

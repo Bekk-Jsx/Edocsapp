@@ -1,64 +1,109 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { hooksByChapter, HOOKS, CHAPTERS } from "@/lib/hooks";
+import Navbar from "@/components/layout/navbar";
+import { projectsByType, type Project } from "@/lib/projects";
+
+// The root layout's metadata still names the hooks project; home overrides it.
+export const metadata: Metadata = {
+    title: "Projects · learn",
+    description: "Hands-on learning projects, grouped by type.",
+};
+
+// One project entry. Links to /<slug> — the project landing owned by that
+// project's own route group.
+function ProjectCard({
+    project,
+    typeLabel,
+}: {
+    project: Project;
+    typeLabel: string;
+}) {
+    return (
+        <Link
+            href={`/${project.slug}`}
+            className="flex flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors duration-150 hover:border-[var(--accent)] focus-visible:border-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+        >
+            <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                {typeLabel}
+            </span>
+            <h3 className="mt-2 text-lg font-semibold text-[var(--accent)]">
+                {project.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                {project.description}
+            </p>
+        </Link>
+    );
+}
 
 export default function Home() {
-  const groups = hooksByChapter();
+    // Only types that actually have projects — so every type-nav anchor has a
+    // section to land on, and empty types never render a dead link. Nav and
+    // sections are built from the same list, so their ids can't drift.
+    const groups = projectsByType();
+    const navGroups = [
+        {
+            heading: "Projects",
+            items: groups.map((g) => ({ id: `type-${g.id}`, label: g.label })),
+        },
+    ];
 
-  return (
-    <div className="max-w-4xl">
-      <p className="font-mono text-xs tracking-widest text-[var(--accent)]">
-        react · next.js
-      </p>
-      <h1 className="mt-2 text-4xl font-semibold">Hooks, refreshed.</h1>
-      <p className="mt-3 max-w-xl text-[var(--muted)] leading-relaxed">
-        One hook per page: a live demo you can break, the exact source that
-        drives it, and reference notes to re-read later. Server-rendered
-        highlighting; client-only where a hook truly needs the browser.
-      </p>
+    return (
+        <div className="flex min-h-screen">
+            <Navbar
+                groups={navGroups}
+                mode="anchor"
+                homeHref="/"
+                brand={{ eyebrow: "learn", sub: "projects" }}
+            />
 
-      <div className="mt-6 flex gap-6 font-mono text-xs text-[var(--muted)]">
-        <span>
-          <span className="text-[var(--text)]">{HOOKS.length}</span> hooks
-        </span>
-        <span>
-          <span className="text-[var(--text)]">{CHAPTERS.length}</span> chapters
-        </span>
-        <span>
-          <span className="text-[var(--text)]">
-            {HOOKS.filter((h) => h.source === "next/navigation").length}
-          </span>{" "}
-          next-only
-        </span>
-      </div>
-
-      <div className="mt-10 space-y-8">
-        {groups.map(({ chapter, hooks }) => (
-          <div key={chapter}>
-            <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-              {chapter}
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {hooks.map((h) => (
-                <Link
-                  key={h.slug}
-                  href={`/hooks/${h.slug}`}
-                  className="group rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]"
-                >
-                  <div className="flex items-baseline justify-between">
-                    <p className="font-mono text-sm text-[var(--accent)]">
-                      {h.name}
+            <main className="flex-1 px-8 py-10 lg:px-14">
+                <header className="mb-10">
+                    <p className="font-mono text-xs uppercase tracking-widest text-[var(--accent)]">
+                        learn
                     </p>
-                    <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)] opacity-0 transition-opacity group-hover:opacity-100">
-                      {h.source === "next/navigation" ? "next" : "react"}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-[var(--muted)]">{h.summary}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+                    <h1 className="mt-1 text-4xl font-semibold text-[var(--text)]">
+                        Projects.
+                    </h1>
+                    <p className="mt-3 max-w-[60ch] leading-relaxed text-[var(--muted)]">
+                        Hands-on builds, each one a reference you can come back to —
+                        grouped by what they teach.
+                    </p>
+                </header>
+
+                {groups.map((group) => (
+                    // scroll-mt-8 = 2rem, so a type-nav jump doesn't land flush
+                    // against the top of the viewport.
+                    <section
+                        key={group.id}
+                        id={`type-${group.id}`}
+                        className="mt-12 scroll-mt-8 first:mt-0"
+                    >
+                        <div className="mb-4 flex items-center gap-2">
+                            <span
+                                aria-hidden="true"
+                                className="inline-block h-[14px] w-[2px] shrink-0 rounded-full bg-[var(--accent)]"
+                            />
+                            <h2 className="font-mono text-[0.8rem] font-semibold uppercase tracking-widest text-[var(--accent)]">
+                                {group.label}
+                            </h2>
+                            <span className="font-mono text-[0.65rem] text-[var(--muted)]">
+                                {group.projects.length}
+                            </span>
+                        </div>
+
+                        <div className="grid gap-3 sm:grid-cols-2">
+                            {group.projects.map((project) => (
+                                <ProjectCard
+                                    key={project.slug}
+                                    project={project}
+                                    typeLabel={group.label}
+                                />
+                            ))}
+                        </div>
+                    </section>
+                ))}
+            </main>
+        </div>
+    );
 }

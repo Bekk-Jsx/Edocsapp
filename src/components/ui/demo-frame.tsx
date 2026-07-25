@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import CodeBlock from "./code-block";
-import type { Source } from "@/lib/hooks";
+import type { Source } from "@/projects/hooks-refresh/hooks";
 
 type Props = {
     name: string; // hook name — heading + eyebrow
