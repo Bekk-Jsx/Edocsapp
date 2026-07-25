@@ -13,7 +13,9 @@ export default function PageShell({
     return (
         <div className="page-grid">
             <div className="page-body">{children}</div>
-            {alerts ? <aside className="page-alerts">{alerts}</aside> : null}
+            {alerts ? (
+                <aside className="page-alerts rail-scroll">{alerts}</aside>
+            ) : null}
         </div>
     );
 }

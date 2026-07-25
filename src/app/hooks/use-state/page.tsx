@@ -1,8 +1,11 @@
 import DemoFrame from "@/components/ui/demo-frame";
 import UseStateDemo from "@/components/demos/use-state-demo";
 import PageShell from "@/components/ui/page-shell";
-import SummaryArticles, { Mono } from "@/components/ui/summary-articles";
-import { UseStateDocs } from "./content";
+import SummaryArticles, {
+    Mono,
+    type SummaryArticle,
+} from "@/components/ui/summary-articles";
+import { UseStateDocs, SECTION_SEVERITIES } from "./content";
 
 const CODE = `"use client";
 import { useState } from "react";
@@ -25,7 +28,11 @@ export default function Counter() {
 
 // Glanceable chapter takeaways — reading only these gives the whole chapter.
 // Each href targets a DocSection id (slugged from its title in content.tsx).
-const SUMMARY = [
+// AUDIT RULE: every DocSection on this page must have exactly one article here,
+// and every article must point at a real section id — EXCEPT the two pinned
+// footer sections, "react vs next.js" and "say it right — english", which always
+// render last and are deliberately NOT in the rail.
+const SUMMARY_TEXT = [
     {
         href: "#render-persistence",
         text: (
@@ -82,17 +89,14 @@ const SUMMARY = [
             </>
         ),
     },
-    {
-        href: "#react-vs-next-js",
-        text: (
-            <>
-                <Mono>useState</Mono> is identical in Next.js; the only wrinkle is{" "}
-                <Mono>&quot;use client&quot;</Mono> — a Server Component can&apos;t hold
-                state.
-            </>
-        ),
-    },
 ];
+
+// Severities are DERIVED from SECTION_SEVERITIES by href — never hand-set here,
+// so every card matches the section it links to by construction.
+const SUMMARY: SummaryArticle[] = SUMMARY_TEXT.map((item) => ({
+    ...item,
+    severities: SECTION_SEVERITIES[item.href.replace("#", "")],
+}));
 
 export default function Page() {
     return (

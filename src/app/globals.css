@@ -13,8 +13,12 @@
 
   /* accents */
   --accent: #7c9cf0; /* periwinkle — primary */
-  --mint: #5fd3a0; /* mint — "live" / english cues */
-  --amber: #e0b352; /* amber — warnings / traps */
+  --mint: #5fd3a0; /* mint — "live" / english cues + severity "tip" */
+  --amber: #e0b352; /* amber — severity "trap" */
+  --danger: #e0685f; /* red — severity "danger" (breaks: crash, loop, leak) */
+  --next: #d072c4; /* orchid — note type "react ⇄ next" (not a risk level).
+                      Deliberately magenta, not violet: violet read too close to
+                      the periwinkle --accent. */
 
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
 }
@@ -103,6 +107,62 @@ body {
   padding-top: 2rem;
 }
 
+/* Inline code token (<Code>). Only the colors live here — padding, rounding and
+   the mono face stay Tailwind utilities on the element. Keeping the colors
+   unlayered means a callout can override them with a plain descendant rule. */
+.code-token {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Inside a callout, a code token takes a DEEPER shade of that callout's own hue
+   instead of the default blue, so it reads as "code, within this note".
+   The callout body stays its lighter 10-14% tint; the token sits at 22%. */
+.callout-danger .code-token {
+  background: color-mix(in srgb, var(--danger) 22%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--surface));
+}
+.callout-trap .code-token {
+  background: color-mix(in srgb, var(--amber) 22%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--amber) 35%, var(--surface));
+}
+.callout-tip .code-token {
+  background: color-mix(in srgb, var(--mint) 22%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--mint) 35%, var(--surface));
+}
+.callout-next .code-token {
+  background: color-mix(in srgb, var(--next) 22%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--next) 35%, var(--surface));
+}
+
+/* Block-level code inside a callout gets the same treatment as the inline
+   tokens above: a deeper shade of the callout's own hue instead of the default
+   blue. Covers both the small hand-written <pre> diagrams (bare `pre`) and a
+   Shiki CodeBlock if one is ever nested in a callout (`.code-frame pre`).
+   Only the background changes — padding, rounding, the mono face, the plain
+   <pre> text color and Shiki's token colors are all left alone.
+
+   !important is required: `.code-frame pre` above already sets its background
+   with !important to beat Shiki's inline style. The `.callout-* .code-frame pre`
+   variants also out-specify it (0,2,1 vs 0,1,1), so these win either way.
+   Code blocks OUTSIDE a callout are untouched. */
+.callout-danger pre,
+.callout-danger .code-frame pre {
+  background: color-mix(in srgb, var(--danger) 18%, var(--surface)) !important;
+}
+.callout-trap pre,
+.callout-trap .code-frame pre {
+  background: color-mix(in srgb, var(--amber) 18%, var(--surface)) !important;
+}
+.callout-tip pre,
+.callout-tip .code-frame pre {
+  background: color-mix(in srgb, var(--mint) 18%, var(--surface)) !important;
+}
+.callout-next pre,
+.callout-next .code-frame pre {
+  background: color-mix(in srgb, var(--next) 18%, var(--surface)) !important;
+}
+
 /* Constrain prose to a comfortable measure — but not callouts or code blocks,
    which stay full width. */
 .doc-prose p {
@@ -124,10 +184,53 @@ body {
   min-width: 0;
 }
 
+/* --rail-top must match the sticky offset below; the extra 1rem keeps the rail
+   clear of the viewport bottom edge. */
 .page-alerts {
+  --rail-top: 2rem;
   position: sticky;
-  top: 2rem;
+  top: var(--rail-top);
   align-self: start;
+  /* border-box (preflight) keeps this inside the max-height below; it also gives
+     the cards' focus ring room instead of letting overflow clip it. */
+  padding: 8px;
+  max-height: calc(100vh - var(--rail-top) - 1rem);
+  overflow-y: auto;
+}
+
+/* Themed scrollbar for the summary rail — same treatment as .nav-scroll:
+   nearly invisible until you hover the rail. */
+.rail-scroll {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.rail-scroll:hover {
+  scrollbar-color: var(--muted) transparent;
+}
+
+/* WebKit / Chromium */
+.rail-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.rail-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rail-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+}
+.rail-scroll:hover::-webkit-scrollbar-thumb {
+  background: var(--muted);
+}
+.rail-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+.rail-scroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Stack below the body on narrower viewports. */
@@ -135,14 +238,23 @@ body {
   .page-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+  /* Stacked, not sticky — so it must grow with its content, not scroll inside
+     its own box. */
   .page-alerts {
     position: static;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  /* pseudo-elements aren't matched by the `*` rule below */
+  .rail-scroll::-webkit-scrollbar-thumb,
+  .nav-scroll::-webkit-scrollbar-thumb {
+    transition: none;
   }
   *,
   *::before,

@@ -1,4 +1,15 @@
 import { DocSection, Code, Term, Callout, QA } from "@/components/ui/doc-section";
+import type { SectionSeverities } from "@/lib/severity";
+
+// Everything each section covers, keyed by its section id, in page order. This
+// feeds the summary rail in page.tsx (one icon per severity, sorted
+// danger > trap > tip > next). It is NOT what flags a section header — that is the
+// explicit `sectionSeverity` prop below, which marks a section whose ENTIRE
+// topic is one severity. See the convention comment in @/lib/severity.
+export const SECTION_SEVERITIES: SectionSeverities = {
+    "state-is-a-snapshot": ["trap"],
+    "value-form-vs-function-form": ["danger"],
+};
 
 export function UseStateDocs() {
     return (
@@ -29,7 +40,7 @@ export function UseStateDocs() {
                     old value.
                 </p>
 
-                <Callout tone="amber" label="trap · snapshot">
+                <Callout severity="trap" label="trap · snapshot">
                     <p>
                         <Term>State is a read-only snapshot</Term> of the value for the
                         current render. <Code>setY(y + 5)</Code> does{" "}
@@ -68,7 +79,7 @@ export function UseStateDocs() {
                 </p>
             </DocSection>
 
-            <DocSection title="value form vs function form">
+            <DocSection title="value form vs function form" sectionSeverity="danger">
                 <p>
                     <Term>Value form reads one stale snapshot.</Term>{" "}
                     <Code>count</Code> is a fixed value for the whole render. With{" "}
@@ -102,7 +113,7 @@ export function UseStateDocs() {
                     {`value:    [set 1, set 1, set 1]  -> 1\nfunction: [+1, +1, +1] over 0   -> 1 -> 2 -> 3`}
                 </pre>
 
-                <Callout tone="amber" label="trap · snapshot vs pending">
+                <Callout severity="trap" label="trap · snapshot vs pending">
                     <p>
                         <Code>setCount(count + 1)</Code> reads the render&apos;s stale
                         snapshot; <Code>setCount(c =&gt; c + 1)</Code> reads the pending
