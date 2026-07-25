@@ -9,25 +9,46 @@ const toneColor: Record<Tone, string> = {
     amber: "var(--amber)",
 };
 
+// Stable anchor id from a section title:
+//   "say it right — english" -> "say-it-right-english"
+//   "render & persistence"   -> "render-persistence"
+export function slug(title: string) {
+    return title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+}
+
 // Titled doc block. Used for refresh notes, react-vs-next, q&a, etc.
+// The tone color drives the heading + accent bar so titles read as the anchor
+// when scanning; sibling sections are separated by a hairline (see globals.css).
+// The id makes every section a link target (summary cards, the FAQ button).
 export function DocSection({
     title,
-    tone = "muted",
+    tone = "accent",
     children,
 }: {
     title: string;
     tone?: Tone;
     children: ReactNode;
 }) {
+    const color = toneColor[tone];
     return (
-        <section className="mt-8">
-            <p
-                className="mb-3 font-mono text-[0.65rem] uppercase tracking-widest"
-                style={{ color: toneColor[tone] }}
-            >
-                {title}
-            </p>
-            <div className="space-y-3 text-sm leading-relaxed text-[var(--muted)]">
+        <section id={slug(title)} className="doc-section">
+            <div className="mb-3 flex items-center gap-2">
+                <span
+                    aria-hidden="true"
+                    className="inline-block h-[14px] w-[2px] shrink-0 rounded-full"
+                    style={{ backgroundColor: color }}
+                />
+                <p
+                    className="font-mono text-[0.8rem] font-semibold uppercase tracking-widest"
+                    style={{ color }}
+                >
+                    {title}
+                </p>
+            </div>
+            <div className="doc-prose space-y-[0.9rem] text-[0.95rem] leading-[1.65] text-[var(--muted)]">
                 {children}
             </div>
         </section>

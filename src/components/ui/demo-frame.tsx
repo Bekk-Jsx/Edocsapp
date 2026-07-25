@@ -22,7 +22,7 @@ export default function DemoFrame({
     children,
 }: Props) {
     return (
-        <article className="max-w-3xl">
+        <article className="w-full">
             <header className="mb-6">
                 <p className="font-mono text-xs tracking-widest text-[var(--muted)]">
                     {source} · {name}

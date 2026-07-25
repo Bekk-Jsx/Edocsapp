@@ -19,6 +19,13 @@
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
 }
 
+/* Native in-page smooth scroll for anchor jumps (summary cards, FAQ button).
+   The <html data-scroll-behavior="smooth"> attr in layout.tsx keeps Next 16
+   route transitions instant instead of smooth-scrolling between pages. */
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background: var(--bg);
@@ -27,11 +34,15 @@ body {
 }
 
 /* Shiki writes inline token colors; we only frame the block. */
+.code-frame {
+  width: 100%;
+}
 .code-frame pre {
   margin: 0;
+  width: 100%;
   padding: 1rem 1.15rem;
   overflow-x: auto;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   font-family: var(--font-mono);
   background: var(--surface-2) !important;
@@ -80,7 +91,59 @@ body {
   height: 0;
 }
 
+/* Doc reference sections: generous rhythm + a hairline between consecutive
+   sections. The first doc section skips the divider (nothing precedes it). */
+.doc-section {
+  margin-top: 2.5rem;
+  /* jumped-to headings land with breathing room, not flush to the top */
+  scroll-margin-top: 2rem;
+}
+.doc-section + .doc-section {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+/* Constrain prose to a comfortable measure — but not callouts or code blocks,
+   which stay full width. */
+.doc-prose p {
+  max-width: 68ch;
+}
+
+/* Two-column content shell: fluid body + fixed alerts rail.
+   --alerts-w is the one knob to resize the rail. */
+.page-grid {
+  --alerts-w: 550px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--alerts-w);
+  gap: 2rem;
+  align-items: start;
+}
+
+/* minmax(0, 1fr) lets the body shrink so the code block scrolls, not overflows. */
+.page-body {
+  min-width: 0;
+}
+
+.page-alerts {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+/* Stack below the body on narrower viewports. */
+@media (max-width: 1100px) {
+  .page-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .page-alerts {
+    position: static;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
