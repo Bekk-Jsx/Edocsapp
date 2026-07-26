@@ -13,10 +13,23 @@ import {
 // item's href — never hand-set here, or the card can drift from its section.
 // See the convention comment in @/lib/severity.
 export type SummaryArticle = {
+    /** Concise Title-Case name of the linked section — keep it matching. */
+    title: string;
     href: string;
     text: ReactNode;
     severities?: Severity[];
 };
+
+/** A labelled run of articles, e.g. "Basics" then "Advanced". */
+export type SummaryGroup = { label: string; items: SummaryArticle[] };
+
+/**
+ * Either a flat rail (`items`) or a grouped one (`groups`) — never both. Pages
+ * that don't need headings keep passing `items` and render exactly as before.
+ */
+export type SummaryArticlesProps =
+    | { items: SummaryArticle[]; groups?: never }
+    | { groups: SummaryGroup[]; items?: never };
 
 // Compact code token for summary lines — lighter than the doc-prose <Code>
 // so a one-line takeaway stays one line.
@@ -116,8 +129,16 @@ function useScrollSpy(hrefKey: string) {
 // A card shows EVERY severity its section carries (danger, then trap, then tip)
 // so the reader sees the full mix at a glance; the bar, tint and active border
 // use the highest.
-export default function SummaryArticles({ items }: { items: SummaryArticle[] }) {
-    const hrefKey = items.map((i) => i.href).join("|");
+export default function SummaryArticles(props: SummaryArticlesProps) {
+    // Normalise both call shapes to one list of sections; a flat rail is just a
+    // single unlabelled section, so the render path below is shared.
+    const sections: { label: string | null; items: SummaryArticle[] }[] =
+        props.groups
+            ? props.groups.map((g) => ({ label: g.label, items: g.items }))
+            : [{ label: null, items: props.items }];
+    const allItems = sections.flatMap((s) => s.items);
+
+    const hrefKey = allItems.map((i) => i.href).join("|");
     const active = useScrollSpy(hrefKey);
     const [clicked, setClicked] = useState<string | null>(null);
     // Optimistic on click, then the observer takes over once the scroll settles.
@@ -132,78 +153,99 @@ export default function SummaryArticles({ items }: { items: SummaryArticle[] }) 
         return () => clearTimeout(timer);
     }, [clicked]);
 
+    const renderCard = (item: SummaryArticle) => {
+        const marks = sortSeverities(item.severities);
+        const top = highestSeverity(item.severities);
+        const mark = top ? severityStyle[top].color : "var(--accent)";
+        const isActive = current === item.href.replace(/^#/, "");
+
+        const style: CSSProperties = { padding: "0.9rem" };
+        if (top) style.background = severityStyle[top].bg;
+        // Border-only highlight: an inline colour beats the class,
+        // and the ring is a box-shadow so nothing reflows.
+        if (isActive) {
+            style.borderColor = mark;
+            style.boxShadow = `0 0 0 1px ${mark}`;
+        }
+
+        return (
+            <a
+                key={item.href}
+                href={item.href}
+                style={style}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => setClicked(item.href.replace(/^#/, ""))}
+                className={`${CARD_BASE} ${
+                    top ? CARD_EDGE[top] : CARD_PLAIN
+                }`}
+            >
+                <span
+                    aria-hidden="true"
+                    className="w-[2px] shrink-0 rounded-full opacity-45 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    style={{
+                        backgroundColor: mark,
+                        opacity: isActive ? 1 : undefined,
+                    }}
+                />
+                <span className="min-w-0 flex-1 text-[0.85rem] leading-[1.55] text-[var(--muted)]">
+                    {/* icon(s) + title on one row, so a glance reads
+                        "what kind of note, about what" */}
+                    <span className="mb-1 flex items-center gap-1.5">
+                        {marks.map((s) => (
+                            <SeverityIcon
+                                key={s}
+                                severity={s}
+                                className="h-[0.95rem] w-[0.95rem] shrink-0"
+                                style={{ color: severityStyle[s].color }}
+                            />
+                        ))}
+                        {marks.length ? (
+                            <span className="sr-only">
+                                {marks
+                                    .map((s) => severityStyle[s].label)
+                                    .join(", ")}{" "}
+                                ·{" "}
+                            </span>
+                        ) : null}
+                        <span className="text-[0.85rem] font-semibold leading-tight text-[var(--text)]">
+                            {item.title}
+                        </span>
+                    </span>
+                    {item.text}
+                </span>
+                {/* fixed-width gutter: reserved always, so revealing it shifts nothing */}
+                <span
+                    aria-hidden="true"
+                    className="w-[3.1rem] shrink-0 self-end text-right font-mono text-[0.62rem] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    style={{ color: mark }}
+                >
+                    ↳ jump
+                </span>
+            </a>
+        );
+    };
+
     return (
         <div>
             <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
                 summary
             </p>
-            <div className="flex flex-col gap-2">
-                {items.map((item) => {
-                    const marks = sortSeverities(item.severities);
-                    const top = highestSeverity(item.severities);
-                    const mark = top ? severityStyle[top].color : "var(--accent)";
-                    const isActive = current === item.href.replace(/^#/, "");
-
-                    const style: CSSProperties = { padding: "0.9rem" };
-                    if (top) style.background = severityStyle[top].bg;
-                    // Border-only highlight: an inline colour beats the class,
-                    // and the ring is a box-shadow so nothing reflows.
-                    if (isActive) {
-                        style.borderColor = mark;
-                        style.boxShadow = `0 0 0 1px ${mark}`;
-                    }
-
-                    return (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            style={style}
-                            aria-current={isActive ? "true" : undefined}
-                            onClick={() => setClicked(item.href.replace(/^#/, ""))}
-                            className={`${CARD_BASE} ${
-                                top ? CARD_EDGE[top] : CARD_PLAIN
-                            }`}
-                        >
-                            <span
-                                aria-hidden="true"
-                                className="w-[2px] shrink-0 rounded-full opacity-45 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
-                                style={{
-                                    backgroundColor: mark,
-                                    opacity: isActive ? 1 : undefined,
-                                }}
-                            />
-                            <span className="min-w-0 flex-1 text-[0.85rem] leading-[1.55] text-[var(--muted)]">
-                                {marks.length ? (
-                                    <span className="mb-1.5 flex items-center gap-1.5">
-                                        {marks.map((s) => (
-                                            <SeverityIcon
-                                                key={s}
-                                                severity={s}
-                                                className="h-[0.95rem] w-[0.95rem] shrink-0"
-                                                style={{ color: severityStyle[s].color }}
-                                            />
-                                        ))}
-                                        <span className="sr-only">
-                                            {marks
-                                                .map((s) => severityStyle[s].label)
-                                                .join(", ")}{" "}
-                                            ·{" "}
-                                        </span>
-                                    </span>
-                                ) : null}
-                                {item.text}
-                            </span>
-                            {/* fixed-width gutter: reserved always, so revealing it shifts nothing */}
-                            <span
-                                aria-hidden="true"
-                                className="w-[3.1rem] shrink-0 self-end text-right font-mono text-[0.62rem] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
-                                style={{ color: mark }}
-                            >
-                                ↳ jump
-                            </span>
-                        </a>
-                    );
-                })}
+            {/* gap-6 between groups vs gap-2 between cards, so the headings read
+                as dividers. A flat rail is one unlabelled section — identical
+                output to before. */}
+            <div className="flex flex-col gap-6">
+                {sections.map((section, i) => (
+                    <div key={section.label ?? `section-${i}`}>
+                        {section.label ? (
+                            <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                                {section.label}
+                            </p>
+                        ) : null}
+                        <div className="flex flex-col gap-2">
+                            {section.items.map(renderCard)}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -11,6 +11,8 @@ import CodeBlock from "@/components/ui/code-block";
 // `putting-it-together-…` is the wrapper <section> around the live demo in
 // page.tsx. See the convention comment in @/lib/severity.
 export const SECTION_SEVERITIES: SectionSeverities = {
+    // inline `trap · initial mismatch` callout — no header treatment, article only
+    "reading-the-code": ["trap"],
     "the-dependency-array": ["danger"],
     "rules-of-hooks": ["danger"],
     "cleanup-the-core-idea": ["tip"],
@@ -49,6 +51,33 @@ export function ExampleLabel({
             >
                 {children}
             </p>
+        </div>
+    );
+}
+
+// Top-level divider between the two halves of the page — mirrors the
+// Basics/Advanced groups in the summary rail. Deliberately louder than a
+// DocSection eyebrow (bold, larger, full-width rule) so the split is obvious
+// while scrolling: this is a grouping, not a section.
+function PartHeading({
+    kicker,
+    children,
+}: {
+    kicker: string;
+    children: string;
+}) {
+    return (
+        <div className="mt-14 mb-1">
+            <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                {kicker}
+            </p>
+            <h2 className="mt-1 text-[1.15rem] font-bold tracking-tight text-[var(--text)]">
+                {children}
+            </h2>
+            <div
+                aria-hidden="true"
+                className="mt-3 h-px w-full bg-[var(--border)]"
+            />
         </div>
     );
 }
@@ -92,21 +121,23 @@ export function UseEffectDocs() {
     return (
         <>
             {/* ---------- part 1 — run once on mount ---------- */}
-            <div className="mt-10">
-                <ExampleLabel>example · run once</ExampleLabel>
-                <CodeBlock code={RUN_ONCE} lang="tsx" />
-
+            {/* No eyebrow label: the section title is the heading, and the code
+                sits directly under it, ahead of the explanation. */}
+            <PartHeading kicker="part 1">Basics</PartHeading>
+            <div>
                 <DocSection title="reading the code">
+                    <CodeBlock code={RUN_ONCE} lang="tsx" />
                     <p>
-                        <Term>Render first, effect second.</Term> The component renders
-                        with <Code>width = 0</Code> and paints that. Only <em>after</em>{" "}
-                        the paint does the effect run, read{" "}
-                        <Code>window.innerWidth</Code>, and call <Code>setWidth</Code> —
-                        which schedules a second render that paints the real number.
+                        <Term>Render first, effect last.</Term> The component renders with{" "}
+                        <Code>width = 0</Code>, React commits that to the DOM, and the
+                        browser paints it. Only <em>after</em> the paint does the effect
+                        run, read <Code>window.innerWidth</Code>, and call{" "}
+                        <Code>setWidth</Code> — which schedules a second pass that ends up
+                        painting the real number.
                     </p>
                     <pre className={DIAGRAM}>
-                        {`render 1  ->  paint (0px)  ->  effect runs  ->  setWidth
-render 2  ->  paint (1440px)`}
+                        {`render 1  ->  commit  ->  paint (0px)  ->  effect runs  ->  setWidth
+render 2  ->  commit  ->  paint (1440px)`}
                     </pre>
                     <p>
                         <Term>
@@ -134,6 +165,18 @@ render 2  ->  paint (1440px)`}
                             paint; if the content matters immediately, it belongs in render
                             or on the server.
                         </p>
+                        <pre className={`${DIAGRAM} mt-2`}>
+                            {`// ❌ DON'T: decide what to render based on an effect-set value
+function Nav() {
+  const [width, setWidth] = useState(0); // 0 on the server AND first client render
+
+  useEffect(() => {
+    setWidth(window.innerWidth); // runs only after paint
+  }, []);
+
+  return width > 768 ? <DesktopMenu /> : <MobileMenu />;
+}`}
+                        </pre>
                     </Callout>
                 </DocSection>
 
@@ -146,13 +189,31 @@ render 2  ->  paint (1440px)`}
                         compute it during render.
                     </p>
                     <p>
-                        <Term>The effect runs after paint.</Term> A state change makes
-                        React re-render, React paints, and <em>then</em> the effect runs.
-                        The render schedules the effect — the effect does not cause the
-                        render.
+                        <Term>Four phases, and the effect is last.</Term>
                     </p>
                     <pre className={DIAGRAM}>
-                        {`state change -> re-render -> paint -> effect runs`}
+                        {`render -> commit -> paint -> effect`}
+                    </pre>
+                    <p>
+                        <Term>render.</Term> React calls your component function and
+                        computes the JSX — what <em>should</em> be shown. Nothing is on
+                        screen yet.
+                        <br />
+                        <Term>commit.</Term> React writes that result to the actual DOM,
+                        creating and updating the nodes.
+                        <br />
+                        <Term>paint.</Term> The browser draws the pixels — now the user
+                        sees it.
+                        <br />
+                        <Term>effect.</Term> React runs <Code>useEffect</Code>{" "}
+                        <em>after</em> paint.
+                    </p>
+                    <p>
+                        <Term>The render schedules the effect</Term> — the effect does not
+                        cause the render. A state change restarts the loop from the top:
+                    </p>
+                    <pre className={DIAGRAM}>
+                        {`render -> commit -> paint -> effect -> setState -> re-render -> ...`}
                     </pre>
                 </DocSection>
 
@@ -233,11 +294,12 @@ useEffect(() => {
             </div>
 
             {/* ---------- part 2 — cleanup ---------- */}
-            <div className="mt-14">
-                <ExampleLabel>example · cleanup</ExampleLabel>
-                <CodeBlock code={CLEANUP} lang="tsx" />
-
+            {/* No eyebrow label here: the section title is the heading, and the
+                code sits directly under it, ahead of the explanation. */}
+            <PartHeading kicker="part 2">Advanced</PartHeading>
+            <div>
                 <DocSection title="reading the cleanup">
+                    <CodeBlock code={CLEANUP} lang="tsx" />
                     <p>
                         <Term>The effect registers, the browser calls.</Term>{" "}
                         <Code>addEventListener</Code> runs <em>once</em> and all it does is

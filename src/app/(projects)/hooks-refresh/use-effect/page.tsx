@@ -36,6 +36,7 @@ export default function ChatRoom({ room }: { room: string }) {
 // render last and are deliberately NOT in the rail.
 const SUMMARY_TEXT = [
     {
+        title: "Run once on mount",
         href: "#reading-the-code",
         text: (
             <>
@@ -46,6 +47,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "What an effect is",
         href: "#what-an-effect-is",
         text: (
             <>
@@ -55,6 +57,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "The dependency array",
         href: "#the-dependency-array",
         text: (
             <>
@@ -65,6 +68,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Rules of hooks",
         href: "#rules-of-hooks",
         text: (
             <>
@@ -74,6 +78,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Reading the cleanup",
         href: "#reading-the-cleanup",
         text: (
             <>
@@ -84,6 +89,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Cleanup — the core idea",
         href: "#cleanup-the-core-idea",
         text: (
             <>
@@ -93,6 +99,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Setup once, callback many",
         href: "#setup-runs-once-the-callback-runs-many",
         text: (
             <>
@@ -102,6 +109,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "When cleanup runs",
         href: "#when-cleanup-runs",
         text: (
             <>
@@ -111,6 +119,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Two ways to leak",
         href: "#two-ways-to-leak-listeners",
         text: (
             <>
@@ -120,6 +129,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Effects & data fetching",
         href: "#effects-data-fetching",
         text: (
             <>
@@ -130,6 +140,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "SSR & Strict Mode",
         href: "#ssr-strict-mode",
         text: (
             <>
@@ -139,6 +150,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Dependency-driven re-sync",
         href: "#putting-it-together-dependency-driven-re-sync",
         text: (
             <>
@@ -148,6 +160,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Reading the re-sync",
         href: "#reading-the-re-sync",
         text: (
             <>
@@ -160,14 +173,31 @@ const SUMMARY_TEXT = [
 
 // Severities are DERIVED from SECTION_SEVERITIES by href — never hand-set here,
 // so every card matches the section it links to by construction.
-const SUMMARY: SummaryArticle[] = SUMMARY_TEXT.map((item) => ({
+const withSeverities = (item: (typeof SUMMARY_TEXT)[number]): SummaryArticle => ({
     ...item,
     severities: SECTION_SEVERITIES[item.href.replace("#", "")],
-}));
+});
+
+// Two ordered groups, split at the first cleanup article: everything before it
+// is Basics (part 1 of the page), the cleanup walkthrough onward is Advanced
+// (part 2 and the live demo). Slicing the one ordered array keeps rail order
+// and page order identical — no second hand-maintained list.
+const SPLIT_AT = SUMMARY_TEXT.findIndex((i) => i.href === "#reading-the-cleanup");
+
+const SUMMARY_GROUPS = [
+    {
+        label: "Basics",
+        items: SUMMARY_TEXT.slice(0, SPLIT_AT).map(withSeverities),
+    },
+    {
+        label: "Advanced",
+        items: SUMMARY_TEXT.slice(SPLIT_AT).map(withSeverities),
+    },
+];
 
 export default function Page() {
     return (
-        <PageShell alerts={<SummaryArticles items={SUMMARY} />}>
+        <PageShell alerts={<SummaryArticles groups={SUMMARY_GROUPS} />}>
             {/* Page header. DemoFrame normally supplies this, but the live demo is
                 the hardest example here and belongs at the bottom — so the title
                 leads the page on its own. */}

@@ -34,6 +34,7 @@ export default function Counter() {
 // render last and are deliberately NOT in the rail.
 const SUMMARY_TEXT = [
     {
+        title: "Render & persistence",
         href: "#render-persistence",
         text: (
             <>
@@ -44,6 +45,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "State is a snapshot",
         href: "#state-is-a-snapshot",
         text: (
             <>
@@ -53,6 +55,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Scheduling & bail-out",
         href: "#scheduling-bail-out",
         text: (
             <>
@@ -62,6 +65,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Batching",
         href: "#batching",
         text: (
             <>
@@ -71,6 +75,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Value vs function form",
         href: "#value-form-vs-function-form",
         text: (
             <>
@@ -81,6 +86,7 @@ const SUMMARY_TEXT = [
         ),
     },
     {
+        title: "Lazy initializer",
         href: "#lazy-initializer",
         text: (
             <>
