@@ -15,6 +15,8 @@ export const SECTION_SEVERITIES: SectionSeverities = {
     "reading-the-code": ["trap"],
     "the-dependency-array": ["danger"],
     "rules-of-hooks": ["danger"],
+    // inline `trap · mismatched reference` callout — no header treatment, article only
+    "reading-the-cleanup": ["trap"],
     "cleanup-the-core-idea": ["tip"],
     "two-ways-to-leak-listeners": ["danger", "trap"],
     "effects-data-fetching": ["danger", "next"],

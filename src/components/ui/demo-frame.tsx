@@ -6,7 +6,9 @@ type Props = {
     name: string; // hook name — heading + eyebrow
     source: Source; // "react" | "next/navigation"
     description: ReactNode; // short intro under the heading
-    code: string; // source shown in the "source" panel
+    code?: string; // source shown in the "source" panel; omit to drop the panel
+                   // entirely — for pages that explain code fragment by fragment
+                   // inside their DocSections instead (see use-context)
     docs?: ReactNode; // refresh notes / react-vs-next / q&a sections
     children: ReactNode; // the live (client) demo
 };
@@ -44,12 +46,14 @@ export default function DemoFrame({
                 </div>
             </section>
 
-            <section>
-                <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                    source
-                </p>
-                <CodeBlock code={code} />
-            </section>
+            {code ? (
+                <section>
+                    <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                        source
+                    </p>
+                    <CodeBlock code={code} />
+                </section>
+            ) : null}
 
             {docs}
         </article>

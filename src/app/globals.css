@@ -19,6 +19,9 @@
   --next: #d072c4; /* orchid — note type "react ⇄ next" (not a risk level).
                       Deliberately magenta, not violet: violet read too close to
                       the periwinkle --accent. */
+  --note: #8aa0b6; /* slate blue-grey — note type "note" (not a risk level).
+                      Deliberately the quietest hue of the five: a note is an
+                      aside, so it must never out-shout a tip or a trap. */
 
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
 }
@@ -134,6 +137,10 @@ body {
   background: color-mix(in srgb, var(--next) 22%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--next) 35%, var(--surface));
 }
+.callout-note .code-token {
+  background: color-mix(in srgb, var(--note) 22%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--note) 35%, var(--surface));
+}
 
 /* Block-level code inside a callout gets the same treatment as the inline
    tokens above: a deeper shade of the callout's own hue instead of the default
@@ -161,6 +168,10 @@ body {
 .callout-next pre,
 .callout-next .code-frame pre {
   background: color-mix(in srgb, var(--next) 18%, var(--surface)) !important;
+}
+.callout-note pre,
+.callout-note .code-frame pre {
+  background: color-mix(in srgb, var(--note) 18%, var(--surface)) !important;
 }
 
 /* Constrain prose to a comfortable measure — but not callouts or code blocks,

@@ -5,19 +5,24 @@ import type { CSSProperties, ReactNode } from "react";
 //
 //   danger (red)    — it breaks: crash, infinite loop, memory leak, wrong data.
 //   trap   (amber)  — a subtle gotcha: surprising, but recoverable.
-//   tip    (mint)   — best practice / good to know.
-//   next   (violet) — a React-vs-Next.js difference. NOT a risk level, which is
-//                     why it sorts last and never wins `highestSeverity`.
+//   next   (orchid) — a React-vs-Next.js difference. NOT a risk level, but it
+//                     outranks tip/note because a framework difference changes
+//                     what the code must be, not merely how well it is written.
 //                     Reserved for other sections that happen to discuss a
 //                     React/Next difference — the dedicated "react vs next.js"
 //                     footer section stays plain and unflagged.
+//   tip    (mint)   — best practice / good to know.
+//   note   (slate)  — a neutral aside: a clarification that qualifies the rule
+//                     above it. NOT a risk level and the quietest of the five,
+//                     so it sorts last and only wins `highestSeverity` when it
+//                     is the sole entry.
 //
 // CONVENTION
 // - SECTION_SEVERITIES (one map per page, keyed by section id) lists everything
 //   a section covers. It feeds the summary rail only: a card shows ALL of its
-//   section's icons, sorted danger > trap > tip.
+//   section's icons, sorted by SEVERITY_ORDER.
 // - `sectionSeverity` flags a whole section (icon + badge on the title, any of
-//   danger/trap/tip; the title text itself stays its normal tone colour).
+//   the five; the title text itself stays its normal tone colour).
 //   Inline Callout boxes are for notes WITHIN a section. The two are
 //   independent — a section can use either, both, or neither.
 // - Section backgrounds are NEVER tinted by severity.
@@ -25,12 +30,19 @@ import type { CSSProperties, ReactNode } from "react";
 //   severities in SECTION_SEVERITIES without its whole topic being any one of
 //   them. Keep the two in sync by intent, not by derivation.
 // ===================================================================
-export type Severity = "danger" | "trap" | "tip" | "next";
+export type Severity = "danger" | "trap" | "tip" | "next" | "note";
 
 /** Priority, high -> low. Drives both `highestSeverity` and icon order.
- *  "next" is last: it is a note type, not a risk level, so it never outranks
- *  a real severity when picking the highest. */
-export const SEVERITY_ORDER: Severity[] = ["danger", "trap", "tip", "next"];
+ *  Risk levels come first (danger, trap), then the framework difference, then
+ *  the two advisory types — so a card carrying a `next` keeps its orchid marker
+ *  even when a tip or a note sits alongside it. */
+export const SEVERITY_ORDER: Severity[] = [
+    "danger",
+    "trap",
+    "next",
+    "tip",
+    "note",
+];
 
 /** A page's section-id -> severities map. Keys are DocSection slugs. */
 export type SectionSeverities = Record<string, Severity[]>;
@@ -40,7 +52,7 @@ export function highestSeverity(list: Severity[] = []): Severity | undefined {
     return SEVERITY_ORDER.find((s) => list.includes(s));
 }
 
-/** Deduped and ordered danger -> trap -> tip, so icon rows never vary. */
+/** Deduped and ordered by SEVERITY_ORDER, so icon rows never vary. */
 export function sortSeverities(list: Severity[] = []): Severity[] {
     return SEVERITY_ORDER.filter((s) => list.includes(s));
 }
@@ -68,6 +80,20 @@ function AlertCircleIcon({ className, style }: IconProps) {
             <circle cx="12" cy="12" r="9" />
             <path d="M12 7.3v5.7" />
             <circle cx="12" cy="16.5" r="1.15" fill="currentColor" stroke="none" />
+        </svg>
+    );
+}
+
+// The deliberate mirror of AlertCircleIcon: same ring, same 22px outer edge, but
+// the dot sits on top of the bar instead of under it — a lowercase "i" to the
+// danger mark's "!". Ink spans y 6.65..17.95, centred on 12 like its twin.
+// Do not alter this geometry; the pair only reads as a pair while it matches.
+function InfoCircleIcon({ className, style }: IconProps) {
+    return (
+        <svg {...svgBase} className={className} style={style}>
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="7.8" r="1.15" fill="currentColor" stroke="none" />
+            <path d="M12 11.3v5.4" />
         </svg>
     );
 }
@@ -134,6 +160,13 @@ export const severityStyle: Record<
         bg: "color-mix(in srgb, var(--next) 12%, var(--surface))",
         label: "react ⇄ next",
         Icon: SwapIcon,
+    },
+    // Not a risk level — a neutral aside qualifying the rule it follows.
+    note: {
+        color: "var(--note)",
+        bg: "color-mix(in srgb, var(--note) 12%, var(--surface))",
+        label: "note",
+        Icon: InfoCircleIcon,
     },
 };
 

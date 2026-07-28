@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /** One entry. `id` is a route slug in "route" mode, an element id in "anchor" mode. */
 export type NavItem = { id: string; label: string };
 
 /** One labelled block of entries — a chapter, a category, whatever the caller groups by. */
 export type NavGroup = { heading: string; items: NavItem[] };
+
+/** A row nested one level under a NavItem. Always a route link. */
+export type NavSubItem = { label: string; href: string };
 
 export interface NavbarProps {
     groups: NavGroup[];
@@ -23,13 +26,35 @@ export interface NavbarProps {
      * (as the home nav does) and nothing renders there.
      */
     back?: { href: string; label: string };
+    /**
+     * Optional: collapsible rows nested under an item, keyed by that item's id.
+     * Omit it and not a single attribute of the render changes.
+     */
+    subItems?: Record<string, NavSubItem[]>;
 }
 
 // Active state for anchor mode: the section whose top has passed ~20% down the
 // viewport. Always called, never conditionally — `enabled` gates the work, so
 // hook order stays stable across route and anchor renders.
+//
+// Returns a `claim` next to it: the observer alone cannot report a click, because
+// the band it watches is only 20%–30% down the viewport. Jump to a section the
+// page can't scroll that far up — the last one, or any section on a page that
+// doesn't scroll at all — and no threshold is ever crossed, so the highlight
+// simply never moves. The click has to say so itself.
 function useAnchorSpy(enabled: boolean, idKey: string) {
     const [active, setActive] = useState<string | null>(null);
+
+    // A click decides the highlight outright. The smooth scroll that follows may
+    // sweep other sections through the band on its way, so observer updates are
+    // ignored briefly afterwards — otherwise a section merely passed through
+    // would steal the highlight and keep it.
+    const claimedUntil = useRef(0);
+
+    const claim = useCallback((id: string) => {
+        claimedUntil.current = Date.now() + 1200;
+        setActive(id);
+    }, []);
 
     useEffect(() => {
         if (!enabled) return;
@@ -41,36 +66,134 @@ function useAnchorSpy(enabled: boolean, idKey: string) {
         if (!targets.length) return;
 
         const visible = new Set<string>();
+
+        // The band sits 20%–30% down the viewport, so the LAST section of a short
+        // page can never enter it — the page runs out of scroll first, and the
+        // highlight would stay stuck on the section above while the reader looks
+        // at the final one. At the bottom of the page, that final section is what
+        // is in view, so it wins.
+        //
+        // Gated on the page actually scrolling: when everything fits on screen
+        // we'd otherwise sit permanently at "bottom" and pin the last row.
+        const atBottom = () => {
+            const doc = document.documentElement;
+            return (
+                doc.scrollHeight - window.innerHeight > 8 &&
+                window.innerHeight + window.scrollY >= doc.scrollHeight - 2
+            );
+        };
+
+        const resolve = () => {
+            // Still inside a click's claim: the reader chose, not the scroll.
+            if (Date.now() < claimedUntil.current) return;
+            if (atBottom()) {
+                setActive(targets[targets.length - 1].id);
+                return;
+            }
+            // Topmost wins when several share the band; keep the last active
+            // when none do, so the nav never goes blank mid-scroll.
+            const topmost = targets
+                .filter((el) => visible.has(el.id))
+                .sort(
+                    (a, b) =>
+                        a.getBoundingClientRect().top -
+                        b.getBoundingClientRect().top,
+                )[0];
+            if (topmost) setActive(topmost.id);
+        };
+
         const observer = new IntersectionObserver(
             (entries) => {
                 for (const entry of entries) {
                     if (entry.isIntersecting) visible.add(entry.target.id);
                     else visible.delete(entry.target.id);
                 }
-                // Topmost wins when several share the band; keep the last active
-                // when none do, so the nav never goes blank mid-scroll.
-                const topmost = targets
-                    .filter((el) => visible.has(el.id))
-                    .sort(
-                        (a, b) =>
-                            a.getBoundingClientRect().top -
-                            b.getBoundingClientRect().top,
-                    )[0];
-                if (topmost) setActive(topmost.id);
+                resolve();
             },
             { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
         );
         targets.forEach((el) => observer.observe(el));
-        return () => observer.disconnect();
+        // Arriving at the bottom needn't cross an observer threshold, so the
+        // fallback above needs its own signal.
+        window.addEventListener("scroll", resolve, { passive: true });
+
+        // Scrolling under their own steam means the reader has moved on from
+        // whatever they clicked — hand the highlight straight back to the spy
+        // instead of waiting out the claim.
+        const release = () => {
+            claimedUntil.current = 0;
+        };
+        const RELEASE_EVENTS = ["wheel", "touchstart", "keydown"] as const;
+        RELEASE_EVENTS.forEach((type) =>
+            window.addEventListener(type, release, { passive: true }),
+        );
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("scroll", resolve);
+            RELEASE_EVENTS.forEach((type) =>
+                window.removeEventListener(type, release),
+            );
+        };
     }, [enabled, idKey]);
 
-    return active;
+    return [active, claim] as const;
 }
+
+// Trailing slash on one side only would break a raw ===, so every route
+// comparison goes through this first.
+const norm = (path: string) => path.replace(/\/$/, "");
 
 const ITEM_BASE =
     "block rounded-md px-2 py-1.5 font-mono text-sm transition-colors";
 const ITEM_ACTIVE = "bg-[var(--surface-2)] text-[var(--accent)]";
 const ITEM_IDLE = "text-[var(--text)] hover:bg-[var(--surface-2)]";
+
+// Expand/collapse affordance for an item that carries sub-rows. Sits absolutely
+// at the right edge of the row so the row's own <a>/<Link> keeps its exact
+// classes — including the full-width hover fill — and stays the element it was.
+//
+// No icon package is installed; the codebase draws its own SVGs (see the back
+// chevron above and ui/faq-button), so this matches their attributes.
+function Chevron({
+    open,
+    label,
+    onToggle,
+}: {
+    open: boolean;
+    label: string;
+    onToggle: () => void;
+}) {
+    return (
+        <button
+            type="button"
+            aria-expanded={open}
+            aria-label={`${open ? "Collapse" : "Expand"} ${label}`}
+            onClick={(e) => {
+                // The row underneath navigates on click; the chevron must not.
+                e.stopPropagation();
+                onToggle();
+            }}
+            className="absolute right-1 top-[0.3rem] rounded p-0.5 text-[var(--muted)] transition-colors hover:text-[var(--text)] focus-visible:text-[var(--text)] focus-visible:outline-none"
+        >
+            <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                // Collapsed points right, expanded points down — 90deg over the
+                // same 200ms as the list it controls. Only the easing is dropped
+                // under reduced motion; the angle still conveys state.
+                className={`h-[0.9em] w-[0.9em] shrink-0 transition-transform duration-200 ease-out motion-reduce:transition-none ${open ? "rotate-0" : "-rotate-90"}`}
+            >
+                <path d="M6 9l6 6 6-6" />
+            </svg>
+        </button>
+    );
+}
 
 // Shared, data-driven sidebar. It owns no project data — every caller supplies
 // its own groups, so the same component fronts the hooks nav (route links) and
@@ -84,13 +207,21 @@ export default function Navbar({
     homeHref,
     brand,
     back,
+    subItems,
 }: NavbarProps) {
     const pathname = usePathname();
     const isAnchor = mode === "anchor";
-    const activeAnchor = useAnchorSpy(
+    const [activeAnchor, claimAnchor] = useAnchorSpy(
         isAnchor,
         groups.flatMap((g) => g.items.map((i) => i.id)).join("|"),
     );
+
+    // Only ids the reader has actively closed land here, so everything starts
+    // expanded without seeding state from props. Local and per-mount by design:
+    // no persistence, no URL param.
+    const [closed, setClosed] = useState<Record<string, boolean>>({});
+    const toggle = (id: string) =>
+        setClosed((prev) => ({ ...prev, [id]: !prev[id] }));
 
     return (
         <aside className="nav-scroll sticky top-0 h-screen w-64 shrink-0 overflow-y-auto border-r border-[var(--border)] bg-[var(--surface)] px-4 py-6">
@@ -127,6 +258,13 @@ export default function Navbar({
             </Link>
 
             <nav className="space-y-6">
+                {/* Nothing to list yet — a project can be scaffolded before its
+                    pages exist (see redis-refresh). Stand in for the list rather
+                    than leaving an empty box under the brand. */}
+                {groups.every((g) => g.items.length === 0) ? (
+                    <p className={`${ITEM_BASE} text-[var(--muted)]`}>Coming soon</p>
+                ) : null}
+
                 {groups.map((group) => (
                     <div key={group.heading}>
                         <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
@@ -137,19 +275,34 @@ export default function Navbar({
                                 const href = isAnchor
                                     ? `#${item.id}`
                                     : `${basePath}/${item.id}`;
+                                // Anchor rows follow the scroll spy (and their own
+                                // click); route rows match the URL exactly.
                                 const active = isAnchor
                                     ? activeAnchor === item.id
-                                    : pathname === href;
+                                    : norm(pathname) === norm(href);
                                 const className = `${ITEM_BASE} ${active ? ITEM_ACTIVE : ITEM_IDLE}`;
 
+                                // Empty unless the caller opted in for this item, so
+                                // `relative` and everything below it stay off the markup
+                                // entirely for every project nav.
+                                const subs = subItems?.[item.id] ?? [];
+                                const open = subs.length > 0 && !closed[item.id];
+
                                 return (
-                                    <li key={item.id}>
+                                    <li
+                                        key={item.id}
+                                        className={subs.length ? "relative" : undefined}
+                                    >
                                         {isAnchor ? (
-                                            // plain <a>: native smooth scroll, no
-                                            // router involvement, no prefetch of a
-                                            // non-route.
+                                            // plain <a>: native smooth scroll, no router
+                                            // involvement, no prefetch of a non-route.
+                                            //
+                                            // The click sets the highlight itself; the
+                                            // observer can only confirm it once the scroll
+                                            // lands, and often it never can.
                                             <a
                                                 href={href}
+                                                onClick={() => claimAnchor(item.id)}
                                                 className={className}
                                                 aria-current={active ? "true" : undefined}
                                             >
@@ -164,6 +317,68 @@ export default function Navbar({
                                                 {item.label}
                                             </Link>
                                         )}
+
+                                        {subs.length ? (
+                                            <Chevron
+                                                open={open}
+                                                label={item.label}
+                                                onToggle={() => toggle(item.id)}
+                                            />
+                                        ) : null}
+
+                                        {subs.length ? (
+                                            // Stays mounted so the collapse can animate —
+                                            // unmounting would leave nothing to transition.
+                                            // A single grid row going 0fr -> 1fr sizes itself
+                                            // from the content, so no measuring in JS; the
+                                            // clipping comes from overflow-hidden and the
+                                            // inner min-h-0.
+                                            //
+                                            // Closed rows are real links, so `inert` takes
+                                            // them out of tab order and the a11y tree while
+                                            // they're hidden.
+                                            <div
+                                                inert={!open}
+                                                className={`mt-0.5 grid overflow-hidden transition-all duration-200 ease-out motion-reduce:transition-none ${
+                                                    open
+                                                        ? "grid-rows-[1fr] opacity-100"
+                                                        : "grid-rows-[0fr] opacity-0"
+                                                }`}
+                                            >
+                                                {/* One level only — these rows carry no children
+                                                    of their own. The gap above lives on the
+                                                    wrapper: as a margin on the grid ITEM it
+                                                    would feed the track's auto-minimum and
+                                                    leave a 2px sliver showing when closed. */}
+                                                <ul className="min-h-0 space-y-0.5 pl-3">
+                                                    {subs.map((sub) => {
+                                                        const here = norm(pathname);
+                                                        const target = norm(sub.href);
+                                                        // Current on the project's own page AND
+                                                        // on any page inside it, so the row
+                                                        // stays lit on /hooks-refresh/use-state.
+                                                        const subActive =
+                                                            here === target ||
+                                                            here.startsWith(`${target}/`);
+                                                        return (
+                                                            <li key={sub.href}>
+                                                                <Link
+                                                                    href={sub.href}
+                                                                    className={`${ITEM_BASE} ${subActive ? ITEM_ACTIVE : ITEM_IDLE}`}
+                                                                    aria-current={
+                                                                        subActive
+                                                                            ? "page"
+                                                                            : undefined
+                                                                    }
+                                                                >
+                                                                    {sub.label}
+                                                                </Link>
+                                                            </li>
+                                                        );
+                                                    })}
+                                                </ul>
+                                            </div>
+                                        ) : null}
                                     </li>
                                 );
                             })}

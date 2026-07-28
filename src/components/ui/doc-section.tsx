@@ -25,8 +25,8 @@ export function slug(title: string) {
 // when scanning; sibling sections are separated by a hairline (see globals.css).
 // The id makes every section a link target (summary cards, the FAQ button).
 //
-// `sectionSeverity` flags a whole section (icon + badge on the title, any of
-// danger/trap/tip). Inline callouts are for notes within a section. Article
+// `sectionSeverity` flags a whole section (icon + badge on the title, any of the
+// five severities). Inline callouts are for notes within a section. Article
 // severities come from the shared SECTION_SEVERITIES map — keep them in sync.
 //
 // Only the icon and badge take the severity colour; the title TEXT keeps its
@@ -107,7 +107,8 @@ export function Term({ children }: { children: ReactNode }) {
     return <strong className="text-[var(--text)]">{children}</strong>;
 }
 
-// Boxed callout, driven by the same severity scale as DocSection.
+// Boxed callout, driven by the same severity scale as DocSection — any of
+// danger/trap/next/tip/note, each supplying its own colour, label and icon.
 // `tone` is the legacy prop kept for the ~20 hook pages still passing it:
 // amber -> trap, accent -> tip. Prefer `severity` in new code.
 export function Callout({

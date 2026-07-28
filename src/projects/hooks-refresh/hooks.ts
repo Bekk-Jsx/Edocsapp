@@ -1,5 +1,6 @@
 // Single source of truth for the navbar + dashboard.
-// This is the COMPLETE registry — every hook we'll build. Never edited again.
+// Every React/Next hook we'll build is already listed. The only additions are
+// custom-hook PATTERN pages (e.g. useAuth) — a real hook is never added here.
 
 export type Source = "react" | "next/navigation";
 
@@ -50,6 +51,10 @@ export const HOOKS: HookMeta[] = [
     {
         slug: "use-context", name: "useContext", source: "react", chapter: "Context & Refs",
         summary: "Read context value without prop drilling."
+    },
+    {
+        slug: "use-auth", name: "useAuth", source: "react", chapter: "Context & Refs",
+        summary: "Custom hook wrapping useContext with a provider guard."
     },
     {
         slug: "use-ref", name: "useRef", source: "react", chapter: "Context & Refs",

@@ -48,6 +48,16 @@ export default function Home() {
         },
     ];
 
+    // Each type's projects, hung off that type's nav id. Titles only — the nav
+    // stops here and never reaches into a project's own contents. Keyed off the
+    // same projectsByType() result as the sections, so the two can't drift.
+    const navSubItems = Object.fromEntries(
+        groups.map((g) => [
+            `type-${g.id}`,
+            g.projects.map((p) => ({ label: p.title, href: `/${p.slug}` })),
+        ]),
+    );
+
     return (
         <div className="flex min-h-screen">
             <Navbar
@@ -55,6 +65,7 @@ export default function Home() {
                 mode="anchor"
                 homeHref="/"
                 brand={{ eyebrow: "learn", sub: "projects" }}
+                subItems={navSubItems}
             />
 
             <main className="flex-1 px-8 py-10 lg:px-14">

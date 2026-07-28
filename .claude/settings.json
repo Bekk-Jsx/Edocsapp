@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"console.log\\('WebSocket global:', typeof WebSocket\\)\")",
+      "Bash(node /tmp/claude-1000/-home-nasereddine-bekkal-nxhooks/43e4b0c6-0c04-4461-9f30-448843ae2888/scratchpad/cdp2.mjs)"
+    ]
+  }
+}

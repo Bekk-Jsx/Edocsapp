@@ -53,6 +53,7 @@ const CARD_EDGE: Record<Severity, string> = {
     trap: "hover:border-[var(--amber)] focus-visible:border-[var(--amber)] focus-visible:ring-[var(--amber)]",
     tip: "hover:border-[var(--mint)] focus-visible:border-[var(--mint)] focus-visible:ring-[var(--mint)]",
     next: "hover:border-[var(--next)] focus-visible:border-[var(--next)] focus-visible:ring-[var(--next)]",
+    note: "hover:border-[var(--note)] focus-visible:border-[var(--note)] focus-visible:ring-[var(--note)]",
 };
 
 // A section counts as "active" once its top passes ~20% down the viewport and

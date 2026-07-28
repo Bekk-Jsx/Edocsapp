@@ -5,6 +5,7 @@ export type ProjectType =
   | "web-dev"
   | "seo"
   | "databases"
+  | "devops"
   | "automation"
   | "design";
 
@@ -13,6 +14,7 @@ export const PROJECT_TYPES: { id: ProjectType; label: string }[] = [
   { id: "web-dev", label: "Web Development" },
   { id: "seo", label: "SEO" },
   { id: "databases", label: "Databases" },
+  { id: "devops", label: "DevOps" },
   { id: "automation", label: "Automation" },
   { id: "design", label: "Design" },
 ];
@@ -31,6 +33,13 @@ export const PROJECTS: Project[] = [
     description:
       "A hands-on refresh of every React & Next.js hook — live demos, source, and reference notes with traps flagged.",
     type: "web-dev",
+  },
+  {
+    slug: "redis-refresh",
+    title: "Redis, refreshed.",
+    description:
+      "Data types, atomicity, persistence, scaling and caching patterns — CLI-first notes with the traps flagged.",
+    type: "devops",
   },
 ];
 

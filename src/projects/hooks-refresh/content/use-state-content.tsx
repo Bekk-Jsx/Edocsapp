@@ -8,7 +8,8 @@ import type { SectionSeverities } from "@/lib/severity";
 // topic is one severity. See the convention comment in @/lib/severity.
 export const SECTION_SEVERITIES: SectionSeverities = {
     "state-is-a-snapshot": ["trap"],
-    "value-form-vs-function-form": ["danger"],
+    // section flagged `danger` as a whole + inline `trap · snapshot vs pending` callout
+    "value-form-vs-function-form": ["danger", "trap"],
 };
 
 export function UseStateDocs() {
