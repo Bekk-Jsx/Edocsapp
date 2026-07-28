@@ -2,9 +2,9 @@ import Link from "next/link";
 import { topicsByChapter, TOPICS, CHAPTERS } from "@/projects/redis-refresh/redis";
 
 // Project landing. Chapter groups come from the same registry the navbar reads,
-// so the two can't drift. TOPICS is empty during scaffolding, which means
-// `groups` is empty too — the empty-state panel below stands in for the grid
-// rather than leaving the section blank.
+// so the two can't drift. `topicsByChapter` drops chapters with no topics, so
+// `groups` goes empty only when the registry itself has none — the empty-state
+// panel below stands in for the grid then rather than leaving the section blank.
 export default function Home() {
     const groups = topicsByChapter();
 

@@ -8,8 +8,8 @@ import { topicsByChapter } from "@/projects/redis-refresh/redis";
 //
 // Server Component: `groups` is plain data, so the client Navbar receives it as
 // a serialized prop. Nothing project-specific is imported by Navbar itself.
-// While TOPICS is empty this hands Navbar an empty array, so it renders its
-// "Coming soon" placeholder under the brand instead of a list.
+// Chapters arrive in registry order, and so do the topics within each — adding a
+// TOPICS entry is the whole of adding a sidebar row.
 export default function ProjectLayout({ children }: { children: ReactNode }) {
     const groups = topicsByChapter().map((g) => ({
         heading: g.label,
