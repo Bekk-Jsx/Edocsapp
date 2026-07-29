@@ -29,7 +29,7 @@ export const TOPICS: RedisTopic[] = [
     },
     {
         slug: "inspecting-the-keyspace", name: "Inspecting the Keyspace", chapter: "environment",
-        summary: "TYPE, TTL and expiry, SCAN over KEYS, OBJECT ENCODING."
+        summary: "Every key has a type and an internal encoding; how to read them, how to walk the keyspace without blocking the server, and how expiry behaves."
     },
 
     // — Data Types —
