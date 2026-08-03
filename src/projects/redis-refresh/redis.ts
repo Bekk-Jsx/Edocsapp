@@ -34,28 +34,28 @@ export const TOPICS: RedisTopic[] = [
 
     // — Data Types —
     {
-        slug: "strings", name: "Strings & Counters", chapter: "data-types",
-        summary: "SET options, INCR, JSON blobs and serialization."
+        slug: "strings-and-counters", name: "Strings & Counters", chapter: "data-types",
+        summary: "The string is Redis's default type and its most misused one. SET's options make writes atomic, INCR turns a string into a counter, and the choice between a JSON blob and a structured type is the first real modelling decision."
     },
     {
         slug: "hashes", name: "Hashes", chapter: "data-types",
-        summary: "Objects field by field, flat string maps, field TTL."
+        summary: "HSET / HGET / HGETALL / HDEL / HMGET, HINCRBY, HEXISTS, and field TTL (Redis 7.4+). Your user objects live here."
     },
     {
         slug: "lists", name: "Lists", chapter: "data-types",
-        summary: "Queues and capped feeds, blocking pops from Node."
+        summary: "LPUSH / RPUSH / LPOP / RPOP, LRANGE, LLEN, LTRIM, BRPOP. Queues and capped logs."
     },
     {
         slug: "sets", name: "Sets", chapter: "data-types",
-        summary: "Membership, tags, uniqueness."
+        summary: "SADD / SREM / SMEMBERS / SISMEMBER / SCARD, SINTER / SUNION / SDIFF. Tags, membership, and the secondary index pattern from Inspecting the Keyspace."
     },
     {
         slug: "sorted-sets", name: "Sorted Sets", chapter: "data-types",
-        summary: "Leaderboards, sliding windows, timestamp scores."
+        summary: "ZADD / ZSCORE / ZINCRBY, ZRANGE with REV / BYSCORE / LIMIT, ZRANK, ZREMRANGEBYSCORE. Leaderboards and sliding windows."
     },
     {
-        slug: "choosing-a-type", name: "Choosing a Type", chapter: "data-types",
-        summary: "Decision table: data shape and access pattern to type."
+        slug: "choosing-a-type", name: "Choosing Between Them", chapter: "data-types",
+        summary: "The same data modelled four ways — what each type buys you and what it costs you."
     },
 ];
 
