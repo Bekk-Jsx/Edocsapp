@@ -8,6 +8,8 @@ export type RedisChapter = string;
 export const CHAPTERS: { id: string; label: string }[] = [
     { id: "environment", label: "Environment" },
     { id: "data-types", label: "Data Types" },
+    // Lookup pages, deliberately last: not part of the learning sequence.
+    { id: "reference", label: "Reference" },
 ];
 
 export interface RedisTopic {
@@ -56,6 +58,12 @@ export const TOPICS: RedisTopic[] = [
     {
         slug: "choosing-a-type", name: "Choosing Between Them", chapter: "data-types",
         summary: "The same data modelled four ways — what each type buys you and what it costs you."
+    },
+
+    // — Reference —
+    {
+        slug: "reading-replies", name: "Reading Redis Replies", chapter: "reference",
+        summary: "Redis answers in a handful of shapes — a status, a number, a string, a nil, or an array. The number usually means \"how many\", except when it means \"how long\", and the same integer can mean opposite things depending on the command. This page decodes them."
     },
 ];
 
