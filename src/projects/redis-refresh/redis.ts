@@ -8,6 +8,7 @@ export type RedisChapter = string;
 export const CHAPTERS: { id: string; label: string }[] = [
     { id: "environment", label: "Environment" },
     { id: "data-types", label: "Data Types" },
+    { id: "in-an-app", label: "Making It Work in an App" },
     // Lookup pages, deliberately last: not part of the learning sequence.
     { id: "reference", label: "Reference" },
 ];
@@ -55,9 +56,27 @@ export const TOPICS: RedisTopic[] = [
         slug: "sorted-sets", name: "Sorted Sets", chapter: "data-types",
         summary: "ZADD / ZSCORE / ZINCRBY, ZRANGE with REV / BYSCORE / LIMIT, ZRANK, ZREMRANGEBYSCORE. Leaderboards and sliding windows."
     },
+
+    // — Making It Work in an App —
     {
-        slug: "choosing-a-type", name: "Choosing Between Them", chapter: "data-types",
-        summary: "The same data modelled four ways — what each type buys you and what it costs you."
+        slug: "atomicity", name: "Atomicity", chapter: "in-an-app",
+        summary: "MULTI / EXEC, WATCH for optimistic locking, why there is no rollback, and how pipelining differs from a transaction."
+    },
+    {
+        slug: "caching-patterns", name: "Caching Patterns", chapter: "in-an-app",
+        summary: "cache-aside, choosing a TTL, SET NX against stampedes, invalidation on write, and what a cache miss should cost."
+    },
+    {
+        slug: "lua-scripts", name: "Lua Scripts", chapter: "in-an-app",
+        summary: "EVAL, SCRIPT LOAD and EVALSHA, and the cases where a script is the only correct answer — the sliding-window rate limiter and the safe lock release."
+    },
+    {
+        slug: "pub-sub", name: "Pub/Sub & Keyspace Notifications", chapter: "in-an-app",
+        summary: "PUBLISH / SUBSCRIBE, fire-and-forget delivery, dedicated connections, and why this is not a queue."
+    },
+    {
+        slug: "memory-and-eviction", name: "Memory & Eviction", chapter: "in-an-app",
+        summary: "maxmemory, the eviction policies, MEMORY USAGE, finding big keys, and what happens when Redis fills up."
     },
 
     // — Reference —
