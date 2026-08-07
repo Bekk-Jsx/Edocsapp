@@ -20,6 +20,9 @@ export const SECTION_SEVERITIES: SectionSeverities = {
     "step-5-dispatching-from-the-ui": ["tip"],
 
     // --- part 2 (As a module) ---
+    // inline `tip · pass the function` callout — hand React the initializer,
+    // don't call it yourself
+    "initial-state-ts-lazy-init": ["tip"],
     // inline `note · redux` callout, pointing at the global-store version
     "usereducer-context-vs-usecontext-alone": ["note"],
 };
@@ -576,14 +579,19 @@ export function UseReducerDocs() {
                         initializer. React calls <Code>init(SEED)</Code> once, on mount,
                         and uses the result as the initial state.
                     </p>
-                    <p>
-                        <Term>Pass the function, don&apos;t call it.</Term>{" "}
-                        <Code>useReducer(reducer, SEED, init)</Code> hands React the
-                        function; <Code>useReducer(reducer, init(SEED))</Code> runs it on
-                        EVERY render and throws the result away on all but the first.
-                        Same value, wasted work.
-                    </p>
+                    <Callout severity="tip" label="tip · pass the function">
+                        <p>
+                            Pass the function, don&apos;t call it.{" "}
+                            <Code>useReducer(reducer, SEED, init)</Code> hands React the
+                            function; <Code>useReducer(reducer, init(SEED))</Code> runs it
+                            on EVERY render and throws the result away on all but the
+                            first. Same value, wasted work.
+                        </p>
+                    </Callout>
 
+                    <p>
+                        <Term>Reuse init to reset</Term>
+                    </p>
                     <CodeBlock code={RESET_CASE} lang="ts" />
                     <p>
                         <Term>
