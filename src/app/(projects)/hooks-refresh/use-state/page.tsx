@@ -97,16 +97,71 @@ const SUMMARY_TEXT = [
     },
 ];
 
+// Part 2 of the page — the reference rule that only bites once state stops being
+// a primitive. Same ordering contract as above: page order, one article each.
+const OBJECTS_TEXT = [
+    {
+        title: "Never mutate, replace",
+        href: "#never-mutate-replace",
+        text: (
+            <>
+                Object/array state needs a NEW reference — mutating the existing one
+                won&apos;t re-render; spread to copy and override.
+            </>
+        ),
+    },
+    {
+        title: "Nested objects",
+        href: "#nested-objects",
+        text: (
+            <>
+                Spread is shallow: to change a nested field, spread at every level
+                down to it — a new object at each level along the path.
+            </>
+        ),
+    },
+    {
+        title: "Arrays",
+        href: "#arrays",
+        text: (
+            <>
+                Return a new array with <Mono>[...arr, x]</Mono> / <Mono>map</Mono> /{" "}
+                <Mono>filter</Mono>; avoid <Mono>push</Mono>/<Mono>splice</Mono>/
+                <Mono>sort</Mono>/<Mono>reverse</Mono>, which mutate in place and skip
+                the render.
+            </>
+        ),
+    },
+    {
+        title: "Functional updater for objects & arrays",
+        href: "#functional-updater-for-objects-arrays",
+        text: (
+            <>
+                Build updates from <Mono>prev</Mono> with{" "}
+                <Mono>setX(prev =&gt; ...)</Mono> so batched/async updates don&apos;t
+                spread a stale collection; wrap object returns in{" "}
+                <Mono>( )</Mono>.
+            </>
+        ),
+    },
+];
+
 // Severities are DERIVED from SECTION_SEVERITIES by href — never hand-set here,
 // so every card matches the section it links to by construction.
-const SUMMARY: SummaryArticle[] = SUMMARY_TEXT.map((item) => ({
+const withSeverities = (item: (typeof SUMMARY_TEXT)[number]): SummaryArticle => ({
     ...item,
     severities: SECTION_SEVERITIES[item.href.replace("#", "")],
-}));
+});
+
+// The two groups mirror the part dividers in the content file.
+const SUMMARY_GROUPS = [
+    { label: "Basics", items: SUMMARY_TEXT.map(withSeverities) },
+    { label: "Objects & arrays", items: OBJECTS_TEXT.map(withSeverities) },
+];
 
 export default function Page() {
     return (
-        <PageShell alerts={<SummaryArticles items={SUMMARY} />}>
+        <PageShell alerts={<SummaryArticles groups={SUMMARY_GROUPS} />}>
             <DemoFrame
                 name="useState"
                 source="react"

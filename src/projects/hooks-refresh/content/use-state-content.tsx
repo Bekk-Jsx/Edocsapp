@@ -1,5 +1,6 @@
 import { DocSection, Code, Term, Callout, QA } from "@/components/ui/doc-section";
 import type { SectionSeverities } from "@/lib/severity";
+import CodeBlock from "@/components/ui/code-block";
 
 // Everything each section covers, keyed by its section id, in page order. This
 // feeds the summary rail in page.tsx (one icon per severity, sorted
@@ -7,14 +8,93 @@ import type { SectionSeverities } from "@/lib/severity";
 // explicit `sectionSeverity` prop below, which marks a section whose ENTIRE
 // topic is one severity. See the convention comment in @/lib/severity.
 export const SECTION_SEVERITIES: SectionSeverities = {
+    // --- part 1 (Basics) ---
     "state-is-a-snapshot": ["trap"],
     // section flagged `danger` as a whole + inline `trap · snapshot vs pending` callout
     "value-form-vs-function-form": ["danger", "trap"],
+
+    // --- part 2 (Objects & arrays) ---
+    // inline `danger · mutation is silent` callout
+    "never-mutate-replace": ["danger"],
+    // inline `trap · shallow copy` callout
+    "nested-objects": ["trap"],
+    // inline `danger · mutating array methods` callout
+    arrays: ["danger"],
+    // inline `trap · stale collection` callout
+    "functional-updater-for-objects-arrays": ["trap"],
 };
+
+// Top-level divider between the parts of the page — mirrors the group labels in
+// the summary rail. Deliberately louder than a DocSection eyebrow (bold, larger,
+// full-width rule) so the split is obvious while scrolling: this is a grouping,
+// not a section.
+//
+// Same file-local helper use-effect, use-context and use-reducer define for
+// their own part dividers.
+function PartHeading({
+    kicker,
+    children,
+}: {
+    kicker: string;
+    children: string;
+}) {
+    return (
+        <div className="mt-14 mb-1">
+            <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                {kicker}
+            </p>
+            <h2 className="mt-1 text-[1.15rem] font-bold tracking-tight text-[var(--text)]">
+                {children}
+            </h2>
+            <div
+                aria-hidden="true"
+                className="mt-3 h-px w-full bg-[var(--border)]"
+            />
+        </div>
+    );
+}
+
+// ===================================================================
+// Part 2 — Objects & arrays. Everything above holds for a number just
+// as well; these four sections are about the one extra rule that only
+// bites once state stops being a primitive: React compares the
+// REFERENCE, so an update has to produce a new one.
+// ===================================================================
+
+const REPLACE = `const [user, setUser] = useState({ name: "Sam", age: 30 });
+
+user.age = 31;
+setUser(user);                   // mutate -> same reference -> NO re-render
+
+setUser({ ...user, age: 31 });   // new object -> re-render`;
+
+const NESTED = `const [user, setUser] = useState({
+  name: "Sam",
+  address: { city: "Paris", zip: "75001" },
+});
+
+setUser({
+  ...user,                                      // copy the top level
+  address: { ...user.address, city: "Lyon" },   // new nested object + override
+});`;
+
+const ARRAYS = `const [todos, setTodos] = useState<Todo[]>([]);
+
+setTodos([...todos, newTodo]);                                          // add
+setTodos(todos.map((t) => (t.id === id ? { ...t, done: true } : t)));   // update
+setTodos(todos.filter((t) => t.id !== id));                             // remove`;
+
+const FUNCTIONAL_UPDATER = `setTodos((prev) => [...prev, newTodo]);
+setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, done: true } : t)));
+setUser((prev) => ({ ...prev, age: prev.age + 1 }));   // note the ( )`;
 
 export function UseStateDocs() {
     return (
         <>
+            {/* Part 1 needs no wrapper div: the divider above already breaks
+                `.doc-section + .doc-section` adjacency, so the hairlines between
+                these sections render exactly as before. */}
+            <PartHeading kicker="part 1">Basics</PartHeading>
             <DocSection title="render & persistence">
                 <p>
                     <Term>Renders re-run the function.</Term> React calls your
@@ -134,6 +214,154 @@ export function UseStateDocs() {
                 </p>
             </DocSection>
 
+            <PartHeading kicker="part 2">Objects &amp; arrays</PartHeading>
+            <div>
+                <DocSection title="never mutate, replace">
+                    <CodeBlock code={REPLACE} lang="tsx" />
+                    <p>
+                        <Term>React compares state BY REFERENCE.</Term> Assigning to a
+                        field leaves the same object in place, so{" "}
+                        <Code>Object.is(next, current)</Code> is <Code>true</Code> and
+                        React bails out. Object and array state needs a NEW reference
+                        for the update to land.
+                    </p>
+                    <p>
+                        <Term>Spread copies, then override.</Term>{" "}
+                        <Code>{"{ ...user, age: 31 }"}</Code> builds a fresh object
+                        with every field of <Code>user</Code>, then replaces{" "}
+                        <Code>age</Code> — later keys win. The old object is left
+                        untouched, which is exactly what makes the reference check
+                        meaningful.
+                    </p>
+                    <p>
+                        <Term>It is the same rule you already know.</Term> A reducer
+                        must return a new state object, a context value must be a new
+                        reference to notify consumers, a{" "}
+                        <Code>useMemo</Code> dep must change reference to invalidate.
+                        One comparison, <Code>Object.is</Code>, everywhere.
+                    </p>
+
+                    <Callout severity="danger" label="danger · mutation is silent">
+                        <p>
+                            Mutating state (<Code>user.age = 31</Code>) keeps the same
+                            reference, so React skips the render — the UI silently
+                            goes stale, no error. Always create a new object or array.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="nested objects">
+                    <CodeBlock code={NESTED} lang="tsx" />
+                    <p>
+                        <Term>Spread is a SHALLOW copy.</Term>{" "}
+                        <Code>{"{ ...user }"}</Code> copies the top level only. The new
+                        object&apos;s <Code>address</Code> still points at the ORIGINAL
+                        nested object, so writing through it mutates the state you were
+                        trying to replace.
+                    </p>
+                    <p>
+                        <Term>Spread at every level down to the change.</Term> Changing{" "}
+                        <Code>address.city</Code> means a new <Code>user</Code> AND a
+                        new <Code>address</Code> — one fresh object per level along the
+                        path. Branches you don&apos;t touch keep their old references,
+                        which is fine and is what keeps the copy cheap.
+                    </p>
+                    <p>
+                        <Term>Deep nesting is a design signal.</Term> Once the path is
+                        three or four levels long the spread chain becomes unreadable
+                        and easy to get wrong. Flatten the shape, split it into several
+                        <Code>useState</Code> calls, or move the transitions into{" "}
+                        <Code>useReducer</Code>.
+                    </p>
+
+                    <Callout severity="trap" label="trap · shallow copy">
+                        <p>
+                            <Code>{"{ ...obj }"}</Code> copies one level only. Updating
+                            a nested value while spreading only the top level still
+                            mutates the nested object — spread each level along the
+                            path.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="arrays">
+                    <CodeBlock code={ARRAYS} lang="tsx" />
+                    <p>
+                        <Term>Return a NEW array, every time.</Term> Arrays are objects
+                        — same reference rule, same silent failure. The three
+                        non-mutating tools cover almost everything:{" "}
+                        <Code>[...arr, x]</Code> to add, <Code>map</Code> to update,{" "}
+                        <Code>filter</Code> to remove. Each returns a new array and
+                        leaves the old one alone.
+                    </p>
+                    <p>
+                        <Term>Avoid the in-place methods on state.</Term>{" "}
+                        <Code>push</Code>, <Code>pop</Code>, <Code>splice</Code>,{" "}
+                        <Code>sort</Code> and <Code>reverse</Code> all mutate the
+                        receiver and hand back the same reference (or a length), so
+                        nothing re-renders. For sorting, copy first —{" "}
+                        <Code>[...arr].sort()</Code>.
+                    </p>
+                    <p>
+                        <Term>Updating an ITEM is the nested rule again.</Term>{" "}
+                        <Code>map</Code> gives you a new array, but the element you
+                        change also needs replacing:{" "}
+                        <Code>{"{ ...t, done: true }"}</Code>. The untouched elements
+                        are reused by reference, which is what lets a memoized row skip
+                        its re-render.
+                    </p>
+
+                    <Callout severity="danger" label="danger · mutating array methods">
+                        <p>
+                            <Code>push</Code>/<Code>splice</Code>/<Code>sort</Code>/
+                            <Code>reverse</Code> mutate the array in place → same
+                            reference → no re-render. Use <Code>[...arr, x]</Code>,{" "}
+                            <Code>map</Code> and <Code>filter</Code>, which return new
+                            arrays; copy before <Code>sort</Code>/<Code>reverse</Code>.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="functional updater for objects & arrays">
+                    <CodeBlock code={FUNCTIONAL_UPDATER} lang="tsx" />
+                    <p>
+                        <Term>These updates are BUILT from the previous value.</Term>{" "}
+                        Unlike <Code>setCount(0)</Code>, every line here spreads what
+                        was already there — so which copy of the collection you spread
+                        decides whether earlier changes survive.
+                    </p>
+                    <p>
+                        <Term>
+                            <Code>prev</Code> is the latest state, not your snapshot.
+                        </Term>{" "}
+                        Spreading the state variable directly reads the value this
+                        render closed over. Under batching, or in an async callback
+                        that resolves later, that snapshot can already be out of date —
+                        and spreading it writes a collection missing whatever landed in
+                        between.
+                    </p>
+                    <p>
+                        <Term>Object returns need parentheses.</Term>{" "}
+                        <Code>{"prev => ({ ...prev })"}</Code> — without the{" "}
+                        <Code>( )</Code> JavaScript reads the brace as a function body,
+                        not an object literal, and the updater returns{" "}
+                        <Code>undefined</Code>. Arrays need no wrapper:{" "}
+                        <Code>{"prev => [...prev, x]"}</Code> is unambiguous.
+                    </p>
+
+                    <Callout severity="trap" label="trap · stale collection">
+                        <p>
+                            Spreading the state variable directly (
+                            <Code>[...todos, x]</Code>) can spread a STALE array under
+                            batching or async and drop updates. Use{" "}
+                            <Code>setX(prev =&gt; ...)</Code> so <Code>prev</Code> is
+                            always the latest.
+                        </p>
+                    </Callout>
+                </DocSection>
+            </div>
+
+            {/* ---------- footer sections — always last, never in the rail ---------- */}
             <DocSection title="react vs next.js" tone="accent">
                 <p>
                     <Code>useState</Code> is identical. The only wrinkle is the{" "}
