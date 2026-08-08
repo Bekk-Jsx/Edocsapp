@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { hooksByChapter, HOOKS, CHAPTERS } from "@/projects/hooks-refresh/hooks";
+import {
+  hooksByChapter,
+  HOOKS,
+  CHAPTERS,
+  SOURCE_BADGE,
+} from "@/projects/hooks-refresh/hooks";
 
 export default function Home() {
   const groups = hooksByChapter();
@@ -49,7 +54,7 @@ export default function Home() {
                       {h.name}
                     </p>
                     <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)] opacity-0 transition-opacity group-hover:opacity-100">
-                      {h.source === "next/navigation" ? "next" : "react"}
+                      {SOURCE_BADGE[h.source]}
                     </span>
                   </div>
                   <p className="mt-1 text-sm text-[var(--muted)]">{h.summary}</p>

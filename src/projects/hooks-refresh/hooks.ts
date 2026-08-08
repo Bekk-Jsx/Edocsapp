@@ -2,7 +2,10 @@
 // Every React/Next hook we'll build is already listed. The only additions are
 // custom-hook PATTERN pages (e.g. useAuth) — a real hook is never added here.
 
-export type Source = "react" | "next/navigation";
+// Where the page's API is imported from — shown as the eyebrow on the page and
+// as the hover badge on the dashboard. Not every entry is a React hook anymore:
+// the "State Libraries" chapter covers third-party state tools.
+export type Source = "react" | "next/navigation" | "@reduxjs/toolkit";
 
 export interface HookMeta {
     slug: string; // URL segment under /hooks
@@ -20,6 +23,7 @@ export const CHAPTERS = [
     "Utility",
     "React 19",
     "Navigation",
+    "State Libraries",
 ] as const;
 
 export const HOOKS: HookMeta[] = [
@@ -132,7 +136,22 @@ export const HOOKS: HookMeta[] = [
         slug: "use-selected-layout-segment", name: "useSelectedLayoutSegment", source: "next/navigation", chapter: "Navigation",
         summary: "Active route segment below a layout — for nav UI."
     },
+
+    // — State Libraries —
+    {
+        slug: "redux", name: "Redux", source: "@reduxjs/toolkit", chapter: "State Libraries",
+        summary: "Global store with Redux Toolkit — slices, selectors, thunks."
+    },
 ];
+
+// Short badge for the dashboard cards. The page eyebrow prints the full `source`
+// (an import path); this is the one-word version. A Record rather than a ternary
+// so TypeScript forces a decision here whenever `Source` gains a member.
+export const SOURCE_BADGE: Record<Source, string> = {
+    react: "react",
+    "next/navigation": "next",
+    "@reduxjs/toolkit": "redux",
+};
 
 export const hookBySlug = (slug: string) => HOOKS.find((h) => h.slug === slug);
 
