@@ -1,68 +1,140 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { memo, useState, useTransition } from "react";
 
-// Large enough that rendering all matches is noticeable work.
-const ITEMS = Array.from({ length: 15000 }, (_, i) => `row-${i.toString().padStart(5, "0")}`);
+// 10,000 items, built once at module load.
+const WORDS = [
+    "avatar",
+    "account",
+    "archive",
+    "banner",
+    "button",
+    "cache",
+    "config",
+    "dialog",
+    "export",
+    "filter",
+];
+const LIST = Array.from(
+    { length: 10_000 },
+    (_, i) => `${WORDS[i % WORDS.length]}-${String(i).padStart(5, "0")}`,
+);
 
-// Slow render per item — makes the transition visible without a huge DOM.
-function SlowRow({ text }: { text: string }) {
-    // artificial CPU work to make the list re-render feel heavy
-    let x = 0;
-    for (let i = 0; i < 500; i++) x += Math.sqrt(i);
+const VISIBLE = 100;
+
+// The filter itself is cheap; the RENDER is the bottleneck, which is the case
+// useTransition is for. Each row burns a little CPU to stand in for what makes
+// a real row expensive — deep trees, formatting, charts.
+const ROW_COST_MS = 0.6;
+
+function SlowRow({ label }: { label: string }) {
+    const start = performance.now();
+    while (performance.now() - start < ROW_COST_MS) {
+        /* simulated expensive row */
+    }
     return (
-        <li className="font-mono text-xs text-[var(--muted)]" data-x={x}>
-            {text}
+        <li className="border-b border-[var(--border)] px-3 py-1 last:border-0">
+            {label}
         </li>
     );
 }
 
+// memo is what makes the split work: on an URGENT render (a keystroke) `items`
+// is still the same array, so React skips this subtree entirely and the input
+// paints immediately. Only the transition's render passes a new array and pays
+// the ~60ms. Without memo, every keystroke would re-render all 100 rows anyway.
+const ResultList = memo(function ResultList({ items }: { items: string[] }) {
+    return (
+        <ul className="font-mono text-xs text-[var(--muted)]">
+            {items.slice(0, VISIBLE).map((item) => (
+                <SlowRow key={item} label={item} />
+            ))}
+        </ul>
+    );
+});
+
+const matches = (q: string) =>
+    q ? LIST.filter((item) => item.includes(q.toLowerCase())) : LIST;
+
+type Mode = "transition" | "plain";
+
 export default function UseTransitionDemo() {
-    // Urgent — the input value must update on every keystroke.
+    const [mode, setMode] = useState<Mode>("transition");
     const [query, setQuery] = useState("");
-    // Non-urgent — the derived query the list actually filters on.
-    const [committed, setCommitted] = useState("");
+    const [results, setResults] = useState<string[]>(LIST);
     const [isPending, startTransition] = useTransition();
 
-    const results = ITEMS.filter((s) => s.includes(committed)).slice(0, 40);
+    const onChange = (value: string) => {
+        // URGENT — always outside the transition, so the character appears now.
+        setQuery(value);
+
+        if (mode === "transition") {
+            // NON-URGENT — interruptible, abandoned when the next keystroke lands.
+            startTransition(() => setResults(matches(value)));
+        } else {
+            setResults(matches(value));
+        }
+    };
 
     return (
-        <div className="space-y-3">
-            <div className="flex items-center gap-2">
-                <input
-                    value={query}
-                    onChange={(e) => {
-                        const next = e.target.value;
-                        setQuery(next); // urgent — stays outside the transition
-                        startTransition(() => setCommitted(next)); // non-urgent
-                    }}
-                    placeholder="filter 15000 rows — try `042`"
-                    className="flex-1 rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm outline-none focus:border-[var(--accent)]"
-                />
-                <span
-                    className={`font-mono text-xs ${isPending ? "text-[var(--amber)]" : "text-[var(--muted)]"
+        <div className="space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
+                {(
+                    [
+                        ["transition", "with useTransition"],
+                        ["plain", "without"],
+                    ] as const
+                ).map(([value, label]) => (
+                    <button
+                        key={value}
+                        onClick={() => setMode(value)}
+                        className={`rounded-md border px-3 py-1.5 font-mono text-xs ${
+                            mode === value
+                                ? "border-[var(--accent)] text-[var(--accent)]"
+                                : "border-[var(--border)] text-[var(--muted)] hover:bg-[var(--surface-2)]"
                         }`}
-                >
-                    {isPending ? "pending…" : "idle"}
+                    >
+                        {label}
+                    </button>
+                ))}
+                <span className="ml-auto font-mono text-xs text-[var(--muted)]">
+                    {isPending ? (
+                        <span className="text-[var(--amber)]">isPending = true</span>
+                    ) : (
+                        "isPending = false"
+                    )}
                 </span>
             </div>
 
-            <ul
-                className={`rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-2 transition-opacity ${isPending ? "opacity-50" : ""
-                    }`}
+            <input
+                value={query}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder="type fast — try “avatar”"
+                className="w-full rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm text-[var(--text)] placeholder:text-[var(--muted)] focus:border-[var(--accent)] focus:outline-none"
+            />
+
+            <p className="font-mono text-xs text-[var(--muted)]">
+                {results.length.toLocaleString()} matches · showing{" "}
+                {Math.min(results.length, VISIBLE)}
+            </p>
+
+            {/* The dimming lives on the WRAPPER, not inside ResultList — passing
+                isPending down would re-render the memoized list on every keystroke
+                and undo the whole optimization. */}
+            <div
+                className="max-h-56 overflow-y-auto rounded-lg border border-[var(--border)] bg-[var(--surface-2)] transition-opacity duration-150"
+                style={{ opacity: isPending ? 0.5 : 1 }}
             >
-                {results.length === 0 ? (
-                    <li className="font-mono text-xs text-[var(--muted)]">—</li>
-                ) : (
-                    results.map((s) => <SlowRow key={s} text={s} />)
-                )}
-            </ul>
+                <ResultList items={results} />
+            </div>
 
             <p className="text-xs text-[var(--muted)]">
-                Type fast — the input stays snappy because its update is urgent;
-                the list update is wrapped in{" "}
-                <span className="font-mono">startTransition</span>, so React can
-                interrupt it to keep the keystrokes fluid.
+                Each row deliberately burns ~{ROW_COST_MS}ms to stand in for an
+                expensive render, so 100 rows cost ~60ms.{" "}
+                <span className="text-[var(--mint)]">With useTransition</span> the
+                characters appear instantly and the list dims while it catches up.{" "}
+                <span className="text-[var(--amber)]">Without</span>, every keystroke
+                waits for the full re-render and typing stutters.
             </p>
         </div>
     );
