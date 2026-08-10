@@ -1,62 +1,121 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useMemo, useState } from "react";
 
-const ITEMS = Array.from({ length: 15000 }, (_, i) => `row-${i.toString().padStart(5, "0")}`);
+// 10,000 items, built once at module load.
+const WORDS = [
+    "avatar",
+    "account",
+    "archive",
+    "banner",
+    "button",
+    "cache",
+    "config",
+    "dialog",
+    "export",
+    "filter",
+];
+const ITEMS = Array.from(
+    { length: 10_000 },
+    (_, i) => `${WORDS[i % WORDS.length]}-${String(i).padStart(5, "0")}`,
+);
 
-function SlowRow({ text }: { text: string }) {
-    // artificial CPU work per row — makes the deferred behavior visible
-    let x = 0;
-    for (let i = 0; i < 500; i++) x += Math.sqrt(i);
-    return (
-        <li className="font-mono text-xs text-[var(--muted)]" data-x={x}>
-            {text}
-        </li>
-    );
+const VISIBLE = 40;
+
+// Real filters get expensive through fuzzy scoring, normalisation or sorting —
+// not through 10k `includes` calls. This burns a fixed budget instead so the
+// deferral is actually observable on a fast machine.
+const SCAN_COST_MS = 110;
+
+function search(query: string) {
+    const start = performance.now();
+    while (performance.now() - start < SCAN_COST_MS) {
+        /* stand-in for expensive scoring / sorting */
+    }
+    const q = query.trim().toLowerCase();
+    return q ? ITEMS.filter((item) => item.includes(q)) : ITEMS;
 }
 
 export default function UseDeferredValueDemo() {
-    // We own the urgent state — the input keystroke.
+    // URGENT — drives the input, so the character appears immediately.
     const [query, setQuery] = useState("");
-    // React gives us a "lagging" copy that catches up when it can.
+    // LOW PRIORITY — the same string, allowed to fall one step behind.
     const deferredQuery = useDeferredValue(query);
     const isStale = query !== deferredQuery;
 
-    const results = ITEMS.filter((s) => s.includes(deferredQuery)).slice(0, 40);
+    // The saving lives HERE, not in useDeferredValue. On an urgent render
+    // `deferredQuery` still holds its last committed value, so the deps are
+    // unchanged and the ~110ms scan is skipped entirely.
+    const results = useMemo(() => search(deferredQuery), [deferredQuery]);
 
     return (
-        <div className="space-y-3">
-            <div className="flex items-center gap-2">
-                <input
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="filter 15000 rows — try `042`"
-                    className="flex-1 rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm outline-none focus:border-[var(--accent)]"
-                />
+        <div className="space-y-4">
+            <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="type fast — try “avatar”"
+                className="w-full rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm text-[var(--text)] placeholder:text-[var(--muted)] focus:border-[var(--accent)] focus:outline-none"
+            />
+
+            {/* The two values side by side: `query` jumps, `deferredQuery` trails
+                it while a low-priority render is still in flight. */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs">
+                <span className="text-[var(--muted)]">
+                    query ={" "}
+                    <span className="text-[var(--text)]">
+                        &quot;{query}&quot;
+                    </span>
+                </span>
+                <span className="text-[var(--muted)]">
+                    deferredQuery ={" "}
+                    <span className="text-[var(--text)]">
+                        &quot;{deferredQuery}&quot;
+                    </span>
+                </span>
                 <span
-                    className={`font-mono text-xs ${isStale ? "text-[var(--amber)]" : "text-[var(--muted)]"
-                        }`}
+                    className={`ml-auto ${
+                        isStale ? "text-[var(--amber)]" : "text-[var(--muted)]"
+                    }`}
                 >
-                    {isStale ? "stale…" : "fresh"}
+                    isStale = {String(isStale)}
                 </span>
             </div>
 
-            <ul
-                className={`rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-2 transition-opacity ${isStale ? "opacity-50" : ""
-                    }`}
+            <p className="font-mono text-xs text-[var(--muted)]">
+                {results.length.toLocaleString()} matches · showing{" "}
+                {Math.min(results.length, VISIBLE)}
+            </p>
+
+            {/* Dimming sits on the WRAPPER — feeding isStale into the list would
+                make it re-render on every keystroke and undo the deferral. */}
+            <div
+                className="max-h-56 overflow-y-auto rounded-lg border border-[var(--border)] bg-[var(--surface-2)] transition-opacity duration-150"
+                style={{ opacity: isStale ? 0.5 : 1 }}
             >
-                {results.length === 0 ? (
-                    <li className="font-mono text-xs text-[var(--muted)]">—</li>
-                ) : (
-                    results.map((s) => <SlowRow key={s} text={s} />)
-                )}
-            </ul>
+                <ul className="font-mono text-xs text-[var(--muted)]">
+                    {results.length === 0 ? (
+                        <li className="px-3 py-1">no matches</li>
+                    ) : (
+                        results.slice(0, VISIBLE).map((item) => (
+                            <li
+                                key={item}
+                                className="border-b border-[var(--border)] px-3 py-1 last:border-0"
+                            >
+                                {item}
+                            </li>
+                        ))
+                    )}
+                </ul>
+            </div>
 
             <p className="text-xs text-[var(--muted)]">
-                No <span className="font-mono">startTransition</span> here — we
-                only own the input state and can&apos;t wrap the derived update.
-                We defer a <span className="font-mono">value</span> instead: the
-                list keeps rendering the previous query until React catches up.
+                The filter deliberately costs ~{SCAN_COST_MS}ms. Typing stays
+                instant because the urgent render reuses the{" "}
+                <span className="text-[var(--mint)]">memoized</span> result for the
+                last committed <span className="font-mono">deferredQuery</span>;
+                the list <span className="text-[var(--amber)]">dims</span> until a
+                low-priority render catches it up. Type fast and only the value you
+                pause on ever finishes.
             </p>
         </div>
     );
