@@ -2,7 +2,13 @@
 
 import { useSyncExternalStore } from "react";
 
-// --- online-status store ---
+// ===================================================================
+// Two external stores, both of them the BROWSER. Each is the same three
+// pieces: subscribe (how React listens), getSnapshot (how React reads),
+// getServerSnapshot (what SSR sees instead).
+// ===================================================================
+
+// --- online status: the online/offline events ---
 function subscribeOnline(notify: () => void) {
     window.addEventListener("online", notify);
     window.addEventListener("offline", notify);
@@ -12,18 +18,40 @@ function subscribeOnline(notify: () => void) {
     };
 }
 const getOnlineSnapshot = () => navigator.onLine;
-// Runs on the server (and during initial client render before hydration).
-// Assume online — matches the most common initial state and avoids a mismatch.
+// A boolean, so repeated reads are Object.is-equal. Assume online: it is the
+// common case and keeps the server HTML closest to what hydration will find.
 const getOnlineServerSnapshot = () => true;
 
-// --- window-width store ---
+// --- viewport width: the resize event ---
 function subscribeWidth(notify: () => void) {
     window.addEventListener("resize", notify);
     return () => window.removeEventListener("resize", notify);
 }
 const getWidthSnapshot = () => window.innerWidth;
-// No width on the server — return a sentinel and render "detecting…" until mount.
+// There is no window on the server — 0 is a sentinel the UI renders as
+// "detecting…" until the first client read replaces it.
 const getWidthServerSnapshot = () => 0;
+
+function Readout({
+    label,
+    value,
+    tone,
+}: {
+    label: string;
+    value: string;
+    tone: string;
+}) {
+    return (
+        <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-4">
+            <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                {label}
+            </p>
+            <p className="font-mono text-2xl" style={{ color: tone }}>
+                {value}
+            </p>
+        </div>
+    );
+}
 
 export default function UseSyncExternalStoreDemo() {
     const online = useSyncExternalStore(
@@ -38,32 +66,28 @@ export default function UseSyncExternalStoreDemo() {
     );
 
     return (
-        <div className="space-y-2">
-            <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-2 text-sm">
-                <span className="text-[var(--muted)]">network · </span>
-                <span
-                    className={
-                        online ? "text-[var(--mint)]" : "text-[var(--amber)]"
-                    }
-                >
-                    {online ? "online" : "offline"}
-                </span>
-            </div>
-
-            <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-2 text-sm">
-                <span className="text-[var(--muted)]">viewport width · </span>
-                <span className="text-[var(--accent)]">
-                    {width === 0 ? "detecting…" : `${width}px`}
-                </span>
+        <div className="space-y-3">
+            <div className="grid gap-3 sm:grid-cols-2">
+                <Readout
+                    label="navigator.onLine"
+                    value={online ? "online" : "offline"}
+                    tone={online ? "var(--mint)" : "var(--amber)"}
+                />
+                <Readout
+                    label="window.innerWidth"
+                    value={width === 0 ? "detecting…" : `${width}px`}
+                    tone="var(--accent)"
+                />
             </div>
 
             <p className="text-xs text-[var(--muted)]">
                 Resize the window to watch the width update; toggle{" "}
-                <span className="font-mono">DevTools → Network → Offline</span>{" "}
-                to flip the online flag. Both values are pulled from{" "}
-                <span className="font-mono">window</span> — non-React state —
-                via <span className="font-mono">subscribe</span> +{" "}
-                <span className="font-mono">getSnapshot</span>.
+                <span className="font-mono">DevTools → Network → Offline</span> to
+                flip the online flag. Neither value is React state — both are read
+                off <span className="font-mono">window</span> through{" "}
+                <span className="font-mono">subscribe</span> +{" "}
+                <span className="font-mono">getSnapshot</span>, and both fall back to
+                a server snapshot during SSR.
             </p>
         </div>
     );

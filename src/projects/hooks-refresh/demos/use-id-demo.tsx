@@ -2,51 +2,68 @@
 
 import { useId } from "react";
 
-// One useId call → derive as many related IDs as the widget needs.
-// Never call useId in a loop for list keys — use the item's own identity.
-function EmailField() {
+// One useId() call per instance, used as a BASE: every id the field needs is
+// that base plus a suffix, so a single hook call links label, input and hint.
+// The generated strings are printed under the field so the reader can SEE them.
+function EmailField({ instance }: { instance: string }) {
     const id = useId();
-    const descId = `${id}-desc`;
-    const errId = `${id}-err`;
+    const inputId = `${id}-email`;
+    const hintId = `${id}-email-hint`;
 
     return (
-        <div className="space-y-1">
-            <label htmlFor={id} className="block text-sm text-[var(--text)]">
-                email
-            </label>
-            <input
-                id={id}
-                type="email"
-                placeholder="you@example.com"
-                aria-describedby={`${descId} ${errId}`}
-                className="w-full rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm outline-none focus:border-[var(--accent)]"
-            />
-            <p id={descId} className="text-xs text-[var(--muted)]">
-                we&apos;ll never share your email.
-            </p>
-            <p id={errId} className="hidden text-xs text-[var(--amber)]">
-                {/* placeholder for a real validation message */}
+        <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-4">
+            <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                instance {instance}
             </p>
 
-            <p className="pt-2 font-mono text-xs text-[var(--muted)]">
-                generated id:{" "}
-                <span className="text-[var(--accent)]">{id}</span> · derived:{" "}
-                <span className="text-[var(--accent)]">{descId}</span>,{" "}
-                <span className="text-[var(--accent)]">{errId}</span>
+            <label htmlFor={inputId} className="block text-sm text-[var(--text)]">
+                Email
+            </label>
+            <input
+                id={inputId}
+                type="email"
+                placeholder="you@example.com"
+                aria-describedby={hintId}
+                className="mt-1 w-full rounded-md border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-sm text-[var(--text)] outline-none focus:border-[var(--accent)]"
+            />
+            <p id={hintId} className="mt-1 text-xs text-[var(--muted)]">
+                We&apos;ll never share it.
             </p>
+
+            <div className="mt-3 space-y-0.5 border-t border-[var(--border)] pt-2 font-mono text-[0.7rem] text-[var(--muted)]">
+                <p>
+                    useId() → <span className="text-[var(--accent)]">{id}</span>
+                </p>
+                <p>
+                    htmlFor / id →{" "}
+                    <span className="text-[var(--accent)]">{inputId}</span>
+                </p>
+                <p>
+                    aria-describedby →{" "}
+                    <span className="text-[var(--accent)]">{hintId}</span>
+                </p>
+            </div>
         </div>
     );
 }
 
 export default function UseIdDemo() {
     return (
-        <div className="space-y-4">
-            <EmailField />
-            <EmailField />
+        <div className="space-y-3">
+            {/* Two instances of the SAME component — the point of the demo is that
+                their base ids differ, so neither label can point at the other's
+                input. Stacked rather than side by side: the generated ids are the
+                thing to read here, and a half-width column wraps them mid-token. */}
+            <div className="grid gap-3">
+                <EmailField instance="A" />
+                <EmailField instance="B" />
+            </div>
             <p className="text-xs text-[var(--muted)]">
-                Each instance of the field gets its own base ID — the label,
-                description, and error slot all stay linked without collisions,
-                and the values match between server and client render.
+                Same component twice: the two base ids differ, so the labels stay
+                bound to their own input and the hints to their own field. Every
+                value above is identical between the server render and hydration —
+                that is the guarantee <span className="font-mono">useId</span>{" "}
+                exists to provide.
             </p>
         </div>
     );

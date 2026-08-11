@@ -142,6 +142,10 @@ export const HOOKS: HookMeta[] = [
         slug: "redux", name: "Redux", source: "@reduxjs/toolkit", chapter: "State Libraries",
         summary: "Global store with Redux Toolkit — slices, selectors, thunks."
     },
+    {
+        slug: "custom-store", name: "Custom Store", source: "react", chapter: "State Libraries",
+        summary: "Hand-built external store bridged to React via useSyncExternalStore."
+    },
 ];
 
 // Short badge for the dashboard cards. The page eyebrow prints the full `source`
