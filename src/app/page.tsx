@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/layout/navbar";
+import StatusBadge from "@/components/ui/status-badge";
 import { projectsByType, type Project } from "@/lib/projects";
 
 // The root layout's metadata still names the hooks project; home overrides it.
@@ -23,9 +24,15 @@ function ProjectCard({
             href={`/${project.slug}`}
             className="flex flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors duration-150 hover:border-[var(--accent)] focus-visible:border-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
-            <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
-                {typeLabel}
-            </span>
+            {/* Type on the left, status on the right. The badge lives on the card
+                and nowhere else — the navbar and the project layouts stay free of
+                it, so progress is something you read on the index only. */}
+            <div className="flex items-center justify-between gap-3">
+                <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                    {typeLabel}
+                </span>
+                <StatusBadge status={project.status} />
+            </div>
             <h3 className="mt-2 text-lg font-semibold text-[var(--accent)]">
                 {project.title}
             </h3>
