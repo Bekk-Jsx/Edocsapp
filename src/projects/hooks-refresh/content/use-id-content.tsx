@@ -61,8 +61,11 @@ const id = useId();
 <label htmlFor={id}>Email</label>
 <input id={id} />`;
 
-const SSR_MISMATCH = `const id = \`input-\${Math.random()}\`; // ❌ server: "input-0.72", client: "input-0.19" -> mismatch
-const id = useId();                   // ✅ server "_R_2p6_" === client "_R_2p6_"`;
+const SSR_MISMATCH = `// ❌ server: "input-0.72", client: "input-0.19" -> mismatch
+const id = \`input-\${Math.random()}\`;
+
+// ✅ server "_R_2p6_" === client "_R_2p6_"
+const id = useId();`;
 
 // ===================================================================
 // Part 2 — Using it. Fragment 3 is the pattern worth internalising
@@ -73,10 +76,13 @@ const id = useId();                   // ✅ server "_R_2p6_" === client "_R_2p6
 const ONE_BASE = `const id = useId();
 
 <label htmlFor={\`\${id}-email\`}>Email</label>
-<input id={\`\${id}-email\`} aria-describedby={\`\${id}-email-hint\`} />
+<input
+  id={\`\${id}-email\`}
+  aria-describedby={\`\${id}-email-hint\`}
+/>
 <p id={\`\${id}-email-hint\`}>We'll never share it.</p>`;
 
-const NOT_KEYS = `// ❌ semantically wrong AND a rules-of-hooks violation (hook in a loop)
+const NOT_KEYS = `// ❌ wrong semantically AND a rules-of-hooks violation
 {items.map(item => <li key={useId()}>...</li>)}
 
 // ✅ keys come from your DATA

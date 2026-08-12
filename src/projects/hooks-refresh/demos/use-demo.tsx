@@ -1,104 +1,89 @@
 "use client";
 
-import { createContext, Suspense, use, useState } from "react";
+import { Suspense, use, useState } from "react";
 
-const ThemeContext = createContext<"dark" | "light">("dark");
+type User = { name: string; role: string; loadedAt: string };
 
-// use() is legal inside a conditional — useContext isn't.
-function ConditionalThemeReader({ show }: { show: boolean }) {
-    if (!show) {
-        return (
-            <p className="font-mono text-xs text-[var(--muted)]">
-                theme reader is hidden
-            </p>
-        );
-    }
-    const theme = use(ThemeContext);
-    return (
-        <p className="font-mono text-xs text-[var(--muted)]">
-            theme: <span className="text-[var(--accent)]">{theme}</span>
-        </p>
-    );
-}
-
-// A tiny promise producer. In real Next.js code the promise is created in a
-// server component and passed down; here we stash one in client state so the
-// demo runs without any server round-trip.
-function fetchQuote(): Promise<string> {
+// Stands in for a real fetch. In the App Router this promise would be created in
+// a Server Component and passed down; here it is made once in client state so the
+// demo runs with no round trip.
+function fetchUser(attempt: number): Promise<User> {
     return new Promise((resolve) =>
         setTimeout(
             () =>
-                resolve(
-                    "The only way out is through — Robert Frost.",
-                ),
-            1200,
+                resolve({
+                    name: "Ada Lovelace",
+                    role: "engineer",
+                    loadedAt: `load #${attempt + 1}`,
+                }),
+            800,
         ),
     );
 }
 
-function Quote({ promise }: { promise: Promise<string> }) {
-    // use(promise) suspends the component until the promise resolves.
-    // React shows the nearest <Suspense> fallback while it's pending.
-    const text = use(promise);
+// The child does NOT know about loading. It reads the value and renders it —
+// use() suspends while the promise is pending, and the boundary above owns the
+// fallback.
+function Profile({ userPromise }: { userPromise: Promise<User> }) {
+    const user = use(userPromise);
+
     return (
-        <blockquote className="border-l-2 border-[var(--accent)] pl-3 text-sm text-[var(--text)]">
-            “{text}”
-        </blockquote>
+        <div className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-4">
+            <p className="text-lg font-semibold text-[var(--text)]">{user.name}</p>
+            <p className="mt-1 font-mono text-xs text-[var(--muted)]">
+                {user.role} · <span className="text-[var(--mint)]">resolved</span> ·{" "}
+                {user.loadedAt}
+            </p>
+        </div>
     );
 }
 
 export default function UseHookDemo() {
-    const [show, setShow] = useState(true);
-    const [promise, setPromise] = useState<Promise<string> | null>(null);
+    // The promise is created ONCE, in the initializer — never inline in render,
+    // which would make a new promise every pass and suspend forever.
+    const [attempt, setAttempt] = useState(0);
+    const [userPromise, setUserPromise] = useState(() => fetchUser(0));
+
+    function reload() {
+        const next = attempt + 1;
+        setAttempt(next);
+        setUserPromise(fetchUser(next)); // created in a handler, not during render
+    }
 
     return (
-        <ThemeContext value="dark">
-            <div className="space-y-4">
-                <div className="space-y-2 rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
-                    <div className="flex items-center gap-2">
-                        <button
-                            onClick={() => setShow((s) => !s)}
-                            className="rounded-md border border-[var(--border)] px-2 py-1 text-xs hover:bg-[var(--surface)]"
-                        >
-                            toggle reader
-                        </button>
-                        <span className="font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                            conditional context read
-                        </span>
-                    </div>
-                    <ConditionalThemeReader show={show} />
-                </div>
-
-                <div className="space-y-2 rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
-                    <div className="flex items-center gap-2">
-                        <button
-                            onClick={() => setPromise(fetchQuote())}
-                            className="rounded-md border border-[var(--border)] px-2 py-1 text-xs hover:bg-[var(--surface)]"
-                        >
-                            fetch quote
-                        </button>
-                        <span className="font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                            promise + &lt;Suspense&gt;
-                        </span>
-                    </div>
-
-                    {promise ? (
-                        <Suspense
-                            fallback={
-                                <p className="font-mono text-xs text-[var(--muted)]">
-                                    loading…
-                                </p>
-                            }
-                        >
-                            <Quote promise={promise} />
-                        </Suspense>
-                    ) : (
-                        <p className="font-mono text-xs text-[var(--muted)]">
-                            no quote yet
+        <div className="space-y-3">
+            {/* keyed by attempt: a fresh boundary remounts, so the fallback is
+                shown again on every reload rather than holding the old value */}
+            <Suspense
+                key={attempt}
+                fallback={
+                    <div className="rounded-md border border-dashed border-[var(--border)] bg-[var(--surface)] p-4">
+                        <p className="font-mono text-sm text-[var(--amber)]">
+                            Loading… <span className="text-[var(--muted)]">
+                                (Suspense fallback — the child is suspended)
+                            </span>
                         </p>
-                    )}
-                </div>
+                    </div>
+                }
+            >
+                <Profile userPromise={userPromise} />
+            </Suspense>
+
+            <div className="flex items-center gap-3">
+                <button
+                    onClick={reload}
+                    className="rounded-md border border-[var(--border)] px-3 py-1.5 text-sm hover:bg-[var(--surface-2)]"
+                >
+                    reload
+                </button>
+                <p className="text-xs text-[var(--muted)]">
+                    Click reload to make a new promise — the fallback returns for
+                    ~800ms, then <span className="font-mono">use</span> hands back the
+                    value. No <span className="font-mono">useEffect</span>, and no
+                    loading branch inside{" "}
+                    <span className="font-mono">Profile</span>.
+                </p>
             </div>
-        </ThemeContext>
+        </div>
     );
 }

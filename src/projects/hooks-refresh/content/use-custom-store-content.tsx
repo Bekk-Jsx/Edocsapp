@@ -70,7 +70,8 @@ const SUBSCRIBE = `const listeners = new Set();
 export const counterStore = {
   subscribe(callback) {
     listeners.add(callback);
-    return () => listeners.delete(callback); // unsubscribe (cleanup)
+    // the return value IS the unsubscribe (cleanup)
+    return () => listeners.delete(callback);
   },
 };`;
 
@@ -98,13 +99,18 @@ function Counter() {
   return (
     <>
       <p>{count}</p>
-      <button onClick={() => counterStore.increment()}>+1</button>
+      <button onClick={() => counterStore.increment()}>
+        +1
+      </button>
     </>
   );
 }`;
 
-const STABLE_SNAPSHOT = `getSnapshot() { return { count: state }; } // ❌ new object every call -> infinite loop
-getSnapshot() { return state; }            // ✅ primitive / stored reference`;
+const STABLE_SNAPSHOT = `// ❌ a new object every call -> infinite loop
+getSnapshot() { return { count: state }; }
+
+// ✅ a primitive (or the stored reference)
+getSnapshot() { return state; }`;
 
 // Wrapped one-arg-per-line: as a single line it overflows the code frame and
 // hides the third argument, which is the entire point of this fragment.

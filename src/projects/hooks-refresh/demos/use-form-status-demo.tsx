@@ -3,17 +3,11 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
-type State = { message: string };
-const initial: State = { message: "" };
+type FormState = { error?: string; success?: boolean };
 
-async function postMessage(_prev: State, formData: FormData): Promise<State> {
-    const text = (formData.get("text") ?? "").toString().trim();
-    await new Promise((r) => setTimeout(r, 1200));
-    if (!text) return { message: "empty message ignored" };
-    return { message: `posted: “${text}”` };
-}
-
-// Rendered INSIDE the <form>. useFormStatus reads the nearest ancestor form.
+// Rendered INSIDE the <form>, so useFormStatus finds it by walking up. Note what
+// this component does NOT take: no `pending` prop, nothing from the parent. Drop
+// it into any form and it reflects that form's submission.
 function SubmitButton() {
     const { pending } = useFormStatus();
     return (
@@ -25,40 +19,63 @@ function SubmitButton() {
             {pending ? (
                 <span className="inline-flex items-center gap-1.5">
                     <span className="inline-block h-3 w-3 animate-pulse rounded-full bg-[var(--amber)]" />
-                    posting…
+                    Submitting…
                 </span>
             ) : (
-                "post"
+                "Subscribe"
             )}
         </button>
     );
 }
 
+async function subscribeAction(
+    _prev: FormState,
+    formData: FormData,
+): Promise<FormState> {
+    const email = (formData.get("email") ?? "").toString().trim();
+    if (!email.includes("@")) return { error: "Enter a valid email." };
+    await new Promise((r) => setTimeout(r, 1000)); // simulate the API call
+    return { success: true };
+}
+
 export default function UseFormStatusDemo() {
-    const [state, action] = useActionState(postMessage, initial);
+    const [state, formAction] = useActionState<FormState, FormData>(
+        subscribeAction,
+        {},
+    );
 
     return (
-        <form action={action} className="space-y-3">
+        // noValidate: the browser's own `type="email"` check would block the
+        // submit before the action ran, so the error state would never show.
+        <form action={formAction} noValidate className="space-y-3">
             <div className="flex gap-2">
                 <input
-                    name="text"
-                    placeholder="say something"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
                     className="flex-1 rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm outline-none focus:border-[var(--accent)]"
                 />
+                {/* the only child that knows about `pending` */}
                 <SubmitButton />
             </div>
 
-            {state.message && (
-                <p className="font-mono text-xs text-[var(--muted)]">
-                    {state.message}
+            {state.error && (
+                <p className="font-mono text-xs text-[var(--amber)]">
+                    {state.error}
+                </p>
+            )}
+            {state.success && (
+                <p className="font-mono text-xs text-[var(--mint)]">
+                    Subscribed ✅
                 </p>
             )}
 
             <p className="text-xs text-[var(--muted)]">
-                The <span className="font-mono">SubmitButton</span> lives inside
-                the form and reads its own status — the parent doesn&apos;t need
-                to pass <span className="font-mono">isPending</span> down as a
-                prop.
+                <span className="font-mono">SubmitButton</span> lives inside the
+                form and reads its own status — this component never passes it{" "}
+                <span className="font-mono">pending</span>. Submit an address
+                without an <span className="font-mono">@</span> for the error
+                path; a valid one takes ~1s.
             </p>
         </form>
     );

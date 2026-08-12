@@ -81,7 +81,11 @@ const ONLINE = `function subscribe(cb) {
 
 function getSnapshot() { return navigator.onLine; }
 
-const isOnline = useSyncExternalStore(subscribe, getSnapshot, () => true);`;
+const isOnline = useSyncExternalStore(
+  subscribe,
+  getSnapshot,
+  () => true, // SSR fallback
+);`;
 
 const LOCAL_STORAGE = `function subscribe(cb) {
   window.addEventListener("storage", cb);
