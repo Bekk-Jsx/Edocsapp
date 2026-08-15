@@ -31,6 +31,14 @@ export interface NavbarProps {
      * Omit it and not a single attribute of the render changes.
      */
     subItems?: Record<string, NavSubItem[]>;
+    /**
+     * Optional: project-level pages (about, notes…) listed ABOVE the doc groups
+     * and styled apart from them, because they are a different kind of
+     * navigation. Route links like the doc rows, so `basePath` applies. Omit it
+     * — as every project but hooks-refresh does — and not a single attribute of
+     * the render changes.
+     */
+    projectLinks?: NavItem[];
 }
 
 // Active state for anchor mode: the section whose top has passed ~20% down the
@@ -149,6 +157,15 @@ const ITEM_BASE =
 const ITEM_ACTIVE = "bg-[var(--surface-2)] text-[var(--accent)]";
 const ITEM_IDLE = "text-[var(--text)] hover:bg-[var(--surface-2)]";
 
+// Project rows are not doc rows, so they don't look like them: proportional
+// rather than mono, a notch smaller, and muted until hovered. Same metrics and
+// same active treatment as ITEM_* though — a different kind of link, not a
+// different design language.
+const PROJECT_ITEM_BASE =
+    "block rounded-md px-2 py-1.5 text-[0.82rem] transition-colors";
+const PROJECT_ITEM_IDLE =
+    "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]";
+
 // Expand/collapse affordance for an item that carries sub-rows. Sits absolutely
 // at the right edge of the row so the row's own <a>/<Link> keeps its exact
 // classes — including the full-width hover fill — and stays the element it was.
@@ -208,6 +225,7 @@ export default function Navbar({
     brand,
     back,
     subItems,
+    projectLinks,
 }: NavbarProps) {
     const pathname = usePathname();
     const isAnchor = mode === "anchor";
@@ -256,6 +274,35 @@ export default function Navbar({
                 </span>
                 <span className="block text-sm text-[var(--muted)]">{brand.sub}</span>
             </Link>
+
+            {/* Project pages, above the docs and fenced off by a hairline so the
+                two lists never read as one. Renders nothing at all when the
+                caller passes no links, which is every project but hooks-refresh. */}
+            {projectLinks?.length ? (
+                <nav className="mb-6 border-b border-[var(--border)] pb-5">
+                    <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                        Project
+                    </p>
+                    <ul className="space-y-0.5">
+                        {projectLinks.map((item) => {
+                            // Same rule as the doc rows: exact route match.
+                            const href = `${basePath}/${item.id}`;
+                            const active = norm(pathname) === norm(href);
+                            return (
+                                <li key={item.id}>
+                                    <Link
+                                        href={href}
+                                        className={`${PROJECT_ITEM_BASE} ${active ? ITEM_ACTIVE : PROJECT_ITEM_IDLE}`}
+                                        aria-current={active ? "page" : undefined}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+            ) : null}
 
             <nav className="space-y-6">
                 {/* Nothing to list yet — a project can be scaffolded before its

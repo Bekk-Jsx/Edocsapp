@@ -163,6 +163,20 @@ export const SOURCE_BADGE: Record<Source, string> = {
     "@reduxjs/toolkit": "redux",
 };
 
+// Project-level pages that are NOT documentation — about, notes, and whatever
+// else belongs to the project rather than to a hook. Kept apart from HOOKS on
+// purpose: these never appear in the dashboard grid or the chapter nav, only in
+// the navbar's own project list above the docs.
+//
+// Optional per project: a project that exports nothing here simply gets no such
+// list, and its navbar renders exactly as before.
+export type ProjectLink = { slug: string; label: string };
+
+export const PROJECT_LINKS: ProjectLink[] = [
+    { slug: "about-next-version", label: "About next version" },
+    // "notes" added later
+];
+
 export const hookBySlug = (slug: string) => HOOKS.find((h) => h.slug === slug);
 
 export const hooksByChapter = () =>

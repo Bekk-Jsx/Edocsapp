@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/layout/navbar";
 import FaqButton from "@/components/ui/faq-button";
-import { hooksByChapter } from "@/projects/hooks-refresh/hooks";
+import { hooksByChapter, PROJECT_LINKS } from "@/projects/hooks-refresh/hooks";
 
 // Shell for every /hooks-refresh/* route. This markup used to live in the root
 // layout; it moved here so the global home page can define its own chrome.
@@ -20,6 +20,12 @@ export default function ProjectLayout({ children }: { children: ReactNode }) {
             <div className="flex min-h-screen">
                 <Navbar
                     groups={groups}
+                    // Project pages (about, notes…) — a separate list above the
+                    // doc groups. Only this project passes them today.
+                    projectLinks={PROJECT_LINKS.map((l) => ({
+                        id: l.slug,
+                        label: l.label,
+                    }))}
                     mode="route"
                     basePath="/hooks-refresh"
                     homeHref="/hooks-refresh"

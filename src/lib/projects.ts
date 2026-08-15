@@ -86,6 +86,14 @@ export const PROJECTS: Project[] = [
     status: "not-started",
   },
   {
+    slug: "typescript",
+    title: "TypeScript",
+    description:
+      "TypeScript for React/Next — types, generics, utility types, inference.",
+    type: "web-dev",
+    status: "not-started",
+  },
+  {
     slug: "vue",
     title: "Vue.js",
     description: "Vue fundamentals — reactivity, components, composition API.",
