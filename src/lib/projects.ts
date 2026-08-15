@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     description:
       "A hands-on refresh of every React & Next.js hook — live demos, source, and reference notes with traps flagged.",
     type: "web-dev",
-    status: "in-progress",
+    status: "completed",
   },
   {
     slug: "redis-refresh",

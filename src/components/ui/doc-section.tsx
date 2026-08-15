@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { SeverityIcon, severityStyle, type Severity } from "@/lib/severity";
+import AddNoteButton from "./add-note-button";
+import { BADGE_CLASS } from "./badge-class";
 
 type Tone = "muted" | "mint" | "accent" | "amber";
 
@@ -46,8 +48,11 @@ export function DocSection({
 }) {
     const color = toneColor[tone];
     const flag = sectionSeverity ? severityStyle[sectionSeverity] : null;
+    // The same value the anchor has always used — named so the note button can
+    // reuse it rather than introduce an id of its own.
+    const id = slug(title);
     return (
-        <section id={slug(title)} className="doc-section">
+        <section id={id} className="doc-section">
             <div className="mb-3 flex items-baseline justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
                     <span
@@ -68,10 +73,15 @@ export function DocSection({
                     >
                         {title}
                     </p>
+                    {/* Renders nothing unless this section has a rail card — so
+                        footers, and any page without a rail, are untouched. */}
+                    <AddNoteButton sectionId={id} />
                 </div>
                 {flag ? (
                     <span
-                        className="shrink-0 rounded-full border px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-widest"
+                        // Same pill as the project status badge — one shared
+                        // string, so the two can't drift apart.
+                        className={BADGE_CLASS}
                         style={{
                             color: flag.color,
                             background: `color-mix(in srgb, ${flag.color} 12%, var(--surface))`,

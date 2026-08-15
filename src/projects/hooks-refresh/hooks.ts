@@ -174,7 +174,7 @@ export type ProjectLink = { slug: string; label: string };
 
 export const PROJECT_LINKS: ProjectLink[] = [
     { slug: "about-next-version", label: "About next version" },
-    // "notes" added later
+    { slug: "notes", label: "Notes" },
 ];
 
 export const hookBySlug = (slug: string) => HOOKS.find((h) => h.slug === slug);

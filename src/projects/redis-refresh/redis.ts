@@ -86,6 +86,16 @@ export const TOPICS: RedisTopic[] = [
     },
 ];
 
+// Project-level pages that are NOT documentation — kept apart from TOPICS on
+// purpose: these never appear in the landing grid or the chapter nav, only in
+// the navbar's own project list above the docs. Same shape, and the same
+// optional treatment, as the hooks project's PROJECT_LINKS.
+export type ProjectLink = { slug: string; label: string };
+
+export const PROJECT_LINKS: ProjectLink[] = [
+    { slug: "notes", label: "Notes" },
+];
+
 export const topicBySlug = (slug: string) =>
     TOPICS.find((t) => t.slug === slug);
 

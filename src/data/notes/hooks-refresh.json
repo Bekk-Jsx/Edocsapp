@@ -1,0 +1,51 @@
+[
+  {
+    "id": "5726d794-5061-4673-b267-593f07abf08b",
+    "title": "It is just a FUNCTION.",
+    "description": "It is just a FUNCTION.",
+    "link": "/hooks-refresh/custom-hooks#the-definition",
+    "hookSlug": "custom-hooks",
+    "createdAt": "2026-08-15T20:50:31.389Z",
+    "updatedAt": "2026-08-15T20:50:31.389Z"
+  },
+  {
+    "id": "09e5cd53-810d-462b-a225-96c2f26fa916",
+    "title": "useRef returns a mutable box",
+    "description": "useRef returns a mutable box",
+    "link": "/hooks-refresh/use-ref#what-it-is",
+    "hookSlug": "use-ref",
+    "createdAt": "2026-08-15T20:50:54.540Z",
+    "updatedAt": "2026-08-15T20:50:54.540Z"
+  },
+  {
+    "id": "915658e1-4b17-4c03-838b-2e849b473c97",
+    "title": "Object returns need parentheses.",
+    "description": "Object returns need parentheses.",
+    "link": "/hooks-refresh/use-state#functional-updater-for-objects-arrays",
+    "hookSlug": "use-state",
+    "createdAt": "2026-08-15T20:51:12.091Z",
+    "updatedAt": "2026-08-15T20:51:12.091Z"
+  },
+  {
+    "id": "c7a5f601-b513-4d56-a002-0411da3d521e",
+    "title": "Object returns need parentheses.",
+    "description": "Object returns need parentheses.",
+    "link": "/hooks-refresh/use-params#dynamic-route-params",
+    "titleDe": "Object returns need parentheses.",
+    "descriptionDe": "Object returns need parentheses.",
+    "hookSlug": "use-params",
+    "createdAt": "2026-08-15T20:55:30.134Z",
+    "updatedAt": "2026-08-15T20:56:45.716Z"
+  },
+  {
+    "id": "5cd4748a-1237-4f16-a44a-c1ed1905cb2e",
+    "title": "eturn a NEW array, every ti",
+    "description": "eturn a NEW array, every ti",
+    "link": "/hooks-refresh/use-state#arrays",
+    "titleDe": "eturn a NEW array, every ti",
+    "descriptionDe": "eturn a NEW array, every ti",
+    "hookSlug": "use-state",
+    "createdAt": "2026-08-15T20:57:13.128Z",
+    "updatedAt": "2026-08-15T20:57:13.128Z"
+  }
+]

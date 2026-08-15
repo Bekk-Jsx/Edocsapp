@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/layout/navbar";
 import FaqButton from "@/components/ui/faq-button";
-import { topicsByChapter } from "@/projects/redis-refresh/redis";
+import { topicsByChapter, PROJECT_LINKS } from "@/projects/redis-refresh/redis";
 
 // Shell for every /redis-refresh/* route — same chrome as the hooks project.
 // No <html>/<body>: those stay in the root layout.
@@ -21,6 +21,12 @@ export default function ProjectLayout({ children }: { children: ReactNode }) {
             <div className="flex min-h-screen">
                 <Navbar
                     groups={groups}
+                    // Project pages (notes…) — the separate list above the doc
+                    // groups, same optional mechanism the hooks project uses.
+                    projectLinks={PROJECT_LINKS.map((l) => ({
+                        id: l.slug,
+                        label: l.label,
+                    }))}
                     mode="route"
                     basePath="/redis-refresh"
                     homeHref="/redis-refresh"
