@@ -1,48 +1,86 @@
 import DemoFrame from "@/components/ui/demo-frame";
 import UseParamsDemo from "@/projects/hooks-refresh/demos/use-params-demo";
-import { UseParamsDocs } from "@/projects/hooks-refresh/content/use-params-content";
+import PageShell from "@/components/ui/page-shell";
+import SummaryArticles, {
+    Mono,
+    type SummaryArticle,
+} from "@/components/ui/summary-articles";
+import {
+    UseParamsDocs,
+    SECTION_SEVERITIES,
+} from "@/projects/hooks-refresh/content/use-params-content";
 import { Code, Term } from "@/components/ui/doc-section";
 
-const CODE = `// app/blog/[slug]/page.tsx  (Server Component)
-// On the Page itself, params arrive as a prop — no hook needed.
-export default async function Post({ params }: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  return <Article slug={slug} />;
-}
+// Glanceable chapter takeaways — reading only these gives the whole part.
+// Each href targets a DocSection id (slugged from its title in content.tsx).
+// AUDIT RULE: every DocSection on this page must have exactly one article here,
+// and every article must point at a real section id — EXCEPT the two pinned
+// footer sections, "react vs next.js" and "say it right — english", which always
+// render last and are deliberately NOT in the rail.
+const HOOK_TEXT = [
+    {
+        title: "Dynamic route params",
+        href: "#dynamic-route-params",
+        text: (
+            <>
+                <Mono>[slug]</Mono> folder + <Mono>/blog/hello</Mono> →{" "}
+                <Mono>{`{ slug: "hello" }`}</Mono>. Catch-alls give an array.
+            </>
+        ),
+    },
+    {
+        title: "Params vs pathname vs search",
+        href: "#params-vs-pathname-vs-search",
+        text: (
+            <>
+                Raw path, parsed segments, query string — three hooks, three parts of
+                the URL.
+            </>
+        ),
+    },
+    {
+        title: "Server pages get a prop",
+        href: "#server-pages-get-params-as-a-prop",
+        text: (
+            <>
+                A server page already receives <Mono>params</Mono>. The hook is for
+                client children that don&apos;t.
+            </>
+        ),
+    },
+];
 
-// app/blog/[slug]/breadcrumbs.tsx  (Client Component nested inside)
-"use client";
-import { useParams } from "next/navigation";
-
-export default function Breadcrumbs() {
-  const { slug } = useParams<{ slug: string }>();
-  return <nav>blog / {slug}</nav>;
-}
-
-// URL:  /blog/hello-world?tab=comments
-//       └─ params: { slug: "hello-world" }
-//                                      └─ search params: { tab: "comments" }`;
+// Severities are DERIVED from SECTION_SEVERITIES by href — never hand-set here,
+// so every card matches the section it links to by construction.
+const HOOK: SummaryArticle[] = HOOK_TEXT.map((item) => ({
+    ...item,
+    severities: SECTION_SEVERITIES[item.href.replace("#", "")],
+}));
 
 export default function Page() {
     return (
-        <DemoFrame
-            name="useParams"
-            source="next/navigation"
-            code={CODE}
-            docs={<UseParamsDocs />}
-            description={
-                <>
-                    Read the current route&apos;s <Term>dynamic segment values</Term>{" "}
-                    from a client component — <Code>[slug]</Code> folders become{" "}
-                    <Code>params.slug</Code>. Distinct from{" "}
-                    <Code>useSearchParams</Code>, which reads the query string
-                    after the <Code>?</Code>.
-                </>
-            }
+        <PageShell
+            alerts={<SummaryArticles groups={[{ label: "The hook", items: HOOK }]} />}
         >
-            <UseParamsDemo />
-        </DemoFrame>
+            {/* No `code` prop: this page has no whole-module source panel — every
+                fragment is introduced and explained by its own DocSection. */}
+            <DemoFrame
+                name="useParams"
+                source="next/navigation"
+                docs={<UseParamsDocs />}
+                description={
+                    <>
+                        The <Term>dynamic segments</Term> of the current route, parsed
+                        into an object: a <Code>[slug]</Code> folder is what makes{" "}
+                        <Code>params.slug</Code>{" "}exist, and the URL fills it in. Not the
+                        query string — that&apos;s <Code>useSearchParams</Code>. Next-only,
+                        and on a server page you read <Code>params</Code>{" "}
+                        <Term>as a prop</Term> instead.
+                    </>
+                }
+            >
+                <UseParamsDemo />
+            </DemoFrame>
+        </PageShell>
     );
 }

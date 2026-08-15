@@ -1,6 +1,7 @@
 // Single source of truth for the navbar + dashboard.
 // Every React/Next hook we'll build is already listed. The only additions are
-// custom-hook PATTERN pages (e.g. useAuth) — a real hook is never added here.
+// PATTERN pages (e.g. the "Custom Hooks" chapter) — a real hook is never added
+// here.
 
 // Where the page's API is imported from — shown as the eyebrow on the page and
 // as the hover badge on the dashboard. Not every entry is a React hook anymore:
@@ -23,6 +24,9 @@ export const CHAPTERS = [
     "Utility",
     "React 19",
     "Navigation",
+    // Not a built-in API: the pattern of writing your own hooks. Sits after the
+    // built-in chapters and before the third-party stores.
+    "Custom Hooks",
     "State Libraries",
 ] as const;
 
@@ -55,10 +59,6 @@ export const HOOKS: HookMeta[] = [
     {
         slug: "use-context", name: "useContext", source: "react", chapter: "Context & Refs",
         summary: "Read context value without prop drilling."
-    },
-    {
-        slug: "use-auth", name: "useAuth", source: "react", chapter: "Context & Refs",
-        summary: "Custom hook wrapping useContext with a provider guard."
     },
     {
         slug: "use-ref", name: "useRef", source: "react", chapter: "Context & Refs",
@@ -135,6 +135,12 @@ export const HOOKS: HookMeta[] = [
     {
         slug: "use-selected-layout-segment", name: "useSelectedLayoutSegment", source: "next/navigation", chapter: "Navigation",
         summary: "Active route segment below a layout — for nav UI."
+    },
+
+    // — Custom Hooks —
+    {
+        slug: "custom-hooks", name: "Custom Hooks", source: "react", chapter: "Custom Hooks",
+        summary: "Build your own hooks — reuse stateful logic; useFetch, useLocalStorage, useAuth."
     },
 
     // — State Libraries —

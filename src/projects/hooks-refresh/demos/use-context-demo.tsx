@@ -112,7 +112,7 @@ function Consumer() {
 }
 
 // Provide once, consume anywhere inside with raw useContext: <Consumer /> takes
-// no props. Wrapping the read in a custom hook is the useAuth page.
+// no props. Wrapping the read in a guarded custom hook is the Custom Hooks page.
 export default function UseContextDemo() {
     return (
         <AuthProvider>

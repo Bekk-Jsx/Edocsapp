@@ -1,74 +1,130 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
+// Every button here stays on THIS page: push/replace only change the query
+// string, so the demo can show a real history stack without navigating the
+// reader away. The counter exists to prove the other half of the story —
+// router.refresh() re-runs the server render but does NOT reset client state.
 export default function UseRouterDemo() {
     const router = useRouter();
-    const [log, setLog] = useState<string[]>([]);
+    const pathname = usePathname();
 
-    const note = (line: string) =>
-        setLog((prev) => [line, ...prev].slice(0, 5));
+    const [log, setLog] = useState<string[]>([]);
+    const [count, setCount] = useState(0);
+    const [step, setStep] = useState(1);
+
+    const note = (line: string) => setLog((prev) => [line, ...prev].slice(0, 5));
+
+    const btn =
+        "rounded-md border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 font-mono text-xs text-[var(--text)] transition-colors duration-150 hover:border-[var(--accent)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]";
 
     return (
-        <div className="space-y-3">
+        <div className="space-y-4">
             <div className="flex flex-wrap gap-2">
                 <button
+                    className={btn}
                     onClick={() => {
-                        note("router.push('/hooks-refresh/use-pathname')");
-                        router.push("/hooks-refresh/use-pathname");
+                        const next = step + 1;
+                        setStep(next);
+                        note(`router.push("?nav=${next}")  — adds a history entry`);
+                        router.push(`${pathname}?nav=${next}`, { scroll: false });
                     }}
-                    className="rounded-md border border-[var(--border)] px-3 py-1.5 text-sm hover:bg-[var(--surface-2)]"
                 >
-                    push /use-pathname
+                    router.push()
                 </button>
                 <button
+                    className={btn}
                     onClick={() => {
-                        note("router.replace('/hooks-refresh/use-params')");
-                        router.replace("/hooks-refresh/use-params");
+                        const next = step + 1;
+                        setStep(next);
+                        note(
+                            `router.replace("?nav=${next}")  — replaces the entry`,
+                        );
+                        router.replace(`${pathname}?nav=${next}`, {
+                            scroll: false,
+                        });
                     }}
-                    className="rounded-md border border-[var(--border)] px-3 py-1.5 text-sm hover:bg-[var(--surface-2)]"
                 >
-                    replace /use-params
+                    router.replace()
                 </button>
                 <button
+                    className={btn}
                     onClick={() => {
-                        note("router.back()");
+                        note("router.back()  — history stack");
                         router.back();
                     }}
-                    className="rounded-md border border-[var(--border)] px-3 py-1.5 text-sm hover:bg-[var(--surface-2)]"
                 >
-                    back
+                    router.back()
                 </button>
                 <button
+                    className={btn}
                     onClick={() => {
-                        note("router.refresh()");
+                        note("router.forward()  — history stack");
+                        router.forward();
+                    }}
+                >
+                    router.forward()
+                </button>
+                <button
+                    className={btn}
+                    onClick={() => {
+                        note("router.refresh()  — re-runs Server Components");
                         router.refresh();
                     }}
-                    className="rounded-md border border-[var(--border)] px-3 py-1.5 text-sm hover:bg-[var(--surface-2)]"
                 >
-                    refresh
+                    router.refresh()
                 </button>
             </div>
 
-            <ul className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-2 font-mono text-xs text-[var(--muted)]">
+            <div className="grid gap-2 sm:grid-cols-2">
+                <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                    <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                        usePathname()
+                    </p>
+                    <p className="mt-1 break-all font-mono text-xs text-[var(--text)]">
+                        {pathname}
+                    </p>
+                    <p className="mt-1 font-mono text-[0.65rem] text-[var(--muted)]">
+                        push/replace here only change{" "}
+                        <span className="text-[var(--accent)]">?nav</span>, so the
+                        path never moves.
+                    </p>
+                </div>
+
+                <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                    <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                        client state
+                    </p>
+                    <div className="mt-1 flex items-center gap-2">
+                        <button
+                            className={btn}
+                            onClick={() => setCount((c) => c + 1)}
+                        >
+                            count++
+                        </button>
+                        <span className="font-mono text-sm text-[var(--mint)]">
+                            {count}
+                        </span>
+                    </div>
+                    <p className="mt-1 font-mono text-[0.65rem] text-[var(--muted)]">
+                        raise it, then hit refresh() — it survives.
+                    </p>
+                </div>
+            </div>
+
+            <ul className="space-y-1 rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3 font-mono text-xs text-[var(--muted)]">
                 {log.length === 0 ? (
                     <li>call log · click a button</li>
                 ) : (
-                    log.map((l, i) => (
-                        <li key={i}>
-                            <span className="text-[var(--accent)]">→</span> {l}
+                    log.map((line, i) => (
+                        <li key={`${line}-${i}`}>
+                            <span className="text-[var(--accent)]">→</span> {line}
                         </li>
                     ))
                 )}
             </ul>
-
-            <p className="text-xs text-[var(--muted)]">
-                Prefer <span className="font-mono">&lt;Link&gt;</span> for
-                declarative nav. Use <span className="font-mono">useRouter</span>{" "}
-                when navigation is programmatic — after a mutation, in an event
-                handler, or conditional on some state.
-            </p>
         </div>
     );
 }

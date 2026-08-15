@@ -1,72 +1,112 @@
 "use client";
 
-import { Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-function SearchBox() {
+// The full copy -> modify -> navigate cycle, on this page's own URL. Every
+// control rebuilds the query from a MUTABLE copy of the current params and
+// replaces the URL — replace, not push, so filtering doesn't stack history.
+// The page wraps this component in <Suspense>: useSearchParams is request-time,
+// and the boundary is what keeps the rest of the route static.
+const PAGES = ["1", "2", "3"];
+
+export default function UseSearchParamsDemo() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-    const q = searchParams.get("q") ?? "";
 
-    function setQ(next: string) {
-        // Read-only URLSearchParams — clone it, mutate the copy, replace the URL.
-        const params = new URLSearchParams(searchParams);
-        if (next) params.set("q", next);
-        else params.delete("q");
-        router.replace(`${pathname}?${params.toString()}`);
+    const page = searchParams.get("page");
+    const sort = searchParams.get("sort");
+    const query = searchParams.toString();
+
+    function update(key: string, value: string | null) {
+        const params = new URLSearchParams(searchParams); // mutable copy
+        if (value === null) params.delete(key);
+        else params.set(key, value);
+        const next = params.toString();
+        router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false });
     }
 
-    return (
-        <div className="space-y-3">
-            <input
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="type to set ?q=…"
-                className="w-full rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-sm outline-none focus:border-[var(--accent)]"
-            />
+    const btn =
+        "rounded-md border px-3 py-1.5 font-mono text-xs transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]";
+    const off =
+        "border-[var(--border)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--accent)] hover:bg-[var(--surface-2)]";
+    const on =
+        "border-[var(--mint)] bg-[color-mix(in_srgb,var(--mint)_12%,var(--surface))] text-[var(--mint)]";
 
-            <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3 text-sm">
-                <p className="font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                    live search params
-                </p>
-                <p className="mt-1 font-mono text-xs text-[var(--muted)]">
-                    q ={" "}
-                    <span className="text-[var(--accent)]">
-                        {q ? `"${q}"` : "(unset)"}
-                    </span>
-                </p>
-                <p className="mt-2 font-mono text-xs text-[var(--muted)]">
-                    all keys:{" "}
-                    <span className="text-[var(--accent)]">
-                        [{Array.from(searchParams.keys()).map((k) => `"${k}"`).join(", ") || "—"}]
-                    </span>
-                </p>
+    return (
+        <div className="space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                    page
+                </span>
+                {PAGES.map((value) => (
+                    <button
+                        key={value}
+                        onClick={() => update("page", value)}
+                        className={`${btn} ${page === value ? on : off}`}
+                    >
+                        ?page={value}
+                    </button>
+                ))}
+                <button
+                    onClick={() => update("sort", sort === "asc" ? "desc" : "asc")}
+                    className={`${btn} ${sort ? on : off}`}
+                >
+                    sort={sort ?? "—"}
+                </button>
+                <button
+                    onClick={() => {
+                        const params = new URLSearchParams(searchParams);
+                        params.delete("page");
+                        params.delete("sort");
+                        const next = params.toString();
+                        router.replace(next ? `${pathname}?${next}` : pathname, {
+                            scroll: false,
+                        });
+                    }}
+                    className={`${btn} ${off}`}
+                >
+                    clear
+                </button>
+            </div>
+
+            <div className="grid gap-2 sm:grid-cols-2">
+                <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                    <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                        searchParams.toString()
+                    </p>
+                    <p className="mt-1 break-all font-mono text-xs text-[var(--accent)]">
+                        {query ? `?${query}` : "(empty)"}
+                    </p>
+                </div>
+
+                <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                    <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                        .get(key)
+                    </p>
+                    <p className="mt-1 font-mono text-xs text-[var(--muted)]">
+                        page ·{" "}
+                        <span className="text-[var(--mint)]">
+                            {JSON.stringify(page)}
+                        </span>
+                        {"  "}sort ·{" "}
+                        <span className="text-[var(--mint)]">
+                            {JSON.stringify(sort)}
+                        </span>
+                    </p>
+                </div>
             </div>
 
             <p className="text-xs text-[var(--muted)]">
-                Typing updates the URL via{" "}
-                <span className="font-mono">router.replace</span>. Reload to
-                confirm the state is really in the URL — the input rehydrates
-                from <span className="font-mono">?q=</span>.
+                Every button does the same three steps:{" "}
+                <span className="font-mono text-[var(--text)]">
+                    new URLSearchParams(searchParams)
+                </span>{" "}
+                → <span className="font-mono text-[var(--text)]">.set()</span> /{" "}
+                <span className="font-mono text-[var(--text)]">.delete()</span> →{" "}
+                <span className="font-mono text-[var(--text)]">router.replace()</span>.
+                The hook itself is read-only.
             </p>
         </div>
-    );
-}
-
-export default function UseSearchParamsDemo() {
-    // useSearchParams opts the containing tree out of static rendering.
-    // Wrapping in <Suspense> keeps the boundary tight so the rest of the
-    // route can still be prerendered.
-    return (
-        <Suspense
-            fallback={
-                <p className="font-mono text-xs text-[var(--muted)]">
-                    loading search…
-                </p>
-            }
-        >
-            <SearchBox />
-        </Suspense>
     );
 }

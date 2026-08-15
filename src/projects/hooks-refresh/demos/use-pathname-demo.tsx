@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// Three sibling navigation-hook pages, so clicking one is a real route change:
+// the hook re-renders and the active style follows on its own.
 const LINKS = [
     { href: "/hooks-refresh/use-router", label: "use-router" },
     { href: "/hooks-refresh/use-pathname", label: "use-pathname" },
@@ -14,34 +16,42 @@ export default function UsePathnameDemo() {
 
     return (
         <div className="space-y-3">
-            <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-3 py-2 text-sm">
-                <span className="text-[var(--muted)]">current pathname · </span>
-                <span className="font-mono text-[var(--accent)]">{pathname}</span>
+            <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--muted)]">
+                    usePathname()
+                </p>
+                <p className="mt-1 break-all font-mono text-sm text-[var(--accent)]">
+                    {pathname}
+                </p>
             </div>
 
             <nav className="flex flex-wrap gap-2">
-                {LINKS.map((l) => {
-                    const active = pathname === l.href;
+                {LINKS.map((link) => {
+                    const active = pathname === link.href;
                     return (
                         <Link
-                            key={l.href}
-                            href={l.href}
-                            className={`rounded-md border px-3 py-1.5 text-sm ${active
-                                    ? "border-[var(--accent)] text-[var(--accent)]"
-                                    : "border-[var(--border)] hover:bg-[var(--surface-2)]"
-                                }`}
+                            key={link.href}
+                            href={link.href}
+                            aria-current={active ? "page" : undefined}
+                            className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-colors duration-150 ${
+                                active
+                                    ? "border-[var(--mint)] bg-[color-mix(in_srgb,var(--mint)_12%,var(--surface))] text-[var(--mint)]"
+                                    : "border-[var(--border)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--accent)] hover:bg-[var(--surface-2)]"
+                            }`}
                         >
-                            {l.label}
+                            {link.label}
                         </Link>
                     );
                 })}
             </nav>
 
             <p className="text-xs text-[var(--muted)]">
-                Click a link — <span className="font-mono">usePathname</span>{" "}
-                re-renders with the new value, and the active style follows. The
-                returned string never contains a search string; use{" "}
-                <span className="font-mono">useSearchParams</span> for those.
+                The highlighted link is the one whose{" "}
+                <span className="font-mono text-[var(--text)]">href</span> equals{" "}
+                <span className="font-mono text-[var(--text)]">pathname</span> —
+                click another and the value above changes with it. A{" "}
+                <span className="font-mono text-[var(--text)]">?query</span> would
+                never appear in that string.
             </p>
         </div>
     );
