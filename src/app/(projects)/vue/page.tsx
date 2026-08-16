@@ -1,7 +1,7 @@
-import ComingSoon from "@/components/ui/coming-soon";
+import { EmptyProject } from "@/components/ui/empty-project";
 
-// Stub landing — no content yet. Everything shown comes from the registry entry
-// for this slug, so the title and badge here match the home card by construction.
+// Stub landing — no content yet. Same shared empty page as every other
+// scaffolded project; title and status come from the registry entry.
 export default function Page() {
-    return <ComingSoon slug="vue" />;
+    return <EmptyProject slug="vue" />;
 }

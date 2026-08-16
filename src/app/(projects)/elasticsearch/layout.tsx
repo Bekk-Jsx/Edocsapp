@@ -1,0 +1,43 @@
+import type { ReactNode } from "react";
+import Navbar from "@/components/layout/navbar";
+import {
+    topicsByChapter,
+    PROJECT_LINKS,
+} from "@/projects/elasticsearch/elasticsearch";
+
+// Shell for every /elasticsearch/* route — same chrome as the redis project.
+// No <html>/<body>: those stay in the root layout.
+//
+// Server Component: `groups` is plain data, so the client Navbar receives it as
+// a serialized prop. Nothing project-specific is imported by Navbar itself.
+// Chapters arrive in registry order, and so do the topics within each — adding a
+// TOPICS entry is the whole of adding a sidebar row.
+//
+// No FaqButton: it anchors at #react-vs-next-js, which nothing in a
+// search-engine project renders.
+export default function ProjectLayout({ children }: { children: ReactNode }) {
+    const groups = topicsByChapter().map((g) => ({
+        heading: g.label,
+        items: g.topics.map((t) => ({ id: t.slug, label: t.name })),
+    }));
+
+    return (
+        <div className="flex min-h-screen">
+            <Navbar
+                groups={groups}
+                // Project pages (notes…) — the separate list above the doc
+                // groups, same optional mechanism the redis project uses.
+                projectLinks={PROJECT_LINKS.map((l) => ({
+                    id: l.slug,
+                    label: l.label,
+                }))}
+                mode="route"
+                basePath="/elasticsearch"
+                homeHref="/elasticsearch"
+                brand={{ eyebrow: "elasticsearch", sub: "search · lab" }}
+                back={{ href: "/", label: "Projects" }}
+            />
+            <main className="flex-1 px-8 py-10 lg:px-14">{children}</main>
+        </div>
+    );
+}

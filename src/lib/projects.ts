@@ -86,6 +86,14 @@ export const PROJECTS: Project[] = [
     status: "not-started",
   },
   {
+    slug: "couchdb",
+    title: "CouchDB",
+    description:
+      "Document database with CouchDB — documents, revisions, views, replication.",
+    type: "databases",
+    status: "not-started",
+  },
+  {
     slug: "typescript",
     title: "TypeScript",
     description:
@@ -113,7 +121,7 @@ export const PROJECTS: Project[] = [
     description:
       "Search & analytics with Elasticsearch — indices, mapping, queries.",
     type: "devops",
-    status: "not-started",
+    status: "in-progress",
   },
   {
     slug: "technical-seo",
