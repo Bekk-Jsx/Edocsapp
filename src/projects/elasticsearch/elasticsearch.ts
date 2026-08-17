@@ -42,12 +42,8 @@ export const TOPICS: ElasticsearchTopic[] = [
     {
         slug: "mappings-analysis", name: "Mappings & Analysis", chapter: "foundations",
         summary: "How a field is typed and how its text is broken up — the decisions you cannot take back without a reindex.",
-        parts: [
-            "text vs keyword and field types",
-            "Analyzers and the _analyze API",
-            "nested vs object",
-            "Why mappings can't change + _reindex",
-        ],
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/mappings-analysis/page.tsx.
     },
 
     // — Searching —
