@@ -536,31 +536,31 @@ export function MappingsAnalysisDocs() {
                     </p>
                     <p>
                         <Term>
-                            A <Code>text</Code> field goes through an analyzer.
+                            A <Code>text</Code>{" "}field goes through an analyzer.
                         </Term>{" "}
-                        <Code>&quot;The Dark Knight&quot;</Code> is not stored as a value
+                        <Code>&quot;The Dark Knight&quot;</Code>{" "}is not stored as a value
                         to be found; it is broken into the terms{" "}
                         <Code>[&quot;the&quot;, &quot;dark&quot;, &quot;knight&quot;]</Code>
                         , each pointing back at the document. That is what full-text search
-                        is: matching <em>inside</em> a value, on words the reader typed.
+                        is: matching <em>inside</em>{" "}a value, on words the reader typed.
                     </p>
                     <p>
                         <Term>
-                            A <Code>keyword</Code> field is stored as one exact term,
+                            A <Code>keyword</Code>{" "}field is stored as one exact term,
                             untouched.
                         </Term>{" "}
                         No splitting, no lowercasing — <Code>&quot;Released&quot;</Code>{" "}
-                        goes in and <Code>&quot;Released&quot;</Code> is the term. That is
+                        goes in and <Code>&quot;Released&quot;</Code>{" "}is the term. That is
                         what exact matching, filtering, sorting and aggregating need: one
                         value per field, comparable to another value.
                     </p>
                     <CodeBlock code={DEMO_TS} lang="ts" />
                     <CodeBlock code={DEMO_CURL} lang="bash" />
                     <p>
-                        <Term>Each type is unable to do the other&apos;s job.</Term> You
+                        <Term>Each type is unable to do the other&apos;s job.</Term>{" "}You
                         cannot sort or aggregate on <Code>text</Code>: the index holds
                         terms, not values, and there is nothing sensible to order or count{" "}
-                        <em>by</em> — Elasticsearch refuses outright rather than guess. And
+                        <em>by</em>{" "}— Elasticsearch refuses outright rather than guess. And
                         you cannot match inside a <Code>keyword</Code>: there is one term
                         and no parts to it, so &ldquo;knight&rdquo; will never find{" "}
                         <Code>&quot;The Dark Knight&quot;</Code>.
@@ -568,7 +568,7 @@ export function MappingsAnalysisDocs() {
 
                     <Callout severity="trap" label="trap · case matters on a keyword">
                         <p>
-                            A <Code>term</Code> query is not analyzed either, so the string
+                            A <Code>term</Code>{" "}query is not analyzed either, so the string
                             you send must equal the stored term byte for byte.{" "}
                             <Code>&quot;released&quot;</Code> against a{" "}
                             <Code>keyword</Code> holding <Code>&quot;Released&quot;</Code>{" "}
@@ -585,7 +585,7 @@ export function MappingsAnalysisDocs() {
                             something you filter, group or sort by? <Code>keyword</Code>.
                             Titles, plot summaries and cast names are <Code>text</Code>;{" "}
                             <Code>status</Code>, <Code>tmdb_id</Code> and{" "}
-                            <Code>genre_ids</Code> are <Code>keyword</Code> or a number.
+                            <Code>genre_ids</Code> are <Code>keyword</Code>{" "}or a number.
                         </p>
                     </Callout>
                 </DocSection>
@@ -602,12 +602,12 @@ export function MappingsAnalysisDocs() {
                         know whether the next value will be a plot summary or the word{" "}
                         <Code>Released</Code>. So it indexes it as both, through a
                         multi-field: <Code>text</Code> for the main field, with a{" "}
-                        <Code>keyword</Code> sub-field beside it.
+                        <Code>keyword</Code>{" "}sub-field beside it.
                     </p>
                     <p>
                         <Term>The value is indexed twice, into two structures.</Term>{" "}
-                        Query <Code>status</Code> and you are talking to the analyzed side;
-                        query <Code>status.keyword</Code> and you are talking to the exact
+                        Query <Code>status</Code>{" "}and you are talking to the analyzed side;
+                        query <Code>status.keyword</Code>{" "}and you are talking to the exact
                         side. Same value, same document, two entirely separate sets of
                         terms.
                     </p>
@@ -615,15 +615,15 @@ export function MappingsAnalysisDocs() {
                     <CodeBlock code={SUBFIELD_CURL} lang="bash" />
                     <p>
                         <Term>
-                            <Code>fields</Code> never stands alone.
+                            <Code>fields</Code>{" "}never stands alone.
                         </Term>{" "}
                         It always hangs underneath a main type, and that is what fixes the
                         two names: the main field is queried by its own name, the sub-field
                         by <Code>parent.subname</Code>. The name{" "}
-                        <Code>&quot;keyword&quot;</Code> in the mapping above is just the
+                        <Code>&quot;keyword&quot;</Code>{" "}in the mapping above is just the
                         label dynamic mapping chose — call the sub-field{" "}
                         <Code>&quot;raw&quot;</Code> and you query{" "}
-                        <Code>status.raw</Code> instead. Nothing about the suffix is
+                        <Code>status.raw</Code>{" "}instead. Nothing about the suffix is
                         reserved.
                     </p>
                     <p>
@@ -631,7 +631,7 @@ export function MappingsAnalysisDocs() {
                         <Code>keyword</Code> field <em>has</em>. In an explicit mapping
                         where <Code>status</Code> is itself a <Code>keyword</Code>, the
                         exact terms live on the main field: you filter, sort and aggregate
-                        on plain <Code>status</Code>, and <Code>status.keyword</Code> does
+                        on plain <Code>status</Code>, and <Code>status.keyword</Code>{" "}does
                         not exist at all — a query naming it silently finds nothing.
                     </p>
 
@@ -641,7 +641,7 @@ export function MappingsAnalysisDocs() {
                             <Code>something.keyword</Code>, which reads like a convention
                             and is not one: it only exists because those indices were
                             created by dynamic mapping. Whether you need the suffix is
-                            answered by <Code>GET /movies</Code> — read the mapping and the
+                            answered by <Code>GET /movies</Code>{" "}— read the mapping and the
                             path is right there.
                         </p>
                     </Callout>
@@ -652,9 +652,9 @@ export function MappingsAnalysisDocs() {
                             indexed twice, for a field where one of the two sides is usually
                             meaningless. Worse, the generated sub-field carries{" "}
                             <Code>ignore_above: 256</Code>: any value longer than that is
-                            simply not indexed into the <Code>keyword</Code> side — no
+                            simply not indexed into the <Code>keyword</Code>{" "}side — no
                             error, no rejection, the document is stored and searchable, but
-                            it is missing from every <Code>term</Code> query and every
+                            it is missing from every <Code>term</Code>{" "}query and every
                             aggregation on <Code>.keyword</Code>.
                         </p>
                     </Callout>
@@ -662,7 +662,7 @@ export function MappingsAnalysisDocs() {
                     <Callout severity="tip" label="tip · the multi-field worth declaring">
                         <p>
                             Multi-fields earn their keep when you genuinely need both sides
-                            of one field: search the title as prose <em>and</em> sort a list
+                            of one field: search the title as prose <em>and</em>{" "}sort a list
                             by it alphabetically. Declare it on purpose —{" "}
                             <Code>title</Code> as <Code>text</Code> with{" "}
                             <Code>fields: {`{ raw: keyword }`}</Code> — then match on{" "}
@@ -685,7 +685,7 @@ export function MappingsAnalysisDocs() {
                     <p>
                         <Term>
                             An analyzer turns a text value into terms, and{" "}
-                            <Code>_analyze</Code> shows you exactly which.
+                            <Code>_analyze</Code>{" "}shows you exactly which.
                         </Term>{" "}
                         It takes an analyzer and a string and answers with the tokens,
                         without indexing anything. There is no reason to guess what a field
@@ -699,12 +699,12 @@ export function MappingsAnalysisDocs() {
                         which is the whole explanation for the section before this one.{" "}
                         <Code>match</Code> on <Code>&quot;dark&quot;</Code> hits because{" "}
                         <Code>dark</Code> is a term. Case never matters on a{" "}
-                        <Code>text</Code> field because <Code>lowercase</Code> ran on the
+                        <Code>text</Code> field because <Code>lowercase</Code>{" "}ran on the
                         way in and runs again on the way out.
                     </p>
                     <CodeBlock code={PIPELINE} lang="text" />
                     <p>
-                        <Term>Every analyzer is three slots in a fixed order.</Term> Char
+                        <Term>Every analyzer is three slots in a fixed order.</Term>{" "}Char
                         filters work on the raw string before it is split — stripping HTML,
                         replacing characters. The tokenizer does the splitting, and there is
                         exactly one. Token filters then transform the tokens one at a time,
@@ -713,9 +713,9 @@ export function MappingsAnalysisDocs() {
 
                     <Callout severity="note" label="note · one name, three slots">
                         <p>
-                            <Code>&quot;standard&quot;</Code> is not a fourth kind of thing;
+                            <Code>&quot;standard&quot;</Code>{" "}is not a fourth kind of thing;
                             it is a preset for the three: no char filter, the standard
-                            tokenizer, and a <Code>lowercase</Code> token filter. It is the
+                            tokenizer, and a <Code>lowercase</Code>{" "}token filter. It is the
                             default for every <Code>text</Code> field you do not give an{" "}
                             <Code>analyzer</Code>, and it splits on word boundaries rather
                             than on spaces — which is why punctuation disappears without
@@ -726,7 +726,7 @@ export function MappingsAnalysisDocs() {
                     <Callout severity="tip" label="tip · _analyze before you debug a query">
                         <p>
                             When a query that should match returns nothing, the fastest
-                            check is not the query — it is <Code>_analyze</Code> on both
+                            check is not the query — it is <Code>_analyze</Code>{" "}on both
                             sides. Run the indexed value and the search string through the
                             field&apos;s analyzer and compare the terms. If no term is
                             shared, the query was never going to match, and the mapping is
@@ -744,7 +744,7 @@ export function MappingsAnalysisDocs() {
                             The same sentence, one analyzer along, and two things have
                             happened.
                         </Term>{" "}
-                        <Code>&quot;the&quot;</Code> is gone — stopword removal drops the
+                        <Code>&quot;the&quot;</Code>{" "}is gone — stopword removal drops the
                         words that appear in nearly every document and therefore
                         distinguish nothing. And <Code>&quot;rises&quot;</Code> has become{" "}
                         <Code>rise</Code> — stemming cuts each word back to a root, so{" "}
@@ -758,7 +758,7 @@ export function MappingsAnalysisDocs() {
                             the field.
                         </Term>{" "}
                         A reader types <Code>&quot;rising&quot;</Code>; it is stemmed to{" "}
-                        <Code>rise</Code>; the document stored <Code>rise</Code> when it was
+                        <Code>rise</Code>; the document stored <Code>rise</Code>{" "}when it was
                         indexed, and the two meet on one term in the inverted index. No
                         fuzziness, no wildcards, no clever query — both sides were simply
                         reduced to the same root.
@@ -766,11 +766,11 @@ export function MappingsAnalysisDocs() {
 
                     <Callout severity="note" label="note · stems are not words">
                         <p>
-                            <Code>movi</Code> looks like a bug and is not. Stemming is
+                            <Code>movi</Code>{" "}looks like a bug and is not. Stemming is
                             crude string surgery, not a dictionary — it only has to be
                             consistent, and it is: the query <Code>&quot;movie&quot;</Code>{" "}
-                            becomes <Code>movi</Code> too, so they meet. Stems exist only
-                            inside the index; <Code>_source</Code> is stored exactly as you
+                            becomes <Code>movi</Code>{" "}too, so they meet. Stems exist only
+                            inside the index; <Code>_source</Code>{" "}is stored exactly as you
                             sent it, so what the reader sees is untouched and no user ever
                             lays eyes on a stem.
                         </p>
@@ -780,11 +780,11 @@ export function MappingsAnalysisDocs() {
                         <p>
                             The same crudeness cuts the other way: unrelated words can
                             collapse onto one root — <Code>universe</Code> and{" "}
-                            <Code>university</Code> both stem to <Code>univers</Code> — and
+                            <Code>university</Code> both stem to <Code>univers</Code>{" "}— and
                             that is a match nobody wanted. Stopword removal has its own
-                            edge: the film <em>The Who</em> analyzes down to almost nothing.
+                            edge: the film <em>The Who</em>{" "}analyzes down to almost nothing.
                             A language analyzer is right for prose and wrong for names and
-                            codes, which is exactly what <Code>keyword</Code> is for.
+                            codes, which is exactly what <Code>keyword</Code>{" "}is for.
                         </p>
                     </Callout>
                 </DocSection>
@@ -803,24 +803,24 @@ export function MappingsAnalysisDocs() {
                     </p>
                     <p>
                         <Term>Each of the three slots is filled explicitly.</Term>{" "}
-                        <Code>dash_strip</Code> is a <Code>mapping</Code> char filter that
-                        rewrites <Code>&quot;-&quot;</Code> to nothing before any splitting
+                        <Code>dash_strip</Code> is a <Code>mapping</Code>{" "}char filter that
+                        rewrites <Code>&quot;-&quot;</Code>{" "}to nothing before any splitting
                         happens; the tokenizer stays <Code>standard</Code>; the token
                         filters are <Code>lowercase</Code> then <Code>porter_stem</Code>.
                         The purpose is one concrete problem — with the dash removed before
-                        tokenizing, <Code>&quot;Spider-Man&quot;</Code> becomes the single
+                        tokenizing, <Code>&quot;Spider-Man&quot;</Code>{" "}becomes the single
                         term <Code>spiderman</Code>, and the reader who types{" "}
-                        <Code>&quot;spiderman&quot;</Code> finds the film.
+                        <Code>&quot;spiderman&quot;</Code>{" "}finds the film.
                     </p>
                     <CodeBlock code={CUSTOM_TEST_TS} lang="ts" />
                     <CodeBlock code={CUSTOM_TEST_CURL} lang="bash" />
                     <p>
                         <Term>
-                            Test it with an index-scoped <Code>_analyze</Code> before a
+                            Test it with an index-scoped <Code>_analyze</Code>{" "}before a
                             single document goes in.
                         </Term>{" "}
                         A custom analyzer only exists inside the index that defines it, so
-                        the request goes to <Code>/movies_v2/_analyze</Code> rather than the
+                        the request goes to <Code>/movies_v2/_analyze</Code>{" "}rather than the
                         cluster-wide endpoint. The tokens come back, you read them, and only
                         then does indexing start.
                     </p>
@@ -841,7 +841,7 @@ export function MappingsAnalysisDocs() {
                     >
                         <p>
                             Analysis settings are set when the index is created. You cannot
-                            edit <Code>movie_title</Code> on a live index, because the terms
+                            edit <Code>movie_title</Code>{" "}on a live index, because the terms
                             it produced are already written into the segments — changing the
                             recipe would leave old documents analyzed one way and new ones
                             another. Changing an analyzer means a new index and a reindex,
@@ -867,7 +867,7 @@ export function MappingsAnalysisDocs() {
                             the point.
                         </Term>{" "}
                         There is no <Code>&quot;type&quot;</Code> in it — just{" "}
-                        <Code>properties</Code>, which makes <Code>genres</Code> an object
+                        <Code>properties</Code>, which makes <Code>genres</Code>{" "}an object
                         implicitly. It is also exactly what dynamic mapping writes when this
                         document arrives with no mapping at all, so most people meet this
                         behaviour without ever choosing it.
@@ -882,7 +882,7 @@ export function MappingsAnalysisDocs() {
                         <Code>genres.name: [&quot;Action&quot;, &quot;Science
                         Fiction&quot;]</Code>. Every value is still there and searchable —
                         but the pairing between <Code>28</Code> and{" "}
-                        <Code>&quot;Action&quot;</Code> has been destroyed. The index knows
+                        <Code>&quot;Action&quot;</Code>{" "}has been destroyed. The index knows
                         the movie has those ids and those names; it no longer knows which
                         went with which.
                     </p>
@@ -890,11 +890,11 @@ export function MappingsAnalysisDocs() {
                     <CodeBlock code={FLAT_BUG_CURL} lang="bash" />
                     <p>
                         <Term>So a query for an impossible pair matches.</Term> Genre{" "}
-                        <Code>28</Code> is Action and <Code>878</Code> is Science Fiction;
+                        <Code>28</Code> is Action and <Code>878</Code>{" "}is Science Fiction;
                         no object in that document pairs <Code>28</Code> with{" "}
                         <Code>&quot;Science Fiction&quot;</Code>. But both clauses are
                         checked against the flattened arrays independently, both find their
-                        term, and <Code>bool must</Code> is satisfied. The Matrix comes
+                        term, and <Code>bool must</Code>{" "}is satisfied. The Matrix comes
                         back.
                     </p>
 
@@ -931,7 +931,7 @@ export function MappingsAnalysisDocs() {
                         <Code>&quot;type&quot;: &quot;nested&quot;</Code> above{" "}
                         <Code>properties</Code>, and the flattening stops. Each object in
                         the array is indexed as its own hidden Lucene document, with its own
-                        <Code> id</Code> and <Code>name</Code> terms kept together, and the
+                        <Code> id</Code> and <Code>name</Code>{" "}terms kept together, and the
                         parent movie holds them. The pairing survives because the objects
                         were never merged in the first place.
                     </p>
@@ -942,11 +942,11 @@ export function MappingsAnalysisDocs() {
                         Those hidden documents are not part of the parent as far as the
                         query layer is concerned, so anything touching{" "}
                         <Code>genres.*</Code> has to go through the <Code>nested</Code>{" "}
-                        wrapper: a <Code>path</Code> saying which nested field to descend
-                        into, and a <Code>query</Code> that is evaluated against one hidden
+                        wrapper: a <Code>path</Code>{" "}saying which nested field to descend
+                        into, and a <Code>query</Code>{" "}that is evaluated against one hidden
                         document at a time. That last part is the whole point — both{" "}
                         <Code>must</Code> clauses now have to be true of the{" "}
-                        <em>same</em> object, so the wrong pair returns zero hits and the
+                        <em>same</em>{" "}object, so the wrong pair returns zero hits and the
                         right pair returns the film.
                     </p>
 
@@ -957,11 +957,11 @@ export function MappingsAnalysisDocs() {
                         <p>
                             The trap runs in reverse too. Send a plain{" "}
                             <Code>term</Code> query at <Code>genres.name</Code> on a{" "}
-                            <Code>nested</Code> field and you get zero hits — not an error
+                            <Code>nested</Code>{" "}field and you get zero hits — not an error
                             explaining that the field is nested, just an empty result, as
                             though no movie had that genre. If a filter on{" "}
                             <Code>genres.*</Code> mysteriously returns nothing, a missing{" "}
-                            <Code>nested</Code> wrapper is the first thing to check.
+                            <Code>nested</Code>{" "}wrapper is the first thing to check.
                         </p>
                     </Callout>
 
@@ -969,7 +969,7 @@ export function MappingsAnalysisDocs() {
                         <p>
                             The wrapper is not only for queries: sorting, aggregating and
                             highlighting on a nested field each need their nested form too,
-                            and the <Code>path</Code> has to be repeated in every one. One
+                            and the <Code>path</Code>{" "}has to be repeated in every one. One
                             line in the mapping changes the shape of every request that ever
                             touches the field.
                         </p>
@@ -992,7 +992,7 @@ export function MappingsAnalysisDocs() {
                             fields of the same object together?
                         </Term>{" "}
                         If yes, there is no choice — flat indexing cannot answer that
-                        question correctly, and <Code>nested</Code> is the only option. If
+                        question correctly, and <Code>nested</Code>{" "}is the only option. If
                         no, and you only ever filter on one field at a time, flat is correct
                         and cheaper.
                     </p>
@@ -1003,7 +1003,7 @@ export function MappingsAnalysisDocs() {
                             There is a pragmatic middle path, and it is denormalisation.
                         </Term>{" "}
                         Store <Code>genre_ids: [28, 878]</Code> and{" "}
-                        <Code>genre_names: [...]</Code> as two flat arrays and stop
+                        <Code>genre_names: [...]</Code>{" "}as two flat arrays and stop
                         pretending the index holds objects. The pairing is lost — and it was
                         never needed, because the pairing lives in CouchDB, which is where
                         the application reads a genre&apos;s name from anyway.
@@ -1028,7 +1028,7 @@ export function MappingsAnalysisDocs() {
                         <p>
                             Look at what the interface actually sends. A genre dropdown
                             sends ids and nothing else, and a flattened{" "}
-                            <Code>genres.id</Code> answers that perfectly. It is only when
+                            <Code>genres.id</Code>{" "}answers that perfectly. It is only when
                             two fields of one object have to be true together — a rating
                             from a specific source, a translated title in a specific
                             language — that nesting becomes the requirement rather than a
@@ -1067,7 +1067,7 @@ export function MappingsAnalysisDocs() {
                         flag and no migration mode.
                     </p>
                     <p>
-                        <Term>The reason is that the data is already written.</Term> Those
+                        <Term>The reason is that the data is already written.</Term>{" "}Those
                         values were analyzed as keywords when they were indexed and are
                         baked into immutable Lucene segments in that form. Accepting the new
                         type would leave the mapping claiming one thing and the terms saying
@@ -1078,11 +1078,11 @@ export function MappingsAnalysisDocs() {
                     <CodeBlock code={ADD_CURL} lang="bash" />
                     <p>
                         <Term>
-                            What <Code>PUT /_mapping</Code> can do is add.
+                            What <Code>PUT /_mapping</Code>{" "}can do is add.
                         </Term>{" "}
                         A field that has never been mapped has no terms in any segment, so
-                        there is nothing to contradict: mapping <Code>imdb_rating</Code> as
-                        a <Code>float</Code> is always allowed, and documents indexed from
+                        there is nothing to contradict: mapping <Code>imdb_rating</Code>{" "}as
+                        a <Code>float</Code>{" "}is always allowed, and documents indexed from
                         that moment on use it. The additive list is short — new fields, new
                         sub-fields under an existing one, and a handful of harmless
                         parameters.
@@ -1106,7 +1106,7 @@ export function MappingsAnalysisDocs() {
                         <p>
                             A newly added field applies to writes, not to what is already
                             there. The twelve thousand movies indexed yesterday have no{" "}
-                            <Code>imdb_rating</Code> and will not grow one — the field is
+                            <Code>imdb_rating</Code>{" "}and will not grow one — the field is
                             mapped and empty until each document is written again.
                         </p>
                     </Callout>
@@ -1118,10 +1118,10 @@ export function MappingsAnalysisDocs() {
                     <CodeBlock code={REINDEX_REPLY} lang="json" />
                     <p>
                         <Term>
-                            <Code>_reindex</Code> copies documents from one index into
+                            <Code>_reindex</Code>{" "}copies documents from one index into
                             another, re-analyzing them on the way.
                         </Term>{" "}
-                        It reads <Code>_source</Code> out of <Code>movies_v1</Code> and
+                        It reads <Code>_source</Code> out of <Code>movies_v1</Code>{" "}and
                         indexes it into <Code>movies_v2</Code>, where the destination
                         mapping decides how each field is typed and which analyzer runs. The
                         old index is untouched, so a failed rebuild costs nothing but time.
@@ -1137,9 +1137,9 @@ export function MappingsAnalysisDocs() {
                     </p>
                     <p>
                         <Term>On a large index, do not hold the connection open.</Term>{" "}
-                        <Code>?wait_for_completion=false</Code> returns a task id
+                        <Code>?wait_for_completion=false</Code>{" "}returns a task id
                         immediately and the copy continues in the background; poll{" "}
-                        <Code>/_tasks/&lt;id&gt;</Code> for progress and for the same
+                        <Code>/_tasks/&lt;id&gt;</Code>{" "}for progress and for the same
                         counters at the end.
                     </p>
                     <CodeBlock code={RECIPE} lang="text" />
@@ -1149,9 +1149,9 @@ export function MappingsAnalysisDocs() {
                         </Term>{" "}
                         The application only ever names the alias, so steps 2 and 3 happen
                         entirely out of sight, however long they take. Step 4 is one{" "}
-                        <Code>_aliases</Code> request carrying both the remove and the add,
+                        <Code>_aliases</Code>{" "}request carrying both the remove and the add,
                         which is what makes the cutover atomic — there is no instant without
-                        a <Code>movies</Code> to search.
+                        a <Code>movies</Code>{" "}to search.
                     </p>
 
                     <Callout
@@ -1159,9 +1159,9 @@ export function MappingsAnalysisDocs() {
                         label="trap · check failures, not the status code"
                     >
                         <p>
-                            <Code>_reindex</Code> answers <Code>200</Code> having copied
+                            <Code>_reindex</Code> answers <Code>200</Code>{" "}having copied
                             twelve thousand documents and dropped one, and the count in{" "}
-                            <Code>created</Code> is the only place that shows. Treat the
+                            <Code>created</Code>{" "}is the only place that shows. Treat the
                             reply exactly like a bulk reply: read <Code>failures</Code>,
                             compare the document counts of the two indices, and only then
                             swap the alias.
@@ -1170,7 +1170,7 @@ export function MappingsAnalysisDocs() {
 
                     <Callout severity="tip" label="tip · the alias is what makes it invisible">
                         <p>
-                            <Code>_reindex</Code> is the copy; the alias is the deploy.
+                            <Code>_reindex</Code>{" "}is the copy; the alias is the deploy.
                             Without one, step 4 becomes a code change and a release, and the
                             rebuild is only zero-downtime on paper. This is the pay-off for
                             aliasing from day one, in Documents &amp; Indices.
@@ -1199,8 +1199,8 @@ export function MappingsAnalysisDocs() {
                     q={<>How does searching &ldquo;running&rdquo; match a document saying &ldquo;run&rdquo;?</>}
                     a={
                         <>
-                            &ldquo;The field uses a <Term>language analyzer</Term> — both the
-                            document and the query are <Term>stemmed</Term> to the same
+                            &ldquo;The field uses a <Term>language analyzer</Term>{" "}— both the
+                            document and the query are <Term>stemmed</Term>{" "}to the same
                             root, so they <Term>meet in the inverted index</Term>.&rdquo;
                         </>
                     }
@@ -1230,7 +1230,7 @@ export function MappingsAnalysisDocs() {
                         q={<>Why did your genre filter return zero results?</>}
                         a={
                             <>
-                                &ldquo;The field is mapped <Term>nested</Term> — its objects
+                                &ldquo;The field is mapped <Term>nested</Term>{" "}— its objects
                                 are <Term>hidden sub-documents</Term>, so a plain{" "}
                                 <Code>term</Code> query can&apos;t see them. It needs the{" "}
                                 <Term>nested query wrapper</Term> with the right{" "}
