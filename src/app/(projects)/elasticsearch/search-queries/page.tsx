@@ -23,7 +23,7 @@ import { topicBySlug } from "@/projects/elasticsearch/elasticsearch";
 const FULL_TEXT_TEXT = [
     {
         title: "match",
-        href: "#match-the-workhorse",
+        href: "#match-the-full-text-workhorse",
         text: (
             <>
                 Your input is analyzed with the field&apos;s own analyzer, then any
@@ -33,7 +33,7 @@ const FULL_TEXT_TEXT = [
     },
     {
         title: "multi_match",
-        href: "#multi-match-one-query-several-fields",
+        href: "#multi-match-searching-several-fields",
         text: (
             <>
                 One text across several fields with{" "}
@@ -44,7 +44,7 @@ const FULL_TEXT_TEXT = [
     },
     {
         title: "Merging scores: type",
-        href: "#how-field-scores-merge-type",
+        href: "#merging-field-scores-type",
         text: (
             <>
                 <Mono>best_fields</Mono> keeps the highest field score,{" "}
@@ -54,7 +54,7 @@ const FULL_TEXT_TEXT = [
     },
     {
         title: "Fuzziness",
-        href: "#fuzziness-typo-tolerance",
+        href: "#fuzziness-surviving-typos",
         text: (
             <>
                 <Mono>AUTO</Mono> allows edits that scale with term length, so a
@@ -77,7 +77,7 @@ const TERM_LEVEL_TEXT = [
     },
     {
         title: "range",
-        href: "#range",
+        href: "#range-numbers-and-dates",
         text: (
             <>
                 <Mono>gte</Mono>/<Mono>lte</Mono> on numbers and dates, with{" "}
@@ -87,7 +87,7 @@ const TERM_LEVEL_TEXT = [
     },
     {
         title: "exists",
-        href: "#exists-and-the-null-surprise",
+        href: "#exists-presence-not-value",
         text: (
             <>
                 Asks only whether a value was indexed: <Mono>null</Mono>,{" "}
@@ -100,8 +100,8 @@ const TERM_LEVEL_TEXT = [
 
 const COMBINING_TEXT = [
     {
-        title: "bool: four clauses",
-        href: "#bool-the-four-clauses",
+        title: "bool: composing a query",
+        href: "#bool-composing-a-real-query",
         text: (
             <>
                 <Mono>must</Mono>, <Mono>filter</Mono> and <Mono>must_not</Mono>{" "}
@@ -134,7 +134,7 @@ const PAGING_TEXT = [
     },
     {
         title: "search_after",
-        href: "#search-after-cursor-instead-of-offset",
+        href: "#search-after-cursor-pagination",
         text: (
             <>
                 A cursor of sort values — constant cost per page, forward only, and

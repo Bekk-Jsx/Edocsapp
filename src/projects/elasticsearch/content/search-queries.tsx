@@ -10,54 +10,27 @@ import CodeBlock from "@/components/ui/code-block";
 // See the convention comment in @/lib/severity.
 export const SECTION_SEVERITIES: SectionSeverities = {
     // --- part 1 (Full-Text Queries) ---
-    // inline `tip · operator: and when OR is too loose` and `note · total.value is
-    // not what came back`
-    "match-the-workhorse": ["tip", "note"],
-    // inline `tip · write the text once` and `note · one string, different terms
-    // per field`
-    "multi-match-one-query-several-fields": ["tip", "note"],
-    // inline `tip · best_fields is the right default here` and `note · cross_fields,
-    // for completeness`
-    "how-field-scores-merge-type": ["tip", "note"],
-    // inline `trap · fuzziness buys hits and spends precision`, `tip · AUTO, never a
-    // number` and `note · saying it in english`
-    "fuzziness-typo-tolerance": ["trap", "tip", "note"],
+    "match-the-full-text-workhorse": ["tip", "note"],
+    "multi-match-searching-several-fields": ["tip", "note"],
+    "merging-field-scores-type": ["tip", "note"],
+    "fuzziness-surviving-typos": ["trap", "tip", "note"],
 
     // --- part 2 (Term-Level Queries) ---
-    // inline `trap · term on a text field returns nothing`, `tip · which query for
-    // which type` and `note · read the mapping first`
     "term-terms-exact-lookup": ["trap", "tip", "note"],
-    // inline `tip · date math instead of computed dates` and `note · what a range
-    // can and cannot order`
-    range: ["tip", "note"],
-    // inline `trap · null, [] and absent are one state` and `note · CouchDB draws
-    // this line differently`
-    "exists-and-the-null-surprise": ["trap", "note"],
+    "range-numbers-and-dates": ["tip", "note"],
+    "exists-presence-not-value": ["trap", "note"],
 
     // --- part 3 (Combining) ---
-    // inline `trap · should changes meaning with its neighbours` and `note · should
-    // is a slot, not a query`
-    "bool-the-four-clauses": ["trap", "note"],
-    // inline `trap · scoring a binary condition is ranking noise`, `tip · the
-    // question that sorts must from filter` and `note · must_not is filter context`
+    "bool-composing-a-real-query": ["trap", "note"],
     "query-context-vs-filter-context": ["trap", "tip", "note"],
 
     // --- part 4 (Paging & Ordering) ---
-    // inline `danger · raising max_result_window` and `note · nobody clicks page 500`
     "pagination-from-size-and-the-10k-wall": ["danger", "note"],
-    // inline `danger · a cursor without a unique tiebreaker` and `tip · which one
-    // for which caller`
-    "search-after-cursor-instead-of-offset": ["danger", "tip"],
-    // inline `trap · sorting silently replaces relevance` and `note · the error that
-    // explains title.raw`
+    "search-after-cursor-pagination": ["danger", "tip"],
     sorting: ["trap", "note"],
 
     // --- part 5 (Relevance) ---
-    // inline `tip · _explain instead of guessing` and `note · scores are not
-    // comparable across queries`
     "what-score-is-bm25": ["tip", "note"],
-    // inline `tip · highlight only what you display` and `note · a field only
-    // appears if it matched`
     highlighting: ["tip", "note"],
 };
 
@@ -91,50 +64,61 @@ function PartHeading({
     );
 }
 
-// PROJECT RULE 1, applied throughout this file: every operation appears in both
-// forms — the Node client call and the curl that goes over the wire. Client
-// first.
+// PAGE RULES, applied to every section below.
 //
-// PROJECT RULE 2: a comparison shows BOTH codes, never the conclusion alone.
-// The two sides are named X and Y in the fragments so the prose can point at
-// them, and for the bigger comparisons each side gets its own client fragment
-// with a single curl fragment carrying both requests underneath.
+// 1. A section opens with prose. The reader learns what the concept is and what
+//    problem it solves before any code appears.
+// 2. Every fragment is introduced by the sentence above it and, where it has a
+//    result, read by the sentence below it. Two fragments never touch.
+// 3. Every operation appears twice — the Node client call and the curl that goes
+//    over the wire. Client first.
+// 4. A comparison names both sides in plain words ("without multi_match" /
+//    "the same search with multi_match"), shows BOTH codes, and ends in a
+//    paragraph saying which one to write and why.
 
-const MATCH_TS = `await esClient.search({
+// ===================================================================
+// part 1 — full-text queries
+// ===================================================================
+
+const MATCH_NODE = `await esClient.search({
     index: "movies",
     query: { match: { title: "dark knight rises" } },
-});
-
-// every term required instead of any
-await esClient.search({
-    index: "movies",
-    query: {
-        match: {
-            title: {
-                query: "dark knight rises",
-                operator: "and",
-            },
-        },
-    },
 });`;
 
 const MATCH_CURL = `curl -X GET 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "match": { "title": "dark knight rises" } } }'
+  -d '{ "query": { "match": { "title": "dark knight rises" } } }'`;
 
-curl 'localhost:9200/movies/_search' \\
+// The query text goes through the FIELD'S analyzer before anything is looked up.
+const MATCH_PIPELINE = `"dark knight rises"        the string as typed
+        |
+        v   the analyzer mapped on "title" — english
+["dark", "knight", "rise"]  lowercased, stemmed terms
+        |
+        v   looked up in the inverted index
+documents holding any of those three terms`;
+
+const MATCH_OR_NODE = `// the default: any one term is enough to be a hit
+await esClient.search({
+    index: "movies",
+    query: { match: { title: "dark knight rises" } },
+});`;
+
+const MATCH_AND_NODE = `// operator "and": every term has to be present
+await esClient.search({
+    index: "movies",
+    query: {
+        match: {
+            title: { query: "dark knight rises", operator: "and" },
+        },
+    },
+});`;
+
+const MATCH_AND_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
   -d '{ "query": { "match": { "title": {
           "query": "dark knight rises",
           "operator": "and" } } } }'`;
-
-// The query text goes through the FIELD'S analyzer before anything is looked up.
-const MATCH_TERMS = `"dark knight rises"
-      |   english analyzer — the one title is mapped with
-      v
-["dark", "knight", "rise"]
-
-any one term is a hit          "Dark Waters" comes back too
-all three, in a short title    scores highest`;
 
 const MATCH_HITS = `{
   "took": 7,
@@ -150,8 +134,7 @@ const MATCH_HITS = `{
   }
 }`;
 
-const SHOULD_TS = `// X — one match per field, the text written three times
-const text = "dark knight";
+const MANUAL_FIELDS_NODE = `const text = "dark knight";
 
 await esClient.search({
     index: "movies",
@@ -166,8 +149,16 @@ await esClient.search({
     },
 });`;
 
-const MULTI_TS = `// Y — the same thing, once. cineverse's production query
-await esClient.search({
+const MANUAL_FIELDS_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "bool": { "should": [
+          { "match": { "title": {
+              "query": "dark knight", "boost": 3 } } },
+          { "match": { "overview": "dark knight" } },
+          { "match": { "tagline": "dark knight" } }
+        ] } } }'`;
+
+const MULTI_MATCH_NODE = `await esClient.search({
     index: "movies",
     query: {
         multi_match: {
@@ -177,75 +168,84 @@ await esClient.search({
     },
 });`;
 
-const MULTI_CURL = `# X
-curl 'localhost:9200/movies/_search' \\
+const MULTI_MATCH_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "bool": { "should": [
-          { "match": { "title": {
-              "query": "dark knight", "boost": 3 } } },
-          { "match": { "overview": "dark knight" } },
-          { "match": { "tagline": "dark knight" } }
-        ] } } }'
-
-# Y
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "multi_match": {
           "query": "dark knight",
           "fields": ["title^3", "overview", "tagline"] } } }'`;
 
-const TYPE_BEST_TS = `// X — best_fields: the default, and what cineverse uses
-await esClient.search({
+const PARAM_QUERY = `query: "dark knight rises"
+
+the raw text, analyzed once PER FIELD
+  title    english analyzer  -> ["dark", "knight", "rise"]
+  tagline  standard analyzer -> ["dark", "knight", "rises"]
+
+one string in, different terms out, depending on the field`;
+
+const PARAM_FIELDS = `fields: ["title", "overview", "tagline"]
+
+no ^ anywhere -> all three weigh exactly the same
+a film TITLED "Dark Knight" and a film whose plot summary
+mentions it are ranked as equally good answers`;
+
+const PARAM_BOOST = `fields: ["title^3", "overview", "tagline"]
+
+^3 multiplies the score this field produces by three
+"the title matters most" — written as ranking, not as prose`;
+
+const TYPE_BEST_NODE = `await esClient.search({
     index: "movies",
     query: {
         multi_match: {
             query: "war",
-            type: "best_fields",
+            type: "best_fields",   // the default
             fields: ["title^3", "overview", "tagline"],
         },
     },
 });`;
 
-const TYPE_MOST_TS = `// Y — most_fields: one line different, another ranking
-await esClient.search({
-    index: "movies",
-    query: {
-        multi_match: {
-            query: "war",
-            type: "most_fields",
-            fields: ["title^3", "overview", "tagline"],
-        },
-    },
-});`;
-
-const TYPE_CURL = `# X
-curl 'localhost:9200/movies/_search' \\
+const TYPE_BEST_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
   -d '{ "query": { "multi_match": { "query": "war",
           "type": "best_fields",
-          "fields": ["title^3", "overview", "tagline"] } } }'
+          "fields": ["title^3", "overview", "tagline"] } } }'`;
 
-# Y — same request, "type" swapped
-curl 'localhost:9200/movies/_search' \\
+const TYPE_MOST_NODE = `await esClient.search({
+    index: "movies",
+    query: {
+        multi_match: {
+            query: "war",
+            type: "most_fields",   // one word changed
+            fields: ["title^3", "overview", "tagline"],
+        },
+    },
+});`;
+
+const TYPE_MOST_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
   -d '{ "query": { "multi_match": { "query": "war",
           "type": "most_fields",
           "fields": ["title^3", "overview", "tagline"] } } }'`;
 
 // Same two documents, same field scores, two different winners.
-const TYPE_FLIP = `              title  overview  tagline | best   most
-A  one field    9.0      -         -    |  9.0    9.0
-B  everywhere   4.0     3.0       3.0   |  4.0   10.0
+const TYPE_FLIP = `                title  overview  tagline | best   most
+Movie A  title only   9.0      -         -    |  9.0    9.0
+Movie B  everywhere   4.0     3.0       3.0   |  4.0   10.0
 
-best_fields  ->  highest single field  ->  A wins
-most_fields  ->  sum of the fields     ->  B wins`;
+best_fields  ->  highest single field  ->  Movie A first
+most_fields  ->  the fields summed     ->  Movie B first`;
 
-const FUZZY_TS = `// X — no fuzziness: "knihgt" is not a term in the index
-await esClient.search({
+const NO_FUZZ_NODE = `await esClient.search({
     index: "movies",
     query: { match: { title: "dark knihgt" } },
-});   // 0 hits
+});   // hits: []`;
 
-// Y — one parameter, and the typo is forgiven
-await esClient.search({
+const NO_FUZZ_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "match": { "title": "dark knihgt" } } }'
+# "hits": { "total": { "value": 0 } }   200 OK`;
+
+const FUZZ_NODE = `await esClient.search({
     index: "movies",
     query: {
         multi_match: {
@@ -256,37 +256,49 @@ await esClient.search({
     },
 });   // The Dark Knight`;
 
-const FUZZY_CURL = `# X
-curl 'localhost:9200/movies/_search' \\
+const FUZZ_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "match": { "title": "dark knihgt" } } }'
-# "hits": { "total": { "value": 0 } }
-
-# Y
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "multi_match": {
           "query": "dark knihgt",
           "fields": ["title^3", "overview", "tagline"],
           "fuzziness": "AUTO" } } }'`;
 
-// AUTO reads the term length and picks the distance. This is why you never
-// hard-code a number.
-const FUZZY_AUTO = `edit distance = insert | delete | substitute | swap
+const FUZZ_DISTANCE = `edit distance = the number of single-character changes
+  insert       knigt  -> knight
+  delete       knighht-> knight
+  substitute   knivht -> knight
+  swap         knihgt -> knight   (two adjacent letters)
 
-"knihgt" -> "knight"     one swap of adjacent letters
+"knihgt" reaches "knight" in one swap -> distance 1
 
-AUTO, by term length
-  1-2 chars   0 edits    "up" stays exact
-  3-5 chars   1 edit     "wars" also matches "mars"
-  6+  chars   2 edits    "knihgt" reaches "knight"`;
+applied AFTER analysis: the candidate terms are compared
+against the STEMS in the index, not against your raw string`;
 
-const TERM_TS = `// a plain keyword field — the value is looked up as sent
+const FUZZ_AUTO = `a fixed number is wrong at some length
+  fuzziness: 2 on "war"  -> war, car, bar, ear, wax, ...
+  fuzziness: 1 on "extraterrestrial" -> one slip still fails
+
+AUTO reads the term length and picks the distance
+  1-2 chars   0 edits   "up" stays exact
+  3-5 chars   1 edit    "wars" also reaches "mars"
+  6+  chars   2 edits   "knihgt" reaches "knight"`;
+
+// ===================================================================
+// part 2 — term-level queries
+// ===================================================================
+
+const TERM_NODE = `// original_language is a plain keyword — send the value as is
 await esClient.search({
     index: "movies",
     query: { term: { original_language: "en" } },
-});
+});`;
 
-// a keyword INSIDE a nested field — same term, wrapped
+const TERM_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "term": { "original_language": "en" } } }'`;
+
+const NESTED_TERM_NODE = `// genres.name is a keyword INSIDE a nested field — same
+// term query, wrapped in the nested clause naming the path
 await esClient.search({
     index: "movies",
     query: {
@@ -297,23 +309,19 @@ await esClient.search({
     },
 });`;
 
-const TERM_CURL = `curl 'localhost:9200/movies/_search' \\
+const NESTED_TERM_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "term": { "original_language": "en" } } }'
-
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "nested": { "path": "genres",
           "query": { "term": {
             "genres.name": "Action" } } } } }'`;
 
 // Which query a field takes is decided by the mapping, not by the value.
-const TERM_MAPPING = `original_language   keyword           ->  term, bare
+const TERM_MAPPING = `original_language   keyword         ->  term, on its own
 genres              nested
-  genres.name       keyword           ->  term, inside nested
-title               text (english)    ->  match, never term`;
+  genres.name       keyword         ->  term, inside nested
+title               text (english)  ->  match, never term`;
 
-const TERMS_TS = `// terms — any value in the list. SQL's IN
-await esClient.search({
+const TERMS_NODE = `await esClient.search({
     index: "movies",
     query: {
         terms: { original_language: ["en", "fr", "de"] },
@@ -325,36 +333,33 @@ const TERMS_CURL = `curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "terms": {
           "original_language": ["en", "fr", "de"] } } }'`;
 
-const TERM_TRAP_TS = `// X — term against a text field
-await esClient.search({
+const TERM_ON_TEXT_NODE = `await esClient.search({
     index: "movies",
     query: { term: { title: "The Dark Knight" } },
-});   // 0 hits
+});   // hits: []`;
 
-// Y — the same intent, on the query built for text
-await esClient.search({
-    index: "movies",
-    query: { match: { title: "The Dark Knight" } },
-});   // The Dark Knight`;
-
-const TERM_TRAP_CURL = `# X — index holds ["dark", "knight"]; the term sent is
-#     "The Dark Knight", whole and unanalyzed
-curl 'localhost:9200/movies/_search' \\
+const TERM_ON_TEXT_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
   -d '{ "query": { "term": { "title": "The Dark Knight" } } }'
-# "hits": { "total": { "value": 0 } }   200 OK
+# "hits": { "total": { "value": 0 } }   200 OK, no error`;
 
-# Y
-curl 'localhost:9200/movies/_search' \\
-  -d '{ "query": { "match": { "title": "The Dark Knight" } } }'`;
+const TEXT_INDEX_CONTENTS = `_source                     "The Dark Knight"
+terms in the index          ["dark", "knight"]
+the term the query sent     "The Dark Knight"
 
-const RANGE_TS = `await esClient.search({
+no term in that list equals the string that was sent`;
+
+const RANGE_RATING_NODE = `await esClient.search({
     index: "movies",
     query: { range: { vote_average: { gte: 7.5 } } },
-});
+});`;
 
-// cineverse's year filter — an explicit date interval
-await esClient.search({
+const RANGE_RATING_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "range": {
+          "vote_average": { "gte": 7.5 } } } }'`;
+
+const RANGE_YEAR_NODE = `await esClient.search({
     index: "movies",
     query: {
         range: {
@@ -366,61 +371,75 @@ await esClient.search({
     },
 });`;
 
-const RANGE_CURL = `curl 'localhost:9200/movies/_search' \\
+const RANGE_YEAR_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "range": {
-          "vote_average": { "gte": 7.5 } } } }'
-
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "range": { "release_date": {
           "gte": "2020-01-01", "lte": "2020-12-31" } } } }'`;
 
-const RANGE_DATES = `date math, resolved by Elasticsearch
-  { "gte": "now-1y" }     the last year
-  { "gte": "now-30d" }    the last thirty days
-  { "gte": "now/d" }      today, rounded down to midnight
+const DATE_MATH = `resolved by Elasticsearch, at query time
+  { "gte": "now-1y" }    the last year
+  { "gte": "now-30d" }   the last thirty days
+  { "gte": "now/d" }     today, rounded down to midnight`;
 
-the same year filter, in one line
-  { "gte": "2020", "lte": "2020" }
-      a bare year expands against the date format`;
+const BARE_YEAR = `{ "gte": "2020", "lte": "2020" }
 
-const EXISTS_TS = `// has this document any indexed value under "tagline"?
-await esClient.search({
+a bare year is read against the field's date format and
+expands to cover it — the same filter, in one line`;
+
+const EXISTS_NODE = `await esClient.search({
     index: "movies",
     query: { exists: { field: "tagline" } },
-});
+});`;
 
-// there is no "missing" query — negate exists
-await esClient.search({
+const EXISTS_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "exists": { "field": "tagline" } } }'`;
+
+const MISSING_NODE = `await esClient.search({
     index: "movies",
     query: {
         bool: { must_not: [{ exists: { field: "tagline" } }] },
     },
 });`;
 
-const EXISTS_CURL = `curl 'localhost:9200/movies/_search' \\
+const MISSING_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "exists": { "field": "tagline" } } }'
-
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "bool": { "must_not": [
           { "exists": { "field": "tagline" } } ] } } }'`;
 
-const EXISTS_TABLE = `"tagline": "A hero rises"   one term indexed   -> true
-"tagline": ""              a term indexed     -> true
-"tagline": null            nothing indexed    -> false
-"tagline": []              nothing indexed    -> false
-no "tagline" key           nothing indexed    -> false`;
+const EXISTS_TABLE = `"tagline": "A hero rises"   one term indexed    -> passes
+"tagline": ""              an empty term indexed -> passes
+"tagline": null            nothing indexed       -> fails
+"tagline": []              nothing indexed       -> fails
+no "tagline" key at all    nothing indexed       -> fails
 
-const BOOL_TS = `// one search form, mapped onto the four slots
-const search = {
+the last three are one state to the index, not three`;
+
+// ===================================================================
+// part 3 — combining
+// ===================================================================
+
+const BOOL_SLOTS = `must      has to match, and it scores
+filter    has to match, no score, cacheable
+must_not  has to NOT match, no score
+should    optional — matching raises the score`;
+
+const BOOL_SKELETON = `// what cineverse sends: text scored, conditions filtered
+query: {
+    bool: {
+        must: [ /* the search box */ ],
+        filter: [ /* language, year, rating, genre */ ],
+    },
+}`;
+
+const BOOL_PARTS_NODE = `const search = {
     multi_match: {
         query: "dark knight",
         fields: ["title^3", "overview", "tagline"],
     },
 };
 
-const filters = [
+const conditions = [
     { range: { release_date: { gte: "2008-01-01" } } },
     { range: { vote_average: { gte: 7 } } },
 ];
@@ -430,14 +449,14 @@ const actionGenre = {
         path: "genres",
         query: { term: { "genres.name": "Action" } },
     },
-};
+};`;
 
-await esClient.search({
+const BOOL_NODE = `await esClient.search({
     index: "movies",
     query: {
         bool: {
             must: [search],
-            filter: filters,
+            filter: conditions,
             must_not: [{ term: { original_language: "fr" } }],
             should: [actionGenre],
         },
@@ -458,16 +477,15 @@ const BOOL_CURL = `curl 'localhost:9200/movies/_search' \\
       "query": { "term": { "genres.name": "Action" } } } } ]
   } } }'`;
 
-const BOOL_CLAUSES = `must      must match, and it scores
-filter    must match, no score, cacheable
-must_not  must not match, no score
-should    optional — raises the score of what matches
+const SHOULD_BEHAVIOURS = `bool with ONLY should clauses
+  at least one of them must match — it acts as an OR
 
-must + filter + must_not   decide WHO is in the results
-should, beside them        only REORDERS them`;
+should NEXT TO a must or a filter
+  it requires nothing — matching only adds score
 
-const CONTEXT_X_TS = `// X — every condition in must, so every condition scores
-await esClient.search({
+minimum_should_match: 1   says which one you meant`;
+
+const ALL_MUST_NODE = `await esClient.search({
     index: "movies",
     query: {
         bool: {
@@ -480,8 +498,16 @@ await esClient.search({
     },
 });`;
 
-const CONTEXT_Y_TS = `// Y — cineverse's split: text scores, conditions filter
-await esClient.search({
+const ALL_MUST_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "query": { "bool": { "must": [
+          { "multi_match": { "query": "dark knight",
+            "fields": ["title^3", "overview"] } },
+          { "term": { "original_language": "en" } },
+          { "range": { "vote_average": { "gte": 7 } } }
+        ] } } }'`;
+
+const SPLIT_NODE = `await esClient.search({
     index: "movies",
     query: {
         bool: {
@@ -494,18 +520,8 @@ await esClient.search({
     },
 });`;
 
-const CONTEXT_CURL = `# X — three clauses, three scores to compute, no cache
-curl 'localhost:9200/movies/_search' \\
+const SPLIT_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "query": { "bool": { "must": [
-          { "multi_match": { "query": "dark knight",
-            "fields": ["title^3", "overview"] } },
-          { "term": { "original_language": "en" } },
-          { "range": { "vote_average": { "gte": 7 } } }
-        ] } } }'
-
-# Y — same movies, one score, two cacheable filters
-curl 'localhost:9200/movies/_search' \\
   -d '{ "query": { "bool": {
           "must": [ { "multi_match": { "query": "dark knight",
             "fields": ["title^3", "overview"] } } ],
@@ -514,8 +530,11 @@ curl 'localhost:9200/movies/_search' \\
             { "range": { "vote_average": { "gte": 7 } } } ]
         } } }'`;
 
-const PAGE_TS = `// cineverse's pagination — page number in, offset out
-const from = (page - 1) * limit;
+// ===================================================================
+// part 4 — paging & ordering
+// ===================================================================
+
+const PAGE_NODE = `const from = (page - 1) * limit;
 
 await esClient.search({
     index: "movies",
@@ -529,15 +548,14 @@ const PAGE_CURL = `curl 'localhost:9200/movies/_search' \\
   -d '{ "from": 40, "size": 20,
         "query": { "match_all": {} } }'`;
 
-const PAGE_WALL = `from 40,    size 20    collect 60,    discard 40
+const PAGE_COST = `from 40,    size 20    collect 60,    discard 40
 from 9980,  size 20    collect 10000, discard 9980
 from 10000, size 20    400 illegal_argument_exception
                        "Result window is too large"
 
-the work grows with the offset, not with the page size
-index.max_result_window = 10000, and raising it is a bill`;
+the work grows with the OFFSET, not with the page size`;
 
-const AFTER_X_TS = `// X — offset: page 3 collects 60 hits to show 20
+const OFFSET_NODE = `// page 3 by offset — 60 hits collected to show 20
 await esClient.search({
     index: "movies",
     from: 40,
@@ -545,15 +563,34 @@ await esClient.search({
     query: { match_all: {} },
 });`;
 
-const AFTER_Y_TS = `// Y — cursor: page 1 sorts explicitly and sets no "from"
+const OFFSET_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "from": 40, "size": 20,
+        "query": { "match_all": {} } }'`;
+
+const CURSOR_P1_NODE = `// page 1 — an explicit sort, and no "from" at all
 await esClient.search({
     index: "movies",
     size: 20,
     sort: [{ vote_average: "desc" }, { tmdb_id: "asc" }],
     query: { match_all: {} },
-});
+});`;
 
-// page 2 — start after the last hit of page 1
+const CURSOR_P1_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "size": 20,
+        "sort": [ { "vote_average": "desc" },
+                  { "tmdb_id": "asc" } ],
+        "query": { "match_all": {} } }'`;
+
+// Every hit carries the values its sort produced — that array IS the cursor.
+const CURSOR_HITS = `"hits": [
+  { "_id": "603692", "_score": null,
+    "_source": { "vote_average": 7.8, "tmdb_id": 603692 },
+    "sort": [7.8, 603692] }
+]`;
+
+const CURSOR_P2_NODE = `// page 2 — the same sort, continuing after that position
 await esClient.search({
     index: "movies",
     size: 20,
@@ -562,35 +599,22 @@ await esClient.search({
     query: { match_all: {} },
 });`;
 
-const AFTER_CURL = `# X
-curl 'localhost:9200/movies/_search' \\
+const CURSOR_P2_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
-  -d '{ "from": 40, "size": 20,
-        "query": { "match_all": {} } }'
-
-# Y — the cursor is the sort values of the last hit
-curl 'localhost:9200/movies/_search' \\
   -d '{ "size": 20,
         "sort": [ { "vote_average": "desc" },
                   { "tmdb_id": "asc" } ],
         "search_after": [7.8, 603692],
         "query": { "match_all": {} } }'`;
 
-// Every hit carries the values its sort produced — that array IS the cursor.
-const AFTER_HITS = `"hits": [
-  { "_id": "603692", "_score": null,
-    "_source": { "vote_average": 7.8, "tmdb_id": 603692 },
-    "sort": [7.8, 603692] }
-]`;
-
-const AFTER_WALK_TS = `let after: unknown[] | undefined;
+const CURSOR_WALK_NODE = `let searchAfter: unknown[] | undefined;
 
 while (true) {
     const res = await esClient.search({
         index: "movies",
         size: 1000,
         sort: [{ vote_average: "desc" }, { tmdb_id: "asc" }],
-        search_after: after,
+        search_after: searchAfter,
         query: { match_all: {} },
     });
 
@@ -598,19 +622,12 @@ while (true) {
     if (!hits.length) break;
 
     await handleBatch(hits);
-    after = hits[hits.length - 1].sort;
+    searchAfter = hits[hits.length - 1].sort;
 }`;
 
-const SORT_TS = `await esClient.search({
+const SORT_NODE = `await esClient.search({
     index: "movies",
     sort: [{ vote_average: "desc" }, { release_date: "desc" }],
-    query: { match: { title: "war" } },
-});
-
-// relevance first, rating as the tiebreaker
-await esClient.search({
-    index: "movies",
-    sort: ["_score", { vote_average: "desc" }],
     query: { match: { title: "war" } },
 });`;
 
@@ -618,49 +635,61 @@ const SORT_CURL = `curl 'localhost:9200/movies/_search' \\
   -H 'Content-Type: application/json' \\
   -d '{ "sort": [ { "vote_average": "desc" },
                   { "release_date": "desc" } ],
-        "query": { "match": { "title": "war" } } }'
-
-curl 'localhost:9200/movies/_search' \\
-  -d '{ "sort": [ "_score", { "vote_average": "desc" } ],
         "query": { "match": { "title": "war" } } }'`;
 
-const SORT_TRAP_TS = `// X — sorting on the text field
+const SORT_SCORE_NODE = `// relevance first, rating only as the tiebreaker
 await esClient.search({
+    index: "movies",
+    sort: ["_score", { vote_average: "desc" }],
+    query: { match: { title: "war" } },
+});`;
+
+const SORT_TEXT_NODE = `await esClient.search({
     index: "movies",
     sort: [{ title: "asc" }],
     query: { match_all: {} },
-});   // ResponseError: illegal_argument_exception
+});   // ResponseError: illegal_argument_exception`;
 
-// Y — search the text, sort the keyword sub-field
+const SORT_TEXT_CURL = `curl 'localhost:9200/movies/_search' \\
+  -H 'Content-Type: application/json' \\
+  -d '{ "sort": [ { "title": "asc" } ] }'
+# 400 "Text fields are not optimised for operations that
+#      require per-document field data ... use a keyword
+#      field instead"`;
+
+const SORT_RAW_NODE = `// search the analyzed field, sort its keyword sub-field
 await esClient.search({
     index: "movies",
     sort: [{ "title.raw": "asc" }],
     query: { match: { title: "war" } },
 });`;
 
-const SORT_TRAP_CURL = `# X
-curl 'localhost:9200/movies/_search' \\
-  -H 'Content-Type: application/json' \\
-  -d '{ "sort": [ { "title": "asc" } ] }'
-# 400 "Text fields are not optimised for operations that
-#      require per-document field data ... use a keyword
-#      field instead"
+// ===================================================================
+// part 5 — relevance
+// ===================================================================
 
-# Y
-curl 'localhost:9200/movies/_search' \\
-  -d '{ "sort": [ { "title.raw": "asc" } ] }'`;
+const BM25_TF = `term frequency
 
-const BM25 = `score  ~  TF        term appears more in this field
-       x  IDF       term is rare across the index
-       /  length    a short field beats a long one
+"war" once in the overview      contributes a little
+"war" five times in the same    contributes more
 
-"the"     in every movie   IDF ~ 0     decides nothing
-"knight"  in 40 movies     IDF high    decides the order
+more occurrences of the term IN THIS FIELD -> higher`;
 
-"War" as the whole title       short field, strong
-"war" in a 300-word overview   long field, diluted`;
+const BM25_IDF = `inverse document frequency
 
-const EXPLAIN_TS = `await esClient.explain({
+"the"     in every movie    worth almost nothing
+"knight"  in 40 movies      worth a lot
+
+the rare term is the one that decides the ranking`;
+
+const BM25_LENGTH = `field length
+
+"War"                        a 1-word title    strong
+"war" in a 300-word overview a long field      diluted
+
+the same match counts for more in a shorter field`;
+
+const EXPLAIN_NODE = `await esClient.explain({
     index: "movies",
     id: "49026",
     query: { match: { title: "dark knight" } },
@@ -685,7 +714,7 @@ const EXPLAIN_OUT = `{
   }
 }`;
 
-const HIGHLIGHT_TS = `await esClient.search({
+const HIGHLIGHT_NODE = `await esClient.search({
     index: "movies",
     query: {
         multi_match: {
@@ -722,260 +751,387 @@ const HIGHLIGHT_OUT = `"hits": [
     } }
 ]`;
 
-const HIGHLIGHT_KNOBS = `pre_tags / post_tags   <em> by default, <mark> if you ask
-fragment_size          ~100 characters around a match
-number_of_fragments    how many pieces per field
+const HIGHLIGHT_TAGS = `highlight: {
+    pre_tags: ["<mark>"],
+    post_tags: ["</mark>"],
+    fields: { title: {}, overview: {} },
+}`;
 
-a short title comes back whole, a long overview in pieces —
-an array of fragments either way`;
+const HIGHLIGHT_FRAGMENTS = `highlight: {
+    fields: {
+        overview: { fragment_size: 150, number_of_fragments: 2 },
+    },
+}`;
 
 export function SearchQueriesDocs() {
     return (
         <>
             {/* ---------- part 1 — queries that read words ---------- */}
-            {/* No eyebrow label: the section title is the heading, and the
-                fragment sits directly under it, ahead of the explanation. */}
             <PartHeading kicker="part 1">Full-Text Queries</PartHeading>
             <div>
-                <DocSection title="match: the workhorse">
-                    <CodeBlock code={MATCH_TS} lang="ts" />
-                    <CodeBlock code={MATCH_CURL} lang="bash" />
-                    <CodeBlock code={MATCH_TERMS} lang="text" />
+                <DocSection title="match: the full-text workhorse">
                     <p>
-                        <Term>
-                            <Code>match</Code>{" "}is the full-text query, and its defining
-                            move is that your input is analyzed too.
-                        </Term>{" "}
-                        The string is run through the analyzer of the field being queried —
-                        not a fixed one, the field&apos;s own — and the terms that come out
-                        are what gets looked up in the inverted index. Both sides of the
-                        comparison were built by the same machine, which is why they meet.
+                        <Code>match</Code>{" "}is the query behind every search bar: it takes
+                        a string a person typed and finds the documents that talk about it.
+                        It is a full-text query, which means it does not look for the
+                        sentence you sent — it looks for the words inside it, in the form
+                        the index holds them. Everything else on this page either builds on
+                        that behaviour or deliberately avoids it.
+                    </p>
+                    <p>
+                        A basic search against the <Code>title</Code>{" "}field is a single
+                        clause, with the field name as the key and the reader&apos;s text as
+                        the value.
+                    </p>
+                    <CodeBlock code={MATCH_NODE} lang="ts" />
+                    <p>The same request, sent over the wire:</p>
+                    <CodeBlock code={MATCH_CURL} lang="bash" />
+                    <p>
+                        The step that makes it work is invisible in both: the string is run
+                        through the analyzer of the field being queried — not a fixed one,
+                        that field&apos;s own — and the terms that come out are what gets
+                        looked up.
+                    </p>
+                    <CodeBlock code={MATCH_PIPELINE} lang="text" />
+                    <p>
+                        <Term>Both sides were built by the same machine, which is why they
+                        meet.</Term>{" "}
+                        <Code>title</Code>{" "}was indexed with the <Code>english</Code>{" "}
+                        analyzer, so the index holds <Code>rise</Code>{" "}rather than{" "}
+                        <Code>Rises</Code>; the query text is stemmed the same way and lands
+                        on the same term. Change the analyzer on the field and this query
+                        changes with it, without a line of it being edited.
                     </p>
                     <p>
                         <Term>The default combination of those terms is OR.</Term>{" "}A
-                        document matching one term is a hit, so{" "}
-                        <Code>&quot;dark knight rises&quot;</Code> also returns{" "}
-                        <em>Dark Waters</em> — it has <Code>dark</Code>. Matching more of
-                        the terms does not decide <em>whether</em>{" "}a document is returned;
-                        it decides how high it scores, which is what puts the film you meant
-                        at the top.
+                        document matching a single term is already a hit, so the search
+                        below also returns <em>Dark Waters</em>{" "}— it has{" "}
+                        <Code>dark</Code>. Matching more of the terms does not decide{" "}
+                        <em>whether</em>{" "}a document comes back; it decides how high it
+                        scores, which is what puts the film the reader meant at the top and
+                        leaves the weak matches below it.
+                    </p>
+                    <CodeBlock code={MATCH_OR_NODE} lang="ts" />
+                    <p>
+                        When the loose behaviour is wrong — short fields, where a single
+                        shared word means little — <Code>operator: &quot;and&quot;</Code>{" "}
+                        requires every term instead.
+                    </p>
+                    <CodeBlock code={MATCH_AND_NODE} lang="ts" />
+                    <p>
+                        The same switch in curl, which is also where the long form of{" "}
+                        <Code>match</Code>{" "}becomes visible: the field maps to an object
+                        rather than a bare string as soon as it takes parameters.
+                    </p>
+                    <CodeBlock code={MATCH_AND_CURL} lang="bash" />
+                    <p>
+                        Only documents carrying <Code>dark</Code>, <Code>knight</Code>{" "}and{" "}
+                        <Code>rise</Code>{" "}now come back — a shorter list, and every entry
+                        on it defensible.
+                    </p>
+
+                    <p>
+                        <Term>Reading the response.</Term>{" "}Every search answers with the
+                        same envelope, and knowing its four parts is most of what a frontend
+                        needs.
                     </p>
                     <CodeBlock code={MATCH_HITS} lang="json" />
                     <p>
-                        <Term>The reply is a ranked list, not a set.</Term>{" "}
-                        <Code>took</Code> is milliseconds spent,{" "}
-                        <Code>hits.hits</Code> is the array — each entry carrying{" "}
-                        <Code>_id</Code>, <Code>_score</Code> and the{" "}
-                        <Code>_source</Code>{" "}you indexed — and the array is already sorted
-                        by <Code>_score</Code>{" "}descending, so the order in JSON is the order
-                        to render.
+                        <Code>took</Code>{" "}is the milliseconds spent.{" "}
+                        <Code>hits.total.value</Code>{" "}is how many documents{" "}
+                        <em>match</em>, with <Code>relation</Code>{" "}saying whether that count
+                        is exact (<Code>eq</Code>) or a lower bound (<Code>gte</Code>).{" "}
+                        <Code>hits.hits</Code>{" "}is the array actually returned — each entry
+                        carrying <Code>_id</Code>, its <Code>_score</Code>, and the{" "}
+                        <Code>_source</Code>{" "}document as you indexed it. The array arrives
+                        sorted by <Code>_score</Code>{" "}descending, so the order in the JSON
+                        is the order to render, and it holds ten entries unless you say
+                        otherwise.
                     </p>
 
                     <Callout severity="note" label="note · total.value is not what came back">
                         <p>
-                            <Code>hits.total.value</Code> counts the documents that{" "}
-                            <em>match</em>; the array holds the ten that were{" "}
-                            <em>returned</em>, because <Code>size</Code>{" "}defaults to 10.
-                            Those forty-two are the number for &ldquo;42 results&rdquo; in
-                            the UI, and <Code>relation</Code>{" "}tells you whether it is exact
-                            (<Code>eq</Code>) or a lower bound (<Code>gte</Code>), which is
-                            what you get once the count is expensive enough that
-                            Elasticsearch stops early.
+                            Forty-two documents match; ten are in the array, because{" "}
+                            <Code>size</Code>{" "}defaults to 10. That is the number for
+                            &ldquo;42 results&rdquo; in the interface and for computing how
+                            many pages there are — never the length of{" "}
+                            <Code>hits.hits</Code>. Once a count gets expensive Elasticsearch
+                            stops counting early and says so through{" "}
+                            <Code>relation: &quot;gte&quot;</Code>.
                         </p>
                     </Callout>
 
-                    <Callout severity="tip" label="tip · operator: and when OR is too loose">
+                    <Callout severity="tip" label="tip · between OR and AND">
                         <p>
-                            On a short field like a title, requiring every term is often what
-                            the reader meant: <Code>operator: &quot;and&quot;</Code>{" "}turns
-                            the OR into an AND without changing anything else. Between the
-                            two extremes sits <Code>minimum_should_match: &quot;75%&quot;</Code>{" "}
-                            — most of the terms, not all of them.
+                            <Code>operator: &quot;and&quot;</Code>{" "}is strict, and on a long
+                            query string it can return nothing at all.{" "}
+                            <Code>minimum_should_match: &quot;75%&quot;</Code>{" "}sits between
+                            the two — most of the terms, not all of them — which is usually
+                            the honest reading of a multi-word search.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="multi_match: one query, several fields">
-                    <CodeBlock code={SHOULD_TS} lang="ts" />
-                    <CodeBlock code={MULTI_TS} lang="ts" />
-                    <CodeBlock code={MULTI_CURL} lang="bash" />
+                <DocSection title="multi_match: searching several fields">
                     <p>
-                        <Term>One <Code>match</Code> reads one field.</Term>{" "}The text a
-                        reader types could belong to any of three: the title, the overview,
-                        or the tagline. X is the honest long form of that — a{" "}
-                        <Code>bool.should</Code> with one <Code>match</Code>{" "}per field, the
-                        title boosted. Y is <Code>multi_match</Code>, which expands into
-                        exactly that internally.
+                        A reader typing into one box has no idea which field their words
+                        live in: <em>dark knight</em>{" "}could be a title, a phrase in a plot
+                        summary, or a tagline. <Code>multi_match</Code>{" "}runs one piece of
+                        text against several fields at once and lets you say how much each
+                        field is worth. It is the query cineverse&apos;s search endpoint
+                        actually sends, and it replaces a shape that is easy to write by
+                        hand and easy to get wrong.
                     </p>
                     <p>
-                        <Term>Y wins on the things that go wrong later.</Term>{" "}The query
-                        text is written once instead of three times — in X it is a variable
-                        repeated three times, and the day someone edits two of the three is
-                        the day the search goes subtly wrong. The boosts sit in the field
-                        list rather than in three separate clauses, and switching how the
-                        fields combine is one line. X stays useful when the fields need{" "}
-                        <em>different</em>{" "}text or different query types, which is a
-                        different requirement, not this one.
+                        <Term>Without multi_match — three match queries combined
+                        manually:</Term>{" "}one clause per field inside a{" "}
+                        <Code>bool.should</Code>, with the title boosted so a title hit
+                        outweighs the others.
                     </p>
+                    <CodeBlock code={MANUAL_FIELDS_NODE} lang="ts" />
+                    <p>The same request as curl, with the text spelled out three times:</p>
+                    <CodeBlock code={MANUAL_FIELDS_CURL} lang="bash" />
                     <p>
-                        <Term>Component by component.</Term> <Code>query</Code>{" "}is the raw
-                        user text, unescaped and untouched. <Code>fields</Code>{" "}is where to
-                        look, with equal weight unless you say otherwise.{" "}
-                        <Code>^3</Code> is a boost: a hit in <Code>title</Code>{" "}scores three
-                        times what the same hit scores elsewhere. That number is the
-                        sentence &ldquo;the title matters most&rdquo; written as ranking —
-                        the film <em>titled</em>{" "}Dark Knight must beat the one whose plot
-                        summary mentions it, and without the boost it might not.
+                        <Term>The same search with multi_match:</Term>{" "}one clause, the text
+                        written once, and the boost moved into the field list.
+                    </p>
+                    <CodeBlock code={MULTI_MATCH_NODE} lang="ts" />
+                    <p>And over the wire, where the whole query fits on two lines:</p>
+                    <CodeBlock code={MULTI_MATCH_CURL} lang="bash" />
+                    <p>
+                        <Term>The second form is the one to write.</Term>{" "}
+                        <Code>multi_match</Code>{" "}is shorthand: internally it expands into
+                        very nearly the manual query above, so nothing is lost — but the
+                        reader&apos;s text appears once instead of three times, and a
+                        repeated variable is a place for two of the three copies to drift
+                        apart during a later edit. The boosts live in one list instead of
+                        three separate clauses, and switching how the fields combine is one
+                        parameter rather than a rewrite. The manual form keeps its place for
+                        a different requirement — when the fields need{" "}
+                        <em>different</em>{" "}query text, or different query types — which is
+                        not what a single search box is.
+                    </p>
+
+                    <p>
+                        <Term>The parameters, one at a time.</Term>{" "}
+                        <Code>query</Code>{" "}is the raw text as typed, unescaped and
+                        untouched by the application — and it is analyzed once per field, by
+                        that field&apos;s own analyzer.
+                    </p>
+                    <CodeBlock code={PARAM_QUERY} lang="text" />
+                    <p>
+                        <Code>fields</Code>{" "}is where to look. Left plain, every field
+                        counts the same, and that is rarely what anyone means.
+                    </p>
+                    <CodeBlock code={PARAM_FIELDS} lang="text" />
+                    <p>
+                        The caret fixes it: <Code>^3</Code>{" "}multiplies the score that field
+                        produces, so the film <em>titled</em>{" "}Dark Knight beats the film
+                        whose plot summary mentions one.
+                    </p>
+                    <CodeBlock code={PARAM_BOOST} lang="text" />
+                    <p>
+                        Those three lines are cineverse&apos;s production query in{" "}
+                        <Code>movies.service.ts</Code>: the search box text,{" "}
+                        <Code>title</Code>, <Code>overview</Code> and{" "}
+                        <Code>tagline</Code>, and a title worth three times the rest.
                     </p>
 
                     <Callout severity="note" label="note · one string, different terms per field">
                         <p>
-                            The same text is analyzed once per field, by that field&apos;s
-                            analyzer. In cineverse <Code>title</Code> and{" "}
-                            <Code>overview</Code> are <Code>english</Code> while{" "}
-                            <Code>tagline</Code> is <Code>standard</Code>, so one string can
-                            become <Code>[&quot;rise&quot;]</Code> against two fields and{" "}
+                            In cineverse <Code>title</Code> and <Code>overview</Code>{" "}are{" "}
+                            <Code>english</Code> while <Code>tagline</Code> is{" "}
+                            <Code>standard</Code>, so a single query string can become{" "}
+                            <Code>[&quot;rise&quot;]</Code>{" "}against two fields and{" "}
                             <Code>[&quot;rises&quot;]</Code>{" "}against the third. Nothing is
-                            wrong when that happens — but it explains a field that stubbornly
-                            fails to match.
+                            broken when that happens — but it is the explanation for a field
+                            that stubbornly refuses to match while its neighbours do.
                         </p>
                     </Callout>
 
-                    <Callout severity="tip" label="tip · write the text once">
+                    <Callout severity="tip" label="tip · write the reader's text once">
                         <p>
-                            Every duplicated occurrence of the user&apos;s input in a query
-                            builder is a place for them to drift apart.{" "}
-                            <Code>multi_match</Code>{" "}is the shorthand that removes the
-                            duplication, and it is what{" "}
-                            <Code>movies.service.ts</Code>{" "}sends in production.
+                            Every duplicated copy of the user&apos;s input inside a query
+                            builder is somewhere for the copies to disagree later.{" "}
+                            <Code>multi_match</Code>{" "}removes the duplication rather than
+                            documenting it, which is the real argument for using it even on
+                            two fields.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="how field scores merge: type">
-                    <CodeBlock code={TYPE_BEST_TS} lang="ts" />
-                    <CodeBlock code={TYPE_MOST_TS} lang="ts" />
-                    <CodeBlock code={TYPE_CURL} lang="bash" />
+                <DocSection title="merging field scores: type">
+                    <p>
+                        A document that matches in three fields has produced three scores,
+                        and the response shows one. The <Code>type</Code>{" "}parameter is the
+                        rule that turns several into one, and it is not a formatting detail:
+                        the same documents with the same field scores rank in a different
+                        order depending on which rule is in force. Knowing the two common
+                        ones is enough to explain most surprising rankings on a multi-field
+                        search.
+                    </p>
+                    <p>
+                        <Term>best_fields — the highest single field score wins:</Term>{" "}
+                        the document is judged by its strongest field, and the others are
+                        ignored. It is the default, so cineverse&apos;s query says nothing
+                        about it.
+                    </p>
+                    <CodeBlock code={TYPE_BEST_NODE} lang="ts" />
+                    <p>The same request as curl:</p>
+                    <CodeBlock code={TYPE_BEST_CURL} lang="bash" />
+                    <p>
+                        <Term>most_fields — the field scores are added up:</Term>{" "}a
+                        document that matches a little in every field accumulates more than
+                        one that matches strongly in a single field.
+                    </p>
+                    <CodeBlock code={TYPE_MOST_NODE} lang="ts" />
+                    <p>Over the wire it is the same request with one word changed:</p>
+                    <CodeBlock code={TYPE_MOST_CURL} lang="bash" />
+                    <p>
+                        With two documents the consequence is easy to see, and it is a
+                        reversal rather than a nudge.
+                    </p>
                     <CodeBlock code={TYPE_FLIP} lang="text" />
                     <p>
-                        <Term>
-                            <Code>type</Code>{" "}decides what happens to the per-field scores
-                            once they exist.
-                        </Term>{" "}
-                        <Code>best_fields</Code>{" "}— the default, and what cineverse uses —
-                        takes the <em>highest single field score</em>{" "}as the final score. A
-                        document that matches one field strongly wins.{" "}
-                        <Code>most_fields</Code> <em>sums</em>{" "}them instead, so a document
-                        that matches a little everywhere wins.
+                        Movie A scores 9.0 in the title and nothing elsewhere; Movie B
+                        scores 4.0, 3.0 and 3.0. Under <Code>best_fields</Code>{" "}A is first
+                        with 9.0 against B&apos;s 4.0; under <Code>most_fields</Code>{" "}B is
+                        first with 10.0 against A&apos;s 9.0. Same data, same query text,
+                        opposite winner.
                     </p>
                     <p>
-                        <Term>The table is the whole argument.</Term>{" "}Movie A scores 9.0 in
-                        the title and nothing elsewhere; Movie B scores 4.0, 3.0 and 3.0.
-                        Under <Code>best_fields</Code>{" "}A is first at 9.0 against B&apos;s
-                        4.0. Under <Code>most_fields</Code>{" "}B is first at 10.0 against
-                        A&apos;s 9.0. Same documents, same field scores, opposite winner —
-                        which is why this parameter is not a detail.
-                    </p>
-                    <p>
-                        <Term>So pick by where the answer lives.</Term>{" "}If the thing the
-                        reader is looking for is named in <em>one</em> field —{" "}
-                        a movie title — <Code>best_fields</Code>{" "}is right, and a title match
-                        should not be diluted by an unrelated word in a long overview. If
-                        the same text is indexed several ways —{" "}
-                        <Code>title</Code>, <Code>title.english</Code>,{" "}
-                        <Code>title.ngram</Code> — <Code>most_fields</Code>{" "}is right, because
-                        agreement across those fields is evidence.
+                        <Term>Which to use follows from where the answer lives.</Term>{" "}When
+                        the thing the reader is looking for is named in <em>one</em>{" "}field —
+                        a movie title — <Code>best_fields</Code>{" "}is right, and it is the
+                        right default here: a strong title match should not be diluted by an
+                        unrelated word in a long overview. When the same text is indexed
+                        several ways — <Code>title</Code>, <Code>title.english</Code>,{" "}
+                        <Code>title.ngram</Code>{" "}— <Code>most_fields</Code>{" "}is right,
+                        because agreement across those fields is real evidence.{" "}
+                        <Code>cross_fields</Code>{" "}is the third: it treats the listed fields
+                        as one virtual field, which is how <Code>first_name</Code>{" "}and{" "}
+                        <Code>last_name</Code>{" "}together match a full name that neither
+                        field contains on its own.
                     </p>
 
-                    <Callout severity="tip" label="tip · best_fields is the right default here">
+                    <Callout severity="tip" label="tip · leaving type out is a decision">
                         <p>
-                            Leaving <Code>type</Code> out gives you{" "}
-                            <Code>best_fields</Code>, which is the correct behaviour for a
-                            movie search box — so cineverse&apos;s query says nothing about
-                            it. Write it explicitly the day you have a reason to; do not
-                            change it because <Code>most_fields</Code>{" "}sounds more thorough.
+                            Omitting <Code>type</Code>{" "}gives <Code>best_fields</Code>, which
+                            is the correct behaviour for a movie search box — so the absence
+                            of the parameter in production code is deliberate, not an
+                            oversight. Write it explicitly the day there is a reason to, and
+                            do not switch to <Code>most_fields</Code>{" "}because it sounds more
+                            thorough.
                         </p>
                     </Callout>
 
-                    <Callout severity="note" label="note · cross_fields, for completeness">
+                    <Callout severity="note" label="note · boosts are not part of the merge">
                         <p>
-                            The third one you will meet is <Code>cross_fields</Code>, which
-                            treats the listed fields as one virtual field: it is how{" "}
-                            <Code>first_name</Code> and <Code>last_name</Code>{" "}together
-                            match <Code>&quot;john smith&quot;</Code>, where no single field
-                            contains both terms. Recognising it is enough — a movie title
-                            search does not need it.
+                            <Code>^3</Code>{" "}applies to the field&apos;s own score before{" "}
+                            <Code>type</Code>{" "}ever sees it. The two knobs are independent:
+                            the boost says how much a field is worth, and{" "}
+                            <Code>type</Code>{" "}says what to do with the several values that
+                            result.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="fuzziness: typo tolerance">
-                    <CodeBlock code={FUZZY_TS} lang="ts" />
-                    <CodeBlock code={FUZZY_CURL} lang="bash" />
-                    <CodeBlock code={FUZZY_AUTO} lang="text" />
+                <DocSection title="fuzziness: surviving typos">
                     <p>
-                        <Term>Without fuzziness a typo is simply not a term.</Term>{" "}X asks
-                        for <Code>knihgt</Code>, the index contains{" "}
-                        <Code>knight</Code>, and nothing matches — zero hits for a query the
-                        reader considers correct. Y adds one parameter and the film comes
-                        back.
+                        Term lookup is exact, so a single mistyped letter means the reader
+                        asked for a word that is in no index anywhere and gets an empty
+                        page. <Code>fuzziness</Code>{" "}widens each term to the words that are
+                        nearly it, trading a little precision for tolerance. On a public
+                        search box that trade is almost always worth making, and knowing
+                        what it costs is what makes it a decision rather than a habit.
                     </p>
                     <p>
-                        <Term>
-                            The mechanism is Levenshtein edit distance: how many
-                            single-character edits turn one term into the other.
-                        </Term>{" "}
-                        Insert, delete, substitute, and — because it is the typo everyone
-                        actually makes — swap two adjacent characters.{" "}
-                        <Code>knihgt</Code> to <Code>knight</Code>{" "}is one swap, so it is
-                        found at distance 1.
+                        <Term>Without fuzziness — the typo is not a term:</Term>{" "}
+                        <Code>knihgt</Code>{" "}is looked up as sent, nothing in the index
+                        equals it, and the response is a valid, empty one.
                     </p>
+                    <CodeBlock code={NO_FUZZ_NODE} lang="ts" />
+                    <p>The same request as curl, with the answer it returns:</p>
+                    <CodeBlock code={NO_FUZZ_CURL} lang="bash" />
                     <p>
-                        <Term>
-                            <Code>AUTO</Code>{" "}exists because a fixed distance is wrong at
-                            some length.
-                        </Term>{" "}
-                        Allow 2 edits on a three-letter term and it matches most of the
-                        dictionary; allow 1 on a fifteen-letter term and a small typo still
-                        fails. <Code>AUTO</Code>{" "}scales — 0 edits up to 2 characters, 1 up to
-                        5, 2 beyond — and gets it right at every length, which is why you can
-                        stop thinking about the numbers.
+                        <Term>With fuzziness AUTO — the typo is forgiven:</Term>{" "}one
+                        parameter added to the production <Code>multi_match</Code>, and the
+                        film comes back.
                     </p>
+                    <CodeBlock code={FUZZ_NODE} lang="ts" />
+                    <p>Over the wire, exactly where it sits in the real query:</p>
+                    <CodeBlock code={FUZZ_CURL} lang="bash" />
                     <p>
-                        <Term>Fuzziness applies after analysis, not to your raw string.</Term>{" "}
-                        The text is analyzed into terms first, and each term is then expanded
-                        to its near neighbours — so on an <Code>english</Code>{" "}field the
-                        candidate is compared against stems, not against the words you typed.
+                        The second form is what cineverse sends. Nothing about the fields or
+                        the boosts changes — <Code>fuzziness</Code>{" "}is a sibling of{" "}
+                        <Code>query</Code>{" "}and <Code>fields</Code>, applied to every term
+                        the query produces.
                     </p>
 
-                    <Callout severity="trap" label="trap · fuzziness buys hits and spends precision">
+                    <p>
+                        <Term>How it measures closeness.</Term>{" "}The rule is Levenshtein
+                        edit distance: the number of single-character edits that turn one
+                        term into another, counting the transposition of two adjacent
+                        letters as one edit — which is the typo people actually make.
+                    </p>
+                    <CodeBlock code={FUZZ_DISTANCE} lang="text" />
+                    <p>
+                        Note the last line: fuzziness is applied <em>after</em>{" "}analysis. The
+                        text is analyzed into terms first, and each of those terms is then
+                        expanded to its neighbours, so on an <Code>english</Code>{" "}field the
+                        comparison happens against stems rather than against the words as
+                        typed.
+                    </p>
+                    <p>
+                        <Term>Why AUTO rather than a number.</Term>{" "}
+                        <Code>fuzziness</Code>{" "}accepts an integer, and any integer is wrong
+                        at some word length.
+                    </p>
+                    <CodeBlock code={FUZZ_AUTO} lang="text" />
+                    <p>
+                        <Code>AUTO</Code>{" "}makes that decision per term instead of once for
+                        the whole query, and gets it right at every length — which is why
+                        the practical advice is to write <Code>AUTO</Code>{" "}and stop thinking
+                        about the numbers.
+                    </p>
+                    <p>
+                        <Term>What it costs.</Term>{" "}Each fuzzy term becomes many candidate
+                        term lookups rather than one, and that is visible on a large index
+                        with several fuzzy fields. Precision pays too:{" "}
+                        <Code>MARS</Code>{" "}and <Code>WARS</Code>{" "}are one substitution apart,
+                        so a search for Mars can return <em>Star Wars</em>. For a movie
+                        search bar that is the right trade — an empty page is worse than an
+                        extra result — and it is the wrong one for a field meant for exact
+                        lookup.
+                    </p>
+
+                    <Callout severity="trap" label="trap · tolerance runs in both directions">
                         <p>
-                            Each fuzzy term becomes many candidate term lookups instead of
-                            one, so the query costs more — noticeable on a large index with
-                            several fuzzy fields. And the tolerance cuts both ways:{" "}
-                            <Code>MARS</Code> matches <Code>WARS</Code> at distance 1, so{" "}
-                            <em>Star Wars</em>{" "}answers a search for Mars. For a movie search
-                            bar that is the right trade — an empty result is worse than an
-                            extra one — but it is a trade, not a free upgrade, and it is the
-                            wrong one for an exact-lookup field.
+                            Fuzziness cannot tell a typo from a different real word, because
+                            to the engine they are the same thing: a term one edit away. The
+                            symptom is a plausible but unrelated film near the top of a
+                            correctly spelled search, and the cause is a distance that was
+                            granted to the whole query rather than to the terms that needed
+                            it.
                         </p>
                     </Callout>
 
                     <Callout severity="tip" label="tip · AUTO, never a number">
                         <p>
-                            <Code>fuzziness: 2</Code>{" "}is a decision made without knowing the
-                            term it will be applied to. <Code>fuzziness: &quot;AUTO&quot;</Code>{" "}
-                            makes that decision per term, correctly, for free.
+                            <Code>fuzziness: 2</Code>{" "}is a decision taken without knowing
+                            the term it will apply to.{" "}
+                            <Code>fuzziness: &quot;AUTO&quot;</Code>{" "}takes the same decision
+                            per term, correctly, for nothing.
                         </p>
                     </Callout>
 
-                    <Callout severity="note" label="note · saying it in english">
+                    <Callout severity="note" label="note · fuzzy, the word">
                         <p>
-                            <em>Fuzzy</em> means blurry, out of focus, imprecise —{" "}
-                            <em>fuzzy matching</em>{" "}is matching where &ldquo;close
-                            enough&rdquo; counts, as opposed to <em>exact match</em>. It is
-                            the same idea as the fuzzy search in an editor, where{" "}
-                            <Code>Ctrl+P</Code> and <Code>movserv</Code> find{" "}
+                            In everyday English <em>fuzzy</em>{" "}means blurry, out of focus,
+                            imprecise. <em>Fuzzy matching</em>{" "}is therefore matching where
+                            close enough counts, as opposed to an <em>exact match</em>{" "}— the
+                            same idea as the fuzzy search in an editor, where{" "}
+                            <Code>Ctrl+P</Code> and <Code>movserv</Code>{" "}find{" "}
                             <Code>movies.service.ts</Code>. The sentence to have ready:
                             &ldquo;we made the search fuzzy so typos don&apos;t return empty
                             results&rdquo;.
@@ -988,112 +1144,180 @@ export function SearchQueriesDocs() {
             <PartHeading kicker="part 2">Term-Level Queries</PartHeading>
             <div>
                 <DocSection title="term & terms: exact lookup">
-                    <CodeBlock code={TERM_TS} lang="ts" />
+                    <p>
+                        The second family of queries skips analysis completely: the value
+                        you send is looked up exactly as sent. That is precisely right for
+                        fields that were never analyzed either — keywords, numbers, dates —
+                        because both sides stay raw and therefore meet. Every filter in a
+                        real search interface is built from this family, which is why it
+                        matters as much as <Code>match</Code>{" "}does.
+                    </p>
+                    <p>
+                        <Code>original_language</Code>{" "}is a plain <Code>keyword</Code>{" "}
+                        field, so a bare <Code>term</Code>{" "}is the whole query: the term in
+                        the index is <Code>en</Code>{" "}and the term being asked for is{" "}
+                        <Code>en</Code>.
+                    </p>
+                    <CodeBlock code={TERM_NODE} lang="ts" />
+                    <p>The same request as curl:</p>
                     <CodeBlock code={TERM_CURL} lang="bash" />
+                    <p>
+                        The genre filter looks for the same kind of value but has to travel
+                        differently, because <Code>genres</Code>{" "}is a <Code>nested</Code>{" "}
+                        field: the <Code>term</Code>{" "}clause is identical, wrapped in a{" "}
+                        <Code>nested</Code>{" "}clause naming the path it applies to.
+                    </p>
+                    <CodeBlock code={NESTED_TERM_NODE} lang="ts" />
+                    <p>And over the wire, wrapper and all:</p>
+                    <CodeBlock code={NESTED_TERM_CURL} lang="bash" />
+                    <p>
+                        Neither shape is a preference — the mapping decides both, and it is
+                        worth reading before writing a filter.
+                    </p>
                     <CodeBlock code={TERM_MAPPING} lang="text" />
                     <p>
-                        <Term>Term-level queries do not analyze anything.</Term>{" "}The value
-                        you send is looked up exactly as sent — which is precisely right for
-                        a <Code>keyword</Code>{" "}field, because that side was never analyzed
-                        either. Both halves stay raw, so both halves meet:{" "}
-                        <Code>&quot;en&quot;</Code> is the term in the index and{" "}
-                        <Code>&quot;en&quot;</Code>{" "}is the term you asked for.
+                        A <Code>keyword</Code>{" "}at the top level takes a bare{" "}
+                        <Code>term</Code>. A <Code>keyword</Code>{" "}inside a{" "}
+                        <Code>nested</Code>{" "}field takes the same <Code>term</Code>{" "}inside
+                        the wrapper, because its values live in hidden documents of their
+                        own. And a <Code>text</Code>{" "}field takes neither — that is the trap
+                        below.
                     </p>
-                    <p>
-                        <Term>The mapping tells you which form to send.</Term>{" "}
-                        <Code>original_language</Code> is a plain <Code>keyword</Code>, so a
-                        bare <Code>term</Code> is the query. <Code>genres</Code> is{" "}
-                        <Code>nested</Code> with a <Code>keyword</Code>{" "}inside it, so the
-                        identical <Code>term</Code> has to travel inside a{" "}
-                        <Code>nested</Code>{" "}wrapper naming its path — the requirement from
-                        Mappings &amp; Analysis, met here.
-                    </p>
-                    <CodeBlock code={TERMS_TS} lang="ts" />
-                    <CodeBlock code={TERMS_CURL} lang="bash" />
                     <p>
                         <Term>
                             <Code>terms</Code>{" "}is the same query against a list.
                         </Term>{" "}
-                        A document matches when the field holds any one of the values — SQL&apos;s{" "}
-                        <Code>IN</Code>, and the natural shape for a multi-select filter in
-                        a UI.
+                        A document matches when the field holds any one of the values,
+                        which is SQL&apos;s <Code>IN</Code>{" "}and the natural shape for a
+                        multi-select filter in a UI.
                     </p>
-                    <CodeBlock code={TERM_TRAP_TS} lang="ts" />
-                    <CodeBlock code={TERM_TRAP_CURL} lang="bash" />
+                    <CodeBlock code={TERMS_NODE} lang="ts" />
+                    <p>The same list, over the wire:</p>
+                    <CodeBlock code={TERMS_CURL} lang="bash" />
+                    <p>
+                        Three languages, one clause — and no scoring difference between
+                        them, since a term-level query only ever answers yes or no.
+                    </p>
 
-                    <Callout severity="trap" label="trap · term on a text field returns nothing">
+                    <p>
+                        <Term>term on a text field.</Term>{" "}The most common way to lose an
+                        afternoon with Elasticsearch is to point a <Code>term</Code>{" "}query
+                        at an analyzed field, because the request is valid and the answer is
+                        empty.
+                    </p>
+                    <p>
+                        <Term>The query — a full title string sent as one term:</Term>{" "}it
+                        looks like the obvious way to find a known film.
+                    </p>
+                    <CodeBlock code={TERM_ON_TEXT_NODE} lang="ts" />
+                    <p>Over the wire, with the response it produces:</p>
+                    <CodeBlock code={TERM_ON_TEXT_CURL} lang="bash" />
+                    <p>
+                        <Term>What the index actually contains:</Term>{" "}
+                        <Code>title</Code>{" "}is <Code>text</Code>, so it was analyzed into
+                        lowercase stems, and the stopword was dropped.
+                    </p>
+                    <CodeBlock code={TEXT_INDEX_CONTENTS} lang="text" />
+                    <p>
+                        The unanalyzed string meets nothing in that list, so the result is
+                        zero hits with <Code>200 OK</Code>{" "}and no explanation anywhere —
+                        the same silent failure family as a missing{" "}
+                        <Code>nested</Code>{" "}wrapper. The rule that avoids both:{" "}
+                        <Code>term</Code> and <Code>terms</Code>{" "}for{" "}
+                        <Code>keyword</Code>{" "}fields, numbers and dates;{" "}
+                        <Code>match</Code>{" "}for <Code>text</Code>.
+                    </p>
+
+                    <Callout severity="trap" label="trap · a valid query with an empty answer">
                         <p>
-                            X asks for the term <Code>&quot;The Dark Knight&quot;</Code> in a{" "}
-                            <Code>text</Code> field whose index contains{" "}
-                            <Code>[&quot;dark&quot;, &quot;knight&quot;]</Code>. The whole
-                            unanalyzed string is not one of those terms, so it matches
-                            nothing — <Code>200 OK</Code>, zero hits, no explanation. It is
-                            the same silent family as the missing <Code>nested</Code>{" "}
-                            wrapper: the query is valid, the answer is empty, and nothing
-                            points at the cause.
+                            Nothing about this failure looks like a failure: the status is{" "}
+                            <Code>200</Code>, the JSON is well formed, and{" "}
+                            <Code>hits</Code>{" "}is simply empty. It is usually found by
+                            accident, after the feature has shipped and someone reports that
+                            a filter &ldquo;never returns anything&rdquo;.
                         </p>
                     </Callout>
 
                     <Callout severity="tip" label="tip · which query for which type">
                         <p>
-                            <Code>term</Code> and <Code>terms</Code> for{" "}
-                            <Code>keyword</Code> fields, numbers and dates.{" "}
-                            <Code>match</Code> for <Code>text</Code>. Two sentences, and
-                            most of the zero-hit mysteries in a young project never happen.
+                            <Code>term</Code>/<Code>terms</Code> for{" "}
+                            <Code>keyword</Code>, numbers and dates.{" "}
+                            <Code>match</Code> for <Code>text</Code>. Two sentences, and most
+                            of the zero-hit mysteries in a young project never happen at all.
                         </p>
                     </Callout>
 
-                    <Callout severity="note" label="note · read the mapping first">
+                    <Callout severity="note" label="note · the value never tells you">
                         <p>
-                            Which of the two a field takes is not something you can tell
-                            from the value — <Code>&quot;Action&quot;</Code> and{" "}
-                            <Code>&quot;The Dark Knight&quot;</Code> are both strings.{" "}
-                            <Code>GET /movies</Code>{" "}answers it, and it is the first thing to
-                            look at when a filter behaves oddly.
+                            <Code>&quot;Action&quot;</Code> and{" "}
+                            <Code>&quot;The Dark Knight&quot;</Code>{" "}are both strings, so
+                            nothing about the data says which query it takes.{" "}
+                            <Code>GET /movies</Code>{" "}answers it, and reading the mapping is
+                            the first move whenever a filter behaves oddly.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="range">
-                    <CodeBlock code={RANGE_TS} lang="ts" />
-                    <CodeBlock code={RANGE_CURL} lang="bash" />
+                <DocSection title="range: numbers and dates">
                     <p>
-                        <Term>
-                            <Code>range</Code> takes four bounds — <Code>gte</Code>,{" "}
-                            <Code>gt</Code>, <Code>lte</Code>, <Code>lt</Code>{" "}— and you
-                            combine them freely.
-                        </Term>{" "}
-                        One bound is an open range, two is an interval, and the same query
-                        shape covers &ldquo;rated 7.5 or better&rdquo; and &ldquo;released
-                        in 2020&rdquo;. cineverse&apos;s year filter is the second: a{" "}
-                        <Code>gte</Code> on the first of January and an <Code>lte</Code>{" "}on
-                        the thirty-first of December, built from the year with template
-                        strings.
+                        <Code>range</Code>{" "}is the comparison query: greater than, less
+                        than, and the intervals built from them. It is how thresholds and
+                        time windows are expressed — &ldquo;rated 7.5 or better&rdquo;,
+                        &ldquo;released in 2020&rdquo;, &ldquo;added in the last month&rdquo;
+                        — and two of cineverse&apos;s production filters are exactly this
+                        query. On dates it can also do arithmetic itself, which removes a
+                        surprising amount of application code.
                     </p>
-                    <CodeBlock code={RANGE_DATES} lang="text" />
+                    <p>
+                        The four bounds are <Code>gte</Code>, <Code>gt</Code>,{" "}
+                        <Code>lte</Code> and <Code>lt</Code>, and they combine freely: one
+                        bound is an open range, two make an interval. The rating filter uses
+                        a single one.
+                    </p>
+                    <CodeBlock code={RANGE_RATING_NODE} lang="ts" />
+                    <p>The same threshold as curl:</p>
+                    <CodeBlock code={RANGE_RATING_CURL} lang="bash" />
+                    <p>
+                        The year filter uses two, because a year on a{" "}
+                        <Code>date</Code>{" "}field is an interval rather than a value —
+                        cineverse builds both ends from the year with template strings.
+                    </p>
+                    <CodeBlock code={RANGE_YEAR_NODE} lang="ts" />
+                    <p>With the year filled in, that is what reaches the cluster:</p>
+                    <CodeBlock code={RANGE_YEAR_CURL} lang="bash" />
+                    <p>
+                        Everything from the first of January to the thirty-first of
+                        December, inclusive at both ends.
+                    </p>
                     <p>
                         <Term>On a date field the bounds understand date math.</Term>{" "}
-                        <Code>now-1y</Code>, <Code>now-30d</Code> and{" "}
-                        <Code>now/d</Code>{" "}are resolved by Elasticsearch at query time, which
-                        is what &ldquo;recently added&rdquo; and &ldquo;this
-                        week&rdquo; features are made of — no dates computed in the
-                        application, nothing to get wrong about time zones or month lengths.
+                        Elasticsearch resolves these expressions itself, at query time,
+                        against its own clock.
+                    </p>
+                    <CodeBlock code={DATE_MATH} lang="text" />
+                    <p>
+                        That is what &ldquo;recently added&rdquo; and &ldquo;this
+                        week&rdquo; features are made of, with no dates computed in the
+                        application and nothing to get wrong about time zones or the length
+                        of a month.
                     </p>
                     <p>
-                        <Term>A bare year works too, and expands.</Term>{" "}
-                        <Code>{`{ "gte": "2020", "lte": "2020" }`}</Code>{" "}is read against the
-                        field&apos;s date format and covers the whole year, so the filter
-                        fits on one line. Both forms are correct; cineverse keeps the
-                        explicit interval, which says what it means without knowing the
-                        expansion rules.
+                        Dates also expand: a bare year is read against the field&apos;s date
+                        format and covers the whole of it.
+                    </p>
+                    <CodeBlock code={BARE_YEAR} lang="text" />
+                    <p>
+                        Both versions of the year filter are correct. Production keeps the
+                        explicit interval, which says what it means to a reader who does not
+                        know the expansion rules.
                     </p>
 
                     <Callout severity="tip" label="tip · date math instead of computed dates">
                         <p>
-                            <Code>&quot;now-30d&quot;</Code>{" "}is a string in the query;
-                            computing that date in the application means a clock, a time
-                            zone and a serialisation format, all of which can disagree with
-                            the cluster. Let Elasticsearch do arithmetic on its own idea of
+                            <Code>&quot;now-30d&quot;</Code>{" "}is just a string in the query;
+                            computing that date in the application means a clock, a time zone
+                            and a serialisation format, each of which can disagree with the
+                            cluster. Let Elasticsearch do arithmetic against its own idea of
                             now.
                         </p>
                     </Callout>
@@ -1109,42 +1333,58 @@ export function SearchQueriesDocs() {
                     </Callout>
                 </DocSection>
 
-                <DocSection title="exists and the null surprise">
-                    <CodeBlock code={EXISTS_TS} lang="ts" />
-                    <CodeBlock code={EXISTS_CURL} lang="bash" />
-                    <CodeBlock code={EXISTS_TABLE} lang="text" />
+                <DocSection title="exists: presence, not value">
                     <p>
-                        <Term>
-                            <Code>exists</Code>{" "}asks one question: does this document have
-                            any indexed value under this field name?
-                        </Term>{" "}
-                        It never reads the value and cannot compare it — which makes it the
-                        query for &ldquo;movies that actually have a tagline&rdquo;, and the
-                        building block for the opposite, since there is no{" "}
-                        <Code>missing</Code> query: you negate <Code>exists</Code> inside{" "}
-                        <Code>bool.must_not</Code>.
+                        Sometimes the question is not what a field contains but whether it
+                        contains anything at all: movies that actually have a tagline,
+                        records still missing a poster. <Code>exists</Code>{" "}answers exactly
+                        that. What counts as &ldquo;nothing&rdquo; is decided by the index
+                        rather than by your JSON, and that is where the surprise lives for
+                        anyone arriving from a document database.
                     </p>
                     <p>
+                        The query names a field and nothing else — a document passes when at
+                        least one value was indexed under that name.
+                    </p>
+                    <CodeBlock code={EXISTS_NODE} lang="ts" />
+                    <p>The same question as curl:</p>
+                    <CodeBlock code={EXISTS_CURL} lang="bash" />
+                    <p>
+                        There is no <Code>missing</Code>{" "}query for the opposite. You negate
+                        this one inside <Code>bool.must_not</Code>, which is the standard
+                        way to express absence.
+                    </p>
+                    <CodeBlock code={MISSING_NODE} lang="ts" />
+                    <p>And the negated form over the wire:</p>
+                    <CodeBlock code={MISSING_CURL} lang="bash" />
+                    <p>
                         <Term>
-                            The surprise is what counts as &ldquo;no value&rdquo;.
+                            <Code>exists</Code>{" "}never reads the value.
                         </Term>{" "}
-                        <Code>null</Code>, an empty array, and a field that is not in the
-                        JSON at all <em>all fail</em> <Code>exists</Code>{" "}— because
+                        It cannot compare, it cannot test for emptiness — it asks only
+                        whether at least one indexed term sits under the field name. Which
+                        makes the following table the whole behaviour.
+                    </p>
+                    <CodeBlock code={EXISTS_TABLE} lang="text" />
+                    <p>
+                        <Term>The null surprise.</Term>{" "}
+                        <Code>null</Code>, an empty array, and a field that is absent from
+                        the JSON entirely all <em>fail</em>{" "}the query — because
                         Elasticsearch indexes terms, and all three produce none. From the
                         index&apos;s point of view they are one state, not three. An empty
-                        string, on the other hand, <em>passes</em>: <Code>&quot;&quot;</Code>{" "}
-                        is a value, it is indexed, and the field exists.
+                        string goes the other way and <em>passes</em>:{" "}
+                        <Code>&quot;&quot;</Code>{" "}is a value, it gets indexed, and the field
+                        therefore exists.
                     </p>
 
                     <Callout severity="trap" label="trap · null, [] and absent are one state">
                         <p>
                             So <Code>exists</Code>{" "}cannot answer &ldquo;which movies were
-                            given an explicit null?&rdquo; — that information does not
-                            survive indexing. If the distinction matters, index it as
-                            something: a boolean flag, or a sentinel value. And note the
-                            asymmetry that trips people up in tests:{" "}
-                            <Code>&quot;&quot;</Code> and <Code>null</Code>{" "}feel equally
-                            empty and behave in opposite ways.
+                            given an explicit null?&rdquo; — that distinction does not survive
+                            indexing. If it matters, index something: a boolean flag or a
+                            sentinel value. And note the asymmetry that catches people in
+                            tests — <Code>&quot;&quot;</Code> and <Code>null</Code>{" "}feel
+                            equally empty and behave in opposite ways.
                         </p>
                     </Callout>
 
@@ -1152,9 +1392,9 @@ export function SearchQueriesDocs() {
                         <p>
                             In CouchDB a document with <Code>tagline: null</Code>{" "}and one
                             without the key are two different documents, and a view can tell
-                            them apart. Push both through the sync pipeline and
-                            Elasticsearch flattens the difference away — the nulls simply
-                            vanish. Nothing is broken; the search layer just has a coarser
+                            them apart. Push both through the sync pipeline and Elasticsearch
+                            flattens the difference away — the nulls simply vanish from its
+                            view. Nothing is broken; the search layer just has a coarser
                             notion of absence than the store it mirrors.
                         </p>
                     </Callout>
@@ -1164,124 +1404,163 @@ export function SearchQueriesDocs() {
             {/* ---------- part 3 — putting clauses together ---------- */}
             <PartHeading kicker="part 3">Combining</PartHeading>
             <div>
-                <DocSection title="bool: the four clauses">
-                    <CodeBlock code={BOOL_TS} lang="ts" />
+                <DocSection title="bool: composing a real query">
+                    <p>
+                        Every query so far answers one question, and no interface asks only
+                        one: there is search text, a few filters, an exclusion, and a
+                        preference. <Code>bool</Code>{" "}is the clause that holds all of them
+                        together, and it is where a production query actually lives. Its
+                        four slots each mean something different, and reading a query
+                        correctly is mostly a matter of knowing which slot decides what.
+                    </p>
+                    <p>Those four slots, one line each:</p>
+                    <CodeBlock code={BOOL_SLOTS} lang="text" />
+                    <p>
+                        <Code>must</Code>{" "}is a requirement that participates in ranking;{" "}
+                        <Code>filter</Code>{" "}is a requirement that does not;{" "}
+                        <Code>must_not</Code>{" "}removes documents; and{" "}
+                        <Code>should</Code>{" "}expresses a preference. Cineverse uses the
+                        first two, which is the skeleton nearly every search endpoint ends
+                        up with.
+                    </p>
+                    <CodeBlock code={BOOL_SKELETON} lang="ts" />
+                    <p>
+                        Filling it in is easier to read when the clauses are built
+                        separately first — a search, a list of conditions, and the genre
+                        clause with its nested wrapper.
+                    </p>
+                    <CodeBlock code={BOOL_PARTS_NODE} lang="ts" />
+                    <p>
+                        Assembled, the query reads as one sentence: movies about the dark
+                        knight, released from 2008, rated 7 or better, not in French, with
+                        Action films preferred.
+                    </p>
+                    <CodeBlock code={BOOL_NODE} lang="ts" />
+                    <p>The whole thing over the wire, slot by slot:</p>
                     <CodeBlock code={BOOL_CURL} lang="bash" />
-                    <CodeBlock code={BOOL_CLAUSES} lang="text" />
                     <p>
-                        <Term>
-                            <Code>bool</Code>{" "}is the combiner, and every real query ends up
-                            inside one.
-                        </Term>{" "}
-                        A search box alone is a <Code>multi_match</Code>; a search box with
-                        filters, exclusions and preferences is a <Code>bool</Code>{" "}holding
-                        all of them. cineverse builds{" "}
-                        <Code>{`{ bool: { must, filter } }`}</Code>{" "}and adds clauses as the
-                        UI grows.
-                    </p>
-                    <p>
-                        <Term>Four slots, and each one answers a different question.</Term>{" "}
-                        <Code>must</Code>: it has to match, and it contributes to the score.{" "}
-                        <Code>filter</Code>: it has to match, and it does not.{" "}
-                        <Code>must_not</Code>: it must not match. <Code>should</Code>: it is
-                        optional, and matching raises the score. In the example above that
-                        reads as one sentence — movies about the dark knight, from 2008 or
-                        later, rated 7 or better, not in French, and Action films first.
-                    </p>
-                    <p>
-                        <Term>Which is the rule for reading any bool query.</Term>{" "}
+                        <Term>The rule for reading any bool query.</Term>{" "}
                         <Code>must</Code>, <Code>filter</Code> and <Code>must_not</Code>{" "}
-                        decide <em>who</em> is in the results; <Code>should</Code>{" "}— when it
-                        has neighbours — only decides <em>in what order</em>. Removing a{" "}
-                        <Code>should</Code>{" "}clause changes the ranking and not the result
-                        set.
+                        decide <em>who</em>{" "}is in the result set;{" "}
+                        <Code>should</Code>{" "}— when it has neighbours — only decides{" "}
+                        <em>in what order</em>. Deleting the <Code>should</Code>{" "}clause
+                        above changes the ranking and returns the same films.
                     </p>
 
                     <Callout severity="note" label="note · should is a slot, not a query">
                         <p>
-                            There is no top-level <Code>should</Code> query.{" "}
-                            <Code>match</Code>, <Code>term</Code> and{" "}
-                            <Code>range</Code> are query types you can send on their own;{" "}
-                            <Code>must</Code>, <Code>filter</Code>,{" "}
-                            <Code>must_not</Code> and <Code>should</Code>{" "}are the four keys
-                            of <Code>bool</Code>{" "}and mean nothing outside it.
+                            There is no top-level <Code>should</Code>{" "}query to send on its
+                            own. <Code>match</Code>, <Code>term</Code> and{" "}
+                            <Code>range</Code>{" "}are query types;{" "}
+                            <Code>must</Code>, <Code>filter</Code>, <Code>must_not</Code>{" "}
+                            and <Code>should</Code>{" "}are the four keys of{" "}
+                            <Code>bool</Code>{" "}and mean nothing outside it —{" "}
+                            <Code>bool</Code>{" "}is the combiner, and they are the slots it
+                            combines.
                         </p>
                     </Callout>
 
-                    <Callout severity="trap" label="trap · should changes meaning with its neighbours">
+                    <Callout severity="trap" label="trap · should has two behaviours">
                         <p>
-                            A <Code>bool</Code> with <em>only</em>{" "}
+                            A <Code>bool</Code> holding <em>only</em>{" "}
                             <Code>should</Code>{" "}clauses requires at least one of them to
-                            match — it behaves as an OR. Add a <Code>must</Code> or a{" "}
-                            <Code>filter</Code>{" "}beside it and the same clause suddenly
-                            requires nothing at all: it becomes a pure score bonus. One
-                            clause, two behaviours, decided by what sits next to it — which
-                            is why a genre &ldquo;preference&rdquo; can silently turn into a
-                            genre requirement when the rest of the query is emptied. Say what
-                            you mean with <Code>minimum_should_match</Code>.
+                            match, so it behaves as an OR. Put a <Code>must</Code> or a{" "}
+                            <Code>filter</Code>{" "}beside it and the identical clause suddenly
+                            requires nothing at all — it becomes a pure score bonus. One
+                            clause, two meanings, decided by its neighbours, which is how a
+                            genre preference silently turns into a genre requirement the day
+                            the rest of the query is emptied.
+                        </p>
+                        <CodeBlock code={SHOULD_BEHAVIOURS} lang="text" />
+                        <p className="mt-3">
+                            <Code>minimum_should_match</Code>{" "}removes the ambiguity by
+                            saying how many <Code>should</Code>{" "}clauses have to match,
+                            whatever else is in the query.
                         </p>
                     </Callout>
                 </DocSection>
 
                 <DocSection title="query context vs filter context">
-                    <CodeBlock code={CONTEXT_X_TS} lang="ts" />
-                    <CodeBlock code={CONTEXT_Y_TS} lang="ts" />
-                    <CodeBlock code={CONTEXT_CURL} lang="bash" />
                     <p>
-                        <Term>Both queries return the same movies.</Term>{" "}X puts the text
-                        search, the language term and the rating range in{" "}
-                        <Code>must</Code>; Y keeps the text in <Code>must</Code>{" "}and moves
-                        the other two into <Code>filter</Code>. Identical result set,
-                        different ranking and very different cost.
+                        <Code>must</Code> and <Code>filter</Code>{" "}both mean &ldquo;this has
+                        to match&rdquo;, and a query written entirely with one returns the
+                        same documents as the same query written with the other. The engine
+                        nonetheless treats them completely differently, and that difference
+                        governs scoring, caching and where every clause you write belongs.
+                        It is the single most useful thing to be able to explain about a
+                        production query.
                     </p>
                     <p>
-                        <Term>
-                            <Code>must</Code>{" "}is query context: every clause computes a
-                            score. <Code>filter</Code>{" "}is filter context: yes or no, and
-                            cacheable.
-                        </Term>{" "}
-                        In filter context Elasticsearch keeps the set of matching documents
-                        as a bitset and reuses it for the next query that asks the same
-                        thing — nothing to score, nothing to recompute.
+                        <Term>Everything in must — every condition is scored:</Term>{" "}the
+                        text search, the language and the rating threshold sit side by side
+                        as equals.
+                    </p>
+                    <CodeBlock code={ALL_MUST_NODE} lang="ts" />
+                    <p>Over the wire — three clauses, three scores to compute:</p>
+                    <CodeBlock code={ALL_MUST_CURL} lang="bash" />
+                    <p>
+                        <Term>Split between must and filter — the production shape:</Term>{" "}
+                        the reader&apos;s text stays in <Code>must</Code>{" "}and the two binary
+                        conditions move to <Code>filter</Code>.
+                    </p>
+                    <CodeBlock code={SPLIT_NODE} lang="ts" />
+                    <p>The same split as curl — one score, two filter clauses:</p>
+                    <CodeBlock code={SPLIT_CURL} lang="bash" />
+                    <p>
+                        <Term>Both return the same movies; only the second is right.</Term>{" "}
+                        <Code>must</Code>{" "}puts its clauses in <em>query context</em>, where
+                        every clause computes a relevance score that is folded into{" "}
+                        <Code>_score</Code>. <Code>filter</Code>{" "}puts them in{" "}
+                        <em>filter context</em>, where the only question is yes or no:
+                        scoring is skipped entirely, and the set of matching documents can be
+                        kept as a bitset and reused by the next query that asks the same
+                        thing.
                     </p>
                     <p>
-                        <Term>Which is why X is wrong even though it works.</Term>{" "}
-                        &ldquo;How relevantly is this movie in English?&rdquo; is not a
-                        question: the answer is yes or no, and feeding it into the score
-                        adds noise to the ranking, spends computation on a decision already
-                        made, and gives up the cache. Thousands of readers share{" "}
+                        <Term>Which is why the split is worth making.</Term>{" "}&ldquo;How
+                        relevantly is this movie in English?&rdquo; is not a question — the
+                        answer is yes or no, and feeding it into the score adds noise to the
+                        ranking, spends computation on a decision already taken, and gives up
+                        the cache. Thousands of readers share{" "}
                         <Code>language=en</Code> and <Code>rating&gt;=7</Code>{" "}while each
-                        types something different — in Y the shared parts become cached
-                        bitsets and only the text is scored fresh.
+                        types something different: in the split version the shared parts
+                        become cached bitsets and only the text is scored fresh, on every
+                        request.
                     </p>
-
-                    <Callout severity="tip" label="tip · the question that sorts must from filter">
-                        <p>
-                            Does this clause deserve to influence ranking? The
-                            reader&apos;s text does — <Code>must</Code>. Language, year,
-                            rating, genre are binary conditions and do not —{" "}
-                            <Code>filter</Code>. That is exactly the split in{" "}
-                            <Code>movies.service.ts</Code>, and it is the answer to
-                            &ldquo;why is your query built this way?&rdquo;.
-                        </p>
-                    </Callout>
+                    <p>
+                        <Term>The placement rule is one question.</Term>{" "}Does this clause
+                        deserve to influence ranking? The reader&apos;s text does —{" "}
+                        <Code>must</Code>. Language, year, rating and genre are binary
+                        conditions and do not — <Code>filter</Code>. That is exactly the
+                        split in <Code>movies.service.ts</Code>, and it is the answer to
+                        &ldquo;why is your query built this way?&rdquo;.
+                    </p>
 
                     <Callout severity="trap" label="trap · scoring a binary condition is ranking noise">
                         <p>
-                            A <Code>term</Code> in <Code>must</Code>{" "}contributes a score
-                            like any other clause, and that score varies with how common the
-                            value is — so a rare language quietly outranks a good title
-                            match. The symptom is a ranking nobody can explain from the
-                            search text, and the cause is a filter that was never a filter.
+                            A <Code>term</Code> in <Code>must</Code>{" "}contributes a score like
+                            any other clause, and that score varies with how common the value
+                            is — so a rare language can quietly outrank a good title match.
+                            The symptom is an order nobody can explain from the search text,
+                            and the cause is a filter that was never written as one.
+                        </p>
+                    </Callout>
+
+                    <Callout severity="tip" label="tip · the question that sorts must from filter">
+                        <p>
+                            Ask it clause by clause while building the query, not afterwards:
+                            anything the reader typed belongs in <Code>must</Code>, and
+                            anything the interface decided — a checkbox, a dropdown, a slider
+                            — belongs in <Code>filter</Code>.
                         </p>
                     </Callout>
 
                     <Callout severity="note" label="note · must_not is filter context too">
                         <p>
-                            Exclusions never score: there is no such thing as being
-                            relevantly not-French. <Code>must_not</Code>{" "}lives in filter
-                            context alongside <Code>filter</Code>, which is why moving an
-                            exclusion around a <Code>bool</Code>{" "}never changes the order of
+                            Exclusions never score: there is no such thing as being relevantly
+                            not-French. <Code>must_not</Code>{" "}lives in filter context
+                            alongside <Code>filter</Code>, which is why moving an exclusion
+                            around a <Code>bool</Code>{" "}never changes the order of the
                             results.
                         </p>
                     </Callout>
@@ -1292,31 +1571,47 @@ export function SearchQueriesDocs() {
             <PartHeading kicker="part 4">Paging &amp; Ordering</PartHeading>
             <div>
                 <DocSection title="pagination: from/size and the 10k wall">
-                    <CodeBlock code={PAGE_TS} lang="ts" />
+                    <p>
+                        Search results arrive ten at a time unless you ask for more, and{" "}
+                        <Code>from</Code>/<Code>size</Code>{" "}is how you ask. It is offset
+                        pagination — skip N, take M — which is stateless, trivial to drive
+                        from a page number, and the correct choice for an interface with
+                        numbered pages. It also has a cost that grows quietly with depth and
+                        then stops being quiet: at ten thousand it becomes a hard error.
+                    </p>
+                    <p>
+                        Cineverse turns a page number into an offset and passes the page size
+                        straight through.
+                    </p>
+                    <CodeBlock code={PAGE_NODE} lang="ts" />
+                    <p>Page 3 of 20 results, as it goes over the wire:</p>
                     <CodeBlock code={PAGE_CURL} lang="bash" />
-                    <CodeBlock code={PAGE_WALL} lang="text" />
                     <p>
-                        <Term>
-                            <Code>from</Code> skips and <Code>size</Code>{" "}takes.
-                        </Term>{" "}
-                        cineverse computes <Code>from</Code> as{" "}
-                        <Code>(page - 1) * limit</Code> and passes <Code>limit</Code> as{" "}
-                        <Code>size</Code>{" "}— stateless, trivial to build a page-number UI on,
-                        and exactly right for the first few pages a human will ever visit.
+                        Nothing is remembered between requests, which is what makes a
+                        bookmarked page-4 URL work.
                     </p>
                     <p>
-                        <Term>The cost is hidden and it grows with the offset.</Term>{" "}To
-                        return hits 10,000 to 10,020 every shard has to collect and sort its
-                        top 10,020 candidates, and then almost all of them are thrown away.
-                        Page 2 is cheap; page 500 is the same query doing five hundred times
-                        the sorting for the same twenty rows.
+                        <Term>The hidden cost is in what gets thrown away.</Term>{" "}To return
+                        hits 10,000 to 10,020, every shard has to collect and sort its top
+                        10,020 candidates so the coordinating node can discard the first
+                        10,000 of them.
+                    </p>
+                    <CodeBlock code={PAGE_COST} lang="text" />
+                    <p>
+                        Page 2 is cheap and page 500 is the same query doing five hundred
+                        times the sorting for the same twenty rows. Past the limit it is not
+                        slow but refused: <Code>from + size &gt; 10000</Code>{" "}returns a{" "}
+                        <Code>400</Code> reading{" "}
+                        <Code>Result window is too large</Code>, set by{" "}
+                        <Code>index.max_result_window</Code>.
                     </p>
                     <p>
-                        <Term>So there is a hard stop.</Term>{" "}
-                        <Code>from + size &gt; 10000</Code> is a{" "}
-                        <Code>400</Code> — <Code>Result window is too large</Code> — set by{" "}
-                        <Code>index.max_result_window</Code>. It is a guard rail, not a
-                        limitation to route around.
+                        <Term>In practice the wall is not a human problem.</Term>{" "}Nobody
+                        clicks page 500 — cap the pager and invite the reader to refine their
+                        search, which is what they were going to do anyway. The limit bites
+                        on a different job entirely: exports, syncs, and anything that has to
+                        process every matching document. That job has its own tool, which is
+                        the next section.
                     </p>
 
                     <Callout severity="danger" label="danger · raising max_result_window">
@@ -1330,54 +1625,93 @@ export function SearchQueriesDocs() {
                         </p>
                     </Callout>
 
-                    <Callout severity="note" label="note · nobody clicks page 500">
+                    <Callout severity="note" label="note · the limit counts from + size">
                         <p>
-                            For a human interface the wall is a non-problem: cap the pager
-                            and invite the reader to refine the search, which is what they
-                            were going to do anyway. The 10k limit only really bites on a
-                            different job — exporting, syncing, or processing every matching
-                            document — and that job has its own tool, next.
+                            It is the sum that is checked, not the offset — so{" "}
+                            <Code>from: 9990, size: 20</Code>{" "}already fails while{" "}
+                            <Code>from: 9990, size: 10</Code>{" "}is the last page that works.
+                            A pager that computes its last page from the total count has to
+                            respect the same arithmetic, or the final page 400s.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="search_after: cursor instead of offset">
-                    <CodeBlock code={AFTER_X_TS} lang="ts" />
-                    <CodeBlock code={AFTER_Y_TS} lang="ts" />
-                    <CodeBlock code={AFTER_CURL} lang="bash" />
-                    <CodeBlock code={AFTER_HITS} lang="json" />
+                <DocSection title="search_after: cursor pagination">
                     <p>
-                        <Term>X counts from the beginning; Y remembers where it stopped.</Term>{" "}
-                        The offset query collects sixty hits to show twenty. The cursor query
-                        sorts explicitly, sends no <Code>from</Code>, and reads the{" "}
-                        <Code>sort</Code> array that comes back on every hit —{" "}
-                        <Code>[7.8, 603692]</Code> — then hands it to the next request as{" "}
-                        <Code>search_after</Code>, meaning &ldquo;the next twenty after this
-                        position&rdquo;.
-                    </p>
-                    <CodeBlock code={AFTER_WALK_TS} lang="ts" />
-                    <p>
-                        <Term>The cost per page is constant.</Term>{" "}Elasticsearch seeks
-                        straight past the cursor instead of counting to it, so page 5,000 is
-                        as cheap as page 1 and the 10k wall never comes up. The loop above is
-                        the whole pattern: search, handle the batch, keep the last hit&apos;s{" "}
-                        <Code>sort</Code>, stop when a page comes back empty.
+                        When code rather than a person has to walk through every result, the
+                        10k wall is a real obstacle. <Code>search_after</Code>{" "}changes the
+                        question from &ldquo;skip the first N&rdquo; to &ldquo;continue after
+                        this position&rdquo;, which costs the same whether the position is
+                        page 2 or page 5,000. It is how exports, syncs and reindex jobs read
+                        a full result set.
                     </p>
                     <p>
-                        <Term>Two things become mandatory.</Term> An explicit{" "}
+                        <Term>Offset — collect and discard:</Term>{" "}page 3 asks the cluster
+                        to produce sixty ordered hits so twenty can be returned, and the
+                        number grows with every page.
+                    </p>
+                    <CodeBlock code={OFFSET_NODE} lang="ts" />
+                    <p>The same offset request as curl:</p>
+                    <CodeBlock code={OFFSET_CURL} lang="bash" />
+                    <p>
+                        <Term>Cursor — continue after the last position:</Term>{" "}the first
+                        page carries an explicit <Code>sort</Code>{" "}and no{" "}
+                        <Code>from</Code>{" "}at all.
+                    </p>
+                    <CodeBlock code={CURSOR_P1_NODE} lang="ts" />
+                    <p>Over the wire, the sort is the only addition:</p>
+                    <CodeBlock code={CURSOR_P1_CURL} lang="bash" />
+                    <p>
+                        Because the sort is explicit, every hit comes back carrying the
+                        values it sorted on — and that little array is the cursor.
+                    </p>
+                    <CodeBlock code={CURSOR_HITS} lang="json" />
+                    <p>
+                        Page 2 repeats the same sort and passes the last hit&apos;s{" "}
+                        <Code>sort</Code>{" "}array as <Code>search_after</Code>, meaning
+                        &ldquo;the next twenty after this position&rdquo;.
+                    </p>
+                    <CodeBlock code={CURSOR_P2_NODE} lang="ts" />
+                    <p>The cursor request as curl:</p>
+                    <CodeBlock code={CURSOR_P2_CURL} lang="bash" />
+                    <p>
+                        <Term>The cursor version is the one that scales.</Term>{" "}
+                        Elasticsearch seeks straight past the position instead of counting to
+                        it, so the cost per page is constant and the 10k limit never applies
+                        — it only ever governs <Code>from + size</Code>.
+                    </p>
+                    <p>
+                        Walking the whole index is that request in a loop: search, handle the
+                        batch, keep the last hit&apos;s <Code>sort</Code>{" "}as the next
+                        cursor, and stop when a page comes back empty.
+                    </p>
+                    <CodeBlock code={CURSOR_WALK_NODE} lang="ts" />
+                    <p>
+                        The first iteration sends <Code>search_after: undefined</Code>, which
+                        is simply page 1 — so the loop needs no special case for the start.
+                    </p>
+                    <p>
+                        <Term>Two things become mandatory.</Term>{" "}An explicit{" "}
                         <Code>sort</Code>, because the cursor <em>is</em>{" "}a list of sort
-                        values — and a unique tiebreaker as the last key, here{" "}
-                        <Code>tmdb_id</Code>. Without it, ties on{" "}
-                        <Code>vote_average</Code>{" "}leave the position ambiguous and the walk
-                        can skip documents or repeat them.
+                        values and there is nothing to continue after without one; and a
+                        unique tiebreaker as the last sort key — here{" "}
+                        <Code>tmdb_id</Code>{" "}— because ties make a position ambiguous.
+                    </p>
+                    <p>
+                        <Term>The trade is direction.</Term>{" "}
+                        <Code>search_after</Code>{" "}goes forward only: there is no jumping to
+                        page 47, because reaching it means walking there. So the split falls
+                        by caller — people clicking page numbers get{" "}
+                        <Code>from</Code>/<Code>size</Code>, and machines walking every
+                        document get <Code>search_after</Code>.
                     </p>
 
                     <Callout severity="danger" label="danger · a cursor without a unique tiebreaker">
                         <p>
                             Sort by <Code>vote_average</Code>{" "}alone across a hundred movies
                             rated exactly 7.8 and &ldquo;after 7.8&rdquo; does not identify a
-                            row. The walk continues, the counts look plausible, and the
-                            export quietly misses documents or writes some twice — with no
+                            row. The walk continues, the counts look plausible, and the export
+                            quietly misses documents or writes some of them twice — with no
                             error anywhere. Always end the sort with something unique per
                             document.
                         </p>
@@ -1385,110 +1719,145 @@ export function SearchQueriesDocs() {
 
                     <Callout severity="tip" label="tip · which one for which caller">
                         <p>
-                            <Code>search_after</Code>{" "}is forward-only: there is no jumping to
-                            page 47, because you would have to walk there. So split by
-                            caller — humans clicking page numbers get{" "}
-                            <Code>from</Code>/<Code>size</Code>, and machines walking the
-                            whole result set get <Code>search_after</Code>.
+                            Do not migrate a page-number UI to cursors: it cannot express what
+                            the interface needs, and the wall it avoids is one that interface
+                            will never reach. Add <Code>search_after</Code>{" "}beside the
+                            existing pagination, for the jobs that read everything.
                         </p>
                     </Callout>
                 </DocSection>
 
                 <DocSection title="sorting">
-                    <CodeBlock code={SORT_TS} lang="ts" />
-                    <CodeBlock code={SORT_CURL} lang="bash" />
                     <p>
-                        <Term>The default sort is <Code>_score</Code>{" "}descending, and
-                        adding <Code>sort</Code> replaces it.</Term>{" "}Several keys act as
-                        tiebreakers in order, exactly like SQL&apos;s{" "}
+                        Results come back ordered by relevance until you ask for something
+                        else, and asking replaces relevance rather than adjusting it. That is
+                        the whole of sorting in one sentence, and it is also the mistake:
+                        a sort added for a &ldquo;top rated&rdquo; toggle silently changes
+                        what the search box does. The other thing worth knowing is that
+                        sorting on the wrong field type is an error, and that error explains
+                        a mapping pattern from earlier.
+                    </p>
+                    <p>
+                        Several sort keys act as tiebreakers in order, exactly like SQL&apos;s{" "}
                         <Code>ORDER BY</Code>: rating first, and among equal ratings the
                         newest release.
                     </p>
+                    <CodeBlock code={SORT_NODE} lang="ts" />
+                    <p>The same two keys over the wire:</p>
+                    <CodeBlock code={SORT_CURL} lang="bash" />
                     <p>
-                        <Term>Which quietly throws relevance away.</Term>{" "}Sorted by rating,
-                        a 9.1 film that barely matches the word &ldquo;war&rdquo; in its
-                        overview outranks <em>War</em>{" "}itself at 7.0 — the search still
-                        chose the right documents, but the order no longer reflects the
-                        search at all. If both matter, sort by{" "}
-                        <Code>[&quot;_score&quot;, {`{ vote_average: "desc" }`}]</Code>, or
-                        leave the order to relevance and boost by rating instead.
+                        <Term>The silent replacement.</Term>{" "}Sorted by rating, a 9.1 film
+                        that barely mentions the word <em>war</em>{" "}in its overview now
+                        outranks <em>War</em>{" "}itself at 7.0. The search still chose the
+                        right documents — the order simply no longer reflects the search at
+                        all, and nobody files a bug for that; they just stop trusting the
+                        results.
                     </p>
                     <p>
-                        <Term>With a field sort, hits come back with{" "}
-                        <Code>&quot;_score&quot;: null</Code>.</Term>{" "}Nothing is broken —
-                        scoring was skipped because nothing asked for it, which is also a
-                        small saving.
+                        When both matter, put <Code>_score</Code>{" "}in the sort explicitly and
+                        let the field break ties, or leave the order to relevance and boost
+                        by rating instead.
                     </p>
-                    <CodeBlock code={SORT_TRAP_TS} lang="ts" />
-                    <CodeBlock code={SORT_TRAP_CURL} lang="bash" />
+                    <CodeBlock code={SORT_SCORE_NODE} lang="ts" />
+                    <p>
+                        One more detail follows from a field sort: hits come back with{" "}
+                        <Code>&quot;_score&quot;: null</Code>. Nothing is broken — scoring
+                        was skipped because nothing asked for it, which is also a small
+                        saving.
+                    </p>
+                    <p>
+                        <Term>The text trap.</Term>{" "}Sorting on an analyzed field is not a
+                        subtle failure like the others on this page — it is a loud one.
+                    </p>
+                    <CodeBlock code={SORT_TEXT_NODE} lang="ts" />
+                    <p>Over the wire, the cluster says exactly what is wrong:</p>
+                    <CodeBlock code={SORT_TEXT_CURL} lang="bash" />
+                    <p>
+                        The index holds terms, not values, so there is nothing to order by —
+                        and <em>this</em>{" "}error is the entire reason the{" "}
+                        <Code>title.raw</Code>{" "}keyword sub-field exists. Search the analyzed
+                        field, sort the keyword one.
+                    </p>
+                    <CodeBlock code={SORT_RAW_NODE} lang="ts" />
+                    <p>
+                        Same field, same document, two indexed forms — the multi-field
+                        pattern from Mappings &amp; Analysis, earning its place.
+                    </p>
 
                     <Callout severity="trap" label="trap · sorting silently replaces relevance">
                         <p>
                             The zero-hit traps at least look wrong. This one returns a full
                             page of plausible results in an order that has nothing to do with
-                            what the reader typed, and nobody files a bug — they just stop
-                            trusting the search. Whenever a <Code>sort</Code>{" "}is added to a
+                            what the reader typed. Whenever a <Code>sort</Code>{" "}is added to a
                             query that has a search box, decide explicitly where{" "}
                             <Code>_score</Code>{" "}goes.
                         </p>
                     </Callout>
 
-                    <Callout severity="note" label="note · the error that explains title.raw">
+                    <Callout severity="note" label="note · the error names its own fix">
                         <p>
-                            Sorting on a <Code>text</Code> field is a loud{" "}
-                            <Code>400</Code>: <Code>Text fields are not optimised for
-                            operations that require per-document field data</Code>, with the
-                            advice to use a keyword field instead. The index holds terms, not
-                            values, so there is nothing to order by — and that error is the
-                            entire reason for the multi-field pattern from Mappings &amp;
-                            Analysis: search <Code>title</Code>, sort{" "}
-                            <Code>title.raw</Code>.
+                            <Code>Text fields are not optimised for operations that require
+                            per-document field data ... use a keyword field instead</Code>{" "}
+                            is one of the more helpful messages in Elasticsearch: it names the
+                            cause and the remedy. Reading it as &ldquo;you meant{" "}
+                            <Code>title.raw</Code>&rdquo; turns a 400 into a one-word fix.
                         </p>
                     </Callout>
                 </DocSection>
             </div>
 
             {/* ---------- part 5 — why that order, and showing it ---------- */}
-            {/* Scoring first, then the feature that shows the reader what the
-                score was made of. Another section joins at the end of this div,
-                ahead of the english footer: one DocSection here, one
-                SECTION_SEVERITIES entry above, one rail card in page.tsx. */}
             <PartHeading kicker="part 5">Relevance</PartHeading>
             <div>
                 <DocSection title="what _score is: BM25">
-                    <CodeBlock code={BM25} lang="text" />
                     <p>
-                        <Term>
-                            BM25 is the default scoring function, and it has three inputs.
-                        </Term>{" "}
-                        Term frequency: the more often the term appears in this field, the
-                        higher. Inverse document frequency: the rarer the term is across the
-                        index, the more a match is worth — <Code>the</Code>{" "}matches
-                        everything and therefore decides nothing, while{" "}
-                        <Code>knight</Code>{" "}is rare enough to decide the whole ranking. And
-                        field length: the same match in a short field beats it in a long one.
+                        Every &ldquo;why is this film first?&rdquo; ends at the same place:
+                        BM25, the ranking function Elasticsearch scores with by default. It
+                        combines three measurements, and once those are familiar most
+                        rankings stop being mysterious. There is also an API that prints the
+                        arithmetic for a single document, which beats guessing at boosts.
                     </p>
                     <p>
-                        <Term>Those three answer most &ldquo;why is this first?&rdquo;
-                        questions.</Term> <em>War</em> as an entire title scores far above{" "}
-                        <Code>war</Code>{" "}buried in a three-hundred-word overview, because the
-                        term carries the whole short field in one case and is diluted in the
-                        other. Note that field length lives <em>inside</em>{" "}BM25 — it is not
-                        the <Code>^3</Code>{" "}boost, which multiplies on top of the finished
+                        The first input is how often the term appears in the field being
+                        searched.
+                    </p>
+                    <CodeBlock code={BM25_TF} lang="text" />
+                    <p>
+                        The second is how rare the term is across the whole index, which is
+                        what stops common words from deciding anything.
+                    </p>
+                    <CodeBlock code={BM25_IDF} lang="text" />
+                    <p>
+                        In a two-word search it is usually the rare term that fixes the
+                        order, and the common one barely participates.
+                    </p>
+                    <p>
+                        The third is the length of the field the match was found in.
+                    </p>
+                    <CodeBlock code={BM25_LENGTH} lang="text" />
+                    <p>
+                        That is why an exact title match beats a passing mention in a
+                        three-hundred-word overview even when both contain the term once.
+                        Field length lives <em>inside</em>{" "}BM25 and is separate from the{" "}
+                        <Code>^3</Code>{" "}boost, which multiplies on top of the finished
                         field score.
                     </p>
-                    <CodeBlock code={EXPLAIN_TS} lang="ts" />
+                    <p>
+                        <Term>_explain is the debugger of search.</Term>{" "}Give it one
+                        document id and the query, and it returns that document&apos;s score
+                        as a tree rather than a number.
+                    </p>
+                    <CodeBlock code={EXPLAIN_NODE} lang="ts" />
+                    <p>The same call as curl — note the id sits in the path:</p>
                     <CodeBlock code={EXPLAIN_CURL} lang="bash" />
+                    <p>The response is the score, taken apart term by term:</p>
                     <CodeBlock code={EXPLAIN_OUT} lang="json" />
                     <p>
-                        <Term>
-                            <Code>_explain</Code>{" "}is the debugger of search.
-                        </Term>{" "}
-                        Give it one document id and the query, and it returns the score as a
-                        tree: which terms matched, and what each contributed —{" "}
-                        <Code>freq</Code>, <Code>idf</Code>, and the length ratio{" "}
-                        <Code>dl / avgdl</Code>. It is unreadably verbose the first time and
-                        invaluable the first time a ranking makes no sense.
+                        Each branch names a term and what it contributed —{" "}
+                        <Code>freq</Code> for term frequency, <Code>idf</Code>{" "}for rarity,
+                        and the length ratio <Code>dl / avgdl</Code>. It is unreadably
+                        verbose the first time and invaluable the first time a ranking makes
+                        no sense.
                     </p>
 
                     <Callout severity="tip" label="tip · _explain instead of guessing">
@@ -1503,10 +1872,10 @@ export function SearchQueriesDocs() {
 
                     <Callout severity="note" label="note · scores are not comparable across queries">
                         <p>
-                            <Code>11.2</Code> for &ldquo;dark knight&rdquo; and{" "}
+                            <Code>11.2</Code>{" "}for &ldquo;dark knight&rdquo; and{" "}
                             <Code>3.1</Code>{" "}for &ldquo;matrix&rdquo; say nothing about which
                             result is better: IDF depends on the terms, so every query has its
-                            own scale. A <Code>_score</Code> orders documents{" "}
+                            own scale. A <Code>_score</Code>{" "}orders documents{" "}
                             <em>within one query</em>{" "}and means nothing outside it — never
                             build a threshold, a badge or a &ldquo;good match&rdquo; feature
                             on the absolute number.
@@ -1515,57 +1884,72 @@ export function SearchQueriesDocs() {
                 </DocSection>
 
                 <DocSection title="highlighting">
-                    <CodeBlock code={HIGHLIGHT_TS} lang="ts" />
+                    <p>
+                        A search interface does more than list results: it shows the reader
+                        why each one is there, by marking the words that matched.
+                        Elasticsearch does this itself, returning fragments of the matched
+                        fields with the matched terms wrapped in tags. It computes them from
+                        the same analyzed terms the search ran on, which is the part no
+                        frontend can reproduce.
+                    </p>
+                    <p>
+                        Highlighting is a sibling of <Code>query</Code>{" "}in the request body,
+                        listing the fields to mark up — here the production{" "}
+                        <Code>multi_match</Code>{" "}with two of its three fields highlighted.
+                    </p>
+                    <CodeBlock code={HIGHLIGHT_NODE} lang="ts" />
+                    <p>The same request over the wire:</p>
                     <CodeBlock code={HIGHLIGHT_CURL} lang="bash" />
+                    <p>
+                        Each hit then carries a <Code>highlight</Code>{" "}object beside its{" "}
+                        <Code>_source</Code>, which is still the untouched document.
+                    </p>
                     <CodeBlock code={HIGHLIGHT_OUT} lang="json" />
                     <p>
-                        <Term>
-                            Highlighting is the feature that shows the reader{" "}
-                            <em>why</em>{" "}a result matched.
-                        </Term>{" "}
-                        Add a <Code>highlight</Code>{" "}block naming the fields, and every hit
-                        comes back with a <Code>highlight</Code>{" "}object beside its{" "}
-                        <Code>_source</Code>: the matched text, with the matched terms
-                        wrapped in tags the interface can style.
-                    </p>
-                    <CodeBlock code={HIGHLIGHT_KNOBS} lang="text" />
-                    <p>
-                        <Term>Each field comes back as an array of fragments.</Term>{" "}
-                        A
-                        fragment is a window of roughly a hundred characters around a match,
-                        so a long <Code>overview</Code>{" "}yields excerpts rather than the
-                        whole text — <Code>fragment_size</Code>{" "}and{" "}
-                        <Code>number_of_fragments</Code>{" "}set how big and how many. A short
-                        field like <Code>title</Code>{" "}fits in one fragment and comes back
-                        whole, but it is still an array, so the frontend reads it the same
-                        way in both cases. The markup is <Code>&lt;em&gt;</Code>{" "}unless you
-                        say otherwise: <Code>pre_tags</Code>{" "}and <Code>post_tags</Code>{" "}
-                        swap in <Code>&lt;mark&gt;</Code>{" "}or a class of your own.
+                        Every field in that object maps to an <em>array</em>{" "}of fragments,
+                        including short fields that produce exactly one — so the frontend
+                        reads both cases the same way.
                     </p>
                     <p>
-                        <Term>
-                            The part you cannot rebuild in the frontend is that highlighting
-                            is analysis-aware.
-                        </Term>{" "}
-                        It marks up the terms the query actually matched, so a search for{" "}
-                        <Code>&quot;rises&quot;</Code>{" "}highlights the word{" "}
+                        <Term>The markup is yours to choose.</Term>{" "}
+                        <Code>&lt;em&gt;</Code>{" "}is the default;{" "}
+                        <Code>pre_tags</Code> and <Code>post_tags</Code>{" "}swap in{" "}
+                        <Code>&lt;mark&gt;</Code>{" "}or a tag carrying your own class.
+                    </p>
+                    <CodeBlock code={HIGHLIGHT_TAGS} lang="ts" />
+                    <p>
+                        <Term>Fragment size is too.</Term>{" "}A fragment is a window of
+                        roughly a hundred characters around a match, so a long{" "}
+                        <Code>overview</Code>{" "}comes back as excerpts rather than in full;{" "}
+                        <Code>fragment_size</Code> and <Code>number_of_fragments</Code>{" "}set
+                        how big each one is and how many you get.
+                    </p>
+                    <CodeBlock code={HIGHLIGHT_FRAGMENTS} lang="ts" />
+                    <p>
+                        A short field like <Code>title</Code>{" "}fits inside one fragment and
+                        comes back whole regardless.
+                    </p>
+                    <p>
+                        <Term>The part you cannot rebuild in the browser.</Term>{" "}
+                        Highlighting marks the terms the query actually matched, so a search
+                        for <Code>rises</Code>{" "}highlights the word{" "}
                         <Code>Rising</Code>{" "}in the text — both sides stemmed to the same
                         root, exactly as the match itself worked. An{" "}
                         <Code>indexOf</Code>{" "}or a regular expression over the raw{" "}
                         <Code>_source</Code>{" "}has no idea those two words are related, and
-                        every stem, stopword and analyzer detail would have to be
-                        reimplemented in the browser to get it right.
+                        getting it right in the frontend would mean reimplementing every
+                        stem, stopword and analyzer detail in JavaScript.
                     </p>
 
                     <Callout severity="note" label="note · a field only appears if it matched">
                         <p>
-                            The <Code>highlight</Code>{" "}object contains a key for a field
-                            only when that field contributed a match. A hit found through{" "}
-                            <Code>overview</Code>{" "}alone has no{" "}
-                            <Code>highlight.title</Code>, so the frontend renders the
-                            highlighted fragment when the key is there and falls back to the
-                            plain <Code>_source</Code>{" "}value when it is not — that fallback
-                            is not an edge case, it is the normal path for most fields.
+                            The <Code>highlight</Code>{" "}object contains a key for a field only
+                            when that field contributed a match. A hit found through{" "}
+                            <Code>overview</Code>{" "}alone has no <Code>highlight.title</Code>,
+                            so the frontend renders the fragment when the key is there and
+                            falls back to the plain <Code>_source</Code>{" "}value when it is not
+                            — that fallback is the normal path for most fields, not an edge
+                            case.
                         </p>
                     </Callout>
 

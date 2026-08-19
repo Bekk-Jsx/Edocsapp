@@ -49,10 +49,9 @@ export const TOPICS: ElasticsearchTopic[] = [
     // — Searching —
     {
         slug: "queries-structure", name: "Queries Structure", chapter: "searching",
-        summary: "The shape of a search request before any query type: what a query is sent as, what comes back, and the vocabulary the rest of the chapter uses.",
-        // No `parts` yet: the plan for this one is still to be decided, so the
-        // placeholder shows the badge and the blurb and nothing else — a `parts`
-        // list would be inventing a chapter plan the page does not have.
+        summary: "The anatomy of a search request: every slot a body can carry and the shape of each clause inside them — structure only, with generic field names.",
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/queries-structure/page.tsx.
     },
     {
         slug: "search-queries", name: "Search Queries", chapter: "searching",
