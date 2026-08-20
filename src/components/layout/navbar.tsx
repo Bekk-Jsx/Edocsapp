@@ -166,6 +166,23 @@ const PROJECT_ITEM_BASE =
 const PROJECT_ITEM_IDLE =
     "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]";
 
+// HOME NAV ONLY, by construction: this is the rail down the left of an item's
+// sub-rows, and sub-rows exist only for callers that pass `subItems` — which is
+// the home nav and nothing else. Every project nav renders exactly as before.
+//
+// 2px and rounded, like the accent bars in ui/doc-section and the summary rail,
+// rather than a 1px border: same visual language as every other grouping mark in
+// the app.
+//
+// The open/close animation comes from `inset-y-0` alone: the rail's height IS the
+// height of the collapsing grid item, which the 0fr -> 1fr transition already
+// interpolates, so the line retracts upwards with the rows and needs no animation
+// of its own. Deliberately NOT a scale-y-0/100 pair — `scale-*` sets the `scale`
+// property in Tailwind v4, which a `transform` transition does not cover, so that
+// version snapped instead of animating. Only the colour transitions here.
+const SUB_RAIL =
+    "pointer-events-none absolute inset-y-0 left-2 w-[2px] rounded-full transition-colors duration-200 ease-out motion-reduce:transition-none";
+
 // Expand/collapse affordance for an item that carries sub-rows. Sits absolutely
 // at the right edge of the row so the row's own <a>/<Link> keeps its exact
 // classes — including the full-width hover fill — and stays the element it was.
@@ -394,36 +411,52 @@ export default function Navbar({
                                             >
                                                 {/* One level only — these rows carry no children
                                                     of their own. The gap above lives on the
-                                                    wrapper: as a margin on the grid ITEM it
+                                                    outer wrapper: as a margin on the grid ITEM it
                                                     would feed the track's auto-minimum and
-                                                    leave a 2px sliver showing when closed. */}
-                                                <ul className="min-h-0 space-y-0.5 pl-3">
-                                                    {subs.map((sub) => {
-                                                        const here = norm(pathname);
-                                                        const target = norm(sub.href);
-                                                        // Current on the project's own page AND
-                                                        // on any page inside it, so the row
-                                                        // stays lit on /hooks-refresh/use-state.
-                                                        const subActive =
-                                                            here === target ||
-                                                            here.startsWith(`${target}/`);
-                                                        return (
-                                                            <li key={sub.href}>
-                                                                <Link
-                                                                    href={sub.href}
-                                                                    className={`${ITEM_BASE} ${subActive ? ITEM_ACTIVE : ITEM_IDLE}`}
-                                                                    aria-current={
-                                                                        subActive
-                                                                            ? "page"
-                                                                            : undefined
-                                                                    }
-                                                                >
-                                                                    {sub.label}
-                                                                </Link>
-                                                            </li>
-                                                        );
-                                                    })}
-                                                </ul>
+                                                    leave a 2px sliver showing when closed. That
+                                                    grid item is the div below — hence min-h-0 on
+                                                    it rather than on the <ul>. */}
+                                                <div className="relative min-h-0 pl-4">
+                                                    {/* One line down the left of a type's projects, so a
+                                                        glance says which rows hang off the row above.
+                                                        It takes the accent while that type is the active
+                                                        section, which is the other half of the grouping. */}
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className={`${SUB_RAIL} ${
+                                                            active
+                                                                ? "bg-[var(--accent)]"
+                                                                : "bg-[var(--border)]"
+                                                        }`}
+                                                    />
+                                                    <ul className="space-y-0.5">
+                                                        {subs.map((sub) => {
+                                                            const here = norm(pathname);
+                                                            const target = norm(sub.href);
+                                                            // Current on the project's own page AND
+                                                            // on any page inside it, so the row
+                                                            // stays lit on /hooks-refresh/use-state.
+                                                            const subActive =
+                                                                here === target ||
+                                                                here.startsWith(`${target}/`);
+                                                            return (
+                                                                <li key={sub.href}>
+                                                                    <Link
+                                                                        href={sub.href}
+                                                                        className={`${ITEM_BASE} ${subActive ? ITEM_ACTIVE : ITEM_IDLE}`}
+                                                                        aria-current={
+                                                                            subActive
+                                                                                ? "page"
+                                                                                : undefined
+                                                                        }
+                                                                    >
+                                                                        {sub.label}
+                                                                    </Link>
+                                                                </li>
+                                                            );
+                                                        })}
+                                                    </ul>
+                                                </div>
                                             </div>
                                         ) : null}
                                     </li>

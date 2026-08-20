@@ -54,6 +54,13 @@ export const TOPICS: ElasticsearchTopic[] = [
         // app/(projects)/elasticsearch/queries-structure/page.tsx.
     },
     {
+        slug: "settings-structure", name: "Settings Structure", chapter: "searching",
+        summary: "The anatomy of index settings: every element the settings block can carry, how to fill each one, where it is used, and what can and cannot be changed.",
+        // No `parts` yet: the page is a placeholder with the badge and the blurb
+        // and nothing else. A `parts` list would be inventing a chapter plan the
+        // page does not have — see queries-structure's history for the pattern.
+    },
+    {
         slug: "search-queries", name: "Search Queries", chapter: "searching",
         summary: "The query DSL: matching text, filtering on exact values, combining the two, and ordering what comes back.",
         // WRITTEN — no `parts`, and no placeholder badge: see
@@ -62,20 +69,14 @@ export const TOPICS: ElasticsearchTopic[] = [
     {
         slug: "aggregations", name: "Aggregations", chapter: "searching",
         summary: "Summarising the matches instead of listing them — counts, metrics, and the facets a search UI is built from.",
-        parts: [
-            "Terms and metrics aggregations",
-            "Nested and sub-aggregations",
-            "Faceted search (search + aggs in one request)",
-        ],
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/aggregations/page.tsx.
     },
     {
         slug: "search-ux", name: "Search UX", chapter: "searching",
         summary: "The features a search box is judged on — completing, correcting and broadening what the reader typed.",
-        parts: [
-            "Autocomplete (search_as_you_type)",
-            "Suggesters (did-you-mean)",
-            "Synonyms",
-        ],
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/search-ux/page.tsx.
     },
 
     // — Making It Work in an App —

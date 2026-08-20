@@ -64,7 +64,7 @@ const WHAT_ITS_FOR_TEXT = [
     },
     {
         title: "Good at / bad at",
-        href: "#what-it-s-good-at-bad-at",
+        href: "#what-it-s-good-at-what-it-s-bad-at",
         text: (
             <>
                 Relevance, aggregations and read scale; no transactions, and an

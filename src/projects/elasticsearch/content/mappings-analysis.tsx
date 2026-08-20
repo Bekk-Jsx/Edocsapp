@@ -49,8 +49,8 @@ export const SECTION_SEVERITIES: SectionSeverities = {
 // full-width rule) so the split is obvious while scrolling: this is a grouping,
 // not a section.
 //
-// Same file-local helper the introduction and documents-indices content files
-// each define for their own part dividers.
+// Same file-local helper the other elasticsearch content files each define for
+// their own part dividers.
 function PartHeading({
     kicker,
     children,
@@ -74,10 +74,14 @@ function PartHeading({
     );
 }
 
-// PROJECT RULE, applied throughout this file: every operation appears in both
-// forms — the Node client call and the curl that goes over the wire — as a pair
-// of fragments. Client first, except where the wire form is the canonical
-// document (creating an index with an analysis block).
+// PAGE RULES, applied to every section below.
+//
+// 1. A section opens with prose: the reader knows what it is about before any
+//    fragment appears.
+// 2. Every fragment is introduced by the sentence above it and read by the
+//    sentence below it where it has a result. Two fragments never touch.
+// 3. Every operation appears in both forms — the Node client call and the curl
+//    that goes over the wire — client first.
 
 const TYPES_TS = `// cineverse's movies mapping — the two lines that matter
 await esClient.indices.create({
@@ -257,31 +261,6 @@ const MEET = `index time   "The Dark Knight Rises"  ->  ... "rise" ...
 query time   "rising"                 ->      "rise"
                                               ^ same term`;
 
-const CUSTOM_CURL = `curl -X PUT 'localhost:9200/movies_v2' \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-  "settings": {
-    "analysis": {
-      "char_filter": {
-        "dash_strip": { "type": "mapping", "mappings": ["- => "] }
-      },
-      "analyzer": {
-        "movie_title": {
-          "type": "custom",
-          "char_filter": ["dash_strip"],
-          "tokenizer": "standard",
-          "filter": ["lowercase", "porter_stem"]
-        }
-      }
-    }
-  },
-  "mappings": {
-    "properties": {
-      "title": { "type": "text", "analyzer": "movie_title" }
-    }
-  }
-}'`;
-
 const CUSTOM_TS = `await esClient.indices.create({
     index: "movies_v2",
     settings: {
@@ -308,6 +287,31 @@ const CUSTOM_TS = `await esClient.indices.create({
         },
     },
 });`;
+
+const CUSTOM_CURL = `curl -X PUT 'localhost:9200/movies_v2' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "dash_strip": { "type": "mapping", "mappings": ["- => "] }
+      },
+      "analyzer": {
+        "movie_title": {
+          "type": "custom",
+          "char_filter": ["dash_strip"],
+          "tokenizer": "standard",
+          "filter": ["lowercase", "porter_stem"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": { "type": "text", "analyzer": "movie_title" }
+    }
+  }
+}'`;
 
 const CUSTOM_TEST_TS = `// index-scoped: the analyzer only exists inside movies_v2
 await esClient.indices.analyze({
@@ -475,24 +479,25 @@ const REINDEX_TS = `await esClient.reindex({
     source: { index: "movies_v1" },
     dest: { index: "movies_v2" },
     refresh: true,
-});
-
-// big index: hand it off and poll instead of waiting
-const { task } = await esClient.reindex({
-    source: { index: "movies_v1" },
-    dest: { index: "movies_v2" },
-    wait_for_completion: false,
-});
-await esClient.tasks.get({ task_id: task });`;
+});`;
 
 const REINDEX_CURL = `curl -X POST 'localhost:9200/_reindex' \\
   -H 'Content-Type: application/json' \\
   -d '{ "source": { "index": "movies_v1" },
-        "dest":   { "index": "movies_v2" } }'
+        "dest":   { "index": "movies_v2" } }'`;
 
-curl -X POST -d '{ ... }' \\
+const REINDEX_TASK_TS = `const { task } = await esClient.reindex({
+    source: { index: "movies_v1" },
+    dest: { index: "movies_v2" },
+    wait_for_completion: false,
+});
+
+await esClient.tasks.get({ task_id: task });`;
+
+const REINDEX_TASK_CURL = `curl -X POST -d '{ ... }' \\
 'localhost:9200/_reindex?wait_for_completion=false'
 # { "task": "oTUltX4IQMOUUVeiohTt8A:124" }
+
 curl 'localhost:9200/_tasks/oTUltX4IQMOUUVeiohTt8A:124'`;
 
 const REINDEX_REPLY = `{
@@ -517,23 +522,28 @@ export function MappingsAnalysisDocs() {
     return (
         <>
             {/* ---------- part 1 — the decision you make once ---------- */}
-            {/* No eyebrow label: the section title is the heading, and the
-                fragment sits directly under it, ahead of the explanation. */}
             <PartHeading kicker="part 1">Field Types</PartHeading>
             <div>
                 <DocSection title="text vs keyword">
-                    <CodeBlock code={TYPES_TS} lang="ts" />
-                    <CodeBlock code={TYPES_CURL} lang="bash" />
-                    <CodeBlock code={TERMS_SPLIT} lang="text" />
                     <p>
-                        <Term>
-                            This is the single most important decision in a mapping.
-                        </Term>{" "}
-                        Both types store a string and both come back identically in{" "}
-                        <Code>_source</Code>. They part ways at index time, in what they
-                        leave behind in the inverted index — and that is what every query
-                        against the field can then do.
+                        Choosing between <Code>text</Code> and <Code>keyword</Code>{" "}is the
+                        single most important decision in a mapping, and it cannot be
+                        revisited later without rebuilding the index. Both store a string
+                        and both come back identically in <Code>_source</Code>; they part
+                        ways at index time, in what they leave behind in the inverted index
+                        — which is what every query against the field can then do.
                     </p>
+                    <p>
+                        A mapping declares the choice per field. Cineverse makes it twice
+                        here — prose in one field, a category in the other.
+                    </p>
+                    <CodeBlock code={TYPES_TS} lang="ts" />
+                    <p>The same index creation over the wire:</p>
+                    <CodeBlock code={TYPES_CURL} lang="bash" />
+                    <p>
+                        What each type does to the same string is the whole difference:
+                    </p>
+                    <CodeBlock code={TERMS_SPLIT} lang="text" />
                     <p>
                         <Term>
                             A <Code>text</Code>{" "}field goes through an analyzer.
@@ -554,22 +564,28 @@ export function MappingsAnalysisDocs() {
                         what exact matching, filtering, sorting and aggregating need: one
                         value per field, comparable to another value.
                     </p>
+                    <p>
+                        Queried, the two behave as differently as they are indexed —
+                        including the case sensitivity that follows from not being
+                        analyzed.
+                    </p>
                     <CodeBlock code={DEMO_TS} lang="ts" />
+                    <p>The same three searches over the wire, with their hit counts:</p>
                     <CodeBlock code={DEMO_CURL} lang="bash" />
                     <p>
                         <Term>Each type is unable to do the other&apos;s job.</Term>{" "}You
                         cannot sort or aggregate on <Code>text</Code>: the index holds
                         terms, not values, and there is nothing sensible to order or count{" "}
-                        <em>by</em>{" "}— Elasticsearch refuses outright rather than guess. And
-                        you cannot match inside a <Code>keyword</Code>: there is one term
-                        and no parts to it, so &ldquo;knight&rdquo; will never find{" "}
+                        <em>by</em>{" "}— Elasticsearch refuses outright rather than guess.
+                        And you cannot match inside a <Code>keyword</Code>: there is one
+                        term and no parts to it, so &ldquo;knight&rdquo; will never find{" "}
                         <Code>&quot;The Dark Knight&quot;</Code>.
                     </p>
 
                     <Callout severity="trap" label="trap · case matters on a keyword">
                         <p>
-                            A <Code>term</Code>{" "}query is not analyzed either, so the string
-                            you send must equal the stored term byte for byte.{" "}
+                            A <Code>term</Code>{" "}query is not analyzed either, so the
+                            string you send must equal the stored term byte for byte.{" "}
                             <Code>&quot;released&quot;</Code> against a{" "}
                             <Code>keyword</Code> holding <Code>&quot;Released&quot;</Code>{" "}
                             is not a near miss — it is zero hits, with no error and nothing
@@ -591,27 +607,47 @@ export function MappingsAnalysisDocs() {
                 </DocSection>
 
                 <DocSection title="the .keyword sub-field">
+                    <p>
+                        The <Code>.keyword</Code>{" "}suffix is everywhere in Elasticsearch
+                        answers online, and it is not a convention or a feature of the{" "}
+                        <Code>keyword</Code>{" "}type — it is a path that exists in some
+                        mappings and not others. Knowing where it comes from tells you when
+                        to write it, when to leave it out, and what it costs.
+                    </p>
+                    <p>
+                        This is what dynamic mapping writes when a string arrives and
+                        nobody declared the field:
+                    </p>
                     <CodeBlock code={GUESSED} lang="json" />
-                    <CodeBlock code={SUBFIELD_PATHS} lang="text" />
                     <p>
                         <Term>
-                            Dynamic mapping cannot tell prose from a category, so it
-                            hedges.
+                            Dynamic mapping cannot tell prose from a category, so it hedges.
                         </Term>{" "}
-                        A string arrives, nobody declared the field, and there is no way to
-                        know whether the next value will be a plot summary or the word{" "}
-                        <Code>Released</Code>. So it indexes it as both, through a
-                        multi-field: <Code>text</Code> for the main field, with a{" "}
-                        <Code>keyword</Code>{" "}sub-field beside it.
+                        There is no way to know whether the next value will be a plot
+                        summary or the word <Code>Released</Code>, so it indexes the value
+                        as both, through a multi-field: <Code>text</Code>{" "}for the main
+                        field, with a <Code>keyword</Code>{" "}sub-field beside it.
                     </p>
                     <p>
-                        <Term>The value is indexed twice, into two structures.</Term>{" "}
-                        Query <Code>status</Code>{" "}and you are talking to the analyzed side;
-                        query <Code>status.keyword</Code>{" "}and you are talking to the exact
-                        side. Same value, same document, two entirely separate sets of
-                        terms.
+                        Which means the value is indexed twice, into two entirely separate
+                        sets of terms — and that the same field name behaves differently in
+                        a mapping you wrote yourself:
+                    </p>
+                    <CodeBlock code={SUBFIELD_PATHS} lang="text" />
+                    <p>
+                        <Term>The suffix is a path, not a type.</Term>{" "}It is not something
+                        a <Code>keyword</Code> field <em>has</em>. In an explicit mapping
+                        where <Code>status</Code> is itself a <Code>keyword</Code>, the
+                        exact terms live on the main field: you filter, sort and aggregate
+                        on plain <Code>status</Code>, and <Code>status.keyword</Code>{" "}does
+                        not exist at all — a query naming it silently finds nothing.
+                    </p>
+                    <p>
+                        Under the guessed mapping, both sides are reachable, each by its own
+                        name.
                     </p>
                     <CodeBlock code={SUBFIELD_TS} lang="ts" />
+                    <p>The same two searches over the wire:</p>
                     <CodeBlock code={SUBFIELD_CURL} lang="bash" />
                     <p>
                         <Term>
@@ -627,12 +663,17 @@ export function MappingsAnalysisDocs() {
                         reserved.
                     </p>
                     <p>
-                        <Term>The suffix is a path, not a type.</Term> It is not something a{" "}
-                        <Code>keyword</Code> field <em>has</em>. In an explicit mapping
-                        where <Code>status</Code> is itself a <Code>keyword</Code>, the
-                        exact terms live on the main field: you filter, sort and aggregate
-                        on plain <Code>status</Code>, and <Code>status.keyword</Code>{" "}does
-                        not exist at all — a query naming it silently finds nothing.
+                        Which is exactly how a multi-field earns its place when you declare
+                        one on purpose: prose to search, an exact term to sort by.
+                    </p>
+                    <CodeBlock code={MULTIFIELD_TS} lang="ts" />
+                    <p>The mapping and the search it enables, over the wire:</p>
+                    <CodeBlock code={MULTIFIELD_CURL} lang="bash" />
+                    <p>
+                        One field, two indexed forms, two names —{" "}
+                        <Code>match</Code> on <Code>title</Code>{" "}and sort on{" "}
+                        <Code>title.raw</Code>, which is the pattern Search Queries relies
+                        on.
                     </p>
 
                     <Callout severity="note" label="note · why the suffix is everywhere">
@@ -641,8 +682,8 @@ export function MappingsAnalysisDocs() {
                             <Code>something.keyword</Code>, which reads like a convention
                             and is not one: it only exists because those indices were
                             created by dynamic mapping. Whether you need the suffix is
-                            answered by <Code>GET /movies</Code>{" "}— read the mapping and the
-                            path is right there.
+                            answered by <Code>GET /movies</Code>{" "}— read the mapping and
+                            the path is right there.
                         </p>
                     </Callout>
 
@@ -662,16 +703,13 @@ export function MappingsAnalysisDocs() {
                     <Callout severity="tip" label="tip · the multi-field worth declaring">
                         <p>
                             Multi-fields earn their keep when you genuinely need both sides
-                            of one field: search the title as prose <em>and</em>{" "}sort a list
-                            by it alphabetically. Declare it on purpose —{" "}
+                            of one field: search the title as prose <em>and</em>{" "}sort a
+                            list by it alphabetically. Declare it on purpose —{" "}
                             <Code>title</Code> as <Code>text</Code> with{" "}
-                            <Code>fields: {`{ raw: keyword }`}</Code> — then match on{" "}
-                            <Code>title</Code> and sort on <Code>title.raw</Code>.
+                            <Code>fields: {`{ raw: keyword }`}</Code> — rather than
+                            inheriting a guess that hedges every string in the index.
                         </p>
                     </Callout>
-
-                    <CodeBlock code={MULTIFIELD_TS} lang="ts" />
-                    <CodeBlock code={MULTIFIELD_CURL} lang="bash" />
                 </DocSection>
             </div>
 
@@ -679,47 +717,51 @@ export function MappingsAnalysisDocs() {
             <PartHeading kicker="part 2">Analysis</PartHeading>
             <div>
                 <DocSection title="analyzers and _analyze">
-                    <CodeBlock code={ANALYZE_TS} lang="ts" />
-                    <CodeBlock code={ANALYZE_CURL} lang="bash" />
-                    <CodeBlock code={ANALYZE_OUT} lang="json" />
                     <p>
-                        <Term>
-                            An analyzer turns a text value into terms, and{" "}
-                            <Code>_analyze</Code>{" "}shows you exactly which.
-                        </Term>{" "}
-                        It takes an analyzer and a string and answers with the tokens,
-                        without indexing anything. There is no reason to guess what a field
-                        does with its input when one request tells you.
+                        An analyzer is what turns a text value into terms, and every
+                        surprise in full-text search comes from not knowing which terms a
+                        field produced. <Code>_analyze</Code>{" "}removes the guesswork: it
+                        takes an analyzer and a string and answers with the tokens, without
+                        indexing anything.
                     </p>
+                    <p>Running the default analyzer over a title:</p>
+                    <CodeBlock code={ANALYZE_TS} lang="ts" />
+                    <p>The same request over the wire:</p>
+                    <CodeBlock code={ANALYZE_CURL} lang="bash" />
+                    <p>And the answer, one entry per token:</p>
+                    <CodeBlock code={ANALYZE_OUT} lang="json" />
                     <p>
                         <Term>
                             Those tokens are literally what enters the inverted index.
                         </Term>{" "}
                         The four above are the entries that will point at this document —
                         which is the whole explanation for the section before this one.{" "}
-                        <Code>match</Code> on <Code>&quot;dark&quot;</Code> hits because{" "}
-                        <Code>dark</Code> is a term. Case never matters on a{" "}
+                        <Code>match</Code> on <Code>&quot;dark&quot;</Code>{" "}hits because{" "}
+                        <Code>dark</Code>{" "}is a term. Case never matters on a{" "}
                         <Code>text</Code> field because <Code>lowercase</Code>{" "}ran on the
                         way in and runs again on the way out.
                     </p>
+                    <p>
+                        Every analyzer produces them the same way, through three slots in a
+                        fixed order:
+                    </p>
                     <CodeBlock code={PIPELINE} lang="text" />
                     <p>
-                        <Term>Every analyzer is three slots in a fixed order.</Term>{" "}Char
-                        filters work on the raw string before it is split — stripping HTML,
-                        replacing characters. The tokenizer does the splitting, and there is
-                        exactly one. Token filters then transform the tokens one at a time,
-                        in the order listed.
+                        Char filters work on the raw string before it is split — stripping
+                        HTML, replacing characters. The tokenizer does the splitting, and
+                        there is exactly one. Token filters then transform the tokens one at
+                        a time, in the order listed.
                     </p>
 
                     <Callout severity="note" label="note · one name, three slots">
                         <p>
-                            <Code>&quot;standard&quot;</Code>{" "}is not a fourth kind of thing;
-                            it is a preset for the three: no char filter, the standard
-                            tokenizer, and a <Code>lowercase</Code>{" "}token filter. It is the
-                            default for every <Code>text</Code> field you do not give an{" "}
-                            <Code>analyzer</Code>, and it splits on word boundaries rather
-                            than on spaces — which is why punctuation disappears without
-                            anyone asking.
+                            <Code>&quot;standard&quot;</Code>{" "}is not a fourth kind of
+                            thing; it is a preset for the three: no char filter, the
+                            standard tokenizer, and a <Code>lowercase</Code>{" "}token filter.
+                            It is the default for every <Code>text</Code>{" "}field you do not
+                            give an <Code>analyzer</Code>, and it splits on word boundaries
+                            rather than on spaces — which is why punctuation disappears
+                            without anyone asking.
                         </p>
                     </Callout>
 
@@ -736,30 +778,36 @@ export function MappingsAnalysisDocs() {
                 </DocSection>
 
                 <DocSection title="the english analyzer">
+                    <p>
+                        The <Code>english</Code>{" "}analyzer is the one cineverse puts on{" "}
+                        <Code>title</Code> and <Code>overview</Code>, and it does two things
+                        the standard analyzer does not: it drops stopwords and it stems.
+                        Both change which documents a search can find, so both are worth
+                        seeing as terms rather than as descriptions.
+                    </p>
+                    <p>The same title, one analyzer along:</p>
                     <CodeBlock code={ENGLISH_TS} lang="ts" />
+                    <p>Over the wire it is the same endpoint with a different name:</p>
                     <CodeBlock code={ENGLISH_CURL} lang="bash" />
+                    <p>Side by side with the default, the two changes are visible:</p>
                     <CodeBlock code={ENGLISH_DIFF} lang="text" />
                     <p>
-                        <Term>
-                            The same sentence, one analyzer along, and two things have
-                            happened.
-                        </Term>{" "}
                         <Code>&quot;the&quot;</Code>{" "}is gone — stopword removal drops the
                         words that appear in nearly every document and therefore
-                        distinguish nothing. And <Code>&quot;rises&quot;</Code> has become{" "}
+                        distinguish nothing. And <Code>&quot;rises&quot;</Code>{" "}has become{" "}
                         <Code>rise</Code> — stemming cuts each word back to a root, so{" "}
                         <Code>running</Code> becomes <Code>run</Code> and{" "}
                         <Code>movies</Code> becomes <Code>movi</Code>.
                     </p>
+                    <p>
+                        The payoff arrives at query time, because the query is analyzed by
+                        the field&apos;s analyzer too:
+                    </p>
                     <CodeBlock code={MEET} lang="text" />
                     <p>
-                        <Term>
-                            The payoff is that the query is analyzed by the same analyzer as
-                            the field.
-                        </Term>{" "}
                         A reader types <Code>&quot;rising&quot;</Code>; it is stemmed to{" "}
-                        <Code>rise</Code>; the document stored <Code>rise</Code>{" "}when it was
-                        indexed, and the two meet on one term in the inverted index. No
+                        <Code>rise</Code>; the document stored <Code>rise</Code>{" "}when it
+                        was indexed, and the two meet on one term in the inverted index. No
                         fuzziness, no wildcards, no clever query — both sides were simply
                         reduced to the same root.
                     </p>
@@ -782,47 +830,54 @@ export function MappingsAnalysisDocs() {
                             collapse onto one root — <Code>universe</Code> and{" "}
                             <Code>university</Code> both stem to <Code>univers</Code>{" "}— and
                             that is a match nobody wanted. Stopword removal has its own
-                            edge: the film <em>The Who</em>{" "}analyzes down to almost nothing.
-                            A language analyzer is right for prose and wrong for names and
-                            codes, which is exactly what <Code>keyword</Code>{" "}is for.
+                            edge: the film <em>The Who</em>{" "}analyzes down to almost
+                            nothing. A language analyzer is right for prose and wrong for
+                            names and codes, which is exactly what <Code>keyword</Code>{" "}is
+                            for.
                         </p>
                     </Callout>
                 </DocSection>
 
                 <DocSection title="custom analyzers">
-                    <CodeBlock code={CUSTOM_CURL} lang="bash" />
+                    <p>
+                        When none of the built-in analyzers produces the terms you need, you
+                        assemble one from the three slots yourself. It is declared in the
+                        index settings and referenced from the mapping by name, which means
+                        it is decided at index creation — and that is the constraint to
+                        remember about it.
+                    </p>
+                    <p>
+                        One request carries both halves: the analyzer definition and the
+                        field that uses it.
+                    </p>
                     <CodeBlock code={CUSTOM_TS} lang="ts" />
                     <p>
-                        <Term>
-                            A custom analyzer is defined in the index settings, under{" "}
-                            <Code>analysis</Code>, and referenced from the mapping by name.
-                        </Term>{" "}
-                        Those are two separate halves of the same create request: the
-                        settings declare the pieces and assemble them, and the mapping says
-                        which field uses the result.
+                        The wire form is the one the documentation is written in, and it
+                        shows the two blocks plainly:
                     </p>
+                    <CodeBlock code={CUSTOM_CURL} lang="bash" />
                     <p>
-                        <Term>Each of the three slots is filled explicitly.</Term>{" "}
+                        <Term>The settings declare the pieces; the mapping picks one.</Term>{" "}
                         <Code>dash_strip</Code> is a <Code>mapping</Code>{" "}char filter that
-                        rewrites <Code>&quot;-&quot;</Code>{" "}to nothing before any splitting
-                        happens; the tokenizer stays <Code>standard</Code>; the token
-                        filters are <Code>lowercase</Code> then <Code>porter_stem</Code>.
-                        The purpose is one concrete problem — with the dash removed before
-                        tokenizing, <Code>&quot;Spider-Man&quot;</Code>{" "}becomes the single
-                        term <Code>spiderman</Code>, and the reader who types{" "}
+                        rewrites <Code>&quot;-&quot;</Code>{" "}to nothing before any
+                        splitting happens; the tokenizer stays <Code>standard</Code>; the
+                        token filters are <Code>lowercase</Code>{" "}then{" "}
+                        <Code>porter_stem</Code>. The purpose is one concrete problem —
+                        with the dash removed before tokenizing,{" "}
+                        <Code>&quot;Spider-Man&quot;</Code>{" "}becomes the single term{" "}
+                        <Code>spiderman</Code>, and the reader who types{" "}
                         <Code>&quot;spiderman&quot;</Code>{" "}finds the film.
                     </p>
+                    <p>
+                        Before any document goes in, the analyzer can be run on its own —
+                        note that the request is scoped to the index that defines it.
+                    </p>
                     <CodeBlock code={CUSTOM_TEST_TS} lang="ts" />
+                    <p>Over the wire the index name is in the path, not the cluster root:</p>
                     <CodeBlock code={CUSTOM_TEST_CURL} lang="bash" />
                     <p>
-                        <Term>
-                            Test it with an index-scoped <Code>_analyze</Code>{" "}before a
-                            single document goes in.
-                        </Term>{" "}
-                        A custom analyzer only exists inside the index that defines it, so
-                        the request goes to <Code>/movies_v2/_analyze</Code>{" "}rather than the
-                        cluster-wide endpoint. The tokens come back, you read them, and only
-                        then does indexing start.
+                        Two tokens come back, both of them what the design intended — and
+                        that check costs one request against an empty index.
                     </p>
 
                     <Callout severity="tip" label="tip · compose, verify, then index">
@@ -841,11 +896,11 @@ export function MappingsAnalysisDocs() {
                     >
                         <p>
                             Analysis settings are set when the index is created. You cannot
-                            edit <Code>movie_title</Code>{" "}on a live index, because the terms
-                            it produced are already written into the segments — changing the
-                            recipe would leave old documents analyzed one way and new ones
-                            another. Changing an analyzer means a new index and a reindex,
-                            which is the subject of part 4.
+                            edit <Code>movie_title</Code>{" "}on a live index, because the
+                            terms it produced are already written into the segments —
+                            changing the recipe would leave old documents analyzed one way
+                            and new ones another. Changing an analyzer means a new index and
+                            a reindex, which is the subject of part 4.
                         </p>
                     </Callout>
                 </DocSection>
@@ -858,40 +913,47 @@ export function MappingsAnalysisDocs() {
                     title="object arrays: the flattening problem"
                     sectionSeverity="trap"
                 >
+                    <p>
+                        An array of objects is the most common shape in real JSON and the
+                        one Elasticsearch handles least intuitively. By default the objects
+                        are taken apart, and queries that look correct start returning
+                        documents that do not match the question — with no error to say so.
+                    </p>
+                    <p>The document that causes it — two genres, each an object:</p>
                     <CodeBlock code={GENRE_DOC} lang="json" />
+                    <p>
+                        And the mapping for that field, where the significant thing is a
+                        line that is not there:
+                    </p>
                     <CodeBlock code={OBJECT_MAPPING} lang="json" />
+                    <p>
+                        <Term>No <Code>&quot;type&quot;</Code>{" "}means object.</Term>{" "}
+                        Just <Code>properties</Code>, which makes <Code>genres</Code>{" "}an
+                        object implicitly — and it is also exactly what dynamic mapping
+                        writes when this document arrives with no mapping at all. Most
+                        people meet this behaviour without ever choosing it.
+                    </p>
+                    <p>What Lucene actually stores is not two objects:</p>
                     <CodeBlock code={FLATTENED} lang="text" />
                     <p>
                         <Term>
-                            The mapping above declares an object, and the missing line is
-                            the point.
+                            The array is flattened into parallel lists of leaf values.
                         </Term>{" "}
-                        There is no <Code>&quot;type&quot;</Code> in it — just{" "}
-                        <Code>properties</Code>, which makes <Code>genres</Code>{" "}an object
-                        implicitly. It is also exactly what dynamic mapping writes when this
-                        document arrives with no mapping at all, so most people meet this
-                        behaviour without ever choosing it.
+                        Every value is still there and searchable — but the pairing between{" "}
+                        <Code>28</Code> and <Code>&quot;Action&quot;</Code>{" "}has been
+                        destroyed. The index knows the movie has those ids and those names;
+                        it no longer knows which went with which.
                     </p>
                     <p>
-                        <Term>
-                            Elasticsearch flattens the array into parallel lists of leaf
-                            values.
-                        </Term>{" "}
-                        The document you sent had two objects; what Lucene stores is{" "}
-                        <Code>genres.id: [28, 878]</Code> and{" "}
-                        <Code>genres.name: [&quot;Action&quot;, &quot;Science
-                        Fiction&quot;]</Code>. Every value is still there and searchable —
-                        but the pairing between <Code>28</Code> and{" "}
-                        <Code>&quot;Action&quot;</Code>{" "}has been destroyed. The index knows
-                        the movie has those ids and those names; it no longer knows which
-                        went with which.
+                        So a query for a pair that never existed in the document still
+                        matches it:
                     </p>
                     <CodeBlock code={FLAT_BUG_TS} lang="ts" />
+                    <p>The same query over the wire, and the answer it gets:</p>
                     <CodeBlock code={FLAT_BUG_CURL} lang="bash" />
                     <p>
-                        <Term>So a query for an impossible pair matches.</Term> Genre{" "}
-                        <Code>28</Code> is Action and <Code>878</Code>{" "}is Science Fiction;
-                        no object in that document pairs <Code>28</Code> with{" "}
+                        Genre <Code>28</Code> is Action and <Code>878</Code>{" "}is Science
+                        Fiction; no object in that document pairs <Code>28</Code>{" "}with{" "}
                         <Code>&quot;Science Fiction&quot;</Code>. But both clauses are
                         checked against the flattened arrays independently, both find their
                         term, and <Code>bool must</Code>{" "}is satisfied. The Matrix comes
@@ -924,18 +986,35 @@ export function MappingsAnalysisDocs() {
                 </DocSection>
 
                 <DocSection title="nested: separate hidden documents">
-                    <CodeBlock code={NESTED_MAPPING} lang="json" />
-                    <CodeBlock code={HIDDEN_DOCS} lang="text" />
+                    <p>
+                        <Code>nested</Code>{" "}is the mapping type that keeps the objects in
+                        an array intact. It fixes the flattening problem completely, and it
+                        changes the shape of every query that touches the field — a small
+                        edit in the mapping for a permanent obligation at query time.
+                    </p>
                     <p>
                         <Term>The fix is one line.</Term>{" "}
                         <Code>&quot;type&quot;: &quot;nested&quot;</Code> above{" "}
-                        <Code>properties</Code>, and the flattening stops. Each object in
-                        the array is indexed as its own hidden Lucene document, with its own
-                        <Code> id</Code> and <Code>name</Code>{" "}terms kept together, and the
-                        parent movie holds them. The pairing survives because the objects
-                        were never merged in the first place.
+                        <Code>properties</Code>, and the flattening stops.
+                    </p>
+                    <CodeBlock code={NESTED_MAPPING} lang="json" />
+                    <p>
+                        What that produces is not one document any more, but a family of
+                        them:
+                    </p>
+                    <CodeBlock code={HIDDEN_DOCS} lang="text" />
+                    <p>
+                        Each object in the array is indexed as its own hidden Lucene
+                        document, with its <Code>id</Code> and <Code>name</Code>{" "}terms kept
+                        together, and the parent movie holds them. The pairing survives
+                        because the objects were never merged in the first place.
+                    </p>
+                    <p>
+                        Reaching into them requires the <Code>nested</Code>{" "}wrapper, which
+                        is what makes two clauses apply to the same object:
                     </p>
                     <CodeBlock code={NESTED_TS} lang="ts" />
+                    <p>The correct pair over the wire, with both outcomes noted:</p>
                     <CodeBlock code={NESTED_CURL} lang="bash" />
                     <p>
                         <Term>The price is that ordinary queries cannot see inside.</Term>{" "}
@@ -943,9 +1022,9 @@ export function MappingsAnalysisDocs() {
                         query layer is concerned, so anything touching{" "}
                         <Code>genres.*</Code> has to go through the <Code>nested</Code>{" "}
                         wrapper: a <Code>path</Code>{" "}saying which nested field to descend
-                        into, and a <Code>query</Code>{" "}that is evaluated against one hidden
+                        into, and a <Code>query</Code>{" "}evaluated against one hidden
                         document at a time. That last part is the whole point — both{" "}
-                        <Code>must</Code> clauses now have to be true of the{" "}
+                        <Code>must</Code>{" "}clauses now have to be true of the{" "}
                         <em>same</em>{" "}object, so the wrong pair returns zero hits and the
                         right pair returns the film.
                     </p>
@@ -977,9 +1056,17 @@ export function MappingsAnalysisDocs() {
                 </DocSection>
 
                 <DocSection title="when NOT to use nested">
+                    <p>
+                        Because <Code>nested</Code>{" "}fixes a real correctness problem, it
+                        is easy to reach for it whenever JSON contains objects. It has a
+                        cost per document and per query, and for most fields there is a
+                        cheaper shape that answers the same questions.
+                    </p>
+                    <p>What one nested field does to a single movie:</p>
                     <CodeBlock code={NESTED_COST} lang="text" />
                     <p>
-                        <Term>Nested objects are real documents, and they are not free.</Term>{" "}
+                        <Term>Nested objects are real documents, and they are not
+                        free.</Term>{" "}
                         A movie with twenty nested keywords is twenty-one Lucene documents,
                         not one. Every update to the parent reindexes the parent and all of
                         its hidden documents, because they are written as one block. And
@@ -996,17 +1083,17 @@ export function MappingsAnalysisDocs() {
                         no, and you only ever filter on one field at a time, flat is correct
                         and cheaper.
                     </p>
+                    <p>
+                        Between the two sits denormalisation: keep the values, drop the
+                        pairing, and store two flat arrays.
+                    </p>
                     <CodeBlock code={DENORM_TS} lang="ts" />
+                    <p>The filter that shape supports, over the wire:</p>
                     <CodeBlock code={DENORM_CURL} lang="bash" />
                     <p>
-                        <Term>
-                            There is a pragmatic middle path, and it is denormalisation.
-                        </Term>{" "}
-                        Store <Code>genre_ids: [28, 878]</Code> and{" "}
-                        <Code>genre_names: [...]</Code>{" "}as two flat arrays and stop
-                        pretending the index holds objects. The pairing is lost — and it was
-                        never needed, because the pairing lives in CouchDB, which is where
-                        the application reads a genre&apos;s name from anyway.
+                        The pairing is lost — and it was never needed, because the pairing
+                        lives in CouchDB, which is where the application reads a
+                        genre&apos;s name from anyway.
                     </p>
 
                     <Callout
@@ -1053,33 +1140,37 @@ export function MappingsAnalysisDocs() {
             <PartHeading kicker="part 4">Changing a Mapping</PartHeading>
             <div>
                 <DocSection title="mappings can't change">
-                    <CodeBlock code={CHANGE_TS} lang="ts" />
-                    <CodeBlock code={CHANGE_CURL} lang="bash" />
-                    <CodeBlock code={CHANGE_REPLY} lang="json" />
                     <p>
-                        <Term>
-                            Ask for the change and Elasticsearch refuses, in as many words.
-                        </Term>{" "}
-                        <Code>status</Code> is a <Code>keyword</Code>; asking{" "}
-                        <Code>PUT /_mapping</Code> to make it <Code>text</Code> is a{" "}
-                        <Code>400 illegal_argument_exception</Code> —{" "}
-                        <Code>mapper [status] cannot be changed</Code>. There is no force
-                        flag and no migration mode.
+                        A mapping is not a schema you can migrate. An existing field&apos;s
+                        type, analyzer and nested-ness are fixed for the life of the index,
+                        and the API says so rather than pretending otherwise — which makes
+                        this the section that decides how every later correction is done.
                     </p>
+                    <p>
+                        Asking for a type change on a field that already holds data:
+                    </p>
+                    <CodeBlock code={CHANGE_TS} lang="ts" />
+                    <p>The same request over the wire:</p>
+                    <CodeBlock code={CHANGE_CURL} lang="bash" />
+                    <p>And the refusal, in as many words:</p>
+                    <CodeBlock code={CHANGE_REPLY} lang="json" />
                     <p>
                         <Term>The reason is that the data is already written.</Term>{" "}Those
                         values were analyzed as keywords when they were indexed and are
                         baked into immutable Lucene segments in that form. Accepting the new
                         type would leave the mapping claiming one thing and the terms saying
                         another, so Elasticsearch refuses rather than silently rewrite your
-                        data — or worse, not rewrite it and lie about the field.
+                        data — or worse, not rewrite it and lie about the field. There is no
+                        force flag and no migration mode.
+                    </p>
+                    <p>
+                        What the same endpoint does allow is adding a field nothing has
+                        written yet.
                     </p>
                     <CodeBlock code={ADD_TS} lang="ts" />
+                    <p>Over the wire, with the reply that means it took:</p>
                     <CodeBlock code={ADD_CURL} lang="bash" />
                     <p>
-                        <Term>
-                            What <Code>PUT /_mapping</Code>{" "}can do is add.
-                        </Term>{" "}
                         A field that has never been mapped has no terms in any segment, so
                         there is nothing to contradict: mapping <Code>imdb_rating</Code>{" "}as
                         a <Code>float</Code>{" "}is always allowed, and documents indexed from
@@ -1093,12 +1184,10 @@ export function MappingsAnalysisDocs() {
                         label="danger · there is no in-place type change"
                     >
                         <p>
-                            An existing field&apos;s type, its analyzer and its
-                            nested-ness are fixed for the life of the index. Every real
-                            mapping change is therefore the same operation: create a new
-                            index with the mapping you wanted, copy the documents into it,
-                            and move the readers across. Plan for that instead of hoping for
-                            an update API that does not exist.
+                            Every real mapping change is therefore the same operation:
+                            create a new index with the mapping you wanted, copy the
+                            documents into it, and move the readers across. Plan for that
+                            instead of hoping for an update API that does not exist.
                         </p>
                     </Callout>
 
@@ -1113,45 +1202,60 @@ export function MappingsAnalysisDocs() {
                 </DocSection>
 
                 <DocSection title="_reindex + alias swap">
-                    <CodeBlock code={REINDEX_TS} lang="ts" />
-                    <CodeBlock code={REINDEX_CURL} lang="bash" />
-                    <CodeBlock code={REINDEX_REPLY} lang="json" />
                     <p>
-                        <Term>
-                            <Code>_reindex</Code>{" "}copies documents from one index into
-                            another, re-analyzing them on the way.
-                        </Term>{" "}
+                        This is the procedure every impossible mapping change turns into:
+                        build the index you wanted, copy the documents into it, and move the
+                        name across in one request. Done behind an alias it is invisible to
+                        the application, however long the copy takes.
+                    </p>
+                    <p>
+                        <Code>_reindex</Code>{" "}is the copy, and its whole configuration is
+                        a source and a destination.
+                    </p>
+                    <CodeBlock code={REINDEX_TS} lang="ts" />
+                    <p>The same request over the wire:</p>
+                    <CodeBlock code={REINDEX_CURL} lang="bash" />
+                    <p>
                         It reads <Code>_source</Code> out of <Code>movies_v1</Code>{" "}and
                         indexes it into <Code>movies_v2</Code>, where the destination
-                        mapping decides how each field is typed and which analyzer runs. The
+                        mapping decides how each field is typed and which analyzer runs —
+                        which is what makes it a re-analysis rather than a file copy. The
                         old index is untouched, so a failed rebuild costs nothing but time.
                     </p>
                     <p>
-                        <Term>The response is a server-side bulk, and reads like one.</Term>{" "}
+                        On a large index, handing the job off beats holding a connection
+                        open for it.
+                    </p>
+                    <CodeBlock code={REINDEX_TASK_TS} lang="ts" />
+                    <p>Over the wire, the task id comes back immediately:</p>
+                    <CodeBlock code={REINDEX_TASK_CURL} lang="bash" />
+                    <p>
+                        <Code>?wait_for_completion=false</Code>{" "}returns a task id and the
+                        copy continues in the background; polling{" "}
+                        <Code>/_tasks/&lt;id&gt;</Code>{" "}gives progress and, at the end, the
+                        same counters a synchronous call would have returned.
+                    </p>
+                    <p>Those counters are a server-side bulk report, and read like one:</p>
+                    <CodeBlock code={REINDEX_REPLY} lang="json" />
+                    <p>
                         <Code>created</Code>, <Code>updated</Code>,{" "}
-                        <Code>version_conflicts</Code> and — the one that matters —{" "}
+                        <Code>version_conflicts</Code>, and — the one that matters —{" "}
                         <Code>failures</Code>, which is where every document that does not
                         fit the new mapping ends up. A stricter type in the destination is
                         the usual cause: a value that dynamic mapping accepted as text
                         cannot become a <Code>float</Code>.
                     </p>
                     <p>
-                        <Term>On a large index, do not hold the connection open.</Term>{" "}
-                        <Code>?wait_for_completion=false</Code>{" "}returns a task id
-                        immediately and the copy continues in the background; poll{" "}
-                        <Code>/_tasks/&lt;id&gt;</Code>{" "}for progress and for the same
-                        counters at the end.
+                        With the copy verified, the cutover is five steps, of which only one
+                        is visible to readers:
                     </p>
                     <CodeBlock code={RECIPE} lang="text" />
                     <p>
-                        <Term>
-                            Those five steps are the whole zero-downtime mapping change.
-                        </Term>{" "}
                         The application only ever names the alias, so steps 2 and 3 happen
-                        entirely out of sight, however long they take. Step 4 is one{" "}
-                        <Code>_aliases</Code>{" "}request carrying both the remove and the add,
-                        which is what makes the cutover atomic — there is no instant without
-                        a <Code>movies</Code>{" "}to search.
+                        entirely out of sight. Step 4 is one <Code>_aliases</Code>{" "}request
+                        carrying both the remove and the add, which is what makes the
+                        cutover atomic — there is no instant without a{" "}
+                        <Code>movies</Code>{" "}to search.
                     </p>
 
                     <Callout
