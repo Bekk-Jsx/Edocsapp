@@ -9,6 +9,12 @@
 
 export const CHAPTERS: { id: string; label: string }[] = [
     { id: "foundations", label: "Foundations" },
+    // Anatomy/reference pages, deliberately ahead of the searching chapters:
+    // they are the slot-by-slot shape of a request and of index settings, read
+    // as a lookup rather than worked through as a lesson. Same idea as the
+    // redis project's `reference` chapter, only front-loaded — you want the
+    // shape of a query body before the chapter that fills it in.
+    { id: "structure", label: "Structure" },
     { id: "searching", label: "Searching" },
     { id: "in-an-app", label: "Making It Work in an App" },
 ];
@@ -46,20 +52,21 @@ export const TOPICS: ElasticsearchTopic[] = [
         // app/(projects)/elasticsearch/mappings-analysis/page.tsx.
     },
 
-    // — Searching —
+    // — Structure —
     {
-        slug: "queries-structure", name: "Queries Structure", chapter: "searching",
+        slug: "queries-structure", name: "Queries Structure", chapter: "structure",
         summary: "The anatomy of a search request: every slot a body can carry and the shape of each clause inside them — structure only, with generic field names.",
         // WRITTEN — no `parts`, and no placeholder badge: see
         // app/(projects)/elasticsearch/queries-structure/page.tsx.
     },
     {
-        slug: "settings-structure", name: "Settings Structure", chapter: "searching",
+        slug: "settings-structure", name: "Settings Structure", chapter: "structure",
         summary: "The anatomy of index settings: every element the settings block can carry, how to fill each one, where it is used, and what can and cannot be changed.",
-        // No `parts` yet: the page is a placeholder with the badge and the blurb
-        // and nothing else. A `parts` list would be inventing a chapter plan the
-        // page does not have — see queries-structure's history for the pattern.
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/settings-structure/page.tsx.
     },
+
+    // — Searching —
     {
         slug: "search-queries", name: "Search Queries", chapter: "searching",
         summary: "The query DSL: matching text, filtering on exact values, combining the two, and ordering what comes back.",
