@@ -90,20 +90,14 @@ export const TOPICS: ElasticsearchTopic[] = [
     {
         slug: "couchdb-sync", name: "CouchDB Sync", chapter: "in-an-app",
         summary: "Keeping the search layer honest about a database it does not own — feeding it changes and rebuilding it without downtime.",
-        parts: [
-            "Changes feed to indexing pipeline",
-            "Deletes, retries, idempotency",
-            "Zero-downtime reindex with aliases",
-        ],
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/couchdb-sync/page.tsx.
     },
     {
         slug: "production", name: "Production Essentials", chapter: "in-an-app",
         summary: "What the cluster is doing, why a query is slow, and the mistakes that only show up once there is real data.",
-        parts: [
-            "Shards, replicas, cluster health",
-            "Slow queries and the profile API",
-            "Common mistakes checklist",
-        ],
+        // WRITTEN — no `parts`, and no placeholder badge: see
+        // app/(projects)/elasticsearch/production/page.tsx.
     },
 ];
 
@@ -116,6 +110,10 @@ export type ProjectLink = { slug: string; label: string };
 
 export const PROJECT_LINKS: ProjectLink[] = [
     { slug: "notes", label: "Notes" },
+    // Last row of the project list, and the last page of the project: what the
+    // chapters deliberately left out. Same page template as the hooks project's
+    // "About next version" — a roadmap, so no chapter and no plan.
+    { slug: "coming-in-v2", label: "Coming in v2" },
 ];
 
 export const topicBySlug = (slug: string) =>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import StatusBadge from "@/components/ui/status-badge";
 import {
     topicsByChapter,
     TOPICS,
@@ -11,8 +10,10 @@ import {
 // `groups` goes empty only when the registry itself has none — the empty-state
 // panel below stands in for the grid then rather than leaving the section blank.
 //
-// Every page is still a placeholder, hence the badge under the title: the state
-// is stated once here instead of being implied by eight empty pages.
+// No StatusBadge: every chapter is written, so the project is COMPLETED in
+// lib/projects and the badge belongs on the home card alone. Same as the other
+// finished project (hooks-refresh), whose landing carries no badge either —
+// progress is something you read on the index, never chrome inside a project.
 export default function Home() {
     const groups = topicsByChapter();
 
@@ -27,10 +28,6 @@ export default function Home() {
                 queries and aggregations that read them back, and what it takes to
                 keep a search layer in step with the database that owns the data.
             </p>
-
-            <div className="mt-4">
-                <StatusBadge status="in-progress" />
-            </div>
 
             <div className="mt-6 flex gap-6 font-mono text-xs text-[var(--muted)]">
                 <span>

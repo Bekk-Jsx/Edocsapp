@@ -121,7 +121,7 @@ export const PROJECTS: Project[] = [
     description:
       "Search & analytics with Elasticsearch — indices, mapping, queries.",
     type: "devops",
-    status: "in-progress",
+    status: "completed",
   },
   {
     slug: "technical-seo",
