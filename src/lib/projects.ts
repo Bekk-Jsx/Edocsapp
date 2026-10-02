@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     description:
       "TypeScript for React/Next — types, generics, utility types, inference.",
     type: "web-dev",
-    status: "not-started",
+    status: "in-progress",
   },
   {
     slug: "vue",
