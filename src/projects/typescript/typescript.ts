@@ -17,8 +17,6 @@ export const CHAPTERS: { id: string; label: string }[] = [
     { id: "toolkit", label: "The Type Toolkit" },
     { id: "practice", label: "In Practice" },
     { id: "react-next", label: "React & Next" },
-    // Lookup pages, deliberately last: not part of the learning sequence.
-    { id: "reference", label: "Reference" },
 ];
 
 export interface TypeScriptTopic {
@@ -38,33 +36,14 @@ export const TOPICS: TypeScriptTopic[] = [
     {
         slug: "first-types", name: "First Types", chapter: "foundations",
         summary: "Annotations vs inference, primitives, any/unknown/never, literal types, and the types-vs-values split.",
-        parts: [
-            "Annotations vs inference",
-            "Primitives and arrays",
-            "any, unknown, never",
-            "Literal types",
-            "Types and values are two different namespaces",
-        ],
     },
     {
         slug: "objects-and-aliases", name: "Objects & Aliases", chapter: "foundations",
         summary: "Object types, optional and readonly, type vs interface, index signatures, tuples.",
-        parts: [
-            "Object types, optional and readonly",
-            "type vs interface",
-            "Index signatures",
-            "Tuples",
-        ],
     },
     {
         slug: "functions", name: "Functions", chapter: "foundations",
         summary: "Parameters and returns, optional/default/rest, void vs undefined, overloads.",
-        parts: [
-            "Parameter and return types",
-            "Optional, default and rest parameters",
-            "void vs undefined",
-            "Overloads",
-        ],
     },
     {
         slug: "unions-and-narrowing", name: "Unions & Narrowing", chapter: "foundations",
@@ -261,14 +240,16 @@ export const TOPICS: TypeScriptTopic[] = [
             "Typed environment variables",
         ],
     },
+];
 
-    // — Reference —
-    {
-        slug: "notes", name: "Notes", chapter: "reference",
-        summary: "A running collection of traps, answers to my questions, and key takeaways gathered while working through the chapters.",
-        // No `parts`: this page is filled progressively rather than planned, so
-        // the placeholder drops the Planned panel entirely.
-    },
+// Project-level pages that are NOT documentation — kept apart from TOPICS on
+// purpose: these never appear in the landing grid or the chapter nav, only in
+// the navbar's own project list above the docs. Same shape, and the same
+// optional treatment, as the hooks project's PROJECT_LINKS.
+export type ProjectLink = { slug: string; label: string };
+
+export const PROJECT_LINKS: ProjectLink[] = [
+    { slug: "notes", label: "Notes" },
 ];
 
 export const topicBySlug = (slug: string) =>

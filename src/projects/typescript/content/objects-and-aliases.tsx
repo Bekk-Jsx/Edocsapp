@@ -105,9 +105,9 @@ function GridTable({
 //
 // 1. A section opens with prose; every fragment is introduced by the sentence
 //    above it and read by the sentence below it. Two fragments never touch.
-// 2. Compiler errors sit on the line BELOW the offending code, in tsc's exact
-//    wording — every one on this page was produced by this repo's tsc (5.9)
-//    under `strict`. Inferred types are a trailing comment on the same line.
+// 2. A compiler error is a comment on the line BELOW the offending code,
+//    prefixed `// ❌ `. Where a contrast helps, a line that compiles ends in
+//    `// ✅`.
 // 3. Traps are inline Callouts; there is no traps section.
 // 4. Every fragment declares a language: ts, or jsonc for tsconfig.
 // 5. A COMPARISON SHOWS BOTH CODES, side by side: a two-column grid (stacking
@@ -132,22 +132,22 @@ type Theme = "dark" | "light";   // a literal union
 type User = { name: string };    // an object`;
 
 const MISSING = `const user: User = { name: "sam" };
-// Property 'age' is missing in type '{ name: string; }' but required in type 'User'.`;
+// ❌ Property 'age' is missing in type '{ name: string; }' but required in type 'User'.`;
 
 const EXCESS = `const user: User = { name: "sam", age: 30, email: "x@y.com" };
-// Object literal may only specify known properties, and 'email' does not exist in type 'User'.`;
+// ❌ Object literal may only specify known properties, and 'email' does not exist in type 'User'.`;
 
 const INFER_OBJECT = `const user = { name: "sam", age: 30 };   // { name: string; age: number }`;
 
 const OPTIONAL = `type User = { name: string; email?: string };
 
-const a: User = { name: "sam" };                     // ok
-const b: User = { name: "sam", email: "s@x.com" };   // ok`;
+const a: User = { name: "sam" };                     // ✅
+const b: User = { name: "sam", email: "s@x.com" };   // ✅`;
 
 const OPTIONAL_READ = `user.email;   // string | undefined
 
 user.email.toUpperCase();
-// 'user.email' is possibly 'undefined'.`;
+// ❌ 'user.email' is possibly 'undefined'.`;
 
 const OPTIONAL_GUARD = `if (user.email) {
     user.email.toUpperCase();   // string in here
@@ -155,25 +155,25 @@ const OPTIONAL_GUARD = `if (user.email) {
 
 const OPTIONAL_KEY = `type A = { name: string; email?: string };
 
-const a: A = { name: "sam" };   // ok — the key may be left out`;
+const a: A = { name: "sam" };   // ✅ the key may be left out`;
 
 const UNDEFINED_KEY = `type B = { name: string; email: string | undefined };
 
 const b: B = { name: "sam" };
-// Property 'email' is missing in type '{ name: string; }' but required in type 'B'.
-const c: B = { name: "sam", email: undefined };   // ok`;
+// ❌ Property 'email' is missing in type '{ name: string; }' but required in type 'B'.
+const c: B = { name: "sam", email: undefined };   // ✅`;
 
 const READONLY = `type User = { readonly id: string; name: string };
 
-user.name = "alex";   // ok
+user.name = "alex";   // ✅
 user.id = "u2";
-// Cannot assign to 'id' because it is a read-only property.`;
+// ❌ Cannot assign to 'id' because it is a read-only property.`;
 
 const READONLY_SHALLOW = `type Config = { readonly tags: string[] };
 
 config.tags = [];
-// Cannot assign to 'tags' because it is a read-only property.
-config.tags.push("x");   // fine — the array itself is not readonly`;
+// ❌ Cannot assign to 'tags' because it is a read-only property.
+config.tags.push("x");   // ✅ the array itself is not readonly`;
 
 const API_SHAPE = `type User = {
     readonly id: string;   // set once by the server
@@ -211,15 +211,15 @@ type B = { name: string; color: string };`;
 
 const AND_ACCEPT = `type Both = A & B;   // { name: string; age: number; color: string }
 
-const x: Both = { name: "sam", age: 30, color: "red" };   // ok
+const x: Both = { name: "sam", age: 30, color: "red" };   // ✅
 const y: Both = { name: "sam", age: 30 };
-// Type '{ name: string; age: number; }' is not assignable to type 'Both'.
-//   Property 'color' is missing in type '{ name: string; age: number; }' but required in type 'B'.`;
+// ❌ Type '{ name: string; age: number; }' is not assignable to type 'Both'.
+//      Property 'color' is missing in type '{ name: string; age: number; }' but required in type 'B'.`;
 
 const OR_ACCEPT = `type Either = A | B;
 
-const p: Either = { name: "sam", age: 30 };        // ok — it's an A
-const q: Either = { name: "rex", color: "red" };   // ok — it's a B`;
+const p: Either = { name: "sam", age: 30 };        // ✅ it's an A
+const q: Either = { name: "rex", color: "red" };   // ✅ it's a B`;
 
 const AND_READ = `value.name;    // string
 value.age;     // number
@@ -227,11 +227,11 @@ value.color;   // string`;
 
 const OR_READ = `value.name;    // string — on A AND on B
 value.age;
-// Property 'age' does not exist on type 'Either'.
-//   Property 'age' does not exist on type 'B'.
+// ❌ Property 'age' does not exist on type 'Either'.
+//      Property 'age' does not exist on type 'B'.
 value.color;
-// Property 'color' does not exist on type 'Either'.
-//   Property 'color' does not exist on type 'A'.`;
+// ❌ Property 'color' does not exist on type 'Either'.
+//      Property 'color' does not exist on type 'A'.`;
 
 const NARROW_IN = `if ("age" in value) {
     value.age;     // value is A in here
@@ -282,7 +282,7 @@ type Names = string[];           // an array
 type Config = typeof config;     // derived from a value`;
 
 const INTERFACE_OBJECTS = `interface Theme = "dark" | "light";
-// '{' expected.
+// ❌ '{' expected.
 
 interface Theme { mode: "dark" | "light" }   // braces — its only form`;
 
@@ -293,9 +293,9 @@ interface User { age: number }
 const user: User = { name: "sam", age: 30 };`;
 
 const MERGE_TYPE = `type User = { name: string };
-// Duplicate identifier 'User'.
+// ❌ Duplicate identifier 'User'.
 type User = { age: number };
-// Duplicate identifier 'User'.`;
+// ❌ Duplicate identifier 'User'.`;
 
 const AUGMENT_EXPRESS = `// types/express.d.ts
 declare global {
@@ -321,13 +321,13 @@ const SCORES_DATA = `const scores = {
 const INDEX_SIGNATURE = `type Scores = { [key: string]: number };
 
 const scores: Scores = {};
-scores.anyone = 5;       // ok
-scores["whoever"] = 7;   // ok`;
+scores.anyone = 5;       // ✅
+scores["whoever"] = 7;   // ✅`;
 
 const MIXED_BAD = `type Config = {
     name: string;
     version: number;
-    // Property 'version' of type 'number' is not assignable to 'string' index type 'string'.
+    // ❌ Property 'version' of type 'number' is not assignable to 'string' index type 'string'.
     [key: string]: string;
 };`;
 
@@ -348,15 +348,15 @@ const FIX_LIST = `type Config = {
 const OPEN_CONFIG = `type Config = { name: string; version: number; [key: string]: string | number };
 
 const a: Config = { name: "app" };
-// Property 'version' is missing in type '{ name: string; }' but required in type 'Config'.
-const b: Config = { name: "app", version: 1, port: 3000, env: "dev" };   // ok
+// ❌ Property 'version' is missing in type '{ name: string; }' but required in type 'Config'.
+const b: Config = { name: "app", version: 1, port: 3000, env: "dev" };   // ✅
 const c: Config = { name: "app", version: 1, debug: true };
-// Type 'boolean' is not assignable to type 'string | number'.`;
+// ❌ Type 'boolean' is not assignable to type 'string | number'.`;
 
 const OPTIONAL_LISTED = `type Config = {
     name: string;
     version?: number;
-    // Property 'version' of type 'number | undefined' is not assignable to 'string' index type 'string | number'.
+    // ❌ Property 'version' of type 'number | undefined' is not assignable to 'string' index type 'string | number'.
     [key: string]: string | number;
 };`;
 
@@ -380,7 +380,7 @@ const NO_UNCHECKED = `{
 
 const INDEX_HONEST = `const n = scores.nobody;   // number | undefined
 n.toFixed();
-// 'n' is possibly 'undefined'.`;
+// ❌ 'n' is possibly 'undefined'.`;
 
 const OPEN_RECORD = `type Colors = Record<string, string>;
 
@@ -392,7 +392,7 @@ type Colors = Record<Theme, string>;   // { dark: string; light: string }
 
 colors.dark;     // string — guaranteed
 colors.nobody;
-// Property 'nobody' does not exist on type 'Colors'.`;
+// ❌ Property 'nobody' does not exist on type 'Colors'.`;
 
 // ===================================================================
 // part 4 — tuples
@@ -401,19 +401,19 @@ colors.nobody;
 const TUPLE = `let pair: [string, number] = ["sam", 30];`;
 
 const TUPLE_ERRORS = `pair = [30, "sam"];
-// Type 'number' is not assignable to type 'string'.
-// Type 'string' is not assignable to type 'number'.
+// ❌ Type 'number' is not assignable to type 'string'.
+// ❌ Type 'string' is not assignable to type 'number'.
 pair = ["sam"];
-// Type '[string]' is not assignable to type '[string, number]'.
-//   Source has 1 element(s) but target requires 2.
+// ❌ Type '[string]' is not assignable to type '[string, number]'.
+//      Source has 1 element(s) but target requires 2.
 pair = ["sam", 30, true];
-// Type '[string, number, boolean]' is not assignable to type '[string, number]'.
-//   Source has 3 element(s) but target allows only 2.`;
+// ❌ Type '[string, number, boolean]' is not assignable to type '[string, number]'.
+//      Source has 3 element(s) but target allows only 2.`;
 
 const TUPLE_READ = `pair[0];   // string
 pair[1];   // number
 pair[2];
-// Tuple type '[string, number]' of length '2' has no element at index '2'.`;
+// ❌ Tuple type '[string, number]' of length '2' has no element at index '2'.`;
 
 const TUPLE_INFER = `const a = ["sam", 30];                     // (string | number)[]
 const b: [string, number] = ["sam", 30];   // [string, number]
@@ -443,12 +443,12 @@ const { posts, loading, hasMore, retry } = useFeed();`;
 
 const REST = `type Args = [string, ...number[]];
 
-const a: Args = ["sum", 1, 2, 3];   // ok
-const b: Args = ["sum"];            // ok — zero numbers is still "any number"`;
+const a: Args = ["sum", 1, 2, 3];   // ✅
+const b: Args = ["sum"];            // ✅ zero numbers is still "any number"`;
 
 const READONLY_TUPLE = `const point = [1, 2] as const;   // readonly [1, 2]
 point[0] = 5;
-// Cannot assign to '0' because it is a read-only property.`;
+// ❌ Cannot assign to '0' because it is a read-only property.`;
 
 // Column grid for a side-by-side comparison (rule 5). Plain utility strings
 // rather than a component: the container query keys off the body column, so the
@@ -471,9 +471,10 @@ export function ObjectsAndAliasesDocs() {
                 </p>
                 <p>
                     Same conventions as before: <Code>strict: true</Code>{" "}
-                    throughout, errors on the line below the code that caused them,
-                    inferred types as a comment at the end of the line, and every
-                    message quoted exactly as this repo&apos;s compiler prints it.
+                    throughout, errors marked <Code>{"// ❌"}</Code> on the line
+                    below the code that caused them, <Code>{"// ✅"}</Code> on
+                    lines that compile where the contrast helps, and inferred
+                    types as a comment at the end of the line.
                 </p>
             </div>
 

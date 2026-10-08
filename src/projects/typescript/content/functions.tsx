@@ -103,7 +103,7 @@ function GridTable({
 //
 // 1. A section opens with prose; every fragment is introduced by the sentence
 //    above it and read by the sentence below it. Two fragments never touch.
-// 2. ERROR HOUSE STYLE (from this page on): a compiler error is a comment on the
+// 2. ERROR HOUSE STYLE: a compiler error is a comment on the
 //    line BELOW the offending code, prefixed `// ❌ ` and in tsc's exact wording.
 //    A multi-line tsc message keeps tsc's own nesting, indented under the first
 //    line's text. Where a contrast helps, a passing line ends in `// ✅`. Every
@@ -400,12 +400,10 @@ export function FunctionsDocs() {
                     around.
                 </p>
                 <p>
-                    One change of convention from here on: a compiler error is
-                    marked <Code>{"// ❌"}</Code>{" "}
-                    on the line below the code that caused it,
-                    in tsc&apos;s exact wording, and where a contrast helps, a line
-                    that compiles ends in <Code>{"// ✅"}</Code>. Everything still assumes{" "}
-                    <Code>strict: true</Code>.
+                    Same conventions as the earlier pages: errors marked{" "}
+                    <Code>{"// ❌"}</Code> on the line below the code that caused
+                    them, <Code>{"// ✅"}</Code> on lines that compile where the
+                    contrast helps, and <Code>strict: true</Code>{" "}throughout.
                 </p>
             </div>
 

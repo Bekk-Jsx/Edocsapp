@@ -82,9 +82,9 @@ function PartHeading({
 // 2. Fragments are SMALL and single-purpose. Every one is introduced by the
 //    sentence above it and read by the sentence below it. Two fragments never
 //    touch, and no section is one long listing.
-// 3. A compiler error is written as a comment on the line BELOW the offending
-//    code, in the wording tsc actually prints. Every message on this page was
-//    produced by this repo's own tsc (5.9) under `strict`, not recalled.
+// 3. A compiler error is a comment on the line BELOW the offending code,
+//    prefixed `// ❌ `. Where a contrast helps, a line that compiles ends in
+//    `// ✅`.
 // 4. An inferred type is written as a trailing comment on the same line.
 // 5. Traps live inline, as Callouts inside the section they belong to. There is
 //    no traps section anywhere on this page.
@@ -107,7 +107,7 @@ function greet(user: string): string {
 }`;
 
 const ANNOTATION_BREAK = `const name: string = 42;
-// Type 'number' is not assignable to type 'string'.`;
+// ❌ Type 'number' is not assignable to type 'string'.`;
 
 const ERASED = `const name = "Nasereddine";
 let count = 0;
@@ -122,7 +122,7 @@ const active = true;          // boolean`;
 
 const INFERRED_IS_REAL = `let count = 0;     // number
 count = "zero";
-// Type 'string' is not assignable to type 'number'.`;
+// ❌ Type 'string' is not assignable to type 'number'.`;
 
 const INFER_RETURN = `function double(n: number) {
     return n * 2;
@@ -131,7 +131,7 @@ const INFER_RETURN = `function double(n: number) {
 const result = double(21);    // number`;
 
 const IMPLICIT_ANY = `function total(price) { return price * 1.2; }
-// Parameter 'price' implicitly has an 'any' type.`;
+// ❌ Parameter 'price' implicitly has an 'any' type.`;
 
 const WIDENING = `let mode = "dark";       // string
 const theme = "dark";    // "dark"`;
@@ -141,9 +141,9 @@ const UNION_FIT = `type Theme = "dark" | "light";
 const a = "dark";    // "dark"
 let b = "dark";      // string
 
-const t1: Theme = a;   // ok
+const t1: Theme = a;   // ✅
 const t2: Theme = b;
-// Type 'string' is not assignable to type 'Theme'.`;
+// ❌ Type 'string' is not assignable to type 'Theme'.`;
 
 const WIDENING_FIXES = `let b: Theme = "dark";      // narrow the variable
 let c = "dark" as const;    // freeze this one literal`;
@@ -158,9 +158,9 @@ const AS_CONST_OBJECT = `const a = { theme: "dark" };            // { theme: str
 const b = { theme: "dark" } as const;   // { readonly theme: "dark" }`;
 
 const CONST_NOT_DEEP = `const user = { name: "sam" };
-user.name = "alex";          // ok — the contents are not protected
+user.name = "alex";          // ✅ the contents are not protected
 user = { name: "alex" };
-// Cannot assign to 'user' because it is a constant.`;
+// ❌ Cannot assign to 'user' because it is a constant.`;
 
 const TYPO = `function greet(user) {
     return user.nmae.toUpperCase();
@@ -172,7 +172,7 @@ const value = input as any;             // written on purpose
 import legacy from "untyped-package";   // any — no types shipped`;
 
 const TYPO_TYPED = `function greet(user: { name: string }) { return user.nmae.toUpperCase(); }
-// Property 'nmae' does not exist on type '{ name: string; }'.`;
+// ❌ Property 'nmae' does not exist on type '{ name: string; }'.`;
 
 // ===================================================================
 // part 2 — primitives & arrays
@@ -184,8 +184,8 @@ let ready: boolean;`;
 
 const WRAPPERS = `let s: String = "hi";   // compiles — the boxed object type
 const t: string = s;
-// Type 'String' is not assignable to type 'string'.
-//   'string' is a primitive, but 'String' is a wrapper object.`;
+// ❌ Type 'String' is not assignable to type 'string'.
+//      'string' is a primitive, but 'String' is a wrapper object.`;
 
 const ONE_NUMBER = `const int = 42;          // number
 const float = 3.14;      // number
@@ -193,7 +193,7 @@ const broken = NaN;      // number
 const huge = Infinity;   // number`;
 
 const NULLS = `let name: string = null;
-// Type 'null' is not assignable to type 'string'.
+// ❌ Type 'null' is not assignable to type 'string'.
 
 let maybe: string | null = null;   // say it instead`;
 
@@ -205,7 +205,7 @@ const scores: number[] = [10, 20];`;
 
 const ARRAY_INFER = `const names = ["sam", "alex"];   // string[]
 names.push(42);
-// Argument of type 'number' is not assignable to parameter of type 'string'.`;
+// ❌ Argument of type 'number' is not assignable to parameter of type 'string'.`;
 
 const ARRAY_PARENS = `const mixed: (string | number)[] = ["a", 1];   // array of (string or number)
 const other: string | number[] = "a";          // a string, OR an array of number`;
@@ -217,14 +217,14 @@ items.push("sam");
 items.push(42);
 const first = items[0];
 first.toUpperCase();
-// Property 'toUpperCase' does not exist on type 'string | number'.`;
+// ❌ Property 'toUpperCase' does not exist on type 'string | number'.`;
 
 const EMPTY_ARRAY_ESCAPES = `const bag = [];
-// Variable 'bag' implicitly has type 'any[]' in some locations
-// where its type cannot be determined.
+// ❌ Variable 'bag' implicitly has type 'any[]' in some locations
+//    where its type cannot be determined.
 function add(value: string) { bag.push(value); }
 bag[0].toUpperCase();
-// Variable 'bag' implicitly has an 'any[]' type.`;
+// ❌ Variable 'bag' implicitly has an 'any[]' type.`;
 
 const INDEXING = `const names = ["sam"];     // string[]
 const second = names[1];   // typed string — undefined at runtime
@@ -245,7 +245,7 @@ const NO_UNCHECKED = `{
 
 const LITERAL = `let mode: "dark" = "dark";
 mode = "light";
-// Type '"light"' is not assignable to type '"dark"'.`;
+// ❌ Type '"light"' is not assignable to type '"dark"'.`;
 
 const LITERAL_KINDS = `let a: "dark" = "dark";   // a string literal type
 let b: 42 = 42;           // a number literal type
@@ -255,7 +255,7 @@ const LITERAL_UNION = `type Theme = "dark" | "light" | "auto";
 
 let theme: Theme = "dark";
 theme = "blue";
-// Type '"blue"' is not assignable to type 'Theme'.`;
+// ❌ Type '"blue"' is not assignable to type 'Theme'.`;
 
 const UNION_SIGNATURES = `function setTheme(theme: string) {}   // accepts "dakr", "", "banana"
 function setTheme(theme: Theme) {}    // accepts three things`;
@@ -287,7 +287,7 @@ const b: Theme = Theme[stored as keyof typeof Theme];`;
 const NUMERIC_ENUM = `enum Status { Active, Done }   // Active = 0, Done = 1, by position
 
 const s: Status = 99;
-// Type '99' is not assignable to type 'Status'.`;
+// ❌ Type '99' is not assignable to type 'Status'.`;
 
 const NUMERIC_ENUM_HOLE = `enum Level { Low = 1, High = compute() }
 
@@ -314,11 +314,11 @@ const ANY_VS_UNKNOWN = `function handle(input: any) {}       // "type-check noth
 function handle(input: unknown) {}   // "I don't know yet — prove it first"`;
 
 const UNKNOWN = `let a: any = getData();
-a.toUpperCase();        // ok
+a.toUpperCase();        // ✅
 
 let u: unknown = getData();
 u.toUpperCase();
-// 'u' is of type 'unknown'.`;
+// ❌ 'u' is of type 'unknown'.`;
 
 const UNKNOWN_PROVE = `let u: unknown = getData();
 
@@ -328,7 +328,7 @@ if (typeof u === "string") {
 
 const UNKNOWN_ONE_WAY = `const u: unknown = "hi";   // anything goes in
 const s: string = u;
-// Type 'unknown' is not assignable to type 'string'.`;
+// ❌ Type 'unknown' is not assignable to type 'string'.`;
 
 const UNKNOWN_CATCH = `try {
     risky();
@@ -351,7 +351,7 @@ const TYPE_GUARD = `function hasName(value: unknown): value is { name: string } 
 }`;
 
 const NEVER = `let b: never = undefined;
-// Type 'undefined' is not assignable to type 'never'.`;
+// ❌ Type 'undefined' is not assignable to type 'never'.`;
 
 const NEVER_RETURNS = `function fail(message: string): never {
     throw new Error(message);
@@ -367,14 +367,14 @@ function apply(theme: Theme) {
     if (theme === "dark") return darkTokens;
     if (theme === "light") return lightTokens;
 
-    const exhaustive: never = theme;   // ok — all cases handled
+    const exhaustive: never = theme;   // ✅ all cases handled
     return exhaustive;
 }`;
 
 const EXHAUSTIVE_BREAKS = `type Theme = "dark" | "light" | "auto";
 
     const exhaustive: never = theme;
-    // Type '"auto"' is not assignable to type 'never'.`;
+    // ❌ Type '"auto"' is not assignable to type 'never'.`;
 
 // ===================================================================
 // part 5 — types & values
@@ -393,13 +393,13 @@ const User = { name: "sam" };   // no conflict — different namespaces`;
 const CROSSING_VALUE = `const user = { name: "sam" };
 
 function greet(u: user) {}
-// 'user' refers to a value, but is being used as a type here.
-// Did you mean 'typeof user'?`;
+// ❌ 'user' refers to a value, but is being used as a type here.
+//    Did you mean 'typeof user'?`;
 
 const CROSSING_TYPE = `type User = { name: string };
 
 console.log(User);
-// 'User' only refers to a type, but is being used as a value here.`;
+// ❌ 'User' only refers to a type, but is being used as a value here.`;
 
 const TYPEOF_BRIDGE = `const config = { host: "localhost", port: 5432 };
 
@@ -434,11 +434,13 @@ export function FirstTypesDocs() {
                     feature of the running program.
                 </p>
                 <p>
-                    Every error message quoted here is the real one, produced by
-                    this repo&apos;s own compiler under <Code>strict: true</Code>
-                    {" "}— assume that setting for the whole project. Errors are
-                    written as a comment on the line below the code that caused
-                    them, and inferred types as a comment at the end of the line.
+                    Everything on this page assumes <Code>strict: true</Code> —
+                    assume that setting for the whole project. A line that fails
+                    to compile is followed by a comment marked{" "}
+                    <Code>{"// ❌"}</Code> saying what is wrong; where a contrast
+                    helps, a line that compiles ends in <Code>{"// ✅"}</Code>.
+                    Inferred types are written as a comment at the end of the
+                    line.
                 </p>
             </div>
 
