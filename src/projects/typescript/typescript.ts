@@ -47,15 +47,7 @@ export const TOPICS: TypeScriptTopic[] = [
     },
     {
         slug: "unions-and-narrowing", name: "Unions & Narrowing", chapter: "foundations",
-        summary: "Unions, discriminated unions, type guards, exhaustiveness, enum vs literal union.",
-        parts: [
-            "Union types",
-            "Narrowing with typeof, in and truthiness",
-            "Discriminated unions",
-            "Type guard functions",
-            "Exhaustiveness with never",
-            "enum vs literal union",
-        ],
+        summary: "Union types, narrowing with typeof, in and instanceof, discriminated unions, type guard functions and exhaustiveness checks.",
     },
     {
         slug: "assignability", name: "Assignability", chapter: "foundations",
