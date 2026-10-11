@@ -51,14 +51,7 @@ export const TOPICS: TypeScriptTopic[] = [
     },
     {
         slug: "assignability", name: "Assignability", chapter: "foundations",
-        summary: "Structural typing, the excess property check, and why the errors read the way they do.",
-        parts: [
-            "Structural typing — shape, not name",
-            "Assignable vs identical",
-            "The excess property check",
-            "Function parameter and return assignability",
-            "Reading an assignability error",
-        ],
+        summary: "Structural typing, assignability as sets of values, the excess property check, function assignability and how to read an assignability error.",
     },
     {
         slug: "classes", name: "Classes", chapter: "foundations",
