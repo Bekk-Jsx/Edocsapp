@@ -55,15 +55,11 @@ export const TOPICS: TypeScriptTopic[] = [
     },
     {
         slug: "classes", name: "Classes", chapter: "foundations",
-        summary: "Access modifiers, parameter properties, implements, abstract, readonly fields.",
-        parts: [
-            "Fields and constructors",
-            "public, private, protected, readonly",
-            "Parameter properties",
-            "implements an interface",
-            "abstract classes",
-            "Classes as types",
-        ],
+        summary: "Fields and initialisation, this, access modifiers and #private, parameter properties, implements and abstract, and what a class name means as a type.",
+    },
+    {
+        slug: "foundations-exercises", name: "Exercises", chapter: "foundations",
+        summary: "Thirteen exercises across the Foundations chapter — predict, fix and write, easy to hard, with hidden hints and solutions.",
     },
 
     // — Structure —
