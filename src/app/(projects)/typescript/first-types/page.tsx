@@ -14,7 +14,7 @@ import { topicBySlug } from "@/projects/typescript/typescript";
 // Each href targets a DocSection id (slugged from its title in the content file).
 // AUDIT RULE: every DocSection on this page must have exactly one article here,
 // and every article must point at a real section id. This page has no pinned
-// footer sections, so the rule holds for all twelve without exception.
+// footer sections, so the rule holds for all thirteen without exception.
 const ANNOTATIONS_TEXT = [
     {
         title: "The annotation",
@@ -129,6 +129,18 @@ const UNCERTAIN_TEXT = [
             <>
                 Everything is assignable to <Mono>unknown</Mono>, nothing out of it
                 without a check. The type for anything entering from outside.
+            </>
+        ),
+    },
+    {
+        title: "Where Any Hides",
+        href: "#where-any-hides",
+        text: (
+            <>
+                <Mono>JSON.parse</Mono>, <Mono>res.json()</Mono>,{" "}
+                <Mono>new Map()</Mono> and <Mono>Array.isArray</Mono> on{" "}
+                <Mono>unknown</Mono> hand back <Mono>any</Mono> — annotate the
+                value <Mono>unknown</Mono> at the door.
             </>
         ),
     },

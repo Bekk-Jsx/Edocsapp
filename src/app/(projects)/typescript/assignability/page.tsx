@@ -14,7 +14,7 @@ import { topicBySlug } from "@/projects/typescript/typescript";
 // Each href targets a DocSection id (slugged from its title in the content file).
 // AUDIT RULE: every DocSection on this page must have exactly one article here,
 // and every article must point at a real section id. No pinned footer sections,
-// so the rule holds for all ten without exception: 10 sections, 10 cards.
+// so the rule holds for all eleven without exception: 11 sections, 11 cards.
 const STRUCTURAL_TEXT = [
     {
         title: "Shape, Not Name",
@@ -80,6 +80,17 @@ const EXCESS_TEXT = [
             <>
                 Declare them with an index signature. All-optional types need at
                 least one shared key — and one is enough.
+            </>
+        ),
+    },
+    {
+        title: "as Overrides the Check",
+        href: "#as-overrides-the-check",
+        text: (
+            <>
+                An annotation checks, <Mono>as</Mono> trusts. Types must overlap —
+                unless you go through <Mono>unknown</Mono>. Check, build or convert
+                instead.
             </>
         ),
     },

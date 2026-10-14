@@ -36,6 +36,8 @@ export const SECTION_SEVERITIES: SectionSeverities = {
     "any-turns-the-checker-off": ["trap"],
     // inline `note · checking a property` + `note · the rule of thumb`
     "unknown-the-safe-any": ["note"],
+    // inline `trap · the promise catch is still any` + `tip · unknown is the door type`
+    "where-any-hides": ["trap", "tip"],
     // inline `note · why literal unions beat loose strings`
     never: ["note"],
 
@@ -348,6 +350,42 @@ const TYPE_GUARD = `function hasName(value: unknown): value is { name: string } 
         "name" in value &&
         typeof value.name === "string"
     );
+}`;
+
+const ANY_SOURCES = `const data = JSON.parse(raw);                 // any
+const body = await res.json();                // any
+const cache = new Map();                      // Map<any, any>
+
+function load(input: unknown) {
+    if (Array.isArray(input)) {
+        input;                                // any[] — not unknown[]
+    }
+}
+
+promise.catch((err) => err.message);          // err: any`;
+
+const ANY_ANNOTATED = `const user: { name: string; age: number } = JSON.parse('{"name":"sam","age":"30"}');
+
+user.age + 1;   // compiles — 301 at runtime, age is really the string "30"`;
+
+const IS_ARRAY_ANY = `function names(input: unknown): string[] {
+    if (Array.isArray(input)) {
+        return input;   // compiles — any[] fits string[], nothing was checked
+    }
+    return [];
+}`;
+
+const UNKNOWN_AT_THE_DOOR = `const data: unknown = JSON.parse(raw);
+data.name;
+// ❌ data is unknown — check what it is first
+
+function names(input: unknown): string[] {
+    if (Array.isArray(input)) {
+        const items: unknown[] = input;
+        return items;
+        // ❌ unknown[] is not string[] — the elements were never checked
+    }
+    return [];
 }`;
 
 const NEVER = `let b: never = undefined;
@@ -1205,6 +1243,69 @@ export function FirstTypesDocs() {
                             responses, parsed JSON, form input, environment
                             variables. <Code>unknown</Code> forces a check at the
                             door, which is the one place a check is worth most.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="where any hides">
+                    <p>
+                        <Code>noImplicitAny</Code> catches the <Code>any</Code> you
+                        forget to write. It cannot catch the <Code>any</Code> a
+                        function RETURNS — several everyday built-ins return{" "}
+                        <Code>any</Code> by design, and the code around them looks
+                        exactly like checked code:
+                    </p>
+                    <CodeBlock code={ANY_SOURCES} lang="ts" />
+                    <p>
+                        <Term>An annotation checks nothing here.</Term>{" "}
+                        <Code>any</Code> fits every type, so a type written on the
+                        left is a promise the compiler accepts without looking:
+                    </p>
+                    <CodeBlock code={ANY_ANNOTATED} lang="ts" />
+                    <p>
+                        <Term>
+                            <Code>Array.isArray</Code> keeps the <Code>any</Code>.
+                        </Term>{" "}
+                        It narrows <Code>unknown</Code> to <Code>any[]</Code>, so the
+                        array passes as any array type without a single check:
+                    </p>
+                    <CodeBlock code={IS_ARRAY_ANY} lang="ts" />
+                    <p>
+                        <Term>
+                            The fix is always the same: make it <Code>unknown</Code>{" "}
+                            at the door.
+                        </Term>{" "}
+                        Every value fits <Code>unknown</Code>, so the annotation is
+                        always true — and from that line on the compiler makes you
+                        check before use:
+                    </p>
+                    <CodeBlock code={UNKNOWN_AT_THE_DOOR} lang="ts" />
+                    <p>
+                        <Code>{"new Map<string, number>()"}</Code> closes the{" "}
+                        <Code>Map</Code> door the same way — give the generic its
+                        types.
+                    </p>
+
+                    <Callout
+                        severity="trap"
+                        label="trap · the promise catch is still any"
+                    >
+                        <p>
+                            With <Code>strict</Code>, the variable in{" "}
+                            <Code>{"try { } catch (e)"}</Code> is <Code>unknown</Code>,
+                            so it must be checked before use. The parameter of{" "}
+                            <Code>{".catch((err) => …)"}</Code> does not get that rule —
+                            it is still <Code>any</Code>. Write{" "}
+                            <Code>(err: unknown)</Code> yourself.
+                        </p>
+                    </Callout>
+
+                    <Callout severity="tip" label="tip · unknown is the door type">
+                        <p>
+                            Anything from outside your code — JSON, the network,
+                            storage, an untyped library — is <Code>any</Code> until you
+                            write <Code>: unknown</Code>. A type guard (Unions &amp;
+                            Narrowing) then turns it into a real type.
                         </p>
                     </Callout>
                 </DocSection>

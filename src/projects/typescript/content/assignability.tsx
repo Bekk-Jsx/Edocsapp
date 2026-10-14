@@ -26,6 +26,9 @@ export const SECTION_SEVERITIES: SectionSeverities = {
     "fresh-literals-are-checked-for-extra-keys": ["note"],
     // inline `trap · one overlapping key lets a typo through` + `note · required keys plus open extras`
     "allowing-extra-keys": ["trap", "note"],
+    // inline `trap · as unknown as T silences every check` + `tip · when as is the right tool`
+    // + `note · ! is an assertion too` + `note · as const asserts nothing`
+    "as-overrides-the-check": ["trap", "tip", "note"],
 
     // --- part 4 (Function Assignability) ---
     // inline `note · covariant and contravariant` + `note · this check is strictFunctionTypes`
@@ -61,6 +64,46 @@ function PartHeading({
                 aria-hidden="true"
                 className="mt-3 h-px w-full bg-[var(--border)]"
             />
+        </div>
+    );
+}
+
+// The grid table classes.tsx uses, copied unchanged — this page needs it once,
+// for the honest replacements of each `as` misuse.
+// `cols` is a literal grid-template-columns utility so Tailwind sees it at build time.
+function GridTable({
+    cols,
+    head,
+    rows,
+}: {
+    cols: string;
+    head: string[];
+    rows: string[][];
+}) {
+    const cell = "px-3 py-2";
+    const ruled = `${cell} border-b border-[var(--border)]`;
+    return (
+        <div
+            className={`grid ${cols} overflow-hidden rounded border border-[var(--border)] bg-[var(--surface-2)] font-mono text-[0.75rem]`}
+        >
+            {head.map((h) => (
+                <div key={h} className={`${ruled} text-[var(--text)]`}>
+                    {h}
+                </div>
+            ))}
+            {rows.map((row, r) =>
+                row.map((value, c) => (
+                    <div
+                        key={`${r}-${c}`}
+                        // last row keeps the outer border as its only rule
+                        className={`${r === rows.length - 1 ? cell : ruled} ${
+                            c === 0 ? "text-[var(--accent)]" : "text-[var(--muted)]"
+                        }`}
+                    >
+                        {value}
+                    </div>
+                )),
+            )}
         </div>
     );
 }
@@ -293,6 +336,37 @@ const REQUIRED_PLUS_EXTRAS = `type Options = {
 
 const EXTRAS_FIXES = `type Options2 = { color: string; size: number; [key: string]: string | number };
 type Options3 = { color: string; size: number; extra: Record<string, string> };`;
+
+const AS_ANNOTATED = `type User = { name: string; age: number };
+
+const a: User = {};
+// ❌ {} is missing name and age`;
+
+const AS_TRUSTED = `const b = {} as User;   // b: User — but it is empty
+
+b.name.toUpperCase();   // compiles — crashes at runtime`;
+
+const AS_OVERLAP = `const c = {} as User;                // ✅ User fits into {}
+const d = { name: "sam" } as User;   // ✅ User fits into { name: string } — age still missing
+const e = "hello" as number;
+// ❌ a string and a number do not overlap at all
+const f = { nmae: "sam" } as User;
+// ❌ no overlap — the typo is caught`;
+
+const DOUBLE_AS = `const g = "hello" as unknown as number;   // g: number — really a string
+
+g.toFixed(2);   // compiles — crashes at runtime: toFixed is not a function`;
+
+const AS_ON_UNKNOWN = `function shout(value: unknown) {
+    return (value as string).toUpperCase();   // compiles — no typeof check
+}
+
+shout(42);   // crashes at runtime`;
+
+const FREEZE_SHALLOW = `const c = Object.freeze({ mode: "dark", db: { host: "x" } });
+c.mode = "light";
+// ❌ mode is read-only
+c.db.host = "y";   // ✅ compiles and works at runtime — the nested object is not frozen`;
 
 // ===================================================================
 // part 4 — function assignability
@@ -896,6 +970,128 @@ export function AssignabilityDocs() {
                             property — usually the cleanest:
                         </p>
                         <CodeBlock code={EXTRAS_FIXES} lang="ts" />
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="as overrides the check">
+                    <p>
+                        An annotation asks the compiler to check a value.{" "}
+                        <Code>as</Code> tells it to trust you:
+                    </p>
+                    <div className={PAIR_FRAME}>
+                        <div className={PAIR_GRID}>
+                            <div className={PAIR_COL}>
+                                <p>
+                                    <Term>annotation — checked</Term>
+                                </p>
+                                <CodeBlock code={AS_ANNOTATED} lang="ts" />
+                            </div>
+                            <div className={PAIR_COL}>
+                                <p>
+                                    <Term>as — trusted</Term>
+                                </p>
+                                <CodeBlock code={AS_TRUSTED} lang="ts" />
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Same value, same target type: the annotation checked it,{" "}
+                        <Code>as</Code> did not. <Code>as</Code> exists for the moments
+                        you know something the compiler cannot — and when you are
+                        wrong, nothing tells you.
+                    </p>
+                    <p>
+                        <Term>
+                            The one rule <Code>as</Code> keeps: the types must overlap.
+                        </Term>{" "}
+                        An assertion is allowed when either type is assignable to the
+                        other — so <Code>as</Code> can make a type narrower or wider,
+                        never jump between unrelated types:
+                    </p>
+                    <CodeBlock code={AS_OVERLAP} lang="ts" />
+                    <p>
+                        <Term>
+                            The double <Code>as</Code> removes even that rule.
+                        </Term>{" "}
+                        <Code>unknown</Code> overlaps with every type, so going through
+                        it allows any conversion — the compiler&apos;s own error
+                        message suggests it (&ldquo;convert the expression to
+                        &apos;unknown&apos; first&rdquo;):
+                    </p>
+                    <CodeBlock code={DOUBLE_AS} lang="ts" />
+                    <p>
+                        <Term>
+                            <Code>as</Code> on <Code>unknown</Code> skips the narrowing.
+                        </Term>{" "}
+                        This is why <Code>unknown</Code> is narrowed with a check (First
+                        Types, Unions &amp; Narrowing) and never with <Code>as</Code> — a
+                        check runs at runtime, <Code>as</Code> is erased:
+                    </p>
+                    <CodeBlock code={AS_ON_UNKNOWN} lang="ts" />
+                    <p>
+                        Each misuse has an honest replacement — check it, build it, or
+                        convert it:
+                    </p>
+                    <GridTable
+                        cols="grid-cols-[max-content_1fr]"
+                        head={["instead of", "write"]}
+                        rows={[
+                            ["data as User", "data: unknown + a type guard"],
+                            ["{} as User, then fill fields", "const user: User = { … } — one annotated literal"],
+                            ["(s as Circle).radius", 'narrow on the discriminant: s.kind === "circle"'],
+                            ["users.find(…)!.name", 'users.find(…)?.name ?? "not found"'],
+                            ["id as unknown as number", "Number(id) — convert the value, do not relabel it"],
+                        ]}
+                    />
+
+                    <Callout
+                        severity="trap"
+                        label="trap · as unknown as T silences every check"
+                    >
+                        <p>
+                            It compiles any conversion, and the value is unchanged at
+                            runtime. If you need it, the type design is usually wrong —
+                            fix the types or convert the value.
+                        </p>
+                    </Callout>
+
+                    <Callout severity="note" label="note · ! is an assertion too">
+                        <p>
+                            <Code>value!</Code> removes <Code>null</Code> and{" "}
+                            <Code>undefined</Code> from the type without checking
+                            anything — the same &ldquo;trust me&rdquo; as{" "}
+                            <Code>as</Code>, with the same risk.
+                        </p>
+                    </Callout>
+
+                    <Callout severity="tip" label="tip · when as is the right tool">
+                        <p>
+                            Only when you know something no check can give the
+                            compiler, and being wrong is impossible: the DOM element
+                            you wrote yourself —{" "}
+                            <Code>{'document.getElementById("email") as HTMLInputElement'}</Code>
+                            , or better{" "}
+                            <Code>{'document.querySelector<HTMLInputElement>("#email")'}</Code>
+                            ; <Code>e.target as HTMLInputElement</Code> in a handler;{" "}
+                            <Code>Object.keys(PIXELS) as (keyof typeof PIXELS)[]</Code>{" "}
+                            for your own constant; partial mocks in tests. Never on
+                            data from outside.
+                        </p>
+                        <p>
+                            Quick test before writing it: if I am wrong, does the
+                            compiler or the runtime tell me? If neither does, write a
+                            check instead.
+                        </p>
+                    </Callout>
+
+                    <Callout severity="note" label="note · as const asserts nothing">
+                        <p>
+                            It only narrows — readonly at every level, literal values
+                            kept (First Types) — so it is always safe. It is
+                            compile-time only; for a runtime lock use{" "}
+                            <Code>Object.freeze</Code>, which is shallow:
+                        </p>
+                        <CodeBlock code={FREEZE_SHALLOW} lang="ts" />
                     </Callout>
                 </DocSection>
             </div>
