@@ -96,14 +96,7 @@ export const TOPICS: TypeScriptTopic[] = [
     },
     {
         slug: "keys-and-lookups", name: "Keys & Lookups", chapter: "generics",
-        summary: "keyof, indexed access types, typeof, as const.",
-        parts: [
-            "keyof",
-            "Indexed access types",
-            "typeof on a value",
-            "as const and literal inference",
-            "Combining them to derive types from data",
-        ],
+        summary: "keyof, indexed access, K extends keyof T, and deriving types from runtime constants.",
     },
 
     // — The Type Toolkit —
