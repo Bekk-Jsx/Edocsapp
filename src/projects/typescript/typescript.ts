@@ -92,14 +92,7 @@ export const TOPICS: TypeScriptTopic[] = [
     // — Generics —
     {
         slug: "generics-basics", name: "Generics Basics", chapter: "generics",
-        summary: "Type parameters, inference, constraints, defaults.",
-        parts: [
-            "Why a type parameter",
-            "Inference at the call site",
-            "Constraints with extends",
-            "Default type parameters",
-            "Generic interfaces and type aliases",
-        ],
+        summary: "Type parameters, inference at the call site, constraints, generic types and defaults — and when a generic is the wrong tool.",
     },
     {
         slug: "keys-and-lookups", name: "Keys & Lookups", chapter: "generics",
