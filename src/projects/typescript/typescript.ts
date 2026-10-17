@@ -98,6 +98,10 @@ export const TOPICS: TypeScriptTopic[] = [
         slug: "keys-and-lookups", name: "Keys & Lookups", chapter: "generics",
         summary: "keyof, indexed access, K extends keyof T, and deriving types from runtime constants.",
     },
+    {
+        slug: "generics-exercises", name: "Exercises", chapter: "generics",
+        summary: "Eight exercises across the Generics chapter — predict, fix and write, easy to hard, with hidden hints and solutions.",
+    },
 
     // — The Type Toolkit —
     {

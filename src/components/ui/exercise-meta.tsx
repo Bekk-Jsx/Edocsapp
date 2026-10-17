@@ -56,27 +56,39 @@ const KIND_ICON: Record<Kind, ReactNode> = {
 const MUTED_MONO =
     "inline-flex items-center gap-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]";
 
+// The StatusBadge tint recipe, shared by the difficulty and unsolved pills.
+const pillStyle = (color: string): CSSProperties => ({
+    color,
+    background: `color-mix(in srgb, ${color} 12%, var(--surface))`,
+    borderColor: `color-mix(in srgb, ${color} 40%, var(--surface))`,
+});
+
+// `unsolved` adds a "not solved yet" pill after the difficulty, tinted like the
+// hard pill — for an open exercise the author still has to work through.
 export default function ExerciseMeta({
     difficulty,
     kind,
     source,
+    unsolved = false,
 }: {
     difficulty: Difficulty;
     kind: Kind;
     source: string;
+    unsolved?: boolean;
 }) {
-    const color = DIFFICULTY_COLOR[difficulty];
-    const pill: CSSProperties = {
-        color,
-        background: `color-mix(in srgb, ${color} 12%, var(--surface))`,
-        borderColor: `color-mix(in srgb, ${color} 40%, var(--surface))`,
-    };
-
     return (
         <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className={BADGE_CLASS} style={pill}>
+            <span
+                className={BADGE_CLASS}
+                style={pillStyle(DIFFICULTY_COLOR[difficulty])}
+            >
                 {difficulty}
             </span>
+            {unsolved ? (
+                <span className={BADGE_CLASS} style={pillStyle("var(--danger)")}>
+                    not solved yet
+                </span>
+            ) : null}
             <span className={MUTED_MONO}>
                 {KIND_ICON[kind]}
                 {kind}
