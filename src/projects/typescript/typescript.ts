@@ -65,15 +65,7 @@ export const TOPICS: TypeScriptTopic[] = [
     // — Structure —
     {
         slug: "tsconfig-structure", name: "tsconfig Structure", chapter: "structure",
-        summary: "Anatomy of the file: compilerOptions, the strict family, module/target/moduleResolution, paths.",
-        parts: [
-            "The file's top-level shape",
-            "compilerOptions worth knowing",
-            "The strict family, option by option",
-            "target, module, moduleResolution, lib",
-            "paths and baseUrl",
-            "include, exclude, and what tsc actually compiles",
-        ],
+        summary: "What tsconfig decides, extends, the strict family and the flags outside it, paths aliases, and this project's own config read line by line.",
     },
     {
         slug: "reading-type-syntax", name: "Reading Type Syntax", chapter: "structure",
