@@ -53,6 +53,8 @@ const CARD_EDGE: Record<Severity, string> = {
     trap: "hover:border-[var(--amber)] focus-visible:border-[var(--amber)] focus-visible:ring-[var(--amber)]",
     tip: "hover:border-[var(--mint)] focus-visible:border-[var(--mint)] focus-visible:ring-[var(--mint)]",
     next: "hover:border-[var(--next)] focus-visible:border-[var(--next)] focus-visible:ring-[var(--next)]",
+    difference:
+        "hover:border-[var(--difference)] focus-visible:border-[var(--difference)] focus-visible:ring-[var(--difference)]",
     note: "hover:border-[var(--note)] focus-visible:border-[var(--note)] focus-visible:ring-[var(--note)]",
 };
 

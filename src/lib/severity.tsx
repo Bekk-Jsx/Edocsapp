@@ -11,9 +11,13 @@ import type { CSSProperties, ReactNode } from "react";
 //                     Reserved for other sections that happen to discuss a
 //                     React/Next difference — the dedicated "react vs next.js"
 //                     footer section stays plain and unflagged.
+//   difference (cyan) — a version or API-style difference outside React/Next:
+//                     "vue 2 → 3 · …" or "main vs setup · …". Same standing as
+//                     `next` — not a risk level, but it changes what the code
+//                     must be — so it sorts right after it.
 //   tip    (mint)   — best practice / good to know.
 //   note   (slate)  — a neutral aside: a clarification that qualifies the rule
-//                     above it. NOT a risk level and the quietest of the five,
+//                     above it. NOT a risk level and the quietest of the six,
 //                     so it sorts last and only wins `highestSeverity` when it
 //                     is the sole entry.
 //
@@ -22,7 +26,7 @@ import type { CSSProperties, ReactNode } from "react";
 //   a section covers. It feeds the summary rail only: a card shows ALL of its
 //   section's icons, sorted by SEVERITY_ORDER.
 // - `sectionSeverity` flags a whole section (icon + badge on the title, any of
-//   the five; the title text itself stays its normal tone colour).
+//   the six; the title text itself stays its normal tone colour).
 //   Inline Callout boxes are for notes WITHIN a section. The two are
 //   independent — a section can use either, both, or neither.
 // - Section backgrounds are NEVER tinted by severity.
@@ -30,16 +34,24 @@ import type { CSSProperties, ReactNode } from "react";
 //   severities in SECTION_SEVERITIES without its whole topic being any one of
 //   them. Keep the two in sync by intent, not by derivation.
 // ===================================================================
-export type Severity = "danger" | "trap" | "tip" | "next" | "note";
+export type Severity =
+    | "danger"
+    | "trap"
+    | "tip"
+    | "next"
+    | "difference"
+    | "note";
 
 /** Priority, high -> low. Drives both `highestSeverity` and icon order.
- *  Risk levels come first (danger, trap), then the framework difference, then
- *  the two advisory types — so a card carrying a `next` keeps its orchid marker
- *  even when a tip or a note sits alongside it. */
+ *  Risk levels come first (danger, trap), then the two difference types
+ *  (framework, then version/API style), then the two advisory types — so a card
+ *  carrying a `next` or `difference` keeps its marker even when a tip or a note
+ *  sits alongside it. */
 export const SEVERITY_ORDER: Severity[] = [
     "danger",
     "trap",
     "next",
+    "difference",
     "tip",
     "note",
 ];
@@ -132,6 +144,18 @@ function SwapIcon({ className, style }: IconProps) {
     );
 }
 
+// A single right-pointing arrow — "from the old form to the new one". One
+// arrow, where SwapIcon has two, so a version difference never reads as `next`.
+// Ink spans x 4..20 / y 6..18, centred on 12 like the others.
+function ArrowRightIcon({ className, style }: IconProps) {
+    return (
+        <svg {...svgBase} className={className} style={style}>
+            <path d="M4 12h16" />
+            <path d="m14 6 6 6-6 6" />
+        </svg>
+    );
+}
+
 export const severityStyle: Record<
     Severity,
     { color: string; bg: string; label: string; Icon: (p: IconProps) => ReactNode }
@@ -160,6 +184,14 @@ export const severityStyle: Record<
         bg: "color-mix(in srgb, var(--next) 12%, var(--surface))",
         label: "react ⇄ next",
         Icon: SwapIcon,
+    },
+    // Not a risk level — marks a version or API-style difference
+    // ("vue 2 → 3", "main vs setup").
+    difference: {
+        color: "var(--difference)",
+        bg: "color-mix(in srgb, var(--difference) 12%, var(--surface))",
+        label: "difference",
+        Icon: ArrowRightIcon,
     },
     // Not a risk level — a neutral aside qualifying the rule it follows.
     note: {

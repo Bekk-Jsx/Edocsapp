@@ -106,7 +106,7 @@ export const PROJECTS: Project[] = [
     title: "Vue.js",
     description: "Vue fundamentals — reactivity, components, composition API.",
     type: "web-dev",
-    status: "not-started",
+    status: "in-progress",
   },
   {
     slug: "docker",
