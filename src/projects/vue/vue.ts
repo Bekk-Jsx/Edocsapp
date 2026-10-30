@@ -60,13 +60,7 @@ export const TOPICS: VueTopic[] = [
     // — Components —
     {
         slug: "props-and-emits", name: "Props & Emits", chapter: "components",
-        summary: "Typed component inputs and outputs.",
-        parts: [
-            "props with PropType",
-            "validation and defaults",
-            "typed emits option",
-            "$listeners merged into $attrs",
-        ],
+        summary: "Typed props, component events and the emits option, fallthrough listeners, function props and calling child methods.",
     },
     {
         slug: "v-model", name: "v-model", chapter: "components",
