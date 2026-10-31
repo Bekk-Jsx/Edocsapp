@@ -64,42 +64,19 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "v-model", name: "v-model", chapter: "components",
-        summary: "Two-way binding on components.",
-        parts: [
-            "modelValue / update:modelValue",
-            "multiple v-models",
-            ".sync removed",
-            "custom modifiers",
-        ],
+        summary: "Two-way binding on components: the modelValue contract, multiple v-models with arguments, and forwarding v-model to inner inputs.",
     },
     {
         slug: "slots", name: "Slots", chapter: "components",
-        summary: "Passing template content into components.",
-        parts: [
-            "default and named slots",
-            "scoped slots",
-            "$scopedSlots removed",
-            "typing slots",
-        ],
+        summary: "Passing template content into components: default and named slots, scoped slots that send data to the parent, and typing slots with SlotsType.",
     },
     {
         slug: "provide-inject", name: "Provide & Inject", chapter: "components",
-        summary: "Passing data deep without props.",
-        parts: [
-            "provide / inject",
-            "reactive provide",
-            "InjectionKey typing",
-        ],
+        summary: "Passing values to deep descendants without props: provide and inject, keeping provided values reactive, and typing them with InjectionKey.",
     },
     {
         slug: "lifecycle-and-attrs", name: "Lifecycle & Attrs", chapter: "components",
-        summary: "Hooks, fallthrough attributes and multi-root components.",
-        parts: [
-            "renamed hooks",
-            "attrs fallthrough",
-            "inheritAttrs",
-            "fragments (multi-root)",
-        ],
+        summary: "Renamed and lesser-known lifecycle hooks, fallthrough attributes with inheritAttrs and $attrs, and multi-root components.",
     },
 
     // — Script Setup —
