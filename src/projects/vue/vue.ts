@@ -82,42 +82,19 @@ export const TOPICS: VueTopic[] = [
     // — Script Setup —
     {
         slug: "setup-function", name: "The setup() Function", chapter: "script-setup",
-        summary: "Using setup() inside defineComponent.",
-        parts: [
-            "setup() option",
-            "props and context args",
-            "no `this`",
-            "returning bindings",
-        ],
+        summary: "Writing component logic grouped by feature with setup(): returned bindings, lifecycle hook functions, and the props and context arguments.",
     },
     {
         slug: "script-setup-basics", name: "Script Setup Basics", chapter: "script-setup",
-        summary: "The <script setup> syntax and what it compiles to.",
-        parts: [
-            "top-level bindings in the template",
-            "using imported components",
-            "compiled output",
-        ],
+        summary: "The <script setup> syntax: top-level bindings without a return, components used directly, and why such components are closed by default.",
     },
     {
         slug: "compiler-macros", name: "Compiler Macros", chapter: "script-setup",
-        summary: "defineProps, defineEmits, defineModel and friends.",
-        parts: [
-            "typed defineProps + destructure defaults",
-            "typed defineEmits",
-            "defineModel",
-            "defineExpose",
-            "defineSlots / defineOptions",
-        ],
+        summary: "defineProps, defineEmits, defineModel, defineExpose, defineOptions and defineSlots — declaring a <script setup> component's API with types.",
     },
     {
         slug: "template-refs", name: "Template Refs", chapter: "script-setup",
-        summary: "Accessing DOM elements and child components.",
-        parts: [
-            "ref attribute",
-            "useTemplateRef",
-            "typing component refs",
-        ],
+        summary: "Accessing DOM elements and child components from <script setup> with useTemplateRef: when refs are filled, typing component refs, and refs in v-for.",
     },
 
     // — Templates & Rendering —
