@@ -100,34 +100,15 @@ export const TOPICS: VueTopic[] = [
     // — Templates & Rendering —
     {
         slug: "template-changes", name: "Template Changes", chapter: "templates-and-rendering",
-        summary: "What changed in template syntax since Vue 2.",
-        parts: [
-            "v-if / v-for priority",
-            "key on <template>",
-            "filters removed",
-            ".native removed",
-        ],
+        summary: "Template syntax that changed since Vue 2: v-if before v-for, filters replaced by functions, and new key rules for <template v-for> and v-if branches.",
     },
     {
         slug: "built-in-components", name: "Built-in Components", chapter: "templates-and-rendering",
-        summary: "Teleport, KeepAlive, Transition, Suspense and async components.",
-        parts: [
-            "Teleport",
-            "KeepAlive",
-            "Transition class changes",
-            "async components",
-            "Suspense",
-        ],
+        summary: "Teleport for modals, KeepAlive for cached views, async components for on-demand loading, and the renamed Transition classes.",
     },
     {
         slug: "rendering-under-the-hood", name: "Rendering Under the Hood", chapter: "templates-and-rendering",
-        summary: "From template to DOM, kept to the essentials.",
-        parts: [
-            "template → render function",
-            "virtual DOM + patch flags",
-            "batched updates and nextTick",
-            "Vapor mode (brief)",
-        ],
+        summary: "Why DOM updates are batched and when nextTick is needed, and how a template becomes DOM: render function, virtual DOM and patching.",
     },
 
     // — Composables —
