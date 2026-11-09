@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "search:sync": "node scripts/search-sync.mjs",
+    "search:check": "node scripts/search-sync.mjs --check"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",

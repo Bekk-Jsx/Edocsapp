@@ -113,6 +113,46 @@ body {
   padding-top: 2rem;
 }
 
+/* ---------- search ---------- */
+
+/* Matched text in suggestions and results — a tint of the accent, not the
+   browser's yellow, so it reads on the dark surfaces. */
+.search-mark {
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* Page search: while results show, everything in the article except its
+   header and the search slot is hidden. The summary rail is outside. */
+[data-page-search="on"] article > :not(header):not(.page-search-slot) {
+  display: none;
+}
+.page-search-slot {
+  margin-bottom: 1.5rem;
+}
+
+/* Arrival on a section: :target for native hash jumps, .search-arrive for
+   client-side navigation (which never updates :target). Reduced motion is
+   handled by the global rule below, which collapses the animation. */
+@keyframes section-flash {
+  0%,
+  35% {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: 0 0 0 0.75rem color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0.75rem transparent;
+  }
+}
+.doc-section:target,
+.doc-section.search-arrive {
+  border-radius: 0.375rem;
+  animation: section-flash 1.2s ease-out;
+}
+
 /* Inline code token (<Code>). Only the colors live here — padding, rounding and
    the mono face stay Tailwind utilities on the element. Keeping the colors
    unlayered means a callout can override them with a plain descendant rule. */

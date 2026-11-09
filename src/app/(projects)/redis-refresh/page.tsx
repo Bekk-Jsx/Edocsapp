@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectSearch from "@/components/search/project-search";
 import { topicsByChapter, TOPICS, CHAPTERS } from "@/projects/redis-refresh/redis";
 
 // Project landing. Chapter groups come from the same registry the navbar reads,
@@ -30,43 +31,45 @@ export default function Home() {
                 </span>
             </div>
 
-            <section className="mt-10">
-                <p className="mb-3 font-mono text-[0.8rem] font-semibold uppercase tracking-widest text-[var(--accent)]">
-                    Chapters
-                </p>
+            <ProjectSearch project="redis-refresh">
+                <section className="mt-10">
+                    <p className="mb-3 font-mono text-[0.8rem] font-semibold uppercase tracking-widest text-[var(--accent)]">
+                        Chapters
+                    </p>
 
-                {groups.length === 0 ? (
-                    <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center font-mono text-sm text-[var(--muted)]">
-                        Coming soon — chapters land here as we build them.
-                    </div>
-                ) : (
-                    <div className="space-y-8">
-                        {groups.map(({ id, label, topics }) => (
-                            <div key={id}>
-                                <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                                    {label}
-                                </p>
-                                <div className="grid gap-3 sm:grid-cols-2">
-                                    {topics.map((t) => (
-                                        <Link
-                                            key={t.slug}
-                                            href={`/redis-refresh/${t.slug}`}
-                                            className="group rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]"
-                                        >
-                                            <p className="font-mono text-sm text-[var(--accent)]">
-                                                {t.name}
-                                            </p>
-                                            <p className="mt-1 text-sm text-[var(--muted)]">
-                                                {t.summary}
-                                            </p>
-                                        </Link>
-                                    ))}
+                    {groups.length === 0 ? (
+                        <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center font-mono text-sm text-[var(--muted)]">
+                            Coming soon — chapters land here as we build them.
+                        </div>
+                    ) : (
+                        <div className="space-y-8">
+                            {groups.map(({ id, label, topics }) => (
+                                <div key={id}>
+                                    <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
+                                        {label}
+                                    </p>
+                                    <div className="grid gap-3 sm:grid-cols-2">
+                                        {topics.map((t) => (
+                                            <Link
+                                                key={t.slug}
+                                                href={`/redis-refresh/${t.slug}`}
+                                                className="group rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]"
+                                            >
+                                                <p className="font-mono text-sm text-[var(--accent)]">
+                                                    {t.name}
+                                                </p>
+                                                <p className="mt-1 text-sm text-[var(--muted)]">
+                                                    {t.summary}
+                                                </p>
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </section>
+                            ))}
+                        </div>
+                    )}
+                </section>
+            </ProjectSearch>
         </div>
     );
 }
