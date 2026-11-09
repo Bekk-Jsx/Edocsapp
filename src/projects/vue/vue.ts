@@ -114,22 +114,11 @@ export const TOPICS: VueTopic[] = [
     // — Composables —
     {
         slug: "writing-composables", name: "Writing Composables", chapter: "composables",
-        summary: "Reusable logic that replaces mixins.",
-        parts: [
-            "mixins vs composables",
-            "conventions",
-            "ref arguments with toValue",
-            "using composables from the main syntax",
-        ],
+        summary: "Reusable reactive logic as plain functions: why composables replace mixins, the conventions, flexible arguments with toValue, and when not to write one.",
     },
     {
         slug: "async-composables", name: "Async Composables", chapter: "composables",
-        summary: "Composables with side effects and async data.",
-        parts: [
-            "lifecycle-bound side effects",
-            "async state",
-            "effectScope",
-        ],
+        summary: "One composable for async state: data, loading and error refs, re-fetching when a reactive source changes, and aborting stale requests.",
     },
 
     // — Router —

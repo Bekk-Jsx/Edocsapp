@@ -8,7 +8,8 @@ export type ProjectType =
   | "devops"
   | "automation"
   | "design"
-  | "growth";
+  | "growth"
+  | "algorithms";
 
 // Display order + labels for the type sections / type-nav on the home page.
 export const PROJECT_TYPES: { id: ProjectType; label: string }[] = [
@@ -19,6 +20,8 @@ export const PROJECT_TYPES: { id: ProjectType; label: string }[] = [
   { id: "automation", label: "Automation" },
   { id: "design", label: "Design" },
   { id: "growth", label: "Growth" },
+  // Interview-style problem solving, one project per language.
+  { id: "algorithms", label: "Algorithms" },
 ];
 
 // How far along a project is. Rendered as a badge on the HOME CARDS ONLY — the
@@ -129,6 +132,14 @@ export const PROJECTS: Project[] = [
     description:
       "Technical SEO — crawling, indexing, Core Web Vitals, structured data.",
     type: "growth",
+    status: "not-started",
+  },
+  {
+    slug: "ts-algorithms",
+    title: "TypeScript Algorithms",
+    description:
+      "Interview-style algorithm problems — JavaScript algorithms solved in strict TypeScript, Medium to Very Hard.",
+    type: "algorithms",
     status: "not-started",
   },
 ];
