@@ -1,0 +1,2194 @@
+{
+  "generated": "by npm run search:sync — do not edit",
+  "project": {
+    "slug": "redis-refresh",
+    "name": "Redis, refreshed.",
+    "href": "/redis-refresh"
+  },
+  "pages": [
+    {
+      "slug": "first-commands",
+      "name": "First Commands",
+      "chapter": "Environment",
+      "href": "/redis-refresh/first-commands",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Session",
+          "href": "/redis-refresh/first-commands#redis-cli",
+          "titles": [
+            {
+              "title": "redis-cli",
+              "href": "/redis-refresh/first-commands#redis-cli",
+              "keywords": [
+                "The prompt is the first diagnostic step.",
+                "exit",
+                "~/.rediscli_history",
+                "HELP SET"
+              ]
+            },
+            {
+              "title": "PING",
+              "href": "/redis-refresh/first-commands#ping",
+              "keywords": [
+                "round trip",
+                "health check"
+              ]
+            },
+            {
+              "title": "one-shot mode",
+              "href": "/redis-refresh/first-commands#one-shot-mode",
+              "keywords": []
+            },
+            {
+              "title": "reply annotations",
+              "href": "/redis-refresh/first-commands#reply-annotations",
+              "keywords": []
+            },
+            {
+              "title": "raw mode",
+              "href": "/redis-refresh/first-commands#raw-mode",
+              "keywords": [
+                "\"42\"",
+                "42"
+              ]
+            },
+            {
+              "title": "case sensitivity",
+              "href": "/redis-refresh/first-commands#case-sensitivity",
+              "keywords": [
+                "name",
+                "DEL",
+                "User:1",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "command signatures",
+              "href": "/redis-refresh/first-commands#command-signatures",
+              "keywords": [
+                "key value",
+                "SET"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Databases",
+          "href": "/redis-refresh/first-commands#select",
+          "titles": [
+            {
+              "title": "SELECT",
+              "href": "/redis-refresh/first-commands#select",
+              "keywords": [
+                "redis-cli",
+                "SELECT 1"
+              ]
+            },
+            {
+              "title": "locating the current database",
+              "href": "/redis-refresh/first-commands#locating-the-current-database",
+              "keywords": [
+                "keyspace",
+                "dev:",
+                "prod:",
+                "namespacing"
+              ]
+            },
+            {
+              "title": "databases are not isolation",
+              "href": "/redis-refresh/first-commands#databases-are-not-isolation",
+              "keywords": [
+                "The count is a startup setting",
+                "redis-server --databases 32",
+                "dev:user:1",
+                "test:user:1",
+                "SELECT",
+                "FLUSHALL",
+                "FLUSHDB"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "node-playground",
+      "name": "Node Playground",
+      "chapter": "Environment",
+      "href": "/redis-refresh/node-playground",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Client",
+          "href": "/redis-refresh/node-playground#ioredis",
+          "titles": [
+            {
+              "title": "ioredis",
+              "href": "/redis-refresh/node-playground#ioredis",
+              "keywords": [
+                "redis-cli",
+                "named",
+                "import Redis from \"ioredis\""
+              ]
+            },
+            {
+              "title": "one connection, not a pool",
+              "href": "/redis-refresh/node-playground#one-connection-not-a-pool",
+              "keywords": [
+                "Node caches modules.",
+                "maxclients",
+                "Two clients are expected",
+                "cmd"
+              ]
+            },
+            {
+              "title": "connection options",
+              "href": "/redis-refresh/node-playground#connection-options",
+              "keywords": [
+                "lazyConnect",
+                "maxRetriesPerRequest",
+                "retryStrategy",
+                "enableOfflineQueue",
+                "enableOfflineQueue: false"
+              ]
+            },
+            {
+              "title": "connection events",
+              "href": "/redis-refresh/node-playground#connection-events",
+              "keywords": [
+                "ioredis",
+                "error",
+                "EventEmitter"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Writing Data",
+          "href": "/redis-refresh/node-playground#layers",
+          "titles": [
+            {
+              "title": "layers",
+              "href": "/redis-refresh/node-playground#layers",
+              "keywords": [
+                "Dependencies flow in one direction.",
+                "req",
+                "res"
+              ]
+            },
+            {
+              "title": "key builders",
+              "href": "/redis-refresh/node-playground#key-builders",
+              "keywords": [
+                "as const"
+              ]
+            },
+            {
+              "title": "repository",
+              "href": "/redis-refresh/node-playground#repository",
+              "keywords": [
+                "redis.hset",
+                "redis.hgetall",
+                "HSET",
+                "HGETALL"
+              ]
+            },
+            {
+              "title": "serialization",
+              "href": "/redis-refresh/node-playground#serialization",
+              "keywords": []
+            },
+            {
+              "title": "null is a normal outcome",
+              "href": "/redis-refresh/node-playground#null-is-a-normal-outcome",
+              "keywords": [
+                "An absent key is null, not an exception.",
+                "try",
+                "catch"
+              ]
+            },
+            {
+              "title": "string or hash",
+              "href": "/redis-refresh/node-playground#string-or-hash",
+              "keywords": [
+                "GET",
+                "SET",
+                "H*",
+                "L*",
+                "S*",
+                "Z*",
+                "TYPE"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Observing",
+          "href": "/redis-refresh/node-playground#monitor",
+          "titles": [
+            {
+              "title": "MONITOR",
+              "href": "/redis-refresh/node-playground#monitor",
+              "keywords": [
+                "ioredis",
+                "createdAt",
+                "INFO",
+                "SELECT",
+                "SLOWLOG",
+                "CLIENT LIST",
+                "tailed MONITOR",
+                "arguments on the wire"
+              ]
+            },
+            {
+              "title": "latency",
+              "href": "/redis-refresh/node-playground#latency",
+              "keywords": [
+                "long-lived",
+                "persistent",
+                "connection leak"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "JavaScript Notes",
+          "href": "/redis-refresh/node-playground#nullish-coalescing",
+          "titles": [
+            {
+              "title": "nullish coalescing",
+              "href": "/redis-refresh/node-playground#nullish-coalescing",
+              "keywords": [
+                "??",
+                "\"\"",
+                "||",
+                "&&"
+              ]
+            },
+            {
+              "title": "optional chaining",
+              "href": "/redis-refresh/node-playground#optional-chaining",
+              "keywords": [
+                "?.",
+                "obj?.[key]"
+              ]
+            },
+            {
+              "title": "logical assignment",
+              "href": "/redis-refresh/node-playground#logical-assignment",
+              "keywords": [
+                "??=",
+                "\"\"",
+                "&&=",
+                "?."
+              ]
+            },
+            {
+              "title": "falsy and nullish",
+              "href": "/redis-refresh/node-playground#falsy-and-nullish",
+              "keywords": []
+            },
+            {
+              "title": "const and as const",
+              "href": "/redis-refresh/node-playground#const-and-as-const",
+              "keywords": [
+                "Object.freeze"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "inspecting-the-keyspace",
+      "name": "Inspecting the Keyspace",
+      "chapter": "Environment",
+      "href": "/redis-refresh/inspecting-the-keyspace",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Type",
+          "href": "/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
+          "titles": [
+            {
+              "title": "every key has exactly one type",
+              "href": "/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
+              "keywords": [
+                "The replies already differ by family.",
+                "SET",
+                "OK",
+                "SADD",
+                "zset",
+                "sorted-set",
+                "GET",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "command families follow the type",
+              "href": "/redis-refresh/inspecting-the-keyspace#command-families-follow-the-type",
+              "keywords": [
+                "The prefix follows from the type.",
+                "hash"
+              ]
+            },
+            {
+              "title": "WRONGTYPE",
+              "href": "/redis-refresh/inspecting-the-keyspace#wrongtype",
+              "keywords": [
+                "SET",
+                "SET k:hash \"hello\"",
+                "H*"
+              ]
+            },
+            {
+              "title": "commands that ignore the type",
+              "href": "/redis-refresh/inspecting-the-keyspace#commands-that-ignore-the-type",
+              "keywords": [
+                "EXISTS",
+                "DEL",
+                "RENAME",
+                "EXPIRE",
+                "TTL",
+                "SCAN",
+                "KEYS",
+                "PERSIST"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TTL",
+          "href": "/redis-refresh/inspecting-the-keyspace#setting-expiry",
+          "titles": [
+            {
+              "title": "setting expiry",
+              "href": "/redis-refresh/inspecting-the-keyspace#setting-expiry",
+              "keywords": [
+                "PEXPIRE",
+                "Expiry can also be set at write time",
+                "SET session:1 \"token\" EX 60",
+                "PX",
+                "EXPIRE"
+              ]
+            },
+            {
+              "title": "reading expiry",
+              "href": "/redis-refresh/inspecting-the-keyspace#reading-expiry",
+              "keywords": [
+                "Three return values cover every case.",
+                "-1",
+                "-2"
+              ]
+            },
+            {
+              "title": "losing a TTL",
+              "href": "/redis-refresh/inspecting-the-keyspace#losing-a-ttl",
+              "keywords": [
+                "SET",
+                "SET ... KEEPTTL",
+                "PERSIST removes an expiry deliberately",
+                "-1",
+                "KEEPTTL"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SCAN",
+          "href": "/redis-refresh/inspecting-the-keyspace#why-not-keys",
+          "titles": [
+            {
+              "title": "why not KEYS",
+              "href": "/redis-refresh/inspecting-the-keyspace#why-not-keys",
+              "keywords": []
+            },
+            {
+              "title": "seeding a keyspace to scan",
+              "href": "/redis-refresh/inspecting-the-keyspace#seeding-a-keyspace-to-scan",
+              "keywords": [
+                "$(seq 1 2000) is command substitution.",
+                "seq",
+                "$( )",
+                "echo builds one Redis command per line",
+                "redis-cli",
+                "--pipe",
+                "127.0.0.1:6379>",
+                "Invalid argument(s)"
+              ]
+            },
+            {
+              "title": "the cursor",
+              "href": "/redis-refresh/inspecting-the-keyspace#the-cursor",
+              "keywords": [
+                "SCAN 0 returns a two-element reply",
+                "A cursor is a bookmark.",
+                "SCAN 1"
+              ]
+            },
+            {
+              "title": "a full walk",
+              "href": "/redis-refresh/inspecting-the-keyspace#a-full-walk",
+              "keywords": [
+                "Read it as a chain",
+                "48",
+                "12",
+                "36",
+                "52"
+              ]
+            },
+            {
+              "title": "COUNT, MATCH, TYPE",
+              "href": "/redis-refresh/inspecting-the-keyspace#count-match-type",
+              "keywords": [
+                "COUNT 100",
+                "keys.length === COUNT",
+                "KEYS *",
+                "[ae]",
+                "TYPE (Redis 6+) filters during the walk",
+                "cursor === 0"
+              ]
+            },
+            {
+              "title": "what SCAN guarantees",
+              "href": "/redis-refresh/inspecting-the-keyspace#what-scan-guarantees",
+              "keywords": [
+                "Set"
+              ]
+            },
+            {
+              "title": "the CLI shortcut",
+              "href": "/redis-refresh/inspecting-the-keyspace#the-cli-shortcut",
+              "keywords": [
+                "--pattern",
+                "MATCH",
+                "| wc -l counts a namespace",
+                "| xargs -L 500 redis-cli UNLINK",
+                "-L 500",
+                "UNLINK"
+              ]
+            },
+            {
+              "title": "SCAN in Node",
+              "href": "/redis-refresh/inspecting-the-keyspace#scan-in-node",
+              "keywords": [
+                "do...while",
+                "Two node-redis v5 details.",
+                "cursor !== '0'",
+                "{ cursor, keys }",
+                "scanIterator"
+              ]
+            },
+            {
+              "title": "HSCAN, SSCAN, ZSCAN",
+              "href": "/redis-refresh/inspecting-the-keyspace#hscan-sscan-zscan",
+              "keywords": [
+                "Same cursor protocol, one level down.",
+                "SCAN",
+                "user:1",
+                "HGETALL",
+                "KEYS",
+                "SADD users:index <id>"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Object Encoding",
+          "href": "/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
+          "titles": [
+            {
+              "title": "type versus encoding",
+              "href": "/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
+              "keywords": [
+                "Every value has two layers.",
+                "hash",
+                "OBJECT ENCODING",
+                "listpack",
+                "hashtable"
+              ]
+            },
+            {
+              "title": "why the small form is faster",
+              "href": "/redis-refresh/inspecting-the-keyspace#why-the-small-form-is-faster",
+              "keywords": [
+                "Linear scanning stops paying at scale."
+              ]
+            },
+            {
+              "title": "the thresholds",
+              "href": "/redis-refresh/inspecting-the-keyspace#the-thresholds",
+              "keywords": [
+                "Two independent triggers.",
+                "HDEL",
+                "hashtable"
+              ]
+            },
+            {
+              "title": "encodings by type",
+              "href": "/redis-refresh/inspecting-the-keyspace#encodings-by-type",
+              "keywords": []
+            },
+            {
+              "title": "string encodings",
+              "href": "/redis-refresh/inspecting-the-keyspace#string-encodings",
+              "keywords": [
+                "int",
+                "INCR",
+                "embstr",
+                "raw"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "strings-and-counters",
+      "name": "Strings & Counters",
+      "chapter": "Data Types",
+      "href": "/redis-refresh/strings-and-counters",
+      "planned": false,
+      "parts": [
+        {
+          "name": "SET and its Options",
+          "href": "/redis-refresh/strings-and-counters#nx-and-xx",
+          "titles": [
+            {
+              "title": "NX and XX",
+              "href": "/redis-refresh/strings-and-counters#nx-and-xx",
+              "keywords": [
+                "NX is Not eXists, XX is eXists.",
+                "EXPIRE ... NX|XX",
+                "ZADD ... NX|XX",
+                "Plain SET always wins.",
+                "conditional on absence",
+                "presence",
+                "(nil)",
+                "no-op"
+              ]
+            },
+            {
+              "title": "why NX matters: atomicity",
+              "href": "/redis-refresh/strings-and-counters#why-nx-matters-atomicity",
+              "keywords": [
+                "EXISTS",
+                "SET",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "the one-line lock",
+              "href": "/redis-refresh/strings-and-counters#the-one-line-lock",
+              "keywords": [
+                "NX",
+                "EX 30",
+                "SET",
+                "EXPIRE",
+                "TTL",
+                "-1",
+                "SET ... NX",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "EXPIRE versus DEL",
+              "href": "/redis-refresh/strings-and-counters#expire-versus-del",
+              "keywords": [
+                "DEL is an action; EXPIRE is a deadline.",
+                "GET name",
+                "\"Yassin\"",
+                "Keep the verbs straight here too.",
+                "attach",
+                "drop",
+                "PERSIST"
+              ]
+            },
+            {
+              "title": "the GET option",
+              "href": "/redis-refresh/strings-and-counters#the-get-option",
+              "keywords": [
+                "SET",
+                "SET ... GET",
+                "WRONGTYPE"
+              ]
+            },
+            {
+              "title": "KEEPTTL",
+              "href": "/redis-refresh/strings-and-counters#keepttl",
+              "keywords": [
+                "TTL",
+                "-1",
+                "98",
+                "EX",
+                "PX",
+                "EXAT",
+                "PXAT",
+                "SETEX"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Counters",
+          "href": "/redis-refresh/strings-and-counters#incr",
+          "titles": [
+            {
+              "title": "INCR",
+              "href": "/redis-refresh/strings-and-counters#incr",
+              "keywords": [
+                "INCR returns the new value",
+                "GET",
+                "No initialisation is needed.",
+                "counter primitive"
+              ]
+            },
+            {
+              "title": "the family",
+              "href": "/redis-refresh/strings-and-counters#the-family",
+              "keywords": [
+                "INCRBYFLOAT price -1.5",
+                "All of them are atomic."
+              ]
+            },
+            {
+              "title": "the parsing trap",
+              "href": "/redis-refresh/strings-and-counters#the-parsing-trap",
+              "keywords": [
+                "TYPE",
+                "string",
+                "INCR name",
+                "\"Yassin\"",
+                "\"10\"",
+                "\"abc\"",
+                "\"10.5\"",
+                "INCR"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Multi-key and One-shot Reads",
+          "href": "/redis-refresh/strings-and-counters#mset-and-mget",
+          "titles": [
+            {
+              "title": "MSET and MGET",
+              "href": "/redis-refresh/strings-and-counters#mset-and-mget",
+              "keywords": [
+                "NX",
+                "MSETNX"
+              ]
+            },
+            {
+              "title": "GETDEL",
+              "href": "/redis-refresh/strings-and-counters#getdel",
+              "keywords": [
+                "GETEX",
+                "GETEX k EX 60",
+                "GETEX k PERSIST",
+                "GETSET",
+                "SET ... GET"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Append and Length",
+          "href": "/redis-refresh/strings-and-counters#append",
+          "titles": [
+            {
+              "title": "APPEND",
+              "href": "/redis-refresh/strings-and-counters#append",
+              "keywords": [
+                "SET",
+                "SET a \" world\"",
+                "\"hello\"",
+                "APPEND a \" world\"",
+                "On a missing key it behaves like SET",
+                "STRLEN",
+                "GETRANGE",
+                "SETRANGE"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When a JSON Blob is the Wrong Call",
+          "href": "/redis-refresh/strings-and-counters#the-blob",
+          "titles": [
+            {
+              "title": "the blob",
+              "href": "/redis-refresh/strings-and-counters#the-blob",
+              "keywords": [
+                "SET",
+                "Reading one field is no cheaper either.",
+                "logins"
+              ]
+            },
+            {
+              "title": "the rule",
+              "href": "/redis-refresh/strings-and-counters#the-rule",
+              "keywords": [
+                "RedisJSON",
+                "JSON.*",
+                "redis:7.4-alpine"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/strings-and-counters#the-same-commands-in-node",
+              "keywords": [
+                "=== null",
+                "mGet",
+                "incrByFloat returns a string.",
+                "Number()"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hashes",
+      "name": "Hashes",
+      "chapter": "Data Types",
+      "href": "/redis-refresh/hashes",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Writing",
+          "href": "/redis-refresh/hashes#hset",
+          "titles": [
+            {
+              "title": "HSET",
+              "href": "/redis-refresh/hashes#hset",
+              "keywords": [
+                "age",
+                "name",
+                "A hash holds fields, not keys.",
+                "user:1",
+                "city",
+                "set",
+                "HSETNX",
+                "SET ... NX"
+              ]
+            },
+            {
+              "title": "the command family",
+              "href": "/redis-refresh/hashes#the-command-family",
+              "keywords": [
+                "The H prefix is the whole naming rule",
+                "TYPE",
+                "hash",
+                "HGET",
+                "HMGET",
+                "HGETALL"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reading",
+          "href": "/redis-refresh/hashes#hget-and-the-ambiguous-nil",
+          "titles": [
+            {
+              "title": "HGET and the ambiguous nil",
+              "href": "/redis-refresh/hashes#hget-and-the-ambiguous-nil",
+              "keywords": [
+                "EXISTS",
+                "HEXISTS"
+              ]
+            },
+            {
+              "title": "HGETALL",
+              "href": "/redis-refresh/hashes#hgetall",
+              "keywords": [
+                "age: '30'",
+                "Number()",
+                "age + 1",
+                "'301'",
+                "HKEYS",
+                "HVALS",
+                "HLEN",
+                "HRANDFIELD"
+              ]
+            },
+            {
+              "title": "HMGET",
+              "href": "/redis-refresh/hashes#hmget",
+              "keywords": [
+                "Same positional guarantee as MGET.",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "why HMGET when HGETALL exists",
+              "href": "/redis-refresh/hashes#why-hmget-when-hgetall-exists",
+              "keywords": []
+            }
+          ]
+        },
+        {
+          "name": "Deleting and Testing",
+          "href": "/redis-refresh/hashes#hdel",
+          "titles": [
+            {
+              "title": "HDEL",
+              "href": "/redis-refresh/hashes#hdel",
+              "keywords": [
+                "remove"
+              ]
+            },
+            {
+              "title": "HEXISTS",
+              "href": "/redis-refresh/hashes#hexists",
+              "keywords": []
+            }
+          ]
+        },
+        {
+          "name": "Atomic Field Updates",
+          "href": "/redis-refresh/hashes#hincrby",
+          "titles": [
+            {
+              "title": "HINCRBY",
+              "href": "/redis-refresh/hashes#hincrby",
+              "keywords": [
+                "HINCRBY returns the new value",
+                "INCR",
+                "GET",
+                "\"abc\"",
+                "hash value is not an integer",
+                "\"10.5\"",
+                "HINCRBYFLOAT"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Field TTL (7.4+)",
+          "href": "/redis-refresh/hashes#expiring-a-single-field",
+          "titles": [
+            {
+              "title": "expiring a single field",
+              "href": "/redis-refresh/hashes#expiring-a-single-field",
+              "keywords": [
+                "HEXPIRE is per-field TTL.",
+                "token",
+                "csrf",
+                "FIELDS 1 token",
+                "FIELDS token"
+              ]
+            },
+            {
+              "title": "reading and removing field TTL",
+              "href": "/redis-refresh/hashes#reading-and-removing-field-ttl",
+              "keywords": [
+                "HMGET",
+                "The same three values TTL uses on a key",
+                "HPERSIST",
+                "PERSIST",
+                "HEXPIRE",
+                "HPEXPIRE",
+                "HEXPIREAT",
+                "HPEXPIREAT"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Limits",
+          "href": "/redis-refresh/hashes#hashes-do-not-nest",
+          "titles": [
+            {
+              "title": "hashes do not nest",
+              "href": "/redis-refresh/hashes#hashes-do-not-nest",
+              "keywords": [
+                "A field value is always a plain string.",
+                "HSET user:1 address ...",
+                "user:1:address"
+              ]
+            },
+            {
+              "title": "wide hashes",
+              "href": "/redis-refresh/hashes#wide-hashes",
+              "keywords": [
+                "A hash with many fields is wide",
+                "HGETALL",
+                "KEYS",
+                "HSCAN",
+                "SCAN",
+                "HMGET",
+                "listpack",
+                "hashtable"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/hashes#the-same-commands-in-node",
+              "keywords": [
+                "if (!user)",
+                "Object.keys(obj).length",
+                "hExists returns a real boolean in v5",
+                "30",
+                "'30'"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lists",
+      "name": "Lists",
+      "chapter": "Data Types",
+      "href": "/redis-refresh/lists",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Shape and Creation",
+          "href": "/redis-refresh/lists#ordered-and-open-at-both-ends",
+          "titles": [
+            {
+              "title": "ordered, and open at both ends",
+              "href": "/redis-refresh/lists#ordered-and-open-at-both-ends",
+              "keywords": [
+                "LPUSH",
+                "RPUSH",
+                "You PUSH onto a list and POP off it.",
+                "Both return the new length."
+              ]
+            },
+            {
+              "title": "array or linked list?",
+              "href": "/redis-refresh/lists#array-or-linked-list",
+              "keywords": []
+            },
+            {
+              "title": "there is no create, and no empty list",
+              "href": "/redis-refresh/lists#there-is-no-create-and-no-empty-list",
+              "keywords": [
+                "HSET",
+                "INCR",
+                "LRANGE",
+                "(empty array)",
+                "(nil)",
+                "EXISTS"
+              ]
+            },
+            {
+              "title": "LRANGE",
+              "href": "/redis-refresh/lists#lrange",
+              "keywords": [
+                "0 -1",
+                "-1",
+                "-2",
+                "LRANGE pair 0 9",
+                "LINSERT",
+                "LSET",
+                "LREM",
+                "LPOS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Popping, Queues and Stacks",
+          "href": "/redis-refresh/lists#lpop-and-rpop",
+          "titles": [
+            {
+              "title": "LPOP and RPOP",
+              "href": "/redis-refresh/lists#lpop-and-rpop",
+              "keywords": [
+                "A pop removes AND returns."
+              ]
+            },
+            {
+              "title": "queue versus stack",
+              "href": "/redis-refresh/lists#queue-versus-stack",
+              "keywords": [
+                "job1"
+              ]
+            },
+            {
+              "title": "popping in batches",
+              "href": "/redis-refresh/lists#popping-in-batches",
+              "keywords": [
+                "Both pops take a count.",
+                "LPOP q 2",
+                "LMPOP",
+                "RPOPLPUSH",
+                "LMOVE"
+              ]
+            },
+            {
+              "title": "LLEN",
+              "href": "/redis-refresh/lists#llen",
+              "keywords": [
+                "LLEN is O(1)",
+                "RPUSH",
+                "LPOP"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Capped Lists",
+          "href": "/redis-refresh/lists#ltrim",
+          "titles": [
+            {
+              "title": "LTRIM",
+              "href": "/redis-refresh/lists#ltrim",
+              "keywords": [
+                "LRANGE",
+                "Shortening a list this way is TRIMMING",
+                "OK",
+                "There is no RTRIM.",
+                "LTRIM log -3 -1"
+              ]
+            },
+            {
+              "title": "the capped-list pattern",
+              "href": "/redis-refresh/lists#the-capped-list-pattern",
+              "keywords": [
+                "LRANGE feed:1 0 9",
+                "maxmemory"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Blocking Pops",
+          "href": "/redis-refresh/lists#brpop",
+          "titles": [
+            {
+              "title": "BRPOP",
+              "href": "/redis-refresh/lists#brpop",
+              "keywords": [
+                "The B is for blocking.",
+                "RPOP",
+                "BRPOP jobs 5",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "what it replaces",
+              "href": "/redis-refresh/lists#what-it-replaces",
+              "keywords": []
+            },
+            {
+              "title": "blocking blocks the client, not the server",
+              "href": "/redis-refresh/lists#blocking-blocks-the-client-not-the-server",
+              "keywords": [
+                "A blocked client is IDLE, not busy.",
+                "KEYS",
+                "HGETALL",
+                "BRPOP",
+                "GET",
+                "client.duplicate()",
+                "connect()",
+                "BLPOP"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Limits",
+          "href": "/redis-refresh/lists#random-access-is-o-n",
+          "titles": [
+            {
+              "title": "random access is O(N)",
+              "href": "/redis-refresh/lists#random-access-is-o-n",
+              "keywords": [
+                "LINDEX q 5000",
+                "listpack",
+                "list-max-listpack-size",
+                "quicklist",
+                "OBJECT ENCODING",
+                "LLEN",
+                "LPOP",
+                "LINDEX key 500000"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/lists#the-same-commands-in-node",
+              "keywords": [
+                "hGetAll",
+                "{}",
+                ".length",
+                "=== null",
+                "lPop",
+                "Multiple values go in as an array.",
+                "rPush(key, ['a', 'b'])",
+                "rPush(key, 'a', 'b')"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sets",
+      "name": "Sets",
+      "chapter": "Data Types",
+      "href": "/redis-refresh/sets",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Uniqueness and Unorderedness",
+          "href": "/redis-refresh/sets#sadd-and-silent-deduplication",
+          "titles": [
+            {
+              "title": "SADD and silent deduplication",
+              "href": "/redis-refresh/sets#sadd-and-silent-deduplication",
+              "keywords": [
+                "The integer is a deduplication signal."
+              ]
+            },
+            {
+              "title": "the order is not yours",
+              "href": "/redis-refresh/sets#the-order-is-not-yours",
+              "keywords": [
+                "A set has no order and no index.",
+                "The number of members is the CARDINALITY",
+                "members[0]",
+                "SRANDMEMBER",
+                "SPOP"
+              ]
+            },
+            {
+              "title": "there is no empty set",
+              "href": "/redis-refresh/sets#there-is-no-empty-set",
+              "keywords": [
+                "EXISTS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The O(1) Questions",
+          "href": "/redis-refresh/sets#sismember",
+          "titles": [
+            {
+              "title": "SISMEMBER",
+              "href": "/redis-refresh/sets#sismember",
+              "keywords": [
+                "SMISMEMBER",
+                "MGET",
+                "HMGET"
+              ]
+            },
+            {
+              "title": "SCARD",
+              "href": "/redis-refresh/sets#scard",
+              "keywords": [
+                "LLEN",
+                "HLEN"
+              ]
+            },
+            {
+              "title": "SREM",
+              "href": "/redis-refresh/sets#srem",
+              "keywords": [
+                "python",
+                "HDEL",
+                "SISMEMBER",
+                "SMEMBERS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Set Algebra",
+          "href": "/redis-refresh/sets#two-sets-to-work-with",
+          "titles": [
+            {
+              "title": "two sets to work with",
+              "href": "/redis-refresh/sets#two-sets-to-work-with",
+              "keywords": []
+            },
+            {
+              "title": "SINTER, SUNION, SDIFF",
+              "href": "/redis-refresh/sets#sinter-sunion-sdiff",
+              "keywords": [
+                "js"
+              ]
+            },
+            {
+              "title": "why this beats doing it in the application",
+              "href": "/redis-refresh/sets#why-this-beats-doing-it-in-the-application",
+              "keywords": [
+                "All three take any number of keys."
+              ]
+            },
+            {
+              "title": "the STORE variants",
+              "href": "/redis-refresh/sets#the-store-variants",
+              "keywords": [
+                "SUNIONSTORE",
+                "SDIFFSTORE",
+                "EXPIRE"
+              ]
+            },
+            {
+              "title": "SINTERCARD",
+              "href": "/redis-refresh/sets#sintercard",
+              "keywords": [
+                "FIELDS 1 token",
+                "HEXPIRE",
+                "LIMIT 1000",
+                "1000",
+                "LIMIT",
+                "SINTER"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The Secondary Index",
+          "href": "/redis-refresh/sets#the-problem",
+          "titles": [
+            {
+              "title": "the problem",
+              "href": "/redis-refresh/sets#the-problem",
+              "keywords": [
+                "SELECT * FROM users",
+                "user:",
+                "user:1:sessions"
+              ]
+            },
+            {
+              "title": "the right way",
+              "href": "/redis-refresh/sets#the-right-way",
+              "keywords": [
+                "Keep a set of IDs as you write.",
+                "SADD",
+                "HSET",
+                "SMEMBERS users:index",
+                "SCAN"
+              ]
+            },
+            {
+              "title": "the cost",
+              "href": "/redis-refresh/sets#the-cost",
+              "keywords": [
+                "DEL user:1",
+                "SREM users:index 1",
+                "(nil)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Limits",
+          "href": "/redis-refresh/sets#smembers-is-keys-shaped",
+          "titles": [
+            {
+              "title": "SMEMBERS is KEYS-shaped",
+              "href": "/redis-refresh/sets#smembers-is-keys-shaped",
+              "keywords": [
+                "HGETALL",
+                "SSCAN",
+                "SCARD",
+                "SISMEMBER"
+              ]
+            },
+            {
+              "title": "intersection has a real cost",
+              "href": "/redis-refresh/sets#intersection-has-a-real-cost",
+              "keywords": [
+                "SINTER is O(N*M).",
+                "SINTER small:set huge:set",
+                "SINTERCARD",
+                "LIMIT",
+                "intset",
+                "listpack",
+                "hashtable",
+                "OBJECT ENCODING"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/sets#the-same-commands-in-node",
+              "keywords": [
+                "sIsMember returns a real boolean in v5",
+                "hGetAll",
+                "{}",
+                ".length",
+                "Multiple members go in as an array.",
+                "sAdd(key, ['a', 'b'])",
+                "sAdd(key, 'a', 'b')"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sorted-sets",
+      "name": "Sorted Sets",
+      "chapter": "Data Types",
+      "href": "/redis-refresh/sorted-sets",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Score and Member",
+          "href": "/redis-refresh/sorted-sets#zadd",
+          "titles": [
+            {
+              "title": "ZADD",
+              "href": "/redis-refresh/sorted-sets#zadd",
+              "keywords": [
+                "ZADD k \"yassin\" 100",
+                "\"yassin\"",
+                "ZADD k 1 2",
+                "\"2\"",
+                "SADD",
+                "HSET",
+                "NX",
+                "XX"
+              ]
+            },
+            {
+              "title": "the score is a float",
+              "href": "/redis-refresh/sorted-sets#the-score-is-a-float",
+              "keywords": [
+                "ZSCORE returns a string.",
+                "INCRBYFLOAT",
+                "Number()",
+                "A score is a number, not a label.",
+                "2^53"
+              ]
+            },
+            {
+              "title": "ZINCRBY",
+              "href": "/redis-refresh/sorted-sets#zincrby",
+              "keywords": [
+                "HINCRBY",
+                "That is what makes leaderboards trivial.",
+                "ZADD"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reading by Position",
+          "href": "/redis-refresh/sorted-sets#zrange-and-rev",
+          "titles": [
+            {
+              "title": "ZRANGE and REV",
+              "href": "/redis-refresh/sorted-sets#zrange-and-rev",
+              "keywords": [
+                "The index syntax is LRANGE's.",
+                "0 -1",
+                "0 2",
+                "0 2 REV",
+                "ZREVRANGE",
+                "ZRANGEBYSCORE",
+                "ZREVRANGEBYSCORE"
+              ]
+            },
+            {
+              "title": "WITHSCORES",
+              "href": "/redis-refresh/sorted-sets#withscores",
+              "keywords": [
+                "HGETALL"
+              ]
+            },
+            {
+              "title": "ZRANK and ZREVRANK",
+              "href": "/redis-refresh/sorted-sets#zrank-and-zrevrank",
+              "keywords": [
+                "Rank is ZERO-BASED.",
+                "(nil)",
+                "if (!rank)",
+                "ZCARD is the member count",
+                "SCARD"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reading by Score",
+          "href": "/redis-refresh/sorted-sets#byscore",
+          "titles": [
+            {
+              "title": "BYSCORE",
+              "href": "/redis-refresh/sorted-sets#byscore",
+              "keywords": [
+                "200 400"
+              ]
+            },
+            {
+              "title": "bounds",
+              "href": "/redis-refresh/sorted-sets#bounds",
+              "keywords": [
+                "-inf and +inf are valid bounds",
+                "-inf +inf BYSCORE",
+                "BYSCORE",
+                "(250",
+                "BYLEX"
+              ]
+            },
+            {
+              "title": "LIMIT",
+              "href": "/redis-refresh/sorted-sets#limit",
+              "keywords": [
+                "LIMIT 0 10",
+                "LIMIT 10 10",
+                "ZRANGE k 0 9 REV",
+                "(lastScore +inf BYSCORE"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sliding Windows",
+          "href": "/redis-refresh/sorted-sets#zremrangebyscore",
+          "titles": [
+            {
+              "title": "ZREMRANGEBYSCORE",
+              "href": "/redis-refresh/sorted-sets#zremrangebyscore",
+              "keywords": [
+                "ZREMRANGEBYRANK",
+                "ZREM",
+                "SREM"
+              ]
+            },
+            {
+              "title": "rate limiting, worked through",
+              "href": "/redis-refresh/sorted-sets#rate-limiting-worked-through",
+              "keywords": [
+                "Why a sorted set: the score is time.",
+                "MULTI",
+                "EXPIRE"
+              ]
+            },
+            {
+              "title": "other things the score can be",
+              "href": "/redis-refresh/sorted-sets#other-things-the-score-can-be",
+              "keywords": [
+                "ZPOPMIN",
+                "ZPOPMAX",
+                "BZPOPMIN",
+                "BZPOPMAX",
+                "BRPOP"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Limits",
+          "href": "/redis-refresh/sorted-sets#cost",
+          "titles": [
+            {
+              "title": "cost",
+              "href": "/redis-refresh/sorted-sets#cost",
+              "keywords": [
+                "SMEMBERS",
+                "0 9 REV",
+                "ZCARD",
+                "ZSCORE",
+                "ZREVRANK",
+                "ZSCAN",
+                "listpack",
+                "zset-max-listpack-entries"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/sorted-sets#the-same-commands-in-node",
+              "keywords": [
+                "{ score, value }",
+                "WithScores",
+                "zScore returns a number in v5",
+                "zRevRank"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "atomicity",
+      "name": "Atomicity",
+      "chapter": "Making It Work in an App",
+      "href": "/redis-refresh/atomicity",
+      "planned": false,
+      "parts": [
+        {
+          "name": "What MULTI Actually Does",
+          "href": "/redis-refresh/atomicity#single-commands-need-no-protection",
+          "titles": [
+            {
+              "title": "single commands need no protection",
+              "href": "/redis-refresh/atomicity#single-commands-need-no-protection",
+              "keywords": [
+                "INCR",
+                "The problem is GROUPS."
+              ]
+            },
+            {
+              "title": "QUEUED, then EXEC",
+              "href": "/redis-refresh/atomicity#queued-then-exec",
+              "keywords": [
+                "Nothing executes until EXEC.",
+                "MULTI",
+                "SET",
+                "OK",
+                "INCR"
+              ]
+            },
+            {
+              "title": "DISCARD",
+              "href": "/redis-refresh/atomicity#discard",
+              "keywords": [
+                "DISCARD throws the queue away.",
+                "SET",
+                "GET x",
+                "(nil)",
+                "DISCARD only works BEFORE EXEC.",
+                "EXEC"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "No Rollback",
+          "href": "/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
+          "titles": [
+            {
+              "title": "a failed command does not undo the others",
+              "href": "/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
+              "keywords": [
+                "INCR",
+                "\"value\"",
+                "SET",
+                "GET k"
+              ]
+            },
+            {
+              "title": "the one case where nothing runs",
+              "href": "/redis-refresh/atomicity#the-one-case-where-nothing-runs",
+              "keywords": [
+                "SET",
+                "EXEC",
+                "EXECABORT",
+                "GET a",
+                "INCR",
+                "MULTI"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "WATCH and Optimistic Locking",
+          "href": "/redis-refresh/atomicity#why-multi-alone-is-not-enough",
+          "titles": [
+            {
+              "title": "why MULTI alone is not enough",
+              "href": "/redis-refresh/atomicity#why-multi-alone-is-not-enough",
+              "keywords": [
+                "GET balance",
+                "QUEUED",
+                "\"100\"",
+                "EXEC",
+                "WATCH"
+              ]
+            },
+            {
+              "title": "WATCH",
+              "href": "/redis-refresh/atomicity#watch",
+              "keywords": [
+                "WATCH marks a key.",
+                "EXEC"
+              ]
+            },
+            {
+              "title": "the failure path",
+              "href": "/redis-refresh/atomicity#the-failure-path",
+              "keywords": [
+                "This needs TWO terminals.",
+                "DECRBY",
+                "balance",
+                "500",
+                "(nil)"
+              ]
+            },
+            {
+              "title": "the retry loop",
+              "href": "/redis-refresh/atomicity#the-retry-loop",
+              "keywords": [
+                "This is OPTIMISTIC LOCKING.",
+                "The null check is the whole loop.",
+                "EXEC",
+                "DISCARD",
+                "UNWATCH"
+              ]
+            },
+            {
+              "title": "WATCH is per connection",
+              "href": "/redis-refresh/atomicity#watch-is-per-connection",
+              "keywords": [
+                "MULTI",
+                "client.multi()",
+                "EXEC",
+                "nil"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pipelining is Not a Transaction",
+          "href": "/redis-refresh/atomicity#two-different-problems",
+          "titles": [
+            {
+              "title": "two different problems",
+              "href": "/redis-refresh/atomicity#two-different-problems",
+              "keywords": [
+                "PIPELINING is a NETWORK optimisation.",
+                "A transaction is an ISOLATION guarantee.",
+                "A transaction gives you both benefits.",
+                "client.multi()",
+                "MULTI",
+                "EXEC"
+              ]
+            },
+            {
+              "title": "choosing",
+              "href": "/redis-refresh/atomicity#choosing",
+              "keywords": [
+                "SET",
+                "DEL user:1",
+                "SREM users:index 1",
+                "MULTI",
+                "WATCH",
+                "EVAL",
+                "SCRIPT LOAD",
+                "EVALSHA"
+              ]
+            },
+            {
+              "title": "the same commands in Node",
+              "href": "/redis-refresh/atomicity#the-same-commands-in-node",
+              "keywords": [
+                "(error)",
+                "await"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "caching-patterns",
+      "name": "Caching Patterns",
+      "chapter": "Making It Work in an App",
+      "href": "/redis-refresh/caching-patterns",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Cache-Aside",
+          "href": "/redis-refresh/caching-patterns#the-three-steps",
+          "titles": [
+            {
+              "title": "the three steps",
+              "href": "/redis-refresh/caching-patterns#the-three-steps",
+              "keywords": [
+                "GET",
+                "SET",
+                "Redis never talks to your database."
+              ]
+            },
+            {
+              "title": "the shape in code",
+              "href": "/redis-refresh/caching-patterns#the-shape-in-code",
+              "keywords": [
+                "cached",
+                "maxmemory",
+                "{ EX: 300 }"
+              ]
+            },
+            {
+              "title": "why a string and not a hash here",
+              "href": "/redis-refresh/caching-patterns#why-a-string-and-not-a-hash-here",
+              "keywords": [
+                "JSON.stringify",
+                "JSON.parse"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Choosing a TTL",
+          "href": "/redis-refresh/caching-patterns#the-question-ttl-answers",
+          "titles": [
+            {
+              "title": "the question TTL answers",
+              "href": "/redis-refresh/caching-patterns#the-question-ttl-answers",
+              "keywords": []
+            }
+          ]
+        },
+        {
+          "name": "The Stampede",
+          "href": "/redis-refresh/caching-patterns#what-goes-wrong",
+          "titles": [
+            {
+              "title": "what goes wrong",
+              "href": "/redis-refresh/caching-patterns#what-goes-wrong",
+              "keywords": [
+                "A popular key expires.",
+                "GET"
+              ]
+            },
+            {
+              "title": "the lock",
+              "href": "/redis-refresh/caching-patterns#the-lock",
+              "keywords": [
+                "DEL"
+              ]
+            },
+            {
+              "title": "walked through, request by request",
+              "href": "/redis-refresh/caching-patterns#walked-through-request-by-request",
+              "keywords": [
+                "The setup.",
+                "user:42",
+                "Request #1.",
+                "GET user:42",
+                "nil",
+                "SET lock:user:42 1 NX EX 10",
+                "OK",
+                "Request #2, one millisecond later."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Invalidation on Write",
+          "href": "/redis-refresh/caching-patterns#delete-or-overwrite",
+          "titles": [
+            {
+              "title": "delete or overwrite",
+              "href": "/redis-refresh/caching-patterns#delete-or-overwrite",
+              "keywords": [
+                "Delete it — cache-aside, the standard.",
+                "Overwrite it — write-through.",
+                "Delete is the safer default,"
+              ]
+            },
+            {
+              "title": "the order is a bug waiting to happen",
+              "href": "/redis-refresh/caching-patterns#the-order-is-a-bug-waiting-to-happen",
+              "keywords": [
+                "Database first, cache second.",
+                "DEL"
+              ]
+            },
+            {
+              "title": "keys you forgot about",
+              "href": "/redis-refresh/caching-patterns#keys-you-forgot-about",
+              "keywords": [
+                "user:42",
+                "SCAN",
+                "UNLINK",
+                "user:v2:42",
+                "v3"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When Redis Is Down",
+          "href": "/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
+          "titles": [
+            {
+              "title": "degrade to slow, not to broken",
+              "href": "/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
+              "keywords": [
+                "try",
+                "redis.get",
+                "catch",
+                "JSON.parse"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lua-scripts",
+      "name": "Lua Scripts",
+      "chapter": "Making It Work in an App",
+      "href": "/redis-refresh/lua-scripts",
+      "planned": false,
+      "parts": [
+        {
+          "name": "EVAL",
+          "href": "/redis-refresh/lua-scripts#a-script-is-one-command",
+          "titles": [
+            {
+              "title": "a script is one command",
+              "href": "/redis-refresh/lua-scripts#a-script-is-one-command",
+              "keywords": [
+                "INCR",
+                "WATCH"
+              ]
+            },
+            {
+              "title": "EVAL and numkeys",
+              "href": "/redis-refresh/lua-scripts#eval-and-numkeys",
+              "keywords": [
+                "return 1",
+                "return 'hello'",
+                "SINTERCARD",
+                "HEXPIRE ... FIELDS"
+              ]
+            },
+            {
+              "title": "KEYS and ARGV",
+              "href": "/redis-refresh/lua-scripts#keys-and-argv",
+              "keywords": [
+                "redis.call(...)",
+                "redis.call('GET', KEYS[1])",
+                "GET balance",
+                "KEYS[1]",
+                "ARGV[1]",
+                "KEYS[0]",
+                "nil",
+                "2 balance a"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Why: The Safe Lock Release",
+          "href": "/redis-refresh/lua-scripts#what-a-lock-is",
+          "titles": [
+            {
+              "title": "what a lock is",
+              "href": "/redis-refresh/lua-scripts#what-a-lock-is",
+              "keywords": [
+                "nil",
+                "Nothing in Redis enforces any of this.",
+                "lock:job1"
+              ]
+            },
+            {
+              "title": "the bug DEL creates",
+              "href": "/redis-refresh/lua-scripts#the-bug-del-creates",
+              "keywords": [
+                "DEL takes a key name and nothing else."
+              ]
+            },
+            {
+              "title": "the fix",
+              "href": "/redis-refresh/lua-scripts#the-fix",
+              "keywords": [
+                "\"worker-b\"",
+                "GET lock:job1",
+                "EX",
+                "DEL"
+              ]
+            },
+            {
+              "title": "the same thing with WATCH, and what it costs",
+              "href": "/redis-refresh/lua-scripts#the-same-thing-with-watch-and-what-it-costs",
+              "keywords": [
+                "UNWATCH",
+                "The rule.",
+                "MULTI",
+                "GET",
+                "EXEC"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SCRIPT LOAD and EVALSHA",
+          "href": "/redis-refresh/lua-scripts#sending-the-text-every-time",
+          "titles": [
+            {
+              "title": "sending the text every time",
+              "href": "/redis-refresh/lua-scripts#sending-the-text-every-time",
+              "keywords": [
+                "SCRIPT LOAD",
+                "EVALSHA",
+                "EVAL",
+                "numkeys"
+              ]
+            },
+            {
+              "title": "NOSCRIPT",
+              "href": "/redis-refresh/lua-scripts#noscript",
+              "keywords": [
+                "EVALSHA",
+                "SCRIPT LOAD"
+              ]
+            },
+            {
+              "title": "managing several scripts",
+              "href": "/redis-refresh/lua-scripts#managing-several-scripts",
+              "keywords": [
+                "loadScripts",
+                "EVALSHA",
+                "NOSCRIPT",
+                "You never handle hashes by hand.",
+                "SCRIPT EXISTS <sha>",
+                "SCRIPT FLUSH",
+                "FUNCTION LOAD",
+                "FCALL"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The Rate Limiter, Line by Line",
+          "href": "/redis-refresh/lua-scripts#the-whole-script",
+          "titles": [
+            {
+              "title": "the whole script",
+              "href": "/redis-refresh/lua-scripts#the-whole-script",
+              "keywords": [
+                "Returns 1 for allowed, 0 for rejected."
+              ]
+            },
+            {
+              "title": "the arguments",
+              "href": "/redis-refresh/lua-scripts#the-arguments",
+              "keywords": [
+                "now - window",
+                "count >= limit",
+                "\"1000\" - \"60\"",
+                "\"9\" > \"10\"",
+                "local declares a variable.",
+                "now",
+                "window",
+                "limit"
+              ]
+            },
+            {
+              "title": "the body",
+              "href": "/redis-refresh/lua-scripts#the-body",
+              "keywords": [
+                "now - window",
+                "now",
+                "MULTI",
+                "ZADD records the allowed request.",
+                "..",
+                "Retry-After",
+                "ZRANGE ... WITHSCORES"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rules and Traps",
+          "href": "/redis-refresh/lua-scripts#scripts-block-the-server",
+          "titles": [
+            {
+              "title": "scripts block the server",
+              "href": "/redis-refresh/lua-scripts#scripts-block-the-server",
+              "keywords": [
+                "KEYS",
+                "busy-reply-threshold",
+                "lua-time-limit",
+                "BUSY",
+                "SCRIPT KILL",
+                "SHUTDOWN NOSAVE"
+              ]
+            },
+            {
+              "title": "scripts must be deterministic",
+              "href": "/redis-refresh/lua-scripts#scripts-must-be-deterministic",
+              "keywords": [
+                "A script must be DETERMINISTIC.",
+                "now",
+                "ARGV[1]",
+                "math.random()"
+              ]
+            },
+            {
+              "title": "all keys must be declared in KEYS",
+              "href": "/redis-refresh/lua-scripts#all-keys-must-be-declared-in-keys",
+              "keywords": [
+                "balance",
+                "user:42",
+                "user:{1}:profile",
+                "user:{1}:sessions",
+                "MULTI"
+              ]
+            },
+            {
+              "title": "a script has no rollback either",
+              "href": "/redis-refresh/lua-scripts#a-script-has-no-rollback-either",
+              "keywords": [
+                "INCR",
+                "SET",
+                "MULTI",
+                "redis.pcall",
+                "WATCH"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pub-sub",
+      "name": "Pub/Sub & Keyspace Notifications",
+      "chapter": "Making It Work in an App",
+      "href": "/redis-refresh/pub-sub",
+      "planned": false,
+      "parts": [
+        {
+          "name": "",
+          "href": "/redis-refresh/pub-sub#coming-soon",
+          "titles": [
+            {
+              "title": "coming soon",
+              "href": "/redis-refresh/pub-sub#coming-soon",
+              "keywords": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "memory-and-eviction",
+      "name": "Memory & Eviction",
+      "chapter": "Making It Work in an App",
+      "href": "/redis-refresh/memory-and-eviction",
+      "planned": false,
+      "parts": [
+        {
+          "name": "",
+          "href": "/redis-refresh/memory-and-eviction#coming-soon",
+          "titles": [
+            {
+              "title": "coming soon",
+              "href": "/redis-refresh/memory-and-eviction#coming-soon",
+              "keywords": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reading-replies",
+      "name": "Reading Redis Replies",
+      "chapter": "Reference",
+      "href": "/redis-refresh/reading-replies",
+      "planned": false,
+      "parts": [
+        {
+          "name": "",
+          "href": "/redis-refresh/reading-replies#the-five-reply-shapes",
+          "titles": [
+            {
+              "title": "the five reply shapes",
+              "href": "/redis-refresh/reading-replies#the-five-reply-shapes",
+              "keywords": [
+                "\"3\""
+              ]
+            },
+            {
+              "title": "when an integer is a count",
+              "href": "/redis-refresh/reading-replies#when-an-integer-is-a-count",
+              "keywords": [
+                "RPUSH",
+                "LPUSH",
+                "APPEND",
+                "RPUSH k \"a\" \"b\"",
+                "12",
+                "0 as a count is not an error.",
+                "HDEL",
+                "SREM"
+              ]
+            },
+            {
+              "title": "when an integer is a yes/no",
+              "href": "/redis-refresh/reading-replies#when-an-integer-is-a-yes-no",
+              "keywords": [
+                "EXPIRE",
+                "PERSIST"
+              ]
+            },
+            {
+              "title": "the TTL integers",
+              "href": "/redis-refresh/reading-replies#the-ttl-integers",
+              "keywords": [
+                "GET",
+                "(nil)",
+                "HTTL / HPTTL use the same three values",
+                "-1",
+                "SET",
+                "SET ... KEEPTTL"
+              ]
+            },
+            {
+              "title": "nil and empty",
+              "href": "/redis-refresh/reading-replies#nil-and-empty",
+              "keywords": [
+                "Two distinct meanings of nil.",
+                "GET",
+                "HGET",
+                "SET NX",
+                "XX",
+                "EXISTS",
+                "TYPE",
+                "Inspecting the Keyspace"
+              ]
+            },
+            {
+              "title": "status and error replies",
+              "href": "/redis-refresh/reading-replies#status-and-error-replies",
+              "keywords": [
+                "WRONGTYPE"
+              ]
+            },
+            {
+              "title": "TYPE and encoding replies",
+              "href": "/redis-refresh/reading-replies#type-and-encoding-replies",
+              "keywords": [
+                "listpack",
+                "hashtable",
+                "quicklist",
+                "intset",
+                "skiplist",
+                "int",
+                "embstr",
+                "raw"
+              ]
+            },
+            {
+              "title": "what node-redis turns these into",
+              "href": "/redis-refresh/reading-replies#what-node-redis-turns-these-into",
+              "keywords": [
+                "if (!user)",
+                "hGetAll",
+                "{}",
+                "Object.keys(x).length",
+                ".length",
+                "=== null"
+              ]
+            },
+            {
+              "title": "terminology",
+              "href": "/redis-refresh/reading-replies#terminology",
+              "keywords": [
+                "Redis SENDS a REPLY.",
+                "Each shape has a name.",
+                "(nil)",
+                "A command that did nothing was a NO-OP."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

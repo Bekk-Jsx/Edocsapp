@@ -1,0 +1,2323 @@
+{
+  "generated": "by npm run search:sync — do not edit",
+  "project": {
+    "slug": "typescript",
+    "name": "TypeScript",
+    "href": "/typescript"
+  },
+  "pages": [
+    {
+      "slug": "first-types",
+      "name": "First Types",
+      "chapter": "Foundations",
+      "href": "/typescript/first-types",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Annotations & Inference",
+          "href": "/typescript/first-types#the-annotation",
+          "titles": [
+            {
+              "title": "the annotation",
+              "href": "/typescript/first-types#the-annotation",
+              "keywords": [
+                "type syntax",
+                "Read that as a sentence.",
+                "number",
+                "string",
+                "Annotations vanish at runtime.",
+                "const id: string = someValue",
+                "someValue"
+              ]
+            },
+            {
+              "title": "inference",
+              "href": "/typescript/first-types#inference",
+              "keywords": [
+                "You rarely write annotations.",
+                "n * 2",
+                "Annotate inputs, infer outputs.",
+                "annotate",
+                "infer",
+                "any",
+                "strict",
+                "noImplicitAny"
+              ]
+            },
+            {
+              "title": "let, const, and widening",
+              "href": "/typescript/first-types#let-const-and-widening",
+              "keywords": [
+                "const keeps the literal, let widens it.",
+                "string",
+                "\"purple\"",
+                "Theme",
+                "as const",
+                "const c = \"dark\"",
+                "let c = \"dark\" as const",
+                "\"dark\""
+              ]
+            },
+            {
+              "title": "any sneaking in",
+              "href": "/typescript/first-types#any-sneaking-in",
+              "keywords": [
+                "without asking for it.",
+                "noImplicitAny",
+                "user",
+                "user.nmae",
+                ".toUpperCase()",
+                "There are four doors it comes through",
+                "JSON.parse",
+                "strict: true"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Primitives & Arrays",
+          "href": "/typescript/first-types#the-primitives",
+          "titles": [
+            {
+              "title": "the primitives",
+              "href": "/typescript/first-types#the-primitives",
+              "keywords": [
+                "number is one type.",
+                "NaN",
+                "Infinity",
+                "null and undefined are their own types",
+                "strict",
+                "strictNullChecks",
+                "string",
+                "narrowing"
+              ]
+            },
+            {
+              "title": "arrays",
+              "href": "/typescript/first-types#arrays",
+              "keywords": [
+                "string[]",
+                "[]",
+                "Array<...>",
+                "any[]",
+                "strict",
+                "items[0]",
+                "any",
+                ".toUpperCase()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Literal Types",
+          "href": "/typescript/first-types#a-type-with-one-value",
+          "titles": [
+            {
+              "title": "a type with one value",
+              "href": "/typescript/first-types#a-type-with-one-value",
+              "keywords": [
+                "\"dark\"",
+                "The actual use is the literal union.",
+                "\"dakr\"",
+                "\"banana\"",
+                "string",
+                "Theme"
+              ]
+            },
+            {
+              "title": "literal unions vs enum",
+              "href": "/typescript/first-types#literal-unions-vs-enum",
+              "keywords": [
+                "setTheme(\"blue\")",
+                "What an enum actually is",
+                "Theme",
+                "Three things the union does better.",
+                "Theme.Dark",
+                "localStorage",
+                "===",
+                "keyof"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "any, unknown, never",
+          "href": "/typescript/first-types#any-turns-the-checker-off",
+          "titles": [
+            {
+              "title": "any turns the checker off",
+              "href": "/typescript/first-types#any-turns-the-checker-off",
+              "keywords": [
+                "It spreads.",
+                "data",
+                "There are times it is genuinely fine.",
+                "noImplicitAny"
+              ]
+            },
+            {
+              "title": "unknown, the safe any",
+              "href": "/typescript/first-types#unknown-the-safe-any",
+              "keywords": [
+                "string",
+                "narrowing",
+                "Assignment goes one way.",
+                "JSON.parse",
+                "catch",
+                "catch (e)",
+                "strict",
+                "instanceof Error"
+              ]
+            },
+            {
+              "title": "where any hides",
+              "href": "/typescript/first-types#where-any-hides",
+              "keywords": [
+                "noImplicitAny",
+                "An annotation checks nothing here.",
+                "Array.isArray keeps the any.",
+                "unknown",
+                "new Map<string, number>()",
+                "Map",
+                "strict",
+                "try { } catch (e)"
+              ]
+            },
+            {
+              "title": "never",
+              "href": "/typescript/first-types#never",
+              "keywords": [
+                "never is the type with no values at all.",
+                "void",
+                "theme",
+                "\"auto\"",
+                "switch",
+                "theme: string",
+                "The three in one line.",
+                "any"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Types & Values",
+          "href": "/typescript/first-types#two-separate-worlds",
+          "titles": [
+            {
+              "title": "two separate worlds",
+              "href": "/typescript/first-types#two-separate-worlds",
+              "keywords": [
+                "type",
+                "interface",
+                "The two worlds have separate namespaces.",
+                "typeof is the bridge.",
+                "typeof",
+                "\"string\"",
+                "function greet(u: user) {}",
+                "class"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "objects-and-aliases",
+      "name": "Objects & Aliases",
+      "chapter": "Foundations",
+      "href": "/typescript/objects-and-aliases",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Object Types",
+          "href": "/typescript/objects-and-aliases#describing-an-object",
+          "titles": [
+            {
+              "title": "describing an object",
+              "href": "/typescript/objects-and-aliases#describing-an-object",
+              "keywords": [
+                "give the shape a name with a type alias",
+                "type",
+                "The object must match.",
+                "User",
+                "excess property check",
+                "reused"
+              ]
+            },
+            {
+              "title": "optional and readonly",
+              "href": "/typescript/objects-and-aliases#optional-and-readonly",
+              "keywords": [
+                "? means the property may be absent.",
+                "strictNullChecks",
+                "optional — the key may be missing",
+                "required — the value may be empty",
+                "| undefined",
+                "readonly string[]",
+                "as const"
+              ]
+            },
+            {
+              "title": "nesting and reuse",
+              "href": "/typescript/objects-and-aliases#nesting-and-reuse",
+              "keywords": [
+                "Name the inner shape",
+                "Composing with &.",
+                "& and | feel backwards.",
+                "A & B — must be both",
+                "A | B — could be either",
+                "Either",
+                "reading a Both",
+                "reading an Either"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "type vs interface",
+          "href": "/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
+          "titles": [
+            {
+              "title": "two ways to write the same thing",
+              "href": "/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
+              "keywords": [
+                "type alias",
+                "interface",
+                "Extending.",
+                "interface — extends",
+                "type — &"
+              ]
+            },
+            {
+              "title": "the real differences",
+              "href": "/typescript/objects-and-aliases#the-real-differences",
+              "keywords": [
+                "type — any type at all",
+                "interface — object shapes only",
+                "type",
+                "interface — the declarations merge",
+                "type — a name is declared once",
+                "declaration merging",
+                "interface User",
+                "Request"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Index Signatures",
+          "href": "/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
+          "titles": [
+            {
+              "title": "when you don't know the keys",
+              "href": "/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
+              "keywords": [
+                "Read the bracket line as a sentence:",
+                "string",
+                "number",
+                "key",
+                "[k: string]",
+                "[playerName: string]",
+                "Mixing with named properties.",
+                "[key: string]: string"
+              ]
+            },
+            {
+              "title": "the index signature trap",
+              "href": "/typescript/objects-and-aliases#the-index-signature-trap",
+              "keywords": [
+                "scores.nobody",
+                "The honest version.",
+                "Record",
+                "string",
+                "open — any string key",
+                "closed — a literal union of keys"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tuples",
+          "href": "/typescript/objects-and-aliases#fixed-length-fixed-positions",
+          "titles": [
+            {
+              "title": "fixed length, fixed positions",
+              "href": "/typescript/objects-and-aliases#fixed-length-fixed-positions",
+              "keywords": [
+                "tuple",
+                "You must annotate it.",
+                "as const",
+                "Labels.",
+                "number"
+              ]
+            },
+            {
+              "title": "when a tuple is the wrong choice",
+              "href": "/typescript/objects-and-aliases#when-a-tuple-is-the-wrong-choice",
+              "keywords": [
+                "position",
+                "names",
+                "tuple — meaning by position",
+                "object — meaning by name",
+                "loading",
+                "hasMore",
+                "The rule of thumb:",
+                "useState"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "functions",
+      "name": "Functions",
+      "chapter": "Foundations",
+      "href": "/typescript/functions",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Parameters & Returns",
+          "href": "/typescript/functions#typing-a-function",
+          "titles": [
+            {
+              "title": "typing a function",
+              "href": "/typescript/functions#typing-a-function",
+              "keywords": [
+                "There are two places to annotate:",
+                "Calls are checked both ways.",
+                "When to write the return type.",
+                "inferred — the type moves silently",
+                "annotated — the error lands here",
+                "void",
+                "find",
+                "noImplicitReturns"
+              ]
+            },
+            {
+              "title": "void vs undefined",
+              "href": "/typescript/functions#void-vs-undefined",
+              "keywords": [
+                "Why void is so loose.",
+                "forEach",
+                "push",
+                "Which to write.",
+                "T | undefined"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Flexible Parameters",
+          "href": "/typescript/functions#optional-parameters",
+          "titles": [
+            {
+              "title": "optional parameters",
+              "href": "/typescript/functions#optional-parameters",
+              "keywords": [
+                "Optional parameters must come last.",
+                "| undefined",
+                "optional — may be left out",
+                "required — may be undefined"
+              ]
+            },
+            {
+              "title": "default parameters",
+              "href": "/typescript/functions#default-parameters",
+              "keywords": [
+                "The default replaces the annotation.",
+                "title",
+                "string",
+                "\"Dr\"",
+                "string | undefined",
+                "optional — must be checked",
+                "default — always a value",
+                "Defaults are also skippable."
+              ]
+            },
+            {
+              "title": "rest parameters",
+              "href": "/typescript/functions#rest-parameters",
+              "keywords": [
+                "numbers",
+                "number[]",
+                "Typed per position with a tuple.",
+                "args",
+                "as const"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Function Types & Overloads",
+          "href": "/typescript/functions#a-function-as-a-type",
+          "titles": [
+            {
+              "title": "a function as a type",
+              "href": "/typescript/functions#a-function-as-a-type",
+              "keywords": [
+                "(a, b) => a + b",
+                "Add",
+                "contextual typing",
+                "with a target type",
+                "without one",
+                "Writing it inline.",
+                "value",
+                "The object-property form."
+              ]
+            },
+            {
+              "title": "why callbacks accept fewer parameters",
+              "href": "/typescript/functions#why-callbacks-accept-fewer-parameters",
+              "keywords": [
+                "Handler",
+                "extra",
+                "map",
+                "The same logic on return types.",
+                "void",
+                "The general principle:"
+              ]
+            },
+            {
+              "title": "overloads",
+              "href": "/typescript/functions#overloads",
+              "keywords": [
+                "The overload form.",
+                "overload signatures",
+                "implementation signature",
+                "string | number",
+                "When overloads are the wrong tool.",
+                "overloads — one line per type",
+                "generic — the relationship, once",
+                "boolean[]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "unions-and-narrowing",
+      "name": "Unions & Narrowing",
+      "chapter": "Foundations",
+      "href": "/typescript/unions-and-narrowing",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Union Types",
+          "href": "/typescript/unions-and-narrowing#what-a-union-is",
+          "titles": [
+            {
+              "title": "what a union is",
+              "href": "/typescript/unions-and-narrowing#what-a-union-is",
+              "keywords": [
+                "string | number",
+                "toUpperCase",
+                "id",
+                "narrowing"
+              ]
+            },
+            {
+              "title": "where unions come from",
+              "href": "/typescript/unions-and-narrowing#where-unions-come-from",
+              "keywords": [
+                "the standard library hands them to you.",
+                "find",
+                "strictNullChecks",
+                "string | number",
+                "getElementById",
+                "localStorage.getItem"
+              ]
+            },
+            {
+              "title": "combining unions",
+              "href": "/typescript/unions-and-narrowing#combining-unions",
+              "keywords": [
+                "A union of unions is one flat union.",
+                "string | number",
+                "number | string",
+                "\"red\" | \"red\"",
+                "\"red\"",
+                "never",
+                "string | never",
+                "string"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Narrowing",
+          "href": "/typescript/unions-and-narrowing#narrowing-with-typeof",
+          "titles": [
+            {
+              "title": "narrowing with typeof",
+              "href": "/typescript/unions-and-narrowing#narrowing-with-typeof",
+              "keywords": [
+                "number",
+                "string",
+                "The compiler tracks control flow.",
+                "throw",
+                "\"string\"",
+                "\"number\"",
+                "\"boolean\"",
+                "\"bigint\""
+              ]
+            },
+            {
+              "title": "removing null and undefined",
+              "href": "/typescript/unions-and-narrowing#removing-null-and-undefined",
+              "keywords": [
+                "T | null",
+                "T | undefined",
+                "An equality check is exact.",
+                "===",
+                "!==",
+                "!=",
+                "A truthiness check is short.",
+                "if (name)"
+              ]
+            },
+            {
+              "title": "narrowing objects",
+              "href": "/typescript/unions-and-narrowing#narrowing-objects",
+              "keywords": [
+                "typeof",
+                "\"object\"",
+                "in checks whether a property exists.",
+                "\"name\" in pet",
+                "Dog",
+                "meow?: () => void",
+                "in",
+                "catch"
+              ]
+            },
+            {
+              "title": "when narrowing is lost",
+              "href": "/typescript/unions-and-narrowing#when-narrowing-is-lost",
+              "keywords": [
+                "Reassignment resets it.",
+                "user.email",
+                "isText"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Discriminated Unions",
+          "href": "/typescript/unions-and-narrowing#one-label-per-shape",
+          "titles": [
+            {
+              "title": "one label per shape",
+              "href": "/typescript/unions-and-narrowing#one-label-per-shape",
+              "keywords": [
+                "optional fields — anything goes",
+                "one labelled shape per state",
+                "data",
+                "User[] | undefined",
+                "discriminated union",
+                "status",
+                "discriminant"
+              ]
+            },
+            {
+              "title": "narrowing on the discriminant",
+              "href": "/typescript/unions-and-narrowing#narrowing-on-the-discriminant",
+              "keywords": [
+                "\"error\"",
+                "error",
+                "\"success\"",
+                "data",
+                "User[]",
+                "state.status",
+                "payload",
+                "RequestState"
+              ]
+            },
+            {
+              "title": "designing the discriminant",
+              "href": "/typescript/unions-and-narrowing#designing-the-discriminant",
+              "keywords": [
+                "It must be a literal type, not string.",
+                "string",
+                "kind",
+                "type",
+                "status",
+                "state.meta.kind",
+                "state",
+                "It can be a boolean."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Type Guard Functions",
+          "href": "/typescript/unions-and-narrowing#value-is-t",
+          "titles": [
+            {
+              "title": "value is T",
+              "href": "/typescript/unions-and-narrowing#value-is-t",
+              "keywords": [
+                "typeof",
+                "boolean",
+                "type predicate",
+                "boolean — tells the caller nothing",
+                "value is User — narrows the argument",
+                "Read value is User as a promise:",
+                "User",
+                "filter"
+              ]
+            },
+            {
+              "title": "a guard is a promise",
+              "href": "/typescript/unions-and-narrowing#a-guard-is-a-promise",
+              "keywords": [
+                "return true",
+                "as",
+                "unknown",
+                "assertion function",
+                "value is T",
+                "asserts value is T"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Exhaustiveness",
+          "href": "/typescript/unions-and-narrowing#the-forgotten-case",
+          "titles": [
+            {
+              "title": "the forgotten case",
+              "href": "/typescript/unions-and-narrowing#the-forgotten-case",
+              "keywords": [
+                "The never check closes the gap.",
+                "switch",
+                "default",
+                "state",
+                "never"
+              ]
+            },
+            {
+              "title": "assertNever",
+              "href": "/typescript/unions-and-narrowing#assertnever",
+              "keywords": [
+                "const unhandled: never = state",
+                "switch",
+                "One small helper fixes both:",
+                "At compile time",
+                "never",
+                "\"idle\"",
+                "At runtime",
+                "return assertNever(state)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "assignability",
+      "name": "Assignability",
+      "chapter": "Foundations",
+      "href": "/typescript/assignability",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Structural Typing",
+          "href": "/typescript/assignability#shape-not-name",
+          "titles": [
+            {
+              "title": "shape, not name",
+              "href": "/typescript/assignability#shape-not-name",
+              "keywords": [
+                "User",
+                "Pet",
+                "structural typing",
+                "Named",
+                "admin",
+                "n: Named",
+                "role",
+                "Object.keys"
+              ]
+            },
+            {
+              "title": "when names should matter",
+              "href": "/typescript/assignability#when-names-should-matter",
+              "keywords": [
+                "The fix is a brand:",
+                "__brand",
+                "as",
+                "nominal typing by convention",
+                "Classes have one built-in exception.",
+                "private",
+                "#private",
+                "UserId"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Assignable vs Identical",
+          "href": "/typescript/assignability#types-as-sets-of-values",
+          "titles": [
+            {
+              "title": "types as sets of values",
+              "href": "/typescript/assignability#types-as-sets-of-values",
+              "keywords": [
+                "Picture every type as a set of values.",
+                "string",
+                "\"dark\"",
+                "\"dark\" | \"light\"",
+                "narrower",
+                "wider",
+                "More properties means a narrower type.",
+                "Person"
+              ]
+            },
+            {
+              "title": "assignable is not identical",
+              "href": "/typescript/assignability#assignable-is-not-identical",
+              "keywords": [
+                "readonly",
+                "nums",
+                "mixed"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The Excess Property Check",
+          "href": "/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
+          "titles": [
+            {
+              "title": "fresh literals are checked for extra keys",
+              "href": "/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
+              "keywords": [
+                "through a variable — no extra check",
+                "written inline — extra keys rejected",
+                "Why the two differ.",
+                "admin",
+                "admin.role",
+                "role",
+                "Options",
+                "{ colour: \"red\" }"
+              ]
+            },
+            {
+              "title": "allowing extra keys",
+              "href": "/typescript/assignability#allowing-extra-keys",
+              "keywords": [
+                "colour",
+                "The weak type rule",
+                "const raw: Options = { … }",
+                "unknown"
+              ]
+            },
+            {
+              "title": "as overrides the check",
+              "href": "/typescript/assignability#as-overrides-the-check",
+              "keywords": [
+                "annotation — checked",
+                "as — trusted",
+                "The double as removes even that rule.",
+                "unknown",
+                "as on unknown skips the narrowing.",
+                "value!",
+                "e.target as HTMLInputElement",
+                "Object.freeze"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Function Assignability",
+          "href": "/typescript/assignability#parameters-wider-returns-narrower",
+          "titles": [
+            {
+              "title": "parameters wider, returns narrower",
+              "href": "/typescript/assignability#parameters-wider-returns-narrower",
+              "keywords": [
+                "Why opposite directions:",
+                "onlyDark",
+                "\"light\"",
+                "getCount",
+                "3.toUpperCase()",
+                "Fewer parameters is the same idea",
+                "One test covers all of it:",
+                "strictFunctionTypes"
+              ]
+            },
+            {
+              "title": "the method loophole",
+              "href": "/typescript/assignability#the-method-loophole",
+              "keywords": [
+                "strictFunctionTypes",
+                "=>",
+                "Why the loophole exists: arrays.",
+                "push(...items: T[])",
+                "push",
+                "string[]",
+                "(string | number)[]",
+                "Classes use method syntax too:"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reading an Assignability Error",
+          "href": "/typescript/assignability#reading-a-nested-error",
+          "titles": [
+            {
+              "title": "reading a nested error",
+              "href": "/typescript/assignability#reading-a-nested-error",
+              "keywords": [
+                "address.zip",
+                "string",
+                "number"
+              ]
+            },
+            {
+              "title": "making errors land in the right place",
+              "href": "/typescript/assignability#making-errors-land-in-the-right-place",
+              "keywords": [
+                "75001",
+                "RequestState",
+                "data: string[]",
+                "Long types get cut short.",
+                "... N more ...",
+                "\"noErrorTruncation\": true"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "classes",
+      "name": "Classes",
+      "chapter": "Foundations",
+      "href": "/typescript/classes",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Fields & Constructors",
+          "href": "/typescript/classes#declaring-and-initialising-fields",
+          "titles": [
+            {
+              "title": "declaring and initialising fields",
+              "href": "/typescript/classes#declaring-and-initialising-fields",
+              "keywords": [
+                "strictPropertyInitialization",
+                "count: number",
+                "init()",
+                "as",
+                "| null"
+              ]
+            },
+            {
+              "title": "methods and this",
+              "href": "/typescript/classes#methods-and-this",
+              "keywords": [
+                "setTimeout(u.greet, 100)",
+                "addEventListener(\"click\", u.greet)",
+                "onClick={u.greet}",
+                "Fix 1 — an arrow-function field.",
+                "public name",
+                "bind",
+                "setTimeout",
+                "greet()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Access Modifiers",
+          "href": "/typescript/classes#public-private-protected",
+          "titles": [
+            {
+              "title": "public, private, protected",
+              "href": "/typescript/classes#public-private-protected",
+              "keywords": [
+                "Why bother:",
+                "balance",
+                "deposit",
+                "console.log",
+                "JSON.stringify",
+                "Object.keys"
+              ]
+            },
+            {
+              "title": "#private and readonly",
+              "href": "/typescript/classes#private-and-readonly",
+              "keywords": [
+                "private or #?",
+                "readonly means assign once",
+                "A getter with no setter is readonly too:",
+                "readonly items: string[]",
+                "#protected",
+                "static"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Parameter Properties",
+          "href": "/typescript/classes#the-constructor-shortcut",
+          "titles": [
+            {
+              "title": "the constructor shortcut",
+              "href": "/typescript/classes#the-constructor-shortcut",
+              "keywords": [
+                "written out",
+                "parameter property",
+                "public",
+                "private",
+                "protected",
+                "readonly"
+              ]
+            },
+            {
+              "title": "erasable syntax",
+              "href": "/typescript/classes#erasable-syntax",
+              "keywords": [
+                "written.ts",
+                "shortcut.ts",
+                ": string",
+                "name;",
+                "this.name = name;",
+                "public",
+                "Why that matters: type stripping.",
+                ".ts"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "implements & abstract",
+          "href": "/typescript/classes#implements",
+          "titles": [
+            {
+              "title": "implements",
+              "href": "/typescript/classes#implements",
+              "keywords": [
+                "Logger"
+              ]
+            },
+            {
+              "title": "abstract classes and override",
+              "href": "/typescript/classes#abstract-classes-and-override",
+              "keywords": [
+                "You cannot create one directly:",
+                "describe()",
+                "Shape",
+                "Abstract class or interface?",
+                "noImplicitOverride",
+                "strict"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Classes as Types",
+          "href": "/typescript/classes#one-name-two-things",
+          "titles": [
+            {
+              "title": "one name, two things",
+              "href": "/typescript/classes#one-name-two-things",
+              "keywords": [
+                "class",
+                "class User",
+                "A type, User",
+                "greet",
+                "A value, User",
+                "new (name: string) => T",
+                "InstanceType<typeof User>",
+                "User"
+              ]
+            },
+            {
+              "title": "when to use a class",
+              "href": "/typescript/classes#when-to-use-a-class",
+              "keywords": [
+                "type + function",
+                "User",
+                "{ name, email }",
+                "received instanceof User",
+                "label(received)",
+                "Where classes are the right tool:",
+                "new Redis()",
+                "new PrismaClient()"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "foundations-exercises",
+      "name": "Exercises",
+      "chapter": "Foundations",
+      "href": "/typescript/foundations-exercises",
+      "planned": false,
+      "parts": [
+        {
+          "name": "First Types",
+          "href": "/typescript/foundations-exercises#exercise-1-inferred-types",
+          "titles": [
+            {
+              "title": "exercise 1 · inferred types",
+              "href": "/typescript/foundations-exercises#exercise-1-inferred-types",
+              "keywords": [
+                "a: …",
+                "b: …",
+                "\"dark\"",
+                "as const",
+                "{ readonly mode: \"dark\" }",
+                "readonly [\"sam\", 42]"
+              ]
+            },
+            {
+              "title": "exercise 2 · exhaustive sizes",
+              "href": "/typescript/foundations-exercises#exercise-2-exhaustive-sizes",
+              "keywords": [
+                "Size",
+                "\"sm\"",
+                "\"md\"",
+                "\"lg\"",
+                "toPixels(size: Size): number",
+                "\"xl\"",
+                "toPixels",
+                "never"
+              ]
+            },
+            {
+              "title": "exercise 3 · labels from unknown",
+              "href": "/typescript/foundations-exercises#exercise-3-labels-from-unknown",
+              "keywords": [
+                "function toLabel(value: unknown): string",
+                "3.14159",
+                "\"3.14\"",
+                "\"yes\"",
+                "\"no\"",
+                "any",
+                "as",
+                "typeof"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Objects & Aliases",
+          "href": "/typescript/foundations-exercises#exercise-4-product-fixes",
+          "titles": [
+            {
+              "title": "exercise 4 · product fixes",
+              "href": "/typescript/foundations-exercises#exercise-4-product-fixes",
+              "keywords": [
+                "dicount",
+                "discount",
+                "p.discount",
+                "??",
+                "readonly id",
+                "lamp.id = \"p2\""
+              ]
+            },
+            {
+              "title": "exercise 5 · stock limits",
+              "href": "/typescript/foundations-exercises#exercise-5-stock-limits",
+              "keywords": [
+                "Step 1.",
+                "type Category",
+                "\"lamps\"",
+                "\"chairs\"",
+                "\"tables\"",
+                "Step 2.",
+                "MAX_STOCK",
+                "Step 3."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Functions",
+          "href": "/typescript/foundations-exercises#exercise-6-three-signatures",
+          "titles": [
+            {
+              "title": "exercise 6 · three signatures",
+              "href": "/typescript/foundations-exercises#exercise-6-three-signatures",
+              "keywords": [
+                "middle",
+                "string | undefined",
+                "| undefined",
+                "string",
+                "formatName(\"Ada\", undefined, \"Lovelace\")",
+                "last",
+                "formatName(\"Ada\", \"King\", \"Lovelace\")",
+                "\"Ada Lovelace King\""
+              ]
+            },
+            {
+              "title": "exercise 7 · validators",
+              "href": "/typescript/foundations-exercises#exercise-7-validators",
+              "keywords": [
+                "Step 1.",
+                "type Validator",
+                "Step 2.",
+                "required",
+                "\"Required\"",
+                "\"\"",
+                "Step 3.",
+                "minLength"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Unions & Narrowing",
+          "href": "/typescript/foundations-exercises#exercise-8-payment-methods",
+          "titles": [
+            {
+              "title": "exercise 8 · payment methods",
+              "href": "/typescript/foundations-exercises#exercise-8-payment-methods",
+              "keywords": [
+                "Step 1.",
+                "type Payment",
+                "kind",
+                "email",
+                "Step 2.",
+                "describe(p: Payment): string",
+                "switch",
+                "p.kind"
+              ]
+            },
+            {
+              "title": "exercise 9 · a user guard",
+              "href": "/typescript/foundations-exercises#exercise-9-a-user-guard",
+              "keywords": [
+                "Step 1.",
+                "Step 2.",
+                "isUser(value: unknown): value is User",
+                "value",
+                "id",
+                "name",
+                "tags",
+                "Step 3."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Assignability",
+          "href": "/typescript/foundations-exercises#exercise-10-what-fits",
+          "titles": [
+            {
+              "title": "exercise 10 · what fits",
+              "href": "/typescript/foundations-exercises#exercise-10-what-fits",
+              "keywords": [
+                "void",
+                "h()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Classes",
+          "href": "/typescript/foundations-exercises#exercise-11-a-bank-account",
+          "titles": [
+            {
+              "title": "exercise 11 · a bank account",
+              "href": "/typescript/foundations-exercises#exercise-11-a-bank-account",
+              "keywords": [
+                "class BankAccount",
+                "id",
+                "balance",
+                "deposit(amount)",
+                "Error(\"Amount must be positive\")",
+                "amount",
+                "withdraw(amount)",
+                "Error(\"Insufficient funds\")"
+              ]
+            },
+            {
+              "title": "exercise 12 · notifiers",
+              "href": "/typescript/foundations-exercises#exercise-12-notifiers",
+              "keywords": [
+                "Step 1.",
+                "Notifier",
+                "readonly sender: string",
+                "send(to: string, text: string): string",
+                "notify(to, text): string",
+                "send",
+                "\"[sender] text\"",
+                "Step 2."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mixed",
+          "href": "/typescript/foundations-exercises#exercise-13-an-event-log",
+          "titles": [
+            {
+              "title": "exercise 13 · an event log",
+              "href": "/typescript/foundations-exercises#exercise-13-an-event-log",
+              "keywords": [
+                "Step 1.",
+                "type AppEvent",
+                "type",
+                "Step 2.",
+                "amount",
+                "Step 3.",
+                "parseEvents(raw: string): AppEvent[]",
+                "raw"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tsconfig-structure",
+      "name": "tsconfig Structure",
+      "chapter": "Structure",
+      "href": "/typescript/tsconfig-structure",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The File's Shape",
+          "href": "/typescript/tsconfig-structure#what-tsconfig-decides",
+          "titles": [
+            {
+              "title": "what tsconfig decides",
+              "href": "/typescript/tsconfig-structure#what-tsconfig-decides",
+              "keywords": [
+                "how",
+                "compilerOptions",
+                "which files",
+                "include",
+                "exclude",
+                "files",
+                "extends",
+                "Even an empty config does two jobs."
+              ]
+            },
+            {
+              "title": "include and the default",
+              "href": "/typescript/tsconfig-structure#include-and-the-default",
+              "keywords": [
+                "node_modules",
+                "notes.ts",
+                "lib",
+                "\"strict\": true",
+                "strict"
+              ]
+            },
+            {
+              "title": "extends",
+              "href": "/typescript/tsconfig-structure#extends",
+              "keywords": [
+                "A config can start from another one.",
+                "tsconfig.base.json",
+                "tsconfig.json",
+                "strict",
+                "noEmit",
+                "Rule 2 — lists are replaced.",
+                "include",
+                "src"
+              ]
+            },
+            {
+              "title": "tsc with a file name",
+              "href": "/typescript/tsconfig-structure#tsc-with-a-file-name",
+              "keywords": [
+                "Passing a file skips the config entirely",
+                "npx tsc",
+                "./tsconfig.json",
+                "npx tsc -p <config>",
+                "tsconfig.json",
+                "tsconfig.one.json",
+                "\"include\": []",
+                "include"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The Strict Family",
+          "href": "/typescript/tsconfig-structure#what-strict-turns-on",
+          "titles": [
+            {
+              "title": "what strict turns on",
+              "href": "/typescript/tsconfig-structure#what-strict-turns-on",
+              "keywords": [
+                "strict is a shortcut for eight flags",
+                "\"strict\": false",
+                "\"strict\": true",
+                "noImplicitAny",
+                "noImplicitThis",
+                "strictNullChecks",
+                "strictFunctionTypes",
+                "strictBindCallApply"
+              ]
+            },
+            {
+              "title": "one flag off, strict still on",
+              "href": "/typescript/tsconfig-structure#one-flag-off-strict-still-on",
+              "keywords": [
+                "catch",
+                "strictPropertyInitialization",
+                "useUnknownInCatchVariables"
+              ]
+            },
+            {
+              "title": "noUncheckedIndexedAccess",
+              "href": "/typescript/tsconfig-structure#nouncheckedindexedaccess",
+              "keywords": [
+                "strict still trusts every index read.",
+                "src/lookup.ts",
+                "strict",
+                "\"noUncheckedIndexedAccess\": true",
+                "| undefined",
+                "for…of",
+                "forEach",
+                "tsc --init"
+              ]
+            },
+            {
+              "title": "flags outside strict",
+              "href": "/typescript/tsconfig-structure#flags-outside-strict",
+              "keywords": [
+                "noImplicitReturns",
+                "noFallthroughCasesInSwitch",
+                "noImplicitOverride",
+                "exactOptionalPropertyTypes",
+                "noUnusedLocals / noUnusedParameters"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "paths",
+          "href": "/typescript/tsconfig-structure#an-alias-for-src",
+          "titles": [
+            {
+              "title": "an alias for src",
+              "href": "/typescript/tsconfig-structure#an-alias-for-src",
+              "keywords": [
+                "../",
+                "An alias alone fails",
+                "src/features/cart/summary.ts",
+                "paths teaches tsc the alias:",
+                "@/",
+                "~/",
+                "@app/",
+                "\"baseUrl\": \".\""
+              ]
+            },
+            {
+              "title": "the runtime does not read paths",
+              "href": "/typescript/tsconfig-structure#the-runtime-does-not-read-paths",
+              "keywords": [
+                "Node's own alias",
+                "package.json",
+                "imports",
+                "\"type\": \"module\"",
+                ".ts",
+                "format.ts",
+                "allowImportingTsExtensions",
+                "noEmit"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reading a Real tsconfig",
+          "href": "/typescript/tsconfig-structure#checking-and-who-compiles",
+          "titles": [
+            {
+              "title": "checking and who compiles",
+              "href": "/typescript/tsconfig-structure#checking-and-who-compiles",
+              "keywords": [
+                "How they fit:",
+                "next build",
+                "isolatedModules",
+                "skipLibCheck",
+                "isolatedModules in practice.",
+                "src/types.ts",
+                "src/barrel.ts",
+                "barrel.ts"
+              ]
+            },
+            {
+              "title": "modules",
+              "href": "/typescript/tsconfig-structure#modules",
+              "keywords": [
+                "bundler",
+                "nodenext",
+                "JSON is typed from its content.",
+                "data.json"
+              ]
+            },
+            {
+              "title": "environment and jsx",
+              "href": "/typescript/tsconfig-structure#environment-and-jsx",
+              "keywords": [
+                "lib in practice.",
+                "src/env.ts",
+                "\"lib\": [\"es2017\"]",
+                "\"lib\": [\"es2022\", \"dom\"]",
+                "lib",
+                "dom",
+                "esnext",
+                "document"
+              ]
+            },
+            {
+              "title": "next.js lines",
+              "href": "/typescript/tsconfig-structure#next-js-lines",
+              "keywords": [
+                "next-env.d.ts",
+                "/// <reference types=\"…\" />",
+                "next/image-types/global",
+                ".png",
+                "next dev",
+                "next build",
+                "npx tsc",
+                "\"noUncheckedIndexedAccess\": true"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reading-type-syntax",
+      "name": "Reading Type Syntax",
+      "chapter": "Structure",
+      "href": "/typescript/reading-type-syntax",
+      "planned": true,
+      "parts": [
+        {
+          "name": "Type expressions as a grammar",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "Angle brackets — arguments vs parameters",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "extends as a constraint vs a condition",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "The conditional form and infer",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "The mapped form [K in ...]",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "Template literal types",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        },
+        {
+          "name": "Reading a real type from a library",
+          "href": "/typescript/reading-type-syntax",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "generics-basics",
+      "name": "Generics Basics",
+      "chapter": "Generics",
+      "href": "/typescript/generics-basics",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Why a Type Parameter",
+          "href": "/typescript/generics-basics#the-problem",
+          "titles": [
+            {
+              "title": "the problem",
+              "href": "/typescript/generics-basics#the-problem",
+              "keywords": [
+                "any",
+                "unknown"
+              ]
+            },
+            {
+              "title": "a type parameter",
+              "href": "/typescript/generics-basics#a-type-parameter",
+              "keywords": [
+                "The link is a type parameter",
+                "<T>",
+                "items: T[]",
+                ": T | undefined",
+                "string",
+                "number",
+                "any",
+                "name"
+              ]
+            },
+            {
+              "title": "generics you already use",
+              "href": "/typescript/generics-basics#generics-you-already-use",
+              "keywords": [
+                "Map",
+                "The name T is only a convention",
+                "TKey",
+                "TValue",
+                "Item",
+                ".tsx",
+                ".ts",
+                "<T>"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Inference at the Call Site",
+          "href": "/typescript/generics-basics#inference-from-arguments",
+          "titles": [
+            {
+              "title": "inference from arguments",
+              "href": "/typescript/generics-basics#inference-from-arguments",
+              "keywords": [
+                "You rarely write <T> when calling",
+                "name",
+                "mapAll<string, number>(…)"
+              ]
+            },
+            {
+              "title": "one T, several arguments",
+              "href": "/typescript/generics-basics#one-t-several-arguments",
+              "keywords": [
+                "as const"
+              ]
+            },
+            {
+              "title": "writing type arguments",
+              "href": "/typescript/generics-basics#writing-type-arguments",
+              "keywords": [
+                "Map",
+                "mapAll<string, number>(…)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Constraints with extends",
+          "href": "/typescript/generics-basics#extends-as-a-minimum",
+          "titles": [
+            {
+              "title": "extends as a minimum",
+              "href": "/typescript/generics-basics#extends-as-a-minimum",
+              "keywords": [
+                "extends limits what T may be",
+                "length",
+                "{ length: number }",
+                "generic — the real type comes back",
+                "plain parameter — the type is lost",
+                "User"
+              ]
+            },
+            {
+              "title": "constraints in practice",
+              "href": "/typescript/generics-basics#constraints-in-practice",
+              "keywords": [
+                "id",
+                "as const",
+                "K extends keyof T"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Generic Types",
+          "href": "/typescript/generics-basics#generic-aliases-and-interfaces",
+          "titles": [
+            {
+              "title": "generic aliases and interfaces",
+              "href": "/typescript/generics-basics#generic-aliases-and-interfaces",
+              "keywords": [
+                "Types take parameters too",
+                "A generic type does not infer."
+              ]
+            },
+            {
+              "title": "generic classes",
+              "href": "/typescript/generics-basics#generic-classes",
+              "keywords": [
+                "the parameter is shared by every member",
+                "unknown",
+                "Stack",
+                "Stack<number>",
+                "Stack<string>"
+              ]
+            },
+            {
+              "title": "default type parameters",
+              "href": "/typescript/generics-basics#default-type-parameters",
+              "keywords": [
+                "<T = …>",
+                "Wrong<U, T = string>",
+                "unknown",
+                "any"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When Not to Use a Generic",
+          "href": "/typescript/generics-basics#the-used-once-rule",
+          "titles": [
+            {
+              "title": "the used-once rule",
+              "href": "/typescript/generics-basics#the-used-once-rule",
+              "keywords": [
+                "A T that appears once links nothing:",
+                "T used once",
+                "the same, honestly",
+                "the constraint is enough",
+                "longest",
+                "findUser(users: User[], id: number)",
+                "findById"
+              ]
+            },
+            {
+              "title": "a return-only T is a hidden as",
+              "href": "/typescript/generics-basics#a-return-only-t-is-a-hidden-as",
+              "keywords": [
+                "JSON.parse",
+                "any",
+                "unknown",
+                "id",
+                "isUser",
+                "parse<User>(raw)",
+                "JSON.parse(raw) as User"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "keys-and-lookups",
+      "name": "Keys & Lookups",
+      "chapter": "Generics",
+      "href": "/typescript/keys-and-lookups",
+      "planned": false,
+      "parts": [
+        {
+          "name": "keyof",
+          "href": "/typescript/keys-and-lookups#keys-as-a-union",
+          "titles": [
+            {
+              "title": "keys as a union",
+              "href": "/typescript/keys-and-lookups#keys-as-a-union",
+              "keywords": [
+                "role",
+                "User",
+                "UserKey",
+                "\"role\"",
+                "key: string"
+              ]
+            },
+            {
+              "title": "keyof typeof and index signatures",
+              "href": "/typescript/keys-and-lookups#keyof-typeof-and-index-signatures",
+              "keywords": [
+                "typeof config",
+                "number",
+                "obj[1]",
+                "obj[\"1\"]",
+                "User",
+                "\"id\" | \"name\" | \"email\"",
+                "Object.keys(user) as (keyof User)[]",
+                "as"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Indexed Access",
+          "href": "/typescript/keys-and-lookups#reading-a-property-type",
+          "titles": [
+            {
+              "title": "reading a property type",
+              "href": "/typescript/keys-and-lookups#reading-a-property-type",
+              "keywords": [
+                "phone",
+                "A union of keys gives a union of values:",
+                "T[keyof T]"
+              ]
+            },
+            {
+              "title": "nested and array lookups",
+              "href": "/typescript/keys-and-lookups#nested-and-array-lookups",
+              "keywords": [
+                "Lookups chain as deep as needed:",
+                "[number] reads the element type.",
+                "number",
+                "roles"
+              ]
+            },
+            {
+              "title": "one source of truth",
+              "href": "/typescript/keys-and-lookups#one-source-of-truth",
+              "keywords": [
+                "id",
+                "User[\"id\"]",
+                "id: number",
+                "typeof"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "K extends keyof T",
+          "href": "/typescript/keys-and-lookups#a-key-and-its-value-type",
+          "titles": [
+            {
+              "title": "a key and its value type",
+              "href": "/typescript/keys-and-lookups#a-key-and-its-value-type",
+              "keywords": [
+                "keyof",
+                "user",
+                "K extends keyof T",
+                "\"name\"",
+                "T[K]",
+                "keyof T",
+                "T[keyof T]"
+              ]
+            },
+            {
+              "title": "keys that drive values",
+              "href": "/typescript/keys-and-lookups#keys-that-drive-values",
+              "keywords": [
+                "The value can depend on the key:",
+                "\"id\"",
+                "T[K]",
+                "number",
+                "get",
+                "pick",
+                "register(\"email\")",
+                "K extends keyof T"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Deriving Types from Data",
+          "href": "/typescript/keys-and-lookups#a-union-from-an-array",
+          "titles": [
+            {
+              "title": "a union from an array",
+              "href": "/typescript/keys-and-lookups#a-union-from-an-array",
+              "keywords": [
+                "as const",
+                "typeof",
+                "[number]",
+                "typeof ROLES",
+                "readonly [\"admin\", \"editor\", \"viewer\"]",
+                "\"owner\"",
+                "Role"
+              ]
+            },
+            {
+              "title": "keys and values from an object",
+              "href": "/typescript/keys-and-lookups#keys-and-values-from-an-object",
+              "keywords": [
+                "An object map gives both sides:",
+                "[number]",
+                "[\"id\"]",
+                "PlanId"
+              ]
+            },
+            {
+              "title": "one constant, two jobs",
+              "href": "/typescript/keys-and-lookups#one-constant-two-jobs",
+              "keywords": [
+                "The same constant does the runtime check",
+                "Role",
+                "includes",
+                "readonly string[]",
+                "as"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "generics-exercises",
+      "name": "Exercises",
+      "chapter": "Generics",
+      "href": "/typescript/generics-exercises",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Generics Basics",
+          "href": "/typescript/generics-exercises#exercise-1-what-t-becomes",
+          "titles": [
+            {
+              "title": "exercise 1 · what T becomes",
+              "href": "/typescript/generics-exercises#exercise-1-what-t-becomes",
+              "keywords": [
+                "variable",
+                "a: …",
+                "b: …",
+                "T | undefined",
+                "{ value: T }",
+                "never | undefined",
+                "\"dark\"",
+                "dark"
+              ]
+            },
+            {
+              "title": "exercise 2 · useless and lying generics",
+              "href": "/typescript/generics-exercises#exercise-2-useless-and-lying-generics",
+              "keywords": [
+                "keep",
+                "change",
+                "any",
+                "as",
+                "load",
+                "unknown",
+                "isT: (v: unknown) => boolean",
+                "return data"
+              ]
+            },
+            {
+              "title": "exercise 3 · a Result type",
+              "href": "/typescript/generics-exercises#exercise-3-a-result-type",
+              "keywords": [
+                "Result<T>",
+                "ok",
+                "{ ok: true; value: T }",
+                "{ ok: false; error: string }",
+                "parseNumber(raw: string): Result<number>",
+                "raw",
+                "Not a number: \"<raw>\"",
+                "unwrapOr(result, fallback)"
+              ]
+            },
+            {
+              "title": "exercise 4 · a registry",
+              "href": "/typescript/generics-exercises#exercise-4-a-registry",
+              "keywords": [
+                "class Registry<T>",
+                "id: string",
+                "Map<string, T>",
+                "size",
+                "all()",
+                "T extends { id: string }",
+                "Registry<number>",
+                "Product"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Keys & Lookups",
+          "href": "/typescript/generics-exercises#exercise-5-read-the-lookups",
+          "titles": [
+            {
+              "title": "exercise 5 · read the lookups",
+              "href": "/typescript/generics-exercises#exercise-5-read-the-lookups",
+              "keywords": [
+                "keyof",
+                "A: …",
+                "B: …",
+                "[number]",
+                "as const",
+                "\"S\" | \"M\" | \"L\"",
+                "\"S\", \"M\", \"L\""
+              ]
+            },
+            {
+              "title": "exercise 6 · sort and group by key",
+              "href": "/typescript/generics-exercises#exercise-6-sort-and-group-by-key",
+              "keywords": [
+                "sortBy(items, key)",
+                "groupBy(items, key)",
+                "Map",
+                "any",
+                "as",
+                "sortBy",
+                "keyof T",
+                "groupBy"
+              ]
+            },
+            {
+              "title": "exercise 7 · types from a constant",
+              "href": "/typescript/generics-exercises#exercise-7-types-from-a-constant",
+              "keywords": [
+                "CURRENCIES",
+                "isCurrencyCode(value: string)",
+                "any",
+                "as",
+                "as const",
+                "typeof",
+                "formatPrice",
+                "[number]"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mixed",
+          "href": "/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
+          "titles": [
+            {
+              "title": "exercise 8 · a typed event emitter",
+              "href": "/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
+              "keywords": [
+                "class Emitter<E>",
+                "AppEvents",
+                "E[K]",
+                "any",
+                "as",
+                "on",
+                "emit",
+                "<K extends keyof E>"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "utility-types",
+      "name": "Utility Types",
+      "chapter": "The Type Toolkit",
+      "href": "/typescript/utility-types",
+      "planned": true,
+      "parts": [
+        {
+          "name": "Partial, Required, Readonly",
+          "href": "/typescript/utility-types",
+          "titles": []
+        },
+        {
+          "name": "Pick and Omit",
+          "href": "/typescript/utility-types",
+          "titles": []
+        },
+        {
+          "name": "Record",
+          "href": "/typescript/utility-types",
+          "titles": []
+        },
+        {
+          "name": "Extract, Exclude, NonNullable",
+          "href": "/typescript/utility-types",
+          "titles": []
+        },
+        {
+          "name": "ReturnType, Parameters, Awaited",
+          "href": "/typescript/utility-types",
+          "titles": []
+        },
+        {
+          "name": "Choosing between them — a decision table",
+          "href": "/typescript/utility-types",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "mapped-and-template-types",
+      "name": "Mapped & Template Literal Types",
+      "chapter": "The Type Toolkit",
+      "href": "/typescript/mapped-and-template-types",
+      "planned": true,
+      "parts": [
+        {
+          "name": "The mapped type form",
+          "href": "/typescript/mapped-and-template-types",
+          "titles": []
+        },
+        {
+          "name": "Key remapping with as",
+          "href": "/typescript/mapped-and-template-types",
+          "titles": []
+        },
+        {
+          "name": "Modifiers — adding and removing optional and readonly",
+          "href": "/typescript/mapped-and-template-types",
+          "titles": []
+        },
+        {
+          "name": "Template literal types",
+          "href": "/typescript/mapped-and-template-types",
+          "titles": []
+        },
+        {
+          "name": "Building one useful type end to end",
+          "href": "/typescript/mapped-and-template-types",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "data-boundaries",
+      "name": "Data Boundaries & Async",
+      "chapter": "In Practice",
+      "href": "/typescript/data-boundaries",
+      "planned": true,
+      "parts": [
+        {
+          "name": "unknown at the edge of the program",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        },
+        {
+          "name": "Type guards vs type assertions",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        },
+        {
+          "name": "Validating a response",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        },
+        {
+          "name": "satisfies",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        },
+        {
+          "name": "Promise<T> and async return inference",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        },
+        {
+          "name": "catch (e) is unknown",
+          "href": "/typescript/data-boundaries",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "modules-and-declarations",
+      "name": "Modules & Declarations",
+      "chapter": "In Practice",
+      "href": "/typescript/modules-and-declarations",
+      "planned": true,
+      "parts": [
+        {
+          "name": "import type and verbatimModuleSyntax",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        },
+        {
+          "name": ".d.ts files",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        },
+        {
+          "name": "Ambient declarations",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        },
+        {
+          "name": "@types packages",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        },
+        {
+          "name": "Module augmentation — adding req.user",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        },
+        {
+          "name": "ESM vs CJS resolution under nodenext",
+          "href": "/typescript/modules-and-declarations",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "errors-and-escape-hatches",
+      "name": "Errors & Escape Hatches",
+      "chapter": "In Practice",
+      "href": "/typescript/errors-and-escape-hatches",
+      "planned": true,
+      "parts": [
+        {
+          "name": "How to read a tsc error",
+          "href": "/typescript/errors-and-escape-hatches",
+          "titles": []
+        },
+        {
+          "name": "Assertions with as, and double assertions",
+          "href": "/typescript/errors-and-escape-hatches",
+          "titles": []
+        },
+        {
+          "name": "The non-null assertion",
+          "href": "/typescript/errors-and-escape-hatches",
+          "titles": []
+        },
+        {
+          "name": "@ts-expect-error vs @ts-ignore",
+          "href": "/typescript/errors-and-escape-hatches",
+          "titles": []
+        },
+        {
+          "name": "When any is the right answer",
+          "href": "/typescript/errors-and-escape-hatches",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "typing-components",
+      "name": "Typing Components",
+      "chapter": "React & Next",
+      "href": "/typescript/typing-components",
+      "planned": true,
+      "parts": [
+        {
+          "name": "Typing props",
+          "href": "/typescript/typing-components",
+          "titles": []
+        },
+        {
+          "name": "children and ReactNode",
+          "href": "/typescript/typing-components",
+          "titles": []
+        },
+        {
+          "name": "Optional props and defaults",
+          "href": "/typescript/typing-components",
+          "titles": []
+        },
+        {
+          "name": "Extending native HTML props",
+          "href": "/typescript/typing-components",
+          "titles": []
+        },
+        {
+          "name": "Generic components",
+          "href": "/typescript/typing-components",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "events-and-refs",
+      "name": "Events & Refs",
+      "chapter": "React & Next",
+      "href": "/typescript/events-and-refs",
+      "planned": true,
+      "parts": [
+        {
+          "name": "Event types by element",
+          "href": "/typescript/events-and-refs",
+          "titles": []
+        },
+        {
+          "name": "The inline vs extracted handler difference",
+          "href": "/typescript/events-and-refs",
+          "titles": []
+        },
+        {
+          "name": "useRef for a DOM node",
+          "href": "/typescript/events-and-refs",
+          "titles": []
+        },
+        {
+          "name": "useRef for a mutable value",
+          "href": "/typescript/events-and-refs",
+          "titles": []
+        },
+        {
+          "name": "forwardRef",
+          "href": "/typescript/events-and-refs",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "hooks-and-state",
+      "name": "Hooks & State",
+      "chapter": "React & Next",
+      "href": "/typescript/hooks-and-state",
+      "planned": true,
+      "parts": [
+        {
+          "name": "useState and its inference limits",
+          "href": "/typescript/hooks-and-state",
+          "titles": []
+        },
+        {
+          "name": "useState generics",
+          "href": "/typescript/hooks-and-state",
+          "titles": []
+        },
+        {
+          "name": "useReducer with a discriminated union",
+          "href": "/typescript/hooks-and-state",
+          "titles": []
+        },
+        {
+          "name": "useContext and the null default",
+          "href": "/typescript/hooks-and-state",
+          "titles": []
+        },
+        {
+          "name": "Custom hooks and as const",
+          "href": "/typescript/hooks-and-state",
+          "titles": []
+        }
+      ]
+    },
+    {
+      "slug": "next-specific-types",
+      "name": "Next-Specific Types",
+      "chapter": "React & Next",
+      "href": "/typescript/next-specific-types",
+      "planned": true,
+      "parts": [
+        {
+          "name": "Server vs Client component boundaries",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        },
+        {
+          "name": "async components",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        },
+        {
+          "name": "params and searchParams",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        },
+        {
+          "name": "Route handlers with NextRequest and NextResponse",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        },
+        {
+          "name": "Metadata",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        },
+        {
+          "name": "Typed environment variables",
+          "href": "/typescript/next-specific-types",
+          "titles": []
+        }
+      ]
+    }
+  ]
+}

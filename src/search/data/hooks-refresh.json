@@ -1,0 +1,2866 @@
+{
+  "generated": "by npm run search:sync — do not edit",
+  "project": {
+    "slug": "hooks-refresh",
+    "name": "Hooks, refreshed.",
+    "href": "/hooks-refresh"
+  },
+  "pages": [
+    {
+      "slug": "use-state",
+      "name": "useState",
+      "chapter": "State",
+      "href": "/hooks-refresh/use-state",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Basics",
+          "href": "/hooks-refresh/use-state#render-persistence",
+          "titles": [
+            {
+              "title": "render & persistence",
+              "href": "/hooks-refresh/use-state#render-persistence",
+              "keywords": [
+                "Renders re-run the function.",
+                "useState",
+                "The argument is a mount-only seed.",
+                "useState(initial)",
+                "initial"
+              ]
+            },
+            {
+              "title": "state is a snapshot",
+              "href": "/hooks-refresh/use-state#state-is-a-snapshot",
+              "keywords": [
+                "count",
+                "setState",
+                "State is a read-only snapshot",
+                "setY(y + 5)"
+              ]
+            },
+            {
+              "title": "scheduling & bail-out",
+              "href": "/hooks-refresh/use-state#scheduling-bail-out",
+              "keywords": [
+                "Object.is"
+              ]
+            },
+            {
+              "title": "batching",
+              "href": "/hooks-refresh/use-state#batching",
+              "keywords": [
+                "Multiple sets are batched.",
+                "setState",
+                "Only batching is new."
+              ]
+            },
+            {
+              "title": "value form vs function form",
+              "href": "/hooks-refresh/use-state#value-form-vs-function-form",
+              "keywords": [
+                "Value form reads one stale snapshot.",
+                "count",
+                "setCount(count + 1)",
+                "[set→1, set→1, set→1]",
+                "Function form threads the queue.",
+                "setCount(c => c + 1)",
+                "[c=>c+1, c=>c+1, c=>c+1]",
+                "0 → 1 → 2 → 3"
+              ]
+            },
+            {
+              "title": "lazy initializer",
+              "href": "/hooks-refresh/use-state#lazy-initializer",
+              "keywords": [
+                "Pass the function, don't call it.",
+                "useState(readInitial)",
+                "useState(readInitial())"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Objects & arrays",
+          "href": "/hooks-refresh/use-state#never-mutate-replace",
+          "titles": [
+            {
+              "title": "never mutate, replace",
+              "href": "/hooks-refresh/use-state#never-mutate-replace",
+              "keywords": [
+                "React compares state BY REFERENCE.",
+                "Object.is(next, current)",
+                "Spread copies, then override.",
+                "{ ...user, age: 31 }",
+                "user",
+                "age",
+                "It is the same rule you already know.",
+                "useMemo"
+              ]
+            },
+            {
+              "title": "nested objects",
+              "href": "/hooks-refresh/use-state#nested-objects",
+              "keywords": [
+                "Spread is a SHALLOW copy.",
+                "{ ...user }",
+                "address",
+                "address.city",
+                "user",
+                "Deep nesting is a design signal.",
+                "useState",
+                "useReducer"
+              ]
+            },
+            {
+              "title": "arrays",
+              "href": "/hooks-refresh/use-state#arrays",
+              "keywords": [
+                "Return a NEW array, every time.",
+                "[...arr, x]",
+                "map",
+                "filter",
+                "Avoid the in-place methods on state.",
+                "push",
+                "pop",
+                "splice"
+              ]
+            },
+            {
+              "title": "functional updater for objects & arrays",
+              "href": "/hooks-refresh/use-state#functional-updater-for-objects-arrays",
+              "keywords": [
+                "setCount(0)",
+                "Object returns need parentheses.",
+                "prev => ({ ...prev })",
+                "( )",
+                "prev => [...prev, x]",
+                "[...todos, x]",
+                "setX(prev => ...)",
+                "prev"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-state#react-vs-next-js",
+              "keywords": [
+                "useState",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-state#say-it-right-english",
+              "keywords": [
+                "useState",
+                "setState",
+                "setCount(count + 1)",
+                "setCount(c => c + 1)",
+                "count"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-reducer",
+      "name": "useReducer",
+      "chapter": "State",
+      "href": "/hooks-refresh/use-reducer",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Inline",
+          "href": "/hooks-refresh/use-reducer#step-1-state-shape",
+          "titles": [
+            {
+              "title": "step 1 · state shape",
+              "href": "/hooks-refresh/use-reducer#step-1-state-shape",
+              "keywords": [
+                "State is one object, not one value.",
+                "todos",
+                "nextId",
+                "initialState is the starting value."
+              ]
+            },
+            {
+              "title": "step 2 · actions",
+              "href": "/hooks-refresh/use-reducer#step-2-actions",
+              "keywords": [
+                "{ type: \"toggle\", id: 3 }",
+                "add",
+                "text",
+                "toggle",
+                "remove",
+                "id",
+                "clearDone",
+                "The union is DISCRIMINATED by type."
+              ]
+            },
+            {
+              "title": "step 3 · the reducer",
+              "href": "/hooks-refresh/use-reducer#step-3-the-reducer",
+              "keywords": [
+                "Every case returns a NEW object.",
+                "map",
+                "filter",
+                "It must be PURE.",
+                "fetch",
+                "Date.now()",
+                "crypto.randomUUID()",
+                "state.todos.push(...)"
+              ]
+            },
+            {
+              "title": "step 4 · wiring useReducer",
+              "href": "/hooks-refresh/use-reducer#step-4-wiring-usereducer",
+              "keywords": [
+                "state — the current value.",
+                "useState",
+                "dispatch — how you REQUEST a change.",
+                "state",
+                "First argument — the reducer.",
+                "Second argument — initialState.",
+                "The flow, end to end.",
+                "dispatch(action)"
+              ]
+            },
+            {
+              "title": "step 5 · dispatching from the ui",
+              "href": "/hooks-refresh/use-reducer#step-5-dispatching-from-the-ui",
+              "keywords": [
+                "The UI only dispatches.",
+                "{ type: \"toggle\", id: t.id }",
+                "filter",
+                "The reducer owns the transitions.",
+                "case",
+                "Not everything belongs in the reducer.",
+                "text",
+                "useState"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "As a module",
+          "href": "/hooks-refresh/use-reducer#types-ts",
+          "titles": [
+            {
+              "title": "types.ts",
+              "href": "/hooks-refresh/use-reducer#types-ts",
+              "keywords": [
+                "Types live in their own module.",
+                "State",
+                "Action",
+                "Todo",
+                "export type, not export.",
+                "import type"
+              ]
+            },
+            {
+              "title": "reducer.ts",
+              "href": "/hooks-refresh/use-reducer#reducer-ts",
+              "keywords": [
+                "reducer(someState, someAction)",
+                "useReducer",
+                "That is the same rule as useState."
+              ]
+            },
+            {
+              "title": "initial-state.ts + lazy init",
+              "href": "/hooks-refresh/use-reducer#initial-state-ts-lazy-init",
+              "keywords": [
+                "Two ways to start, in one file.",
+                "initialState",
+                "init(seed)",
+                "useReducer(reducer, SEED, init)",
+                "useReducer(reducer, init(SEED))",
+                "Reuse init to reset"
+              ]
+            },
+            {
+              "title": "using it in a component",
+              "href": "/hooks-refresh/use-reducer#using-it-in-a-component",
+              "keywords": [
+                "Three imports, three responsibilities.",
+                "useReducer",
+                "reducer",
+                "./reducer",
+                "initialState",
+                "./initial-state",
+                "import type",
+                "Importing gives you the RULES."
+              ]
+            },
+            {
+              "title": "sharing across components",
+              "href": "/hooks-refresh/use-reducer#sharing-across-components",
+              "keywords": [
+                "The value is { state, dispatch }.",
+                "state",
+                "dispatch",
+                "Dispatch<Action>",
+                "react",
+                "doneCount",
+                "The division of labour."
+              ]
+            },
+            {
+              "title": "useReducer + context vs useContext alone",
+              "href": "/hooks-refresh/use-reducer#usereducer-context-vs-usecontext-alone",
+              "keywords": [
+                "useState",
+                "case",
+                "The trade-off is indirection.",
+                "Neither fixes re-renders.",
+                "dispatch",
+                "{ state, dispatch }",
+                "state"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-reducer#react-vs-next-js",
+              "keywords": [
+                "useReducer",
+                "\"use client\"",
+                "useState"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-reducer#say-it-right-english",
+              "keywords": [
+                "by reference",
+                "dispatch",
+                "stable identity",
+                "useCallback"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-effect",
+      "name": "useEffect",
+      "chapter": "Effects",
+      "href": "/hooks-refresh/use-effect",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Basics",
+          "href": "/hooks-refresh/use-effect#reading-the-code",
+          "titles": [
+            {
+              "title": "reading the code",
+              "href": "/hooks-refresh/use-effect#reading-the-code",
+              "keywords": [
+                "Render first, effect last.",
+                "width = 0",
+                "window.innerWidth",
+                "setWidth",
+                "window",
+                "[] means \"no dependencies\".",
+                "width"
+              ]
+            },
+            {
+              "title": "what an effect is",
+              "href": "/hooks-refresh/use-effect#what-an-effect-is",
+              "keywords": [
+                "Four phases, and the effect is last.",
+                "render.",
+                "commit.",
+                "paint.",
+                "useEffect",
+                "The render schedules the effect"
+              ]
+            },
+            {
+              "title": "the dependency array",
+              "href": "/hooks-refresh/use-effect#the-dependency-array",
+              "keywords": [
+                "Flip the common mistake:",
+                "[]",
+                "useEffect(fn)",
+                "setState"
+              ]
+            },
+            {
+              "title": "rules of hooks",
+              "href": "/hooks-refresh/use-effect#rules-of-hooks",
+              "keywords": [
+                "Breaking that corrupts state.",
+                "useState",
+                "Rendered fewer hooks than expected"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Advanced",
+          "href": "/hooks-refresh/use-effect#reading-the-cleanup",
+          "titles": [
+            {
+              "title": "reading the cleanup",
+              "href": "/hooks-refresh/use-effect#reading-the-cleanup",
+              "keywords": [
+                "The effect registers, the browser calls.",
+                "addEventListener",
+                "handleResize",
+                "useEffect",
+                "The returned function is the cleanup.",
+                "Same reference in, same reference out.",
+                "removeEventListener"
+              ]
+            },
+            {
+              "title": "cleanup — the core idea",
+              "href": "/hooks-refresh/use-effect#cleanup-the-core-idea",
+              "keywords": [
+                "Rule of thumb."
+              ]
+            },
+            {
+              "title": "setup runs once, the callback runs many",
+              "href": "/hooks-refresh/use-effect#setup-runs-once-the-callback-runs-many",
+              "keywords": [
+                "Two different runners.",
+                "[]",
+                "handleResize",
+                "useEffect",
+                "The phone-number analogy.",
+                "addEventListener"
+              ]
+            },
+            {
+              "title": "when cleanup runs",
+              "href": "/hooks-refresh/use-effect#when-cleanup-runs",
+              "keywords": [
+                "Two moments, not one.",
+                "[]"
+              ]
+            },
+            {
+              "title": "two ways to leak listeners",
+              "href": "/hooks-refresh/use-effect#two-ways-to-leak-listeners",
+              "keywords": [
+                "useEffect(fn, [])",
+                "window"
+              ]
+            },
+            {
+              "title": "effects & data fetching",
+              "href": "/hooks-refresh/use-effect#effects-data-fetching",
+              "keywords": [
+                "Continuous vs one-shot.",
+                "clearInterval",
+                "The race.",
+                "active",
+                "AbortController",
+                "async",
+                "useEffect",
+                "fetch"
+              ]
+            },
+            {
+              "title": "ssr & strict mode",
+              "href": "/hooks-refresh/use-effect#ssr-strict-mode",
+              "keywords": [
+                "Effects never run on the server.",
+                "window",
+                "setState",
+                "queueMicrotask"
+              ]
+            },
+            {
+              "title": "reading the re-sync",
+              "href": "/hooks-refresh/use-effect#reading-the-re-sync",
+              "keywords": [
+                "[room] makes the effect re-syncable.",
+                "[]",
+                "room",
+                "Old teardown before new setup.",
+                "conn.disconnect()",
+                "createConnection(room)",
+                "Watch it in the demo above.",
+                "disconnect(old)"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-effect#react-vs-next-js",
+              "keywords": [
+                "\"use client\"",
+                "window",
+                "localStorage"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-effect#say-it-right-english",
+              "keywords": [
+                "once",
+                "registers",
+                "browser",
+                "handleResize",
+                "survives unmount",
+                "stack up",
+                "sets up",
+                "tears it down"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-layout-effect",
+      "name": "useLayoutEffect",
+      "chapter": "Effects",
+      "href": "/hooks-refresh/use-layout-effect",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Timing",
+          "href": "/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
+          "titles": [
+            {
+              "title": "useeffect vs uselayouteffect",
+              "href": "/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
+              "keywords": [
+                "Same API as useEffect, different TIMING.",
+                "useEffect runs AFTER paint.",
+                "The order is the whole hook:"
+              ]
+            },
+            {
+              "title": "the flicker fix",
+              "href": "/hooks-refresh/use-layout-effect#the-flicker-fix",
+              "keywords": [
+                "useEffect",
+                "useLayoutEffect"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Limits",
+          "href": "/hooks-refresh/use-layout-effect#sync-only",
+          "titles": [
+            {
+              "title": "sync only",
+              "href": "/hooks-refresh/use-layout-effect#sync-only",
+              "keywords": [
+                "An await or .then() returns immediately.",
+                "fetchAuth()",
+                "So the flicker still happens.",
+                "useLayoutEffect",
+                "useEffect",
+                "async"
+              ]
+            },
+            {
+              "title": "cost + ssr",
+              "href": "/hooks-refresh/use-layout-effect#cost-ssr",
+              "keywords": [
+                "useEffect",
+                "It does NOT run on the server.",
+                "\"use client\"",
+                "useLayoutEffect"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-layout-effect#react-vs-next-js",
+              "keywords": [
+                "useLayoutEffect",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-layout-effect#say-it-right-english",
+              "keywords": [
+                "useLayoutEffect",
+                "useEffect",
+                "synchronous DOM measure-then-adjust",
+                "synchronous work"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-insertion-effect",
+      "name": "useInsertionEffect",
+      "chapter": "Effects",
+      "href": "/hooks-refresh/use-insertion-effect",
+      "planned": false,
+      "parts": [
+        {
+          "name": "What it is",
+          "href": "/hooks-refresh/use-insertion-effect#the-earliest-effect",
+          "titles": [
+            {
+              "title": "the earliest effect",
+              "href": "/hooks-refresh/use-insertion-effect#the-earliest-effect",
+              "keywords": [
+                "useLayoutEffect",
+                "That ordering is the point.",
+                "useInsertionEffect"
+              ]
+            },
+            {
+              "title": "restrictions",
+              "href": "/hooks-refresh/use-insertion-effect#restrictions",
+              "keywords": [
+                "useLayoutEffect",
+                "You also cannot call setState.",
+                "useInsertionEffect",
+                "setState",
+                "<style>",
+                "useEffect"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Do you need it",
+          "href": "/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
+          "titles": [
+            {
+              "title": "static css vs runtime css-in-js",
+              "href": "/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
+              "keywords": [
+                "<style>",
+                "useInsertionEffect"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-insertion-effect#react-vs-next-js",
+              "keywords": [
+                "useInsertionEffect",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-insertion-effect#say-it-right-english",
+              "keywords": [
+                "SSR-safe and cached",
+                "useInsertionEffect",
+                "runtime-generated",
+                "CSS-in-JS libraries",
+                "<style>"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-context",
+      "name": "useContext",
+      "chapter": "Context & Refs",
+      "href": "/hooks-refresh/use-context",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Creation",
+          "href": "/hooks-refresh/use-context#createcontext",
+          "titles": [
+            {
+              "title": "createContext",
+              "href": "/hooks-refresh/use-context#createcontext",
+              "keywords": [
+                "Ctx.Provider",
+                "useContext",
+                "The value is a contract.",
+                "The default is a fallback."
+              ]
+            },
+            {
+              "title": "the provider",
+              "href": "/hooks-refresh/use-context#the-provider",
+              "keywords": [
+                "useState",
+                "children sets the scope.",
+                "children"
+              ]
+            },
+            {
+              "title": "stable value",
+              "href": "/hooks-refresh/use-context#stable-value",
+              "keywords": [
+                "isLoggedIn",
+                "user !== null",
+                "user",
+                "The value is compared by reference.",
+                "Context has no partial subscription.",
+                "useMemo"
+              ]
+            },
+            {
+              "title": "client boundary",
+              "href": "/hooks-refresh/use-context#client-boundary",
+              "keywords": [
+                "Context is a client-side mechanism.",
+                "\"use client\"",
+                "Server Components cannot participate.",
+                "useContext",
+                "Mount providers inside a client boundary",
+                "Providers",
+                "children"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Usage",
+          "href": "/hooks-refresh/use-context#consuming-the-value",
+          "titles": [
+            {
+              "title": "consuming the value",
+              "href": "/hooks-refresh/use-context#consuming-the-value",
+              "keywords": [
+                "Provider",
+                "useContext",
+                "user",
+                "isLoading",
+                "login",
+                "logout",
+                "The consumer never owns this state.",
+                "AuthControls"
+              ]
+            },
+            {
+              "title": "missing provider",
+              "href": "/hooks-refresh/use-context#missing-provider",
+              "keywords": [
+                "useContext",
+                "createContext",
+                "Guard at the consumption site.",
+                "if (!auth)"
+              ]
+            },
+            {
+              "title": "all consumers re-render",
+              "href": "/hooks-refresh/use-context#all-consumers-re-render",
+              "keywords": [
+                "Context has no partial subscription.",
+                "UserName",
+                "isLoading",
+                "This compounds with an unstable value.",
+                "value"
+              ]
+            },
+            {
+              "title": "server components can't consume",
+              "href": "/hooks-refresh/use-context#server-components-can-t-consume",
+              "keywords": [
+                "useContext is client-only.",
+                "The App Router is server-by-default.",
+                "\"use client\"",
+                "Fetch on the server and pass props.",
+                "async function"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-context#react-vs-next-js",
+              "keywords": [
+                "useContext",
+                "Providers"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-context#say-it-right-english",
+              "keywords": [
+                "fallback",
+                "no Provider above it",
+                "no partial subscription",
+                "every consumer"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-ref",
+      "name": "useRef",
+      "chapter": "Context & Refs",
+      "href": "/hooks-refresh/use-ref",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The mutable box",
+          "href": "/hooks-refresh/use-ref#what-it-is",
+          "titles": [
+            {
+              "title": "what it is",
+              "href": "/hooks-refresh/use-ref#what-it-is",
+              "keywords": [
+                ".current",
+                "Changing .current NEVER re-renders.",
+                "The argument is the initial .current.",
+                "useRef(0)",
+                "current = 0",
+                "useState",
+                "Two jobs.",
+                "setTimeout"
+              ]
+            },
+            {
+              "title": "ref vs state",
+              "href": "/hooks-refresh/use-ref#ref-vs-state",
+              "keywords": [
+                "Ref = remember. State = react.",
+                "Refs also skip the queue entirely.",
+                "ref.current",
+                "setState"
+              ]
+            },
+            {
+              "title": "don't touch during render",
+              "href": "/hooks-refresh/use-ref#don-t-touch-during-render",
+              "keywords": [
+                "Rendering must be PURE.",
+                ".current",
+                "Reading during render is unreliable.",
+                "Strict Mode makes it visible.",
+                "ref.current"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DOM refs",
+          "href": "/hooks-refresh/use-ref#attaching-timing",
+          "titles": [
+            {
+              "title": "attaching + timing",
+              "href": "/hooks-refresh/use-ref#attaching-timing",
+              "keywords": [
+                "Attach with the ref attribute.",
+                ".current",
+                "document.querySelector",
+                "Which is why DOM work goes in an effect.",
+                "focus()",
+                "scrollIntoView()",
+                "getBoundingClientRect()",
+                "?."
+              ]
+            },
+            {
+              "title": "passing a ref to your component (React 19)",
+              "href": "/hooks-refresh/use-ref#passing-a-ref-to-your-component-react-19",
+              "keywords": [
+                "ref is not an ordinary prop in React 18.",
+                "props",
+                "forwardRef",
+                "(props, ref)",
+                "React 19 makes it a normal prop.",
+                "The PARENT is identical in both.",
+                "useRef",
+                ".current"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-ref#react-vs-next-js",
+              "keywords": [
+                "useRef",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-ref#say-it-right-english",
+              "keywords": [
+                "re-renders",
+                "remembers",
+                ".current",
+                "after it commits"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-imperative-handle",
+      "name": "useImperativeHandle",
+      "chapter": "Context & Refs",
+      "href": "/hooks-refresh/use-imperative-handle",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The basics",
+          "href": "/hooks-refresh/use-imperative-handle#what-it-does",
+          "titles": [
+            {
+              "title": "what it does",
+              "href": "/hooks-refresh/use-imperative-handle#what-it-does",
+              "keywords": [
+                "The child keeps the real node private.",
+                "inputRef",
+                "FancyInput",
+                "{ focus, clear }",
+                "React 19: ref is a normal prop.",
+                "useImperativeHandle",
+                "forwardRef"
+              ]
+            },
+            {
+              "title": "imperative vs declarative",
+              "href": "/hooks-refresh/use-imperative-handle#imperative-vs-declarative",
+              "keywords": [
+                "<Modal isOpen={open} />",
+                "open",
+                "modalRef.current.open()",
+                "node.focus()",
+                "video.play()",
+                "Declarative is \"I want a coffee\";",
+                "useImperativeHandle"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When (and why not)",
+          "href": "/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
+          "titles": [
+            {
+              "title": "forward the ref vs customize it",
+              "href": "/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
+              "keywords": [
+                "focus()",
+                "select()",
+                ".value",
+                ".style",
+                "{ focus }",
+                "The two options, side by side.",
+                "useImperativeHandle",
+                "Forwarding is the simpler default."
+              ]
+            },
+            {
+              "title": "why hide the dom (encapsulation)",
+              "href": "/hooks-refresh/use-imperative-handle#why-hide-the-dom-encapsulation",
+              "keywords": [
+                "A raw node lets the parent do ANYTHING.",
+                "src",
+                "1 — Keep internal state consistent.",
+                "play()",
+                "node.play()",
+                "2 — Stay free to change internals.",
+                "<video>",
+                "3 — Prevent misuse."
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-imperative-handle#react-vs-next-js",
+              "keywords": [
+                "useImperativeHandle",
+                "\"use client\"",
+                "ref",
+                "forwardRef"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-imperative-handle#say-it-right-english",
+              "keywords": [
+                "describes the result from state",
+                "<Modal isOpen />",
+                "commands a specific action now",
+                "ref.current.open()",
+                "full access to the node",
+                "useImperativeHandle"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-memo",
+      "name": "useMemo",
+      "chapter": "Performance",
+      "href": "/hooks-refresh/use-memo",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Using it",
+          "href": "/hooks-refresh/use-memo#what-it-memoizes",
+          "titles": [
+            {
+              "title": "what it memoizes",
+              "href": "/hooks-refresh/use-memo#what-it-memoizes",
+              "keywords": [
+                "First argument — the compute function.",
+                "useCallback",
+                "Second argument — the dependency array.",
+                "Object.is",
+                "useState",
+                "const sorted = expensiveSort(items)",
+                "useMemo"
+              ]
+            },
+            {
+              "title": "use 1 · skip expensive work",
+              "href": "/hooks-refresh/use-memo#use-1-skip-expensive-work",
+              "keywords": [
+                "reduce",
+                "sort",
+                "filter",
+                "items",
+                "setItems([...items, next])",
+                "The source must be a stable reference.",
+                "useState",
+                "const items = rows.map(...)"
+              ]
+            },
+            {
+              "title": "use 2 · stabilize a reference",
+              "href": "/hooks-refresh/use-memo#use-2-stabilize-a-reference",
+              "keywords": [
+                "{ taxRate }",
+                "taxRate",
+                "useMemo",
+                "MemoizedChild",
+                "theme",
+                "React.memo",
+                "useCallback"
+              ]
+            },
+            {
+              "title": "when it's pointless",
+              "href": "/hooks-refresh/use-memo#when-it-s-pointless",
+              "keywords": [
+                "useMemo",
+                "The memo is not free.",
+                "a + b",
+                "Don't wrap everything \"to be safe\".",
+                "React.memo"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Getting it right",
+          "href": "/hooks-refresh/use-memo#the-dependency-array",
+          "titles": [
+            {
+              "title": "the dependency array",
+              "href": "/hooks-refresh/use-memo#the-dependency-array",
+              "keywords": [
+                "Deps are compared BY REFERENCE.",
+                "Object.is",
+                "rate",
+                "items",
+                "filter",
+                "[items, filter.active]",
+                "[items, filter]",
+                "react-hooks/exhaustive-deps"
+              ]
+            },
+            {
+              "title": "react compiler",
+              "href": "/hooks-refresh/use-memo#react-compiler",
+              "keywords": [
+                "useMemo",
+                "useCallback",
+                "React.memo",
+                "It is OPT-IN, not on by default.",
+                "babel-plugin-react-compiler",
+                "experimental.reactCompiler",
+                "reactCompiler",
+                "next.config"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-memo#react-vs-next-js",
+              "keywords": [
+                "useMemo"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-memo#say-it-right-english",
+              "keywords": [
+                "useMemo",
+                "genuinely expensive",
+                "stabilizes a reference",
+                "React.memo",
+                "stale cached value"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-callback",
+      "name": "useCallback",
+      "chapter": "Performance",
+      "href": "/hooks-refresh/use-callback",
+      "planned": false,
+      "parts": [
+        {
+          "name": "What it is",
+          "href": "/hooks-refresh/use-callback#memoized-function",
+          "titles": [
+            {
+              "title": "memoized function",
+              "href": "/hooks-refresh/use-callback#memoized-function",
+              "keywords": [
+                "useCallback",
+                "[deps]",
+                "Object.is",
+                "It is literally useMemo(() => fn, deps).",
+                "useMemo",
+                "It does not make the function faster."
+              ]
+            },
+            {
+              "title": "when it matters",
+              "href": "/hooks-refresh/use-callback#when-it-matters",
+              "keywords": [
+                "memo",
+                "handleClick",
+                "id",
+                "useCallback",
+                "React.memo"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Getting it right",
+          "href": "/hooks-refresh/use-callback#stale-closure",
+          "titles": [
+            {
+              "title": "stale closure",
+              "href": "/hooks-refresh/use-callback#stale-closure",
+              "keywords": [
+                "log",
+                "count",
+                "[]",
+                "Being cached is what makes it stick.",
+                "Same trap as useEffect, same two fixes.",
+                "react-hooks/exhaustive-deps",
+                "setCount(c => c + 1)",
+                "setX(prev => ...)"
+              ]
+            },
+            {
+              "title": "react compiler",
+              "href": "/hooks-refresh/use-callback#react-compiler",
+              "keywords": [
+                "useCallback",
+                "useMemo",
+                "React.memo",
+                "It is OPT-IN, not on by default.",
+                "babel-plugin-react-compiler",
+                "experimental.reactCompiler",
+                "reactCompiler",
+                "next.config"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-callback#react-vs-next-js",
+              "keywords": [
+                "useCallback",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-callback#say-it-right-english",
+              "keywords": [
+                "useCallback",
+                "React.memo",
+                "compares the function's reference",
+                "missing dependency"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-transition",
+      "name": "useTransition",
+      "chapter": "Performance",
+      "href": "/hooks-refresh/use-transition",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-transition#urgent-vs-non-urgent",
+          "titles": [
+            {
+              "title": "urgent vs non-urgent",
+              "href": "/hooks-refresh/use-transition#urgent-vs-non-urgent",
+              "keywords": [
+                "React splits work into two priorities.",
+                "It returns a pair.",
+                "startTransition(fn)",
+                "fn",
+                "isPending"
+              ]
+            },
+            {
+              "title": "the problem it solves",
+              "href": "/hooks-refresh/use-transition#the-problem-it-solves",
+              "keywords": [
+                "Split it by priority.",
+                "startTransition",
+                "WITHOUT — typing \"avatar\":",
+                "WITH — the same six letters:",
+                "This is NOT debounce."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Using it right",
+          "href": "/hooks-refresh/use-transition#ispending-feedback",
+          "titles": [
+            {
+              "title": "isPending feedback",
+              "href": "/hooks-refresh/use-transition#ispending-feedback",
+              "keywords": [
+                "Use it for non-blocking feedback.",
+                "Keep the flag off the expensive subtree."
+              ]
+            },
+            {
+              "title": "keep the urgent update outside",
+              "href": "/hooks-refresh/use-transition#keep-the-urgent-update-outside",
+              "keywords": [
+                "setQuery",
+                "startTransition",
+                "The rule is one line long."
+              ]
+            },
+            {
+              "title": "it prioritizes rendering, not fetching",
+              "href": "/hooks-refresh/use-transition#it-prioritizes-rendering-not-fetching",
+              "keywords": [
+                "The await escapes it.",
+                "await",
+                "setResults",
+                "useDeferredValue",
+                "useTransition",
+                "startTransition"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-transition#react-vs-next-js",
+              "keywords": [
+                "useTransition",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-transition#say-it-right-english",
+              "keywords": [
+                "useTransition",
+                "delays starting",
+                "interruptible",
+                "startTransition",
+                "urgent update that must feel instant"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-deferred-value",
+      "name": "useDeferredValue",
+      "chapter": "Performance",
+      "href": "/hooks-refresh/use-deferred-value",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
+          "titles": [
+            {
+              "title": "a lagging copy of a value",
+              "href": "/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
+              "keywords": [
+                "One value, two consumers.",
+                "query",
+                "deferredQuery",
+                "query = \"avatar\"",
+                "\"avat\""
+              ]
+            },
+            {
+              "title": "why not use the value directly",
+              "href": "/hooks-refresh/use-deferred-value#why-not-use-the-value-directly",
+              "keywords": []
+            }
+          ]
+        },
+        {
+          "name": "How it renders",
+          "href": "/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
+          "titles": [
+            {
+              "title": "two renders per keystroke",
+              "href": "/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
+              "keywords": [
+                "deferredQuery"
+              ]
+            },
+            {
+              "title": "interrupted and abandoned",
+              "href": "/hooks-refresh/use-deferred-value#interrupted-and-abandoned",
+              "keywords": [
+                "deferredQuery",
+                "This is NOT debounce."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Using it right",
+          "href": "/hooks-refresh/use-deferred-value#pair-it-with-memoization",
+          "titles": [
+            {
+              "title": "pair it with memoization",
+              "href": "/hooks-refresh/use-deferred-value#pair-it-with-memoization",
+              "keywords": [
+                "useDeferredValue alone saves nothing.",
+                "useMemo",
+                "React.memo",
+                "The mechanism is the urgent render.",
+                "deferredQuery",
+                "[deferredQuery]",
+                "useDeferredValue"
+              ]
+            },
+            {
+              "title": "stale flag and when to skip it",
+              "href": "/hooks-refresh/use-deferred-value#stale-flag-and-when-to-skip-it",
+              "keywords": [
+                "There is no isPending here.",
+                "useTransition",
+                "Don't defer trivial work.",
+                "Feed it a stable value.",
+                "useDeferredValue({...})"
+              ]
+            },
+            {
+              "title": "vs useTransition",
+              "href": "/hooks-refresh/use-deferred-value#vs-usetransition",
+              "keywords": [
+                "useDeferredValue",
+                "setState",
+                "They also differ on feedback.",
+                "isPending",
+                "isStale"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-deferred-value#react-vs-next-js",
+              "keywords": [
+                "useDeferredValue",
+                "\"use client\"",
+                "useMemo",
+                "React.memo"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-deferred-value#say-it-right-english",
+              "keywords": [
+                "useDeferredValue",
+                "useTransition",
+                "update",
+                "setState",
+                "value",
+                "skipped while it hasn't changed",
+                "useMemo",
+                "React.memo"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-id",
+      "name": "useId",
+      "chapter": "Utility",
+      "href": "/hooks-refresh/use-id",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-id#a-stable-unique-id",
+          "titles": [
+            {
+              "title": "a stable unique id",
+              "href": "/hooks-refresh/use-id#a-stable-unique-id",
+              "keywords": [
+                "useId",
+                "htmlFor",
+                "aria-describedby",
+                "aria-labelledby",
+                "The value is opaque.",
+                "_R_2p6_",
+                ":r0:"
+              ]
+            },
+            {
+              "title": "why it exists — ssr hydration",
+              "href": "/hooks-refresh/use-id#why-it-exists-ssr-hydration",
+              "keywords": [
+                "With SSR a component renders TWICE.",
+                "Math.random()",
+                "Suspense",
+                "htmlFor",
+                "id",
+                "useId",
+                "Math.random"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Using it",
+          "href": "/hooks-refresh/use-id#one-base-many-related-ids",
+          "titles": [
+            {
+              "title": "one base, many related ids",
+              "href": "/hooks-refresh/use-id#one-base-many-related-ids",
+              "keywords": [
+                "-email",
+                "-email-hint",
+                "Several useId() calls are fine too."
+              ]
+            },
+            {
+              "title": "not for list keys",
+              "href": "/hooks-refresh/use-id#not-for-list-keys",
+              "keywords": [
+                "item.id",
+                "And the call itself is illegal there.",
+                ".map",
+                "useId",
+                "htmlFor",
+                "id",
+                "aria-*"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-id#react-vs-next-js",
+              "keywords": [
+                "useId",
+                "aria-*",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-id#say-it-right-english",
+              "keywords": [
+                "Math.random",
+                "different values",
+                "useId",
+                "data",
+                "item.id"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-sync-external-store",
+      "name": "useSyncExternalStore",
+      "chapter": "Utility",
+      "href": "/hooks-refresh/use-sync-external-store",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
+          "titles": [
+            {
+              "title": "subscribe to external state",
+              "href": "/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
+              "keywords": [
+                "useState",
+                "useReducer",
+                "window",
+                "localStorage",
+                "Three arguments, three questions.",
+                "subscribe(callback)",
+                "getSnapshot()",
+                "getServerSnapshot()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Examples",
+          "href": "/hooks-refresh/use-sync-external-store#window-online-status",
+          "titles": [
+            {
+              "title": "window — online status",
+              "href": "/hooks-refresh/use-sync-external-store#window-online-status",
+              "keywords": [
+                "Here the store is the BROWSER.",
+                "subscribe",
+                "offline",
+                "getSnapshot",
+                "navigator.onLine",
+                "cb does not re-render anything.",
+                "cb",
+                "Object.is"
+              ]
+            },
+            {
+              "title": "localStorage — cross-tab & the same-tab gap",
+              "href": "/hooks-refresh/use-sync-external-store#localstorage-cross-tab-the-same-tab-gap",
+              "keywords": [
+                "Object.is",
+                "setItem",
+                "dispatchEvent",
+                "storage"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Getting it right",
+          "href": "/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
+          "titles": [
+            {
+              "title": "why not useEffect + useState",
+              "href": "/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
+              "keywords": [
+                "The old way subscribes by hand.",
+                "1 — Tearing.",
+                "useSyncExternalStore",
+                "2 — SSR.",
+                "useState(navigator.onLine)",
+                "getServerSnapshot",
+                "You will rarely write it by hand."
+              ]
+            },
+            {
+              "title": "stable snapshot",
+              "href": "/hooks-refresh/use-sync-external-store#stable-snapshot",
+              "keywords": [
+                "A fresh object can never pass it.",
+                "{ online: navigator.onLine }",
+                "getSnapshot"
+              ]
+            },
+            {
+              "title": "ssr snapshot",
+              "href": "/hooks-refresh/use-sync-external-store#ssr-snapshot",
+              "keywords": [
+                "getServerSnapshot",
+                "In the App Router that is not optional.",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-sync-external-store#react-vs-next-js",
+              "keywords": [
+                "useSyncExternalStore",
+                "\"use client\"",
+                "getServerSnapshot"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-sync-external-store#say-it-right-english",
+              "keywords": [
+                "useEffect",
+                "useState",
+                "tearing",
+                "getServerSnapshot",
+                "getSnapshot",
+                "Object.is",
+                "perpetually changed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use",
+      "name": "use",
+      "chapter": "React 19",
+      "href": "/hooks-refresh/use",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Reading promises",
+          "href": "/hooks-refresh/use#what-use-does",
+          "titles": [
+            {
+              "title": "what use does",
+              "href": "/hooks-refresh/use#what-use-does",
+              "keywords": [
+                "So an async value is just a value.",
+                "useState",
+                "useEffect",
+                "It is not a hook, quite."
+              ]
+            },
+            {
+              "title": "suspense & errors",
+              "href": "/hooks-refresh/use#suspense-errors",
+              "keywords": [
+                "The nearest boundary owns the fallback.",
+                "use",
+                "Rejections go to an error boundary.",
+                "try",
+                "catch",
+                "The whole trace:"
+              ]
+            },
+            {
+              "title": "the promise must be stable",
+              "href": "/hooks-refresh/use#the-promise-must-be-stable",
+              "keywords": [
+                "The promise has to be created ONCE.",
+                "useState",
+                "Inline in render is a loop, not a fetch.",
+                "use(fetchUser(\"42\"))",
+                "Identity is what React tracks.",
+                "use(fetchUser())"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Context & the rules",
+          "href": "/hooks-refresh/use#use-for-context",
+          "titles": [
+            {
+              "title": "use for context",
+              "href": "/hooks-refresh/use#use-for-context",
+              "keywords": [
+                "Reading a context does NOT suspend.",
+                "The difference is the rules.",
+                "useContext"
+              ]
+            },
+            {
+              "title": "callable conditionally",
+              "href": "/hooks-refresh/use#callable-conditionally",
+              "keywords": [
+                "use is the single exception.",
+                "Which means you read only what you need.",
+                "use",
+                "useContext"
+              ]
+            },
+            {
+              "title": "next.js flow",
+              "href": "/hooks-refresh/use#next-js-flow",
+              "keywords": [
+                "await",
+                "use",
+                "That removes the client waterfall.",
+                "use()"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use#react-vs-next-js",
+              "keywords": [
+                "use",
+                "<Suspense>",
+                "await"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use#say-it-right-english",
+              "keywords": [
+                "use",
+                "pending promise",
+                "<Suspense>",
+                "useContext",
+                "not tracked by call order"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-action-state",
+      "name": "useActionState",
+      "chapter": "React 19",
+      "href": "/hooks-refresh/use-action-state",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The hook",
+          "href": "/hooks-refresh/use-action-state#what-it-is",
+          "titles": [
+            {
+              "title": "what it is",
+              "href": "/hooks-refresh/use-action-state#what-it-is",
+              "keywords": [
+                "initialState",
+                "state",
+                "Three things come back.",
+                "formAction",
+                "<form action={formAction}>",
+                "isPending"
+              ]
+            },
+            {
+              "title": "full form example",
+              "href": "/hooks-refresh/use-action-state#full-form-example",
+              "keywords": [
+                "Trace one submit.",
+                "FormData",
+                "isPending",
+                "{ error }",
+                "{ success: true }",
+                "state",
+                "FormData, not controlled inputs.",
+                "name"
+              ]
+            },
+            {
+              "title": "it's for submits, not fetches",
+              "href": "/hooks-refresh/use-action-state#it-s-for-submits-not-fetches",
+              "keywords": [
+                "The action only runs when TRIGGERED.",
+                "So it is for submits and mutations",
+                "await",
+                "use()",
+                "FormData",
+                "useState",
+                "useActionState"
+              ]
+            },
+            {
+              "title": "reducer connection",
+              "href": "/hooks-refresh/use-action-state#reducer-connection",
+              "keywords": [
+                "It is reducer-shaped.",
+                "(prevState, input) => newState",
+                "useReducer",
+                "FormData",
+                "async",
+                "isPending",
+                "useState",
+                "onClick={() => action(arg)}"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Server Actions (Next.js)",
+          "href": "/hooks-refresh/use-action-state#server-actions",
+          "titles": [
+            {
+              "title": "server actions",
+              "href": "/hooks-refresh/use-action-state#server-actions",
+              "keywords": [
+                "The action can be a SERVER ACTION.",
+                "\"use server\"",
+                "FormData",
+                "No API route, no fetch.",
+                "The client half does not change.",
+                "useActionState",
+                "isPending"
+              ]
+            },
+            {
+              "title": "progressive enhancement",
+              "href": "/hooks-refresh/use-action-state#progressive-enhancement",
+              "keywords": [
+                "Once JS is ready, React enhances it.",
+                "isPending",
+                "onSubmit",
+                "<form action={formAction}>"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-action-state#react-vs-next-js",
+              "keywords": [
+                "useActionState",
+                "\"use server\"",
+                "await"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-action-state#say-it-right-english",
+              "keywords": [
+                "useActionState",
+                "form submission",
+                "useReducer",
+                "(prevState, input) => newState",
+                "FormData",
+                "async"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-form-status",
+      "name": "useFormStatus",
+      "chapter": "React 19",
+      "href": "/hooks-refresh/use-form-status",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The hook",
+          "href": "/hooks-refresh/use-form-status#what-it-is",
+          "titles": [
+            {
+              "title": "what it is",
+              "href": "/hooks-refresh/use-form-status#what-it-is",
+              "keywords": [
+                "pending",
+                "data",
+                "FormData",
+                "method",
+                "action",
+                "isPending",
+                "The import is react-dom.",
+                "react"
+              ]
+            },
+            {
+              "title": "full example",
+              "href": "/hooks-refresh/use-form-status#full-example",
+              "keywords": [
+                "Trace one submit.",
+                "useFormStatus().pending",
+                "SubmitButton",
+                "Submitting…",
+                "pending",
+                "The payoff over useActionState.",
+                "isPending",
+                "useFormStatus"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The rule & traps",
+          "href": "/hooks-refresh/use-form-status#must-be-inside-the-form",
+          "titles": [
+            {
+              "title": "must be inside the form",
+              "href": "/hooks-refresh/use-form-status#must-be-inside-the-form",
+              "keywords": [
+                "pending",
+                "And it fails SILENTLY.",
+                "useFormStatus"
+              ]
+            },
+            {
+              "title": "import & scope traps",
+              "href": "/hooks-refresh/use-form-status#import-scope-traps",
+              "keywords": [
+                "Import from react-dom, not react.",
+                "react",
+                "<form>",
+                "pending",
+                "useActionState",
+                "pending is the one you use.",
+                "data",
+                "method"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-form-status#react-vs-next-js",
+              "keywords": [
+                "useFormStatus",
+                "react-dom",
+                "\"use client\"",
+                "<SubmitButton />"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-form-status#say-it-right-english",
+              "keywords": [
+                "pending",
+                "useFormStatus",
+                "inside",
+                "<form>",
+                "useActionState",
+                "isPending",
+                "owner",
+                "child"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-optimistic",
+      "name": "useOptimistic",
+      "chapter": "React 19",
+      "href": "/hooks-refresh/use-optimistic",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
+          "titles": [
+            {
+              "title": "instant ui before the server responds",
+              "href": "/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
+              "keywords": [
+                "Two arguments.",
+                "actualState",
+                "updateFn(current, optimisticValue)",
+                "Two things come back.",
+                "optimisticState",
+                "addOptimistic(value)"
+              ]
+            },
+            {
+              "title": "full example",
+              "href": "/hooks-refresh/use-optimistic#full-example",
+              "keywords": [
+                "Trace it.",
+                "addOptimistic(text)",
+                "text (sending…)",
+                "setMessages",
+                "actualState",
+                "(sending…)",
+                "Two layers, and you render the second.",
+                "messages"
+              ]
+            },
+            {
+              "title": "why not just useState",
+              "href": "/hooks-refresh/use-optimistic#why-not-just-usestate",
+              "keywords": [
+                "You CAN do this with useState.",
+                "catch",
+                "But you own three fragile things.",
+                "The hook removes all three.",
+                "actualState"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Failure & rules",
+          "href": "/hooks-refresh/use-optimistic#failure-auto-rolls-back",
+          "titles": [
+            {
+              "title": "failure auto-rolls-back",
+              "href": "/hooks-refresh/use-optimistic#failure-auto-rolls-back",
+              "keywords": [
+                "actualState",
+                "So failure rolls back by itself.",
+                "save",
+                "You still catch the error."
+              ]
+            },
+            {
+              "title": "must run inside an action",
+              "href": "/hooks-refresh/use-optimistic#must-run-inside-an-action",
+              "keywords": [
+                "<form action>",
+                "startTransition(async () => {...})",
+                "A plain event handler is not enough.",
+                "startTransition",
+                "addOptimistic"
+              ]
+            },
+            {
+              "title": "render the optimistic state",
+              "href": "/hooks-refresh/use-optimistic#render-the-optimistic-state",
+              "keywords": [
+                "Render optimisticState, not actualState.",
+                "And actualState MUST update on success.",
+                "actualState"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-optimistic#react-vs-next-js",
+              "keywords": [
+                "useOptimistic",
+                "\"use client\"",
+                "await",
+                "setTimeout",
+                "\"use server\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-optimistic#say-it-right-english",
+              "keywords": [
+                "actualState",
+                "discarded automatically",
+                "useState",
+                "useOptimistic",
+                "auto-reconciles"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-router",
+      "name": "useRouter",
+      "chapter": "Navigation",
+      "href": "/hooks-refresh/use-router",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Navigating from code",
+          "href": "/hooks-refresh/use-router#what-it-is",
+          "titles": [
+            {
+              "title": "what it is",
+              "href": "/hooks-refresh/use-router#what-it-is",
+              "keywords": [
+                "<Link>",
+                "The methods.",
+                "push(\"/path\")",
+                "replace(\"/path\")",
+                "back()",
+                "forward()",
+                "refresh()",
+                "Import from \"next/navigation\"."
+              ]
+            },
+            {
+              "title": "useRouter vs <Link>",
+              "href": "/hooks-refresh/use-router#userouter-vs-link",
+              "keywords": [
+                "router.push"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "refresh() & traps",
+          "href": "/hooks-refresh/use-router#router-refresh-re-render-server-data",
+          "titles": [
+            {
+              "title": "router.refresh() — re-render server data",
+              "href": "/hooks-refresh/use-router#router-refresh-re-render-server-data",
+              "keywords": [
+                "The problem it solves.",
+                "DELETE",
+                "What the call actually does.",
+                "getItems",
+                "It is not a reload.",
+                "useState",
+                "And it has to be forced.",
+                "Two different kinds of re-render."
+              ]
+            },
+            {
+              "title": "refresh only re-runs server data",
+              "href": "/hooks-refresh/use-router#refresh-only-re-runs-server-data",
+              "keywords": [
+                "refresh() only re-runs SERVER work.",
+                "useEffect",
+                "setState",
+                "The rule.",
+                "router.refresh()"
+              ]
+            },
+            {
+              "title": "import & scope traps",
+              "href": "/hooks-refresh/use-router#import-scope-traps",
+              "keywords": [
+                "app/",
+                "useRouter is client-only.",
+                "redirect()",
+                "\"next/navigation\"",
+                "useRouter",
+                "next/navigation",
+                "next/router"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-router#react-vs-next-js",
+              "keywords": [
+                "useNavigate",
+                "navigate(\"/x\")",
+                "navigate(\"/x\", { replace: true })",
+                "navigate(-1)",
+                "router.refresh()",
+                "useRouter",
+                "\"use client\"",
+                "redirect()"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-router#say-it-right-english",
+              "keywords": [
+                "router.refresh()",
+                "Server Components on the server",
+                "<Link>",
+                "useRouter",
+                "user-clicked",
+                "code-driven"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-pathname",
+      "name": "usePathname",
+      "chapter": "Navigation",
+      "href": "/hooks-refresh/use-pathname",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The hook",
+          "href": "/hooks-refresh/use-pathname#current-path",
+          "titles": [
+            {
+              "title": "current path",
+              "href": "/hooks-refresh/use-pathname#current-path",
+              "keywords": [
+                "The path only.",
+                "?foo=bar",
+                "useSearchParams",
+                "Client-only, and Next-only.",
+                "\"use client\"",
+                "\"next/navigation\"",
+                "useLocation().pathname"
+              ]
+            },
+            {
+              "title": "active links",
+              "href": "/hooks-refresh/use-pathname#active-links",
+              "keywords": [
+                "This is what the hook is mostly for.",
+                "pathname",
+                "href",
+                "The highlight keeps itself current."
+              ]
+            },
+            {
+              "title": "path only, no query",
+              "href": "/hooks-refresh/use-pathname#path-only-no-query",
+              "keywords": [
+                "usePathname strips the query string.",
+                "/search?q=react",
+                "\"/search\"",
+                "usePathname",
+                "?params",
+                "useSearchParams"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-pathname#react-vs-next-js",
+              "keywords": [
+                "useLocation().pathname",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-pathname#say-it-right-english",
+              "keywords": [
+                "usePathname",
+                "path only",
+                "useSearchParams",
+                "?params",
+                "Active-link highlighting",
+                "pathname",
+                "href"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-params",
+      "name": "useParams",
+      "chapter": "Navigation",
+      "href": "/hooks-refresh/use-params",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The hook",
+          "href": "/hooks-refresh/use-params#dynamic-route-params",
+          "titles": [
+            {
+              "title": "dynamic route params",
+              "href": "/hooks-refresh/use-params#dynamic-route-params",
+              "keywords": [
+                "It returns the DYNAMIC route parameters",
+                "[bracket]",
+                "[slug]",
+                "params.slug",
+                "The mapping.",
+                "/blog/hello",
+                "{ slug: \"hello\" }",
+                "[category]/[id]"
+              ]
+            },
+            {
+              "title": "params vs pathname vs search",
+              "href": "/hooks-refresh/use-params#params-vs-pathname-vs-search",
+              "keywords": [
+                "Three views of the same URL.",
+                "usePathname",
+                "useParams",
+                "useSearchParams",
+                "Params are not search params.",
+                "/blog/[slug]",
+                "?page=2"
+              ]
+            },
+            {
+              "title": "server pages get params as a prop",
+              "href": "/hooks-refresh/use-params#server-pages-get-params-as-a-prop",
+              "keywords": [
+                "\"use client\"",
+                "useParams"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-params#react-vs-next-js",
+              "keywords": [
+                "useParams",
+                "\"use client\"",
+                "params"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-params#say-it-right-english",
+              "keywords": [
+                "SEGMENTS",
+                "/blog/[slug]",
+                "QUERY string",
+                "?page=2",
+                "useParams",
+                "params",
+                "as a prop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-search-params",
+      "name": "useSearchParams",
+      "chapter": "Navigation",
+      "href": "/hooks-refresh/use-search-params",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Reading the query",
+          "href": "/hooks-refresh/use-search-params#read-the-query-string",
+          "titles": [
+            {
+              "title": "read the query string",
+              "href": "/hooks-refresh/use-search-params#read-the-query-string",
+              "keywords": [
+                ".get(\"key\")",
+                ".getAll(\"key\")",
+                ".has(\"key\")",
+                "It re-renders when the query changes",
+                "?page",
+                "The query, and only the query.",
+                "usePathname",
+                "useParams"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Updating the query",
+          "href": "/hooks-refresh/use-search-params#copy-modify-navigate",
+          "titles": [
+            {
+              "title": "copy, modify, navigate",
+              "href": "/hooks-refresh/use-search-params#copy-modify-navigate",
+              "keywords": [
+                "Three steps, always the same three.",
+                "new URLSearchParams(searchParams)",
+                ".set()",
+                ".delete()",
+                ".append()",
+                "replace rather than push for filters.",
+                "Why the copy matters.",
+                "let params = searchParams"
+              ]
+            },
+            {
+              "title": "don't mutate the current params",
+              "href": "/hooks-refresh/use-search-params#don-t-mutate-the-current-params",
+              "keywords": [
+                "Never assign-and-mutate.",
+                "searchParams",
+                "Always construct a new one from it,",
+                "let x = searchParams; x.set(...)",
+                "new URLSearchParams(searchParams)"
+              ]
+            },
+            {
+              "title": "wrap in Suspense",
+              "href": "/hooks-refresh/use-search-params#wrap-in-suspense",
+              "keywords": [
+                "The query is only known at REQUEST time.",
+                "useSearchParams",
+                "The boundary is a wall."
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-search-params#react-vs-next-js",
+              "keywords": [
+                "\"use client\"",
+                "<Suspense>"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-search-params#say-it-right-english",
+              "keywords": [
+                "searchParams",
+                "new URLSearchParams()",
+                "read-only",
+                "useSearchParams",
+                "Suspense",
+                "at request time"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "use-selected-layout-segment",
+      "name": "useSelectedLayoutSegment",
+      "chapter": "Navigation",
+      "href": "/hooks-refresh/use-selected-layout-segment",
+      "planned": false,
+      "parts": [
+        {
+          "name": "The idea",
+          "href": "/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
+          "titles": [
+            {
+              "title": "what a segment is",
+              "href": "/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
+              "keywords": [
+                "A segment is one slice of the URL path",
+                "Static or dynamic makes no difference.",
+                "user/address",
+                "user/[id]"
+              ]
+            },
+            {
+              "title": "the active child segment",
+              "href": "/hooks-refresh/use-selected-layout-segment#the-active-child-segment",
+              "keywords": [
+                "It never looks deeper than one level.",
+                "Built for nav UI in shared layouts.",
+                "\"next/navigation\""
+              ]
+            },
+            {
+              "title": "relative to the calling layout",
+              "href": "/hooks-refresh/use-selected-layout-segment#relative-to-the-calling-layout",
+              "keywords": [
+                "/dashboard/settings/profile",
+                "\"settings\"",
+                "settings",
+                "\"profile\""
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Singular vs plural",
+          "href": "/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
+          "titles": [
+            {
+              "title": "useSelectedLayoutSegments (plural)",
+              "href": "/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
+              "keywords": [
+                "Singular for active-link highlighting",
+                "Plural for breadcrumbs,",
+                "useSelectedLayoutSegment"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/use-selected-layout-segment#react-vs-next-js",
+              "keywords": [
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/use-selected-layout-segment#say-it-right-english",
+              "keywords": [
+                "useSelectedLayoutSegment",
+                "directly below the layout that calls it",
+                "immediate child",
+                "all segments below"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "custom-hooks",
+      "name": "Custom Hooks",
+      "chapter": "Custom Hooks",
+      "href": "/hooks-refresh/custom-hooks",
+      "planned": false,
+      "parts": [
+        {
+          "name": "What a custom hook is",
+          "href": "/hooks-refresh/custom-hooks#the-definition",
+          "titles": [
+            {
+              "title": "the definition",
+              "href": "/hooks-refresh/custom-hooks#the-definition",
+              "keywords": [
+                "It is just a FUNCTION.",
+                "use",
+                "Two things make it a hook.",
+                "use*",
+                "Its purpose is reusing stateful logic."
+              ]
+            },
+            {
+              "title": "shares logic, not state",
+              "href": "/hooks-refresh/custom-hooks#shares-logic-not-state",
+              "keywords": [
+                "Each caller gets its OWN state.",
+                "Like a recipe:",
+                "useAuth"
+              ]
+            },
+            {
+              "title": "args, return, composition, rules",
+              "href": "/hooks-refresh/custom-hooks#args-return-composition-rules",
+              "keywords": [
+                "They take ARGUMENTS and RETURN anything.",
+                "They compose.",
+                "And they follow the RULES OF HOOKS.",
+                "The use* prefix is required,"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Real examples",
+          "href": "/hooks-refresh/custom-hooks#usefetch-data-fetching",
+          "titles": [
+            {
+              "title": "useFetch — data fetching",
+              "href": "/hooks-refresh/custom-hooks#usefetch-data-fetching",
+              "keywords": [
+                "[url] is the dependency,",
+                "setData",
+                "res.ok has to be checked by hand.",
+                "fetch",
+                "The generic <T> types the response,",
+                "T | null",
+                "any"
+              ]
+            },
+            {
+              "title": "useLocalStorage — persistent state",
+              "href": "/hooks-refresh/custom-hooks#uselocalstorage-persistent-state",
+              "keywords": [
+                "Same API as useState",
+                "[value, setValue]",
+                "useState",
+                "useEffect",
+                "The lazy initializer reads storage ONCE,",
+                "localStorage",
+                "Storage holds strings only,",
+                "JSON.stringify"
+              ]
+            },
+            {
+              "title": "useAuth — wrapping a context",
+              "href": "/hooks-refresh/custom-hooks#useauth-wrapping-a-context",
+              "keywords": [
+                "useContext(AuthContext)",
+                "Why wrap it at all?",
+                "createContext",
+                "cannot read user of null",
+                "This one DOES share state.",
+                "login",
+                "Which is the whole contrast.",
+                "useFetch"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/custom-hooks#react-vs-next-js",
+              "keywords": [
+                "\"use client\"",
+                "localStorage",
+                "window",
+                "useFetch"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/custom-hooks#say-it-right-english",
+              "keywords": [
+                "logic",
+                "useAuth",
+                "use*",
+                "calling other hooks inside"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "redux",
+      "name": "Redux",
+      "chapter": "State Libraries",
+      "href": "/hooks-refresh/redux",
+      "planned": false,
+      "parts": [
+        {
+          "name": "Why Redux",
+          "href": "/hooks-refresh/redux#what-redux-is",
+          "titles": [
+            {
+              "title": "what redux is",
+              "href": "/hooks-refresh/redux#what-redux-is",
+              "keywords": [
+                "Redux is ONE global store",
+                "user",
+                "products",
+                "session",
+                "Modern Redux means Redux Toolkit.",
+                "connect",
+                "mapStateToProps",
+                "The whole store is inspectable."
+              ]
+            },
+            {
+              "title": "the problem it solves",
+              "href": "/hooks-refresh/redux#the-problem-it-solves",
+              "keywords": [
+                "Layout",
+                "Sidebar",
+                "user",
+                "A store removes the middle entirely."
+              ]
+            },
+            {
+              "title": "context vs redux",
+              "href": "/hooks-refresh/redux#context-vs-redux",
+              "keywords": [
+                "Context has NO partial subscription.",
+                "useSelector gives PARTIAL SUBSCRIPTION.",
+                "The rest is structure and tooling.",
+                "Neither one wins outright.",
+                "useReducer"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Setup (Next.js)",
+          "href": "/hooks-refresh/redux#the-store",
+          "titles": [
+            {
+              "title": "the store",
+              "href": "/hooks-refresh/redux#the-store",
+              "keywords": [
+                "configureStore builds the single store.",
+                "{ counter: counterReducer }",
+                "state.counter",
+                "ReturnType"
+              ]
+            },
+            {
+              "title": "the provider",
+              "href": "/hooks-refresh/redux#the-provider",
+              "keywords": [
+                "The react-redux Provider is client-only.",
+                "\"use client\"",
+                "The layout stays a Server Component.",
+                "StoreProvider",
+                "children",
+                "useSelector",
+                "useDispatch",
+                "makeStore()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Slices",
+          "href": "/hooks-refresh/redux#createslice",
+          "titles": [
+            {
+              "title": "createSlice",
+              "href": "/hooks-refresh/redux#createslice",
+              "keywords": [
+                "increment",
+                "increment()",
+                "counterSlice.actions",
+                "\"counter/increment\"",
+                "name",
+                "The payload is the argument.",
+                "action.payload",
+                "incrementBy(5)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Using it",
+          "href": "/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
+          "titles": [
+            {
+              "title": "useSelector, useDispatch & typed hooks",
+              "href": "/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
+              "keywords": [
+                "unknown",
+                "RootState",
+                "AppDispatch",
+                "state.",
+                "useAppSelector",
+                "useAppDispatch",
+                "state.counter.value",
+                "state.user"
+              ]
+            },
+            {
+              "title": "selector references",
+              "href": "/hooks-refresh/redux#selector-references",
+              "keywords": [
+                "BAD",
+                "{ user, cart }",
+                "Select the smallest piece you need.",
+                "s => s.user",
+                "s => s.cart",
+                "createSelector"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Async",
+          "href": "/hooks-refresh/redux#createasyncthunk",
+          "titles": [
+            {
+              "title": "createAsyncThunk",
+              "href": "/hooks-refresh/redux#createasyncthunk",
+              "keywords": [
+                "Reducers must be synchronous and pure.",
+                "pending",
+                "fulfilled",
+                "action.payload",
+                "rejected",
+                "async",
+                "Handle them in extraReducers.",
+                "reducers"
+              ]
+            },
+            {
+              "title": "async in next.js",
+              "href": "/hooks-refresh/redux#async-in-next-js",
+              "keywords": [
+                "loading",
+                "Reserve thunks for CLIENT-side async.",
+                "The two compose."
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/redux#react-vs-next-js",
+              "keywords": [
+                "Provider",
+                "\"use client\""
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/redux#say-it-right-english",
+              "keywords": [
+                "useSelector",
+                "partial subscription",
+                "Immer",
+                "createSlice"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "custom-store",
+      "name": "Custom Store",
+      "chapter": "State Libraries",
+      "href": "/hooks-refresh/custom-store",
+      "planned": false,
+      "parts": [
+        {
+          "name": "What & why",
+          "href": "/hooks-refresh/custom-store#what-a-store-is",
+          "titles": [
+            {
+              "title": "what a store is",
+              "href": "/hooks-refresh/custom-store#what-a-store-is",
+              "keywords": [
+                "useState",
+                "It needs three things."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Building the store",
+          "href": "/hooks-refresh/custom-store#subscribe-listening",
+          "titles": [
+            {
+              "title": "subscribe — listening",
+              "href": "/hooks-refresh/custom-store#subscribe-listening",
+              "keywords": [
+                "Set",
+                "The return value is the cleanup.",
+                "The callback is not ours.",
+                "useSyncExternalStore"
+              ]
+            },
+            {
+              "title": "emit — notifying",
+              "href": "/hooks-refresh/custom-store#emit-notifying",
+              "keywords": []
+            },
+            {
+              "title": "getSnapshot — reading",
+              "href": "/hooks-refresh/custom-store#getsnapshot-reading",
+              "keywords": [
+                "Subscribing says WHEN; this says WHAT.",
+                "emit()",
+                "The full flow is those pieces in order.",
+                "state",
+                "The store is now complete.",
+                "subscribe",
+                "emit"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Connecting to React",
+          "href": "/hooks-refresh/custom-store#usesyncexternalstore-bridge",
+          "titles": [
+            {
+              "title": "useSyncExternalStore bridge",
+              "href": "/hooks-refresh/custom-store#usesyncexternalstore-bridge",
+              "keywords": [
+                "One hook joins the two halves.",
+                "subscribe",
+                "getSnapshot",
+                "listeners",
+                "Trace one click.",
+                "increment()",
+                "state + 1",
+                "emit()"
+              ]
+            },
+            {
+              "title": "stable snapshot",
+              "href": "/hooks-refresh/custom-store#stable-snapshot",
+              "keywords": [
+                "{ count: state }",
+                "getSnapshot"
+              ]
+            },
+            {
+              "title": "ssr snapshot",
+              "href": "/hooks-refresh/custom-store#ssr-snapshot",
+              "keywords": [
+                "In the App Router this is not optional.",
+                "\"use client\"",
+                "getServerSnapshot"
+              ]
+            },
+            {
+              "title": "react vs next.js",
+              "href": "/hooks-refresh/custom-store#react-vs-next-js",
+              "keywords": [
+                "Set",
+                "useSyncExternalStore",
+                "\"use client\"",
+                "getServerSnapshot"
+              ]
+            },
+            {
+              "title": "say it right — english",
+              "href": "/hooks-refresh/custom-store#say-it-right-english",
+              "keywords": [
+                "outside React",
+                "emit",
+                "useSyncExternalStore",
+                "getSnapshot",
+                "Object.is",
+                "perpetually changed"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
