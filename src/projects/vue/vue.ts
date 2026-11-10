@@ -138,42 +138,19 @@ export const TOPICS: VueTopic[] = [
     // — State —
     {
         slug: "pinia-basics", name: "Pinia Basics", chapter: "state",
-        summary: "Typed stores with Pinia, and how they compare to Vuex.",
-        parts: [
-            "Pinia vs Vuex",
-            "options store",
-            "typed state / getters / actions",
-            "using stores in the main syntax",
-        ],
+        summary: "Why a store library over a reactive module, option stores with state, getters and actions, typing them, and what changed from Vuex.",
     },
     {
         slug: "setup-stores", name: "Setup Stores", chapter: "state",
-        summary: "Stores written like composables.",
-        parts: [
-            "setup store",
-            "storeToRefs",
-            "stores using stores",
-        ],
+        summary: "Stores written like <script setup>: refs, computed and watchers in one function, storeToRefs for destructuring, and stores using stores.",
     },
     {
         slug: "persist-and-plugins", name: "Persisting & Plugins", chapter: "state",
-        summary: "Keeping store data and extending Pinia.",
-        parts: [
-            "persisting to localStorage",
-            "$subscribe",
-            "$reset",
-            "plugins",
-        ],
+        summary: "Keeping store data across reloads, $patch and $subscribe, resetting state, and extending every store with a Pinia plugin.",
     },
     {
         slug: "pinia-devtools", name: "Pinia in DevTools", chapter: "state",
-        summary: "Inspecting stores with the Vue DevTools extension.",
-        parts: [
-            "store inspector",
-            "editing state live",
-            "timeline",
-            "time travel",
-        ],
+        summary: "Inspecting stores in the Vue DevTools extension: the Pinia inspector, editing state live, the action timeline and time travel.",
     },
 
     // — Networking —

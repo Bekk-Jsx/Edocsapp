@@ -1886,27 +1886,88 @@
       "name": "Pinia Basics",
       "chapter": "State",
       "href": "/vue/pinia-basics",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
+          "name": "Why a store library",
+          "href": "/vue/pinia-basics#what-a-reactive-module-cannot-do",
+          "titles": [
+            {
+              "title": "What a reactive module cannot do",
+              "href": "/vue/pinia-basics#what-a-reactive-module-cannot-do",
+              "keywords": [
+                "defineStore",
+                "'counter'",
+                "stores/counter.ts",
+                "useCounterStore"
+              ]
+            },
+            {
+              "title": "Using a store",
+              "href": "/vue/pinia-basics#using-a-store",
+              "keywords": [
+                "reactive",
+                ".value",
+                "Reactive module",
+                "Pinia store"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Option stores",
+          "href": "/vue/pinia-basics#state-getters-and-actions",
+          "titles": [
+            {
+              "title": "state, getters and actions",
+              "href": "/vue/pinia-basics#state-getters-and-actions",
+              "keywords": [
+                "$reset()"
+              ]
+            },
+            {
+              "title": "Typing a store",
+              "href": "/vue/pinia-basics#typing-a-store",
+              "keywords": [
+                "ref(null)",
+                "data()",
+                "state"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Stores outside components",
+          "href": "/vue/pinia-basics#stores-in-guards-and-modules",
+          "titles": [
+            {
+              "title": "Stores in guards and modules",
+              "href": "/vue/pinia-basics#stores-in-guards-and-modules",
+              "keywords": [
+                "createPinia()",
+                "<script setup>",
+                "useStore()"
+              ]
+            }
+          ]
+        },
+        {
           "name": "Pinia vs Vuex",
-          "href": "/vue/pinia-basics",
-          "titles": []
-        },
-        {
-          "name": "options store",
-          "href": "/vue/pinia-basics",
-          "titles": []
-        },
-        {
-          "name": "typed state / getters / actions",
-          "href": "/vue/pinia-basics",
-          "titles": []
-        },
-        {
-          "name": "using stores in the main syntax",
-          "href": "/vue/pinia-basics",
-          "titles": []
+          "href": "/vue/pinia-basics#pinia-vs-vuex",
+          "titles": [
+            {
+              "title": "Pinia vs Vuex",
+              "href": "/vue/pinia-basics#pinia-vs-vuex",
+              "keywords": [
+                "commit",
+                "dispatch",
+                "dispatch('login', name)",
+                "rootState",
+                "rootGetters",
+                "'cart/items'"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1915,22 +1976,66 @@
       "name": "Setup Stores",
       "chapter": "State",
       "href": "/vue/setup-stores",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "setup store",
-          "href": "/vue/setup-stores",
-          "titles": []
+          "name": "Stores as setup functions",
+          "href": "/vue/setup-stores#stores-written-like-script-setup",
+          "titles": [
+            {
+              "title": "Stores written like <script setup>",
+              "href": "/vue/setup-stores#stores-written-like-script-setup",
+              "keywords": [
+                "state",
+                "getters",
+                "actions",
+                "localStorage",
+                "defineStore",
+                "computed",
+                "session.user",
+                "session.user.value"
+              ]
+            },
+            {
+              "title": "Option or setup store",
+              "href": "/vue/setup-stores#option-or-setup-store",
+              "keywords": [
+                "<script setup>"
+              ]
+            }
+          ]
         },
         {
           "name": "storeToRefs",
-          "href": "/vue/setup-stores",
-          "titles": []
+          "href": "/vue/setup-stores#destructuring-a-store",
+          "titles": [
+            {
+              "title": "Destructuring a store",
+              "href": "/vue/setup-stores#destructuring-a-store",
+              "keywords": [
+                "reactive",
+                "storeToRefs",
+                "session.user",
+                "session.login(…)",
+                "mapState",
+                "mapActions"
+              ]
+            }
+          ]
         },
         {
-          "name": "stores using stores",
-          "href": "/vue/setup-stores",
-          "titles": []
+          "name": "Stores using stores",
+          "href": "/vue/setup-stores#stores-using-stores",
+          "titles": [
+            {
+              "title": "Stores using stores",
+              "href": "/vue/setup-stores#stores-using-stores",
+              "keywords": [
+                "rootState",
+                "rootGetters"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1939,27 +2044,67 @@
       "name": "Persisting & Plugins",
       "chapter": "State",
       "href": "/vue/persist-and-plugins",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "persisting to localStorage",
-          "href": "/vue/persist-and-plugins",
-          "titles": []
+          "name": "Persisting state",
+          "href": "/vue/persist-and-plugins#surviving-a-reload",
+          "titles": [
+            {
+              "title": "Surviving a reload",
+              "href": "/vue/persist-and-plugins#surviving-a-reload",
+              "keywords": [
+                "user",
+                "{ deep: true }",
+                "Date",
+                "Map",
+                "Set",
+                "localStorage",
+                "pinia-plugin-persistedstate",
+                "persist"
+              ]
+            }
+          ]
         },
         {
-          "name": "$subscribe",
-          "href": "/vue/persist-and-plugins",
-          "titles": []
+          "name": "Patching, subscribing, resetting",
+          "href": "/vue/persist-and-plugins#patch-and-subscribe",
+          "titles": [
+            {
+              "title": "$patch and $subscribe",
+              "href": "/vue/persist-and-plugins#patch-and-subscribe",
+              "keywords": [
+                "mutation.type",
+                "mutation.storeId",
+                "{ detached: true }",
+                "$onAction"
+              ]
+            },
+            {
+              "title": "Resetting state",
+              "href": "/vue/persist-and-plugins#resetting-state",
+              "keywords": [
+                "$reset()",
+                "$reset"
+              ]
+            }
+          ]
         },
         {
-          "name": "$reset",
-          "href": "/vue/persist-and-plugins",
-          "titles": []
-        },
-        {
-          "name": "plugins",
-          "href": "/vue/persist-and-plugins",
-          "titles": []
+          "name": "Plugins",
+          "href": "/vue/persist-and-plugins#extending-every-store",
+          "titles": [
+            {
+              "title": "Extending every store",
+              "href": "/vue/persist-and-plugins#extending-every-store",
+              "keywords": [
+                "options",
+                "store.$id",
+                "RouteMeta",
+                "defineStore"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1968,27 +2113,52 @@
       "name": "Pinia in DevTools",
       "chapter": "State",
       "href": "/vue/pinia-devtools",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "store inspector",
-          "href": "/vue/pinia-devtools",
-          "titles": []
+          "name": "The store inspector",
+          "href": "/vue/pinia-devtools#reading-store-state",
+          "titles": [
+            {
+              "title": "Reading store state",
+              "href": "/vue/pinia-devtools#reading-store-state",
+              "keywords": [
+                "console.log",
+                "defineStore"
+              ]
+            },
+            {
+              "title": "Editing state live",
+              "href": "/vue/pinia-devtools#editing-state-live",
+              "keywords": [
+                "admin"
+              ]
+            }
+          ]
         },
         {
-          "name": "editing state live",
-          "href": "/vue/pinia-devtools",
-          "titles": []
-        },
-        {
-          "name": "timeline",
-          "href": "/vue/pinia-devtools",
-          "titles": []
-        },
-        {
-          "name": "time travel",
-          "href": "/vue/pinia-devtools",
-          "titles": []
+          "name": "Timeline and time travel",
+          "href": "/vue/pinia-devtools#the-action-timeline",
+          "titles": [
+            {
+              "title": "The action timeline",
+              "href": "/vue/pinia-devtools#the-action-timeline",
+              "keywords": [
+                "login",
+                "addToCart",
+                "checkout",
+                "setUser",
+                "setItems"
+              ]
+            },
+            {
+              "title": "Time travel",
+              "href": "/vue/pinia-devtools#time-travel",
+              "keywords": [
+                "localStorage"
+              ]
+            }
+          ]
         }
       ]
     },
