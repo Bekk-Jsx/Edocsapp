@@ -1677,22 +1677,64 @@
       "name": "Router Setup",
       "chapter": "Router",
       "href": "/vue/router-setup",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "createRouter + history modes",
-          "href": "/vue/router-setup",
-          "titles": []
+          "name": "createRouter",
+          "href": "/vue/router-setup#createrouter-and-history-modes",
+          "titles": [
+            {
+              "title": "createRouter and history modes",
+              "href": "/vue/router-setup#createrouter-and-history-modes",
+              "keywords": [
+                "v-if",
+                "app.use(router)",
+                "RouterView",
+                "RouterLink",
+                "mode",
+                "createWebHistory()",
+                "index.html",
+                "createWebHashHistory()"
+              ]
+            }
+          ]
         },
         {
-          "name": "RouterView / RouterLink",
-          "href": "/vue/router-setup",
-          "titles": []
+          "name": "RouterLink and RouterView",
+          "href": "/vue/router-setup#routerlink-and-routerview",
+          "titles": [
+            {
+              "title": "RouterLink and RouterView",
+              "href": "/vue/router-setup#routerlink-and-routerview",
+              "keywords": [
+                "<a href=\"/users\">",
+                "<a>",
+                "routes",
+                "tag",
+                "append"
+              ]
+            }
+          ]
         },
         {
-          "name": "this.$route vs useRoute / useRouter",
-          "href": "/vue/router-setup",
-          "titles": []
+          "name": "useRouter and useRoute",
+          "href": "/vue/router-setup#userouter-and-useroute",
+          "titles": [
+            {
+              "title": "useRouter and useRoute",
+              "href": "/vue/router-setup#userouter-and-useroute",
+              "keywords": [
+                "this.$router",
+                "this.$route",
+                "<script setup>",
+                "vue-router",
+                "router",
+                "router/index.ts",
+                "push",
+                "to"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1701,27 +1743,73 @@
       "name": "Navigation & Params",
       "chapter": "Router",
       "href": "/vue/navigation-and-params",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "params and query",
-          "href": "/vue/navigation-and-params",
-          "titles": []
+          "name": "Dynamic routes and params",
+          "href": "/vue/navigation-and-params#dynamic-segments",
+          "titles": [
+            {
+              "title": "Dynamic segments",
+              "href": "/vue/navigation-and-params#dynamic-segments",
+              "keywords": [
+                "/users/1",
+                "/users/2",
+                "routes",
+                "route.params",
+                "/users/:id/posts/:postId"
+              ]
+            },
+            {
+              "title": "Params are strings",
+              "href": "/vue/navigation-and-params#params-are-strings",
+              "keywords": [
+                "route.params.id",
+                "string | string[]",
+                ":id+",
+                "Number(route.params.id)",
+                "Number(route.params.id as string)",
+                "unplugin-vue-router",
+                "push",
+                "routes"
+              ]
+            }
+          ]
         },
         {
-          "name": "programmatic navigation",
-          "href": "/vue/navigation-and-params",
-          "titles": []
+          "name": "Param changes",
+          "href": "/vue/navigation-and-params#same-component-new-param",
+          "titles": [
+            {
+              "title": "Same component, new param",
+              "href": "/vue/navigation-and-params#same-component-new-param",
+              "keywords": [
+                "/users/1",
+                "/users/2",
+                "onMounted"
+              ]
+            }
+          ]
         },
         {
-          "name": "typed params",
-          "href": "/vue/navigation-and-params",
-          "titles": []
-        },
-        {
-          "name": "lazy-loaded routes",
-          "href": "/vue/navigation-and-params",
-          "titles": []
+          "name": "Params vs query",
+          "href": "/vue/navigation-and-params#params-vs-query",
+          "titles": [
+            {
+              "title": "Params vs query",
+              "href": "/vue/navigation-and-params#params-vs-query",
+              "keywords": [
+                "/users/ada",
+                "get",
+                "set",
+                "/users?q=…",
+                "replace",
+                "push",
+                "ad",
+                "ada"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1730,27 +1818,66 @@
       "name": "Guards",
       "chapter": "Router",
       "href": "/vue/guards",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "global guards",
-          "href": "/vue/guards",
-          "titles": []
+          "name": "Protected routes",
+          "href": "/vue/guards#signed-in-only",
+          "titles": [
+            {
+              "title": "Signed-in only",
+              "href": "/vue/guards#signed-in-only",
+              "keywords": [
+                "/users",
+                "meta",
+                "beforeEach",
+                "to",
+                "to.meta",
+                "query: { redirect: to.fullPath }",
+                "next()",
+                "next"
+              ]
+            }
+          ]
         },
         {
-          "name": "per-route guards",
-          "href": "/vue/guards",
-          "titles": []
+          "name": "Role-based routes",
+          "href": "/vue/guards#admin-only",
+          "titles": [
+            {
+              "title": "Admin only",
+              "href": "/vue/guards#admin-only",
+              "keywords": [
+                "meta",
+                "requiresAuth",
+                "v-if=\"session.user?.role === 'admin'\"",
+                "RouteMeta",
+                "ComponentCustomProperties",
+                "beforeEnter",
+                "beforeEach"
+              ]
+            }
+          ]
         },
         {
-          "name": "in-component guards",
-          "href": "/vue/guards",
-          "titles": []
-        },
-        {
-          "name": "next() optional",
-          "href": "/vue/guards",
-          "titles": []
+          "name": "Leave guards",
+          "href": "/vue/guards#unsaved-changes",
+          "titles": [
+            {
+              "title": "Unsaved changes",
+              "href": "/vue/guards#unsaved-changes",
+              "keywords": [
+                "onUnmounted",
+                "onBeforeRouteLeave",
+                "<script setup>",
+                "onMounted",
+                "beforeunload",
+                "onBeforeRouteUpdate",
+                "/users/2",
+                "/users/3"
+              ]
+            }
+          ]
         }
       ]
     },

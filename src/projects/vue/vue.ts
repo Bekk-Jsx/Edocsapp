@@ -124,32 +124,15 @@ export const TOPICS: VueTopic[] = [
     // — Router —
     {
         slug: "router-setup", name: "Router Setup", chapter: "router",
-        summary: "Vue Router 4 and what changed from v3.",
-        parts: [
-            "createRouter + history modes",
-            "RouterView / RouterLink",
-            "this.$route vs useRoute / useRouter",
-        ],
+        summary: "Vue Router 4: createRouter and history modes, RouterLink and RouterView, and useRouter / useRoute in setup code.",
     },
     {
         slug: "navigation-and-params", name: "Navigation & Params", chapter: "router",
-        summary: "Params, query, programmatic navigation and lazy routes.",
-        parts: [
-            "params and query",
-            "programmatic navigation",
-            "typed params",
-            "lazy-loaded routes",
-        ],
+        summary: "Dynamic routes and params, reacting to param changes in a reused component, and query strings for filters and search.",
     },
     {
         slug: "guards", name: "Guards", chapter: "router",
-        summary: "Controlling navigation.",
-        parts: [
-            "global guards",
-            "per-route guards",
-            "in-component guards",
-            "next() optional",
-        ],
+        summary: "Protected routes with meta and beforeEach, role-based access, redirecting back after login, and leave guards for unsaved changes.",
     },
 
     // — State —
