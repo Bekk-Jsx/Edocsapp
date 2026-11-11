@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "0001-init",
+    "appliedAt": {
+      "$date": {
+        "$numberLong": "1794427299774"
+      }
+    }
+  },
+  {
+    "_id": "0002-progress",
+    "appliedAt": {
+      "$date": {
+        "$numberLong": "1794438309229"
+      }
+    }
+  }
+]

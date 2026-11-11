@@ -569,7 +569,7 @@ function NoteForm({
                     </label>
                     <input
                         id="note-link"
-                        placeholder="/hooks-refresh/use-state#… or https://…"
+                        placeholder="/projects/hooks-refresh/use-state#… or https://…"
                         value={form.link}
                         onChange={(e) => set({ link: e.target.value })}
                         className={FIELD}

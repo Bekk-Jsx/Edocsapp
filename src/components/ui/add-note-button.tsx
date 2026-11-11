@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
+import {
+    interviewNotesHref,
+    pageHref,
+    parseInterviewPath,
+    parseProjectPath,
+} from "@/lib/routes";
 
 // "Add a note about THIS section" — shown only on sections backed by a summary
 // rail card, which is what marks a section as a documented unit rather than a
@@ -33,17 +39,31 @@ export default function AddNoteButton({ sectionId }: { sectionId: string }) {
     const pathname = usePathname();
     const inRail = useIsInRail(sectionId);
 
-    // ["hooks-refresh", "use-state"] — the project, then the page's own slug.
-    // A project landing page has no second segment, and no doc sections either.
-    const segments = pathname.split("/").filter(Boolean);
-    if (!inRail || segments.length < 2) return null;
+    // Two shapes of doc page carry sections, and each keeps its notes with its
+    // own section of the app:
+    //
+    //   /projects/<project>/<page>  -> /projects/<project>/notes
+    //   /interviews/<item>/<page>   -> /interviews/notes
+    //
+    // In both cases the grouping key is the page slug and the stored link is
+    // the full path plus the section anchor, so "open →" lands on the section.
+    // A landing page has no page segment and no doc sections; anything else
+    // parses as null and renders nothing.
+    const project = parseProjectPath(pathname);
+    const interview = parseInterviewPath(pathname);
 
-    const project = segments[0];
-    const hookSlug = segments[segments.length - 1];
+    const target = project?.page
+        ? { notes: pageHref(project.project, "notes"), page: project.page }
+        : interview?.page
+          ? { notes: interviewNotesHref(), page: interview.page }
+          : null;
+
+    if (!inRail || !target) return null;
+
     const link = `${pathname}#${sectionId}`;
     const href =
-        `/${project}/notes?add=1` +
-        `&hookSlug=${encodeURIComponent(hookSlug)}` +
+        `${target.notes}?add=1` +
+        `&hookSlug=${encodeURIComponent(target.page)}` +
         `&link=${encodeURIComponent(link)}`;
 
     return (

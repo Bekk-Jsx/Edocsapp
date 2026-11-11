@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { pageHref } from "@/lib/routes";
 
 // Three sibling navigation-hook pages, so clicking one is a real route change:
 // the hook re-renders and the active style follows on its own.
 const LINKS = [
-    { href: "/hooks-refresh/use-router", label: "use-router" },
-    { href: "/hooks-refresh/use-pathname", label: "use-pathname" },
-    { href: "/hooks-refresh/use-params", label: "use-params" },
+    { href: pageHref("hooks-refresh", "use-router"), label: "use-router" },
+    { href: pageHref("hooks-refresh", "use-pathname"), label: "use-pathname" },
+    { href: pageHref("hooks-refresh", "use-params"), label: "use-params" },
 ];
 
 export default function UsePathnameDemo() {

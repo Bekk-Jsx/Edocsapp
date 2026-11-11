@@ -3,23 +3,23 @@
   "project": {
     "slug": "vue",
     "name": "Vue.js",
-    "href": "/vue"
+    "href": "/projects/vue"
   },
   "pages": [
     {
       "slug": "app-instance",
       "name": "The App Instance",
       "chapter": "Getting Started",
-      "href": "/vue/app-instance",
+      "href": "/projects/vue/app-instance",
       "planned": false,
       "parts": [
         {
           "name": "createApp vs new Vue",
-          "href": "/vue/app-instance#an-app-instance-not-a-global-constructor",
+          "href": "/projects/vue/app-instance#an-app-instance-not-a-global-constructor",
           "titles": [
             {
               "title": "An app instance, not a global constructor",
-              "href": "/vue/app-instance#an-app-instance-not-a-global-constructor",
+              "href": "/projects/vue/app-instance#an-app-instance-not-a-global-constructor",
               "keywords": [
                 "Vue",
                 "new Vue()",
@@ -31,18 +31,18 @@
             },
             {
               "title": "Global API mapping",
-              "href": "/vue/app-instance#global-api-mapping",
+              "href": "/projects/vue/app-instance#global-api-mapping",
               "keywords": []
             }
           ]
         },
         {
           "name": "Registering on the app",
-          "href": "/vue/app-instance#plugins",
+          "href": "/projects/vue/app-instance#plugins",
           "titles": [
             {
               "title": "Plugins",
-              "href": "/vue/app-instance#plugins",
+              "href": "/projects/vue/app-instance#plugins",
               "keywords": [
                 "install",
                 "Vue",
@@ -56,7 +56,7 @@
             },
             {
               "title": "Global components and directives",
-              "href": "/vue/app-instance#global-components-and-directives",
+              "href": "/projects/vue/app-instance#global-components-and-directives",
               "keywords": [
                 "bind",
                 "beforeMount",
@@ -70,7 +70,7 @@
             },
             {
               "title": "App-level provide",
-              "href": "/vue/app-instance#app-level-provide",
+              "href": "/projects/vue/app-instance#app-level-provide",
               "keywords": [
                 "inject"
               ]
@@ -79,11 +79,11 @@
         },
         {
           "name": "Mounting",
-          "href": "/vue/app-instance#mounting-into-a-container",
+          "href": "/projects/vue/app-instance#mounting-into-a-container",
           "titles": [
             {
               "title": "Mounting into a container",
-              "href": "/vue/app-instance#mounting-into-a-container",
+              "href": "/projects/vue/app-instance#mounting-into-a-container",
               "keywords": [
                 "mount",
                 "$mount",
@@ -93,7 +93,7 @@
             },
             {
               "title": "What mount returns",
-              "href": "/vue/app-instance#what-mount-returns",
+              "href": "/projects/vue/app-instance#what-mount-returns",
               "keywords": [
                 "use",
                 "component",
@@ -104,7 +104,7 @@
             },
             {
               "title": "Configure before mounting",
-              "href": "/vue/app-instance#configure-before-mounting",
+              "href": "/projects/vue/app-instance#configure-before-mounting",
               "keywords": [
                 "mount",
                 "use",
@@ -118,11 +118,11 @@
         },
         {
           "name": "Global properties",
-          "href": "/vue/app-instance#app-config-globalproperties",
+          "href": "/projects/vue/app-instance#app-config-globalproperties",
           "titles": [
             {
               "title": "app.config.globalProperties",
-              "href": "/vue/app-instance#app-config-globalproperties",
+              "href": "/projects/vue/app-instance#app-config-globalproperties",
               "keywords": [
                 "Vue.prototype",
                 "data",
@@ -133,7 +133,7 @@
             },
             {
               "title": "Typing global properties",
-              "href": "/vue/app-instance#typing-global-properties",
+              "href": "/projects/vue/app-instance#typing-global-properties",
               "keywords": [
                 "ComponentCustomProperties",
                 "this.$log(42)",
@@ -147,7 +147,7 @@
             },
             {
               "title": "Global properties and setup",
-              "href": "/vue/app-instance#global-properties-and-setup",
+              "href": "/projects/vue/app-instance#global-properties-and-setup",
               "keywords": [
                 "<script setup>",
                 "globalProperties",
@@ -164,16 +164,16 @@
       "slug": "single-file-components",
       "name": "Single-File Components",
       "chapter": "Getting Started",
-      "href": "/vue/single-file-components",
+      "href": "/projects/vue/single-file-components",
       "planned": false,
       "parts": [
         {
           "name": "Typing components",
-          "href": "/vue/single-file-components#definecomponent",
+          "href": "/projects/vue/single-file-components#definecomponent",
           "titles": [
             {
               "title": "defineComponent",
-              "href": "/vue/single-file-components#definecomponent",
+              "href": "/projects/vue/single-file-components#definecomponent",
               "keywords": [
                 "computed",
                 "methods",
@@ -185,7 +185,7 @@
             },
             {
               "title": "Plain object or defineComponent",
-              "href": "/vue/single-file-components#plain-object-or-definecomponent",
+              "href": "/projects/vue/single-file-components#plain-object-or-definecomponent",
               "keywords": [
                 ".vue",
                 ".ts"
@@ -193,7 +193,7 @@
             },
             {
               "title": "Typing data, computed and methods",
-              "href": "/vue/single-file-components#typing-data-computed-and-methods",
+              "href": "/projects/vue/single-file-components#typing-data-computed-and-methods",
               "keywords": [
                 "defineComponent",
                 "any",
@@ -205,11 +205,11 @@
         },
         {
           "name": "Type-checking .vue files",
-          "href": "/vue/single-file-components#who-checks-types",
+          "href": "/projects/vue/single-file-components#who-checks-types",
           "titles": [
             {
               "title": "Who checks types",
-              "href": "/vue/single-file-components#who-checks-types",
+              "href": "/projects/vue/single-file-components#who-checks-types",
               "keywords": [
                 ".vue",
                 "tsc",
@@ -218,7 +218,7 @@
             },
             {
               "title": "Cannot find module './App.vue'",
-              "href": "/vue/single-file-components#cannot-find-module-app-vue",
+              "href": "/projects/vue/single-file-components#cannot-find-module-app-vue",
               "keywords": [
                 "declare module '*.vue'",
                 "env.d.ts",
@@ -229,11 +229,11 @@
         },
         {
           "name": "Scoped styles",
-          "href": "/vue/single-file-components#scoped-styles",
+          "href": "/projects/vue/single-file-components#scoped-styles",
           "titles": [
             {
               "title": "Scoped styles",
-              "href": "/vue/single-file-components#scoped-styles",
+              "href": "/projects/vue/single-file-components#scoped-styles",
               "keywords": [
                 "<style>",
                 "class=\"card\""
@@ -241,7 +241,7 @@
             },
             {
               "title": "Styling inside a child: :deep()",
-              "href": "/vue/single-file-components#styling-inside-a-child-deep",
+              "href": "/projects/vue/single-file-components#styling-inside-a-child-deep",
               "keywords": [
                 ">>>",
                 "::v-deep",
@@ -250,12 +250,12 @@
             },
             {
               "title": "Styling slot content: :slotted()",
-              "href": "/vue/single-file-components#styling-slot-content-slotted",
+              "href": "/projects/vue/single-file-components#styling-slot-content-slotted",
               "keywords": []
             },
             {
               "title": "One global rule: :global()",
-              "href": "/vue/single-file-components#one-global-rule-global",
+              "href": "/projects/vue/single-file-components#one-global-rule-global",
               "keywords": [
                 "<body>",
                 "<style>"
@@ -265,11 +265,11 @@
         },
         {
           "name": "Component state in CSS",
-          "href": "/vue/single-file-components#v-bind-in-css",
+          "href": "/projects/vue/single-file-components#v-bind-in-css",
           "titles": [
             {
               "title": "v-bind() in CSS",
-              "href": "/vue/single-file-components#v-bind-in-css",
+              "href": "/projects/vue/single-file-components#v-bind-in-css",
               "keywords": [
                 ":style",
                 ":hover",
@@ -280,7 +280,7 @@
             },
             {
               "title": "Expressions and units",
-              "href": "/vue/single-file-components#expressions-and-units",
+              "href": "/projects/vue/single-file-components#expressions-and-units",
               "keywords": [
                 "v-bind()"
               ]
@@ -293,16 +293,16 @@
       "slug": "refs-and-reactive",
       "name": "Refs & Reactive",
       "chapter": "Reactivity",
-      "href": "/vue/refs-and-reactive",
+      "href": "/projects/vue/refs-and-reactive",
       "planned": false,
       "parts": [
         {
           "name": "Reactive state outside components",
-          "href": "/vue/refs-and-reactive#reactive-state-outside-components",
+          "href": "/projects/vue/refs-and-reactive#reactive-state-outside-components",
           "titles": [
             {
               "title": "Reactive state outside components",
-              "href": "/vue/refs-and-reactive#reactive-state-outside-components",
+              "href": "/projects/vue/refs-and-reactive#reactive-state-outside-components",
               "keywords": [
                 "data()",
                 "Vue.observable({...})"
@@ -312,18 +312,18 @@
         },
         {
           "name": "ref",
-          "href": "/vue/refs-and-reactive#ref-and-value",
+          "href": "/projects/vue/refs-and-reactive#ref-and-value",
           "titles": [
             {
               "title": "ref and .value",
-              "href": "/vue/refs-and-reactive#ref-and-value",
+              "href": "/projects/vue/refs-and-reactive#ref-and-value",
               "keywords": [
                 "reactive()"
               ]
             },
             {
               "title": "Unwrapping in templates",
-              "href": "/vue/refs-and-reactive#unwrapping-in-templates",
+              "href": "/projects/vue/refs-and-reactive#unwrapping-in-templates",
               "keywords": [
                 "{{ count }}",
                 ".value",
@@ -336,11 +336,11 @@
         },
         {
           "name": "reactive",
-          "href": "/vue/refs-and-reactive#always-go-through-the-proxy",
+          "href": "/projects/vue/refs-and-reactive#always-go-through-the-proxy",
           "titles": [
             {
               "title": "Always go through the proxy",
-              "href": "/vue/refs-and-reactive#always-go-through-the-proxy",
+              "href": "/projects/vue/refs-and-reactive#always-go-through-the-proxy",
               "keywords": [
                 "reactive()",
                 ".value",
@@ -350,7 +350,7 @@
             },
             {
               "title": "Change it, never replace it",
-              "href": "/vue/refs-and-reactive#change-it-never-replace-it",
+              "href": "/projects/vue/refs-and-reactive#change-it-never-replace-it",
               "keywords": [
                 "Object.assign"
               ]
@@ -359,16 +359,16 @@
         },
         {
           "name": "Typing refs and reactive",
-          "href": "/vue/refs-and-reactive#typing-ref",
+          "href": "/projects/vue/refs-and-reactive#typing-ref",
           "titles": [
             {
               "title": "Typing ref",
-              "href": "/vue/refs-and-reactive#typing-ref",
+              "href": "/projects/vue/refs-and-reactive#typing-ref",
               "keywords": []
             },
             {
               "title": "Typing reactive",
-              "href": "/vue/refs-and-reactive#typing-reactive",
+              "href": "/projects/vue/refs-and-reactive#typing-reactive",
               "keywords": [
                 "reactive<SessionState>(…)"
               ]
@@ -377,11 +377,11 @@
         },
         {
           "name": "ref or reactive",
-          "href": "/vue/refs-and-reactive#ref-or-reactive",
+          "href": "/projects/vue/refs-and-reactive#ref-or-reactive",
           "titles": [
             {
               "title": "ref or reactive",
-              "href": "/vue/refs-and-reactive#ref-or-reactive",
+              "href": "/projects/vue/refs-and-reactive#ref-or-reactive",
               "keywords": [
                 ".value"
               ]
@@ -394,16 +394,16 @@
       "slug": "computed-and-watchers",
       "name": "Computed & Watchers",
       "chapter": "Reactivity",
-      "href": "/vue/computed-and-watchers",
+      "href": "/projects/vue/computed-and-watchers",
       "planned": false,
       "parts": [
         {
           "name": "computed()",
-          "href": "/vue/computed-and-watchers#computed-outside-components",
+          "href": "/projects/vue/computed-and-watchers#computed-outside-components",
           "titles": [
             {
               "title": "computed() outside components",
-              "href": "/vue/computed-and-watchers#computed-outside-components",
+              "href": "/projects/vue/computed-and-watchers#computed-outside-components",
               "keywords": [
                 ".value",
                 "cached",
@@ -416,11 +416,11 @@
         },
         {
           "name": "The watch option",
-          "href": "/vue/computed-and-watchers#watching-arrays",
+          "href": "/projects/vue/computed-and-watchers#watching-arrays",
           "titles": [
             {
               "title": "Watching arrays",
-              "href": "/vue/computed-and-watchers#watching-arrays",
+              "href": "/projects/vue/computed-and-watchers#watching-arrays",
               "keywords": [
                 "data()",
                 "push",
@@ -436,18 +436,18 @@
         },
         {
           "name": "The watch() function",
-          "href": "/vue/computed-and-watchers#watch-outside-components",
+          "href": "/projects/vue/computed-and-watchers#watch-outside-components",
           "titles": [
             {
               "title": "watch() outside components",
-              "href": "/vue/computed-and-watchers#watch-outside-components",
+              "href": "/projects/vue/computed-and-watchers#watch-outside-components",
               "keywords": [
                 "localStorage"
               ]
             },
             {
               "title": "Watch sources",
-              "href": "/vue/computed-and-watchers#watch-sources",
+              "href": "/projects/vue/computed-and-watchers#watch-sources",
               "keywords": [
                 "session.user",
                 "() => session.user"
@@ -455,7 +455,7 @@
             },
             {
               "title": "Stopping a watcher",
-              "href": "/vue/computed-and-watchers#stopping-a-watcher",
+              "href": "/projects/vue/computed-and-watchers#stopping-a-watcher",
               "keywords": [
                 "watch()",
                 "setup()"
@@ -463,7 +463,7 @@
             },
             {
               "title": "Options or functions",
-              "href": "/vue/computed-and-watchers#options-or-functions",
+              "href": "/projects/vue/computed-and-watchers#options-or-functions",
               "keywords": [
                 "computed",
                 "watch",
@@ -477,11 +477,11 @@
         },
         {
           "name": "deep, immediate and once",
-          "href": "/vue/computed-and-watchers#deep",
+          "href": "/projects/vue/computed-and-watchers#deep",
           "titles": [
             {
               "title": "deep",
-              "href": "/vue/computed-and-watchers#deep",
+              "href": "/projects/vue/computed-and-watchers#deep",
               "keywords": [
                 "deep: true",
                 "watch(session, …)"
@@ -489,7 +489,7 @@
             },
             {
               "title": "immediate",
-              "href": "/vue/computed-and-watchers#immediate",
+              "href": "/projects/vue/computed-and-watchers#immediate",
               "keywords": [
                 "immediate: true",
                 "previous",
@@ -498,7 +498,7 @@
             },
             {
               "title": "once",
-              "href": "/vue/computed-and-watchers#once",
+              "href": "/projects/vue/computed-and-watchers#once",
               "keywords": [
                 "once: true",
                 "deep",
@@ -510,11 +510,11 @@
         },
         {
           "name": "watchEffect",
-          "href": "/vue/computed-and-watchers#watcheffect",
+          "href": "/projects/vue/computed-and-watchers#watcheffect",
           "titles": [
             {
               "title": "watchEffect",
-              "href": "/vue/computed-and-watchers#watcheffect",
+              "href": "/projects/vue/computed-and-watchers#watcheffect",
               "keywords": [
                 "watch",
                 "computed"
@@ -522,14 +522,14 @@
             },
             {
               "title": "Async effects",
-              "href": "/vue/computed-and-watchers#async-effects",
+              "href": "/projects/vue/computed-and-watchers#async-effects",
               "keywords": [
                 "await"
               ]
             },
             {
               "title": "watch or watchEffect",
-              "href": "/vue/computed-and-watchers#watch-or-watcheffect",
+              "href": "/projects/vue/computed-and-watchers#watch-or-watcheffect",
               "keywords": [
                 "immediate: true",
                 "Equivalent watch",
@@ -543,11 +543,11 @@
         },
         {
           "name": "Cleanup",
-          "href": "/vue/computed-and-watchers#watcher-cleanup",
+          "href": "/projects/vue/computed-and-watchers#watcher-cleanup",
           "titles": [
             {
               "title": "Watcher cleanup",
-              "href": "/vue/computed-and-watchers#watcher-cleanup",
+              "href": "/projects/vue/computed-and-watchers#watcher-cleanup",
               "keywords": [
                 "onCleanup",
                 "watch",
@@ -561,7 +561,7 @@
             },
             {
               "title": "Cancelling stale requests",
-              "href": "/vue/computed-and-watchers#cancelling-stale-requests",
+              "href": "/projects/vue/computed-and-watchers#cancelling-stale-requests",
               "keywords": [
                 "AbortController",
                 "controller.signal",
@@ -581,16 +581,16 @@
       "slug": "props-and-emits",
       "name": "Props & Emits",
       "chapter": "Components",
-      "href": "/vue/props-and-emits",
+      "href": "/projects/vue/props-and-emits",
       "planned": false,
       "parts": [
         {
           "name": "Typed props",
-          "href": "/vue/props-and-emits#typed-props-with-proptype",
+          "href": "/projects/vue/props-and-emits#typed-props-with-proptype",
           "titles": [
             {
               "title": "Typed props with PropType",
-              "href": "/vue/props-and-emits#typed-props-with-proptype",
+              "href": "/projects/vue/props-and-emits#typed-props-with-proptype",
               "keywords": [
                 "Object",
                 "Array",
@@ -600,7 +600,7 @@
             },
             {
               "title": "required, default and validator",
-              "href": "/vue/props-and-emits#required-default-and-validator",
+              "href": "/projects/vue/props-and-emits#required-default-and-validator",
               "keywords": [
                 "PropType",
                 "'xl'",
@@ -612,11 +612,11 @@
         },
         {
           "name": "Component events",
-          "href": "/vue/props-and-emits#how-component-events-work",
+          "href": "/projects/vue/props-and-emits#how-component-events-work",
           "titles": [
             {
               "title": "How component events work",
-              "href": "/vue/props-and-emits#how-component-events-work",
+              "href": "/projects/vue/props-and-emits#how-component-events-work",
               "keywords": [
                 "$emit",
                 "@eventName",
@@ -627,7 +627,7 @@
             },
             {
               "title": "Declaring events with emits",
-              "href": "/vue/props-and-emits#declaring-events-with-emits",
+              "href": "/projects/vue/props-and-emits#declaring-events-with-emits",
               "keywords": [
                 "$emit",
                 "@add",
@@ -636,7 +636,7 @@
             },
             {
               "title": "Undeclared listeners fall through",
-              "href": "/vue/props-and-emits#undeclared-listeners-fall-through",
+              "href": "/projects/vue/props-and-emits#undeclared-listeners-fall-through",
               "keywords": [
                 "this.$attrs",
                 "emits",
@@ -652,11 +652,11 @@
         },
         {
           "name": "Function props and child methods",
-          "href": "/vue/props-and-emits#function-props",
+          "href": "/projects/vue/props-and-emits#function-props",
           "titles": [
             {
               "title": "Function props",
-              "href": "/vue/props-and-emits#function-props",
+              "href": "/projects/vue/props-and-emits#function-props",
               "keywords": [
                 "@minus=\"…\"",
                 "onMinus",
@@ -666,7 +666,7 @@
             },
             {
               "title": "Calling a child's methods",
-              "href": "/vue/props-and-emits#calling-a-child-s-methods",
+              "href": "/projects/vue/props-and-emits#calling-a-child-s-methods",
               "keywords": [
                 "InstanceType<typeof Child>",
                 "CounterButton.vue",
@@ -683,16 +683,16 @@
       "slug": "v-model",
       "name": "v-model",
       "chapter": "Components",
-      "href": "/vue/v-model",
+      "href": "/projects/vue/v-model",
       "planned": false,
       "parts": [
         {
           "name": "v-model on components",
-          "href": "/vue/v-model#the-modelvalue-contract",
+          "href": "/projects/vue/v-model#the-modelvalue-contract",
           "titles": [
             {
               "title": "The modelValue contract",
-              "href": "/vue/v-model#the-modelvalue-contract",
+              "href": "/projects/vue/v-model#the-modelvalue-contract",
               "keywords": [
                 "<input>",
                 "v-model",
@@ -706,7 +706,7 @@
             },
             {
               "title": "Why the contract matters",
-              "href": "/vue/v-model#why-the-contract-matters",
+              "href": "/projects/vue/v-model#why-the-contract-matters",
               "keywords": [
                 "v-model",
                 "data"
@@ -716,11 +716,11 @@
         },
         {
           "name": "Multiple v-models",
-          "href": "/vue/v-model#v-model-arguments",
+          "href": "/projects/vue/v-model#v-model-arguments",
           "titles": [
             {
               "title": "v-model arguments",
-              "href": "/vue/v-model#v-model-arguments",
+              "href": "/projects/vue/v-model#v-model-arguments",
               "keywords": [
                 "update:",
                 "v-model:model-value",
@@ -733,11 +733,11 @@
         },
         {
           "name": "Forwarding v-model to inner inputs",
-          "href": "/vue/v-model#writable-computed-for-inner-inputs",
+          "href": "/projects/vue/v-model#writable-computed-for-inner-inputs",
           "titles": [
             {
               "title": "Writable computed for inner inputs",
-              "href": "/vue/v-model#writable-computed-for-inner-inputs",
+              "href": "/projects/vue/v-model#writable-computed-for-inner-inputs",
               "keywords": [
                 ":value",
                 "@input",
@@ -757,16 +757,16 @@
       "slug": "slots",
       "name": "Slots",
       "chapter": "Components",
-      "href": "/vue/slots",
+      "href": "/projects/vue/slots",
       "planned": false,
       "parts": [
         {
           "name": "Default and named slots",
-          "href": "/vue/slots#default-and-named-slots",
+          "href": "/projects/vue/slots#default-and-named-slots",
           "titles": [
             {
               "title": "Default and named slots",
-              "href": "/vue/slots#default-and-named-slots",
+              "href": "/projects/vue/slots#default-and-named-slots",
               "keywords": [
                 "<slot>",
                 "BaseCard.vue",
@@ -782,11 +782,11 @@
         },
         {
           "name": "Scoped slots",
-          "href": "/vue/slots#sending-data-to-the-parent",
+          "href": "/projects/vue/slots#sending-data-to-the-parent",
           "titles": [
             {
               "title": "Sending data to the parent",
-              "href": "/vue/slots#sending-data-to-the-parent",
+              "href": "/projects/vue/slots#sending-data-to-the-parent",
               "keywords": [
                 "isAdmin(user)",
                 "name",
@@ -796,7 +796,7 @@
             },
             {
               "title": "Props on the default slot",
-              "href": "/vue/slots#props-on-the-default-slot",
+              "href": "/projects/vue/slots#props-on-the-default-slot",
               "keywords": [
                 "v-slot",
                 "<template #default>",
@@ -807,11 +807,11 @@
         },
         {
           "name": "Typing slots",
-          "href": "/vue/slots#declaring-slots-with-slotstype",
+          "href": "/projects/vue/slots#declaring-slots-with-slotstype",
           "titles": [
             {
               "title": "Declaring slots with SlotsType",
-              "href": "/vue/slots#declaring-slots-with-slotstype",
+              "href": "/projects/vue/slots#declaring-slots-with-slotstype",
               "keywords": [
                 ".vue",
                 "<slot>",
@@ -825,7 +825,7 @@
             },
             {
               "title": "What SlotsType checks",
-              "href": "/vue/slots#what-slotstype-checks",
+              "href": "/projects/vue/slots#what-slotstype-checks",
               "keywords": [
                 "<slot>",
                 ".vue",
@@ -840,16 +840,16 @@
       "slug": "provide-inject",
       "name": "Provide & Inject",
       "chapter": "Components",
-      "href": "/vue/provide-inject",
+      "href": "/projects/vue/provide-inject",
       "planned": false,
       "parts": [
         {
           "name": "Provide and inject",
-          "href": "/vue/provide-inject#passing-values-down-the-tree",
+          "href": "/projects/vue/provide-inject#passing-values-down-the-tree",
           "titles": [
             {
               "title": "Passing values down the tree",
-              "href": "/vue/provide-inject#passing-values-down-the-tree",
+              "href": "/projects/vue/provide-inject#passing-values-down-the-tree",
               "keywords": [
                 "inject"
               ]
@@ -858,11 +858,11 @@
         },
         {
           "name": "Reactive provided values",
-          "href": "/vue/provide-inject#providing-a-ref",
+          "href": "/projects/vue/provide-inject#providing-a-ref",
           "titles": [
             {
               "title": "Providing a ref",
-              "href": "/vue/provide-inject#providing-a-ref",
+              "href": "/projects/vue/provide-inject#providing-a-ref",
               "keywords": [
                 "provide()",
                 "this.theme = 'light'",
@@ -875,18 +875,18 @@
             },
             {
               "title": "Changing provided state",
-              "href": "/vue/provide-inject#changing-provided-state",
+              "href": "/projects/vue/provide-inject#changing-provided-state",
               "keywords": []
             }
           ]
         },
         {
           "name": "Typing injections",
-          "href": "/vue/provide-inject#typing-with-a-string-key",
+          "href": "/projects/vue/provide-inject#typing-with-a-string-key",
           "titles": [
             {
               "title": "Typing with a string key",
-              "href": "/vue/provide-inject#typing-with-a-string-key",
+              "href": "/projects/vue/provide-inject#typing-with-a-string-key",
               "keywords": [
                 "inject",
                 "inject()",
@@ -898,7 +898,7 @@
             },
             {
               "title": "InjectionKey",
-              "href": "/vue/provide-inject#injectionkey",
+              "href": "/projects/vue/provide-inject#injectionkey",
               "keywords": [
                 "inject",
                 "provide()",
@@ -908,7 +908,7 @@
             },
             {
               "title": "Defaults and required injections",
-              "href": "/vue/provide-inject#defaults-and-required-injections",
+              "href": "/projects/vue/provide-inject#defaults-and-required-injections",
               "keywords": [
                 "inject()",
                 "T | undefined"
@@ -922,16 +922,16 @@
       "slug": "lifecycle-and-attrs",
       "name": "Lifecycle & Attrs",
       "chapter": "Components",
-      "href": "/vue/lifecycle-and-attrs",
+      "href": "/projects/vue/lifecycle-and-attrs",
       "planned": false,
       "parts": [
         {
           "name": "Lifecycle hooks",
-          "href": "/vue/lifecycle-and-attrs#renamed-hooks",
+          "href": "/projects/vue/lifecycle-and-attrs#renamed-hooks",
           "titles": [
             {
               "title": "Renamed hooks",
-              "href": "/vue/lifecycle-and-attrs#renamed-hooks",
+              "href": "/projects/vue/lifecycle-and-attrs#renamed-hooks",
               "keywords": [
                 "beforeDestroy",
                 "destroyed",
@@ -944,14 +944,14 @@
             },
             {
               "title": "updated",
-              "href": "/vue/lifecycle-and-attrs#updated",
+              "href": "/projects/vue/lifecycle-and-attrs#updated",
               "keywords": [
                 "watch"
               ]
             },
             {
               "title": "activated and deactivated",
-              "href": "/vue/lifecycle-and-attrs#activated-and-deactivated",
+              "href": "/projects/vue/lifecycle-and-attrs#activated-and-deactivated",
               "keywords": [
                 "KeepAlive",
                 "mounted"
@@ -959,7 +959,7 @@
             },
             {
               "title": "errorCaptured",
-              "href": "/vue/lifecycle-and-attrs#errorcaptured",
+              "href": "/projects/vue/lifecycle-and-attrs#errorcaptured",
               "keywords": [
                 "setup()",
                 "app.config.errorHandler",
@@ -970,11 +970,11 @@
         },
         {
           "name": "Fallthrough attributes",
-          "href": "/vue/lifecycle-and-attrs#inheritattrs-and-attrs",
+          "href": "/projects/vue/lifecycle-and-attrs#inheritattrs-and-attrs",
           "titles": [
             {
               "title": "inheritAttrs and $attrs",
-              "href": "/vue/lifecycle-and-attrs#inheritattrs-and-attrs",
+              "href": "/projects/vue/lifecycle-and-attrs#inheritattrs-and-attrs",
               "keywords": [
                 "this.$attrs",
                 "inheritAttrs: false",
@@ -990,11 +990,11 @@
         },
         {
           "name": "Multi-root components",
-          "href": "/vue/lifecycle-and-attrs#multiple-root-nodes",
+          "href": "/projects/vue/lifecycle-and-attrs#multiple-root-nodes",
           "titles": [
             {
               "title": "Multiple root nodes",
-              "href": "/vue/lifecycle-and-attrs#multiple-root-nodes",
+              "href": "/projects/vue/lifecycle-and-attrs#multiple-root-nodes",
               "keywords": [
                 "<dl>",
                 "dt",
@@ -1006,7 +1006,7 @@
             },
             {
               "title": "Choosing v-bind and inheritAttrs",
-              "href": "/vue/lifecycle-and-attrs#choosing-v-bind-and-inheritattrs",
+              "href": "/projects/vue/lifecycle-and-attrs#choosing-v-bind-and-inheritattrs",
               "keywords": [
                 "A · one root, the target",
                 "B · one root, target inside",
@@ -1023,16 +1023,16 @@
       "slug": "setup-function",
       "name": "The setup() Function",
       "chapter": "Script Setup",
-      "href": "/vue/setup-function",
+      "href": "/projects/vue/setup-function",
       "planned": false,
       "parts": [
         {
           "name": "Why setup()",
-          "href": "/vue/setup-function#grouping-code-by-feature",
+          "href": "/projects/vue/setup-function#grouping-code-by-feature",
           "titles": [
             {
               "title": "Grouping code by feature",
-              "href": "/vue/setup-function#grouping-code-by-feature",
+              "href": "/projects/vue/setup-function#grouping-code-by-feature",
               "keywords": [
                 "data",
                 "computed",
@@ -1045,11 +1045,11 @@
         },
         {
           "name": "setup() basics",
-          "href": "/vue/setup-function#returned-bindings",
+          "href": "/projects/vue/setup-function#returned-bindings",
           "titles": [
             {
               "title": "Returned bindings",
-              "href": "/vue/setup-function#returned-bindings",
+              "href": "/projects/vue/setup-function#returned-bindings",
               "keywords": [
                 "setup()",
                 "created",
@@ -1062,11 +1062,11 @@
         },
         {
           "name": "Lifecycle hooks in setup()",
-          "href": "/vue/setup-function#lifecycle-hook-functions",
+          "href": "/projects/vue/setup-function#lifecycle-hook-functions",
           "titles": [
             {
               "title": "Lifecycle hook functions",
-              "href": "/vue/setup-function#lifecycle-hook-functions",
+              "href": "/projects/vue/setup-function#lifecycle-hook-functions",
               "keywords": [
                 "mounted",
                 "unmounted",
@@ -1082,11 +1082,11 @@
         },
         {
           "name": "props and context",
-          "href": "/vue/setup-function#the-props-argument",
+          "href": "/projects/vue/setup-function#the-props-argument",
           "titles": [
             {
               "title": "The props argument",
-              "href": "/vue/setup-function#the-props-argument",
+              "href": "/projects/vue/setup-function#the-props-argument",
               "keywords": [
                 "this.step",
                 "setup()",
@@ -1097,7 +1097,7 @@
             },
             {
               "title": "The context argument",
-              "href": "/vue/setup-function#the-context-argument",
+              "href": "/projects/vue/setup-function#the-context-argument",
               "keywords": [
                 "setup(props, { emit })",
                 "setup()",
@@ -1112,16 +1112,16 @@
       "slug": "script-setup-basics",
       "name": "Script Setup Basics",
       "chapter": "Script Setup",
-      "href": "/vue/script-setup-basics",
+      "href": "/projects/vue/script-setup-basics",
       "planned": false,
       "parts": [
         {
           "name": "The <script setup> syntax",
-          "href": "/vue/script-setup-basics#top-level-bindings-without-a-return",
+          "href": "/projects/vue/script-setup-basics#top-level-bindings-without-a-return",
           "titles": [
             {
               "title": "Top-level bindings without a return",
-              "href": "/vue/script-setup-basics#top-level-bindings-without-a-return",
+              "href": "/projects/vue/script-setup-basics#top-level-bindings-without-a-return",
               "keywords": [
                 "setup()",
                 "defineComponent",
@@ -1137,11 +1137,11 @@
         },
         {
           "name": "Using components",
-          "href": "/vue/script-setup-basics#imported-components",
+          "href": "/projects/vue/script-setup-basics#imported-components",
           "titles": [
             {
               "title": "Imported components",
-              "href": "/vue/script-setup-basics#imported-components",
+              "href": "/projects/vue/script-setup-basics#imported-components",
               "keywords": [
                 "<script setup>",
                 "<UserCard />",
@@ -1153,7 +1153,7 @@
             },
             {
               "title": "Dynamic components",
-              "href": "/vue/script-setup-basics#dynamic-components",
+              "href": "/projects/vue/script-setup-basics#dynamic-components",
               "keywords": [
                 "<component :is=\"'UserCard'\">",
                 "<script setup>",
@@ -1165,11 +1165,11 @@
         },
         {
           "name": "Closed by default",
-          "href": "/vue/script-setup-basics#closed-by-default",
+          "href": "/projects/vue/script-setup-basics#closed-by-default",
           "titles": [
             {
               "title": "Closed by default",
-              "href": "/vue/script-setup-basics#closed-by-default",
+              "href": "/projects/vue/script-setup-basics#closed-by-default",
               "keywords": [
                 "setup()",
                 "<script setup>",
@@ -1188,16 +1188,16 @@
       "slug": "compiler-macros",
       "name": "Compiler Macros",
       "chapter": "Script Setup",
-      "href": "/vue/compiler-macros",
+      "href": "/projects/vue/compiler-macros",
       "planned": false,
       "parts": [
         {
           "name": "defineProps",
-          "href": "/vue/compiler-macros#typed-props",
+          "href": "/projects/vue/compiler-macros#typed-props",
           "titles": [
             {
               "title": "Typed props",
-              "href": "/vue/compiler-macros#typed-props",
+              "href": "/projects/vue/compiler-macros#typed-props",
               "keywords": [
                 "<script setup>",
                 "PropType",
@@ -1209,7 +1209,7 @@
             },
             {
               "title": "Defaults and destructuring",
-              "href": "/vue/compiler-macros#defaults-and-destructuring",
+              "href": "/projects/vue/compiler-macros#defaults-and-destructuring",
               "keywords": [
                 "props.<name>",
                 "props",
@@ -1225,11 +1225,11 @@
         },
         {
           "name": "defineEmits",
-          "href": "/vue/compiler-macros#typed-events",
+          "href": "/projects/vue/compiler-macros#typed-events",
           "titles": [
             {
               "title": "Typed events",
-              "href": "/vue/compiler-macros#typed-events",
+              "href": "/projects/vue/compiler-macros#typed-events",
               "keywords": [
                 "<script setup>",
                 "emits",
@@ -1245,11 +1245,11 @@
         },
         {
           "name": "defineModel",
-          "href": "/vue/compiler-macros#v-model-in-one-line",
+          "href": "/projects/vue/compiler-macros#v-model-in-one-line",
           "titles": [
             {
               "title": "v-model in one line",
-              "href": "/vue/compiler-macros#v-model-in-one-line",
+              "href": "/projects/vue/compiler-macros#v-model-in-one-line",
               "keywords": [
                 "modelValue",
                 "update:modelValue",
@@ -1265,18 +1265,18 @@
         },
         {
           "name": "defineExpose and defineOptions",
-          "href": "/vue/compiler-macros#defineexpose",
+          "href": "/projects/vue/compiler-macros#defineexpose",
           "titles": [
             {
               "title": "defineExpose",
-              "href": "/vue/compiler-macros#defineexpose",
+              "href": "/projects/vue/compiler-macros#defineexpose",
               "keywords": [
                 "<script setup>"
               ]
             },
             {
               "title": "defineOptions",
-              "href": "/vue/compiler-macros#defineoptions",
+              "href": "/projects/vue/compiler-macros#defineoptions",
               "keywords": [
                 "name",
                 "inheritAttrs",
@@ -1292,11 +1292,11 @@
         },
         {
           "name": "defineSlots",
-          "href": "/vue/compiler-macros#typed-slots",
+          "href": "/projects/vue/compiler-macros#typed-slots",
           "titles": [
             {
               "title": "Typed slots",
-              "href": "/vue/compiler-macros#typed-slots",
+              "href": "/projects/vue/compiler-macros#typed-slots",
               "keywords": [
                 "slots: Object as SlotsType<…>",
                 "<script setup>",
@@ -1313,16 +1313,16 @@
       "slug": "template-refs",
       "name": "Template Refs",
       "chapter": "Script Setup",
-      "href": "/vue/template-refs",
+      "href": "/projects/vue/template-refs",
       "planned": false,
       "parts": [
         {
           "name": "DOM refs",
-          "href": "/vue/template-refs#usetemplateref",
+          "href": "/projects/vue/template-refs#usetemplateref",
           "titles": [
             {
               "title": "useTemplateRef",
-              "href": "/vue/template-refs#usetemplateref",
+              "href": "/projects/vue/template-refs#usetemplateref",
               "keywords": [
                 "this.$refs",
                 "<script setup>",
@@ -1333,7 +1333,7 @@
             },
             {
               "title": "When a ref is filled",
-              "href": "/vue/template-refs#when-a-ref-is-filled",
+              "href": "/projects/vue/template-refs#when-a-ref-is-filled",
               "keywords": [
                 "onMounted",
                 "watch"
@@ -1343,11 +1343,11 @@
         },
         {
           "name": "Component refs",
-          "href": "/vue/template-refs#refs-on-child-components",
+          "href": "/projects/vue/template-refs#refs-on-child-components",
           "titles": [
             {
               "title": "Refs on child components",
-              "href": "/vue/template-refs#refs-on-child-components",
+              "href": "/projects/vue/template-refs#refs-on-child-components",
               "keywords": [
                 "<script setup>",
                 "defineExpose",
@@ -1360,7 +1360,7 @@
             },
             {
               "title": "Refs inside v-for",
-              "href": "/vue/template-refs#refs-inside-v-for",
+              "href": "/projects/vue/template-refs#refs-inside-v-for",
               "keywords": [
                 "ref"
               ]
@@ -1373,16 +1373,16 @@
       "slug": "template-changes",
       "name": "Template Changes",
       "chapter": "Templates & Rendering",
-      "href": "/vue/template-changes",
+      "href": "/projects/vue/template-changes",
       "planned": false,
       "parts": [
         {
           "name": "v-if and v-for",
-          "href": "/vue/template-changes#v-if-before-v-for",
+          "href": "/projects/vue/template-changes#v-if-before-v-for",
           "titles": [
             {
               "title": "v-if before v-for",
-              "href": "/vue/template-changes#v-if-before-v-for",
+              "href": "/projects/vue/template-changes#v-if-before-v-for",
               "keywords": [
                 "<template>",
                 "users",
@@ -1394,11 +1394,11 @@
         },
         {
           "name": "Filters",
-          "href": "/vue/template-changes#filters-replaced-by-functions",
+          "href": "/projects/vue/template-changes#filters-replaced-by-functions",
           "titles": [
             {
               "title": "Filters replaced by functions",
-              "href": "/vue/template-changes#filters-replaced-by-functions",
+              "href": "/projects/vue/template-changes#filters-replaced-by-functions",
               "keywords": [
                 "Vue.filter",
                 "<script setup>",
@@ -1411,16 +1411,16 @@
         },
         {
           "name": "Key rules",
-          "href": "/vue/template-changes#key-on-template-v-for",
+          "href": "/projects/vue/template-changes#key-on-template-v-for",
           "titles": [
             {
               "title": "key on <template v-for>",
-              "href": "/vue/template-changes#key-on-template-v-for",
+              "href": "/projects/vue/template-changes#key-on-template-v-for",
               "keywords": []
             },
             {
               "title": "Keys on v-if branches",
-              "href": "/vue/template-changes#keys-on-v-if-branches",
+              "href": "/projects/vue/template-changes#keys-on-v-if-branches",
               "keywords": [
                 "v-else-if",
                 "v-else",
@@ -1436,16 +1436,16 @@
       "slug": "built-in-components",
       "name": "Built-in Components",
       "chapter": "Templates & Rendering",
-      "href": "/vue/built-in-components",
+      "href": "/projects/vue/built-in-components",
       "planned": false,
       "parts": [
         {
           "name": "Teleport",
-          "href": "/vue/built-in-components#rendering-outside-the-component",
+          "href": "/projects/vue/built-in-components#rendering-outside-the-component",
           "titles": [
             {
               "title": "Rendering outside the component",
-              "href": "/vue/built-in-components#rendering-outside-the-component",
+              "href": "/projects/vue/built-in-components#rendering-outside-the-component",
               "keywords": [
                 "overflow: hidden",
                 "transform",
@@ -1461,11 +1461,11 @@
         },
         {
           "name": "KeepAlive",
-          "href": "/vue/built-in-components#caching-hidden-views",
+          "href": "/projects/vue/built-in-components#caching-hidden-views",
           "titles": [
             {
               "title": "Caching hidden views",
-              "href": "/vue/built-in-components#caching-hidden-views",
+              "href": "/projects/vue/built-in-components#caching-hidden-views",
               "keywords": [
                 "<component :is>",
                 "<KeepAlive>",
@@ -1481,11 +1481,11 @@
         },
         {
           "name": "Async components",
-          "href": "/vue/built-in-components#loading-components-on-demand",
+          "href": "/projects/vue/built-in-components#loading-components-on-demand",
           "titles": [
             {
               "title": "Loading components on demand",
-              "href": "/vue/built-in-components#loading-components-on-demand",
+              "href": "/projects/vue/built-in-components#loading-components-on-demand",
               "keywords": [
                 "defineAsyncComponent",
                 "import()",
@@ -1496,11 +1496,11 @@
         },
         {
           "name": "Transition",
-          "href": "/vue/built-in-components#renamed-transition-classes",
+          "href": "/projects/vue/built-in-components#renamed-transition-classes",
           "titles": [
             {
               "title": "Renamed transition classes",
-              "href": "/vue/built-in-components#renamed-transition-classes",
+              "href": "/projects/vue/built-in-components#renamed-transition-classes",
               "keywords": [
                 ".fade-enter",
                 "v-",
@@ -1520,16 +1520,16 @@
       "slug": "rendering-under-the-hood",
       "name": "Rendering Under the Hood",
       "chapter": "Templates & Rendering",
-      "href": "/vue/rendering-under-the-hood",
+      "href": "/projects/vue/rendering-under-the-hood",
       "planned": false,
       "parts": [
         {
           "name": "Batched updates",
-          "href": "/vue/rendering-under-the-hood#batched-updates-and-nexttick",
+          "href": "/projects/vue/rendering-under-the-hood#batched-updates-and-nexttick",
           "titles": [
             {
               "title": "Batched updates and nextTick",
-              "href": "/vue/rendering-under-the-hood#batched-updates-and-nexttick",
+              "href": "/projects/vue/rendering-under-the-hood#batched-updates-and-nexttick",
               "keywords": [
                 "await nextTick()",
                 "items.value.length",
@@ -1542,11 +1542,11 @@
         },
         {
           "name": "From template to DOM",
-          "href": "/vue/rendering-under-the-hood#render-function-virtual-dom-and-patch",
+          "href": "/projects/vue/rendering-under-the-hood#render-function-virtual-dom-and-patch",
           "titles": [
             {
               "title": "Render function, virtual DOM and patch",
-              "href": "/vue/rendering-under-the-hood#render-function-virtual-dom-and-patch",
+              "href": "/projects/vue/rendering-under-the-hood#render-function-virtual-dom-and-patch",
               "keywords": [
                 "<template>",
                 "/* TEXT */",
@@ -1563,16 +1563,16 @@
       "slug": "writing-composables",
       "name": "Writing Composables",
       "chapter": "Composables",
-      "href": "/vue/writing-composables",
+      "href": "/projects/vue/writing-composables",
       "planned": false,
       "parts": [
         {
           "name": "From mixins to composables",
-          "href": "/vue/writing-composables#from-mixins-to-composables",
+          "href": "/projects/vue/writing-composables#from-mixins-to-composables",
           "titles": [
             {
               "title": "From mixins to composables",
-              "href": "/vue/writing-composables#from-mixins-to-composables",
+              "href": "/projects/vue/writing-composables#from-mixins-to-composables",
               "keywords": [
                 "this.width",
                 "ref"
@@ -1582,11 +1582,11 @@
         },
         {
           "name": "Conventions",
-          "href": "/vue/writing-composables#the-conventions",
+          "href": "/projects/vue/writing-composables#the-conventions",
           "titles": [
             {
               "title": "The conventions",
-              "href": "/vue/writing-composables#the-conventions",
+              "href": "/projects/vue/writing-composables#the-conventions",
               "keywords": [
                 "reactive",
                 "onMounted"
@@ -1594,7 +1594,7 @@
             },
             {
               "title": "Arguments: value, ref or getter",
-              "href": "/vue/writing-composables#arguments-value-ref-or-getter",
+              "href": "/projects/vue/writing-composables#arguments-value-ref-or-getter",
               "keywords": [
                 "useTitle(title)",
                 "MaybeRefOrGetter",
@@ -1607,16 +1607,16 @@
         },
         {
           "name": "When not to write one",
-          "href": "/vue/writing-composables#when-a-composable-is-the-wrong-tool",
+          "href": "/projects/vue/writing-composables#when-a-composable-is-the-wrong-tool",
           "titles": [
             {
               "title": "When a composable is the wrong tool",
-              "href": "/vue/writing-composables#when-a-composable-is-the-wrong-tool",
+              "href": "/projects/vue/writing-composables#when-a-composable-is-the-wrong-tool",
               "keywords": []
             },
             {
               "title": "Composable or module file",
-              "href": "/vue/writing-composables#composable-or-module-file",
+              "href": "/projects/vue/writing-composables#composable-or-module-file",
               "keywords": []
             }
           ]
@@ -1627,16 +1627,16 @@
       "slug": "async-composables",
       "name": "Async Composables",
       "chapter": "Composables",
-      "href": "/vue/async-composables",
+      "href": "/projects/vue/async-composables",
       "planned": false,
       "parts": [
         {
           "name": "The async state pattern",
-          "href": "/vue/async-composables#data-loading-error-and-refresh",
+          "href": "/projects/vue/async-composables#data-loading-error-and-refresh",
           "titles": [
             {
               "title": "data, loading, error and refresh",
-              "href": "/vue/async-composables#data-loading-error-and-refresh",
+              "href": "/projects/vue/async-composables#data-loading-error-and-refresh",
               "keywords": [
                 "try",
                 "catch",
@@ -1652,11 +1652,11 @@
         },
         {
           "name": "Reactive sources",
-          "href": "/vue/async-composables#re-fetch-on-change-abort-stale-runs",
+          "href": "/projects/vue/async-composables#re-fetch-on-change-abort-stale-runs",
           "titles": [
             {
               "title": "Re-fetch on change, abort stale runs",
-              "href": "/vue/async-composables#re-fetch-on-change-abort-stale-runs",
+              "href": "/projects/vue/async-composables#re-fetch-on-change-abort-stale-runs",
               "keywords": [
                 "toValue",
                 "immediate: true",
@@ -1676,16 +1676,16 @@
       "slug": "router-setup",
       "name": "Router Setup",
       "chapter": "Router",
-      "href": "/vue/router-setup",
+      "href": "/projects/vue/router-setup",
       "planned": false,
       "parts": [
         {
           "name": "createRouter",
-          "href": "/vue/router-setup#createrouter-and-history-modes",
+          "href": "/projects/vue/router-setup#createrouter-and-history-modes",
           "titles": [
             {
               "title": "createRouter and history modes",
-              "href": "/vue/router-setup#createrouter-and-history-modes",
+              "href": "/projects/vue/router-setup#createrouter-and-history-modes",
               "keywords": [
                 "v-if",
                 "app.use(router)",
@@ -1701,11 +1701,11 @@
         },
         {
           "name": "RouterLink and RouterView",
-          "href": "/vue/router-setup#routerlink-and-routerview",
+          "href": "/projects/vue/router-setup#routerlink-and-routerview",
           "titles": [
             {
               "title": "RouterLink and RouterView",
-              "href": "/vue/router-setup#routerlink-and-routerview",
+              "href": "/projects/vue/router-setup#routerlink-and-routerview",
               "keywords": [
                 "<a href=\"/users\">",
                 "<a>",
@@ -1718,11 +1718,11 @@
         },
         {
           "name": "useRouter and useRoute",
-          "href": "/vue/router-setup#userouter-and-useroute",
+          "href": "/projects/vue/router-setup#userouter-and-useroute",
           "titles": [
             {
               "title": "useRouter and useRoute",
-              "href": "/vue/router-setup#userouter-and-useroute",
+              "href": "/projects/vue/router-setup#userouter-and-useroute",
               "keywords": [
                 "this.$router",
                 "this.$route",
@@ -1742,16 +1742,16 @@
       "slug": "navigation-and-params",
       "name": "Navigation & Params",
       "chapter": "Router",
-      "href": "/vue/navigation-and-params",
+      "href": "/projects/vue/navigation-and-params",
       "planned": false,
       "parts": [
         {
           "name": "Dynamic routes and params",
-          "href": "/vue/navigation-and-params#dynamic-segments",
+          "href": "/projects/vue/navigation-and-params#dynamic-segments",
           "titles": [
             {
               "title": "Dynamic segments",
-              "href": "/vue/navigation-and-params#dynamic-segments",
+              "href": "/projects/vue/navigation-and-params#dynamic-segments",
               "keywords": [
                 "/users/1",
                 "/users/2",
@@ -1762,7 +1762,7 @@
             },
             {
               "title": "Params are strings",
-              "href": "/vue/navigation-and-params#params-are-strings",
+              "href": "/projects/vue/navigation-and-params#params-are-strings",
               "keywords": [
                 "route.params.id",
                 "string | string[]",
@@ -1778,11 +1778,11 @@
         },
         {
           "name": "Param changes",
-          "href": "/vue/navigation-and-params#same-component-new-param",
+          "href": "/projects/vue/navigation-and-params#same-component-new-param",
           "titles": [
             {
               "title": "Same component, new param",
-              "href": "/vue/navigation-and-params#same-component-new-param",
+              "href": "/projects/vue/navigation-and-params#same-component-new-param",
               "keywords": [
                 "/users/1",
                 "/users/2",
@@ -1793,11 +1793,11 @@
         },
         {
           "name": "Params vs query",
-          "href": "/vue/navigation-and-params#params-vs-query",
+          "href": "/projects/vue/navigation-and-params#params-vs-query",
           "titles": [
             {
               "title": "Params vs query",
-              "href": "/vue/navigation-and-params#params-vs-query",
+              "href": "/projects/vue/navigation-and-params#params-vs-query",
               "keywords": [
                 "/users/ada",
                 "get",
@@ -1817,16 +1817,16 @@
       "slug": "guards",
       "name": "Guards",
       "chapter": "Router",
-      "href": "/vue/guards",
+      "href": "/projects/vue/guards",
       "planned": false,
       "parts": [
         {
           "name": "Protected routes",
-          "href": "/vue/guards#signed-in-only",
+          "href": "/projects/vue/guards#signed-in-only",
           "titles": [
             {
               "title": "Signed-in only",
-              "href": "/vue/guards#signed-in-only",
+              "href": "/projects/vue/guards#signed-in-only",
               "keywords": [
                 "/users",
                 "meta",
@@ -1842,11 +1842,11 @@
         },
         {
           "name": "Role-based routes",
-          "href": "/vue/guards#admin-only",
+          "href": "/projects/vue/guards#admin-only",
           "titles": [
             {
               "title": "Admin only",
-              "href": "/vue/guards#admin-only",
+              "href": "/projects/vue/guards#admin-only",
               "keywords": [
                 "meta",
                 "requiresAuth",
@@ -1861,11 +1861,11 @@
         },
         {
           "name": "Leave guards",
-          "href": "/vue/guards#unsaved-changes",
+          "href": "/projects/vue/guards#unsaved-changes",
           "titles": [
             {
               "title": "Unsaved changes",
-              "href": "/vue/guards#unsaved-changes",
+              "href": "/projects/vue/guards#unsaved-changes",
               "keywords": [
                 "onUnmounted",
                 "onBeforeRouteLeave",
@@ -1885,16 +1885,16 @@
       "slug": "pinia-basics",
       "name": "Pinia Basics",
       "chapter": "State",
-      "href": "/vue/pinia-basics",
+      "href": "/projects/vue/pinia-basics",
       "planned": false,
       "parts": [
         {
           "name": "Why a store library",
-          "href": "/vue/pinia-basics#what-a-reactive-module-cannot-do",
+          "href": "/projects/vue/pinia-basics#what-a-reactive-module-cannot-do",
           "titles": [
             {
               "title": "What a reactive module cannot do",
-              "href": "/vue/pinia-basics#what-a-reactive-module-cannot-do",
+              "href": "/projects/vue/pinia-basics#what-a-reactive-module-cannot-do",
               "keywords": [
                 "defineStore",
                 "'counter'",
@@ -1904,7 +1904,7 @@
             },
             {
               "title": "Using a store",
-              "href": "/vue/pinia-basics#using-a-store",
+              "href": "/projects/vue/pinia-basics#using-a-store",
               "keywords": [
                 "reactive",
                 ".value",
@@ -1916,18 +1916,18 @@
         },
         {
           "name": "Option stores",
-          "href": "/vue/pinia-basics#state-getters-and-actions",
+          "href": "/projects/vue/pinia-basics#state-getters-and-actions",
           "titles": [
             {
               "title": "state, getters and actions",
-              "href": "/vue/pinia-basics#state-getters-and-actions",
+              "href": "/projects/vue/pinia-basics#state-getters-and-actions",
               "keywords": [
                 "$reset()"
               ]
             },
             {
               "title": "Typing a store",
-              "href": "/vue/pinia-basics#typing-a-store",
+              "href": "/projects/vue/pinia-basics#typing-a-store",
               "keywords": [
                 "ref(null)",
                 "data()",
@@ -1938,11 +1938,11 @@
         },
         {
           "name": "Stores outside components",
-          "href": "/vue/pinia-basics#stores-in-guards-and-modules",
+          "href": "/projects/vue/pinia-basics#stores-in-guards-and-modules",
           "titles": [
             {
               "title": "Stores in guards and modules",
-              "href": "/vue/pinia-basics#stores-in-guards-and-modules",
+              "href": "/projects/vue/pinia-basics#stores-in-guards-and-modules",
               "keywords": [
                 "createPinia()",
                 "<script setup>",
@@ -1953,11 +1953,11 @@
         },
         {
           "name": "Pinia vs Vuex",
-          "href": "/vue/pinia-basics#pinia-vs-vuex",
+          "href": "/projects/vue/pinia-basics#pinia-vs-vuex",
           "titles": [
             {
               "title": "Pinia vs Vuex",
-              "href": "/vue/pinia-basics#pinia-vs-vuex",
+              "href": "/projects/vue/pinia-basics#pinia-vs-vuex",
               "keywords": [
                 "commit",
                 "dispatch",
@@ -1975,16 +1975,16 @@
       "slug": "setup-stores",
       "name": "Setup Stores",
       "chapter": "State",
-      "href": "/vue/setup-stores",
+      "href": "/projects/vue/setup-stores",
       "planned": false,
       "parts": [
         {
           "name": "Stores as setup functions",
-          "href": "/vue/setup-stores#stores-written-like-script-setup",
+          "href": "/projects/vue/setup-stores#stores-written-like-script-setup",
           "titles": [
             {
               "title": "Stores written like <script setup>",
-              "href": "/vue/setup-stores#stores-written-like-script-setup",
+              "href": "/projects/vue/setup-stores#stores-written-like-script-setup",
               "keywords": [
                 "state",
                 "getters",
@@ -1998,7 +1998,7 @@
             },
             {
               "title": "Option or setup store",
-              "href": "/vue/setup-stores#option-or-setup-store",
+              "href": "/projects/vue/setup-stores#option-or-setup-store",
               "keywords": [
                 "<script setup>"
               ]
@@ -2007,11 +2007,11 @@
         },
         {
           "name": "storeToRefs",
-          "href": "/vue/setup-stores#destructuring-a-store",
+          "href": "/projects/vue/setup-stores#destructuring-a-store",
           "titles": [
             {
               "title": "Destructuring a store",
-              "href": "/vue/setup-stores#destructuring-a-store",
+              "href": "/projects/vue/setup-stores#destructuring-a-store",
               "keywords": [
                 "reactive",
                 "storeToRefs",
@@ -2025,11 +2025,11 @@
         },
         {
           "name": "Stores using stores",
-          "href": "/vue/setup-stores#stores-using-stores",
+          "href": "/projects/vue/setup-stores#stores-using-stores",
           "titles": [
             {
               "title": "Stores using stores",
-              "href": "/vue/setup-stores#stores-using-stores",
+              "href": "/projects/vue/setup-stores#stores-using-stores",
               "keywords": [
                 "rootState",
                 "rootGetters"
@@ -2043,16 +2043,16 @@
       "slug": "persist-and-plugins",
       "name": "Persisting & Plugins",
       "chapter": "State",
-      "href": "/vue/persist-and-plugins",
+      "href": "/projects/vue/persist-and-plugins",
       "planned": false,
       "parts": [
         {
           "name": "Persisting state",
-          "href": "/vue/persist-and-plugins#surviving-a-reload",
+          "href": "/projects/vue/persist-and-plugins#surviving-a-reload",
           "titles": [
             {
               "title": "Surviving a reload",
-              "href": "/vue/persist-and-plugins#surviving-a-reload",
+              "href": "/projects/vue/persist-and-plugins#surviving-a-reload",
               "keywords": [
                 "user",
                 "{ deep: true }",
@@ -2068,11 +2068,11 @@
         },
         {
           "name": "Patching, subscribing, resetting",
-          "href": "/vue/persist-and-plugins#patch-and-subscribe",
+          "href": "/projects/vue/persist-and-plugins#patch-and-subscribe",
           "titles": [
             {
               "title": "$patch and $subscribe",
-              "href": "/vue/persist-and-plugins#patch-and-subscribe",
+              "href": "/projects/vue/persist-and-plugins#patch-and-subscribe",
               "keywords": [
                 "mutation.type",
                 "mutation.storeId",
@@ -2082,7 +2082,7 @@
             },
             {
               "title": "Resetting state",
-              "href": "/vue/persist-and-plugins#resetting-state",
+              "href": "/projects/vue/persist-and-plugins#resetting-state",
               "keywords": [
                 "$reset()",
                 "$reset"
@@ -2092,11 +2092,11 @@
         },
         {
           "name": "Plugins",
-          "href": "/vue/persist-and-plugins#extending-every-store",
+          "href": "/projects/vue/persist-and-plugins#extending-every-store",
           "titles": [
             {
               "title": "Extending every store",
-              "href": "/vue/persist-and-plugins#extending-every-store",
+              "href": "/projects/vue/persist-and-plugins#extending-every-store",
               "keywords": [
                 "options",
                 "store.$id",
@@ -2112,16 +2112,16 @@
       "slug": "pinia-devtools",
       "name": "Pinia in DevTools",
       "chapter": "State",
-      "href": "/vue/pinia-devtools",
+      "href": "/projects/vue/pinia-devtools",
       "planned": false,
       "parts": [
         {
           "name": "The store inspector",
-          "href": "/vue/pinia-devtools#reading-store-state",
+          "href": "/projects/vue/pinia-devtools#reading-store-state",
           "titles": [
             {
               "title": "Reading store state",
-              "href": "/vue/pinia-devtools#reading-store-state",
+              "href": "/projects/vue/pinia-devtools#reading-store-state",
               "keywords": [
                 "console.log",
                 "defineStore"
@@ -2129,7 +2129,7 @@
             },
             {
               "title": "Editing state live",
-              "href": "/vue/pinia-devtools#editing-state-live",
+              "href": "/projects/vue/pinia-devtools#editing-state-live",
               "keywords": [
                 "admin"
               ]
@@ -2138,11 +2138,11 @@
         },
         {
           "name": "Timeline and time travel",
-          "href": "/vue/pinia-devtools#the-action-timeline",
+          "href": "/projects/vue/pinia-devtools#the-action-timeline",
           "titles": [
             {
               "title": "The action timeline",
-              "href": "/vue/pinia-devtools#the-action-timeline",
+              "href": "/projects/vue/pinia-devtools#the-action-timeline",
               "keywords": [
                 "login",
                 "addToCart",
@@ -2153,7 +2153,7 @@
             },
             {
               "title": "Time travel",
-              "href": "/vue/pinia-devtools#time-travel",
+              "href": "/projects/vue/pinia-devtools#time-travel",
               "keywords": [
                 "localStorage"
               ]
@@ -2166,27 +2166,27 @@
       "slug": "fetching-data",
       "name": "Fetching Data",
       "chapter": "Networking",
-      "href": "/vue/fetching-data",
+      "href": "/projects/vue/fetching-data",
       "planned": true,
       "parts": [
         {
           "name": "typed fetch",
-          "href": "/vue/fetching-data",
+          "href": "/projects/vue/fetching-data",
           "titles": []
         },
         {
           "name": "loading / error state",
-          "href": "/vue/fetching-data",
+          "href": "/projects/vue/fetching-data",
           "titles": []
         },
         {
           "name": "where to fetch",
-          "href": "/vue/fetching-data",
+          "href": "/projects/vue/fetching-data",
           "titles": []
         },
         {
           "name": "aborting requests",
-          "href": "/vue/fetching-data",
+          "href": "/projects/vue/fetching-data",
           "titles": []
         }
       ]
@@ -2195,32 +2195,32 @@
       "slug": "network-panel",
       "name": "The Network Panel",
       "chapter": "Networking",
-      "href": "/vue/network-panel",
+      "href": "/projects/vue/network-panel",
       "planned": true,
       "parts": [
         {
           "name": "request list + filters",
-          "href": "/vue/network-panel",
+          "href": "/projects/vue/network-panel",
           "titles": []
         },
         {
           "name": "headers / payload / response",
-          "href": "/vue/network-panel",
+          "href": "/projects/vue/network-panel",
           "titles": []
         },
         {
           "name": "status codes",
-          "href": "/vue/network-panel",
+          "href": "/projects/vue/network-panel",
           "titles": []
         },
         {
           "name": "timing waterfall",
-          "href": "/vue/network-panel",
+          "href": "/projects/vue/network-panel",
           "titles": []
         },
         {
           "name": "throttling and preserve log",
-          "href": "/vue/network-panel",
+          "href": "/projects/vue/network-panel",
           "titles": []
         }
       ]
@@ -2229,22 +2229,22 @@
       "slug": "cors-and-caching",
       "name": "CORS & Caching",
       "chapter": "Networking",
-      "href": "/vue/cors-and-caching",
+      "href": "/projects/vue/cors-and-caching",
       "planned": true,
       "parts": [
         {
           "name": "CORS",
-          "href": "/vue/cors-and-caching",
+          "href": "/projects/vue/cors-and-caching",
           "titles": []
         },
         {
           "name": "preflight (OPTIONS)",
-          "href": "/vue/cors-and-caching",
+          "href": "/projects/vue/cors-and-caching",
           "titles": []
         },
         {
           "name": "cache headers + 304",
-          "href": "/vue/cors-and-caching",
+          "href": "/projects/vue/cors-and-caching",
           "titles": []
         }
       ]
@@ -2253,32 +2253,32 @@
       "slug": "breakpoints-and-stepping",
       "name": "Breakpoints & Stepping",
       "chapter": "Debugging",
-      "href": "/vue/breakpoints-and-stepping",
+      "href": "/projects/vue/breakpoints-and-stepping",
       "planned": true,
       "parts": [
         {
           "name": "debugger statement",
-          "href": "/vue/breakpoints-and-stepping",
+          "href": "/projects/vue/breakpoints-and-stepping",
           "titles": []
         },
         {
           "name": "breakpoints",
-          "href": "/vue/breakpoints-and-stepping",
+          "href": "/projects/vue/breakpoints-and-stepping",
           "titles": []
         },
         {
           "name": "step over / into / out",
-          "href": "/vue/breakpoints-and-stepping",
+          "href": "/projects/vue/breakpoints-and-stepping",
           "titles": []
         },
         {
           "name": "scope, watch and call stack",
-          "href": "/vue/breakpoints-and-stepping",
+          "href": "/projects/vue/breakpoints-and-stepping",
           "titles": []
         },
         {
           "name": "conditional breakpoints + logpoints",
-          "href": "/vue/breakpoints-and-stepping",
+          "href": "/projects/vue/breakpoints-and-stepping",
           "titles": []
         }
       ]
@@ -2287,17 +2287,17 @@
       "slug": "source-maps",
       "name": "Source Maps",
       "chapter": "Debugging",
-      "href": "/vue/source-maps",
+      "href": "/projects/vue/source-maps",
       "planned": true,
       "parts": [
         {
           "name": "what source maps are",
-          "href": "/vue/source-maps",
+          "href": "/projects/vue/source-maps",
           "titles": []
         },
         {
           "name": "Vite source maps for .vue files",
-          "href": "/vue/source-maps",
+          "href": "/projects/vue/source-maps",
           "titles": []
         }
       ]
@@ -2306,27 +2306,27 @@
       "slug": "vue-devtools",
       "name": "Vue DevTools",
       "chapter": "Debugging",
-      "href": "/vue/vue-devtools",
+      "href": "/projects/vue/vue-devtools",
       "planned": true,
       "parts": [
         {
           "name": "component tree",
-          "href": "/vue/vue-devtools",
+          "href": "/projects/vue/vue-devtools",
           "titles": []
         },
         {
           "name": "editing props / state",
-          "href": "/vue/vue-devtools",
+          "href": "/projects/vue/vue-devtools",
           "titles": []
         },
         {
           "name": "events timeline",
-          "href": "/vue/vue-devtools",
+          "href": "/projects/vue/vue-devtools",
           "titles": []
         },
         {
           "name": "onRenderTracked / onRenderTriggered",
-          "href": "/vue/vue-devtools",
+          "href": "/projects/vue/vue-devtools",
           "titles": []
         }
       ]
@@ -2335,22 +2335,22 @@
       "slug": "how-ssr-works",
       "name": "How SSR Works",
       "chapter": "SSR",
-      "href": "/vue/how-ssr-works",
+      "href": "/projects/vue/how-ssr-works",
       "planned": true,
       "parts": [
         {
           "name": "server render to HTML",
-          "href": "/vue/how-ssr-works",
+          "href": "/projects/vue/how-ssr-works",
           "titles": []
         },
         {
           "name": "client hydration",
-          "href": "/vue/how-ssr-works",
+          "href": "/projects/vue/how-ssr-works",
           "titles": []
         },
         {
           "name": "CSR vs SSR",
-          "href": "/vue/how-ssr-works",
+          "href": "/projects/vue/how-ssr-works",
           "titles": []
         }
       ]
@@ -2359,27 +2359,27 @@
       "slug": "hydration",
       "name": "Hydration",
       "chapter": "SSR",
-      "href": "/vue/hydration",
+      "href": "/projects/vue/hydration",
       "planned": true,
       "parts": [
         {
           "name": "what hydration does",
-          "href": "/vue/hydration",
+          "href": "/projects/vue/hydration",
           "titles": []
         },
         {
           "name": "mismatches",
-          "href": "/vue/hydration",
+          "href": "/projects/vue/hydration",
           "titles": []
         },
         {
           "name": "debugging mismatches",
-          "href": "/vue/hydration",
+          "href": "/projects/vue/hydration",
           "titles": []
         },
         {
           "name": "lazy hydration",
-          "href": "/vue/hydration",
+          "href": "/projects/vue/hydration",
           "titles": []
         }
       ]
@@ -2388,27 +2388,27 @@
       "slug": "ssr-safe-code",
       "name": "SSR-Safe Code",
       "chapter": "SSR",
-      "href": "/vue/ssr-safe-code",
+      "href": "/projects/vue/ssr-safe-code",
       "planned": true,
       "parts": [
         {
           "name": "browser-only APIs",
-          "href": "/vue/ssr-safe-code",
+          "href": "/projects/vue/ssr-safe-code",
           "titles": []
         },
         {
           "name": "lifecycle on the server",
-          "href": "/vue/ssr-safe-code",
+          "href": "/projects/vue/ssr-safe-code",
           "titles": []
         },
         {
           "name": "per-request state",
-          "href": "/vue/ssr-safe-code",
+          "href": "/projects/vue/ssr-safe-code",
           "titles": []
         },
         {
           "name": "server data fetching + state transfer",
-          "href": "/vue/ssr-safe-code",
+          "href": "/projects/vue/ssr-safe-code",
           "titles": []
         }
       ]

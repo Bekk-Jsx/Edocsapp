@@ -8,16 +8,25 @@
     "start": "next start",
     "lint": "eslint",
     "search:sync": "node scripts/search-sync.mjs",
-    "search:check": "node scripts/search-sync.mjs --check"
+    "search:check": "node scripts/search-sync.mjs --check",
+    "db:ping": "node scripts/db-ping.mjs",
+    "db:migrate": "tsx scripts/db/migrate.ts",
+    "db:seed": "tsx scripts/db/seed.ts",
+    "db:content": "tsx scripts/db/content.ts",
+    "db:export": "tsx scripts/db/export.ts",
+    "db:restore": "tsx scripts/db/restore.ts",
+    "db:asset": "tsx scripts/db/add-asset.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
+    "mongodb": "^7.8.0",
     "next": "16.2.11",
     "pinia": "^4.1.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-redux": "^9.3.0",
-    "shiki": "^4.3.1"
+    "shiki": "^4.3.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -27,6 +36,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

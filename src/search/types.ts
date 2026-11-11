@@ -3,7 +3,7 @@
 
 export type SearchTitle = {
     title: string;
-    href: string; // "/vue/writing-composables#the-conventions"
+    href: string; // "/projects/vue/writing-composables#the-conventions"
     keywords: string[];
 };
 

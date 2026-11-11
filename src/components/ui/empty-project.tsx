@@ -3,7 +3,7 @@ import StatusBadge from "@/components/ui/status-badge";
 import { projectBySlug } from "@/lib/projects";
 
 // The one empty-project landing, extracted verbatim from what was
-// app/(projects)/typescript/page.tsx. Every project that has no content yet
+// app/projects/typescript/page.tsx. Every project that has no content yet
 // renders this and nothing else, so "scaffolded but empty" looks the same
 // everywhere by construction rather than by eight copies staying in step.
 //

@@ -3,23 +3,23 @@
   "project": {
     "slug": "elasticsearch",
     "name": "Elasticsearch",
-    "href": "/elasticsearch"
+    "href": "/projects/elasticsearch"
   },
   "pages": [
     {
       "slug": "introduction",
       "name": "Introduction",
       "chapter": "Foundations",
-      "href": "/elasticsearch/introduction",
+      "href": "/projects/elasticsearch/introduction",
       "planned": false,
       "parts": [
         {
           "name": "How It Works",
-          "href": "/elasticsearch/introduction#what-elasticsearch-is",
+          "href": "/projects/elasticsearch/introduction#what-elasticsearch-is",
           "titles": [
             {
               "title": "what elasticsearch is",
-              "href": "/elasticsearch/introduction#what-elasticsearch-is",
+              "href": "/projects/elasticsearch/introduction#what-elasticsearch-is",
               "keywords": [
                 "index",
                 "curl"
@@ -27,25 +27,25 @@
             },
             {
               "title": "the inverted index",
-              "href": "/elasticsearch/introduction#the-inverted-index",
+              "href": "/projects/elasticsearch/introduction#the-inverted-index",
               "keywords": [
                 "LIKE '%dark%'"
               ]
             },
             {
               "title": "terminology map",
-              "href": "/elasticsearch/introduction#terminology-map",
+              "href": "/projects/elasticsearch/introduction#terminology-map",
               "keywords": []
             }
           ]
         },
         {
           "name": "What It's For",
-          "href": "/elasticsearch/introduction#near-real-time",
+          "href": "/projects/elasticsearch/introduction#near-real-time",
           "titles": [
             {
               "title": "near real-time",
-              "href": "/elasticsearch/introduction#near-real-time",
+              "href": "/projects/elasticsearch/introduction#near-real-time",
               "keywords": [
                 "refresh: \"wait_for\"",
                 "POST /index/_refresh"
@@ -53,7 +53,7 @@
             },
             {
               "title": "what it's good at, what it's bad at",
-              "href": "/elasticsearch/introduction#what-it-s-good-at-what-it-s-bad-at",
+              "href": "/projects/elasticsearch/introduction#what-it-s-good-at-what-it-s-bad-at",
               "keywords": [
                 "Good at reading text and summarising it.",
                 "Bad at being the system of record"
@@ -61,12 +61,12 @@
             },
             {
               "title": "where it sits in this stack",
-              "href": "/elasticsearch/introduction#where-it-sits-in-this-stack",
+              "href": "/projects/elasticsearch/introduction#where-it-sits-in-this-stack",
               "keywords": []
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/introduction#say-it-right-english",
+              "href": "/projects/elasticsearch/introduction#say-it-right-english",
               "keywords": [
                 "inverted index",
                 "tokenized",
@@ -85,16 +85,16 @@
       "slug": "documents-indices",
       "name": "Documents & Indices",
       "chapter": "Foundations",
-      "href": "/elasticsearch/documents-indices",
+      "href": "/projects/elasticsearch/documents-indices",
       "planned": false,
       "parts": [
         {
           "name": "Documents",
-          "href": "/elasticsearch/documents-indices#document-crud",
+          "href": "/projects/elasticsearch/documents-indices#document-crud",
           "titles": [
             {
               "title": "document crud",
-              "href": "/elasticsearch/documents-indices#document-crud",
+              "href": "/projects/elasticsearch/documents-indices#document-crud",
               "keywords": [
                 "_source",
                 "Generated ids suit data that has none.",
@@ -108,7 +108,7 @@
             },
             {
               "title": "bulk: the wire format",
-              "href": "/elasticsearch/documents-indices#bulk-the-wire-format",
+              "href": "/projects/elasticsearch/documents-indices#bulk-the-wire-format",
               "keywords": [
                 "The body is NDJSON, not JSON.",
                 "delete",
@@ -121,7 +121,7 @@
             },
             {
               "title": "bulk: 200 but failed",
-              "href": "/elasticsearch/documents-indices#bulk-200-but-failed",
+              "href": "/projects/elasticsearch/documents-indices#bulk-200-but-failed",
               "keywords": [
                 "float",
                 "document_parsing_exception",
@@ -131,7 +131,7 @@
             },
             {
               "title": "helpers.bulk: the production way",
-              "href": "/elasticsearch/documents-indices#helpers-bulk-the-production-way",
+              "href": "/projects/elasticsearch/documents-indices#helpers-bulk-the-production-way",
               "keywords": [
                 "flushBytes",
                 "onDrop",
@@ -145,7 +145,7 @@
             },
             {
               "title": "batch sizing & 429",
-              "href": "/elasticsearch/documents-indices#batch-sizing-429",
+              "href": "/projects/elasticsearch/documents-indices#batch-sizing-429",
               "keywords": [
                 "flushBytes",
                 "413"
@@ -155,11 +155,11 @@
         },
         {
           "name": "Indices",
-          "href": "/elasticsearch/documents-indices#refresh-explained",
+          "href": "/projects/elasticsearch/documents-indices#refresh-explained",
           "titles": [
             {
               "title": "refresh, explained",
-              "href": "/elasticsearch/documents-indices#refresh-explained",
+              "href": "/projects/elasticsearch/documents-indices#refresh-explained",
               "keywords": [
                 "Refreshing per write would be ruinous.",
                 "wait_for",
@@ -169,7 +169,7 @@
             },
             {
               "title": "imports: switch refresh off",
-              "href": "/elasticsearch/documents-indices#imports-switch-refresh-off",
+              "href": "/projects/elasticsearch/documents-indices#imports-switch-refresh-off",
               "keywords": [
                 "refresh_interval: \"-1\"",
                 "1s",
@@ -178,7 +178,7 @@
             },
             {
               "title": "index lifecycle",
-              "href": "/elasticsearch/documents-indices#index-lifecycle",
+              "href": "/projects/elasticsearch/documents-indices#index-lifecycle",
               "keywords": [
                 "\"7.7\"",
                 "docs.count",
@@ -190,7 +190,7 @@
             },
             {
               "title": "aliases",
-              "href": "/elasticsearch/documents-indices#aliases",
+              "href": "/projects/elasticsearch/documents-indices#aliases",
               "keywords": [
                 "movies",
                 "movies_v1",
@@ -202,7 +202,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/documents-indices#say-it-right-english",
+              "href": "/projects/elasticsearch/documents-indices#say-it-right-english",
               "keywords": [
                 "full replace",
                 "_source",
@@ -222,16 +222,16 @@
       "slug": "mappings-analysis",
       "name": "Mappings & Analysis",
       "chapter": "Foundations",
-      "href": "/elasticsearch/mappings-analysis",
+      "href": "/projects/elasticsearch/mappings-analysis",
       "planned": false,
       "parts": [
         {
           "name": "Field Types",
-          "href": "/elasticsearch/mappings-analysis#text-vs-keyword",
+          "href": "/projects/elasticsearch/mappings-analysis#text-vs-keyword",
           "titles": [
             {
               "title": "text vs keyword",
-              "href": "/elasticsearch/mappings-analysis#text-vs-keyword",
+              "href": "/projects/elasticsearch/mappings-analysis#text-vs-keyword",
               "keywords": [
                 "_source",
                 "A text field goes through an analyzer.",
@@ -245,7 +245,7 @@
             },
             {
               "title": "the .keyword sub-field",
-              "href": "/elasticsearch/mappings-analysis#the-keyword-sub-field",
+              "href": "/projects/elasticsearch/mappings-analysis#the-keyword-sub-field",
               "keywords": [
                 "Released",
                 "text",
@@ -261,11 +261,11 @@
         },
         {
           "name": "Analysis",
-          "href": "/elasticsearch/mappings-analysis#analyzers-and-analyze",
+          "href": "/projects/elasticsearch/mappings-analysis#analyzers-and-analyze",
           "titles": [
             {
               "title": "analyzers and _analyze",
-              "href": "/elasticsearch/mappings-analysis#analyzers-and-analyze",
+              "href": "/projects/elasticsearch/mappings-analysis#analyzers-and-analyze",
               "keywords": [
                 "match",
                 "\"dark\"",
@@ -278,7 +278,7 @@
             },
             {
               "title": "the english analyzer",
-              "href": "/elasticsearch/mappings-analysis#the-english-analyzer",
+              "href": "/projects/elasticsearch/mappings-analysis#the-english-analyzer",
               "keywords": [
                 "title",
                 "overview",
@@ -292,7 +292,7 @@
             },
             {
               "title": "custom analyzers",
-              "href": "/elasticsearch/mappings-analysis#custom-analyzers",
+              "href": "/projects/elasticsearch/mappings-analysis#custom-analyzers",
               "keywords": [
                 "dash_strip",
                 "mapping",
@@ -308,11 +308,11 @@
         },
         {
           "name": "Objects & Nested",
-          "href": "/elasticsearch/mappings-analysis#object-arrays-the-flattening-problem",
+          "href": "/projects/elasticsearch/mappings-analysis#object-arrays-the-flattening-problem",
           "titles": [
             {
               "title": "object arrays: the flattening problem",
-              "href": "/elasticsearch/mappings-analysis#object-arrays-the-flattening-problem",
+              "href": "/projects/elasticsearch/mappings-analysis#object-arrays-the-flattening-problem",
               "keywords": [
                 "No \"type\" means object.",
                 "properties",
@@ -326,7 +326,7 @@
             },
             {
               "title": "nested: separate hidden documents",
-              "href": "/elasticsearch/mappings-analysis#nested-separate-hidden-documents",
+              "href": "/projects/elasticsearch/mappings-analysis#nested-separate-hidden-documents",
               "keywords": [
                 "The fix is one line.",
                 "\"type\": \"nested\"",
@@ -340,7 +340,7 @@
             },
             {
               "title": "when NOT to use nested",
-              "href": "/elasticsearch/mappings-analysis#when-not-to-use-nested",
+              "href": "/projects/elasticsearch/mappings-analysis#when-not-to-use-nested",
               "keywords": [
                 "genres.id",
                 "genres"
@@ -350,11 +350,11 @@
         },
         {
           "name": "Changing a Mapping",
-          "href": "/elasticsearch/mappings-analysis#mappings-can-t-change",
+          "href": "/projects/elasticsearch/mappings-analysis#mappings-can-t-change",
           "titles": [
             {
               "title": "mappings can't change",
-              "href": "/elasticsearch/mappings-analysis#mappings-can-t-change",
+              "href": "/projects/elasticsearch/mappings-analysis#mappings-can-t-change",
               "keywords": [
                 "imdb_rating",
                 "float"
@@ -362,7 +362,7 @@
             },
             {
               "title": "_reindex + alias swap",
-              "href": "/elasticsearch/mappings-analysis#reindex-alias-swap",
+              "href": "/projects/elasticsearch/mappings-analysis#reindex-alias-swap",
               "keywords": [
                 "_source",
                 "movies_v1",
@@ -376,7 +376,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/mappings-analysis#say-it-right-english",
+              "href": "/projects/elasticsearch/mappings-analysis#say-it-right-english",
               "keywords": [
                 "language analyzer",
                 "stemmed",
@@ -396,16 +396,16 @@
       "slug": "queries-structure",
       "name": "Queries Structure",
       "chapter": "Structure",
-      "href": "/elasticsearch/queries-structure",
+      "href": "/projects/elasticsearch/queries-structure",
       "planned": false,
       "parts": [
         {
           "name": "The Request Body",
-          "href": "/elasticsearch/queries-structure#level-1-the-request-skeleton",
+          "href": "/projects/elasticsearch/queries-structure#level-1-the-request-skeleton",
           "titles": [
             {
               "title": "level 1: the request skeleton",
-              "href": "/elasticsearch/queries-structure#level-1-the-request-skeleton",
+              "href": "/projects/elasticsearch/queries-structure#level-1-the-request-skeleton",
               "keywords": [
                 "query",
                 "One slot decides, the rest describe.",
@@ -421,11 +421,11 @@
         },
         {
           "name": "Inside query",
-          "href": "/elasticsearch/queries-structure#level-2-bool-the-combiner",
+          "href": "/projects/elasticsearch/queries-structure#level-2-bool-the-combiner",
           "titles": [
             {
               "title": "level 2: bool, the combiner",
-              "href": "/elasticsearch/queries-structure#level-2-bool-the-combiner",
+              "href": "/projects/elasticsearch/queries-structure#level-2-bool-the-combiner",
               "keywords": [
                 "WHERE",
                 "should",
@@ -439,7 +439,7 @@
             },
             {
               "title": "level 3: match and multi_match",
-              "href": "/elasticsearch/queries-structure#level-3-match-and-multi-match",
+              "href": "/projects/elasticsearch/queries-structure#level-3-match-and-multi-match",
               "keywords": [
                 "query",
                 "operator",
@@ -453,7 +453,7 @@
             },
             {
               "title": "level 3: the term-level clauses",
-              "href": "/elasticsearch/queries-structure#level-3-the-term-level-clauses",
+              "href": "/projects/elasticsearch/queries-structure#level-3-the-term-level-clauses",
               "keywords": [
                 "value",
                 "terms",
@@ -469,11 +469,11 @@
         },
         {
           "name": "Beyond query",
-          "href": "/elasticsearch/queries-structure#level-1-again-the-shape-of-aggs-and-suggest",
+          "href": "/projects/elasticsearch/queries-structure#level-1-again-the-shape-of-aggs-and-suggest",
           "titles": [
             {
               "title": "level 1 again: the shape of aggs and suggest",
-              "href": "/elasticsearch/queries-structure#level-1-again-the-shape-of-aggs-and-suggest",
+              "href": "/projects/elasticsearch/queries-structure#level-1-again-the-shape-of-aggs-and-suggest",
               "keywords": [
                 "terms",
                 "avg",
@@ -493,16 +493,16 @@
       "slug": "settings-structure",
       "name": "Settings Structure",
       "chapter": "Structure",
-      "href": "/elasticsearch/settings-structure",
+      "href": "/projects/elasticsearch/settings-structure",
       "planned": false,
       "parts": [
         {
           "name": "The Two Halves",
-          "href": "/elasticsearch/settings-structure#the-two-halves-of-an-index",
+          "href": "/projects/elasticsearch/settings-structure#the-two-halves-of-an-index",
           "titles": [
             {
               "title": "the two halves of an index",
-              "href": "/elasticsearch/settings-structure#the-two-halves-of-an-index",
+              "href": "/projects/elasticsearch/settings-structure#the-two-halves-of-an-index",
               "keywords": [
                 "One test decides where anything belongs.",
                 "mappings",
@@ -518,11 +518,11 @@
         },
         {
           "name": "The Flat Knobs",
-          "href": "/elasticsearch/settings-structure#flat-knob-number-of-shards",
+          "href": "/projects/elasticsearch/settings-structure#flat-knob-number-of-shards",
           "titles": [
             {
               "title": "flat knob: number_of_shards",
-              "href": "/elasticsearch/settings-structure#flat-knob-number-of-shards",
+              "href": "/projects/elasticsearch/settings-structure#flat-knob-number-of-shards",
               "keywords": [
                 "index_name",
                 "Shards exist for two reasons.",
@@ -534,7 +534,7 @@
             },
             {
               "title": "flat knob: number_of_replicas",
-              "href": "/elasticsearch/settings-structure#flat-knob-number-of-replicas",
+              "href": "/projects/elasticsearch/settings-structure#flat-knob-number-of-replicas",
               "keywords": [
                 "A replica is a full copy of a shard.",
                 "number_of_replicas: 1",
@@ -546,7 +546,7 @@
             },
             {
               "title": "flat knobs: refresh_interval and max_result_window",
-              "href": "/elasticsearch/settings-structure#flat-knobs-refresh-interval-and-max-result-window",
+              "href": "/projects/elasticsearch/settings-structure#flat-knobs-refresh-interval-and-max-result-window",
               "keywords": [
                 "1s",
                 "-1",
@@ -562,11 +562,11 @@
         },
         {
           "name": "What Can Change",
-          "href": "/elasticsearch/settings-structure#static-vs-dynamic",
+          "href": "/projects/elasticsearch/settings-structure#static-vs-dynamic",
           "titles": [
             {
               "title": "static vs dynamic",
-              "href": "/elasticsearch/settings-structure#static-vs-dynamic",
+              "href": "/projects/elasticsearch/settings-structure#static-vs-dynamic",
               "keywords": [
                 "_settings",
                 "settings",
@@ -579,7 +579,7 @@
             },
             {
               "title": "the close/open exception",
-              "href": "/elasticsearch/settings-structure#the-close-open-exception",
+              "href": "/projects/elasticsearch/settings-structure#the-close-open-exception",
               "keywords": [
                 "The sequence is three requests.",
                 "movie_synonyms",
@@ -591,11 +591,11 @@
         },
         {
           "name": "The Analysis Box",
-          "href": "/elasticsearch/settings-structure#the-analysis-box-the-shelf-system",
+          "href": "/projects/elasticsearch/settings-structure#the-analysis-box-the-shelf-system",
           "titles": [
             {
               "title": "the analysis box: the shelf system",
-              "href": "/elasticsearch/settings-structure#the-analysis-box-the-shelf-system",
+              "href": "/projects/elasticsearch/settings-structure#the-analysis-box-the-shelf-system",
               "keywords": [
                 "settings",
                 "type",
@@ -609,7 +609,7 @@
             },
             {
               "title": "shelf: char_filter",
-              "href": "/elasticsearch/settings-structure#shelf-char-filter",
+              "href": "/projects/elasticsearch/settings-structure#shelf-char-filter",
               "keywords": [
                 "mapping",
                 "mappings",
@@ -623,7 +623,7 @@
             },
             {
               "title": "shelf: tokenizer",
-              "href": "/elasticsearch/settings-structure#shelf-tokenizer",
+              "href": "/projects/elasticsearch/settings-structure#shelf-tokenizer",
               "keywords": [
                 "This shelf is almost never used.",
                 "standard",
@@ -633,7 +633,7 @@
             },
             {
               "title": "shelf: filter",
-              "href": "/elasticsearch/settings-structure#shelf-filter",
+              "href": "/projects/elasticsearch/settings-structure#shelf-filter",
               "keywords": [
                 "movie_synonyms",
                 "synonym_graph",
@@ -647,7 +647,7 @@
             },
             {
               "title": "shelf: analyzer",
-              "href": "/elasticsearch/settings-structure#shelf-analyzer",
+              "href": "/projects/elasticsearch/settings-structure#shelf-analyzer",
               "keywords": [
                 "char_filter",
                 "tokenizer",
@@ -663,11 +663,11 @@
         },
         {
           "name": "In Practice",
-          "href": "/elasticsearch/settings-structure#reading-changing-in-practice",
+          "href": "/projects/elasticsearch/settings-structure#reading-changing-in-practice",
           "titles": [
             {
               "title": "reading & changing in practice",
-              "href": "/elasticsearch/settings-structure#reading-changing-in-practice",
+              "href": "/projects/elasticsearch/settings-structure#reading-changing-in-practice",
               "keywords": [
                 "Read the settings on their own.",
                 "GET /index_name",
@@ -687,16 +687,16 @@
       "slug": "search-queries",
       "name": "Search Queries",
       "chapter": "Searching",
-      "href": "/elasticsearch/search-queries",
+      "href": "/projects/elasticsearch/search-queries",
       "planned": false,
       "parts": [
         {
           "name": "Full-Text Queries",
-          "href": "/elasticsearch/search-queries#match-the-full-text-workhorse",
+          "href": "/projects/elasticsearch/search-queries#match-the-full-text-workhorse",
           "titles": [
             {
               "title": "match: the full-text workhorse",
-              "href": "/elasticsearch/search-queries#match-the-full-text-workhorse",
+              "href": "/projects/elasticsearch/search-queries#match-the-full-text-workhorse",
               "keywords": [
                 "title",
                 "english",
@@ -710,7 +710,7 @@
             },
             {
               "title": "multi_match: searching several fields",
-              "href": "/elasticsearch/search-queries#multi-match-searching-several-fields",
+              "href": "/projects/elasticsearch/search-queries#multi-match-searching-several-fields",
               "keywords": [
                 "bool.should",
                 "The same search with multi_match:",
@@ -724,7 +724,7 @@
             },
             {
               "title": "merging field scores: type",
-              "href": "/elasticsearch/search-queries#merging-field-scores-type",
+              "href": "/projects/elasticsearch/search-queries#merging-field-scores-type",
               "keywords": [
                 "best_fields",
                 "most_fields",
@@ -738,7 +738,7 @@
             },
             {
               "title": "fuzziness: surviving typos",
-              "href": "/elasticsearch/search-queries#fuzziness-surviving-typos",
+              "href": "/projects/elasticsearch/search-queries#fuzziness-surviving-typos",
               "keywords": [
                 "knihgt",
                 "multi_match",
@@ -754,11 +754,11 @@
         },
         {
           "name": "Term-Level Queries",
-          "href": "/elasticsearch/search-queries#term-terms-exact-lookup",
+          "href": "/projects/elasticsearch/search-queries#term-terms-exact-lookup",
           "titles": [
             {
               "title": "term & terms: exact lookup",
-              "href": "/elasticsearch/search-queries#term-terms-exact-lookup",
+              "href": "/projects/elasticsearch/search-queries#term-terms-exact-lookup",
               "keywords": [
                 "match",
                 "original_language",
@@ -772,7 +772,7 @@
             },
             {
               "title": "range: numbers and dates",
-              "href": "/elasticsearch/search-queries#range-numbers-and-dates",
+              "href": "/projects/elasticsearch/search-queries#range-numbers-and-dates",
               "keywords": [
                 "gte",
                 "gt",
@@ -786,7 +786,7 @@
             },
             {
               "title": "exists: presence, not value",
-              "href": "/elasticsearch/search-queries#exists-presence-not-value",
+              "href": "/projects/elasticsearch/search-queries#exists-presence-not-value",
               "keywords": [
                 "missing",
                 "bool.must_not",
@@ -800,11 +800,11 @@
         },
         {
           "name": "Combining",
-          "href": "/elasticsearch/search-queries#bool-composing-a-real-query",
+          "href": "/projects/elasticsearch/search-queries#bool-composing-a-real-query",
           "titles": [
             {
               "title": "bool: composing a real query",
-              "href": "/elasticsearch/search-queries#bool-composing-a-real-query",
+              "href": "/projects/elasticsearch/search-queries#bool-composing-a-real-query",
               "keywords": [
                 "must",
                 "filter",
@@ -818,7 +818,7 @@
             },
             {
               "title": "query context vs filter context",
-              "href": "/elasticsearch/search-queries#query-context-vs-filter-context",
+              "href": "/projects/elasticsearch/search-queries#query-context-vs-filter-context",
               "keywords": [
                 "must",
                 "_score",
@@ -834,11 +834,11 @@
         },
         {
           "name": "Paging & Ordering",
-          "href": "/elasticsearch/search-queries#pagination-from-size-and-the-10k-wall",
+          "href": "/projects/elasticsearch/search-queries#pagination-from-size-and-the-10k-wall",
           "titles": [
             {
               "title": "pagination: from/size and the 10k wall",
-              "href": "/elasticsearch/search-queries#pagination-from-size-and-the-10k-wall",
+              "href": "/projects/elasticsearch/search-queries#pagination-from-size-and-the-10k-wall",
               "keywords": [
                 "from + size > 10000",
                 "400",
@@ -850,7 +850,7 @@
             },
             {
               "title": "search_after: cursor pagination",
-              "href": "/elasticsearch/search-queries#search-after-cursor-pagination",
+              "href": "/projects/elasticsearch/search-queries#search-after-cursor-pagination",
               "keywords": [
                 "Offset — collect and discard:",
                 "sort",
@@ -864,7 +864,7 @@
             },
             {
               "title": "sorting",
-              "href": "/elasticsearch/search-queries#sorting",
+              "href": "/projects/elasticsearch/search-queries#sorting",
               "keywords": [
                 "ORDER BY",
                 "The silent replacement.",
@@ -879,11 +879,11 @@
         },
         {
           "name": "Relevance",
-          "href": "/elasticsearch/search-queries#what-score-is-bm25",
+          "href": "/projects/elasticsearch/search-queries#what-score-is-bm25",
           "titles": [
             {
               "title": "what _score is: BM25",
-              "href": "/elasticsearch/search-queries#what-score-is-bm25",
+              "href": "/projects/elasticsearch/search-queries#what-score-is-bm25",
               "keywords": [
                 "^3",
                 "_explain is the debugger of search.",
@@ -897,7 +897,7 @@
             },
             {
               "title": "highlighting",
-              "href": "/elasticsearch/search-queries#highlighting",
+              "href": "/projects/elasticsearch/search-queries#highlighting",
               "keywords": [
                 "query",
                 "multi_match",
@@ -911,7 +911,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/search-queries#say-it-right-english",
+              "href": "/projects/elasticsearch/search-queries#say-it-right-english",
               "keywords": [
                 "fuzziness: AUTO",
                 "Levenshtein edit distance",
@@ -931,16 +931,16 @@
       "slug": "aggregations",
       "name": "Aggregations",
       "chapter": "Searching",
-      "href": "/elasticsearch/aggregations",
+      "href": "/projects/elasticsearch/aggregations",
       "planned": false,
       "parts": [
         {
           "name": "The Idea",
-          "href": "/elasticsearch/aggregations#what-aggregations-are",
+          "href": "/projects/elasticsearch/aggregations#what-aggregations-are",
           "titles": [
             {
               "title": "what aggregations are",
-              "href": "/elasticsearch/aggregations#what-aggregations-are",
+              "href": "/projects/elasticsearch/aggregations#what-aggregations-are",
               "keywords": [
                 "GROUP BY",
                 "Action (1,204) · Drama (987)",
@@ -956,11 +956,11 @@
         },
         {
           "name": "The Two Families",
-          "href": "/elasticsearch/aggregations#terms-the-facet-agg",
+          "href": "/projects/elasticsearch/aggregations#terms-the-facet-agg",
           "titles": [
             {
               "title": "terms: the facet agg",
-              "href": "/elasticsearch/aggregations#terms-the-facet-agg",
+              "href": "/projects/elasticsearch/aggregations#terms-the-facet-agg",
               "keywords": [
                 "That buckets array is the facet UI.",
                 "key",
@@ -974,7 +974,7 @@
             },
             {
               "title": "metrics: compute a number",
-              "href": "/elasticsearch/aggregations#metrics-compute-a-number",
+              "href": "/projects/elasticsearch/aggregations#metrics-compute-a-number",
               "keywords": [
                 "avg",
                 "terms",
@@ -988,7 +988,7 @@
             },
             {
               "title": "intervals: histogram and range",
-              "href": "/elasticsearch/aggregations#intervals-histogram-and-range",
+              "href": "/projects/elasticsearch/aggregations#intervals-histogram-and-range",
               "keywords": [
                 "terms",
                 "key: 6.0",
@@ -1004,11 +1004,11 @@
         },
         {
           "name": "Composing",
-          "href": "/elasticsearch/aggregations#sub-aggregations-a-metric-per-bucket",
+          "href": "/projects/elasticsearch/aggregations#sub-aggregations-a-metric-per-bucket",
           "titles": [
             {
               "title": "sub-aggregations: a metric per bucket",
-              "href": "/elasticsearch/aggregations#sub-aggregations-a-metric-per-bucket",
+              "href": "/projects/elasticsearch/aggregations#sub-aggregations-a-metric-per-bucket",
               "keywords": [
                 "terms",
                 "avg",
@@ -1022,7 +1022,7 @@
             },
             {
               "title": "aggregating nested fields",
-              "href": "/elasticsearch/aggregations#aggregating-nested-fields",
+              "href": "/projects/elasticsearch/aggregations#aggregating-nested-fields",
               "keywords": [
                 "terms",
                 "genres.name",
@@ -1038,11 +1038,11 @@
         },
         {
           "name": "In the App",
-          "href": "/elasticsearch/aggregations#faceted-search-one-request",
+          "href": "/projects/elasticsearch/aggregations#faceted-search-one-request",
           "titles": [
             {
               "title": "faceted search: one request",
-              "href": "/elasticsearch/aggregations#faceted-search-one-request",
+              "href": "/projects/elasticsearch/aggregations#faceted-search-one-request",
               "keywords": [
                 "query",
                 "aggs",
@@ -1056,7 +1056,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/aggregations#say-it-right-english",
+              "href": "/projects/elasticsearch/aggregations#say-it-right-english",
               "keywords": [
                 "aggs block next to the query",
                 "over the matching set",
@@ -1076,16 +1076,16 @@
       "slug": "search-ux",
       "name": "Search UX",
       "chapter": "Searching",
-      "href": "/elasticsearch/search-ux",
+      "href": "/projects/elasticsearch/search-ux",
       "planned": false,
       "parts": [
         {
           "name": "Autocomplete",
-          "href": "/elasticsearch/search-ux#autocomplete-why-match-isn-t-enough",
+          "href": "/projects/elasticsearch/search-ux#autocomplete-why-match-isn-t-enough",
           "titles": [
             {
               "title": "autocomplete: why match isn't enough",
-              "href": "/elasticsearch/search-ux#autocomplete-why-match-isn-t-enough",
+              "href": "/projects/elasticsearch/search-ux#autocomplete-why-match-isn-t-enough",
               "keywords": [
                 "dar",
                 "kni",
@@ -1096,7 +1096,7 @@
             },
             {
               "title": "search_as_you_type",
-              "href": "/elasticsearch/search-ux#search-as-you-type",
+              "href": "/projects/elasticsearch/search-ux#search-as-you-type",
               "keywords": [
                 "_2gram",
                 "_3gram",
@@ -1112,11 +1112,11 @@
         },
         {
           "name": "Did You Mean",
-          "href": "/elasticsearch/search-ux#suggesters-did-you-mean",
+          "href": "/projects/elasticsearch/search-ux#suggesters-did-you-mean",
           "titles": [
             {
               "title": "suggesters: did you mean",
-              "href": "/elasticsearch/search-ux#suggesters-did-you-mean",
+              "href": "/projects/elasticsearch/search-ux#suggesters-did-you-mean",
               "keywords": [
                 "drak knight",
                 "suggest",
@@ -1132,11 +1132,11 @@
         },
         {
           "name": "Synonyms",
-          "href": "/elasticsearch/search-ux#synonyms-the-problem",
+          "href": "/projects/elasticsearch/search-ux#synonyms-the-problem",
           "titles": [
             {
               "title": "synonyms: the problem",
-              "href": "/elasticsearch/search-ux#synonyms-the-problem",
+              "href": "/projects/elasticsearch/search-ux#synonyms-the-problem",
               "keywords": [
                 "movie",
                 "film"
@@ -1144,7 +1144,7 @@
             },
             {
               "title": "the two syntaxes",
-              "href": "/elasticsearch/search-ux#the-two-syntaxes",
+              "href": "/projects/elasticsearch/search-ux#the-two-syntaxes",
               "keywords": [
                 "\"sci-fi => science fiction\""
               ]
@@ -1153,11 +1153,11 @@
         },
         {
           "name": "Wiring It Up",
-          "href": "/elasticsearch/search-ux#where-the-list-lives-settings",
+          "href": "/projects/elasticsearch/search-ux#where-the-list-lives-settings",
           "titles": [
             {
               "title": "where the list lives: settings",
-              "href": "/elasticsearch/search-ux#where-the-list-lives-settings",
+              "href": "/projects/elasticsearch/search-ux#where-the-list-lives-settings",
               "keywords": [
                 "settings.analysis",
                 "filter",
@@ -1171,7 +1171,7 @@
             },
             {
               "title": "connection 1: filter into an analyzer",
-              "href": "/elasticsearch/search-ux#connection-1-filter-into-an-analyzer",
+              "href": "/projects/elasticsearch/search-ux#connection-1-filter-into-an-analyzer",
               "keywords": [
                 "lowercase",
                 "Movie",
@@ -1182,7 +1182,7 @@
             },
             {
               "title": "connection 2: field points at the analyzer",
-              "href": "/elasticsearch/search-ux#connection-2-field-points-at-the-analyzer",
+              "href": "/projects/elasticsearch/search-ux#connection-2-field-points-at-the-analyzer",
               "keywords": [
                 "analyzer: \"english\"",
                 "search_analyzer",
@@ -1191,7 +1191,7 @@
             },
             {
               "title": "why search_analyzer",
-              "href": "/elasticsearch/search-ux#why-search-analyzer",
+              "href": "/projects/elasticsearch/search-ux#why-search-analyzer",
               "keywords": [
                 "Synonyms in the index analyzer:",
                 "updateable",
@@ -1201,7 +1201,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/search-ux#say-it-right-english",
+              "href": "/projects/elasticsearch/search-ux#say-it-right-english",
               "keywords": [
                 "search_as_you_type",
                 "prefixes become terms",
@@ -1221,16 +1221,16 @@
       "slug": "couchdb-sync",
       "name": "CouchDB Sync",
       "chapter": "Making It Work in an App",
-      "href": "/elasticsearch/couchdb-sync",
+      "href": "/projects/elasticsearch/couchdb-sync",
       "planned": false,
       "parts": [
         {
           "name": "Why a Separate Process",
-          "href": "/elasticsearch/couchdb-sync#the-problem-keeping-two-stores-in-sync",
+          "href": "/projects/elasticsearch/couchdb-sync#the-problem-keeping-two-stores-in-sync",
           "titles": [
             {
               "title": "the problem: keeping two stores in sync",
-              "href": "/elasticsearch/couchdb-sync#the-problem-keeping-two-stores-in-sync",
+              "href": "/projects/elasticsearch/couchdb-sync#the-problem-keeping-two-stores-in-sync",
               "keywords": [
                 "The failure mode is the second write."
               ]
@@ -1239,11 +1239,11 @@
         },
         {
           "name": "The Feed",
-          "href": "/elasticsearch/couchdb-sync#the-changes-feed",
+          "href": "/projects/elasticsearch/couchdb-sync#the-changes-feed",
           "titles": [
             {
               "title": "the _changes feed",
-              "href": "/elasticsearch/couchdb-sync#the-changes-feed",
+              "href": "/projects/elasticsearch/couchdb-sync#the-changes-feed",
               "keywords": [
                 "last_seq",
                 "deleted: true",
@@ -1259,11 +1259,11 @@
         },
         {
           "name": "The Sync",
-          "href": "/elasticsearch/couchdb-sync#building-the-sync-loop",
+          "href": "/projects/elasticsearch/couchdb-sync#building-the-sync-loop",
           "titles": [
             {
               "title": "building the sync loop",
-              "href": "/elasticsearch/couchdb-sync#building-the-sync-loop",
+              "href": "/projects/elasticsearch/couchdb-sync#building-the-sync-loop",
               "keywords": [
                 "since",
                 "include_docs",
@@ -1277,7 +1277,7 @@
             },
             {
               "title": "handling each change: three decisions",
-              "href": "/elasticsearch/couchdb-sync#handling-each-change-three-decisions",
+              "href": "/projects/elasticsearch/couchdb-sync#handling-each-change-three-decisions",
               "keywords": [
                 "processChange",
                 "_id",
@@ -1293,11 +1293,11 @@
         },
         {
           "name": "The Production Gaps",
-          "href": "/elasticsearch/couchdb-sync#production-gap-1-persist-the-position",
+          "href": "/projects/elasticsearch/couchdb-sync#production-gap-1-persist-the-position",
           "titles": [
             {
               "title": "production gap 1: persist the position",
-              "href": "/elasticsearch/couchdb-sync#production-gap-1-persist-the-position",
+              "href": "/projects/elasticsearch/couchdb-sync#production-gap-1-persist-the-position",
               "keywords": [
                 "The fix is to write the position down.",
                 "last_seq",
@@ -1309,7 +1309,7 @@
             },
             {
               "title": "production gap 2: retries and poison documents",
-              "href": "/elasticsearch/couchdb-sync#production-gap-2-retries-and-poison-documents",
+              "href": "/projects/elasticsearch/couchdb-sync#production-gap-2-retries-and-poison-documents",
               "keywords": [
                 "esClient.index",
                 "processChange",
@@ -1322,7 +1322,7 @@
             },
             {
               "title": "production gap 3: catch precisely",
-              "href": "/elasticsearch/couchdb-sync#production-gap-3-catch-precisely",
+              "href": "/projects/elasticsearch/couchdb-sync#production-gap-3-catch-precisely",
               "keywords": [
                 "The blanket catch",
                 "The precise catch",
@@ -1337,11 +1337,11 @@
         },
         {
           "name": "Rebuilding",
-          "href": "/elasticsearch/couchdb-sync#zero-downtime-rebuild",
+          "href": "/projects/elasticsearch/couchdb-sync#zero-downtime-rebuild",
           "titles": [
             {
               "title": "zero-downtime rebuild",
-              "href": "/elasticsearch/couchdb-sync#zero-downtime-rebuild",
+              "href": "/projects/elasticsearch/couchdb-sync#zero-downtime-rebuild",
               "keywords": [
                 "movies_v1",
                 "movies",
@@ -1352,7 +1352,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/couchdb-sync#say-it-right-english",
+              "href": "/projects/elasticsearch/couchdb-sync#say-it-right-english",
               "keywords": [
                 "Dual writes",
                 "atomic",
@@ -1372,16 +1372,16 @@
       "slug": "production",
       "name": "Production Essentials",
       "chapter": "Making It Work in an App",
-      "href": "/elasticsearch/production",
+      "href": "/projects/elasticsearch/production",
       "planned": false,
       "parts": [
         {
           "name": "Sizing & Survival",
-          "href": "/elasticsearch/production#shard-sizing-the-two-failure-directions",
+          "href": "/projects/elasticsearch/production#shard-sizing-the-two-failure-directions",
           "titles": [
             {
               "title": "shard sizing: the two failure directions",
-              "href": "/elasticsearch/production#shard-sizing-the-two-failure-directions",
+              "href": "/projects/elasticsearch/production#shard-sizing-the-two-failure-directions",
               "keywords": [
                 "The decision has three inputs, in order.",
                 "_source",
@@ -1390,7 +1390,7 @@
             },
             {
               "title": "nodes: what one is, how it dies",
-              "href": "/elasticsearch/production#nodes-what-one-is-how-it-dies",
+              "href": "/projects/elasticsearch/production#nodes-what-one-is-how-it-dies",
               "keywords": [
                 "allocation/explain",
                 "docker-compose"
@@ -1398,7 +1398,7 @@
             },
             {
               "title": "replicas: surviving node loss",
-              "href": "/elasticsearch/production#replicas-surviving-node-loss",
+              "href": "/projects/elasticsearch/production#replicas-surviving-node-loss",
               "keywords": [
                 "With a replica",
                 "Without a replica",
@@ -1410,11 +1410,11 @@
         },
         {
           "name": "Diagnosis",
-          "href": "/elasticsearch/production#cluster-health-the-colors-and-the-why",
+          "href": "/projects/elasticsearch/production#cluster-health-the-colors-and-the-why",
           "titles": [
             {
               "title": "cluster health: the colors and the why",
-              "href": "/elasticsearch/production#cluster-health-the-colors-and-the-why",
+              "href": "/projects/elasticsearch/production#cluster-health-the-colors-and-the-why",
               "keywords": [
                 "?pretty",
                 "These two calls are a pair.",
@@ -1426,7 +1426,7 @@
             },
             {
               "title": "finding slow queries: the slowlog",
-              "href": "/elasticsearch/production#finding-slow-queries-the-slowlog",
+              "href": "/projects/elasticsearch/production#finding-slow-queries-the-slowlog",
               "keywords": [
                 "_settings",
                 "warn",
@@ -1440,7 +1440,7 @@
             },
             {
               "title": "profile: from total to guilty clause",
-              "href": "/elasticsearch/production#profile-from-total-to-guilty-clause",
+              "href": "/projects/elasticsearch/production#profile-from-total-to-guilty-clause",
               "keywords": [
                 "bool",
                 "shards",
@@ -1456,11 +1456,11 @@
         },
         {
           "name": "The Checklist",
-          "href": "/elasticsearch/production#the-mistakes-checklist",
+          "href": "/projects/elasticsearch/production#the-mistakes-checklist",
           "titles": [
             {
               "title": "the mistakes checklist",
-              "href": "/elasticsearch/production#the-mistakes-checklist",
+              "href": "/projects/elasticsearch/production#the-mistakes-checklist",
               "keywords": [
                 "Mapping-time — the expensive group.",
                 "Query-time — the silent group.",
@@ -1471,7 +1471,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/elasticsearch/production#say-it-right-english",
+              "href": "/projects/elasticsearch/production#say-it-right-english",
               "keywords": [
                 "primaries",
                 "replicas",

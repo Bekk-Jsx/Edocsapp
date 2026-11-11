@@ -3,23 +3,23 @@
   "project": {
     "slug": "typescript",
     "name": "TypeScript",
-    "href": "/typescript"
+    "href": "/projects/typescript"
   },
   "pages": [
     {
       "slug": "first-types",
       "name": "First Types",
       "chapter": "Foundations",
-      "href": "/typescript/first-types",
+      "href": "/projects/typescript/first-types",
       "planned": false,
       "parts": [
         {
           "name": "Annotations & Inference",
-          "href": "/typescript/first-types#the-annotation",
+          "href": "/projects/typescript/first-types#the-annotation",
           "titles": [
             {
               "title": "the annotation",
-              "href": "/typescript/first-types#the-annotation",
+              "href": "/projects/typescript/first-types#the-annotation",
               "keywords": [
                 "type syntax",
                 "Read that as a sentence.",
@@ -32,7 +32,7 @@
             },
             {
               "title": "inference",
-              "href": "/typescript/first-types#inference",
+              "href": "/projects/typescript/first-types#inference",
               "keywords": [
                 "You rarely write annotations.",
                 "n * 2",
@@ -46,7 +46,7 @@
             },
             {
               "title": "let, const, and widening",
-              "href": "/typescript/first-types#let-const-and-widening",
+              "href": "/projects/typescript/first-types#let-const-and-widening",
               "keywords": [
                 "const keeps the literal, let widens it.",
                 "string",
@@ -60,7 +60,7 @@
             },
             {
               "title": "any sneaking in",
-              "href": "/typescript/first-types#any-sneaking-in",
+              "href": "/projects/typescript/first-types#any-sneaking-in",
               "keywords": [
                 "without asking for it.",
                 "noImplicitAny",
@@ -76,11 +76,11 @@
         },
         {
           "name": "Primitives & Arrays",
-          "href": "/typescript/first-types#the-primitives",
+          "href": "/projects/typescript/first-types#the-primitives",
           "titles": [
             {
               "title": "the primitives",
-              "href": "/typescript/first-types#the-primitives",
+              "href": "/projects/typescript/first-types#the-primitives",
               "keywords": [
                 "number is one type.",
                 "NaN",
@@ -94,7 +94,7 @@
             },
             {
               "title": "arrays",
-              "href": "/typescript/first-types#arrays",
+              "href": "/projects/typescript/first-types#arrays",
               "keywords": [
                 "string[]",
                 "[]",
@@ -110,11 +110,11 @@
         },
         {
           "name": "Literal Types",
-          "href": "/typescript/first-types#a-type-with-one-value",
+          "href": "/projects/typescript/first-types#a-type-with-one-value",
           "titles": [
             {
               "title": "a type with one value",
-              "href": "/typescript/first-types#a-type-with-one-value",
+              "href": "/projects/typescript/first-types#a-type-with-one-value",
               "keywords": [
                 "\"dark\"",
                 "The actual use is the literal union.",
@@ -126,7 +126,7 @@
             },
             {
               "title": "literal unions vs enum",
-              "href": "/typescript/first-types#literal-unions-vs-enum",
+              "href": "/projects/typescript/first-types#literal-unions-vs-enum",
               "keywords": [
                 "setTheme(\"blue\")",
                 "What an enum actually is",
@@ -142,11 +142,11 @@
         },
         {
           "name": "any, unknown, never",
-          "href": "/typescript/first-types#any-turns-the-checker-off",
+          "href": "/projects/typescript/first-types#any-turns-the-checker-off",
           "titles": [
             {
               "title": "any turns the checker off",
-              "href": "/typescript/first-types#any-turns-the-checker-off",
+              "href": "/projects/typescript/first-types#any-turns-the-checker-off",
               "keywords": [
                 "It spreads.",
                 "data",
@@ -156,7 +156,7 @@
             },
             {
               "title": "unknown, the safe any",
-              "href": "/typescript/first-types#unknown-the-safe-any",
+              "href": "/projects/typescript/first-types#unknown-the-safe-any",
               "keywords": [
                 "string",
                 "narrowing",
@@ -170,7 +170,7 @@
             },
             {
               "title": "where any hides",
-              "href": "/typescript/first-types#where-any-hides",
+              "href": "/projects/typescript/first-types#where-any-hides",
               "keywords": [
                 "noImplicitAny",
                 "An annotation checks nothing here.",
@@ -184,7 +184,7 @@
             },
             {
               "title": "never",
-              "href": "/typescript/first-types#never",
+              "href": "/projects/typescript/first-types#never",
               "keywords": [
                 "never is the type with no values at all.",
                 "void",
@@ -200,11 +200,11 @@
         },
         {
           "name": "Types & Values",
-          "href": "/typescript/first-types#two-separate-worlds",
+          "href": "/projects/typescript/first-types#two-separate-worlds",
           "titles": [
             {
               "title": "two separate worlds",
-              "href": "/typescript/first-types#two-separate-worlds",
+              "href": "/projects/typescript/first-types#two-separate-worlds",
               "keywords": [
                 "type",
                 "interface",
@@ -224,16 +224,16 @@
       "slug": "objects-and-aliases",
       "name": "Objects & Aliases",
       "chapter": "Foundations",
-      "href": "/typescript/objects-and-aliases",
+      "href": "/projects/typescript/objects-and-aliases",
       "planned": false,
       "parts": [
         {
           "name": "Object Types",
-          "href": "/typescript/objects-and-aliases#describing-an-object",
+          "href": "/projects/typescript/objects-and-aliases#describing-an-object",
           "titles": [
             {
               "title": "describing an object",
-              "href": "/typescript/objects-and-aliases#describing-an-object",
+              "href": "/projects/typescript/objects-and-aliases#describing-an-object",
               "keywords": [
                 "give the shape a name with a type alias",
                 "type",
@@ -245,7 +245,7 @@
             },
             {
               "title": "optional and readonly",
-              "href": "/typescript/objects-and-aliases#optional-and-readonly",
+              "href": "/projects/typescript/objects-and-aliases#optional-and-readonly",
               "keywords": [
                 "? means the property may be absent.",
                 "strictNullChecks",
@@ -258,7 +258,7 @@
             },
             {
               "title": "nesting and reuse",
-              "href": "/typescript/objects-and-aliases#nesting-and-reuse",
+              "href": "/projects/typescript/objects-and-aliases#nesting-and-reuse",
               "keywords": [
                 "Name the inner shape",
                 "Composing with &.",
@@ -274,11 +274,11 @@
         },
         {
           "name": "type vs interface",
-          "href": "/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
+          "href": "/projects/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
           "titles": [
             {
               "title": "two ways to write the same thing",
-              "href": "/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
+              "href": "/projects/typescript/objects-and-aliases#two-ways-to-write-the-same-thing",
               "keywords": [
                 "type alias",
                 "interface",
@@ -289,7 +289,7 @@
             },
             {
               "title": "the real differences",
-              "href": "/typescript/objects-and-aliases#the-real-differences",
+              "href": "/projects/typescript/objects-and-aliases#the-real-differences",
               "keywords": [
                 "type — any type at all",
                 "interface — object shapes only",
@@ -305,11 +305,11 @@
         },
         {
           "name": "Index Signatures",
-          "href": "/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
+          "href": "/projects/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
           "titles": [
             {
               "title": "when you don't know the keys",
-              "href": "/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
+              "href": "/projects/typescript/objects-and-aliases#when-you-don-t-know-the-keys",
               "keywords": [
                 "Read the bracket line as a sentence:",
                 "string",
@@ -323,7 +323,7 @@
             },
             {
               "title": "the index signature trap",
-              "href": "/typescript/objects-and-aliases#the-index-signature-trap",
+              "href": "/projects/typescript/objects-and-aliases#the-index-signature-trap",
               "keywords": [
                 "scores.nobody",
                 "The honest version.",
@@ -337,11 +337,11 @@
         },
         {
           "name": "Tuples",
-          "href": "/typescript/objects-and-aliases#fixed-length-fixed-positions",
+          "href": "/projects/typescript/objects-and-aliases#fixed-length-fixed-positions",
           "titles": [
             {
               "title": "fixed length, fixed positions",
-              "href": "/typescript/objects-and-aliases#fixed-length-fixed-positions",
+              "href": "/projects/typescript/objects-and-aliases#fixed-length-fixed-positions",
               "keywords": [
                 "tuple",
                 "You must annotate it.",
@@ -352,7 +352,7 @@
             },
             {
               "title": "when a tuple is the wrong choice",
-              "href": "/typescript/objects-and-aliases#when-a-tuple-is-the-wrong-choice",
+              "href": "/projects/typescript/objects-and-aliases#when-a-tuple-is-the-wrong-choice",
               "keywords": [
                 "position",
                 "names",
@@ -372,16 +372,16 @@
       "slug": "functions",
       "name": "Functions",
       "chapter": "Foundations",
-      "href": "/typescript/functions",
+      "href": "/projects/typescript/functions",
       "planned": false,
       "parts": [
         {
           "name": "Parameters & Returns",
-          "href": "/typescript/functions#typing-a-function",
+          "href": "/projects/typescript/functions#typing-a-function",
           "titles": [
             {
               "title": "typing a function",
-              "href": "/typescript/functions#typing-a-function",
+              "href": "/projects/typescript/functions#typing-a-function",
               "keywords": [
                 "There are two places to annotate:",
                 "Calls are checked both ways.",
@@ -395,7 +395,7 @@
             },
             {
               "title": "void vs undefined",
-              "href": "/typescript/functions#void-vs-undefined",
+              "href": "/projects/typescript/functions#void-vs-undefined",
               "keywords": [
                 "Why void is so loose.",
                 "forEach",
@@ -408,11 +408,11 @@
         },
         {
           "name": "Flexible Parameters",
-          "href": "/typescript/functions#optional-parameters",
+          "href": "/projects/typescript/functions#optional-parameters",
           "titles": [
             {
               "title": "optional parameters",
-              "href": "/typescript/functions#optional-parameters",
+              "href": "/projects/typescript/functions#optional-parameters",
               "keywords": [
                 "Optional parameters must come last.",
                 "| undefined",
@@ -422,7 +422,7 @@
             },
             {
               "title": "default parameters",
-              "href": "/typescript/functions#default-parameters",
+              "href": "/projects/typescript/functions#default-parameters",
               "keywords": [
                 "The default replaces the annotation.",
                 "title",
@@ -436,7 +436,7 @@
             },
             {
               "title": "rest parameters",
-              "href": "/typescript/functions#rest-parameters",
+              "href": "/projects/typescript/functions#rest-parameters",
               "keywords": [
                 "numbers",
                 "number[]",
@@ -449,11 +449,11 @@
         },
         {
           "name": "Function Types & Overloads",
-          "href": "/typescript/functions#a-function-as-a-type",
+          "href": "/projects/typescript/functions#a-function-as-a-type",
           "titles": [
             {
               "title": "a function as a type",
-              "href": "/typescript/functions#a-function-as-a-type",
+              "href": "/projects/typescript/functions#a-function-as-a-type",
               "keywords": [
                 "(a, b) => a + b",
                 "Add",
@@ -467,7 +467,7 @@
             },
             {
               "title": "why callbacks accept fewer parameters",
-              "href": "/typescript/functions#why-callbacks-accept-fewer-parameters",
+              "href": "/projects/typescript/functions#why-callbacks-accept-fewer-parameters",
               "keywords": [
                 "Handler",
                 "extra",
@@ -479,7 +479,7 @@
             },
             {
               "title": "overloads",
-              "href": "/typescript/functions#overloads",
+              "href": "/projects/typescript/functions#overloads",
               "keywords": [
                 "The overload form.",
                 "overload signatures",
@@ -499,16 +499,16 @@
       "slug": "unions-and-narrowing",
       "name": "Unions & Narrowing",
       "chapter": "Foundations",
-      "href": "/typescript/unions-and-narrowing",
+      "href": "/projects/typescript/unions-and-narrowing",
       "planned": false,
       "parts": [
         {
           "name": "Union Types",
-          "href": "/typescript/unions-and-narrowing#what-a-union-is",
+          "href": "/projects/typescript/unions-and-narrowing#what-a-union-is",
           "titles": [
             {
               "title": "what a union is",
-              "href": "/typescript/unions-and-narrowing#what-a-union-is",
+              "href": "/projects/typescript/unions-and-narrowing#what-a-union-is",
               "keywords": [
                 "string | number",
                 "toUpperCase",
@@ -518,7 +518,7 @@
             },
             {
               "title": "where unions come from",
-              "href": "/typescript/unions-and-narrowing#where-unions-come-from",
+              "href": "/projects/typescript/unions-and-narrowing#where-unions-come-from",
               "keywords": [
                 "the standard library hands them to you.",
                 "find",
@@ -530,7 +530,7 @@
             },
             {
               "title": "combining unions",
-              "href": "/typescript/unions-and-narrowing#combining-unions",
+              "href": "/projects/typescript/unions-and-narrowing#combining-unions",
               "keywords": [
                 "A union of unions is one flat union.",
                 "string | number",
@@ -546,11 +546,11 @@
         },
         {
           "name": "Narrowing",
-          "href": "/typescript/unions-and-narrowing#narrowing-with-typeof",
+          "href": "/projects/typescript/unions-and-narrowing#narrowing-with-typeof",
           "titles": [
             {
               "title": "narrowing with typeof",
-              "href": "/typescript/unions-and-narrowing#narrowing-with-typeof",
+              "href": "/projects/typescript/unions-and-narrowing#narrowing-with-typeof",
               "keywords": [
                 "number",
                 "string",
@@ -564,7 +564,7 @@
             },
             {
               "title": "removing null and undefined",
-              "href": "/typescript/unions-and-narrowing#removing-null-and-undefined",
+              "href": "/projects/typescript/unions-and-narrowing#removing-null-and-undefined",
               "keywords": [
                 "T | null",
                 "T | undefined",
@@ -578,7 +578,7 @@
             },
             {
               "title": "narrowing objects",
-              "href": "/typescript/unions-and-narrowing#narrowing-objects",
+              "href": "/projects/typescript/unions-and-narrowing#narrowing-objects",
               "keywords": [
                 "typeof",
                 "\"object\"",
@@ -592,7 +592,7 @@
             },
             {
               "title": "when narrowing is lost",
-              "href": "/typescript/unions-and-narrowing#when-narrowing-is-lost",
+              "href": "/projects/typescript/unions-and-narrowing#when-narrowing-is-lost",
               "keywords": [
                 "Reassignment resets it.",
                 "user.email",
@@ -603,11 +603,11 @@
         },
         {
           "name": "Discriminated Unions",
-          "href": "/typescript/unions-and-narrowing#one-label-per-shape",
+          "href": "/projects/typescript/unions-and-narrowing#one-label-per-shape",
           "titles": [
             {
               "title": "one label per shape",
-              "href": "/typescript/unions-and-narrowing#one-label-per-shape",
+              "href": "/projects/typescript/unions-and-narrowing#one-label-per-shape",
               "keywords": [
                 "optional fields — anything goes",
                 "one labelled shape per state",
@@ -620,7 +620,7 @@
             },
             {
               "title": "narrowing on the discriminant",
-              "href": "/typescript/unions-and-narrowing#narrowing-on-the-discriminant",
+              "href": "/projects/typescript/unions-and-narrowing#narrowing-on-the-discriminant",
               "keywords": [
                 "\"error\"",
                 "error",
@@ -634,7 +634,7 @@
             },
             {
               "title": "designing the discriminant",
-              "href": "/typescript/unions-and-narrowing#designing-the-discriminant",
+              "href": "/projects/typescript/unions-and-narrowing#designing-the-discriminant",
               "keywords": [
                 "It must be a literal type, not string.",
                 "string",
@@ -650,11 +650,11 @@
         },
         {
           "name": "Type Guard Functions",
-          "href": "/typescript/unions-and-narrowing#value-is-t",
+          "href": "/projects/typescript/unions-and-narrowing#value-is-t",
           "titles": [
             {
               "title": "value is T",
-              "href": "/typescript/unions-and-narrowing#value-is-t",
+              "href": "/projects/typescript/unions-and-narrowing#value-is-t",
               "keywords": [
                 "typeof",
                 "boolean",
@@ -668,7 +668,7 @@
             },
             {
               "title": "a guard is a promise",
-              "href": "/typescript/unions-and-narrowing#a-guard-is-a-promise",
+              "href": "/projects/typescript/unions-and-narrowing#a-guard-is-a-promise",
               "keywords": [
                 "return true",
                 "as",
@@ -682,11 +682,11 @@
         },
         {
           "name": "Exhaustiveness",
-          "href": "/typescript/unions-and-narrowing#the-forgotten-case",
+          "href": "/projects/typescript/unions-and-narrowing#the-forgotten-case",
           "titles": [
             {
               "title": "the forgotten case",
-              "href": "/typescript/unions-and-narrowing#the-forgotten-case",
+              "href": "/projects/typescript/unions-and-narrowing#the-forgotten-case",
               "keywords": [
                 "The never check closes the gap.",
                 "switch",
@@ -697,7 +697,7 @@
             },
             {
               "title": "assertNever",
-              "href": "/typescript/unions-and-narrowing#assertnever",
+              "href": "/projects/typescript/unions-and-narrowing#assertnever",
               "keywords": [
                 "const unhandled: never = state",
                 "switch",
@@ -717,16 +717,16 @@
       "slug": "assignability",
       "name": "Assignability",
       "chapter": "Foundations",
-      "href": "/typescript/assignability",
+      "href": "/projects/typescript/assignability",
       "planned": false,
       "parts": [
         {
           "name": "Structural Typing",
-          "href": "/typescript/assignability#shape-not-name",
+          "href": "/projects/typescript/assignability#shape-not-name",
           "titles": [
             {
               "title": "shape, not name",
-              "href": "/typescript/assignability#shape-not-name",
+              "href": "/projects/typescript/assignability#shape-not-name",
               "keywords": [
                 "User",
                 "Pet",
@@ -740,7 +740,7 @@
             },
             {
               "title": "when names should matter",
-              "href": "/typescript/assignability#when-names-should-matter",
+              "href": "/projects/typescript/assignability#when-names-should-matter",
               "keywords": [
                 "The fix is a brand:",
                 "__brand",
@@ -756,11 +756,11 @@
         },
         {
           "name": "Assignable vs Identical",
-          "href": "/typescript/assignability#types-as-sets-of-values",
+          "href": "/projects/typescript/assignability#types-as-sets-of-values",
           "titles": [
             {
               "title": "types as sets of values",
-              "href": "/typescript/assignability#types-as-sets-of-values",
+              "href": "/projects/typescript/assignability#types-as-sets-of-values",
               "keywords": [
                 "Picture every type as a set of values.",
                 "string",
@@ -774,7 +774,7 @@
             },
             {
               "title": "assignable is not identical",
-              "href": "/typescript/assignability#assignable-is-not-identical",
+              "href": "/projects/typescript/assignability#assignable-is-not-identical",
               "keywords": [
                 "readonly",
                 "nums",
@@ -785,11 +785,11 @@
         },
         {
           "name": "The Excess Property Check",
-          "href": "/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
+          "href": "/projects/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
           "titles": [
             {
               "title": "fresh literals are checked for extra keys",
-              "href": "/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
+              "href": "/projects/typescript/assignability#fresh-literals-are-checked-for-extra-keys",
               "keywords": [
                 "through a variable — no extra check",
                 "written inline — extra keys rejected",
@@ -803,7 +803,7 @@
             },
             {
               "title": "allowing extra keys",
-              "href": "/typescript/assignability#allowing-extra-keys",
+              "href": "/projects/typescript/assignability#allowing-extra-keys",
               "keywords": [
                 "colour",
                 "The weak type rule",
@@ -813,7 +813,7 @@
             },
             {
               "title": "as overrides the check",
-              "href": "/typescript/assignability#as-overrides-the-check",
+              "href": "/projects/typescript/assignability#as-overrides-the-check",
               "keywords": [
                 "annotation — checked",
                 "as — trusted",
@@ -829,11 +829,11 @@
         },
         {
           "name": "Function Assignability",
-          "href": "/typescript/assignability#parameters-wider-returns-narrower",
+          "href": "/projects/typescript/assignability#parameters-wider-returns-narrower",
           "titles": [
             {
               "title": "parameters wider, returns narrower",
-              "href": "/typescript/assignability#parameters-wider-returns-narrower",
+              "href": "/projects/typescript/assignability#parameters-wider-returns-narrower",
               "keywords": [
                 "Why opposite directions:",
                 "onlyDark",
@@ -847,7 +847,7 @@
             },
             {
               "title": "the method loophole",
-              "href": "/typescript/assignability#the-method-loophole",
+              "href": "/projects/typescript/assignability#the-method-loophole",
               "keywords": [
                 "strictFunctionTypes",
                 "=>",
@@ -863,11 +863,11 @@
         },
         {
           "name": "Reading an Assignability Error",
-          "href": "/typescript/assignability#reading-a-nested-error",
+          "href": "/projects/typescript/assignability#reading-a-nested-error",
           "titles": [
             {
               "title": "reading a nested error",
-              "href": "/typescript/assignability#reading-a-nested-error",
+              "href": "/projects/typescript/assignability#reading-a-nested-error",
               "keywords": [
                 "address.zip",
                 "string",
@@ -876,7 +876,7 @@
             },
             {
               "title": "making errors land in the right place",
-              "href": "/typescript/assignability#making-errors-land-in-the-right-place",
+              "href": "/projects/typescript/assignability#making-errors-land-in-the-right-place",
               "keywords": [
                 "75001",
                 "RequestState",
@@ -894,16 +894,16 @@
       "slug": "classes",
       "name": "Classes",
       "chapter": "Foundations",
-      "href": "/typescript/classes",
+      "href": "/projects/typescript/classes",
       "planned": false,
       "parts": [
         {
           "name": "Fields & Constructors",
-          "href": "/typescript/classes#declaring-and-initialising-fields",
+          "href": "/projects/typescript/classes#declaring-and-initialising-fields",
           "titles": [
             {
               "title": "declaring and initialising fields",
-              "href": "/typescript/classes#declaring-and-initialising-fields",
+              "href": "/projects/typescript/classes#declaring-and-initialising-fields",
               "keywords": [
                 "strictPropertyInitialization",
                 "count: number",
@@ -914,7 +914,7 @@
             },
             {
               "title": "methods and this",
-              "href": "/typescript/classes#methods-and-this",
+              "href": "/projects/typescript/classes#methods-and-this",
               "keywords": [
                 "setTimeout(u.greet, 100)",
                 "addEventListener(\"click\", u.greet)",
@@ -930,11 +930,11 @@
         },
         {
           "name": "Access Modifiers",
-          "href": "/typescript/classes#public-private-protected",
+          "href": "/projects/typescript/classes#public-private-protected",
           "titles": [
             {
               "title": "public, private, protected",
-              "href": "/typescript/classes#public-private-protected",
+              "href": "/projects/typescript/classes#public-private-protected",
               "keywords": [
                 "Why bother:",
                 "balance",
@@ -946,7 +946,7 @@
             },
             {
               "title": "#private and readonly",
-              "href": "/typescript/classes#private-and-readonly",
+              "href": "/projects/typescript/classes#private-and-readonly",
               "keywords": [
                 "private or #?",
                 "readonly means assign once",
@@ -960,11 +960,11 @@
         },
         {
           "name": "Parameter Properties",
-          "href": "/typescript/classes#the-constructor-shortcut",
+          "href": "/projects/typescript/classes#the-constructor-shortcut",
           "titles": [
             {
               "title": "the constructor shortcut",
-              "href": "/typescript/classes#the-constructor-shortcut",
+              "href": "/projects/typescript/classes#the-constructor-shortcut",
               "keywords": [
                 "written out",
                 "parameter property",
@@ -976,7 +976,7 @@
             },
             {
               "title": "erasable syntax",
-              "href": "/typescript/classes#erasable-syntax",
+              "href": "/projects/typescript/classes#erasable-syntax",
               "keywords": [
                 "written.ts",
                 "shortcut.ts",
@@ -992,18 +992,18 @@
         },
         {
           "name": "implements & abstract",
-          "href": "/typescript/classes#implements",
+          "href": "/projects/typescript/classes#implements",
           "titles": [
             {
               "title": "implements",
-              "href": "/typescript/classes#implements",
+              "href": "/projects/typescript/classes#implements",
               "keywords": [
                 "Logger"
               ]
             },
             {
               "title": "abstract classes and override",
-              "href": "/typescript/classes#abstract-classes-and-override",
+              "href": "/projects/typescript/classes#abstract-classes-and-override",
               "keywords": [
                 "You cannot create one directly:",
                 "describe()",
@@ -1017,11 +1017,11 @@
         },
         {
           "name": "Classes as Types",
-          "href": "/typescript/classes#one-name-two-things",
+          "href": "/projects/typescript/classes#one-name-two-things",
           "titles": [
             {
               "title": "one name, two things",
-              "href": "/typescript/classes#one-name-two-things",
+              "href": "/projects/typescript/classes#one-name-two-things",
               "keywords": [
                 "class",
                 "class User",
@@ -1035,7 +1035,7 @@
             },
             {
               "title": "when to use a class",
-              "href": "/typescript/classes#when-to-use-a-class",
+              "href": "/projects/typescript/classes#when-to-use-a-class",
               "keywords": [
                 "type + function",
                 "User",
@@ -1055,16 +1055,16 @@
       "slug": "foundations-exercises",
       "name": "Exercises",
       "chapter": "Foundations",
-      "href": "/typescript/foundations-exercises",
+      "href": "/projects/typescript/foundations-exercises",
       "planned": false,
       "parts": [
         {
           "name": "First Types",
-          "href": "/typescript/foundations-exercises#exercise-1-inferred-types",
+          "href": "/projects/typescript/foundations-exercises#exercise-1-inferred-types",
           "titles": [
             {
               "title": "exercise 1 · inferred types",
-              "href": "/typescript/foundations-exercises#exercise-1-inferred-types",
+              "href": "/projects/typescript/foundations-exercises#exercise-1-inferred-types",
               "keywords": [
                 "a: …",
                 "b: …",
@@ -1076,7 +1076,7 @@
             },
             {
               "title": "exercise 2 · exhaustive sizes",
-              "href": "/typescript/foundations-exercises#exercise-2-exhaustive-sizes",
+              "href": "/projects/typescript/foundations-exercises#exercise-2-exhaustive-sizes",
               "keywords": [
                 "Size",
                 "\"sm\"",
@@ -1090,7 +1090,7 @@
             },
             {
               "title": "exercise 3 · labels from unknown",
-              "href": "/typescript/foundations-exercises#exercise-3-labels-from-unknown",
+              "href": "/projects/typescript/foundations-exercises#exercise-3-labels-from-unknown",
               "keywords": [
                 "function toLabel(value: unknown): string",
                 "3.14159",
@@ -1106,11 +1106,11 @@
         },
         {
           "name": "Objects & Aliases",
-          "href": "/typescript/foundations-exercises#exercise-4-product-fixes",
+          "href": "/projects/typescript/foundations-exercises#exercise-4-product-fixes",
           "titles": [
             {
               "title": "exercise 4 · product fixes",
-              "href": "/typescript/foundations-exercises#exercise-4-product-fixes",
+              "href": "/projects/typescript/foundations-exercises#exercise-4-product-fixes",
               "keywords": [
                 "dicount",
                 "discount",
@@ -1122,7 +1122,7 @@
             },
             {
               "title": "exercise 5 · stock limits",
-              "href": "/typescript/foundations-exercises#exercise-5-stock-limits",
+              "href": "/projects/typescript/foundations-exercises#exercise-5-stock-limits",
               "keywords": [
                 "Step 1.",
                 "type Category",
@@ -1138,11 +1138,11 @@
         },
         {
           "name": "Functions",
-          "href": "/typescript/foundations-exercises#exercise-6-three-signatures",
+          "href": "/projects/typescript/foundations-exercises#exercise-6-three-signatures",
           "titles": [
             {
               "title": "exercise 6 · three signatures",
-              "href": "/typescript/foundations-exercises#exercise-6-three-signatures",
+              "href": "/projects/typescript/foundations-exercises#exercise-6-three-signatures",
               "keywords": [
                 "middle",
                 "string | undefined",
@@ -1156,7 +1156,7 @@
             },
             {
               "title": "exercise 7 · validators",
-              "href": "/typescript/foundations-exercises#exercise-7-validators",
+              "href": "/projects/typescript/foundations-exercises#exercise-7-validators",
               "keywords": [
                 "Step 1.",
                 "type Validator",
@@ -1172,11 +1172,11 @@
         },
         {
           "name": "Unions & Narrowing",
-          "href": "/typescript/foundations-exercises#exercise-8-payment-methods",
+          "href": "/projects/typescript/foundations-exercises#exercise-8-payment-methods",
           "titles": [
             {
               "title": "exercise 8 · payment methods",
-              "href": "/typescript/foundations-exercises#exercise-8-payment-methods",
+              "href": "/projects/typescript/foundations-exercises#exercise-8-payment-methods",
               "keywords": [
                 "Step 1.",
                 "type Payment",
@@ -1190,7 +1190,7 @@
             },
             {
               "title": "exercise 9 · a user guard",
-              "href": "/typescript/foundations-exercises#exercise-9-a-user-guard",
+              "href": "/projects/typescript/foundations-exercises#exercise-9-a-user-guard",
               "keywords": [
                 "Step 1.",
                 "Step 2.",
@@ -1206,11 +1206,11 @@
         },
         {
           "name": "Assignability",
-          "href": "/typescript/foundations-exercises#exercise-10-what-fits",
+          "href": "/projects/typescript/foundations-exercises#exercise-10-what-fits",
           "titles": [
             {
               "title": "exercise 10 · what fits",
-              "href": "/typescript/foundations-exercises#exercise-10-what-fits",
+              "href": "/projects/typescript/foundations-exercises#exercise-10-what-fits",
               "keywords": [
                 "void",
                 "h()"
@@ -1220,11 +1220,11 @@
         },
         {
           "name": "Classes",
-          "href": "/typescript/foundations-exercises#exercise-11-a-bank-account",
+          "href": "/projects/typescript/foundations-exercises#exercise-11-a-bank-account",
           "titles": [
             {
               "title": "exercise 11 · a bank account",
-              "href": "/typescript/foundations-exercises#exercise-11-a-bank-account",
+              "href": "/projects/typescript/foundations-exercises#exercise-11-a-bank-account",
               "keywords": [
                 "class BankAccount",
                 "id",
@@ -1238,7 +1238,7 @@
             },
             {
               "title": "exercise 12 · notifiers",
-              "href": "/typescript/foundations-exercises#exercise-12-notifiers",
+              "href": "/projects/typescript/foundations-exercises#exercise-12-notifiers",
               "keywords": [
                 "Step 1.",
                 "Notifier",
@@ -1254,11 +1254,11 @@
         },
         {
           "name": "Mixed",
-          "href": "/typescript/foundations-exercises#exercise-13-an-event-log",
+          "href": "/projects/typescript/foundations-exercises#exercise-13-an-event-log",
           "titles": [
             {
               "title": "exercise 13 · an event log",
-              "href": "/typescript/foundations-exercises#exercise-13-an-event-log",
+              "href": "/projects/typescript/foundations-exercises#exercise-13-an-event-log",
               "keywords": [
                 "Step 1.",
                 "type AppEvent",
@@ -1278,16 +1278,16 @@
       "slug": "tsconfig-structure",
       "name": "tsconfig Structure",
       "chapter": "Structure",
-      "href": "/typescript/tsconfig-structure",
+      "href": "/projects/typescript/tsconfig-structure",
       "planned": false,
       "parts": [
         {
           "name": "The File's Shape",
-          "href": "/typescript/tsconfig-structure#what-tsconfig-decides",
+          "href": "/projects/typescript/tsconfig-structure#what-tsconfig-decides",
           "titles": [
             {
               "title": "what tsconfig decides",
-              "href": "/typescript/tsconfig-structure#what-tsconfig-decides",
+              "href": "/projects/typescript/tsconfig-structure#what-tsconfig-decides",
               "keywords": [
                 "how",
                 "compilerOptions",
@@ -1301,7 +1301,7 @@
             },
             {
               "title": "include and the default",
-              "href": "/typescript/tsconfig-structure#include-and-the-default",
+              "href": "/projects/typescript/tsconfig-structure#include-and-the-default",
               "keywords": [
                 "node_modules",
                 "notes.ts",
@@ -1312,7 +1312,7 @@
             },
             {
               "title": "extends",
-              "href": "/typescript/tsconfig-structure#extends",
+              "href": "/projects/typescript/tsconfig-structure#extends",
               "keywords": [
                 "A config can start from another one.",
                 "tsconfig.base.json",
@@ -1326,7 +1326,7 @@
             },
             {
               "title": "tsc with a file name",
-              "href": "/typescript/tsconfig-structure#tsc-with-a-file-name",
+              "href": "/projects/typescript/tsconfig-structure#tsc-with-a-file-name",
               "keywords": [
                 "Passing a file skips the config entirely",
                 "npx tsc",
@@ -1342,11 +1342,11 @@
         },
         {
           "name": "The Strict Family",
-          "href": "/typescript/tsconfig-structure#what-strict-turns-on",
+          "href": "/projects/typescript/tsconfig-structure#what-strict-turns-on",
           "titles": [
             {
               "title": "what strict turns on",
-              "href": "/typescript/tsconfig-structure#what-strict-turns-on",
+              "href": "/projects/typescript/tsconfig-structure#what-strict-turns-on",
               "keywords": [
                 "strict is a shortcut for eight flags",
                 "\"strict\": false",
@@ -1360,7 +1360,7 @@
             },
             {
               "title": "one flag off, strict still on",
-              "href": "/typescript/tsconfig-structure#one-flag-off-strict-still-on",
+              "href": "/projects/typescript/tsconfig-structure#one-flag-off-strict-still-on",
               "keywords": [
                 "catch",
                 "strictPropertyInitialization",
@@ -1369,7 +1369,7 @@
             },
             {
               "title": "noUncheckedIndexedAccess",
-              "href": "/typescript/tsconfig-structure#nouncheckedindexedaccess",
+              "href": "/projects/typescript/tsconfig-structure#nouncheckedindexedaccess",
               "keywords": [
                 "strict still trusts every index read.",
                 "src/lookup.ts",
@@ -1383,7 +1383,7 @@
             },
             {
               "title": "flags outside strict",
-              "href": "/typescript/tsconfig-structure#flags-outside-strict",
+              "href": "/projects/typescript/tsconfig-structure#flags-outside-strict",
               "keywords": [
                 "noImplicitReturns",
                 "noFallthroughCasesInSwitch",
@@ -1396,11 +1396,11 @@
         },
         {
           "name": "paths",
-          "href": "/typescript/tsconfig-structure#an-alias-for-src",
+          "href": "/projects/typescript/tsconfig-structure#an-alias-for-src",
           "titles": [
             {
               "title": "an alias for src",
-              "href": "/typescript/tsconfig-structure#an-alias-for-src",
+              "href": "/projects/typescript/tsconfig-structure#an-alias-for-src",
               "keywords": [
                 "../",
                 "An alias alone fails",
@@ -1414,7 +1414,7 @@
             },
             {
               "title": "the runtime does not read paths",
-              "href": "/typescript/tsconfig-structure#the-runtime-does-not-read-paths",
+              "href": "/projects/typescript/tsconfig-structure#the-runtime-does-not-read-paths",
               "keywords": [
                 "Node's own alias",
                 "package.json",
@@ -1430,11 +1430,11 @@
         },
         {
           "name": "Reading a Real tsconfig",
-          "href": "/typescript/tsconfig-structure#checking-and-who-compiles",
+          "href": "/projects/typescript/tsconfig-structure#checking-and-who-compiles",
           "titles": [
             {
               "title": "checking and who compiles",
-              "href": "/typescript/tsconfig-structure#checking-and-who-compiles",
+              "href": "/projects/typescript/tsconfig-structure#checking-and-who-compiles",
               "keywords": [
                 "How they fit:",
                 "next build",
@@ -1448,7 +1448,7 @@
             },
             {
               "title": "modules",
-              "href": "/typescript/tsconfig-structure#modules",
+              "href": "/projects/typescript/tsconfig-structure#modules",
               "keywords": [
                 "bundler",
                 "nodenext",
@@ -1458,7 +1458,7 @@
             },
             {
               "title": "environment and jsx",
-              "href": "/typescript/tsconfig-structure#environment-and-jsx",
+              "href": "/projects/typescript/tsconfig-structure#environment-and-jsx",
               "keywords": [
                 "lib in practice.",
                 "src/env.ts",
@@ -1472,7 +1472,7 @@
             },
             {
               "title": "next.js lines",
-              "href": "/typescript/tsconfig-structure#next-js-lines",
+              "href": "/projects/typescript/tsconfig-structure#next-js-lines",
               "keywords": [
                 "next-env.d.ts",
                 "/// <reference types=\"…\" />",
@@ -1492,42 +1492,42 @@
       "slug": "reading-type-syntax",
       "name": "Reading Type Syntax",
       "chapter": "Structure",
-      "href": "/typescript/reading-type-syntax",
+      "href": "/projects/typescript/reading-type-syntax",
       "planned": true,
       "parts": [
         {
           "name": "Type expressions as a grammar",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "Angle brackets — arguments vs parameters",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "extends as a constraint vs a condition",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "The conditional form and infer",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "The mapped form [K in ...]",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "Template literal types",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         },
         {
           "name": "Reading a real type from a library",
-          "href": "/typescript/reading-type-syntax",
+          "href": "/projects/typescript/reading-type-syntax",
           "titles": []
         }
       ]
@@ -1536,16 +1536,16 @@
       "slug": "generics-basics",
       "name": "Generics Basics",
       "chapter": "Generics",
-      "href": "/typescript/generics-basics",
+      "href": "/projects/typescript/generics-basics",
       "planned": false,
       "parts": [
         {
           "name": "Why a Type Parameter",
-          "href": "/typescript/generics-basics#the-problem",
+          "href": "/projects/typescript/generics-basics#the-problem",
           "titles": [
             {
               "title": "the problem",
-              "href": "/typescript/generics-basics#the-problem",
+              "href": "/projects/typescript/generics-basics#the-problem",
               "keywords": [
                 "any",
                 "unknown"
@@ -1553,7 +1553,7 @@
             },
             {
               "title": "a type parameter",
-              "href": "/typescript/generics-basics#a-type-parameter",
+              "href": "/projects/typescript/generics-basics#a-type-parameter",
               "keywords": [
                 "The link is a type parameter",
                 "<T>",
@@ -1567,7 +1567,7 @@
             },
             {
               "title": "generics you already use",
-              "href": "/typescript/generics-basics#generics-you-already-use",
+              "href": "/projects/typescript/generics-basics#generics-you-already-use",
               "keywords": [
                 "Map",
                 "The name T is only a convention",
@@ -1583,11 +1583,11 @@
         },
         {
           "name": "Inference at the Call Site",
-          "href": "/typescript/generics-basics#inference-from-arguments",
+          "href": "/projects/typescript/generics-basics#inference-from-arguments",
           "titles": [
             {
               "title": "inference from arguments",
-              "href": "/typescript/generics-basics#inference-from-arguments",
+              "href": "/projects/typescript/generics-basics#inference-from-arguments",
               "keywords": [
                 "You rarely write <T> when calling",
                 "name",
@@ -1596,14 +1596,14 @@
             },
             {
               "title": "one T, several arguments",
-              "href": "/typescript/generics-basics#one-t-several-arguments",
+              "href": "/projects/typescript/generics-basics#one-t-several-arguments",
               "keywords": [
                 "as const"
               ]
             },
             {
               "title": "writing type arguments",
-              "href": "/typescript/generics-basics#writing-type-arguments",
+              "href": "/projects/typescript/generics-basics#writing-type-arguments",
               "keywords": [
                 "Map",
                 "mapAll<string, number>(…)"
@@ -1613,11 +1613,11 @@
         },
         {
           "name": "Constraints with extends",
-          "href": "/typescript/generics-basics#extends-as-a-minimum",
+          "href": "/projects/typescript/generics-basics#extends-as-a-minimum",
           "titles": [
             {
               "title": "extends as a minimum",
-              "href": "/typescript/generics-basics#extends-as-a-minimum",
+              "href": "/projects/typescript/generics-basics#extends-as-a-minimum",
               "keywords": [
                 "extends limits what T may be",
                 "length",
@@ -1629,7 +1629,7 @@
             },
             {
               "title": "constraints in practice",
-              "href": "/typescript/generics-basics#constraints-in-practice",
+              "href": "/projects/typescript/generics-basics#constraints-in-practice",
               "keywords": [
                 "id",
                 "as const",
@@ -1640,11 +1640,11 @@
         },
         {
           "name": "Generic Types",
-          "href": "/typescript/generics-basics#generic-aliases-and-interfaces",
+          "href": "/projects/typescript/generics-basics#generic-aliases-and-interfaces",
           "titles": [
             {
               "title": "generic aliases and interfaces",
-              "href": "/typescript/generics-basics#generic-aliases-and-interfaces",
+              "href": "/projects/typescript/generics-basics#generic-aliases-and-interfaces",
               "keywords": [
                 "Types take parameters too",
                 "A generic type does not infer."
@@ -1652,7 +1652,7 @@
             },
             {
               "title": "generic classes",
-              "href": "/typescript/generics-basics#generic-classes",
+              "href": "/projects/typescript/generics-basics#generic-classes",
               "keywords": [
                 "the parameter is shared by every member",
                 "unknown",
@@ -1663,7 +1663,7 @@
             },
             {
               "title": "default type parameters",
-              "href": "/typescript/generics-basics#default-type-parameters",
+              "href": "/projects/typescript/generics-basics#default-type-parameters",
               "keywords": [
                 "<T = …>",
                 "Wrong<U, T = string>",
@@ -1675,11 +1675,11 @@
         },
         {
           "name": "When Not to Use a Generic",
-          "href": "/typescript/generics-basics#the-used-once-rule",
+          "href": "/projects/typescript/generics-basics#the-used-once-rule",
           "titles": [
             {
               "title": "the used-once rule",
-              "href": "/typescript/generics-basics#the-used-once-rule",
+              "href": "/projects/typescript/generics-basics#the-used-once-rule",
               "keywords": [
                 "A T that appears once links nothing:",
                 "T used once",
@@ -1692,7 +1692,7 @@
             },
             {
               "title": "a return-only T is a hidden as",
-              "href": "/typescript/generics-basics#a-return-only-t-is-a-hidden-as",
+              "href": "/projects/typescript/generics-basics#a-return-only-t-is-a-hidden-as",
               "keywords": [
                 "JSON.parse",
                 "any",
@@ -1711,16 +1711,16 @@
       "slug": "keys-and-lookups",
       "name": "Keys & Lookups",
       "chapter": "Generics",
-      "href": "/typescript/keys-and-lookups",
+      "href": "/projects/typescript/keys-and-lookups",
       "planned": false,
       "parts": [
         {
           "name": "keyof",
-          "href": "/typescript/keys-and-lookups#keys-as-a-union",
+          "href": "/projects/typescript/keys-and-lookups#keys-as-a-union",
           "titles": [
             {
               "title": "keys as a union",
-              "href": "/typescript/keys-and-lookups#keys-as-a-union",
+              "href": "/projects/typescript/keys-and-lookups#keys-as-a-union",
               "keywords": [
                 "role",
                 "User",
@@ -1731,7 +1731,7 @@
             },
             {
               "title": "keyof typeof and index signatures",
-              "href": "/typescript/keys-and-lookups#keyof-typeof-and-index-signatures",
+              "href": "/projects/typescript/keys-and-lookups#keyof-typeof-and-index-signatures",
               "keywords": [
                 "typeof config",
                 "number",
@@ -1747,11 +1747,11 @@
         },
         {
           "name": "Indexed Access",
-          "href": "/typescript/keys-and-lookups#reading-a-property-type",
+          "href": "/projects/typescript/keys-and-lookups#reading-a-property-type",
           "titles": [
             {
               "title": "reading a property type",
-              "href": "/typescript/keys-and-lookups#reading-a-property-type",
+              "href": "/projects/typescript/keys-and-lookups#reading-a-property-type",
               "keywords": [
                 "phone",
                 "A union of keys gives a union of values:",
@@ -1760,7 +1760,7 @@
             },
             {
               "title": "nested and array lookups",
-              "href": "/typescript/keys-and-lookups#nested-and-array-lookups",
+              "href": "/projects/typescript/keys-and-lookups#nested-and-array-lookups",
               "keywords": [
                 "Lookups chain as deep as needed:",
                 "[number] reads the element type.",
@@ -1770,7 +1770,7 @@
             },
             {
               "title": "one source of truth",
-              "href": "/typescript/keys-and-lookups#one-source-of-truth",
+              "href": "/projects/typescript/keys-and-lookups#one-source-of-truth",
               "keywords": [
                 "id",
                 "User[\"id\"]",
@@ -1782,11 +1782,11 @@
         },
         {
           "name": "K extends keyof T",
-          "href": "/typescript/keys-and-lookups#a-key-and-its-value-type",
+          "href": "/projects/typescript/keys-and-lookups#a-key-and-its-value-type",
           "titles": [
             {
               "title": "a key and its value type",
-              "href": "/typescript/keys-and-lookups#a-key-and-its-value-type",
+              "href": "/projects/typescript/keys-and-lookups#a-key-and-its-value-type",
               "keywords": [
                 "keyof",
                 "user",
@@ -1799,7 +1799,7 @@
             },
             {
               "title": "keys that drive values",
-              "href": "/typescript/keys-and-lookups#keys-that-drive-values",
+              "href": "/projects/typescript/keys-and-lookups#keys-that-drive-values",
               "keywords": [
                 "The value can depend on the key:",
                 "\"id\"",
@@ -1815,11 +1815,11 @@
         },
         {
           "name": "Deriving Types from Data",
-          "href": "/typescript/keys-and-lookups#a-union-from-an-array",
+          "href": "/projects/typescript/keys-and-lookups#a-union-from-an-array",
           "titles": [
             {
               "title": "a union from an array",
-              "href": "/typescript/keys-and-lookups#a-union-from-an-array",
+              "href": "/projects/typescript/keys-and-lookups#a-union-from-an-array",
               "keywords": [
                 "as const",
                 "typeof",
@@ -1832,7 +1832,7 @@
             },
             {
               "title": "keys and values from an object",
-              "href": "/typescript/keys-and-lookups#keys-and-values-from-an-object",
+              "href": "/projects/typescript/keys-and-lookups#keys-and-values-from-an-object",
               "keywords": [
                 "An object map gives both sides:",
                 "[number]",
@@ -1842,7 +1842,7 @@
             },
             {
               "title": "one constant, two jobs",
-              "href": "/typescript/keys-and-lookups#one-constant-two-jobs",
+              "href": "/projects/typescript/keys-and-lookups#one-constant-two-jobs",
               "keywords": [
                 "The same constant does the runtime check",
                 "Role",
@@ -1859,16 +1859,16 @@
       "slug": "generics-exercises",
       "name": "Exercises",
       "chapter": "Generics",
-      "href": "/typescript/generics-exercises",
+      "href": "/projects/typescript/generics-exercises",
       "planned": false,
       "parts": [
         {
           "name": "Generics Basics",
-          "href": "/typescript/generics-exercises#exercise-1-what-t-becomes",
+          "href": "/projects/typescript/generics-exercises#exercise-1-what-t-becomes",
           "titles": [
             {
               "title": "exercise 1 · what T becomes",
-              "href": "/typescript/generics-exercises#exercise-1-what-t-becomes",
+              "href": "/projects/typescript/generics-exercises#exercise-1-what-t-becomes",
               "keywords": [
                 "variable",
                 "a: …",
@@ -1882,7 +1882,7 @@
             },
             {
               "title": "exercise 2 · useless and lying generics",
-              "href": "/typescript/generics-exercises#exercise-2-useless-and-lying-generics",
+              "href": "/projects/typescript/generics-exercises#exercise-2-useless-and-lying-generics",
               "keywords": [
                 "keep",
                 "change",
@@ -1896,7 +1896,7 @@
             },
             {
               "title": "exercise 3 · a Result type",
-              "href": "/typescript/generics-exercises#exercise-3-a-result-type",
+              "href": "/projects/typescript/generics-exercises#exercise-3-a-result-type",
               "keywords": [
                 "Result<T>",
                 "ok",
@@ -1910,7 +1910,7 @@
             },
             {
               "title": "exercise 4 · a registry",
-              "href": "/typescript/generics-exercises#exercise-4-a-registry",
+              "href": "/projects/typescript/generics-exercises#exercise-4-a-registry",
               "keywords": [
                 "class Registry<T>",
                 "id: string",
@@ -1926,11 +1926,11 @@
         },
         {
           "name": "Keys & Lookups",
-          "href": "/typescript/generics-exercises#exercise-5-read-the-lookups",
+          "href": "/projects/typescript/generics-exercises#exercise-5-read-the-lookups",
           "titles": [
             {
               "title": "exercise 5 · read the lookups",
-              "href": "/typescript/generics-exercises#exercise-5-read-the-lookups",
+              "href": "/projects/typescript/generics-exercises#exercise-5-read-the-lookups",
               "keywords": [
                 "keyof",
                 "A: …",
@@ -1943,7 +1943,7 @@
             },
             {
               "title": "exercise 6 · sort and group by key",
-              "href": "/typescript/generics-exercises#exercise-6-sort-and-group-by-key",
+              "href": "/projects/typescript/generics-exercises#exercise-6-sort-and-group-by-key",
               "keywords": [
                 "sortBy(items, key)",
                 "groupBy(items, key)",
@@ -1957,7 +1957,7 @@
             },
             {
               "title": "exercise 7 · types from a constant",
-              "href": "/typescript/generics-exercises#exercise-7-types-from-a-constant",
+              "href": "/projects/typescript/generics-exercises#exercise-7-types-from-a-constant",
               "keywords": [
                 "CURRENCIES",
                 "isCurrencyCode(value: string)",
@@ -1973,11 +1973,11 @@
         },
         {
           "name": "Mixed",
-          "href": "/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
+          "href": "/projects/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
           "titles": [
             {
               "title": "exercise 8 · a typed event emitter",
-              "href": "/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
+              "href": "/projects/typescript/generics-exercises#exercise-8-a-typed-event-emitter",
               "keywords": [
                 "class Emitter<E>",
                 "AppEvents",
@@ -1997,37 +1997,37 @@
       "slug": "utility-types",
       "name": "Utility Types",
       "chapter": "The Type Toolkit",
-      "href": "/typescript/utility-types",
+      "href": "/projects/typescript/utility-types",
       "planned": true,
       "parts": [
         {
           "name": "Partial, Required, Readonly",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         },
         {
           "name": "Pick and Omit",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         },
         {
           "name": "Record",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         },
         {
           "name": "Extract, Exclude, NonNullable",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         },
         {
           "name": "ReturnType, Parameters, Awaited",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         },
         {
           "name": "Choosing between them — a decision table",
-          "href": "/typescript/utility-types",
+          "href": "/projects/typescript/utility-types",
           "titles": []
         }
       ]
@@ -2036,32 +2036,32 @@
       "slug": "mapped-and-template-types",
       "name": "Mapped & Template Literal Types",
       "chapter": "The Type Toolkit",
-      "href": "/typescript/mapped-and-template-types",
+      "href": "/projects/typescript/mapped-and-template-types",
       "planned": true,
       "parts": [
         {
           "name": "The mapped type form",
-          "href": "/typescript/mapped-and-template-types",
+          "href": "/projects/typescript/mapped-and-template-types",
           "titles": []
         },
         {
           "name": "Key remapping with as",
-          "href": "/typescript/mapped-and-template-types",
+          "href": "/projects/typescript/mapped-and-template-types",
           "titles": []
         },
         {
           "name": "Modifiers — adding and removing optional and readonly",
-          "href": "/typescript/mapped-and-template-types",
+          "href": "/projects/typescript/mapped-and-template-types",
           "titles": []
         },
         {
           "name": "Template literal types",
-          "href": "/typescript/mapped-and-template-types",
+          "href": "/projects/typescript/mapped-and-template-types",
           "titles": []
         },
         {
           "name": "Building one useful type end to end",
-          "href": "/typescript/mapped-and-template-types",
+          "href": "/projects/typescript/mapped-and-template-types",
           "titles": []
         }
       ]
@@ -2070,37 +2070,37 @@
       "slug": "data-boundaries",
       "name": "Data Boundaries & Async",
       "chapter": "In Practice",
-      "href": "/typescript/data-boundaries",
+      "href": "/projects/typescript/data-boundaries",
       "planned": true,
       "parts": [
         {
           "name": "unknown at the edge of the program",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         },
         {
           "name": "Type guards vs type assertions",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         },
         {
           "name": "Validating a response",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         },
         {
           "name": "satisfies",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         },
         {
           "name": "Promise<T> and async return inference",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         },
         {
           "name": "catch (e) is unknown",
-          "href": "/typescript/data-boundaries",
+          "href": "/projects/typescript/data-boundaries",
           "titles": []
         }
       ]
@@ -2109,37 +2109,37 @@
       "slug": "modules-and-declarations",
       "name": "Modules & Declarations",
       "chapter": "In Practice",
-      "href": "/typescript/modules-and-declarations",
+      "href": "/projects/typescript/modules-and-declarations",
       "planned": true,
       "parts": [
         {
           "name": "import type and verbatimModuleSyntax",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         },
         {
           "name": ".d.ts files",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         },
         {
           "name": "Ambient declarations",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         },
         {
           "name": "@types packages",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         },
         {
           "name": "Module augmentation — adding req.user",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         },
         {
           "name": "ESM vs CJS resolution under nodenext",
-          "href": "/typescript/modules-and-declarations",
+          "href": "/projects/typescript/modules-and-declarations",
           "titles": []
         }
       ]
@@ -2148,32 +2148,32 @@
       "slug": "errors-and-escape-hatches",
       "name": "Errors & Escape Hatches",
       "chapter": "In Practice",
-      "href": "/typescript/errors-and-escape-hatches",
+      "href": "/projects/typescript/errors-and-escape-hatches",
       "planned": true,
       "parts": [
         {
           "name": "How to read a tsc error",
-          "href": "/typescript/errors-and-escape-hatches",
+          "href": "/projects/typescript/errors-and-escape-hatches",
           "titles": []
         },
         {
           "name": "Assertions with as, and double assertions",
-          "href": "/typescript/errors-and-escape-hatches",
+          "href": "/projects/typescript/errors-and-escape-hatches",
           "titles": []
         },
         {
           "name": "The non-null assertion",
-          "href": "/typescript/errors-and-escape-hatches",
+          "href": "/projects/typescript/errors-and-escape-hatches",
           "titles": []
         },
         {
           "name": "@ts-expect-error vs @ts-ignore",
-          "href": "/typescript/errors-and-escape-hatches",
+          "href": "/projects/typescript/errors-and-escape-hatches",
           "titles": []
         },
         {
           "name": "When any is the right answer",
-          "href": "/typescript/errors-and-escape-hatches",
+          "href": "/projects/typescript/errors-and-escape-hatches",
           "titles": []
         }
       ]
@@ -2182,32 +2182,32 @@
       "slug": "typing-components",
       "name": "Typing Components",
       "chapter": "React & Next",
-      "href": "/typescript/typing-components",
+      "href": "/projects/typescript/typing-components",
       "planned": true,
       "parts": [
         {
           "name": "Typing props",
-          "href": "/typescript/typing-components",
+          "href": "/projects/typescript/typing-components",
           "titles": []
         },
         {
           "name": "children and ReactNode",
-          "href": "/typescript/typing-components",
+          "href": "/projects/typescript/typing-components",
           "titles": []
         },
         {
           "name": "Optional props and defaults",
-          "href": "/typescript/typing-components",
+          "href": "/projects/typescript/typing-components",
           "titles": []
         },
         {
           "name": "Extending native HTML props",
-          "href": "/typescript/typing-components",
+          "href": "/projects/typescript/typing-components",
           "titles": []
         },
         {
           "name": "Generic components",
-          "href": "/typescript/typing-components",
+          "href": "/projects/typescript/typing-components",
           "titles": []
         }
       ]
@@ -2216,32 +2216,32 @@
       "slug": "events-and-refs",
       "name": "Events & Refs",
       "chapter": "React & Next",
-      "href": "/typescript/events-and-refs",
+      "href": "/projects/typescript/events-and-refs",
       "planned": true,
       "parts": [
         {
           "name": "Event types by element",
-          "href": "/typescript/events-and-refs",
+          "href": "/projects/typescript/events-and-refs",
           "titles": []
         },
         {
           "name": "The inline vs extracted handler difference",
-          "href": "/typescript/events-and-refs",
+          "href": "/projects/typescript/events-and-refs",
           "titles": []
         },
         {
           "name": "useRef for a DOM node",
-          "href": "/typescript/events-and-refs",
+          "href": "/projects/typescript/events-and-refs",
           "titles": []
         },
         {
           "name": "useRef for a mutable value",
-          "href": "/typescript/events-and-refs",
+          "href": "/projects/typescript/events-and-refs",
           "titles": []
         },
         {
           "name": "forwardRef",
-          "href": "/typescript/events-and-refs",
+          "href": "/projects/typescript/events-and-refs",
           "titles": []
         }
       ]
@@ -2250,32 +2250,32 @@
       "slug": "hooks-and-state",
       "name": "Hooks & State",
       "chapter": "React & Next",
-      "href": "/typescript/hooks-and-state",
+      "href": "/projects/typescript/hooks-and-state",
       "planned": true,
       "parts": [
         {
           "name": "useState and its inference limits",
-          "href": "/typescript/hooks-and-state",
+          "href": "/projects/typescript/hooks-and-state",
           "titles": []
         },
         {
           "name": "useState generics",
-          "href": "/typescript/hooks-and-state",
+          "href": "/projects/typescript/hooks-and-state",
           "titles": []
         },
         {
           "name": "useReducer with a discriminated union",
-          "href": "/typescript/hooks-and-state",
+          "href": "/projects/typescript/hooks-and-state",
           "titles": []
         },
         {
           "name": "useContext and the null default",
-          "href": "/typescript/hooks-and-state",
+          "href": "/projects/typescript/hooks-and-state",
           "titles": []
         },
         {
           "name": "Custom hooks and as const",
-          "href": "/typescript/hooks-and-state",
+          "href": "/projects/typescript/hooks-and-state",
           "titles": []
         }
       ]
@@ -2284,37 +2284,37 @@
       "slug": "next-specific-types",
       "name": "Next-Specific Types",
       "chapter": "React & Next",
-      "href": "/typescript/next-specific-types",
+      "href": "/projects/typescript/next-specific-types",
       "planned": true,
       "parts": [
         {
           "name": "Server vs Client component boundaries",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         },
         {
           "name": "async components",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         },
         {
           "name": "params and searchParams",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         },
         {
           "name": "Route handlers with NextRequest and NextResponse",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         },
         {
           "name": "Metadata",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         },
         {
           "name": "Typed environment variables",
-          "href": "/typescript/next-specific-types",
+          "href": "/projects/typescript/next-specific-types",
           "titles": []
         }
       ]

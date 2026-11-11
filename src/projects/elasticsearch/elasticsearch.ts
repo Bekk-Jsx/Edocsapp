@@ -37,19 +37,19 @@ export const TOPICS: ElasticsearchTopic[] = [
         slug: "introduction", name: "Introduction", chapter: "foundations",
         summary: "What Elasticsearch is, the problem the inverted index solves, and where a search layer sits next to a database.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/introduction/page.tsx.
+        // app/projects/elasticsearch/introduction/page.tsx.
     },
     {
         slug: "documents-indices", name: "Documents & Indices", chapter: "foundations",
         summary: "The unit of storage and the container it lives in — writing, versioning and moving documents in bulk.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/documents-indices/page.tsx.
+        // app/projects/elasticsearch/documents-indices/page.tsx.
     },
     {
         slug: "mappings-analysis", name: "Mappings & Analysis", chapter: "foundations",
         summary: "How a field is typed and how its text is broken up — the decisions you cannot take back without a reindex.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/mappings-analysis/page.tsx.
+        // app/projects/elasticsearch/mappings-analysis/page.tsx.
     },
 
     // — Structure —
@@ -57,13 +57,13 @@ export const TOPICS: ElasticsearchTopic[] = [
         slug: "queries-structure", name: "Queries Structure", chapter: "structure",
         summary: "The anatomy of a search request: every slot a body can carry and the shape of each clause inside them — structure only, with generic field names.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/queries-structure/page.tsx.
+        // app/projects/elasticsearch/queries-structure/page.tsx.
     },
     {
         slug: "settings-structure", name: "Settings Structure", chapter: "structure",
         summary: "The anatomy of index settings: every element the settings block can carry, how to fill each one, where it is used, and what can and cannot be changed.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/settings-structure/page.tsx.
+        // app/projects/elasticsearch/settings-structure/page.tsx.
     },
 
     // — Searching —
@@ -71,19 +71,19 @@ export const TOPICS: ElasticsearchTopic[] = [
         slug: "search-queries", name: "Search Queries", chapter: "searching",
         summary: "The query DSL: matching text, filtering on exact values, combining the two, and ordering what comes back.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/search-queries/page.tsx.
+        // app/projects/elasticsearch/search-queries/page.tsx.
     },
     {
         slug: "aggregations", name: "Aggregations", chapter: "searching",
         summary: "Summarising the matches instead of listing them — counts, metrics, and the facets a search UI is built from.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/aggregations/page.tsx.
+        // app/projects/elasticsearch/aggregations/page.tsx.
     },
     {
         slug: "search-ux", name: "Search UX", chapter: "searching",
         summary: "The features a search box is judged on — completing, correcting and broadening what the reader typed.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/search-ux/page.tsx.
+        // app/projects/elasticsearch/search-ux/page.tsx.
     },
 
     // — Making It Work in an App —
@@ -91,13 +91,13 @@ export const TOPICS: ElasticsearchTopic[] = [
         slug: "couchdb-sync", name: "CouchDB Sync", chapter: "in-an-app",
         summary: "Keeping the search layer honest about a database it does not own — feeding it changes and rebuilding it without downtime.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/couchdb-sync/page.tsx.
+        // app/projects/elasticsearch/couchdb-sync/page.tsx.
     },
     {
         slug: "production", name: "Production Essentials", chapter: "in-an-app",
         summary: "What the cluster is doing, why a query is slow, and the mistakes that only show up once there is real data.",
         // WRITTEN — no `parts`, and no placeholder badge: see
-        // app/(projects)/elasticsearch/production/page.tsx.
+        // app/projects/elasticsearch/production/page.tsx.
     },
 ];
 

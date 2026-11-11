@@ -2,13 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    type ReactNode,
+} from "react";
 
 /** One entry. `id` is a route slug in "route" mode, an element id in "anchor" mode. */
 export type NavItem = { id: string; label: string };
 
-/** One labelled block of entries — a chapter, a category, whatever the caller groups by. */
-export type NavGroup = { heading: string; items: NavItem[] };
+/**
+ * One labelled block of entries — a chapter, a category, whatever the caller
+ * groups by. `note` stands in for the rows when a group has none and the
+ * caller wants to say why (the home nav uses it when the database is down);
+ * omit it and nothing extra renders.
+ */
+export type NavGroup = { heading: string; items: NavItem[]; note?: string };
 
 /** A row nested one level under a NavItem. Always a route link. */
 export type NavSubItem = { label: string; href: string };
@@ -39,6 +50,33 @@ export interface NavbarProps {
      * the render changes.
      */
     projectLinks?: NavItem[];
+    /**
+     * Optional: anything the section needs pinned under the brand — the
+     * interview routes put the EN/DE content switch here. Omit it, as every
+     * project nav does, and nothing renders in its place.
+     */
+    aside?: ReactNode;
+    /**
+     * Optional: which groups are open, as `{ [id]: true }`. Pass it WITH
+     * `onOpenGroupsChange` to control the open state from outside — the home
+     * page does, because selecting a sub-category must also open it. Omit both
+     * and the nav keeps its own state, which is what every project nav does.
+     */
+    openGroups?: Record<string, boolean>;
+    onOpenGroupsChange?: (next: Record<string, boolean>) => void;
+    /**
+     * Optional (anchor mode): the id to show as selected. When given it REPLACES
+     * the scroll spy, because the caller owns the notion of "current" — the home
+     * page derives it from the URL hash rather than from scroll position.
+     */
+    selectedId?: string;
+    /**
+     * Optional (anchor mode): called when an item's NAME is activated. Given,
+     * the name renders as a button and this is the whole of its behaviour — no
+     * href, no hash jump of its own. The expand/collapse chevron is a separate
+     * button and never calls this.
+     */
+    onSelect?: (id: string) => void;
 }
 
 // Active state for anchor mode: the section whose top has passed ~20% down the
@@ -229,6 +267,69 @@ function Chevron({
     );
 }
 
+// The section heading above a group list. Lifted into a constant because it is
+// now rendered from two places — alone, and beside the expand/collapse control
+// — and the two must not drift.
+const SECTION_HEADING =
+    "font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]";
+
+// Expand-all / collapse-all for ONE section. Rendered only for a section that
+// actually has collapsible groups, so every project nav — none of which passes
+// subItems — keeps its heading markup exactly as it was.
+//
+// A double chevron rather than a new icon dependency: down = "open all" (the
+// lists drop open), up = "close all". Same SVG attributes as Chevron above,
+// and the same CSS-only tooltip the add-note button uses.
+function SectionToggle({
+    allOpen,
+    section,
+    onToggle,
+}: {
+    allOpen: boolean;
+    section: string;
+    onToggle: () => void;
+}) {
+    const label = allOpen ? "Close all" : "Open all";
+    return (
+        <button
+            type="button"
+            onClick={onToggle}
+            aria-label={`${label} — ${section}`}
+            className="group relative -mr-0.5 inline-flex h-[1.3em] w-[1.3em] shrink-0 items-center justify-center rounded text-[var(--muted)] transition-colors hover:text-[var(--text)] focus-visible:text-[var(--text)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
+        >
+            <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-[0.95em] w-[0.95em] shrink-0"
+            >
+                {allOpen ? (
+                    <>
+                        <path d="M7 11l5-5 5 5" />
+                        <path d="M7 17l5-5 5 5" />
+                    </>
+                ) : (
+                    <>
+                        <path d="M7 7l5 5 5-5" />
+                        <path d="M7 13l5 5 5-5" />
+                    </>
+                )}
+            </svg>
+
+            <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-[calc(100%+0.3rem)] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-2 py-1 font-mono text-[0.65rem] normal-case tracking-normal text-[var(--text)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+            >
+                {label}
+            </span>
+        </button>
+    );
+}
+
 // Shared, data-driven sidebar. It owns no project data — every caller supplies
 // its own groups, so the same component fronts the hooks nav (route links) and
 // the home type-nav (in-page anchors).
@@ -243,20 +344,56 @@ export default function Navbar({
     back,
     subItems,
     projectLinks,
+    aside,
+    openGroups,
+    onOpenGroupsChange,
+    selectedId,
+    onSelect,
 }: NavbarProps) {
     const pathname = usePathname();
     const isAnchor = mode === "anchor";
+    // A caller that supplies `selectedId` owns "current", so the spy is not
+    // just ignored — it is switched off, observers and all.
     const [activeAnchor, claimAnchor] = useAnchorSpy(
-        isAnchor,
+        isAnchor && selectedId === undefined,
         groups.flatMap((g) => g.items.map((i) => i.id)).join("|"),
     );
 
-    // Only ids the reader has actively closed land here, so everything starts
-    // expanded without seeding state from props. Local and per-mount by design:
-    // no persistence, no URL param.
+    // Ids the reader has actively closed, for the UNCONTROLLED case. Absent
+    // means open, which is the behaviour every project nav has always had.
     const [closed, setClosed] = useState<Record<string, boolean>>({});
-    const toggle = (id: string) =>
-        setClosed((prev) => ({ ...prev, [id]: !prev[id] }));
+
+    // Controlled only when BOTH halves are supplied, so a caller cannot end up
+    // with a value it has no way to change.
+    const controlledOpen = openGroups;
+    const onOpenChange = onOpenGroupsChange;
+    const controlled = controlledOpen !== undefined && onOpenChange !== undefined;
+
+    const isOpen = (id: string): boolean =>
+        controlledOpen !== undefined ? controlledOpen[id] === true : !closed[id];
+
+    const setOpen = (ids: string[], next: boolean) => {
+        if (controlled && controlledOpen && onOpenChange) {
+            const updated = { ...controlledOpen };
+            for (const id of ids) updated[id] = next;
+            onOpenChange(updated);
+            return;
+        }
+        setClosed((prev) => {
+            const updated = { ...prev };
+            for (const id of ids) updated[id] = !next;
+            return updated;
+        });
+    };
+
+    /** The chevron: opens or closes ONE group and does nothing else. */
+    const toggle = (id: string) => setOpen([id], !isOpen(id));
+
+    /** The collapsible groups of one section — empty for every project nav. */
+    const collapsibleIds = (group: NavGroup) =>
+        group.items
+            .filter((item) => (subItems?.[item.id]?.length ?? 0) > 0)
+            .map((item) => item.id);
 
     return (
         <aside className="nav-scroll sticky top-0 h-screen w-64 shrink-0 overflow-y-auto border-r border-[var(--border)] bg-[var(--surface)] px-4 py-6">
@@ -291,6 +428,14 @@ export default function Navbar({
                 </span>
                 <span className="block text-sm text-[var(--muted)]">{brand.sub}</span>
             </Link>
+
+            {/* Section-level control, fenced off like the project links below.
+                Nothing renders for a caller that passes no `aside`. */}
+            {aside ? (
+                <div className="mb-6 border-b border-[var(--border)] pb-5">
+                    {aside}
+                </div>
+            ) : null}
 
             {/* Project pages, above the docs and fenced off by a hairline so the
                 two lists never read as one. Renders nothing at all when the
@@ -329,20 +474,48 @@ export default function Navbar({
                     <p className={`${ITEM_BASE} text-[var(--muted)]`}>Coming soon</p>
                 ) : null}
 
-                {groups.map((group) => (
+                {groups.map((group) => {
+                    // Both empty for a project nav, so the heading below renders
+                    // through the bare <p> branch — the exact markup it had.
+                    const ids = collapsibleIds(group);
+                    const allOpen = ids.every((id) => isOpen(id));
+
+                    return (
                     <div key={group.heading}>
-                        <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]">
-                            {group.heading}
-                        </p>
+                        {ids.length ? (
+                            <div className="mb-2 flex items-center justify-between gap-2">
+                                <p className={SECTION_HEADING}>{group.heading}</p>
+                                <SectionToggle
+                                    allOpen={allOpen}
+                                    section={group.heading}
+                                    onToggle={() => setOpen(ids, !allOpen)}
+                                />
+                            </div>
+                        ) : (
+                            <p className={`mb-2 ${SECTION_HEADING}`}>
+                                {group.heading}
+                            </p>
+                        )}
+                        {!group.items.length && group.note ? (
+                            <p
+                                className={`${ITEM_BASE} text-[var(--amber)]`}
+                                role="status"
+                            >
+                                {group.note}
+                            </p>
+                        ) : null}
                         <ul className="space-y-0.5">
                             {group.items.map((item) => {
                                 const href = isAnchor
                                     ? `#${item.id}`
                                     : `${basePath}/${item.id}`;
-                                // Anchor rows follow the scroll spy (and their own
-                                // click); route rows match the URL exactly.
+                                // Route rows match the URL. Anchor rows follow
+                                // `selectedId` when the caller owns selection,
+                                // otherwise the scroll spy.
                                 const active = isAnchor
-                                    ? activeAnchor === item.id
+                                    ? selectedId !== undefined
+                                      ? selectedId === item.id
+                                      : activeAnchor === item.id
                                     : norm(pathname) === norm(href);
                                 const className = `${ITEM_BASE} ${active ? ITEM_ACTIVE : ITEM_IDLE}`;
 
@@ -350,14 +523,27 @@ export default function Navbar({
                                 // `relative` and everything below it stay off the markup
                                 // entirely for every project nav.
                                 const subs = subItems?.[item.id] ?? [];
-                                const open = subs.length > 0 && !closed[item.id];
+                                const open = subs.length > 0 && isOpen(item.id);
 
                                 return (
                                     <li
                                         key={item.id}
                                         className={subs.length ? "relative" : undefined}
                                     >
-                                        {isAnchor ? (
+                                        {isAnchor && onSelect ? (
+                                            // The NAME is its own button: selecting is
+                                            // all it does, and it is a sibling of the
+                                            // chevron, never its parent — so neither
+                                            // click can reach the other.
+                                            <button
+                                                type="button"
+                                                onClick={() => onSelect(item.id)}
+                                                className={`${className} w-full text-left`}
+                                                aria-current={active ? "true" : undefined}
+                                            >
+                                                {item.label}
+                                            </button>
+                                        ) : isAnchor ? (
                                             // plain <a>: native smooth scroll, no router
                                             // involvement, no prefetch of a non-route.
                                             //
@@ -464,7 +650,8 @@ export default function Navbar({
                             })}
                         </ul>
                     </div>
-                ))}
+                    );
+                })}
             </nav>
         </aside>
     );

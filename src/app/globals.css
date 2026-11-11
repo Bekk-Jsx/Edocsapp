@@ -325,3 +325,10 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+/* Practice mode: a rail card whose question is marked "known" while
+   "Hide known" is on fades, because its section is no longer on the page.
+   Only the interview rail ever sets data-practice-dim, so no project rail is
+   affected by this rule. */
+.page-alerts a:has([data-practice-dim="true"]) {
+  opacity: 0.5;
+}

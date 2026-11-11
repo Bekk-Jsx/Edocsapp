@@ -3,23 +3,23 @@
   "project": {
     "slug": "hooks-refresh",
     "name": "Hooks, refreshed.",
-    "href": "/hooks-refresh"
+    "href": "/projects/hooks-refresh"
   },
   "pages": [
     {
       "slug": "use-state",
       "name": "useState",
       "chapter": "State",
-      "href": "/hooks-refresh/use-state",
+      "href": "/projects/hooks-refresh/use-state",
       "planned": false,
       "parts": [
         {
           "name": "Basics",
-          "href": "/hooks-refresh/use-state#render-persistence",
+          "href": "/projects/hooks-refresh/use-state#render-persistence",
           "titles": [
             {
               "title": "render & persistence",
-              "href": "/hooks-refresh/use-state#render-persistence",
+              "href": "/projects/hooks-refresh/use-state#render-persistence",
               "keywords": [
                 "Renders re-run the function.",
                 "useState",
@@ -30,7 +30,7 @@
             },
             {
               "title": "state is a snapshot",
-              "href": "/hooks-refresh/use-state#state-is-a-snapshot",
+              "href": "/projects/hooks-refresh/use-state#state-is-a-snapshot",
               "keywords": [
                 "count",
                 "setState",
@@ -40,14 +40,14 @@
             },
             {
               "title": "scheduling & bail-out",
-              "href": "/hooks-refresh/use-state#scheduling-bail-out",
+              "href": "/projects/hooks-refresh/use-state#scheduling-bail-out",
               "keywords": [
                 "Object.is"
               ]
             },
             {
               "title": "batching",
-              "href": "/hooks-refresh/use-state#batching",
+              "href": "/projects/hooks-refresh/use-state#batching",
               "keywords": [
                 "Multiple sets are batched.",
                 "setState",
@@ -56,7 +56,7 @@
             },
             {
               "title": "value form vs function form",
-              "href": "/hooks-refresh/use-state#value-form-vs-function-form",
+              "href": "/projects/hooks-refresh/use-state#value-form-vs-function-form",
               "keywords": [
                 "Value form reads one stale snapshot.",
                 "count",
@@ -70,7 +70,7 @@
             },
             {
               "title": "lazy initializer",
-              "href": "/hooks-refresh/use-state#lazy-initializer",
+              "href": "/projects/hooks-refresh/use-state#lazy-initializer",
               "keywords": [
                 "Pass the function, don't call it.",
                 "useState(readInitial)",
@@ -81,11 +81,11 @@
         },
         {
           "name": "Objects & arrays",
-          "href": "/hooks-refresh/use-state#never-mutate-replace",
+          "href": "/projects/hooks-refresh/use-state#never-mutate-replace",
           "titles": [
             {
               "title": "never mutate, replace",
-              "href": "/hooks-refresh/use-state#never-mutate-replace",
+              "href": "/projects/hooks-refresh/use-state#never-mutate-replace",
               "keywords": [
                 "React compares state BY REFERENCE.",
                 "Object.is(next, current)",
@@ -99,7 +99,7 @@
             },
             {
               "title": "nested objects",
-              "href": "/hooks-refresh/use-state#nested-objects",
+              "href": "/projects/hooks-refresh/use-state#nested-objects",
               "keywords": [
                 "Spread is a SHALLOW copy.",
                 "{ ...user }",
@@ -113,7 +113,7 @@
             },
             {
               "title": "arrays",
-              "href": "/hooks-refresh/use-state#arrays",
+              "href": "/projects/hooks-refresh/use-state#arrays",
               "keywords": [
                 "Return a NEW array, every time.",
                 "[...arr, x]",
@@ -127,7 +127,7 @@
             },
             {
               "title": "functional updater for objects & arrays",
-              "href": "/hooks-refresh/use-state#functional-updater-for-objects-arrays",
+              "href": "/projects/hooks-refresh/use-state#functional-updater-for-objects-arrays",
               "keywords": [
                 "setCount(0)",
                 "Object returns need parentheses.",
@@ -141,7 +141,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-state#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-state#react-vs-next-js",
               "keywords": [
                 "useState",
                 "\"use client\""
@@ -149,7 +149,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-state#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-state#say-it-right-english",
               "keywords": [
                 "useState",
                 "setState",
@@ -166,16 +166,16 @@
       "slug": "use-reducer",
       "name": "useReducer",
       "chapter": "State",
-      "href": "/hooks-refresh/use-reducer",
+      "href": "/projects/hooks-refresh/use-reducer",
       "planned": false,
       "parts": [
         {
           "name": "Inline",
-          "href": "/hooks-refresh/use-reducer#step-1-state-shape",
+          "href": "/projects/hooks-refresh/use-reducer#step-1-state-shape",
           "titles": [
             {
               "title": "step 1 · state shape",
-              "href": "/hooks-refresh/use-reducer#step-1-state-shape",
+              "href": "/projects/hooks-refresh/use-reducer#step-1-state-shape",
               "keywords": [
                 "State is one object, not one value.",
                 "todos",
@@ -185,7 +185,7 @@
             },
             {
               "title": "step 2 · actions",
-              "href": "/hooks-refresh/use-reducer#step-2-actions",
+              "href": "/projects/hooks-refresh/use-reducer#step-2-actions",
               "keywords": [
                 "{ type: \"toggle\", id: 3 }",
                 "add",
@@ -199,7 +199,7 @@
             },
             {
               "title": "step 3 · the reducer",
-              "href": "/hooks-refresh/use-reducer#step-3-the-reducer",
+              "href": "/projects/hooks-refresh/use-reducer#step-3-the-reducer",
               "keywords": [
                 "Every case returns a NEW object.",
                 "map",
@@ -213,7 +213,7 @@
             },
             {
               "title": "step 4 · wiring useReducer",
-              "href": "/hooks-refresh/use-reducer#step-4-wiring-usereducer",
+              "href": "/projects/hooks-refresh/use-reducer#step-4-wiring-usereducer",
               "keywords": [
                 "state — the current value.",
                 "useState",
@@ -227,7 +227,7 @@
             },
             {
               "title": "step 5 · dispatching from the ui",
-              "href": "/hooks-refresh/use-reducer#step-5-dispatching-from-the-ui",
+              "href": "/projects/hooks-refresh/use-reducer#step-5-dispatching-from-the-ui",
               "keywords": [
                 "The UI only dispatches.",
                 "{ type: \"toggle\", id: t.id }",
@@ -243,11 +243,11 @@
         },
         {
           "name": "As a module",
-          "href": "/hooks-refresh/use-reducer#types-ts",
+          "href": "/projects/hooks-refresh/use-reducer#types-ts",
           "titles": [
             {
               "title": "types.ts",
-              "href": "/hooks-refresh/use-reducer#types-ts",
+              "href": "/projects/hooks-refresh/use-reducer#types-ts",
               "keywords": [
                 "Types live in their own module.",
                 "State",
@@ -259,7 +259,7 @@
             },
             {
               "title": "reducer.ts",
-              "href": "/hooks-refresh/use-reducer#reducer-ts",
+              "href": "/projects/hooks-refresh/use-reducer#reducer-ts",
               "keywords": [
                 "reducer(someState, someAction)",
                 "useReducer",
@@ -268,7 +268,7 @@
             },
             {
               "title": "initial-state.ts + lazy init",
-              "href": "/hooks-refresh/use-reducer#initial-state-ts-lazy-init",
+              "href": "/projects/hooks-refresh/use-reducer#initial-state-ts-lazy-init",
               "keywords": [
                 "Two ways to start, in one file.",
                 "initialState",
@@ -280,7 +280,7 @@
             },
             {
               "title": "using it in a component",
-              "href": "/hooks-refresh/use-reducer#using-it-in-a-component",
+              "href": "/projects/hooks-refresh/use-reducer#using-it-in-a-component",
               "keywords": [
                 "Three imports, three responsibilities.",
                 "useReducer",
@@ -294,7 +294,7 @@
             },
             {
               "title": "sharing across components",
-              "href": "/hooks-refresh/use-reducer#sharing-across-components",
+              "href": "/projects/hooks-refresh/use-reducer#sharing-across-components",
               "keywords": [
                 "The value is { state, dispatch }.",
                 "state",
@@ -307,7 +307,7 @@
             },
             {
               "title": "useReducer + context vs useContext alone",
-              "href": "/hooks-refresh/use-reducer#usereducer-context-vs-usecontext-alone",
+              "href": "/projects/hooks-refresh/use-reducer#usereducer-context-vs-usecontext-alone",
               "keywords": [
                 "useState",
                 "case",
@@ -320,7 +320,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-reducer#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-reducer#react-vs-next-js",
               "keywords": [
                 "useReducer",
                 "\"use client\"",
@@ -329,7 +329,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-reducer#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-reducer#say-it-right-english",
               "keywords": [
                 "by reference",
                 "dispatch",
@@ -345,16 +345,16 @@
       "slug": "use-effect",
       "name": "useEffect",
       "chapter": "Effects",
-      "href": "/hooks-refresh/use-effect",
+      "href": "/projects/hooks-refresh/use-effect",
       "planned": false,
       "parts": [
         {
           "name": "Basics",
-          "href": "/hooks-refresh/use-effect#reading-the-code",
+          "href": "/projects/hooks-refresh/use-effect#reading-the-code",
           "titles": [
             {
               "title": "reading the code",
-              "href": "/hooks-refresh/use-effect#reading-the-code",
+              "href": "/projects/hooks-refresh/use-effect#reading-the-code",
               "keywords": [
                 "Render first, effect last.",
                 "width = 0",
@@ -367,7 +367,7 @@
             },
             {
               "title": "what an effect is",
-              "href": "/hooks-refresh/use-effect#what-an-effect-is",
+              "href": "/projects/hooks-refresh/use-effect#what-an-effect-is",
               "keywords": [
                 "Four phases, and the effect is last.",
                 "render.",
@@ -379,7 +379,7 @@
             },
             {
               "title": "the dependency array",
-              "href": "/hooks-refresh/use-effect#the-dependency-array",
+              "href": "/projects/hooks-refresh/use-effect#the-dependency-array",
               "keywords": [
                 "Flip the common mistake:",
                 "[]",
@@ -389,7 +389,7 @@
             },
             {
               "title": "rules of hooks",
-              "href": "/hooks-refresh/use-effect#rules-of-hooks",
+              "href": "/projects/hooks-refresh/use-effect#rules-of-hooks",
               "keywords": [
                 "Breaking that corrupts state.",
                 "useState",
@@ -400,11 +400,11 @@
         },
         {
           "name": "Advanced",
-          "href": "/hooks-refresh/use-effect#reading-the-cleanup",
+          "href": "/projects/hooks-refresh/use-effect#reading-the-cleanup",
           "titles": [
             {
               "title": "reading the cleanup",
-              "href": "/hooks-refresh/use-effect#reading-the-cleanup",
+              "href": "/projects/hooks-refresh/use-effect#reading-the-cleanup",
               "keywords": [
                 "The effect registers, the browser calls.",
                 "addEventListener",
@@ -417,14 +417,14 @@
             },
             {
               "title": "cleanup — the core idea",
-              "href": "/hooks-refresh/use-effect#cleanup-the-core-idea",
+              "href": "/projects/hooks-refresh/use-effect#cleanup-the-core-idea",
               "keywords": [
                 "Rule of thumb."
               ]
             },
             {
               "title": "setup runs once, the callback runs many",
-              "href": "/hooks-refresh/use-effect#setup-runs-once-the-callback-runs-many",
+              "href": "/projects/hooks-refresh/use-effect#setup-runs-once-the-callback-runs-many",
               "keywords": [
                 "Two different runners.",
                 "[]",
@@ -436,7 +436,7 @@
             },
             {
               "title": "when cleanup runs",
-              "href": "/hooks-refresh/use-effect#when-cleanup-runs",
+              "href": "/projects/hooks-refresh/use-effect#when-cleanup-runs",
               "keywords": [
                 "Two moments, not one.",
                 "[]"
@@ -444,7 +444,7 @@
             },
             {
               "title": "two ways to leak listeners",
-              "href": "/hooks-refresh/use-effect#two-ways-to-leak-listeners",
+              "href": "/projects/hooks-refresh/use-effect#two-ways-to-leak-listeners",
               "keywords": [
                 "useEffect(fn, [])",
                 "window"
@@ -452,7 +452,7 @@
             },
             {
               "title": "effects & data fetching",
-              "href": "/hooks-refresh/use-effect#effects-data-fetching",
+              "href": "/projects/hooks-refresh/use-effect#effects-data-fetching",
               "keywords": [
                 "Continuous vs one-shot.",
                 "clearInterval",
@@ -466,7 +466,7 @@
             },
             {
               "title": "ssr & strict mode",
-              "href": "/hooks-refresh/use-effect#ssr-strict-mode",
+              "href": "/projects/hooks-refresh/use-effect#ssr-strict-mode",
               "keywords": [
                 "Effects never run on the server.",
                 "window",
@@ -476,7 +476,7 @@
             },
             {
               "title": "reading the re-sync",
-              "href": "/hooks-refresh/use-effect#reading-the-re-sync",
+              "href": "/projects/hooks-refresh/use-effect#reading-the-re-sync",
               "keywords": [
                 "[room] makes the effect re-syncable.",
                 "[]",
@@ -490,7 +490,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-effect#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-effect#react-vs-next-js",
               "keywords": [
                 "\"use client\"",
                 "window",
@@ -499,7 +499,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-effect#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-effect#say-it-right-english",
               "keywords": [
                 "once",
                 "registers",
@@ -519,16 +519,16 @@
       "slug": "use-layout-effect",
       "name": "useLayoutEffect",
       "chapter": "Effects",
-      "href": "/hooks-refresh/use-layout-effect",
+      "href": "/projects/hooks-refresh/use-layout-effect",
       "planned": false,
       "parts": [
         {
           "name": "Timing",
-          "href": "/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
+          "href": "/projects/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
           "titles": [
             {
               "title": "useeffect vs uselayouteffect",
-              "href": "/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
+              "href": "/projects/hooks-refresh/use-layout-effect#useeffect-vs-uselayouteffect",
               "keywords": [
                 "Same API as useEffect, different TIMING.",
                 "useEffect runs AFTER paint.",
@@ -537,7 +537,7 @@
             },
             {
               "title": "the flicker fix",
-              "href": "/hooks-refresh/use-layout-effect#the-flicker-fix",
+              "href": "/projects/hooks-refresh/use-layout-effect#the-flicker-fix",
               "keywords": [
                 "useEffect",
                 "useLayoutEffect"
@@ -547,11 +547,11 @@
         },
         {
           "name": "Limits",
-          "href": "/hooks-refresh/use-layout-effect#sync-only",
+          "href": "/projects/hooks-refresh/use-layout-effect#sync-only",
           "titles": [
             {
               "title": "sync only",
-              "href": "/hooks-refresh/use-layout-effect#sync-only",
+              "href": "/projects/hooks-refresh/use-layout-effect#sync-only",
               "keywords": [
                 "An await or .then() returns immediately.",
                 "fetchAuth()",
@@ -563,7 +563,7 @@
             },
             {
               "title": "cost + ssr",
-              "href": "/hooks-refresh/use-layout-effect#cost-ssr",
+              "href": "/projects/hooks-refresh/use-layout-effect#cost-ssr",
               "keywords": [
                 "useEffect",
                 "It does NOT run on the server.",
@@ -573,7 +573,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-layout-effect#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-layout-effect#react-vs-next-js",
               "keywords": [
                 "useLayoutEffect",
                 "\"use client\""
@@ -581,7 +581,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-layout-effect#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-layout-effect#say-it-right-english",
               "keywords": [
                 "useLayoutEffect",
                 "useEffect",
@@ -597,16 +597,16 @@
       "slug": "use-insertion-effect",
       "name": "useInsertionEffect",
       "chapter": "Effects",
-      "href": "/hooks-refresh/use-insertion-effect",
+      "href": "/projects/hooks-refresh/use-insertion-effect",
       "planned": false,
       "parts": [
         {
           "name": "What it is",
-          "href": "/hooks-refresh/use-insertion-effect#the-earliest-effect",
+          "href": "/projects/hooks-refresh/use-insertion-effect#the-earliest-effect",
           "titles": [
             {
               "title": "the earliest effect",
-              "href": "/hooks-refresh/use-insertion-effect#the-earliest-effect",
+              "href": "/projects/hooks-refresh/use-insertion-effect#the-earliest-effect",
               "keywords": [
                 "useLayoutEffect",
                 "That ordering is the point.",
@@ -615,7 +615,7 @@
             },
             {
               "title": "restrictions",
-              "href": "/hooks-refresh/use-insertion-effect#restrictions",
+              "href": "/projects/hooks-refresh/use-insertion-effect#restrictions",
               "keywords": [
                 "useLayoutEffect",
                 "You also cannot call setState.",
@@ -629,11 +629,11 @@
         },
         {
           "name": "Do you need it",
-          "href": "/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
+          "href": "/projects/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
           "titles": [
             {
               "title": "static css vs runtime css-in-js",
-              "href": "/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
+              "href": "/projects/hooks-refresh/use-insertion-effect#static-css-vs-runtime-css-in-js",
               "keywords": [
                 "<style>",
                 "useInsertionEffect"
@@ -641,7 +641,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-insertion-effect#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-insertion-effect#react-vs-next-js",
               "keywords": [
                 "useInsertionEffect",
                 "\"use client\""
@@ -649,7 +649,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-insertion-effect#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-insertion-effect#say-it-right-english",
               "keywords": [
                 "SSR-safe and cached",
                 "useInsertionEffect",
@@ -666,16 +666,16 @@
       "slug": "use-context",
       "name": "useContext",
       "chapter": "Context & Refs",
-      "href": "/hooks-refresh/use-context",
+      "href": "/projects/hooks-refresh/use-context",
       "planned": false,
       "parts": [
         {
           "name": "Creation",
-          "href": "/hooks-refresh/use-context#createcontext",
+          "href": "/projects/hooks-refresh/use-context#createcontext",
           "titles": [
             {
               "title": "createContext",
-              "href": "/hooks-refresh/use-context#createcontext",
+              "href": "/projects/hooks-refresh/use-context#createcontext",
               "keywords": [
                 "Ctx.Provider",
                 "useContext",
@@ -685,7 +685,7 @@
             },
             {
               "title": "the provider",
-              "href": "/hooks-refresh/use-context#the-provider",
+              "href": "/projects/hooks-refresh/use-context#the-provider",
               "keywords": [
                 "useState",
                 "children sets the scope.",
@@ -694,7 +694,7 @@
             },
             {
               "title": "stable value",
-              "href": "/hooks-refresh/use-context#stable-value",
+              "href": "/projects/hooks-refresh/use-context#stable-value",
               "keywords": [
                 "isLoggedIn",
                 "user !== null",
@@ -706,7 +706,7 @@
             },
             {
               "title": "client boundary",
-              "href": "/hooks-refresh/use-context#client-boundary",
+              "href": "/projects/hooks-refresh/use-context#client-boundary",
               "keywords": [
                 "Context is a client-side mechanism.",
                 "\"use client\"",
@@ -721,11 +721,11 @@
         },
         {
           "name": "Usage",
-          "href": "/hooks-refresh/use-context#consuming-the-value",
+          "href": "/projects/hooks-refresh/use-context#consuming-the-value",
           "titles": [
             {
               "title": "consuming the value",
-              "href": "/hooks-refresh/use-context#consuming-the-value",
+              "href": "/projects/hooks-refresh/use-context#consuming-the-value",
               "keywords": [
                 "Provider",
                 "useContext",
@@ -739,7 +739,7 @@
             },
             {
               "title": "missing provider",
-              "href": "/hooks-refresh/use-context#missing-provider",
+              "href": "/projects/hooks-refresh/use-context#missing-provider",
               "keywords": [
                 "useContext",
                 "createContext",
@@ -749,7 +749,7 @@
             },
             {
               "title": "all consumers re-render",
-              "href": "/hooks-refresh/use-context#all-consumers-re-render",
+              "href": "/projects/hooks-refresh/use-context#all-consumers-re-render",
               "keywords": [
                 "Context has no partial subscription.",
                 "UserName",
@@ -760,7 +760,7 @@
             },
             {
               "title": "server components can't consume",
-              "href": "/hooks-refresh/use-context#server-components-can-t-consume",
+              "href": "/projects/hooks-refresh/use-context#server-components-can-t-consume",
               "keywords": [
                 "useContext is client-only.",
                 "The App Router is server-by-default.",
@@ -771,7 +771,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-context#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-context#react-vs-next-js",
               "keywords": [
                 "useContext",
                 "Providers"
@@ -779,7 +779,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-context#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-context#say-it-right-english",
               "keywords": [
                 "fallback",
                 "no Provider above it",
@@ -795,16 +795,16 @@
       "slug": "use-ref",
       "name": "useRef",
       "chapter": "Context & Refs",
-      "href": "/hooks-refresh/use-ref",
+      "href": "/projects/hooks-refresh/use-ref",
       "planned": false,
       "parts": [
         {
           "name": "The mutable box",
-          "href": "/hooks-refresh/use-ref#what-it-is",
+          "href": "/projects/hooks-refresh/use-ref#what-it-is",
           "titles": [
             {
               "title": "what it is",
-              "href": "/hooks-refresh/use-ref#what-it-is",
+              "href": "/projects/hooks-refresh/use-ref#what-it-is",
               "keywords": [
                 ".current",
                 "Changing .current NEVER re-renders.",
@@ -818,7 +818,7 @@
             },
             {
               "title": "ref vs state",
-              "href": "/hooks-refresh/use-ref#ref-vs-state",
+              "href": "/projects/hooks-refresh/use-ref#ref-vs-state",
               "keywords": [
                 "Ref = remember. State = react.",
                 "Refs also skip the queue entirely.",
@@ -828,7 +828,7 @@
             },
             {
               "title": "don't touch during render",
-              "href": "/hooks-refresh/use-ref#don-t-touch-during-render",
+              "href": "/projects/hooks-refresh/use-ref#don-t-touch-during-render",
               "keywords": [
                 "Rendering must be PURE.",
                 ".current",
@@ -841,11 +841,11 @@
         },
         {
           "name": "DOM refs",
-          "href": "/hooks-refresh/use-ref#attaching-timing",
+          "href": "/projects/hooks-refresh/use-ref#attaching-timing",
           "titles": [
             {
               "title": "attaching + timing",
-              "href": "/hooks-refresh/use-ref#attaching-timing",
+              "href": "/projects/hooks-refresh/use-ref#attaching-timing",
               "keywords": [
                 "Attach with the ref attribute.",
                 ".current",
@@ -859,7 +859,7 @@
             },
             {
               "title": "passing a ref to your component (React 19)",
-              "href": "/hooks-refresh/use-ref#passing-a-ref-to-your-component-react-19",
+              "href": "/projects/hooks-refresh/use-ref#passing-a-ref-to-your-component-react-19",
               "keywords": [
                 "ref is not an ordinary prop in React 18.",
                 "props",
@@ -873,7 +873,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-ref#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-ref#react-vs-next-js",
               "keywords": [
                 "useRef",
                 "\"use client\""
@@ -881,7 +881,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-ref#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-ref#say-it-right-english",
               "keywords": [
                 "re-renders",
                 "remembers",
@@ -897,16 +897,16 @@
       "slug": "use-imperative-handle",
       "name": "useImperativeHandle",
       "chapter": "Context & Refs",
-      "href": "/hooks-refresh/use-imperative-handle",
+      "href": "/projects/hooks-refresh/use-imperative-handle",
       "planned": false,
       "parts": [
         {
           "name": "The basics",
-          "href": "/hooks-refresh/use-imperative-handle#what-it-does",
+          "href": "/projects/hooks-refresh/use-imperative-handle#what-it-does",
           "titles": [
             {
               "title": "what it does",
-              "href": "/hooks-refresh/use-imperative-handle#what-it-does",
+              "href": "/projects/hooks-refresh/use-imperative-handle#what-it-does",
               "keywords": [
                 "The child keeps the real node private.",
                 "inputRef",
@@ -919,7 +919,7 @@
             },
             {
               "title": "imperative vs declarative",
-              "href": "/hooks-refresh/use-imperative-handle#imperative-vs-declarative",
+              "href": "/projects/hooks-refresh/use-imperative-handle#imperative-vs-declarative",
               "keywords": [
                 "<Modal isOpen={open} />",
                 "open",
@@ -934,11 +934,11 @@
         },
         {
           "name": "When (and why not)",
-          "href": "/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
+          "href": "/projects/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
           "titles": [
             {
               "title": "forward the ref vs customize it",
-              "href": "/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
+              "href": "/projects/hooks-refresh/use-imperative-handle#forward-the-ref-vs-customize-it",
               "keywords": [
                 "focus()",
                 "select()",
@@ -952,7 +952,7 @@
             },
             {
               "title": "why hide the dom (encapsulation)",
-              "href": "/hooks-refresh/use-imperative-handle#why-hide-the-dom-encapsulation",
+              "href": "/projects/hooks-refresh/use-imperative-handle#why-hide-the-dom-encapsulation",
               "keywords": [
                 "A raw node lets the parent do ANYTHING.",
                 "src",
@@ -966,7 +966,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-imperative-handle#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-imperative-handle#react-vs-next-js",
               "keywords": [
                 "useImperativeHandle",
                 "\"use client\"",
@@ -976,7 +976,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-imperative-handle#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-imperative-handle#say-it-right-english",
               "keywords": [
                 "describes the result from state",
                 "<Modal isOpen />",
@@ -994,16 +994,16 @@
       "slug": "use-memo",
       "name": "useMemo",
       "chapter": "Performance",
-      "href": "/hooks-refresh/use-memo",
+      "href": "/projects/hooks-refresh/use-memo",
       "planned": false,
       "parts": [
         {
           "name": "Using it",
-          "href": "/hooks-refresh/use-memo#what-it-memoizes",
+          "href": "/projects/hooks-refresh/use-memo#what-it-memoizes",
           "titles": [
             {
               "title": "what it memoizes",
-              "href": "/hooks-refresh/use-memo#what-it-memoizes",
+              "href": "/projects/hooks-refresh/use-memo#what-it-memoizes",
               "keywords": [
                 "First argument — the compute function.",
                 "useCallback",
@@ -1016,7 +1016,7 @@
             },
             {
               "title": "use 1 · skip expensive work",
-              "href": "/hooks-refresh/use-memo#use-1-skip-expensive-work",
+              "href": "/projects/hooks-refresh/use-memo#use-1-skip-expensive-work",
               "keywords": [
                 "reduce",
                 "sort",
@@ -1030,7 +1030,7 @@
             },
             {
               "title": "use 2 · stabilize a reference",
-              "href": "/hooks-refresh/use-memo#use-2-stabilize-a-reference",
+              "href": "/projects/hooks-refresh/use-memo#use-2-stabilize-a-reference",
               "keywords": [
                 "{ taxRate }",
                 "taxRate",
@@ -1043,7 +1043,7 @@
             },
             {
               "title": "when it's pointless",
-              "href": "/hooks-refresh/use-memo#when-it-s-pointless",
+              "href": "/projects/hooks-refresh/use-memo#when-it-s-pointless",
               "keywords": [
                 "useMemo",
                 "The memo is not free.",
@@ -1056,11 +1056,11 @@
         },
         {
           "name": "Getting it right",
-          "href": "/hooks-refresh/use-memo#the-dependency-array",
+          "href": "/projects/hooks-refresh/use-memo#the-dependency-array",
           "titles": [
             {
               "title": "the dependency array",
-              "href": "/hooks-refresh/use-memo#the-dependency-array",
+              "href": "/projects/hooks-refresh/use-memo#the-dependency-array",
               "keywords": [
                 "Deps are compared BY REFERENCE.",
                 "Object.is",
@@ -1074,7 +1074,7 @@
             },
             {
               "title": "react compiler",
-              "href": "/hooks-refresh/use-memo#react-compiler",
+              "href": "/projects/hooks-refresh/use-memo#react-compiler",
               "keywords": [
                 "useMemo",
                 "useCallback",
@@ -1088,14 +1088,14 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-memo#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-memo#react-vs-next-js",
               "keywords": [
                 "useMemo"
               ]
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-memo#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-memo#say-it-right-english",
               "keywords": [
                 "useMemo",
                 "genuinely expensive",
@@ -1112,16 +1112,16 @@
       "slug": "use-callback",
       "name": "useCallback",
       "chapter": "Performance",
-      "href": "/hooks-refresh/use-callback",
+      "href": "/projects/hooks-refresh/use-callback",
       "planned": false,
       "parts": [
         {
           "name": "What it is",
-          "href": "/hooks-refresh/use-callback#memoized-function",
+          "href": "/projects/hooks-refresh/use-callback#memoized-function",
           "titles": [
             {
               "title": "memoized function",
-              "href": "/hooks-refresh/use-callback#memoized-function",
+              "href": "/projects/hooks-refresh/use-callback#memoized-function",
               "keywords": [
                 "useCallback",
                 "[deps]",
@@ -1133,7 +1133,7 @@
             },
             {
               "title": "when it matters",
-              "href": "/hooks-refresh/use-callback#when-it-matters",
+              "href": "/projects/hooks-refresh/use-callback#when-it-matters",
               "keywords": [
                 "memo",
                 "handleClick",
@@ -1146,11 +1146,11 @@
         },
         {
           "name": "Getting it right",
-          "href": "/hooks-refresh/use-callback#stale-closure",
+          "href": "/projects/hooks-refresh/use-callback#stale-closure",
           "titles": [
             {
               "title": "stale closure",
-              "href": "/hooks-refresh/use-callback#stale-closure",
+              "href": "/projects/hooks-refresh/use-callback#stale-closure",
               "keywords": [
                 "log",
                 "count",
@@ -1164,7 +1164,7 @@
             },
             {
               "title": "react compiler",
-              "href": "/hooks-refresh/use-callback#react-compiler",
+              "href": "/projects/hooks-refresh/use-callback#react-compiler",
               "keywords": [
                 "useCallback",
                 "useMemo",
@@ -1178,7 +1178,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-callback#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-callback#react-vs-next-js",
               "keywords": [
                 "useCallback",
                 "\"use client\""
@@ -1186,7 +1186,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-callback#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-callback#say-it-right-english",
               "keywords": [
                 "useCallback",
                 "React.memo",
@@ -1202,16 +1202,16 @@
       "slug": "use-transition",
       "name": "useTransition",
       "chapter": "Performance",
-      "href": "/hooks-refresh/use-transition",
+      "href": "/projects/hooks-refresh/use-transition",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-transition#urgent-vs-non-urgent",
+          "href": "/projects/hooks-refresh/use-transition#urgent-vs-non-urgent",
           "titles": [
             {
               "title": "urgent vs non-urgent",
-              "href": "/hooks-refresh/use-transition#urgent-vs-non-urgent",
+              "href": "/projects/hooks-refresh/use-transition#urgent-vs-non-urgent",
               "keywords": [
                 "React splits work into two priorities.",
                 "It returns a pair.",
@@ -1222,7 +1222,7 @@
             },
             {
               "title": "the problem it solves",
-              "href": "/hooks-refresh/use-transition#the-problem-it-solves",
+              "href": "/projects/hooks-refresh/use-transition#the-problem-it-solves",
               "keywords": [
                 "Split it by priority.",
                 "startTransition",
@@ -1235,11 +1235,11 @@
         },
         {
           "name": "Using it right",
-          "href": "/hooks-refresh/use-transition#ispending-feedback",
+          "href": "/projects/hooks-refresh/use-transition#ispending-feedback",
           "titles": [
             {
               "title": "isPending feedback",
-              "href": "/hooks-refresh/use-transition#ispending-feedback",
+              "href": "/projects/hooks-refresh/use-transition#ispending-feedback",
               "keywords": [
                 "Use it for non-blocking feedback.",
                 "Keep the flag off the expensive subtree."
@@ -1247,7 +1247,7 @@
             },
             {
               "title": "keep the urgent update outside",
-              "href": "/hooks-refresh/use-transition#keep-the-urgent-update-outside",
+              "href": "/projects/hooks-refresh/use-transition#keep-the-urgent-update-outside",
               "keywords": [
                 "setQuery",
                 "startTransition",
@@ -1256,7 +1256,7 @@
             },
             {
               "title": "it prioritizes rendering, not fetching",
-              "href": "/hooks-refresh/use-transition#it-prioritizes-rendering-not-fetching",
+              "href": "/projects/hooks-refresh/use-transition#it-prioritizes-rendering-not-fetching",
               "keywords": [
                 "The await escapes it.",
                 "await",
@@ -1268,7 +1268,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-transition#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-transition#react-vs-next-js",
               "keywords": [
                 "useTransition",
                 "\"use client\""
@@ -1276,7 +1276,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-transition#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-transition#say-it-right-english",
               "keywords": [
                 "useTransition",
                 "delays starting",
@@ -1293,16 +1293,16 @@
       "slug": "use-deferred-value",
       "name": "useDeferredValue",
       "chapter": "Performance",
-      "href": "/hooks-refresh/use-deferred-value",
+      "href": "/projects/hooks-refresh/use-deferred-value",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
+          "href": "/projects/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
           "titles": [
             {
               "title": "a lagging copy of a value",
-              "href": "/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
+              "href": "/projects/hooks-refresh/use-deferred-value#a-lagging-copy-of-a-value",
               "keywords": [
                 "One value, two consumers.",
                 "query",
@@ -1313,25 +1313,25 @@
             },
             {
               "title": "why not use the value directly",
-              "href": "/hooks-refresh/use-deferred-value#why-not-use-the-value-directly",
+              "href": "/projects/hooks-refresh/use-deferred-value#why-not-use-the-value-directly",
               "keywords": []
             }
           ]
         },
         {
           "name": "How it renders",
-          "href": "/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
+          "href": "/projects/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
           "titles": [
             {
               "title": "two renders per keystroke",
-              "href": "/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
+              "href": "/projects/hooks-refresh/use-deferred-value#two-renders-per-keystroke",
               "keywords": [
                 "deferredQuery"
               ]
             },
             {
               "title": "interrupted and abandoned",
-              "href": "/hooks-refresh/use-deferred-value#interrupted-and-abandoned",
+              "href": "/projects/hooks-refresh/use-deferred-value#interrupted-and-abandoned",
               "keywords": [
                 "deferredQuery",
                 "This is NOT debounce."
@@ -1341,11 +1341,11 @@
         },
         {
           "name": "Using it right",
-          "href": "/hooks-refresh/use-deferred-value#pair-it-with-memoization",
+          "href": "/projects/hooks-refresh/use-deferred-value#pair-it-with-memoization",
           "titles": [
             {
               "title": "pair it with memoization",
-              "href": "/hooks-refresh/use-deferred-value#pair-it-with-memoization",
+              "href": "/projects/hooks-refresh/use-deferred-value#pair-it-with-memoization",
               "keywords": [
                 "useDeferredValue alone saves nothing.",
                 "useMemo",
@@ -1358,7 +1358,7 @@
             },
             {
               "title": "stale flag and when to skip it",
-              "href": "/hooks-refresh/use-deferred-value#stale-flag-and-when-to-skip-it",
+              "href": "/projects/hooks-refresh/use-deferred-value#stale-flag-and-when-to-skip-it",
               "keywords": [
                 "There is no isPending here.",
                 "useTransition",
@@ -1369,7 +1369,7 @@
             },
             {
               "title": "vs useTransition",
-              "href": "/hooks-refresh/use-deferred-value#vs-usetransition",
+              "href": "/projects/hooks-refresh/use-deferred-value#vs-usetransition",
               "keywords": [
                 "useDeferredValue",
                 "setState",
@@ -1380,7 +1380,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-deferred-value#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-deferred-value#react-vs-next-js",
               "keywords": [
                 "useDeferredValue",
                 "\"use client\"",
@@ -1390,7 +1390,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-deferred-value#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-deferred-value#say-it-right-english",
               "keywords": [
                 "useDeferredValue",
                 "useTransition",
@@ -1410,16 +1410,16 @@
       "slug": "use-id",
       "name": "useId",
       "chapter": "Utility",
-      "href": "/hooks-refresh/use-id",
+      "href": "/projects/hooks-refresh/use-id",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-id#a-stable-unique-id",
+          "href": "/projects/hooks-refresh/use-id#a-stable-unique-id",
           "titles": [
             {
               "title": "a stable unique id",
-              "href": "/hooks-refresh/use-id#a-stable-unique-id",
+              "href": "/projects/hooks-refresh/use-id#a-stable-unique-id",
               "keywords": [
                 "useId",
                 "htmlFor",
@@ -1432,7 +1432,7 @@
             },
             {
               "title": "why it exists — ssr hydration",
-              "href": "/hooks-refresh/use-id#why-it-exists-ssr-hydration",
+              "href": "/projects/hooks-refresh/use-id#why-it-exists-ssr-hydration",
               "keywords": [
                 "With SSR a component renders TWICE.",
                 "Math.random()",
@@ -1447,11 +1447,11 @@
         },
         {
           "name": "Using it",
-          "href": "/hooks-refresh/use-id#one-base-many-related-ids",
+          "href": "/projects/hooks-refresh/use-id#one-base-many-related-ids",
           "titles": [
             {
               "title": "one base, many related ids",
-              "href": "/hooks-refresh/use-id#one-base-many-related-ids",
+              "href": "/projects/hooks-refresh/use-id#one-base-many-related-ids",
               "keywords": [
                 "-email",
                 "-email-hint",
@@ -1460,7 +1460,7 @@
             },
             {
               "title": "not for list keys",
-              "href": "/hooks-refresh/use-id#not-for-list-keys",
+              "href": "/projects/hooks-refresh/use-id#not-for-list-keys",
               "keywords": [
                 "item.id",
                 "And the call itself is illegal there.",
@@ -1473,7 +1473,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-id#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-id#react-vs-next-js",
               "keywords": [
                 "useId",
                 "aria-*",
@@ -1482,7 +1482,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-id#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-id#say-it-right-english",
               "keywords": [
                 "Math.random",
                 "different values",
@@ -1499,16 +1499,16 @@
       "slug": "use-sync-external-store",
       "name": "useSyncExternalStore",
       "chapter": "Utility",
-      "href": "/hooks-refresh/use-sync-external-store",
+      "href": "/projects/hooks-refresh/use-sync-external-store",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
+          "href": "/projects/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
           "titles": [
             {
               "title": "subscribe to external state",
-              "href": "/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
+              "href": "/projects/hooks-refresh/use-sync-external-store#subscribe-to-external-state",
               "keywords": [
                 "useState",
                 "useReducer",
@@ -1524,11 +1524,11 @@
         },
         {
           "name": "Examples",
-          "href": "/hooks-refresh/use-sync-external-store#window-online-status",
+          "href": "/projects/hooks-refresh/use-sync-external-store#window-online-status",
           "titles": [
             {
               "title": "window — online status",
-              "href": "/hooks-refresh/use-sync-external-store#window-online-status",
+              "href": "/projects/hooks-refresh/use-sync-external-store#window-online-status",
               "keywords": [
                 "Here the store is the BROWSER.",
                 "subscribe",
@@ -1542,7 +1542,7 @@
             },
             {
               "title": "localStorage — cross-tab & the same-tab gap",
-              "href": "/hooks-refresh/use-sync-external-store#localstorage-cross-tab-the-same-tab-gap",
+              "href": "/projects/hooks-refresh/use-sync-external-store#localstorage-cross-tab-the-same-tab-gap",
               "keywords": [
                 "Object.is",
                 "setItem",
@@ -1554,11 +1554,11 @@
         },
         {
           "name": "Getting it right",
-          "href": "/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
+          "href": "/projects/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
           "titles": [
             {
               "title": "why not useEffect + useState",
-              "href": "/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
+              "href": "/projects/hooks-refresh/use-sync-external-store#why-not-useeffect-usestate",
               "keywords": [
                 "The old way subscribes by hand.",
                 "1 — Tearing.",
@@ -1571,7 +1571,7 @@
             },
             {
               "title": "stable snapshot",
-              "href": "/hooks-refresh/use-sync-external-store#stable-snapshot",
+              "href": "/projects/hooks-refresh/use-sync-external-store#stable-snapshot",
               "keywords": [
                 "A fresh object can never pass it.",
                 "{ online: navigator.onLine }",
@@ -1580,7 +1580,7 @@
             },
             {
               "title": "ssr snapshot",
-              "href": "/hooks-refresh/use-sync-external-store#ssr-snapshot",
+              "href": "/projects/hooks-refresh/use-sync-external-store#ssr-snapshot",
               "keywords": [
                 "getServerSnapshot",
                 "In the App Router that is not optional.",
@@ -1589,7 +1589,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-sync-external-store#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-sync-external-store#react-vs-next-js",
               "keywords": [
                 "useSyncExternalStore",
                 "\"use client\"",
@@ -1598,7 +1598,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-sync-external-store#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-sync-external-store#say-it-right-english",
               "keywords": [
                 "useEffect",
                 "useState",
@@ -1617,16 +1617,16 @@
       "slug": "use",
       "name": "use",
       "chapter": "React 19",
-      "href": "/hooks-refresh/use",
+      "href": "/projects/hooks-refresh/use",
       "planned": false,
       "parts": [
         {
           "name": "Reading promises",
-          "href": "/hooks-refresh/use#what-use-does",
+          "href": "/projects/hooks-refresh/use#what-use-does",
           "titles": [
             {
               "title": "what use does",
-              "href": "/hooks-refresh/use#what-use-does",
+              "href": "/projects/hooks-refresh/use#what-use-does",
               "keywords": [
                 "So an async value is just a value.",
                 "useState",
@@ -1636,7 +1636,7 @@
             },
             {
               "title": "suspense & errors",
-              "href": "/hooks-refresh/use#suspense-errors",
+              "href": "/projects/hooks-refresh/use#suspense-errors",
               "keywords": [
                 "The nearest boundary owns the fallback.",
                 "use",
@@ -1648,7 +1648,7 @@
             },
             {
               "title": "the promise must be stable",
-              "href": "/hooks-refresh/use#the-promise-must-be-stable",
+              "href": "/projects/hooks-refresh/use#the-promise-must-be-stable",
               "keywords": [
                 "The promise has to be created ONCE.",
                 "useState",
@@ -1662,11 +1662,11 @@
         },
         {
           "name": "Context & the rules",
-          "href": "/hooks-refresh/use#use-for-context",
+          "href": "/projects/hooks-refresh/use#use-for-context",
           "titles": [
             {
               "title": "use for context",
-              "href": "/hooks-refresh/use#use-for-context",
+              "href": "/projects/hooks-refresh/use#use-for-context",
               "keywords": [
                 "Reading a context does NOT suspend.",
                 "The difference is the rules.",
@@ -1675,7 +1675,7 @@
             },
             {
               "title": "callable conditionally",
-              "href": "/hooks-refresh/use#callable-conditionally",
+              "href": "/projects/hooks-refresh/use#callable-conditionally",
               "keywords": [
                 "use is the single exception.",
                 "Which means you read only what you need.",
@@ -1685,7 +1685,7 @@
             },
             {
               "title": "next.js flow",
-              "href": "/hooks-refresh/use#next-js-flow",
+              "href": "/projects/hooks-refresh/use#next-js-flow",
               "keywords": [
                 "await",
                 "use",
@@ -1695,7 +1695,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use#react-vs-next-js",
               "keywords": [
                 "use",
                 "<Suspense>",
@@ -1704,7 +1704,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use#say-it-right-english",
+              "href": "/projects/hooks-refresh/use#say-it-right-english",
               "keywords": [
                 "use",
                 "pending promise",
@@ -1721,16 +1721,16 @@
       "slug": "use-action-state",
       "name": "useActionState",
       "chapter": "React 19",
-      "href": "/hooks-refresh/use-action-state",
+      "href": "/projects/hooks-refresh/use-action-state",
       "planned": false,
       "parts": [
         {
           "name": "The hook",
-          "href": "/hooks-refresh/use-action-state#what-it-is",
+          "href": "/projects/hooks-refresh/use-action-state#what-it-is",
           "titles": [
             {
               "title": "what it is",
-              "href": "/hooks-refresh/use-action-state#what-it-is",
+              "href": "/projects/hooks-refresh/use-action-state#what-it-is",
               "keywords": [
                 "initialState",
                 "state",
@@ -1742,7 +1742,7 @@
             },
             {
               "title": "full form example",
-              "href": "/hooks-refresh/use-action-state#full-form-example",
+              "href": "/projects/hooks-refresh/use-action-state#full-form-example",
               "keywords": [
                 "Trace one submit.",
                 "FormData",
@@ -1756,7 +1756,7 @@
             },
             {
               "title": "it's for submits, not fetches",
-              "href": "/hooks-refresh/use-action-state#it-s-for-submits-not-fetches",
+              "href": "/projects/hooks-refresh/use-action-state#it-s-for-submits-not-fetches",
               "keywords": [
                 "The action only runs when TRIGGERED.",
                 "So it is for submits and mutations",
@@ -1769,7 +1769,7 @@
             },
             {
               "title": "reducer connection",
-              "href": "/hooks-refresh/use-action-state#reducer-connection",
+              "href": "/projects/hooks-refresh/use-action-state#reducer-connection",
               "keywords": [
                 "It is reducer-shaped.",
                 "(prevState, input) => newState",
@@ -1785,11 +1785,11 @@
         },
         {
           "name": "Server Actions (Next.js)",
-          "href": "/hooks-refresh/use-action-state#server-actions",
+          "href": "/projects/hooks-refresh/use-action-state#server-actions",
           "titles": [
             {
               "title": "server actions",
-              "href": "/hooks-refresh/use-action-state#server-actions",
+              "href": "/projects/hooks-refresh/use-action-state#server-actions",
               "keywords": [
                 "The action can be a SERVER ACTION.",
                 "\"use server\"",
@@ -1802,7 +1802,7 @@
             },
             {
               "title": "progressive enhancement",
-              "href": "/hooks-refresh/use-action-state#progressive-enhancement",
+              "href": "/projects/hooks-refresh/use-action-state#progressive-enhancement",
               "keywords": [
                 "Once JS is ready, React enhances it.",
                 "isPending",
@@ -1812,7 +1812,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-action-state#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-action-state#react-vs-next-js",
               "keywords": [
                 "useActionState",
                 "\"use server\"",
@@ -1821,7 +1821,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-action-state#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-action-state#say-it-right-english",
               "keywords": [
                 "useActionState",
                 "form submission",
@@ -1839,16 +1839,16 @@
       "slug": "use-form-status",
       "name": "useFormStatus",
       "chapter": "React 19",
-      "href": "/hooks-refresh/use-form-status",
+      "href": "/projects/hooks-refresh/use-form-status",
       "planned": false,
       "parts": [
         {
           "name": "The hook",
-          "href": "/hooks-refresh/use-form-status#what-it-is",
+          "href": "/projects/hooks-refresh/use-form-status#what-it-is",
           "titles": [
             {
               "title": "what it is",
-              "href": "/hooks-refresh/use-form-status#what-it-is",
+              "href": "/projects/hooks-refresh/use-form-status#what-it-is",
               "keywords": [
                 "pending",
                 "data",
@@ -1862,7 +1862,7 @@
             },
             {
               "title": "full example",
-              "href": "/hooks-refresh/use-form-status#full-example",
+              "href": "/projects/hooks-refresh/use-form-status#full-example",
               "keywords": [
                 "Trace one submit.",
                 "useFormStatus().pending",
@@ -1878,11 +1878,11 @@
         },
         {
           "name": "The rule & traps",
-          "href": "/hooks-refresh/use-form-status#must-be-inside-the-form",
+          "href": "/projects/hooks-refresh/use-form-status#must-be-inside-the-form",
           "titles": [
             {
               "title": "must be inside the form",
-              "href": "/hooks-refresh/use-form-status#must-be-inside-the-form",
+              "href": "/projects/hooks-refresh/use-form-status#must-be-inside-the-form",
               "keywords": [
                 "pending",
                 "And it fails SILENTLY.",
@@ -1891,7 +1891,7 @@
             },
             {
               "title": "import & scope traps",
-              "href": "/hooks-refresh/use-form-status#import-scope-traps",
+              "href": "/projects/hooks-refresh/use-form-status#import-scope-traps",
               "keywords": [
                 "Import from react-dom, not react.",
                 "react",
@@ -1905,7 +1905,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-form-status#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-form-status#react-vs-next-js",
               "keywords": [
                 "useFormStatus",
                 "react-dom",
@@ -1915,7 +1915,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-form-status#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-form-status#say-it-right-english",
               "keywords": [
                 "pending",
                 "useFormStatus",
@@ -1935,16 +1935,16 @@
       "slug": "use-optimistic",
       "name": "useOptimistic",
       "chapter": "React 19",
-      "href": "/hooks-refresh/use-optimistic",
+      "href": "/projects/hooks-refresh/use-optimistic",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
+          "href": "/projects/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
           "titles": [
             {
               "title": "instant ui before the server responds",
-              "href": "/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
+              "href": "/projects/hooks-refresh/use-optimistic#instant-ui-before-the-server-responds",
               "keywords": [
                 "Two arguments.",
                 "actualState",
@@ -1956,7 +1956,7 @@
             },
             {
               "title": "full example",
-              "href": "/hooks-refresh/use-optimistic#full-example",
+              "href": "/projects/hooks-refresh/use-optimistic#full-example",
               "keywords": [
                 "Trace it.",
                 "addOptimistic(text)",
@@ -1970,7 +1970,7 @@
             },
             {
               "title": "why not just useState",
-              "href": "/hooks-refresh/use-optimistic#why-not-just-usestate",
+              "href": "/projects/hooks-refresh/use-optimistic#why-not-just-usestate",
               "keywords": [
                 "You CAN do this with useState.",
                 "catch",
@@ -1983,11 +1983,11 @@
         },
         {
           "name": "Failure & rules",
-          "href": "/hooks-refresh/use-optimistic#failure-auto-rolls-back",
+          "href": "/projects/hooks-refresh/use-optimistic#failure-auto-rolls-back",
           "titles": [
             {
               "title": "failure auto-rolls-back",
-              "href": "/hooks-refresh/use-optimistic#failure-auto-rolls-back",
+              "href": "/projects/hooks-refresh/use-optimistic#failure-auto-rolls-back",
               "keywords": [
                 "actualState",
                 "So failure rolls back by itself.",
@@ -1997,7 +1997,7 @@
             },
             {
               "title": "must run inside an action",
-              "href": "/hooks-refresh/use-optimistic#must-run-inside-an-action",
+              "href": "/projects/hooks-refresh/use-optimistic#must-run-inside-an-action",
               "keywords": [
                 "<form action>",
                 "startTransition(async () => {...})",
@@ -2008,7 +2008,7 @@
             },
             {
               "title": "render the optimistic state",
-              "href": "/hooks-refresh/use-optimistic#render-the-optimistic-state",
+              "href": "/projects/hooks-refresh/use-optimistic#render-the-optimistic-state",
               "keywords": [
                 "Render optimisticState, not actualState.",
                 "And actualState MUST update on success.",
@@ -2017,7 +2017,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-optimistic#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-optimistic#react-vs-next-js",
               "keywords": [
                 "useOptimistic",
                 "\"use client\"",
@@ -2028,7 +2028,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-optimistic#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-optimistic#say-it-right-english",
               "keywords": [
                 "actualState",
                 "discarded automatically",
@@ -2045,16 +2045,16 @@
       "slug": "use-router",
       "name": "useRouter",
       "chapter": "Navigation",
-      "href": "/hooks-refresh/use-router",
+      "href": "/projects/hooks-refresh/use-router",
       "planned": false,
       "parts": [
         {
           "name": "Navigating from code",
-          "href": "/hooks-refresh/use-router#what-it-is",
+          "href": "/projects/hooks-refresh/use-router#what-it-is",
           "titles": [
             {
               "title": "what it is",
-              "href": "/hooks-refresh/use-router#what-it-is",
+              "href": "/projects/hooks-refresh/use-router#what-it-is",
               "keywords": [
                 "<Link>",
                 "The methods.",
@@ -2068,7 +2068,7 @@
             },
             {
               "title": "useRouter vs <Link>",
-              "href": "/hooks-refresh/use-router#userouter-vs-link",
+              "href": "/projects/hooks-refresh/use-router#userouter-vs-link",
               "keywords": [
                 "router.push"
               ]
@@ -2077,11 +2077,11 @@
         },
         {
           "name": "refresh() & traps",
-          "href": "/hooks-refresh/use-router#router-refresh-re-render-server-data",
+          "href": "/projects/hooks-refresh/use-router#router-refresh-re-render-server-data",
           "titles": [
             {
               "title": "router.refresh() — re-render server data",
-              "href": "/hooks-refresh/use-router#router-refresh-re-render-server-data",
+              "href": "/projects/hooks-refresh/use-router#router-refresh-re-render-server-data",
               "keywords": [
                 "The problem it solves.",
                 "DELETE",
@@ -2095,7 +2095,7 @@
             },
             {
               "title": "refresh only re-runs server data",
-              "href": "/hooks-refresh/use-router#refresh-only-re-runs-server-data",
+              "href": "/projects/hooks-refresh/use-router#refresh-only-re-runs-server-data",
               "keywords": [
                 "refresh() only re-runs SERVER work.",
                 "useEffect",
@@ -2106,7 +2106,7 @@
             },
             {
               "title": "import & scope traps",
-              "href": "/hooks-refresh/use-router#import-scope-traps",
+              "href": "/projects/hooks-refresh/use-router#import-scope-traps",
               "keywords": [
                 "app/",
                 "useRouter is client-only.",
@@ -2119,7 +2119,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-router#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-router#react-vs-next-js",
               "keywords": [
                 "useNavigate",
                 "navigate(\"/x\")",
@@ -2133,7 +2133,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-router#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-router#say-it-right-english",
               "keywords": [
                 "router.refresh()",
                 "Server Components on the server",
@@ -2151,16 +2151,16 @@
       "slug": "use-pathname",
       "name": "usePathname",
       "chapter": "Navigation",
-      "href": "/hooks-refresh/use-pathname",
+      "href": "/projects/hooks-refresh/use-pathname",
       "planned": false,
       "parts": [
         {
           "name": "The hook",
-          "href": "/hooks-refresh/use-pathname#current-path",
+          "href": "/projects/hooks-refresh/use-pathname#current-path",
           "titles": [
             {
               "title": "current path",
-              "href": "/hooks-refresh/use-pathname#current-path",
+              "href": "/projects/hooks-refresh/use-pathname#current-path",
               "keywords": [
                 "The path only.",
                 "?foo=bar",
@@ -2173,7 +2173,7 @@
             },
             {
               "title": "active links",
-              "href": "/hooks-refresh/use-pathname#active-links",
+              "href": "/projects/hooks-refresh/use-pathname#active-links",
               "keywords": [
                 "This is what the hook is mostly for.",
                 "pathname",
@@ -2183,7 +2183,7 @@
             },
             {
               "title": "path only, no query",
-              "href": "/hooks-refresh/use-pathname#path-only-no-query",
+              "href": "/projects/hooks-refresh/use-pathname#path-only-no-query",
               "keywords": [
                 "usePathname strips the query string.",
                 "/search?q=react",
@@ -2195,7 +2195,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-pathname#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-pathname#react-vs-next-js",
               "keywords": [
                 "useLocation().pathname",
                 "\"use client\""
@@ -2203,7 +2203,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-pathname#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-pathname#say-it-right-english",
               "keywords": [
                 "usePathname",
                 "path only",
@@ -2222,16 +2222,16 @@
       "slug": "use-params",
       "name": "useParams",
       "chapter": "Navigation",
-      "href": "/hooks-refresh/use-params",
+      "href": "/projects/hooks-refresh/use-params",
       "planned": false,
       "parts": [
         {
           "name": "The hook",
-          "href": "/hooks-refresh/use-params#dynamic-route-params",
+          "href": "/projects/hooks-refresh/use-params#dynamic-route-params",
           "titles": [
             {
               "title": "dynamic route params",
-              "href": "/hooks-refresh/use-params#dynamic-route-params",
+              "href": "/projects/hooks-refresh/use-params#dynamic-route-params",
               "keywords": [
                 "It returns the DYNAMIC route parameters",
                 "[bracket]",
@@ -2245,7 +2245,7 @@
             },
             {
               "title": "params vs pathname vs search",
-              "href": "/hooks-refresh/use-params#params-vs-pathname-vs-search",
+              "href": "/projects/hooks-refresh/use-params#params-vs-pathname-vs-search",
               "keywords": [
                 "Three views of the same URL.",
                 "usePathname",
@@ -2258,7 +2258,7 @@
             },
             {
               "title": "server pages get params as a prop",
-              "href": "/hooks-refresh/use-params#server-pages-get-params-as-a-prop",
+              "href": "/projects/hooks-refresh/use-params#server-pages-get-params-as-a-prop",
               "keywords": [
                 "\"use client\"",
                 "useParams"
@@ -2266,7 +2266,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-params#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-params#react-vs-next-js",
               "keywords": [
                 "useParams",
                 "\"use client\"",
@@ -2275,7 +2275,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-params#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-params#say-it-right-english",
               "keywords": [
                 "SEGMENTS",
                 "/blog/[slug]",
@@ -2294,16 +2294,16 @@
       "slug": "use-search-params",
       "name": "useSearchParams",
       "chapter": "Navigation",
-      "href": "/hooks-refresh/use-search-params",
+      "href": "/projects/hooks-refresh/use-search-params",
       "planned": false,
       "parts": [
         {
           "name": "Reading the query",
-          "href": "/hooks-refresh/use-search-params#read-the-query-string",
+          "href": "/projects/hooks-refresh/use-search-params#read-the-query-string",
           "titles": [
             {
               "title": "read the query string",
-              "href": "/hooks-refresh/use-search-params#read-the-query-string",
+              "href": "/projects/hooks-refresh/use-search-params#read-the-query-string",
               "keywords": [
                 ".get(\"key\")",
                 ".getAll(\"key\")",
@@ -2319,11 +2319,11 @@
         },
         {
           "name": "Updating the query",
-          "href": "/hooks-refresh/use-search-params#copy-modify-navigate",
+          "href": "/projects/hooks-refresh/use-search-params#copy-modify-navigate",
           "titles": [
             {
               "title": "copy, modify, navigate",
-              "href": "/hooks-refresh/use-search-params#copy-modify-navigate",
+              "href": "/projects/hooks-refresh/use-search-params#copy-modify-navigate",
               "keywords": [
                 "Three steps, always the same three.",
                 "new URLSearchParams(searchParams)",
@@ -2337,7 +2337,7 @@
             },
             {
               "title": "don't mutate the current params",
-              "href": "/hooks-refresh/use-search-params#don-t-mutate-the-current-params",
+              "href": "/projects/hooks-refresh/use-search-params#don-t-mutate-the-current-params",
               "keywords": [
                 "Never assign-and-mutate.",
                 "searchParams",
@@ -2348,7 +2348,7 @@
             },
             {
               "title": "wrap in Suspense",
-              "href": "/hooks-refresh/use-search-params#wrap-in-suspense",
+              "href": "/projects/hooks-refresh/use-search-params#wrap-in-suspense",
               "keywords": [
                 "The query is only known at REQUEST time.",
                 "useSearchParams",
@@ -2357,7 +2357,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-search-params#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-search-params#react-vs-next-js",
               "keywords": [
                 "\"use client\"",
                 "<Suspense>"
@@ -2365,7 +2365,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-search-params#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-search-params#say-it-right-english",
               "keywords": [
                 "searchParams",
                 "new URLSearchParams()",
@@ -2383,16 +2383,16 @@
       "slug": "use-selected-layout-segment",
       "name": "useSelectedLayoutSegment",
       "chapter": "Navigation",
-      "href": "/hooks-refresh/use-selected-layout-segment",
+      "href": "/projects/hooks-refresh/use-selected-layout-segment",
       "planned": false,
       "parts": [
         {
           "name": "The idea",
-          "href": "/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
+          "href": "/projects/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
           "titles": [
             {
               "title": "what a segment is",
-              "href": "/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#what-a-segment-is",
               "keywords": [
                 "A segment is one slice of the URL path",
                 "Static or dynamic makes no difference.",
@@ -2402,7 +2402,7 @@
             },
             {
               "title": "the active child segment",
-              "href": "/hooks-refresh/use-selected-layout-segment#the-active-child-segment",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#the-active-child-segment",
               "keywords": [
                 "It never looks deeper than one level.",
                 "Built for nav UI in shared layouts.",
@@ -2411,7 +2411,7 @@
             },
             {
               "title": "relative to the calling layout",
-              "href": "/hooks-refresh/use-selected-layout-segment#relative-to-the-calling-layout",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#relative-to-the-calling-layout",
               "keywords": [
                 "/dashboard/settings/profile",
                 "\"settings\"",
@@ -2423,11 +2423,11 @@
         },
         {
           "name": "Singular vs plural",
-          "href": "/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
+          "href": "/projects/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
           "titles": [
             {
               "title": "useSelectedLayoutSegments (plural)",
-              "href": "/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#useselectedlayoutsegments-plural",
               "keywords": [
                 "Singular for active-link highlighting",
                 "Plural for breadcrumbs,",
@@ -2436,14 +2436,14 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/use-selected-layout-segment#react-vs-next-js",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#react-vs-next-js",
               "keywords": [
                 "\"use client\""
               ]
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/use-selected-layout-segment#say-it-right-english",
+              "href": "/projects/hooks-refresh/use-selected-layout-segment#say-it-right-english",
               "keywords": [
                 "useSelectedLayoutSegment",
                 "directly below the layout that calls it",
@@ -2459,16 +2459,16 @@
       "slug": "custom-hooks",
       "name": "Custom Hooks",
       "chapter": "Custom Hooks",
-      "href": "/hooks-refresh/custom-hooks",
+      "href": "/projects/hooks-refresh/custom-hooks",
       "planned": false,
       "parts": [
         {
           "name": "What a custom hook is",
-          "href": "/hooks-refresh/custom-hooks#the-definition",
+          "href": "/projects/hooks-refresh/custom-hooks#the-definition",
           "titles": [
             {
               "title": "the definition",
-              "href": "/hooks-refresh/custom-hooks#the-definition",
+              "href": "/projects/hooks-refresh/custom-hooks#the-definition",
               "keywords": [
                 "It is just a FUNCTION.",
                 "use",
@@ -2479,7 +2479,7 @@
             },
             {
               "title": "shares logic, not state",
-              "href": "/hooks-refresh/custom-hooks#shares-logic-not-state",
+              "href": "/projects/hooks-refresh/custom-hooks#shares-logic-not-state",
               "keywords": [
                 "Each caller gets its OWN state.",
                 "Like a recipe:",
@@ -2488,7 +2488,7 @@
             },
             {
               "title": "args, return, composition, rules",
-              "href": "/hooks-refresh/custom-hooks#args-return-composition-rules",
+              "href": "/projects/hooks-refresh/custom-hooks#args-return-composition-rules",
               "keywords": [
                 "They take ARGUMENTS and RETURN anything.",
                 "They compose.",
@@ -2500,11 +2500,11 @@
         },
         {
           "name": "Real examples",
-          "href": "/hooks-refresh/custom-hooks#usefetch-data-fetching",
+          "href": "/projects/hooks-refresh/custom-hooks#usefetch-data-fetching",
           "titles": [
             {
               "title": "useFetch — data fetching",
-              "href": "/hooks-refresh/custom-hooks#usefetch-data-fetching",
+              "href": "/projects/hooks-refresh/custom-hooks#usefetch-data-fetching",
               "keywords": [
                 "[url] is the dependency,",
                 "setData",
@@ -2517,7 +2517,7 @@
             },
             {
               "title": "useLocalStorage — persistent state",
-              "href": "/hooks-refresh/custom-hooks#uselocalstorage-persistent-state",
+              "href": "/projects/hooks-refresh/custom-hooks#uselocalstorage-persistent-state",
               "keywords": [
                 "Same API as useState",
                 "[value, setValue]",
@@ -2531,7 +2531,7 @@
             },
             {
               "title": "useAuth — wrapping a context",
-              "href": "/hooks-refresh/custom-hooks#useauth-wrapping-a-context",
+              "href": "/projects/hooks-refresh/custom-hooks#useauth-wrapping-a-context",
               "keywords": [
                 "useContext(AuthContext)",
                 "Why wrap it at all?",
@@ -2545,7 +2545,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/custom-hooks#react-vs-next-js",
+              "href": "/projects/hooks-refresh/custom-hooks#react-vs-next-js",
               "keywords": [
                 "\"use client\"",
                 "localStorage",
@@ -2555,7 +2555,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/custom-hooks#say-it-right-english",
+              "href": "/projects/hooks-refresh/custom-hooks#say-it-right-english",
               "keywords": [
                 "logic",
                 "useAuth",
@@ -2571,16 +2571,16 @@
       "slug": "redux",
       "name": "Redux",
       "chapter": "State Libraries",
-      "href": "/hooks-refresh/redux",
+      "href": "/projects/hooks-refresh/redux",
       "planned": false,
       "parts": [
         {
           "name": "Why Redux",
-          "href": "/hooks-refresh/redux#what-redux-is",
+          "href": "/projects/hooks-refresh/redux#what-redux-is",
           "titles": [
             {
               "title": "what redux is",
-              "href": "/hooks-refresh/redux#what-redux-is",
+              "href": "/projects/hooks-refresh/redux#what-redux-is",
               "keywords": [
                 "Redux is ONE global store",
                 "user",
@@ -2594,7 +2594,7 @@
             },
             {
               "title": "the problem it solves",
-              "href": "/hooks-refresh/redux#the-problem-it-solves",
+              "href": "/projects/hooks-refresh/redux#the-problem-it-solves",
               "keywords": [
                 "Layout",
                 "Sidebar",
@@ -2604,7 +2604,7 @@
             },
             {
               "title": "context vs redux",
-              "href": "/hooks-refresh/redux#context-vs-redux",
+              "href": "/projects/hooks-refresh/redux#context-vs-redux",
               "keywords": [
                 "Context has NO partial subscription.",
                 "useSelector gives PARTIAL SUBSCRIPTION.",
@@ -2617,11 +2617,11 @@
         },
         {
           "name": "Setup (Next.js)",
-          "href": "/hooks-refresh/redux#the-store",
+          "href": "/projects/hooks-refresh/redux#the-store",
           "titles": [
             {
               "title": "the store",
-              "href": "/hooks-refresh/redux#the-store",
+              "href": "/projects/hooks-refresh/redux#the-store",
               "keywords": [
                 "configureStore builds the single store.",
                 "{ counter: counterReducer }",
@@ -2631,7 +2631,7 @@
             },
             {
               "title": "the provider",
-              "href": "/hooks-refresh/redux#the-provider",
+              "href": "/projects/hooks-refresh/redux#the-provider",
               "keywords": [
                 "The react-redux Provider is client-only.",
                 "\"use client\"",
@@ -2647,11 +2647,11 @@
         },
         {
           "name": "Slices",
-          "href": "/hooks-refresh/redux#createslice",
+          "href": "/projects/hooks-refresh/redux#createslice",
           "titles": [
             {
               "title": "createSlice",
-              "href": "/hooks-refresh/redux#createslice",
+              "href": "/projects/hooks-refresh/redux#createslice",
               "keywords": [
                 "increment",
                 "increment()",
@@ -2667,11 +2667,11 @@
         },
         {
           "name": "Using it",
-          "href": "/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
+          "href": "/projects/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
           "titles": [
             {
               "title": "useSelector, useDispatch & typed hooks",
-              "href": "/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
+              "href": "/projects/hooks-refresh/redux#useselector-usedispatch-typed-hooks",
               "keywords": [
                 "unknown",
                 "RootState",
@@ -2685,7 +2685,7 @@
             },
             {
               "title": "selector references",
-              "href": "/hooks-refresh/redux#selector-references",
+              "href": "/projects/hooks-refresh/redux#selector-references",
               "keywords": [
                 "BAD",
                 "{ user, cart }",
@@ -2699,11 +2699,11 @@
         },
         {
           "name": "Async",
-          "href": "/hooks-refresh/redux#createasyncthunk",
+          "href": "/projects/hooks-refresh/redux#createasyncthunk",
           "titles": [
             {
               "title": "createAsyncThunk",
-              "href": "/hooks-refresh/redux#createasyncthunk",
+              "href": "/projects/hooks-refresh/redux#createasyncthunk",
               "keywords": [
                 "Reducers must be synchronous and pure.",
                 "pending",
@@ -2717,7 +2717,7 @@
             },
             {
               "title": "async in next.js",
-              "href": "/hooks-refresh/redux#async-in-next-js",
+              "href": "/projects/hooks-refresh/redux#async-in-next-js",
               "keywords": [
                 "loading",
                 "Reserve thunks for CLIENT-side async.",
@@ -2726,7 +2726,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/redux#react-vs-next-js",
+              "href": "/projects/hooks-refresh/redux#react-vs-next-js",
               "keywords": [
                 "Provider",
                 "\"use client\""
@@ -2734,7 +2734,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/redux#say-it-right-english",
+              "href": "/projects/hooks-refresh/redux#say-it-right-english",
               "keywords": [
                 "useSelector",
                 "partial subscription",
@@ -2750,16 +2750,16 @@
       "slug": "custom-store",
       "name": "Custom Store",
       "chapter": "State Libraries",
-      "href": "/hooks-refresh/custom-store",
+      "href": "/projects/hooks-refresh/custom-store",
       "planned": false,
       "parts": [
         {
           "name": "What & why",
-          "href": "/hooks-refresh/custom-store#what-a-store-is",
+          "href": "/projects/hooks-refresh/custom-store#what-a-store-is",
           "titles": [
             {
               "title": "what a store is",
-              "href": "/hooks-refresh/custom-store#what-a-store-is",
+              "href": "/projects/hooks-refresh/custom-store#what-a-store-is",
               "keywords": [
                 "useState",
                 "It needs three things."
@@ -2769,11 +2769,11 @@
         },
         {
           "name": "Building the store",
-          "href": "/hooks-refresh/custom-store#subscribe-listening",
+          "href": "/projects/hooks-refresh/custom-store#subscribe-listening",
           "titles": [
             {
               "title": "subscribe — listening",
-              "href": "/hooks-refresh/custom-store#subscribe-listening",
+              "href": "/projects/hooks-refresh/custom-store#subscribe-listening",
               "keywords": [
                 "Set",
                 "The return value is the cleanup.",
@@ -2783,12 +2783,12 @@
             },
             {
               "title": "emit — notifying",
-              "href": "/hooks-refresh/custom-store#emit-notifying",
+              "href": "/projects/hooks-refresh/custom-store#emit-notifying",
               "keywords": []
             },
             {
               "title": "getSnapshot — reading",
-              "href": "/hooks-refresh/custom-store#getsnapshot-reading",
+              "href": "/projects/hooks-refresh/custom-store#getsnapshot-reading",
               "keywords": [
                 "Subscribing says WHEN; this says WHAT.",
                 "emit()",
@@ -2803,11 +2803,11 @@
         },
         {
           "name": "Connecting to React",
-          "href": "/hooks-refresh/custom-store#usesyncexternalstore-bridge",
+          "href": "/projects/hooks-refresh/custom-store#usesyncexternalstore-bridge",
           "titles": [
             {
               "title": "useSyncExternalStore bridge",
-              "href": "/hooks-refresh/custom-store#usesyncexternalstore-bridge",
+              "href": "/projects/hooks-refresh/custom-store#usesyncexternalstore-bridge",
               "keywords": [
                 "One hook joins the two halves.",
                 "subscribe",
@@ -2821,7 +2821,7 @@
             },
             {
               "title": "stable snapshot",
-              "href": "/hooks-refresh/custom-store#stable-snapshot",
+              "href": "/projects/hooks-refresh/custom-store#stable-snapshot",
               "keywords": [
                 "{ count: state }",
                 "getSnapshot"
@@ -2829,7 +2829,7 @@
             },
             {
               "title": "ssr snapshot",
-              "href": "/hooks-refresh/custom-store#ssr-snapshot",
+              "href": "/projects/hooks-refresh/custom-store#ssr-snapshot",
               "keywords": [
                 "In the App Router this is not optional.",
                 "\"use client\"",
@@ -2838,7 +2838,7 @@
             },
             {
               "title": "react vs next.js",
-              "href": "/hooks-refresh/custom-store#react-vs-next-js",
+              "href": "/projects/hooks-refresh/custom-store#react-vs-next-js",
               "keywords": [
                 "Set",
                 "useSyncExternalStore",
@@ -2848,7 +2848,7 @@
             },
             {
               "title": "say it right — english",
-              "href": "/hooks-refresh/custom-store#say-it-right-english",
+              "href": "/projects/hooks-refresh/custom-store#say-it-right-english",
               "keywords": [
                 "outside React",
                 "emit",

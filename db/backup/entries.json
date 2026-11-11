@@ -1,0 +1,7366 @@
+[
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef31"
+    },
+    "slug": "mern-stack",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the MERN stack?",
+      "de": "Was ist der MERN-Stack?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef33"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "mern-flow",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do the parts of a MERN app work together?",
+      "de": "Wie arbeiten die Teile einer MERN-App zusammen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef34"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "what-is-dns",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is DNS?",
+      "de": "Was ist DNS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef35"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "dns-resolution",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does DNS resolution work?",
+      "de": "Wie funktioniert die DNS-Auflösung?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef36"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "http-vs-https",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the difference between HTTP and HTTPS?",
+      "de": "Was ist der Unterschied zwischen HTTP und HTTPS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef37"
+    },
+    "slug": "client-vs-server",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the difference between client side and server side?",
+      "de": "Was ist der Unterschied zwischen Client-Side und Server-Side?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef39"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "cors",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is CORS?",
+      "de": "Was ist CORS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef3a"
+    },
+    "slug": "rest-api",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a REST API?",
+      "de": "Was ist eine REST API?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef3b"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "get-vs-post",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "GET vs POST: what is the difference?",
+      "de": "GET vs. POST: Was ist der Unterschied?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef3d"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "put-vs-patch",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "PUT vs PATCH: what is the difference?",
+      "de": "PUT vs. PATCH: Was ist der Unterschied?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef3e"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "jwt-auth",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does JWT authentication work?",
+      "de": "Wie funktioniert die Authentifizierung mit JWT?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef3f"
+    },
+    "slug": "authn-vs-authz",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Authentication vs authorization",
+      "de": "Authentifizierung vs. Autorisierung"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef43"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "websockets-vs-http",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "WebSockets vs HTTP: when do you use which?",
+      "de": "WebSockets vs. HTTP: Wann nutzt man was?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef44"
+    },
+    "slug": "debug-fullstack",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you debug a bug that crosses frontend and backend?",
+      "de": "Wie debuggt man einen Fehler zwischen Frontend und Backend?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef45"
+    },
+    "slug": "what-is-api",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is an API?",
+      "de": "Was ist eine API?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef46"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "web-server-role",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does a web server do?",
+      "de": "Was macht ein Webserver?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef47"
+    },
+    "slug": "cms",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a CMS?",
+      "de": "Was ist ein CMS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef48"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "deployment",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you deploy a full-stack application?",
+      "de": "Wie deployt man eine Full-Stack-Anwendung?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef49"
+    },
+    "slug": "pwa",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a Progressive Web App?",
+      "de": "Was ist eine Progressive Web App?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4a"
+    },
+    "slug": "responsive-design",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is responsive web design?",
+      "de": "Was ist Responsive Webdesign?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427305845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4b"
+    },
+    "slug": "event-loop",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does the event loop work?",
+      "de": "Wie funktioniert der Event Loop?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4c"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "promises",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are Promises?",
+      "de": "Was sind Promises?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4d"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "single-threaded",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Is JavaScript single-threaded? How does it handle multithreading?",
+      "de": "Ist JavaScript single-threaded? Wie geht es mit Multithreading um?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4e"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "equality",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "== vs ===: what is the difference?",
+      "de": "== vs. ===: Was ist der Unterschied?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef4f"
+    },
+    "slug": "callback-hell",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is callback hell and how do you avoid it?",
+      "de": "Was ist Callback Hell und wie vermeidet man sie?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef50"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "temporal-dead-zone",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the temporal dead zone?",
+      "de": "Was ist die Temporal Dead Zone?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef51"
+    },
+    "slug": "data-types",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which data types does JavaScript have?",
+      "de": "Welche Datentypen gibt es in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef52"
+    },
+    "slug": "js-comments",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you write comments in JavaScript?",
+      "de": "Wie schreibt man Kommentare in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef53"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "coercion-3-2-7",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the result of 3 + 2 + \"7\", and why?",
+      "de": "Was ist das Ergebnis von 3 + 2 + \"7\" und warum?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef54"
+    },
+    "slug": "isnan",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does isNaN do?",
+      "de": "Was macht isNaN?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef55"
+    },
+    "slug": "js-vs-asp",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Is JavaScript faster than ASP Script?",
+      "de": "Ist JavaScript schneller als ASP Script?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef56"
+    },
+    "slug": "negative-infinity",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is negative infinity?",
+      "de": "Was ist negative Unendlichkeit (-Infinity)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef57"
+    },
+    "slug": "multiline-code",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you split JavaScript code over several lines?",
+      "de": "Wie teilt man JavaScript-Code auf mehrere Zeilen auf?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef58"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "js-creator",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Who created JavaScript?",
+      "de": "Wer hat JavaScript entwickelt?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef59"
+    },
+    "slug": "undeclared-vs-undefined",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Undeclared vs undefined variables",
+      "de": "Nicht deklarierte vs. undefined Variablen"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5a"
+    },
+    "slug": "global-variables",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are global variables, and what are their problems?",
+      "de": "Was sind globale Variablen und welche Probleme haben sie?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5b"
+    },
+    "slug": "null",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is null, and how is it different from undefined?",
+      "de": "Was ist null und was ist der Unterschied zu undefined?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5c"
+    },
+    "slug": "delete-property",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you delete a property from an object?",
+      "de": "Wie löscht man eine Property aus einem Objekt?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5d"
+    },
+    "slug": "this-keyword",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does the this keyword work?",
+      "de": "Wie funktioniert das Keyword this?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5e"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "timers",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do timers (setTimeout, setInterval) work?",
+      "de": "Wie funktionieren Timer (setTimeout, setInterval)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef5f"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "loops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which loop structures does JavaScript have?",
+      "de": "Welche Schleifen gibt es in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef60"
+    },
+    "slug": "dynamic-typing",
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "22"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Is JavaScript dynamically typed?",
+      "de": "Ist JavaScript dynamisch typisiert?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef61"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "string-to-int",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "23"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you convert a string to an integer?",
+      "de": "Wie wandelt man einen String in eine Ganzzahl um?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef62"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "strict-mode",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "24"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is strict mode?",
+      "de": "Was ist der Strict Mode?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef63"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "closures",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "25"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a closure?",
+      "de": "Was ist eine Closure?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438715410"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef64"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "call-apply-bind",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "26"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What do call(), apply() and bind() do?",
+      "de": "Was machen call(), apply() und bind()?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef65"
+    },
+    "page": "interviews/preparation/fullstack-questions/javascript",
+    "slug": "error-types",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "27"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which types of errors exist in JavaScript?",
+      "de": "Welche Fehlertypen gibt es in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306175"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef66"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "what-is-react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is React?",
+      "de": "Was ist React?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef67"
+    },
+    "slug": "mvc",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is MVC architecture, and where does React fit?",
+      "de": "Was ist die MVC-Architektur und wo passt React hinein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef68"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "building-blocks",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are the main building blocks of React?",
+      "de": "Was sind die wichtigsten Bausteine von React?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef69"
+    },
+    "slug": "virtual-dom",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the virtual DOM?",
+      "de": "Was ist das Virtual DOM?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6a"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "jsx",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is JSX?",
+      "de": "Was ist JSX?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6b"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "component-types",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which types of components exist?",
+      "de": "Welche Arten von Komponenten gibt es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6c"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "browser-jsx",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does the browser run JSX?",
+      "de": "Wie führt der Browser JSX aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6d"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "create-react-app",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you create a React app?",
+      "de": "Wie erstellt man eine React-App?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6e"
+    },
+    "slug": "events",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do events work in React?",
+      "de": "Wie funktionieren Events in React?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef6f"
+    },
+    "slug": "lists",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you render lists in React?",
+      "de": "Wie rendert man Listen in React?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef70"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "keys",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Why do lists need keys?",
+      "de": "Warum brauchen Listen Keys?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef71"
+    },
+    "slug": "conditional-rendering",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does conditional rendering work?",
+      "de": "Wie funktioniert Conditional Rendering?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef73"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "react-router",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is React Router?",
+      "de": "Was ist React Router?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef74"
+    },
+    "slug": "router-components",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which components does React Router provide?",
+      "de": "Welche Komponenten bietet React Router?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef75"
+    },
+    "slug": "lifecycle",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are the component lifecycle methods?",
+      "de": "Was sind die Lifecycle-Methoden einer Komponente?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef76"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "mounting-methods",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which methods run in the mounting phase?",
+      "de": "Welche Methoden laufen in der Mounting-Phase?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef77"
+    },
+    "slug": "setstate",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does setState work?",
+      "de": "Wie funktioniert setState?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef78"
+    },
+    "slug": "refs",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are refs used for?",
+      "de": "Wofür nutzt man Refs?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef79"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "hooks",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are hooks?",
+      "de": "Was sind Hooks?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7a"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "usestate",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does useState work?",
+      "de": "Wie funktioniert useState?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7b"
+    },
+    "slug": "useeffect",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does useEffect work?",
+      "de": "Wie funktioniert useEffect?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7c"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "fragments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "22"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are fragments?",
+      "de": "Was sind Fragments?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7d"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "devtools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "23"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are React DevTools used for?",
+      "de": "Wofür nutzt man die React DevTools?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7e"
+    },
+    "slug": "functional-update",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "24"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Why update state with a callback?",
+      "de": "Warum aktualisiert man State mit einem Callback?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef7f"
+    },
+    "slug": "material-ui",
+    "page": "interviews/preparation/fullstack-questions/react",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "25"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is Material UI?",
+      "de": "Was ist Material UI?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9aa2c696ace7ff7ef80"
+    },
+    "page": "interviews/preparation/fullstack-questions/react",
+    "slug": "flux-redux",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "26"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the Flux architecture in Redux?",
+      "de": "Was ist die Flux-Architektur in Redux?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427306626"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef81"
+    },
+    "slug": "what-is-express",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is Express?",
+      "de": "Was ist Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef82"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "why-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Why use Express?",
+      "de": "Warum nutzt man Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef83"
+    },
+    "slug": "express-cors",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you enable CORS in Express?",
+      "de": "Wie aktiviert man CORS in Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef85"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "builtin-middleware",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which built-in middleware does Express have?",
+      "de": "Welche eingebaute Middleware hat Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef86"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "app-set",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does app.set() configure?",
+      "de": "Was konfiguriert app.set()?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef87"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "express-databases",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which databases work with Express?",
+      "de": "Welche Datenbanken funktionieren mit Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef88"
+    },
+    "slug": "static-files",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you serve static files in Express?",
+      "de": "Wie liefert man statische Dateien mit Express aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef89"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "app-use",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does app.use() do?",
+      "de": "Was macht app.use()?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8a"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "error-handling",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does error handling work in Express?",
+      "de": "Wie funktioniert Error Handling in Express?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8b"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "traditional-vs-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Traditional web server vs Express server",
+      "de": "Klassischer Webserver vs. Express-Server"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8c"
+    },
+    "slug": "next-function",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does next() do in Express middleware?",
+      "de": "Was macht next() in einer Express-Middleware?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8d"
+    },
+    "slug": "util-module",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the util module?",
+      "de": "Was ist das util-Modul?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8e"
+    },
+    "slug": "env-variables",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you use environment variables in Node.js?",
+      "de": "Wie nutzt man Umgebungsvariablen in Node.js?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef8f"
+    },
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "slug": "dns-module",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the dns module?",
+      "de": "Was ist das dns-Modul?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef90"
+    },
+    "slug": "child-processes",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are child processes?",
+      "de": "Was sind Child Processes?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef91"
+    },
+    "slug": "tracing",
+    "page": "interviews/preparation/fullstack-questions/node-express",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is tracing in Node.js?",
+      "de": "Was ist Tracing in Node.js?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307015"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef92"
+    },
+    "slug": "sql-vs-nosql",
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Relational vs non-relational databases",
+      "de": "Relationale vs. nicht-relationale Datenbanken"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef93"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "normalization",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Normalization vs denormalization",
+      "de": "Normalisierung vs. Denormalisierung"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef94"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "mongodb-vs-sql",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "MongoDB vs SQL databases",
+      "de": "MongoDB vs. SQL-Datenbanken"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef95"
+    },
+    "slug": "bson",
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is BSON?",
+      "de": "Was ist BSON?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef96"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "aggregation-framework",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the aggregation framework in MongoDB?",
+      "de": "Was ist das Aggregation Framework in MongoDB?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef97"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "aggregation-operations",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which aggregation operations exist?",
+      "de": "Welche Aggregation-Operationen gibt es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef98"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "write-concern",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is write concern?",
+      "de": "Was ist Write Concern?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef99"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "ttl-indexes",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are TTL indexes?",
+      "de": "Was sind TTL-Indexe?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9a"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "journaling",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does journaling affect performance?",
+      "de": "Wie beeinflusst Journaling die Performance?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9b"
+    },
+    "page": "interviews/preparation/fullstack-questions/databases",
+    "slug": "full-text-search",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does full-text search work in MongoDB?",
+      "de": "Wie funktioniert die Volltextsuche in MongoDB?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307270"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9c"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "event-bubbling",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are event bubbling and capturing?",
+      "de": "Was sind Event Bubbling und Event Capturing?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9d"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "prompt-box",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a prompt box?",
+      "de": "Was ist eine Prompt-Box?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9e"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "add-elements",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you add elements to the DOM dynamically?",
+      "de": "Wie fügt man dynamisch Elemente zum DOM hinzu?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7ef9f"
+    },
+    "slug": "change-styles",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you change styles and classes with JavaScript?",
+      "de": "Wie ändert man Styles und Klassen mit JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa0"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "read-write-files",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Can JavaScript read and write files?",
+      "de": "Kann JavaScript Dateien lesen und schreiben?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa1"
+    },
+    "slug": "detect-os",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you detect the user's operating system?",
+      "de": "Wie erkennt man das Betriebssystem des Users?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa2"
+    },
+    "slug": "popup-boxes",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which popup boxes does JavaScript have?",
+      "de": "Welche Popup-Boxen gibt es in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa3"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "alert-vs-confirm",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "alert() vs confirm()",
+      "de": "alert() vs. confirm()"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa4"
+    },
+    "slug": "innerhtml-risks",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are the drawbacks of innerHTML?",
+      "de": "Welche Nachteile hat innerHTML?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa5"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "void-0",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does javascript:void(0) do?",
+      "de": "Was macht javascript:void(0)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa6"
+    },
+    "slug": "cookies",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are cookies?",
+      "de": "Was sind Cookies?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa7"
+    },
+    "slug": "create-cookie",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you create a cookie with JavaScript?",
+      "de": "Wie erstellt man ein Cookie mit JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa8"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "read-cookie",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you read a cookie?",
+      "de": "Wie liest man ein Cookie?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efa9"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "delete-cookie",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you delete a cookie?",
+      "de": "Wie löscht man ein Cookie?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efaa"
+    },
+    "slug": "escape-characters",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are escape characters?",
+      "de": "Was sind Escape-Zeichen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efab"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "storage-comparison",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Cookies vs sessionStorage vs localStorage",
+      "de": "Cookies vs. sessionStorage vs. localStorage"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efac"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "web-workers",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are Web Workers?",
+      "de": "Was sind Web Workers?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efad"
+    },
+    "slug": "handling-events",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you handle events in JavaScript?",
+      "de": "Wie behandelt man Events in JavaScript?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efae"
+    },
+    "slug": "checkbox-status",
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you read the state of a checkbox?",
+      "de": "Wie liest man den Status einer Checkbox?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efaf"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "select-elements",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you access HTML elements from JavaScript?",
+      "de": "Wie greift man mit JavaScript auf HTML-Elemente zu?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb0"
+    },
+    "page": "interviews/preparation/fullstack-questions/browser-dom",
+    "slug": "event-bubbling-2",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    },
+    "duplicateOf": "event-bubbling",
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Event bubbling"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb1"
+    },
+    "slug": "html-vs-html5",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "HTML vs HTML5",
+      "de": "HTML vs. HTML5"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb2"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "html-vs-xhtml",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "HTML vs XHTML",
+      "de": "HTML vs. XHTML"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb3"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "doctype",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does <!DOCTYPE html> do?",
+      "de": "Was macht <!DOCTYPE html>?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb4"
+    },
+    "slug": "tags-vs-elements",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Tags vs elements",
+      "de": "Tags vs. Elemente"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb5"
+    },
+    "slug": "headings",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do heading tags work?",
+      "de": "Wie funktionieren Überschriften-Tags?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb6"
+    },
+    "slug": "same-page-links",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you link to a section on the same page?",
+      "de": "Wie verlinkt man auf einen Abschnitt derselben Seite?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb7"
+    },
+    "slug": "attributes",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are HTML attributes?",
+      "de": "Was sind HTML-Attribute?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb8"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "b-vs-strong",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "<b> vs <strong>",
+      "de": "<b> vs. <strong>"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efb9"
+    },
+    "slug": "em-vs-i",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "<em> vs <i>",
+      "de": "<em> vs. <i>"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efba"
+    },
+    "slug": "html-comments",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you write comments in HTML?",
+      "de": "Wie schreibt man Kommentare in HTML?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efbb"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "block-vs-inline",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Block vs inline elements",
+      "de": "Block- vs. Inline-Elemente"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efbc"
+    },
+    "slug": "div-vs-span",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "<div> vs <span>",
+      "de": "<div> vs. <span>"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efbd"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "div-span-differences",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "duplicateOf": "div-vs-span",
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Differences between <div> and <span>"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efbe"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "class-vs-id",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "class vs id",
+      "de": "class vs. id"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ab2c696ace7ff7efbf"
+    },
+    "slug": "meta-tags",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are meta tags used for?",
+      "de": "Wofür nutzt man Meta-Tags?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc0"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "anchor-tag",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does the anchor tag work?",
+      "de": "Wie funktioniert das Anchor-Tag?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc1"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "void-elements",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are void elements?",
+      "de": "Was sind Void-Elemente?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc2"
+    },
+    "slug": "inline-to-block",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you make an inline element behave like a block?",
+      "de": "Wie macht man aus einem Inline-Element ein Block-Element?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc3"
+    },
+    "slug": "container-vs-empty",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Container tags vs empty tags",
+      "de": "Container-Tags vs. leere Tags"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc4"
+    },
+    "slug": "separating-text",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which tags separate sections of text?",
+      "de": "Welche Tags trennen Textabschnitte?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc5"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "script-in-html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you include JavaScript in HTML?",
+      "de": "Wie bindet man JavaScript in HTML ein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc6"
+    },
+    "slug": "logical-vs-physical",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "22"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Logical vs physical tags",
+      "de": "Logische vs. physische Tags"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc7"
+    },
+    "slug": "mathml",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "23"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is MathML?",
+      "de": "Was ist MathML?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc8"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "scrolling-text",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "24"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you make scrolling text or images?",
+      "de": "Wie erstellt man scrollenden Text oder Bilder?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efc9"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "manifest-file",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "25"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the manifest file in HTML5?",
+      "de": "Was ist die Manifest-Datei in HTML5?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efca"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "new-tab-links",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "26"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you open a link in a new tab?",
+      "de": "Wie öffnet man einen Link in einem neuen Tab?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efcb"
+    },
+    "slug": "multipart-form-data",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "27"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is multipart/form-data?",
+      "de": "Was ist multipart/form-data?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efcc"
+    },
+    "slug": "svg",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "28"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you add SVG to a page?",
+      "de": "Wie fügt man SVG in eine Seite ein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efcd"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "media-tags",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "29"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which media tags does HTML5 have?",
+      "de": "Welche Media-Tags gibt es in HTML5?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efce"
+    },
+    "page": "interviews/preparation/fullstack-questions/html",
+    "slug": "cellpadding-vs-cellspacing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "30"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "cellpadding vs cellspacing",
+      "de": "cellpadding vs. cellspacing"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efcf"
+    },
+    "slug": "frame-target",
+    "page": "interviews/preparation/fullstack-questions/html",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "31"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does a link open inside a specific frame?",
+      "de": "Wie öffnet ein Link in einem bestimmten Frame?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427307766"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd0"
+    },
+    "slug": "what-is-css",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is CSS?",
+      "de": "Was ist CSS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd1"
+    },
+    "slug": "why-css",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Why do we use CSS?",
+      "de": "Warum nutzt man CSS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd2"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "css-vs-css3",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "CSS vs CSS3",
+      "de": "CSS vs. CSS3"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd3"
+    },
+    "slug": "css-syntax",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does CSS syntax look like?",
+      "de": "Wie sieht die CSS-Syntax aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd4"
+    },
+    "slug": "add-css",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are the ways to add CSS to a page?",
+      "de": "Wie kann man CSS in eine Seite einbinden?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd5"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "css-comments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you write comments in CSS?",
+      "de": "Wie schreibt man Kommentare in CSS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd6"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "rgba",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does the alpha channel in RGBA do?",
+      "de": "Was macht der Alpha-Kanal bei RGBA?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd7"
+    },
+    "slug": "hsl",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are HSL colors?",
+      "de": "Was sind HSL-Farben?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd8"
+    },
+    "slug": "border",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "Which border properties exist?",
+      "de": "Welche Border-Properties gibt es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efd9"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "apply-css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How are CSS styles applied to elements?",
+      "de": "Wie werden CSS-Styles auf Elemente angewendet?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efda"
+    },
+    "slug": "import-css",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you include one CSS file in another?",
+      "de": "Wie bindet man eine CSS-Datei in eine andere ein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efdb"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "overlapping",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you control overlapping elements (z-index)?",
+      "de": "Wie steuert man überlappende Elemente (z-index)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efdc"
+    },
+    "slug": "positioning",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does CSS positioning work?",
+      "de": "Wie funktioniert Positioning in CSS?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efdd"
+    },
+    "slug": "overflow",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does overflow do?",
+      "de": "Was macht overflow?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efde"
+    },
+    "slug": "float",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "15"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How does float work?",
+      "de": "Wie funktioniert float?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efdf"
+    },
+    "slug": "inline-block",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "16"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is display: inline-block?",
+      "de": "Was ist display: inline-block?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe0"
+    },
+    "slug": "vertical-center",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "17"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you center text vertically?",
+      "de": "Wie zentriert man Text vertikal?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe1"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "center-images",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "18"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do you center an image?",
+      "de": "Wie zentriert man ein Bild?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe2"
+    },
+    "slug": "combinators",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "19"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are CSS combinators?",
+      "de": "Was sind CSS-Kombinatoren?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe3"
+    },
+    "slug": "pseudo-classes",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "20"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are pseudo-classes?",
+      "de": "Was sind Pseudo-Klassen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe4"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "pseudo-elements",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are pseudo-elements?",
+      "de": "Was sind Pseudo-Elemente?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe5"
+    },
+    "slug": "gradients",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "22"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do CSS gradients work?",
+      "de": "Wie funktionieren CSS-Gradients?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe6"
+    },
+    "slug": "transforms-2d",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "23"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are 2D transformations?",
+      "de": "Was sind 2D-Transformationen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe7"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "transforms-3d",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "24"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are 3D transformations?",
+      "de": "Was sind 3D-Transformationen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe8"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "transitions",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "25"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do CSS transitions work?",
+      "de": "Wie funktionieren CSS-Transitions?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efe9"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "animations",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "26"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "How do CSS animations work?",
+      "de": "Wie funktionieren CSS-Animationen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efea"
+    },
+    "page": "interviews/preparation/fullstack-questions/css",
+    "slug": "box-sizing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "27"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does box-sizing do?",
+      "de": "Was macht box-sizing?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efeb"
+    },
+    "slug": "responsive-design-css",
+    "page": "interviews/preparation/fullstack-questions/css",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    },
+    "duplicateOf": "web-fundamentals/responsive-design",
+    "kind": "question",
+    "order": {
+      "$numberInt": "28"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Responsive design in CSS"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308274"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efec"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "package-json",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is package.json?",
+      "de": "Was ist package.json?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efed"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "git-workflow",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is version control, and what does your Git workflow look like?",
+      "de": "Was ist Versionskontrolle und wie sieht dein Git-Workflow aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efee"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "postman",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is Postman used for?",
+      "de": "Wofür nutzt man Postman?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efef"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "what-is-git",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is Git?",
+      "de": "Was ist Git?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff0"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "git-repository",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is a Git repository?",
+      "de": "Was ist ein Git-Repository?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff1"
+    },
+    "slug": "pull-requests",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are the benefits of a pull request?",
+      "de": "Welche Vorteile hat ein Pull Request?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff2"
+    },
+    "slug": "git-bundle",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is git bundle?",
+      "de": "Was ist git bundle?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff3"
+    },
+    "slug": "git-object-model",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What is the Git object model?",
+      "de": "Was ist das Git-Objektmodell?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff4"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "git-rebase",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What does git rebase do (vs merge)?",
+      "de": "Was macht git rebase (vs. merge)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff5"
+    },
+    "slug": "git-hooks",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "planned",
+    "tags": [],
+    "title": {
+      "en": "What are Git hooks?",
+      "de": "Was sind Git Hooks?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308694"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff6"
+    },
+    "slug": "spring-boot",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is Spring Boot?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff7"
+    },
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "slug": "spring-boot-features",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What are the features of Spring Boot?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff8"
+    },
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "slug": "spring-non-web",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Can Spring Boot build non-web applications?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7eff9"
+    },
+    "slug": "spring-https-flow",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "How does an HTTPS request flow through Spring Boot?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7effa"
+    },
+    "slug": "restcontroller",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is @RestController?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7effb"
+    },
+    "slug": "controller-vs-restcontroller",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "@Controller vs @RestController"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7effc"
+    },
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "slug": "thymeleaf",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is Thymeleaf?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7effd"
+    },
+    "slug": "spring-data-jpa",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Spring Data vs Spring Data JPA"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7effe"
+    },
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "slug": "spring-mvc",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is Spring MVC?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7efff"
+    },
+    "slug": "spring-bean",
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is a Spring Bean?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ac2c696ace7ff7f000"
+    },
+    "page": "interviews/preparation/fullstack-questions/spring",
+    "slug": "inner-beans",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What are inner beans?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427308845"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ad2c696ace7ff7f001"
+    },
+    "page": "interviews/preparation/fullstack-questions/django-flask",
+    "slug": "what-is-django",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is Django?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ad2c696ace7ff7f003"
+    },
+    "slug": "flask-vs-django",
+    "page": "interviews/preparation/fullstack-questions/django-flask",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Flask vs Django"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ad2c696ace7ff7f006"
+    },
+    "page": "interviews/preparation/fullstack-questions/django-flask",
+    "slug": "django-orm",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is the Django ORM?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ad2c696ace7ff7f008"
+    },
+    "slug": "django-superuser",
+    "page": "interviews/preparation/fullstack-questions/django-flask",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "What is a superuser in Django?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9ad2c696ace7ff7f009"
+    },
+    "slug": "django-nosql",
+    "page": "interviews/preparation/fullstack-questions/django-flask",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "hidden",
+    "tags": [],
+    "title": {
+      "en": "Does Django support NoSQL databases?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794427309011"
+      }
+    }
+  }
+]

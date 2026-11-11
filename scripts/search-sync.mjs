@@ -24,7 +24,10 @@ import ts from "typescript";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, "src");
 const OUT_DIR = path.join(SRC, "search", "data");
-const APP_DIR = path.join(SRC, "app", "(projects)");
+const APP_DIR = path.join(SRC, "app", "projects");
+// Must match PROJECTS_SEGMENT in src/lib/routes.ts: every emitted href
+// is /projects/<slug>/<page>, the same scheme the app links with.
+const PROJECTS_SEGMENT = "projects";
 const CHECK = process.argv.includes("--check");
 
 const GENERATED = "by npm run search:sync — do not edit";
@@ -308,7 +311,7 @@ function pageModules(pageFile, projectSlug) {
 }
 
 function buildPage(project, topic, chapterLabel) {
-    const href = `/${project.slug}/${topic.slug}`;
+    const href = `/${PROJECTS_SEGMENT}/${project.slug}/${topic.slug}`;
     const pageFile = path.join(APP_DIR, project.slug, topic.slug, "page.tsx");
     const page = { slug: topic.slug, name: topic.name, chapter: chapterLabel, href, planned: false, parts: [] };
 
@@ -369,7 +372,7 @@ function generate() {
 
         const data = {
             generated: GENERATED,
-            project: { slug: project.slug, name: project.title, href: `/${project.slug}` },
+            project: { slug: project.slug, name: project.title, href: `/${PROJECTS_SEGMENT}/${project.slug}` },
             pages,
         };
         const json = `${JSON.stringify(data, null, 2)}\n`;

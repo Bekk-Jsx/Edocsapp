@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Suspense, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { parseProjectPath } from "@/lib/routes";
 import { hasIndex } from "@/search/load";
 import { BoxFallback } from "./project-search";
 import SearchController, { arrive } from "./search-controller";
@@ -22,8 +23,11 @@ export default function PageSearch({ children }: { children: ReactNode }) {
     const [slot, setSlot] = useState<HTMLElement | null>(null);
     const [active, setActive] = useState(false);
 
-    // "/vue/writing-composables" -> project "vue", page "writing-composables"
-    const [project, pageSlug] = pathname.split("/").filter(Boolean);
+    // "/projects/vue/writing-composables" -> project "vue",
+    // page "writing-composables"
+    const target = parseProjectPath(pathname);
+    const project = target?.project;
+    const pageSlug = target?.page;
     const enabled = Boolean(project && pageSlug && hasIndex(project));
 
     useEffect(() => {

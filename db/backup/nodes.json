@@ -1,0 +1,496 @@
+[
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef22"
+    },
+    "path": "interviews",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305617"
+      }
+    },
+    "name": {
+      "en": "Interviews",
+      "de": "Interviews"
+    },
+    "order": {
+      "$numberInt": "0"
+    },
+    "parent": null,
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "interviews",
+    "status": "active",
+    "summary": {
+      "en": "Interview preparation: questions, answers and practice in English and German.",
+      "de": "Vorbereitung auf Interviews: Fragen, Antworten und Übung auf Englisch und Deutsch."
+    },
+    "type": "area",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309836"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef23"
+    },
+    "path": "interviews/preparation",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305638"
+      }
+    },
+    "name": {
+      "en": "Preparation",
+      "de": "Vorbereitung"
+    },
+    "order": {
+      "$numberInt": "0"
+    },
+    "parent": "interviews",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "preparation",
+    "status": "active",
+    "type": "category",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309855"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef24"
+    },
+    "path": "interviews/preparation/fullstack-questions",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305653"
+      }
+    },
+    "name": {
+      "en": "Full-Stack Questions",
+      "de": "Full-Stack-Fragen"
+    },
+    "order": {
+      "$numberInt": "2"
+    },
+    "parent": "interviews/preparation",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "fullstack-questions",
+    "status": "active",
+    "summary": {
+      "en": "Common full-stack developer interview questions with short answers and deep dives.",
+      "de": "Typische Interviewfragen für Full-Stack-Entwickler mit kurzen Antworten und Details."
+    },
+    "type": "item",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309887"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef25"
+    },
+    "path": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305669"
+      }
+    },
+    "name": {
+      "en": "Web Fundamentals",
+      "de": "Web-Grundlagen"
+    },
+    "order": {
+      "$numberInt": "1"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "web-fundamentals",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309918"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef27"
+    },
+    "path": "interviews/preparation/fullstack-questions/javascript",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305685"
+      }
+    },
+    "name": {
+      "en": "JavaScript",
+      "de": "JavaScript"
+    },
+    "order": {
+      "$numberInt": "2"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "javascript",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309933"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef28"
+    },
+    "path": "interviews/preparation/fullstack-questions/react",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305701"
+      }
+    },
+    "name": {
+      "en": "React",
+      "de": "React"
+    },
+    "order": {
+      "$numberInt": "3"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "react",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309948"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef29"
+    },
+    "path": "interviews/preparation/fullstack-questions/node-express",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305717"
+      }
+    },
+    "name": {
+      "en": "Node.js & Express",
+      "de": "Node.js & Express"
+    },
+    "order": {
+      "$numberInt": "4"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "node-express",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309962"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2a"
+    },
+    "path": "interviews/preparation/fullstack-questions/databases",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305733"
+      }
+    },
+    "name": {
+      "en": "Databases",
+      "de": "Datenbanken"
+    },
+    "order": {
+      "$numberInt": "5"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "databases",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309977"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2b"
+    },
+    "path": "interviews/preparation/fullstack-questions/browser-dom",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305752"
+      }
+    },
+    "name": {
+      "en": "Browser & DOM",
+      "de": "Browser & DOM"
+    },
+    "order": {
+      "$numberInt": "6"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "browser-dom",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309993"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2c"
+    },
+    "path": "interviews/preparation/fullstack-questions/html",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305768"
+      }
+    },
+    "name": {
+      "en": "HTML",
+      "de": "HTML"
+    },
+    "order": {
+      "$numberInt": "7"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "html",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438310007"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2d"
+    },
+    "path": "interviews/preparation/fullstack-questions/css",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305784"
+      }
+    },
+    "name": {
+      "en": "CSS",
+      "de": "CSS"
+    },
+    "order": {
+      "$numberInt": "8"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "css",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438310022"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2e"
+    },
+    "path": "interviews/preparation/fullstack-questions/git-tools",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305799"
+      }
+    },
+    "name": {
+      "en": "Git & Tools",
+      "de": "Git & Tools"
+    },
+    "order": {
+      "$numberInt": "9"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "git-tools",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438310037"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef2f"
+    },
+    "path": "interviews/preparation/fullstack-questions/spring",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305814"
+      }
+    },
+    "name": {
+      "en": "Spring"
+    },
+    "order": {
+      "$numberInt": "10"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "spring",
+    "status": "hidden",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438310052"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4c9a92c696ace7ff7ef30"
+    },
+    "path": "interviews/preparation/fullstack-questions/django-flask",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794427305830"
+      }
+    },
+    "name": {
+      "en": "Django & Flask"
+    },
+    "order": {
+      "$numberInt": "11"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "django-flask",
+    "status": "hidden",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438310067"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4f4a52c696ace7ff87a07"
+    },
+    "path": "interviews/preparation/about-me",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794438309870"
+      }
+    },
+    "name": {
+      "en": "About Me",
+      "de": "Über mich"
+    },
+    "order": {
+      "$numberInt": "1"
+    },
+    "parent": "interviews/preparation",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "about-me",
+    "status": "planned",
+    "summary": {
+      "en": "Your story for the interview: introduction, education, career, projects and expectations — written to memorize.",
+      "de": "Deine Geschichte fürs Interview: Vorstellung, Ausbildung, Karriere, Projekte und Erwartungen – zum Auswendiglernen."
+    },
+    "type": "item",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438715382"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af4f4a52c696ace7ff87a08"
+    },
+    "path": "interviews/preparation/ai-in-development",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794438309903"
+      }
+    },
+    "name": {
+      "en": "AI in Development",
+      "de": "KI in der Entwicklung"
+    },
+    "order": {
+      "$numberInt": "3"
+    },
+    "parent": "interviews/preparation",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "ai-in-development",
+    "status": "planned",
+    "summary": {
+      "en": "How you work with AI tools as a developer, and how to answer AI questions in interviews.",
+      "de": "Wie du als Entwickler mit KI-Tools arbeitest und wie du KI-Fragen im Interview beantwortest."
+    },
+    "type": "item",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794438309903"
+      }
+    }
+  }
+]

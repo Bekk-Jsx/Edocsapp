@@ -3,23 +3,23 @@
   "project": {
     "slug": "redis-refresh",
     "name": "Redis, refreshed.",
-    "href": "/redis-refresh"
+    "href": "/projects/redis-refresh"
   },
   "pages": [
     {
       "slug": "first-commands",
       "name": "First Commands",
       "chapter": "Environment",
-      "href": "/redis-refresh/first-commands",
+      "href": "/projects/redis-refresh/first-commands",
       "planned": false,
       "parts": [
         {
           "name": "Session",
-          "href": "/redis-refresh/first-commands#redis-cli",
+          "href": "/projects/redis-refresh/first-commands#redis-cli",
           "titles": [
             {
               "title": "redis-cli",
-              "href": "/redis-refresh/first-commands#redis-cli",
+              "href": "/projects/redis-refresh/first-commands#redis-cli",
               "keywords": [
                 "The prompt is the first diagnostic step.",
                 "exit",
@@ -29,7 +29,7 @@
             },
             {
               "title": "PING",
-              "href": "/redis-refresh/first-commands#ping",
+              "href": "/projects/redis-refresh/first-commands#ping",
               "keywords": [
                 "round trip",
                 "health check"
@@ -37,17 +37,17 @@
             },
             {
               "title": "one-shot mode",
-              "href": "/redis-refresh/first-commands#one-shot-mode",
+              "href": "/projects/redis-refresh/first-commands#one-shot-mode",
               "keywords": []
             },
             {
               "title": "reply annotations",
-              "href": "/redis-refresh/first-commands#reply-annotations",
+              "href": "/projects/redis-refresh/first-commands#reply-annotations",
               "keywords": []
             },
             {
               "title": "raw mode",
-              "href": "/redis-refresh/first-commands#raw-mode",
+              "href": "/projects/redis-refresh/first-commands#raw-mode",
               "keywords": [
                 "\"42\"",
                 "42"
@@ -55,7 +55,7 @@
             },
             {
               "title": "case sensitivity",
-              "href": "/redis-refresh/first-commands#case-sensitivity",
+              "href": "/projects/redis-refresh/first-commands#case-sensitivity",
               "keywords": [
                 "name",
                 "DEL",
@@ -65,7 +65,7 @@
             },
             {
               "title": "command signatures",
-              "href": "/redis-refresh/first-commands#command-signatures",
+              "href": "/projects/redis-refresh/first-commands#command-signatures",
               "keywords": [
                 "key value",
                 "SET"
@@ -75,11 +75,11 @@
         },
         {
           "name": "Databases",
-          "href": "/redis-refresh/first-commands#select",
+          "href": "/projects/redis-refresh/first-commands#select",
           "titles": [
             {
               "title": "SELECT",
-              "href": "/redis-refresh/first-commands#select",
+              "href": "/projects/redis-refresh/first-commands#select",
               "keywords": [
                 "redis-cli",
                 "SELECT 1"
@@ -87,7 +87,7 @@
             },
             {
               "title": "locating the current database",
-              "href": "/redis-refresh/first-commands#locating-the-current-database",
+              "href": "/projects/redis-refresh/first-commands#locating-the-current-database",
               "keywords": [
                 "keyspace",
                 "dev:",
@@ -97,7 +97,7 @@
             },
             {
               "title": "databases are not isolation",
-              "href": "/redis-refresh/first-commands#databases-are-not-isolation",
+              "href": "/projects/redis-refresh/first-commands#databases-are-not-isolation",
               "keywords": [
                 "The count is a startup setting",
                 "redis-server --databases 32",
@@ -116,16 +116,16 @@
       "slug": "node-playground",
       "name": "Node Playground",
       "chapter": "Environment",
-      "href": "/redis-refresh/node-playground",
+      "href": "/projects/redis-refresh/node-playground",
       "planned": false,
       "parts": [
         {
           "name": "Client",
-          "href": "/redis-refresh/node-playground#ioredis",
+          "href": "/projects/redis-refresh/node-playground#ioredis",
           "titles": [
             {
               "title": "ioredis",
-              "href": "/redis-refresh/node-playground#ioredis",
+              "href": "/projects/redis-refresh/node-playground#ioredis",
               "keywords": [
                 "redis-cli",
                 "named",
@@ -134,7 +134,7 @@
             },
             {
               "title": "one connection, not a pool",
-              "href": "/redis-refresh/node-playground#one-connection-not-a-pool",
+              "href": "/projects/redis-refresh/node-playground#one-connection-not-a-pool",
               "keywords": [
                 "Node caches modules.",
                 "maxclients",
@@ -144,7 +144,7 @@
             },
             {
               "title": "connection options",
-              "href": "/redis-refresh/node-playground#connection-options",
+              "href": "/projects/redis-refresh/node-playground#connection-options",
               "keywords": [
                 "lazyConnect",
                 "maxRetriesPerRequest",
@@ -155,7 +155,7 @@
             },
             {
               "title": "connection events",
-              "href": "/redis-refresh/node-playground#connection-events",
+              "href": "/projects/redis-refresh/node-playground#connection-events",
               "keywords": [
                 "ioredis",
                 "error",
@@ -166,11 +166,11 @@
         },
         {
           "name": "Writing Data",
-          "href": "/redis-refresh/node-playground#layers",
+          "href": "/projects/redis-refresh/node-playground#layers",
           "titles": [
             {
               "title": "layers",
-              "href": "/redis-refresh/node-playground#layers",
+              "href": "/projects/redis-refresh/node-playground#layers",
               "keywords": [
                 "Dependencies flow in one direction.",
                 "req",
@@ -179,14 +179,14 @@
             },
             {
               "title": "key builders",
-              "href": "/redis-refresh/node-playground#key-builders",
+              "href": "/projects/redis-refresh/node-playground#key-builders",
               "keywords": [
                 "as const"
               ]
             },
             {
               "title": "repository",
-              "href": "/redis-refresh/node-playground#repository",
+              "href": "/projects/redis-refresh/node-playground#repository",
               "keywords": [
                 "redis.hset",
                 "redis.hgetall",
@@ -196,12 +196,12 @@
             },
             {
               "title": "serialization",
-              "href": "/redis-refresh/node-playground#serialization",
+              "href": "/projects/redis-refresh/node-playground#serialization",
               "keywords": []
             },
             {
               "title": "null is a normal outcome",
-              "href": "/redis-refresh/node-playground#null-is-a-normal-outcome",
+              "href": "/projects/redis-refresh/node-playground#null-is-a-normal-outcome",
               "keywords": [
                 "An absent key is null, not an exception.",
                 "try",
@@ -210,7 +210,7 @@
             },
             {
               "title": "string or hash",
-              "href": "/redis-refresh/node-playground#string-or-hash",
+              "href": "/projects/redis-refresh/node-playground#string-or-hash",
               "keywords": [
                 "GET",
                 "SET",
@@ -225,11 +225,11 @@
         },
         {
           "name": "Observing",
-          "href": "/redis-refresh/node-playground#monitor",
+          "href": "/projects/redis-refresh/node-playground#monitor",
           "titles": [
             {
               "title": "MONITOR",
-              "href": "/redis-refresh/node-playground#monitor",
+              "href": "/projects/redis-refresh/node-playground#monitor",
               "keywords": [
                 "ioredis",
                 "createdAt",
@@ -243,7 +243,7 @@
             },
             {
               "title": "latency",
-              "href": "/redis-refresh/node-playground#latency",
+              "href": "/projects/redis-refresh/node-playground#latency",
               "keywords": [
                 "long-lived",
                 "persistent",
@@ -254,11 +254,11 @@
         },
         {
           "name": "JavaScript Notes",
-          "href": "/redis-refresh/node-playground#nullish-coalescing",
+          "href": "/projects/redis-refresh/node-playground#nullish-coalescing",
           "titles": [
             {
               "title": "nullish coalescing",
-              "href": "/redis-refresh/node-playground#nullish-coalescing",
+              "href": "/projects/redis-refresh/node-playground#nullish-coalescing",
               "keywords": [
                 "??",
                 "\"\"",
@@ -268,7 +268,7 @@
             },
             {
               "title": "optional chaining",
-              "href": "/redis-refresh/node-playground#optional-chaining",
+              "href": "/projects/redis-refresh/node-playground#optional-chaining",
               "keywords": [
                 "?.",
                 "obj?.[key]"
@@ -276,7 +276,7 @@
             },
             {
               "title": "logical assignment",
-              "href": "/redis-refresh/node-playground#logical-assignment",
+              "href": "/projects/redis-refresh/node-playground#logical-assignment",
               "keywords": [
                 "??=",
                 "\"\"",
@@ -286,12 +286,12 @@
             },
             {
               "title": "falsy and nullish",
-              "href": "/redis-refresh/node-playground#falsy-and-nullish",
+              "href": "/projects/redis-refresh/node-playground#falsy-and-nullish",
               "keywords": []
             },
             {
               "title": "const and as const",
-              "href": "/redis-refresh/node-playground#const-and-as-const",
+              "href": "/projects/redis-refresh/node-playground#const-and-as-const",
               "keywords": [
                 "Object.freeze"
               ]
@@ -304,16 +304,16 @@
       "slug": "inspecting-the-keyspace",
       "name": "Inspecting the Keyspace",
       "chapter": "Environment",
-      "href": "/redis-refresh/inspecting-the-keyspace",
+      "href": "/projects/redis-refresh/inspecting-the-keyspace",
       "planned": false,
       "parts": [
         {
           "name": "Type",
-          "href": "/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
+          "href": "/projects/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
           "titles": [
             {
               "title": "every key has exactly one type",
-              "href": "/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#every-key-has-exactly-one-type",
               "keywords": [
                 "The replies already differ by family.",
                 "SET",
@@ -327,7 +327,7 @@
             },
             {
               "title": "command families follow the type",
-              "href": "/redis-refresh/inspecting-the-keyspace#command-families-follow-the-type",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#command-families-follow-the-type",
               "keywords": [
                 "The prefix follows from the type.",
                 "hash"
@@ -335,7 +335,7 @@
             },
             {
               "title": "WRONGTYPE",
-              "href": "/redis-refresh/inspecting-the-keyspace#wrongtype",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#wrongtype",
               "keywords": [
                 "SET",
                 "SET k:hash \"hello\"",
@@ -344,7 +344,7 @@
             },
             {
               "title": "commands that ignore the type",
-              "href": "/redis-refresh/inspecting-the-keyspace#commands-that-ignore-the-type",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#commands-that-ignore-the-type",
               "keywords": [
                 "EXISTS",
                 "DEL",
@@ -360,11 +360,11 @@
         },
         {
           "name": "TTL",
-          "href": "/redis-refresh/inspecting-the-keyspace#setting-expiry",
+          "href": "/projects/redis-refresh/inspecting-the-keyspace#setting-expiry",
           "titles": [
             {
               "title": "setting expiry",
-              "href": "/redis-refresh/inspecting-the-keyspace#setting-expiry",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#setting-expiry",
               "keywords": [
                 "PEXPIRE",
                 "Expiry can also be set at write time",
@@ -375,7 +375,7 @@
             },
             {
               "title": "reading expiry",
-              "href": "/redis-refresh/inspecting-the-keyspace#reading-expiry",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#reading-expiry",
               "keywords": [
                 "Three return values cover every case.",
                 "-1",
@@ -384,7 +384,7 @@
             },
             {
               "title": "losing a TTL",
-              "href": "/redis-refresh/inspecting-the-keyspace#losing-a-ttl",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#losing-a-ttl",
               "keywords": [
                 "SET",
                 "SET ... KEEPTTL",
@@ -397,16 +397,16 @@
         },
         {
           "name": "SCAN",
-          "href": "/redis-refresh/inspecting-the-keyspace#why-not-keys",
+          "href": "/projects/redis-refresh/inspecting-the-keyspace#why-not-keys",
           "titles": [
             {
               "title": "why not KEYS",
-              "href": "/redis-refresh/inspecting-the-keyspace#why-not-keys",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#why-not-keys",
               "keywords": []
             },
             {
               "title": "seeding a keyspace to scan",
-              "href": "/redis-refresh/inspecting-the-keyspace#seeding-a-keyspace-to-scan",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#seeding-a-keyspace-to-scan",
               "keywords": [
                 "$(seq 1 2000) is command substitution.",
                 "seq",
@@ -420,7 +420,7 @@
             },
             {
               "title": "the cursor",
-              "href": "/redis-refresh/inspecting-the-keyspace#the-cursor",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#the-cursor",
               "keywords": [
                 "SCAN 0 returns a two-element reply",
                 "A cursor is a bookmark.",
@@ -429,7 +429,7 @@
             },
             {
               "title": "a full walk",
-              "href": "/redis-refresh/inspecting-the-keyspace#a-full-walk",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#a-full-walk",
               "keywords": [
                 "Read it as a chain",
                 "48",
@@ -440,7 +440,7 @@
             },
             {
               "title": "COUNT, MATCH, TYPE",
-              "href": "/redis-refresh/inspecting-the-keyspace#count-match-type",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#count-match-type",
               "keywords": [
                 "COUNT 100",
                 "keys.length === COUNT",
@@ -452,14 +452,14 @@
             },
             {
               "title": "what SCAN guarantees",
-              "href": "/redis-refresh/inspecting-the-keyspace#what-scan-guarantees",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#what-scan-guarantees",
               "keywords": [
                 "Set"
               ]
             },
             {
               "title": "the CLI shortcut",
-              "href": "/redis-refresh/inspecting-the-keyspace#the-cli-shortcut",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#the-cli-shortcut",
               "keywords": [
                 "--pattern",
                 "MATCH",
@@ -471,7 +471,7 @@
             },
             {
               "title": "SCAN in Node",
-              "href": "/redis-refresh/inspecting-the-keyspace#scan-in-node",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#scan-in-node",
               "keywords": [
                 "do...while",
                 "Two node-redis v5 details.",
@@ -482,7 +482,7 @@
             },
             {
               "title": "HSCAN, SSCAN, ZSCAN",
-              "href": "/redis-refresh/inspecting-the-keyspace#hscan-sscan-zscan",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#hscan-sscan-zscan",
               "keywords": [
                 "Same cursor protocol, one level down.",
                 "SCAN",
@@ -496,11 +496,11 @@
         },
         {
           "name": "Object Encoding",
-          "href": "/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
+          "href": "/projects/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
           "titles": [
             {
               "title": "type versus encoding",
-              "href": "/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#type-versus-encoding",
               "keywords": [
                 "Every value has two layers.",
                 "hash",
@@ -511,14 +511,14 @@
             },
             {
               "title": "why the small form is faster",
-              "href": "/redis-refresh/inspecting-the-keyspace#why-the-small-form-is-faster",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#why-the-small-form-is-faster",
               "keywords": [
                 "Linear scanning stops paying at scale."
               ]
             },
             {
               "title": "the thresholds",
-              "href": "/redis-refresh/inspecting-the-keyspace#the-thresholds",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#the-thresholds",
               "keywords": [
                 "Two independent triggers.",
                 "HDEL",
@@ -527,12 +527,12 @@
             },
             {
               "title": "encodings by type",
-              "href": "/redis-refresh/inspecting-the-keyspace#encodings-by-type",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#encodings-by-type",
               "keywords": []
             },
             {
               "title": "string encodings",
-              "href": "/redis-refresh/inspecting-the-keyspace#string-encodings",
+              "href": "/projects/redis-refresh/inspecting-the-keyspace#string-encodings",
               "keywords": [
                 "int",
                 "INCR",
@@ -548,16 +548,16 @@
       "slug": "strings-and-counters",
       "name": "Strings & Counters",
       "chapter": "Data Types",
-      "href": "/redis-refresh/strings-and-counters",
+      "href": "/projects/redis-refresh/strings-and-counters",
       "planned": false,
       "parts": [
         {
           "name": "SET and its Options",
-          "href": "/redis-refresh/strings-and-counters#nx-and-xx",
+          "href": "/projects/redis-refresh/strings-and-counters#nx-and-xx",
           "titles": [
             {
               "title": "NX and XX",
-              "href": "/redis-refresh/strings-and-counters#nx-and-xx",
+              "href": "/projects/redis-refresh/strings-and-counters#nx-and-xx",
               "keywords": [
                 "NX is Not eXists, XX is eXists.",
                 "EXPIRE ... NX|XX",
@@ -571,7 +571,7 @@
             },
             {
               "title": "why NX matters: atomicity",
-              "href": "/redis-refresh/strings-and-counters#why-nx-matters-atomicity",
+              "href": "/projects/redis-refresh/strings-and-counters#why-nx-matters-atomicity",
               "keywords": [
                 "EXISTS",
                 "SET",
@@ -580,7 +580,7 @@
             },
             {
               "title": "the one-line lock",
-              "href": "/redis-refresh/strings-and-counters#the-one-line-lock",
+              "href": "/projects/redis-refresh/strings-and-counters#the-one-line-lock",
               "keywords": [
                 "NX",
                 "EX 30",
@@ -594,7 +594,7 @@
             },
             {
               "title": "EXPIRE versus DEL",
-              "href": "/redis-refresh/strings-and-counters#expire-versus-del",
+              "href": "/projects/redis-refresh/strings-and-counters#expire-versus-del",
               "keywords": [
                 "DEL is an action; EXPIRE is a deadline.",
                 "GET name",
@@ -607,7 +607,7 @@
             },
             {
               "title": "the GET option",
-              "href": "/redis-refresh/strings-and-counters#the-get-option",
+              "href": "/projects/redis-refresh/strings-and-counters#the-get-option",
               "keywords": [
                 "SET",
                 "SET ... GET",
@@ -616,7 +616,7 @@
             },
             {
               "title": "KEEPTTL",
-              "href": "/redis-refresh/strings-and-counters#keepttl",
+              "href": "/projects/redis-refresh/strings-and-counters#keepttl",
               "keywords": [
                 "TTL",
                 "-1",
@@ -632,11 +632,11 @@
         },
         {
           "name": "Counters",
-          "href": "/redis-refresh/strings-and-counters#incr",
+          "href": "/projects/redis-refresh/strings-and-counters#incr",
           "titles": [
             {
               "title": "INCR",
-              "href": "/redis-refresh/strings-and-counters#incr",
+              "href": "/projects/redis-refresh/strings-and-counters#incr",
               "keywords": [
                 "INCR returns the new value",
                 "GET",
@@ -646,7 +646,7 @@
             },
             {
               "title": "the family",
-              "href": "/redis-refresh/strings-and-counters#the-family",
+              "href": "/projects/redis-refresh/strings-and-counters#the-family",
               "keywords": [
                 "INCRBYFLOAT price -1.5",
                 "All of them are atomic."
@@ -654,7 +654,7 @@
             },
             {
               "title": "the parsing trap",
-              "href": "/redis-refresh/strings-and-counters#the-parsing-trap",
+              "href": "/projects/redis-refresh/strings-and-counters#the-parsing-trap",
               "keywords": [
                 "TYPE",
                 "string",
@@ -670,11 +670,11 @@
         },
         {
           "name": "Multi-key and One-shot Reads",
-          "href": "/redis-refresh/strings-and-counters#mset-and-mget",
+          "href": "/projects/redis-refresh/strings-and-counters#mset-and-mget",
           "titles": [
             {
               "title": "MSET and MGET",
-              "href": "/redis-refresh/strings-and-counters#mset-and-mget",
+              "href": "/projects/redis-refresh/strings-and-counters#mset-and-mget",
               "keywords": [
                 "NX",
                 "MSETNX"
@@ -682,7 +682,7 @@
             },
             {
               "title": "GETDEL",
-              "href": "/redis-refresh/strings-and-counters#getdel",
+              "href": "/projects/redis-refresh/strings-and-counters#getdel",
               "keywords": [
                 "GETEX",
                 "GETEX k EX 60",
@@ -695,11 +695,11 @@
         },
         {
           "name": "Append and Length",
-          "href": "/redis-refresh/strings-and-counters#append",
+          "href": "/projects/redis-refresh/strings-and-counters#append",
           "titles": [
             {
               "title": "APPEND",
-              "href": "/redis-refresh/strings-and-counters#append",
+              "href": "/projects/redis-refresh/strings-and-counters#append",
               "keywords": [
                 "SET",
                 "SET a \" world\"",
@@ -715,11 +715,11 @@
         },
         {
           "name": "When a JSON Blob is the Wrong Call",
-          "href": "/redis-refresh/strings-and-counters#the-blob",
+          "href": "/projects/redis-refresh/strings-and-counters#the-blob",
           "titles": [
             {
               "title": "the blob",
-              "href": "/redis-refresh/strings-and-counters#the-blob",
+              "href": "/projects/redis-refresh/strings-and-counters#the-blob",
               "keywords": [
                 "SET",
                 "Reading one field is no cheaper either.",
@@ -728,7 +728,7 @@
             },
             {
               "title": "the rule",
-              "href": "/redis-refresh/strings-and-counters#the-rule",
+              "href": "/projects/redis-refresh/strings-and-counters#the-rule",
               "keywords": [
                 "RedisJSON",
                 "JSON.*",
@@ -737,7 +737,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/strings-and-counters#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/strings-and-counters#the-same-commands-in-node",
               "keywords": [
                 "=== null",
                 "mGet",
@@ -753,16 +753,16 @@
       "slug": "hashes",
       "name": "Hashes",
       "chapter": "Data Types",
-      "href": "/redis-refresh/hashes",
+      "href": "/projects/redis-refresh/hashes",
       "planned": false,
       "parts": [
         {
           "name": "Writing",
-          "href": "/redis-refresh/hashes#hset",
+          "href": "/projects/redis-refresh/hashes#hset",
           "titles": [
             {
               "title": "HSET",
-              "href": "/redis-refresh/hashes#hset",
+              "href": "/projects/redis-refresh/hashes#hset",
               "keywords": [
                 "age",
                 "name",
@@ -776,7 +776,7 @@
             },
             {
               "title": "the command family",
-              "href": "/redis-refresh/hashes#the-command-family",
+              "href": "/projects/redis-refresh/hashes#the-command-family",
               "keywords": [
                 "The H prefix is the whole naming rule",
                 "TYPE",
@@ -790,11 +790,11 @@
         },
         {
           "name": "Reading",
-          "href": "/redis-refresh/hashes#hget-and-the-ambiguous-nil",
+          "href": "/projects/redis-refresh/hashes#hget-and-the-ambiguous-nil",
           "titles": [
             {
               "title": "HGET and the ambiguous nil",
-              "href": "/redis-refresh/hashes#hget-and-the-ambiguous-nil",
+              "href": "/projects/redis-refresh/hashes#hget-and-the-ambiguous-nil",
               "keywords": [
                 "EXISTS",
                 "HEXISTS"
@@ -802,7 +802,7 @@
             },
             {
               "title": "HGETALL",
-              "href": "/redis-refresh/hashes#hgetall",
+              "href": "/projects/redis-refresh/hashes#hgetall",
               "keywords": [
                 "age: '30'",
                 "Number()",
@@ -816,7 +816,7 @@
             },
             {
               "title": "HMGET",
-              "href": "/redis-refresh/hashes#hmget",
+              "href": "/projects/redis-refresh/hashes#hmget",
               "keywords": [
                 "Same positional guarantee as MGET.",
                 "(nil)"
@@ -824,36 +824,36 @@
             },
             {
               "title": "why HMGET when HGETALL exists",
-              "href": "/redis-refresh/hashes#why-hmget-when-hgetall-exists",
+              "href": "/projects/redis-refresh/hashes#why-hmget-when-hgetall-exists",
               "keywords": []
             }
           ]
         },
         {
           "name": "Deleting and Testing",
-          "href": "/redis-refresh/hashes#hdel",
+          "href": "/projects/redis-refresh/hashes#hdel",
           "titles": [
             {
               "title": "HDEL",
-              "href": "/redis-refresh/hashes#hdel",
+              "href": "/projects/redis-refresh/hashes#hdel",
               "keywords": [
                 "remove"
               ]
             },
             {
               "title": "HEXISTS",
-              "href": "/redis-refresh/hashes#hexists",
+              "href": "/projects/redis-refresh/hashes#hexists",
               "keywords": []
             }
           ]
         },
         {
           "name": "Atomic Field Updates",
-          "href": "/redis-refresh/hashes#hincrby",
+          "href": "/projects/redis-refresh/hashes#hincrby",
           "titles": [
             {
               "title": "HINCRBY",
-              "href": "/redis-refresh/hashes#hincrby",
+              "href": "/projects/redis-refresh/hashes#hincrby",
               "keywords": [
                 "HINCRBY returns the new value",
                 "INCR",
@@ -868,11 +868,11 @@
         },
         {
           "name": "Field TTL (7.4+)",
-          "href": "/redis-refresh/hashes#expiring-a-single-field",
+          "href": "/projects/redis-refresh/hashes#expiring-a-single-field",
           "titles": [
             {
               "title": "expiring a single field",
-              "href": "/redis-refresh/hashes#expiring-a-single-field",
+              "href": "/projects/redis-refresh/hashes#expiring-a-single-field",
               "keywords": [
                 "HEXPIRE is per-field TTL.",
                 "token",
@@ -883,7 +883,7 @@
             },
             {
               "title": "reading and removing field TTL",
-              "href": "/redis-refresh/hashes#reading-and-removing-field-ttl",
+              "href": "/projects/redis-refresh/hashes#reading-and-removing-field-ttl",
               "keywords": [
                 "HMGET",
                 "The same three values TTL uses on a key",
@@ -899,11 +899,11 @@
         },
         {
           "name": "Limits",
-          "href": "/redis-refresh/hashes#hashes-do-not-nest",
+          "href": "/projects/redis-refresh/hashes#hashes-do-not-nest",
           "titles": [
             {
               "title": "hashes do not nest",
-              "href": "/redis-refresh/hashes#hashes-do-not-nest",
+              "href": "/projects/redis-refresh/hashes#hashes-do-not-nest",
               "keywords": [
                 "A field value is always a plain string.",
                 "HSET user:1 address ...",
@@ -912,7 +912,7 @@
             },
             {
               "title": "wide hashes",
-              "href": "/redis-refresh/hashes#wide-hashes",
+              "href": "/projects/redis-refresh/hashes#wide-hashes",
               "keywords": [
                 "A hash with many fields is wide",
                 "HGETALL",
@@ -926,7 +926,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/hashes#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/hashes#the-same-commands-in-node",
               "keywords": [
                 "if (!user)",
                 "Object.keys(obj).length",
@@ -943,16 +943,16 @@
       "slug": "lists",
       "name": "Lists",
       "chapter": "Data Types",
-      "href": "/redis-refresh/lists",
+      "href": "/projects/redis-refresh/lists",
       "planned": false,
       "parts": [
         {
           "name": "Shape and Creation",
-          "href": "/redis-refresh/lists#ordered-and-open-at-both-ends",
+          "href": "/projects/redis-refresh/lists#ordered-and-open-at-both-ends",
           "titles": [
             {
               "title": "ordered, and open at both ends",
-              "href": "/redis-refresh/lists#ordered-and-open-at-both-ends",
+              "href": "/projects/redis-refresh/lists#ordered-and-open-at-both-ends",
               "keywords": [
                 "LPUSH",
                 "RPUSH",
@@ -962,12 +962,12 @@
             },
             {
               "title": "array or linked list?",
-              "href": "/redis-refresh/lists#array-or-linked-list",
+              "href": "/projects/redis-refresh/lists#array-or-linked-list",
               "keywords": []
             },
             {
               "title": "there is no create, and no empty list",
-              "href": "/redis-refresh/lists#there-is-no-create-and-no-empty-list",
+              "href": "/projects/redis-refresh/lists#there-is-no-create-and-no-empty-list",
               "keywords": [
                 "HSET",
                 "INCR",
@@ -979,7 +979,7 @@
             },
             {
               "title": "LRANGE",
-              "href": "/redis-refresh/lists#lrange",
+              "href": "/projects/redis-refresh/lists#lrange",
               "keywords": [
                 "0 -1",
                 "-1",
@@ -995,25 +995,25 @@
         },
         {
           "name": "Popping, Queues and Stacks",
-          "href": "/redis-refresh/lists#lpop-and-rpop",
+          "href": "/projects/redis-refresh/lists#lpop-and-rpop",
           "titles": [
             {
               "title": "LPOP and RPOP",
-              "href": "/redis-refresh/lists#lpop-and-rpop",
+              "href": "/projects/redis-refresh/lists#lpop-and-rpop",
               "keywords": [
                 "A pop removes AND returns."
               ]
             },
             {
               "title": "queue versus stack",
-              "href": "/redis-refresh/lists#queue-versus-stack",
+              "href": "/projects/redis-refresh/lists#queue-versus-stack",
               "keywords": [
                 "job1"
               ]
             },
             {
               "title": "popping in batches",
-              "href": "/redis-refresh/lists#popping-in-batches",
+              "href": "/projects/redis-refresh/lists#popping-in-batches",
               "keywords": [
                 "Both pops take a count.",
                 "LPOP q 2",
@@ -1024,7 +1024,7 @@
             },
             {
               "title": "LLEN",
-              "href": "/redis-refresh/lists#llen",
+              "href": "/projects/redis-refresh/lists#llen",
               "keywords": [
                 "LLEN is O(1)",
                 "RPUSH",
@@ -1035,11 +1035,11 @@
         },
         {
           "name": "Capped Lists",
-          "href": "/redis-refresh/lists#ltrim",
+          "href": "/projects/redis-refresh/lists#ltrim",
           "titles": [
             {
               "title": "LTRIM",
-              "href": "/redis-refresh/lists#ltrim",
+              "href": "/projects/redis-refresh/lists#ltrim",
               "keywords": [
                 "LRANGE",
                 "Shortening a list this way is TRIMMING",
@@ -1050,7 +1050,7 @@
             },
             {
               "title": "the capped-list pattern",
-              "href": "/redis-refresh/lists#the-capped-list-pattern",
+              "href": "/projects/redis-refresh/lists#the-capped-list-pattern",
               "keywords": [
                 "LRANGE feed:1 0 9",
                 "maxmemory"
@@ -1060,11 +1060,11 @@
         },
         {
           "name": "Blocking Pops",
-          "href": "/redis-refresh/lists#brpop",
+          "href": "/projects/redis-refresh/lists#brpop",
           "titles": [
             {
               "title": "BRPOP",
-              "href": "/redis-refresh/lists#brpop",
+              "href": "/projects/redis-refresh/lists#brpop",
               "keywords": [
                 "The B is for blocking.",
                 "RPOP",
@@ -1074,12 +1074,12 @@
             },
             {
               "title": "what it replaces",
-              "href": "/redis-refresh/lists#what-it-replaces",
+              "href": "/projects/redis-refresh/lists#what-it-replaces",
               "keywords": []
             },
             {
               "title": "blocking blocks the client, not the server",
-              "href": "/redis-refresh/lists#blocking-blocks-the-client-not-the-server",
+              "href": "/projects/redis-refresh/lists#blocking-blocks-the-client-not-the-server",
               "keywords": [
                 "A blocked client is IDLE, not busy.",
                 "KEYS",
@@ -1095,11 +1095,11 @@
         },
         {
           "name": "Limits",
-          "href": "/redis-refresh/lists#random-access-is-o-n",
+          "href": "/projects/redis-refresh/lists#random-access-is-o-n",
           "titles": [
             {
               "title": "random access is O(N)",
-              "href": "/redis-refresh/lists#random-access-is-o-n",
+              "href": "/projects/redis-refresh/lists#random-access-is-o-n",
               "keywords": [
                 "LINDEX q 5000",
                 "listpack",
@@ -1113,7 +1113,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/lists#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/lists#the-same-commands-in-node",
               "keywords": [
                 "hGetAll",
                 "{}",
@@ -1133,23 +1133,23 @@
       "slug": "sets",
       "name": "Sets",
       "chapter": "Data Types",
-      "href": "/redis-refresh/sets",
+      "href": "/projects/redis-refresh/sets",
       "planned": false,
       "parts": [
         {
           "name": "Uniqueness and Unorderedness",
-          "href": "/redis-refresh/sets#sadd-and-silent-deduplication",
+          "href": "/projects/redis-refresh/sets#sadd-and-silent-deduplication",
           "titles": [
             {
               "title": "SADD and silent deduplication",
-              "href": "/redis-refresh/sets#sadd-and-silent-deduplication",
+              "href": "/projects/redis-refresh/sets#sadd-and-silent-deduplication",
               "keywords": [
                 "The integer is a deduplication signal."
               ]
             },
             {
               "title": "the order is not yours",
-              "href": "/redis-refresh/sets#the-order-is-not-yours",
+              "href": "/projects/redis-refresh/sets#the-order-is-not-yours",
               "keywords": [
                 "A set has no order and no index.",
                 "The number of members is the CARDINALITY",
@@ -1160,7 +1160,7 @@
             },
             {
               "title": "there is no empty set",
-              "href": "/redis-refresh/sets#there-is-no-empty-set",
+              "href": "/projects/redis-refresh/sets#there-is-no-empty-set",
               "keywords": [
                 "EXISTS"
               ]
@@ -1169,11 +1169,11 @@
         },
         {
           "name": "The O(1) Questions",
-          "href": "/redis-refresh/sets#sismember",
+          "href": "/projects/redis-refresh/sets#sismember",
           "titles": [
             {
               "title": "SISMEMBER",
-              "href": "/redis-refresh/sets#sismember",
+              "href": "/projects/redis-refresh/sets#sismember",
               "keywords": [
                 "SMISMEMBER",
                 "MGET",
@@ -1182,7 +1182,7 @@
             },
             {
               "title": "SCARD",
-              "href": "/redis-refresh/sets#scard",
+              "href": "/projects/redis-refresh/sets#scard",
               "keywords": [
                 "LLEN",
                 "HLEN"
@@ -1190,7 +1190,7 @@
             },
             {
               "title": "SREM",
-              "href": "/redis-refresh/sets#srem",
+              "href": "/projects/redis-refresh/sets#srem",
               "keywords": [
                 "python",
                 "HDEL",
@@ -1202,30 +1202,30 @@
         },
         {
           "name": "Set Algebra",
-          "href": "/redis-refresh/sets#two-sets-to-work-with",
+          "href": "/projects/redis-refresh/sets#two-sets-to-work-with",
           "titles": [
             {
               "title": "two sets to work with",
-              "href": "/redis-refresh/sets#two-sets-to-work-with",
+              "href": "/projects/redis-refresh/sets#two-sets-to-work-with",
               "keywords": []
             },
             {
               "title": "SINTER, SUNION, SDIFF",
-              "href": "/redis-refresh/sets#sinter-sunion-sdiff",
+              "href": "/projects/redis-refresh/sets#sinter-sunion-sdiff",
               "keywords": [
                 "js"
               ]
             },
             {
               "title": "why this beats doing it in the application",
-              "href": "/redis-refresh/sets#why-this-beats-doing-it-in-the-application",
+              "href": "/projects/redis-refresh/sets#why-this-beats-doing-it-in-the-application",
               "keywords": [
                 "All three take any number of keys."
               ]
             },
             {
               "title": "the STORE variants",
-              "href": "/redis-refresh/sets#the-store-variants",
+              "href": "/projects/redis-refresh/sets#the-store-variants",
               "keywords": [
                 "SUNIONSTORE",
                 "SDIFFSTORE",
@@ -1234,7 +1234,7 @@
             },
             {
               "title": "SINTERCARD",
-              "href": "/redis-refresh/sets#sintercard",
+              "href": "/projects/redis-refresh/sets#sintercard",
               "keywords": [
                 "FIELDS 1 token",
                 "HEXPIRE",
@@ -1248,11 +1248,11 @@
         },
         {
           "name": "The Secondary Index",
-          "href": "/redis-refresh/sets#the-problem",
+          "href": "/projects/redis-refresh/sets#the-problem",
           "titles": [
             {
               "title": "the problem",
-              "href": "/redis-refresh/sets#the-problem",
+              "href": "/projects/redis-refresh/sets#the-problem",
               "keywords": [
                 "SELECT * FROM users",
                 "user:",
@@ -1261,7 +1261,7 @@
             },
             {
               "title": "the right way",
-              "href": "/redis-refresh/sets#the-right-way",
+              "href": "/projects/redis-refresh/sets#the-right-way",
               "keywords": [
                 "Keep a set of IDs as you write.",
                 "SADD",
@@ -1272,7 +1272,7 @@
             },
             {
               "title": "the cost",
-              "href": "/redis-refresh/sets#the-cost",
+              "href": "/projects/redis-refresh/sets#the-cost",
               "keywords": [
                 "DEL user:1",
                 "SREM users:index 1",
@@ -1283,11 +1283,11 @@
         },
         {
           "name": "Limits",
-          "href": "/redis-refresh/sets#smembers-is-keys-shaped",
+          "href": "/projects/redis-refresh/sets#smembers-is-keys-shaped",
           "titles": [
             {
               "title": "SMEMBERS is KEYS-shaped",
-              "href": "/redis-refresh/sets#smembers-is-keys-shaped",
+              "href": "/projects/redis-refresh/sets#smembers-is-keys-shaped",
               "keywords": [
                 "HGETALL",
                 "SSCAN",
@@ -1297,7 +1297,7 @@
             },
             {
               "title": "intersection has a real cost",
-              "href": "/redis-refresh/sets#intersection-has-a-real-cost",
+              "href": "/projects/redis-refresh/sets#intersection-has-a-real-cost",
               "keywords": [
                 "SINTER is O(N*M).",
                 "SINTER small:set huge:set",
@@ -1311,7 +1311,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/sets#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/sets#the-same-commands-in-node",
               "keywords": [
                 "sIsMember returns a real boolean in v5",
                 "hGetAll",
@@ -1330,16 +1330,16 @@
       "slug": "sorted-sets",
       "name": "Sorted Sets",
       "chapter": "Data Types",
-      "href": "/redis-refresh/sorted-sets",
+      "href": "/projects/redis-refresh/sorted-sets",
       "planned": false,
       "parts": [
         {
           "name": "Score and Member",
-          "href": "/redis-refresh/sorted-sets#zadd",
+          "href": "/projects/redis-refresh/sorted-sets#zadd",
           "titles": [
             {
               "title": "ZADD",
-              "href": "/redis-refresh/sorted-sets#zadd",
+              "href": "/projects/redis-refresh/sorted-sets#zadd",
               "keywords": [
                 "ZADD k \"yassin\" 100",
                 "\"yassin\"",
@@ -1353,7 +1353,7 @@
             },
             {
               "title": "the score is a float",
-              "href": "/redis-refresh/sorted-sets#the-score-is-a-float",
+              "href": "/projects/redis-refresh/sorted-sets#the-score-is-a-float",
               "keywords": [
                 "ZSCORE returns a string.",
                 "INCRBYFLOAT",
@@ -1364,7 +1364,7 @@
             },
             {
               "title": "ZINCRBY",
-              "href": "/redis-refresh/sorted-sets#zincrby",
+              "href": "/projects/redis-refresh/sorted-sets#zincrby",
               "keywords": [
                 "HINCRBY",
                 "That is what makes leaderboards trivial.",
@@ -1375,11 +1375,11 @@
         },
         {
           "name": "Reading by Position",
-          "href": "/redis-refresh/sorted-sets#zrange-and-rev",
+          "href": "/projects/redis-refresh/sorted-sets#zrange-and-rev",
           "titles": [
             {
               "title": "ZRANGE and REV",
-              "href": "/redis-refresh/sorted-sets#zrange-and-rev",
+              "href": "/projects/redis-refresh/sorted-sets#zrange-and-rev",
               "keywords": [
                 "The index syntax is LRANGE's.",
                 "0 -1",
@@ -1392,14 +1392,14 @@
             },
             {
               "title": "WITHSCORES",
-              "href": "/redis-refresh/sorted-sets#withscores",
+              "href": "/projects/redis-refresh/sorted-sets#withscores",
               "keywords": [
                 "HGETALL"
               ]
             },
             {
               "title": "ZRANK and ZREVRANK",
-              "href": "/redis-refresh/sorted-sets#zrank-and-zrevrank",
+              "href": "/projects/redis-refresh/sorted-sets#zrank-and-zrevrank",
               "keywords": [
                 "Rank is ZERO-BASED.",
                 "(nil)",
@@ -1412,18 +1412,18 @@
         },
         {
           "name": "Reading by Score",
-          "href": "/redis-refresh/sorted-sets#byscore",
+          "href": "/projects/redis-refresh/sorted-sets#byscore",
           "titles": [
             {
               "title": "BYSCORE",
-              "href": "/redis-refresh/sorted-sets#byscore",
+              "href": "/projects/redis-refresh/sorted-sets#byscore",
               "keywords": [
                 "200 400"
               ]
             },
             {
               "title": "bounds",
-              "href": "/redis-refresh/sorted-sets#bounds",
+              "href": "/projects/redis-refresh/sorted-sets#bounds",
               "keywords": [
                 "-inf and +inf are valid bounds",
                 "-inf +inf BYSCORE",
@@ -1434,7 +1434,7 @@
             },
             {
               "title": "LIMIT",
-              "href": "/redis-refresh/sorted-sets#limit",
+              "href": "/projects/redis-refresh/sorted-sets#limit",
               "keywords": [
                 "LIMIT 0 10",
                 "LIMIT 10 10",
@@ -1446,11 +1446,11 @@
         },
         {
           "name": "Sliding Windows",
-          "href": "/redis-refresh/sorted-sets#zremrangebyscore",
+          "href": "/projects/redis-refresh/sorted-sets#zremrangebyscore",
           "titles": [
             {
               "title": "ZREMRANGEBYSCORE",
-              "href": "/redis-refresh/sorted-sets#zremrangebyscore",
+              "href": "/projects/redis-refresh/sorted-sets#zremrangebyscore",
               "keywords": [
                 "ZREMRANGEBYRANK",
                 "ZREM",
@@ -1459,7 +1459,7 @@
             },
             {
               "title": "rate limiting, worked through",
-              "href": "/redis-refresh/sorted-sets#rate-limiting-worked-through",
+              "href": "/projects/redis-refresh/sorted-sets#rate-limiting-worked-through",
               "keywords": [
                 "Why a sorted set: the score is time.",
                 "MULTI",
@@ -1468,7 +1468,7 @@
             },
             {
               "title": "other things the score can be",
-              "href": "/redis-refresh/sorted-sets#other-things-the-score-can-be",
+              "href": "/projects/redis-refresh/sorted-sets#other-things-the-score-can-be",
               "keywords": [
                 "ZPOPMIN",
                 "ZPOPMAX",
@@ -1481,11 +1481,11 @@
         },
         {
           "name": "Limits",
-          "href": "/redis-refresh/sorted-sets#cost",
+          "href": "/projects/redis-refresh/sorted-sets#cost",
           "titles": [
             {
               "title": "cost",
-              "href": "/redis-refresh/sorted-sets#cost",
+              "href": "/projects/redis-refresh/sorted-sets#cost",
               "keywords": [
                 "SMEMBERS",
                 "0 9 REV",
@@ -1499,7 +1499,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/sorted-sets#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/sorted-sets#the-same-commands-in-node",
               "keywords": [
                 "{ score, value }",
                 "WithScores",
@@ -1515,16 +1515,16 @@
       "slug": "atomicity",
       "name": "Atomicity",
       "chapter": "Making It Work in an App",
-      "href": "/redis-refresh/atomicity",
+      "href": "/projects/redis-refresh/atomicity",
       "planned": false,
       "parts": [
         {
           "name": "What MULTI Actually Does",
-          "href": "/redis-refresh/atomicity#single-commands-need-no-protection",
+          "href": "/projects/redis-refresh/atomicity#single-commands-need-no-protection",
           "titles": [
             {
               "title": "single commands need no protection",
-              "href": "/redis-refresh/atomicity#single-commands-need-no-protection",
+              "href": "/projects/redis-refresh/atomicity#single-commands-need-no-protection",
               "keywords": [
                 "INCR",
                 "The problem is GROUPS."
@@ -1532,7 +1532,7 @@
             },
             {
               "title": "QUEUED, then EXEC",
-              "href": "/redis-refresh/atomicity#queued-then-exec",
+              "href": "/projects/redis-refresh/atomicity#queued-then-exec",
               "keywords": [
                 "Nothing executes until EXEC.",
                 "MULTI",
@@ -1543,7 +1543,7 @@
             },
             {
               "title": "DISCARD",
-              "href": "/redis-refresh/atomicity#discard",
+              "href": "/projects/redis-refresh/atomicity#discard",
               "keywords": [
                 "DISCARD throws the queue away.",
                 "SET",
@@ -1557,11 +1557,11 @@
         },
         {
           "name": "No Rollback",
-          "href": "/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
+          "href": "/projects/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
           "titles": [
             {
               "title": "a failed command does not undo the others",
-              "href": "/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
+              "href": "/projects/redis-refresh/atomicity#a-failed-command-does-not-undo-the-others",
               "keywords": [
                 "INCR",
                 "\"value\"",
@@ -1571,7 +1571,7 @@
             },
             {
               "title": "the one case where nothing runs",
-              "href": "/redis-refresh/atomicity#the-one-case-where-nothing-runs",
+              "href": "/projects/redis-refresh/atomicity#the-one-case-where-nothing-runs",
               "keywords": [
                 "SET",
                 "EXEC",
@@ -1585,11 +1585,11 @@
         },
         {
           "name": "WATCH and Optimistic Locking",
-          "href": "/redis-refresh/atomicity#why-multi-alone-is-not-enough",
+          "href": "/projects/redis-refresh/atomicity#why-multi-alone-is-not-enough",
           "titles": [
             {
               "title": "why MULTI alone is not enough",
-              "href": "/redis-refresh/atomicity#why-multi-alone-is-not-enough",
+              "href": "/projects/redis-refresh/atomicity#why-multi-alone-is-not-enough",
               "keywords": [
                 "GET balance",
                 "QUEUED",
@@ -1600,7 +1600,7 @@
             },
             {
               "title": "WATCH",
-              "href": "/redis-refresh/atomicity#watch",
+              "href": "/projects/redis-refresh/atomicity#watch",
               "keywords": [
                 "WATCH marks a key.",
                 "EXEC"
@@ -1608,7 +1608,7 @@
             },
             {
               "title": "the failure path",
-              "href": "/redis-refresh/atomicity#the-failure-path",
+              "href": "/projects/redis-refresh/atomicity#the-failure-path",
               "keywords": [
                 "This needs TWO terminals.",
                 "DECRBY",
@@ -1619,7 +1619,7 @@
             },
             {
               "title": "the retry loop",
-              "href": "/redis-refresh/atomicity#the-retry-loop",
+              "href": "/projects/redis-refresh/atomicity#the-retry-loop",
               "keywords": [
                 "This is OPTIMISTIC LOCKING.",
                 "The null check is the whole loop.",
@@ -1630,7 +1630,7 @@
             },
             {
               "title": "WATCH is per connection",
-              "href": "/redis-refresh/atomicity#watch-is-per-connection",
+              "href": "/projects/redis-refresh/atomicity#watch-is-per-connection",
               "keywords": [
                 "MULTI",
                 "client.multi()",
@@ -1642,11 +1642,11 @@
         },
         {
           "name": "Pipelining is Not a Transaction",
-          "href": "/redis-refresh/atomicity#two-different-problems",
+          "href": "/projects/redis-refresh/atomicity#two-different-problems",
           "titles": [
             {
               "title": "two different problems",
-              "href": "/redis-refresh/atomicity#two-different-problems",
+              "href": "/projects/redis-refresh/atomicity#two-different-problems",
               "keywords": [
                 "PIPELINING is a NETWORK optimisation.",
                 "A transaction is an ISOLATION guarantee.",
@@ -1658,7 +1658,7 @@
             },
             {
               "title": "choosing",
-              "href": "/redis-refresh/atomicity#choosing",
+              "href": "/projects/redis-refresh/atomicity#choosing",
               "keywords": [
                 "SET",
                 "DEL user:1",
@@ -1672,7 +1672,7 @@
             },
             {
               "title": "the same commands in Node",
-              "href": "/redis-refresh/atomicity#the-same-commands-in-node",
+              "href": "/projects/redis-refresh/atomicity#the-same-commands-in-node",
               "keywords": [
                 "(error)",
                 "await"
@@ -1686,16 +1686,16 @@
       "slug": "caching-patterns",
       "name": "Caching Patterns",
       "chapter": "Making It Work in an App",
-      "href": "/redis-refresh/caching-patterns",
+      "href": "/projects/redis-refresh/caching-patterns",
       "planned": false,
       "parts": [
         {
           "name": "Cache-Aside",
-          "href": "/redis-refresh/caching-patterns#the-three-steps",
+          "href": "/projects/redis-refresh/caching-patterns#the-three-steps",
           "titles": [
             {
               "title": "the three steps",
-              "href": "/redis-refresh/caching-patterns#the-three-steps",
+              "href": "/projects/redis-refresh/caching-patterns#the-three-steps",
               "keywords": [
                 "GET",
                 "SET",
@@ -1704,7 +1704,7 @@
             },
             {
               "title": "the shape in code",
-              "href": "/redis-refresh/caching-patterns#the-shape-in-code",
+              "href": "/projects/redis-refresh/caching-patterns#the-shape-in-code",
               "keywords": [
                 "cached",
                 "maxmemory",
@@ -1713,7 +1713,7 @@
             },
             {
               "title": "why a string and not a hash here",
-              "href": "/redis-refresh/caching-patterns#why-a-string-and-not-a-hash-here",
+              "href": "/projects/redis-refresh/caching-patterns#why-a-string-and-not-a-hash-here",
               "keywords": [
                 "JSON.stringify",
                 "JSON.parse"
@@ -1723,22 +1723,22 @@
         },
         {
           "name": "Choosing a TTL",
-          "href": "/redis-refresh/caching-patterns#the-question-ttl-answers",
+          "href": "/projects/redis-refresh/caching-patterns#the-question-ttl-answers",
           "titles": [
             {
               "title": "the question TTL answers",
-              "href": "/redis-refresh/caching-patterns#the-question-ttl-answers",
+              "href": "/projects/redis-refresh/caching-patterns#the-question-ttl-answers",
               "keywords": []
             }
           ]
         },
         {
           "name": "The Stampede",
-          "href": "/redis-refresh/caching-patterns#what-goes-wrong",
+          "href": "/projects/redis-refresh/caching-patterns#what-goes-wrong",
           "titles": [
             {
               "title": "what goes wrong",
-              "href": "/redis-refresh/caching-patterns#what-goes-wrong",
+              "href": "/projects/redis-refresh/caching-patterns#what-goes-wrong",
               "keywords": [
                 "A popular key expires.",
                 "GET"
@@ -1746,14 +1746,14 @@
             },
             {
               "title": "the lock",
-              "href": "/redis-refresh/caching-patterns#the-lock",
+              "href": "/projects/redis-refresh/caching-patterns#the-lock",
               "keywords": [
                 "DEL"
               ]
             },
             {
               "title": "walked through, request by request",
-              "href": "/redis-refresh/caching-patterns#walked-through-request-by-request",
+              "href": "/projects/redis-refresh/caching-patterns#walked-through-request-by-request",
               "keywords": [
                 "The setup.",
                 "user:42",
@@ -1769,11 +1769,11 @@
         },
         {
           "name": "Invalidation on Write",
-          "href": "/redis-refresh/caching-patterns#delete-or-overwrite",
+          "href": "/projects/redis-refresh/caching-patterns#delete-or-overwrite",
           "titles": [
             {
               "title": "delete or overwrite",
-              "href": "/redis-refresh/caching-patterns#delete-or-overwrite",
+              "href": "/projects/redis-refresh/caching-patterns#delete-or-overwrite",
               "keywords": [
                 "Delete it — cache-aside, the standard.",
                 "Overwrite it — write-through.",
@@ -1782,7 +1782,7 @@
             },
             {
               "title": "the order is a bug waiting to happen",
-              "href": "/redis-refresh/caching-patterns#the-order-is-a-bug-waiting-to-happen",
+              "href": "/projects/redis-refresh/caching-patterns#the-order-is-a-bug-waiting-to-happen",
               "keywords": [
                 "Database first, cache second.",
                 "DEL"
@@ -1790,7 +1790,7 @@
             },
             {
               "title": "keys you forgot about",
-              "href": "/redis-refresh/caching-patterns#keys-you-forgot-about",
+              "href": "/projects/redis-refresh/caching-patterns#keys-you-forgot-about",
               "keywords": [
                 "user:42",
                 "SCAN",
@@ -1803,11 +1803,11 @@
         },
         {
           "name": "When Redis Is Down",
-          "href": "/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
+          "href": "/projects/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
           "titles": [
             {
               "title": "degrade to slow, not to broken",
-              "href": "/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
+              "href": "/projects/redis-refresh/caching-patterns#degrade-to-slow-not-to-broken",
               "keywords": [
                 "try",
                 "redis.get",
@@ -1823,16 +1823,16 @@
       "slug": "lua-scripts",
       "name": "Lua Scripts",
       "chapter": "Making It Work in an App",
-      "href": "/redis-refresh/lua-scripts",
+      "href": "/projects/redis-refresh/lua-scripts",
       "planned": false,
       "parts": [
         {
           "name": "EVAL",
-          "href": "/redis-refresh/lua-scripts#a-script-is-one-command",
+          "href": "/projects/redis-refresh/lua-scripts#a-script-is-one-command",
           "titles": [
             {
               "title": "a script is one command",
-              "href": "/redis-refresh/lua-scripts#a-script-is-one-command",
+              "href": "/projects/redis-refresh/lua-scripts#a-script-is-one-command",
               "keywords": [
                 "INCR",
                 "WATCH"
@@ -1840,7 +1840,7 @@
             },
             {
               "title": "EVAL and numkeys",
-              "href": "/redis-refresh/lua-scripts#eval-and-numkeys",
+              "href": "/projects/redis-refresh/lua-scripts#eval-and-numkeys",
               "keywords": [
                 "return 1",
                 "return 'hello'",
@@ -1850,7 +1850,7 @@
             },
             {
               "title": "KEYS and ARGV",
-              "href": "/redis-refresh/lua-scripts#keys-and-argv",
+              "href": "/projects/redis-refresh/lua-scripts#keys-and-argv",
               "keywords": [
                 "redis.call(...)",
                 "redis.call('GET', KEYS[1])",
@@ -1866,11 +1866,11 @@
         },
         {
           "name": "Why: The Safe Lock Release",
-          "href": "/redis-refresh/lua-scripts#what-a-lock-is",
+          "href": "/projects/redis-refresh/lua-scripts#what-a-lock-is",
           "titles": [
             {
               "title": "what a lock is",
-              "href": "/redis-refresh/lua-scripts#what-a-lock-is",
+              "href": "/projects/redis-refresh/lua-scripts#what-a-lock-is",
               "keywords": [
                 "nil",
                 "Nothing in Redis enforces any of this.",
@@ -1879,14 +1879,14 @@
             },
             {
               "title": "the bug DEL creates",
-              "href": "/redis-refresh/lua-scripts#the-bug-del-creates",
+              "href": "/projects/redis-refresh/lua-scripts#the-bug-del-creates",
               "keywords": [
                 "DEL takes a key name and nothing else."
               ]
             },
             {
               "title": "the fix",
-              "href": "/redis-refresh/lua-scripts#the-fix",
+              "href": "/projects/redis-refresh/lua-scripts#the-fix",
               "keywords": [
                 "\"worker-b\"",
                 "GET lock:job1",
@@ -1896,7 +1896,7 @@
             },
             {
               "title": "the same thing with WATCH, and what it costs",
-              "href": "/redis-refresh/lua-scripts#the-same-thing-with-watch-and-what-it-costs",
+              "href": "/projects/redis-refresh/lua-scripts#the-same-thing-with-watch-and-what-it-costs",
               "keywords": [
                 "UNWATCH",
                 "The rule.",
@@ -1909,11 +1909,11 @@
         },
         {
           "name": "SCRIPT LOAD and EVALSHA",
-          "href": "/redis-refresh/lua-scripts#sending-the-text-every-time",
+          "href": "/projects/redis-refresh/lua-scripts#sending-the-text-every-time",
           "titles": [
             {
               "title": "sending the text every time",
-              "href": "/redis-refresh/lua-scripts#sending-the-text-every-time",
+              "href": "/projects/redis-refresh/lua-scripts#sending-the-text-every-time",
               "keywords": [
                 "SCRIPT LOAD",
                 "EVALSHA",
@@ -1923,7 +1923,7 @@
             },
             {
               "title": "NOSCRIPT",
-              "href": "/redis-refresh/lua-scripts#noscript",
+              "href": "/projects/redis-refresh/lua-scripts#noscript",
               "keywords": [
                 "EVALSHA",
                 "SCRIPT LOAD"
@@ -1931,7 +1931,7 @@
             },
             {
               "title": "managing several scripts",
-              "href": "/redis-refresh/lua-scripts#managing-several-scripts",
+              "href": "/projects/redis-refresh/lua-scripts#managing-several-scripts",
               "keywords": [
                 "loadScripts",
                 "EVALSHA",
@@ -1947,18 +1947,18 @@
         },
         {
           "name": "The Rate Limiter, Line by Line",
-          "href": "/redis-refresh/lua-scripts#the-whole-script",
+          "href": "/projects/redis-refresh/lua-scripts#the-whole-script",
           "titles": [
             {
               "title": "the whole script",
-              "href": "/redis-refresh/lua-scripts#the-whole-script",
+              "href": "/projects/redis-refresh/lua-scripts#the-whole-script",
               "keywords": [
                 "Returns 1 for allowed, 0 for rejected."
               ]
             },
             {
               "title": "the arguments",
-              "href": "/redis-refresh/lua-scripts#the-arguments",
+              "href": "/projects/redis-refresh/lua-scripts#the-arguments",
               "keywords": [
                 "now - window",
                 "count >= limit",
@@ -1972,7 +1972,7 @@
             },
             {
               "title": "the body",
-              "href": "/redis-refresh/lua-scripts#the-body",
+              "href": "/projects/redis-refresh/lua-scripts#the-body",
               "keywords": [
                 "now - window",
                 "now",
@@ -1987,11 +1987,11 @@
         },
         {
           "name": "Rules and Traps",
-          "href": "/redis-refresh/lua-scripts#scripts-block-the-server",
+          "href": "/projects/redis-refresh/lua-scripts#scripts-block-the-server",
           "titles": [
             {
               "title": "scripts block the server",
-              "href": "/redis-refresh/lua-scripts#scripts-block-the-server",
+              "href": "/projects/redis-refresh/lua-scripts#scripts-block-the-server",
               "keywords": [
                 "KEYS",
                 "busy-reply-threshold",
@@ -2003,7 +2003,7 @@
             },
             {
               "title": "scripts must be deterministic",
-              "href": "/redis-refresh/lua-scripts#scripts-must-be-deterministic",
+              "href": "/projects/redis-refresh/lua-scripts#scripts-must-be-deterministic",
               "keywords": [
                 "A script must be DETERMINISTIC.",
                 "now",
@@ -2013,7 +2013,7 @@
             },
             {
               "title": "all keys must be declared in KEYS",
-              "href": "/redis-refresh/lua-scripts#all-keys-must-be-declared-in-keys",
+              "href": "/projects/redis-refresh/lua-scripts#all-keys-must-be-declared-in-keys",
               "keywords": [
                 "balance",
                 "user:42",
@@ -2024,7 +2024,7 @@
             },
             {
               "title": "a script has no rollback either",
-              "href": "/redis-refresh/lua-scripts#a-script-has-no-rollback-either",
+              "href": "/projects/redis-refresh/lua-scripts#a-script-has-no-rollback-either",
               "keywords": [
                 "INCR",
                 "SET",
@@ -2041,16 +2041,16 @@
       "slug": "pub-sub",
       "name": "Pub/Sub & Keyspace Notifications",
       "chapter": "Making It Work in an App",
-      "href": "/redis-refresh/pub-sub",
+      "href": "/projects/redis-refresh/pub-sub",
       "planned": false,
       "parts": [
         {
           "name": "",
-          "href": "/redis-refresh/pub-sub#coming-soon",
+          "href": "/projects/redis-refresh/pub-sub#coming-soon",
           "titles": [
             {
               "title": "coming soon",
-              "href": "/redis-refresh/pub-sub#coming-soon",
+              "href": "/projects/redis-refresh/pub-sub#coming-soon",
               "keywords": []
             }
           ]
@@ -2061,16 +2061,16 @@
       "slug": "memory-and-eviction",
       "name": "Memory & Eviction",
       "chapter": "Making It Work in an App",
-      "href": "/redis-refresh/memory-and-eviction",
+      "href": "/projects/redis-refresh/memory-and-eviction",
       "planned": false,
       "parts": [
         {
           "name": "",
-          "href": "/redis-refresh/memory-and-eviction#coming-soon",
+          "href": "/projects/redis-refresh/memory-and-eviction#coming-soon",
           "titles": [
             {
               "title": "coming soon",
-              "href": "/redis-refresh/memory-and-eviction#coming-soon",
+              "href": "/projects/redis-refresh/memory-and-eviction#coming-soon",
               "keywords": []
             }
           ]
@@ -2081,23 +2081,23 @@
       "slug": "reading-replies",
       "name": "Reading Redis Replies",
       "chapter": "Reference",
-      "href": "/redis-refresh/reading-replies",
+      "href": "/projects/redis-refresh/reading-replies",
       "planned": false,
       "parts": [
         {
           "name": "",
-          "href": "/redis-refresh/reading-replies#the-five-reply-shapes",
+          "href": "/projects/redis-refresh/reading-replies#the-five-reply-shapes",
           "titles": [
             {
               "title": "the five reply shapes",
-              "href": "/redis-refresh/reading-replies#the-five-reply-shapes",
+              "href": "/projects/redis-refresh/reading-replies#the-five-reply-shapes",
               "keywords": [
                 "\"3\""
               ]
             },
             {
               "title": "when an integer is a count",
-              "href": "/redis-refresh/reading-replies#when-an-integer-is-a-count",
+              "href": "/projects/redis-refresh/reading-replies#when-an-integer-is-a-count",
               "keywords": [
                 "RPUSH",
                 "LPUSH",
@@ -2111,7 +2111,7 @@
             },
             {
               "title": "when an integer is a yes/no",
-              "href": "/redis-refresh/reading-replies#when-an-integer-is-a-yes-no",
+              "href": "/projects/redis-refresh/reading-replies#when-an-integer-is-a-yes-no",
               "keywords": [
                 "EXPIRE",
                 "PERSIST"
@@ -2119,7 +2119,7 @@
             },
             {
               "title": "the TTL integers",
-              "href": "/redis-refresh/reading-replies#the-ttl-integers",
+              "href": "/projects/redis-refresh/reading-replies#the-ttl-integers",
               "keywords": [
                 "GET",
                 "(nil)",
@@ -2131,7 +2131,7 @@
             },
             {
               "title": "nil and empty",
-              "href": "/redis-refresh/reading-replies#nil-and-empty",
+              "href": "/projects/redis-refresh/reading-replies#nil-and-empty",
               "keywords": [
                 "Two distinct meanings of nil.",
                 "GET",
@@ -2145,14 +2145,14 @@
             },
             {
               "title": "status and error replies",
-              "href": "/redis-refresh/reading-replies#status-and-error-replies",
+              "href": "/projects/redis-refresh/reading-replies#status-and-error-replies",
               "keywords": [
                 "WRONGTYPE"
               ]
             },
             {
               "title": "TYPE and encoding replies",
-              "href": "/redis-refresh/reading-replies#type-and-encoding-replies",
+              "href": "/projects/redis-refresh/reading-replies#type-and-encoding-replies",
               "keywords": [
                 "listpack",
                 "hashtable",
@@ -2166,7 +2166,7 @@
             },
             {
               "title": "what node-redis turns these into",
-              "href": "/redis-refresh/reading-replies#what-node-redis-turns-these-into",
+              "href": "/projects/redis-refresh/reading-replies#what-node-redis-turns-these-into",
               "keywords": [
                 "if (!user)",
                 "hGetAll",
@@ -2178,7 +2178,7 @@
             },
             {
               "title": "terminology",
-              "href": "/redis-refresh/reading-replies#terminology",
+              "href": "/projects/redis-refresh/reading-replies#terminology",
               "keywords": [
                 "Redis SENDS a REPLY.",
                 "Each shape has a name.",
