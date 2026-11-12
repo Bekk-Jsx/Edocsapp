@@ -2167,27 +2167,92 @@
       "name": "Fetching Data",
       "chapter": "Networking",
       "href": "/projects/vue/fetching-data",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "typed fetch",
-          "href": "/projects/vue/fetching-data",
-          "titles": []
+          "name": "Two silent traps",
+          "href": "/projects/vue/fetching-data#fetch-resolves-on-404",
+          "titles": [
+            {
+              "title": "fetch resolves on 404",
+              "href": "/projects/vue/fetching-data#fetch-resolves-on-404",
+              "keywords": [
+                "try",
+                "catch",
+                "res.ok",
+                "res.status",
+                "res.statusText",
+                "json()"
+              ]
+            },
+            {
+              "title": "json() returns any",
+              "href": "/projects/vue/fetching-data#json-returns-any",
+              "keywords": [
+                "res.json()",
+                "Promise<any>",
+                "User",
+                "{}",
+                "as"
+              ]
+            },
+            {
+              "title": "Typing the boundary",
+              "href": "/projects/vue/fetching-data#typing-the-boundary",
+              "keywords": [
+                "as User",
+                ": User",
+                "as",
+                "any",
+                "unknown"
+              ]
+            }
+          ]
         },
         {
-          "name": "loading / error state",
-          "href": "/projects/vue/fetching-data",
-          "titles": []
+          "name": "One request helper",
+          "href": "/projects/vue/fetching-data#a-typed-helper-with-a-typed-error",
+          "titles": [
+            {
+              "title": "A typed helper with a typed error",
+              "href": "/projects/vue/fetching-data#a-typed-helper-with-a-typed-error",
+              "keywords": [
+                "HttpError",
+                "catch",
+                "status",
+                "body",
+                "instanceof",
+                "TypeError",
+                "SyntaxError",
+                "DELETE"
+              ]
+            },
+            {
+              "title": "Endpoint modules",
+              "href": "/projects/vue/fetching-data#endpoint-modules",
+              "keywords": [
+                "getPost",
+                "Accept",
+                "Content-Type",
+                "axios",
+                "isAxiosError"
+              ]
+            }
+          ]
         },
         {
-          "name": "where to fetch",
-          "href": "/projects/vue/fetching-data",
-          "titles": []
-        },
-        {
-          "name": "aborting requests",
-          "href": "/projects/vue/fetching-data",
-          "titles": []
+          "name": "Where the fetch belongs",
+          "href": "/projects/vue/fetching-data#component-composable-or-store",
+          "titles": [
+            {
+              "title": "Component, composable or store",
+              "href": "/projects/vue/fetching-data#component-composable-or-store",
+              "keywords": [
+                "@tanstack/vue-query",
+                "useFetch"
+              ]
+            }
+          ]
         }
       ]
     },

@@ -156,13 +156,7 @@ export const TOPICS: VueTopic[] = [
     // — Networking —
     {
         slug: "fetching-data", name: "Fetching Data", chapter: "networking",
-        summary: "Calling a real API with typed responses.",
-        parts: [
-            "typed fetch",
-            "loading / error state",
-            "where to fetch",
-            "aborting requests",
-        ],
+        summary: "Why fetch fails silently, typing the response boundary, one request helper with a typed error, and where a fetch call belongs.",
     },
     {
         slug: "network-panel", name: "The Network Panel", chapter: "networking",
