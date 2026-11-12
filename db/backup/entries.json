@@ -365,7 +365,34 @@
     },
     "page": "interviews/preparation/fullstack-questions/web-fundamentals",
     "slug": "jwt-auth",
-    "blocks": [],
+    "blocks": [
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          {
+            "text": {
+              "en": "The user sends their credentials through a login form, and we verify them on the server."
+            }
+          },
+          {
+            "text": {
+              "en": "If authentication is successful, the server generates a signed JWT and returns it to the client."
+            }
+          },
+          {
+            "text": {
+              "en": "The client sends the JWT with every protected request, and the server validates it before allowing access."
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "js",
+        "code": "const jwt = require(\"jsonwebtoken\");\n\n// After login succeeds: create a signed token\nconst token = jwt.sign(\n  { userId: user.id },          // payload\n  process.env.JWT_SECRET,       // secret key\n  { expiresIn: \"15m\" }          // expiry\n);\n\n// Example token: header.payload.signature\n// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjMiLCJleHAiOjE3MzE0MjAwMDB9.4Hb9xK2mQpL7vR1sT8nW3yZ5aC6dE0fG\n\n// On protected requests: validate the token\nfunction auth(req, res, next) {\n  const token = req.headers.authorization?.split(\" \")[1]; // \"Bearer <token>\"\n  try {\n    req.user = jwt.verify(token, process.env.JWT_SECRET);\n    next();\n  } catch {\n    res.status(401).json({ message: \"Invalid or expired token\" });\n  }\n}"
+      }
+    ],
     "createdAt": {
       "$date": {
         "$numberLong": "1794427305845"
@@ -383,16 +410,22 @@
       "name": "GeeksforGeeks",
       "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
     },
-    "status": "planned",
-    "tags": [],
+    "status": "active",
+    "tags": [
+      "auth",
+      "jwt"
+    ],
     "title": {
-      "en": "How does JWT authentication work?",
-      "de": "Wie funktioniert die Authentifizierung mit JWT?"
+      "en": "How does user authentication work with JWT (JSON Web Token)?",
+      "de": "Wie funktioniert die Benutzer-Authentifizierung mit JWT (JSON Web Token)?"
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794427305845"
+        "$numberLong": "1794492715471"
       }
+    },
+    "shortAnswer": {
+      "en": "User authentication verifies a user's identity before granting access to protected resources. A common approach is to use JWT (JSON Web Token) for secure authentication."
     }
   },
   {
@@ -7361,6 +7394,190 @@
       "$date": {
         "$numberLong": "1794427309011"
       }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5c8e62c696ace7ffaf059"
+    },
+    "slug": "auth-session",
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "blocks": [
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          {
+            "text": {
+              "en": "The user sends their credentials through a login form, and we verify them on the server."
+            }
+          },
+          {
+            "text": {
+              "en": "If authentication is successful, the server creates a session, stores it, and sends the session ID back in a cookie."
+            }
+          },
+          {
+            "text": {
+              "en": "The browser sends the cookie with every request automatically, and the server looks up the session to allow access."
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "js",
+        "code": "const session = require(\"express-session\");\n\napp.use(session({\n  secret: process.env.SESSION_SECRET,\n  resave: false,\n  saveUninitialized: false,\n  cookie: { httpOnly: true, secure: true, maxAge: 15 * 60 * 1000 }\n}));\n\n// After login succeeds: store the user in the session\nreq.session.userId = user.id;\n\n// Cookie the browser receives:\n// Set-Cookie: connect.sid=s%3A8fK2mQpL7vR1sT8nW3yZ5aC6; HttpOnly; Secure\n\n// On protected requests: check the session\nfunction auth(req, res, next) {\n  if (req.session.userId) return next();\n  res.status(401).json({ message: \"Not authenticated\" });\n}"
+      }
+    ],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794492646282"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "21"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "active",
+    "tags": [
+      "auth",
+      "sessions"
+    ],
+    "title": {
+      "en": "How does user authentication work with sessions?",
+      "de": "Wie funktioniert die Authentifizierung mit Sessions?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794492715502"
+      }
+    },
+    "shortAnswer": {
+      "en": "User authentication verifies a user's identity before granting access to protected resources. Another common approach is session-based authentication, where the user's login state is stored on the server."
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5c8e62c696ace7ffaf05a"
+    },
+    "page": "interviews/preparation/fullstack-questions/web-fundamentals",
+    "slug": "auth-jwt-vs-session",
+    "blocks": [
+      {
+        "type": "table",
+        "columns": [
+          {
+            "en": ""
+          },
+          {
+            "en": "Session (stateful)"
+          },
+          {
+            "en": "JWT (stateless)"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "What the client holds"
+            },
+            {
+              "en": "A random session ID (in a cookie)"
+            },
+            {
+              "en": "A signed token with data inside (user id, role, expiry)"
+            }
+          ],
+          [
+            {
+              "en": "Where the “truth” lives"
+            },
+            {
+              "en": "Server side (memory, Redis, DB)"
+            },
+            {
+              "en": "Inside the token itself"
+            }
+          ],
+          [
+            {
+              "en": "How the server checks"
+            },
+            {
+              "en": "Looks up the ID in the store"
+            },
+            {
+              "en": "Verifies the signature, no lookup"
+            }
+          ],
+          [
+            {
+              "en": "Logout / revoke"
+            },
+            {
+              "en": "Easy: delete the session"
+            },
+            {
+              "en": "Hard: the token stays valid until it expires"
+            }
+          ],
+          [
+            {
+              "en": "Scaling"
+            },
+            {
+              "en": "Needs a shared store (e.g. Redis)"
+            },
+            {
+              "en": "Easy across services and servers"
+            }
+          ]
+        ]
+      }
+    ],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794492646282"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "22"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "source": {
+      "name": "GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
+    },
+    "status": "active",
+    "tags": [
+      "auth",
+      "jwt",
+      "sessions"
+    ],
+    "title": {
+      "en": "What's the difference between JWT (JSON Web Token) and session-based authentication?",
+      "de": "Was ist der Unterschied zwischen JWT (JSON Web Token) und Session-basierter Authentifizierung?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794492715538"
+      }
+    },
+    "shortAnswer": {
+      "en": "Both approaches keep the user logged in. The main difference is where the user's state is stored: on the server with sessions, or inside the token with JWT."
     }
   }
 ]

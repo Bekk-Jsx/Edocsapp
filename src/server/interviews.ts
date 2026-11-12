@@ -211,16 +211,26 @@ export const getPage = cache(
     },
 );
 
-/** Group a page's questions into the three priority parts, empties dropped. */
+/**
+ * Group a page's questions into the three priority parts, empties dropped.
+ *
+ * Within a part the entries come back in RENDER order: answered questions
+ * first, then the planned ones, each by `order`. That is the order the main
+ * column shows them in (written ones, then what is still coming), and the
+ * summary rail maps this same array — so a rail card is always the Nth thing
+ * on the page, never the Nth by `order` alone. One function owns the order;
+ * both columns consume it.
+ */
 export function byPriority(
     entries: QuestionEntry[],
 ): { priority: Priority; label: string; entries: QuestionEntry[] }[] {
+    const rank = (e: QuestionEntry) => (e.status === "active" ? 0 : 1);
     return PRIORITY_ORDER.map((priority) => ({
         priority,
         label: PRIORITY_LABEL[priority],
         entries: entries
             .filter((e) => e.priority === priority)
-            .sort((a, b) => a.order - b.order),
+            .sort((a, b) => rank(a) - rank(b) || a.order - b.order),
     })).filter((part) => part.entries.length > 0);
 }
 

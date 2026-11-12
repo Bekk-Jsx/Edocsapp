@@ -7,6 +7,9 @@ import {
     contentEntrySchema,
     contentItemSchema,
     contentPageSchema,
+    entryLocalizedFields,
+    missingGerman,
+    nodeLocalizedFields,
     type ContentEntry,
     type ContentItem,
     type ContentPage,
@@ -130,6 +133,58 @@ async function loadBatch(file: string): Promise<Batch> {
     return { items, pages, entries };
 }
 
+/**
+ * Refuses a batch that would publish untranslated text.
+ *
+ * Anything going live as "active" must carry German for every text field —
+ * otherwise the page renders English with an "EN" marker, which is fine as a
+ * temporary state but must not arrive silently. Checked BEFORE the database is
+ * touched at all, so a rejected batch writes nothing anywhere.
+ *
+ * Planned and hidden entries are exempt: they are scaffolding, and the seed
+ * creates them English-only by design.
+ *
+ * `--allow-missing-de` downgrades the refusal to a warning, for the deliberate
+ * case of landing English now and translating in a follow-up batch.
+ */
+function checkGerman(batch: Batch, allowMissing: boolean): void {
+    const problems: string[] = [];
+
+    for (const entry of batch.entries) {
+        if (entry.status !== "active") continue;
+        for (const path of missingGerman(entryLocalizedFields(entry))) {
+            problems.push(`${entry.page}/${entry.slug} → ${path}`);
+        }
+    }
+    for (const page of batch.pages) {
+        if (page.status !== "active") continue;
+        for (const path of missingGerman(nodeLocalizedFields(page))) {
+            problems.push(`${page.item}/${page.slug} → ${path}`);
+        }
+    }
+    // `items` carry only a slug and a status — no text to translate.
+
+    if (!problems.length) {
+        log.ok("German complete for everything this batch activates");
+        return;
+    }
+
+    const headline = `${problems.length} field(s) without a German translation:`;
+    if (allowMissing) {
+        log.warn(headline);
+        for (const p of problems) log.detail(`· ${p}`);
+        log.warn("--allow-missing-de given, so the batch continues");
+        return;
+    }
+
+    console.error(`\n✗ ${headline}`);
+    for (const p of problems) console.error(`  · ${p}`);
+    fail(
+        "nothing was written",
+        "add the missing `de` values, or re-run with --allow-missing-de to land English first",
+    );
+}
+
 /** Sets an item's status. The seed owns the item itself, so nothing else. */
 async function applyItems(db: Db, items: ContentItem[]): Promise<number> {
     if (!items.length) return 0;
@@ -238,6 +293,9 @@ async function main() {
     log.ok(
         `validated — ${items.length} item(s), ${pages.length} page(s), ${entries.length} entr${entries.length === 1 ? "y" : "ies"}`,
     );
+
+    // Before the connection is even opened, so a refusal cannot have written.
+    checkGerman(batch, process.argv.includes("--allow-missing-de"));
 
     await withDb(async (db) => {
         // Order matters: an item must be active before its pages are listed,

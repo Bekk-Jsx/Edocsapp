@@ -14,7 +14,12 @@ import {
 // See the convention comment in @/lib/severity.
 export type SummaryArticle = {
     /** Concise Title-Case name of the linked section — keep it matching. */
-    title: string;
+    /**
+     * Rendered as-is; a plain string is the normal case, which is what every
+     * project rail passes. The interview rail passes a small client component
+     * instead, so a card's title can follow that section's language.
+     */
+    title: ReactNode;
     href: string;
     text: ReactNode;
     severities?: Severity[];

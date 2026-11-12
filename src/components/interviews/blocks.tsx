@@ -1,8 +1,10 @@
 import CodeBlock from "@/components/ui/code-block";
 import { Callout } from "@/components/ui/doc-section";
+import CodeCollapse from "./code-collapse";
 import type { AssetInfo } from "@/server/interviews";
 import type { Block, ListItem, LocalizedText } from "@/server/schema";
 import { Text, plain, type Lang } from "./inline";
+import ListenButton from "./listen-button";
 
 // ===================================================================
 // BLOCKS — the renderer for an entry's body. Server components throughout:
@@ -18,7 +20,9 @@ import { Text, plain, type Lang } from "./inline";
 // safeBlocks on read; this is the second line.)
 // ===================================================================
 
-type Ctx = { lang: Lang; assets: Map<string, AssetInfo> };
+// `keyBase` identifies the ENTRY, so a code block's shared open/closed key is
+// the same in both language subtrees and unique across the page.
+type Ctx = { lang: Lang; assets: Map<string, AssetInfo>; keyBase: string };
 
 // Same column grid the app-instance and typescript pages use, so comparisons
 // break to one column at the same width everywhere.
@@ -34,19 +38,51 @@ function Cell({ text, lang }: { text: LocalizedText; lang: Lang }) {
 }
 
 /** Nested list rows. Children recurse, so depth is whatever the data has. */
-function Items({ items, lang }: { items: ListItem[]; lang: Lang }) {
+/**
+ * List rows, at any depth.
+ *
+ * Each row gets its OWN listen button, reading that row's own text and not its
+ * children — a child is a row in its own right and carries its own button. The
+ * button sits after the text and before any nested list, and `group/item` on
+ * the <li> is what reveals it on hover or focus of that row.
+ */
+function Items({
+    items,
+    ctx,
+    path,
+}: {
+    items: ListItem[];
+    ctx: Ctx;
+    /** The block's position, extended per level so every key is unique. */
+    path: string;
+}) {
+    const { lang } = ctx;
     return (
         <>
-            {items.map((item, i) => (
-                <li key={i} className="leading-[1.7]">
-                    <Text text={item.text} lang={lang} />
-                    {item.children?.length ? (
-                        <ul className="mt-1 ml-5 list-disc space-y-1 marker:text-[var(--border)]">
-                            <Items items={item.children} lang={lang} />
-                        </ul>
-                    ) : null}
-                </li>
-            ))}
+            {items.map((item, i) => {
+                const itemPath = `${path}.i${i}`;
+                return (
+                    <li key={i} className="group/item leading-[1.7]">
+                        <Text text={item.text} lang={lang} />
+                        <ListenButton
+                            sectionId={ctx.keyBase}
+                            speechKey={`${ctx.keyBase}:${itemPath}`}
+                            what="list item"
+                            text={item.text}
+                            subtle
+                        />
+                        {item.children?.length ? (
+                            <ul className="mt-1 ml-5 list-disc space-y-1 marker:text-[var(--border)]">
+                                <Items
+                                    items={item.children}
+                                    ctx={ctx}
+                                    path={itemPath}
+                                />
+                            </ul>
+                        ) : null}
+                    </li>
+                );
+            })}
         </>
     );
 }
@@ -60,7 +96,16 @@ function Caption({ text, lang }: { text: LocalizedText; lang: Lang }) {
 }
 
 /** One block. Returns null for anything it does not know. */
-function One({ block, ctx }: { block: Block; ctx: Ctx }) {
+function One({
+    block,
+    ctx,
+    path,
+}: {
+    block: Block;
+    ctx: Ctx;
+    /** Position within the entry, identical in both language subtrees. */
+    path: string;
+}) {
     const { lang } = ctx;
 
     switch (block.type) {
@@ -94,11 +139,11 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
             } marker:text-[var(--border)]`;
             return block.ordered ? (
                 <ol className={className}>
-                    <Items items={block.items} lang={lang} />
+                    <Items items={block.items} ctx={ctx} path={path} />
                 </ol>
             ) : (
                 <ul className={className}>
-                    <Items items={block.items} lang={lang} />
+                    <Items items={block.items} ctx={ctx} path={path} />
                 </ul>
             );
         }
@@ -111,12 +156,18 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
             const ruled = `${cell} border-b border-[var(--border)]`;
             return (
                 <div>
-                    <div
-                        className="grid overflow-hidden rounded border border-[var(--border)] bg-[var(--surface-2)] font-mono text-[0.75rem]"
-                        style={{
-                            gridTemplateColumns: `max-content repeat(${Math.max(block.columns.length - 1, 0)}, 1fr)`,
-                        }}
-                    >
+                    {/* Scrolls sideways rather than squashing: a comparison
+                        table with prose in every cell is unreadable below
+                        ~36rem, so the narrow case pans instead of wrapping.
+                        The first column is the row label and takes the accent,
+                        as on the doc pages. */}
+                    <div className="overflow-x-auto rounded border border-[var(--border)]">
+                        <div
+                            className="grid min-w-[34rem] bg-[var(--surface-2)] font-mono text-[0.75rem]"
+                            style={{
+                                gridTemplateColumns: `max-content repeat(${Math.max(block.columns.length - 1, 0)}, minmax(10rem, 1fr))`,
+                            }}
+                        >
                         {block.columns.map((column, c) => (
                             <div key={`h-${c}`} className={`${ruled} text-[var(--text)]`}>
                                 <Cell text={column} lang={lang} />
@@ -136,6 +187,7 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
                                 </div>
                             )),
                         )}
+                        </div>
                     </div>
                     {block.caption ? (
                         <Caption text={block.caption} lang={lang} />
@@ -146,14 +198,20 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
 
         case "code":
             // `code` is source, never translated — the same string in both
-            // language subtrees.
+            // language subtrees. Hidden behind "Show code": the answer is what
+            // you say, the code is what you check afterwards.
             return (
-                <div>
+                <CodeCollapse
+                    id={`${ctx.keyBase}:${path}`}
+                    lang={lang}
+                    caption={
+                        block.caption ? (
+                            <Caption text={block.caption} lang={lang} />
+                        ) : undefined
+                    }
+                >
                     <CodeBlock code={block.code} lang={block.lang} />
-                    {block.caption ? (
-                        <Caption text={block.caption} lang={lang} />
-                    ) : null}
-                </div>
+                </CodeCollapse>
             );
 
         case "callout":
@@ -209,7 +267,11 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
                                 <p className="font-mono text-[0.7rem] uppercase tracking-widest text-[var(--accent)]">
                                     <Text text={pane.label} lang={lang} />
                                 </p>
-                                <Blocks blocks={pane.blocks} ctx={ctx} />
+                                <Blocks
+                                    blocks={pane.blocks}
+                                    ctx={ctx}
+                                    path={`${path}.${i === 0 ? "L" : "R"}`}
+                                />
                             </div>
                         ))}
                     </div>
@@ -232,15 +294,18 @@ function One({ block, ctx }: { block: Block; ctx: Ctx }) {
 export default function Blocks({
     blocks,
     ctx,
+    path = "",
 }: {
     blocks: Block[];
     ctx: Ctx;
+    /** Prefix for nested block arrays (a compare column). */
+    path?: string;
 }) {
     if (!blocks.length) return null;
     return (
         <div className="space-y-4">
             {blocks.map((block, i) => (
-                <One key={i} block={block} ctx={ctx} />
+                <One key={i} block={block} ctx={ctx} path={`${path}${i}`} />
             ))}
         </div>
     );

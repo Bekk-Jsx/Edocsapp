@@ -183,6 +183,13 @@ export const PAGES: SeedPage[] = [
             q("deployment", "M", "How do you deploy a full-stack application?", "Wie deployt man eine Full-Stack-Anwendung?"),
             q("pwa", "L", "What is a Progressive Web App?", "Was ist eine Progressive Web App?"),
             q("responsive-design", "M", "What is responsive web design?", "Was ist Responsive Webdesign?"),
+            // Appended rather than slotted next to jwt-auth (order 11) on
+            // purpose: `order` comes from the position in this array, and the
+            // seed only $setOnInserts an entry — so inserting in the middle
+            // would give these two an order that an existing question already
+            // holds. Renumbering would need a migration.
+            q("auth-session", "H", "How does user authentication work with sessions?", "Wie funktioniert die Authentifizierung mit Sessions?"),
+            q("auth-jwt-vs-session", "H", "What's the difference between JWT (JSON Web Token) and session-based authentication?", "Was ist der Unterschied zwischen JWT (JSON Web Token) und Session-basierter Authentifizierung?"),
         ],
     },
     {
@@ -449,7 +456,7 @@ export const PAGES: SeedPage[] = [
 
 /** Questions per page slug. A mismatch stops the seed. */
 export const EXPECTED_PER_PAGE: Record<string, number> = {
-    "web-fundamentals": 20,
+    "web-fundamentals": 22,
     javascript: 27,
     react: 26,
     "node-express": 16,
@@ -462,7 +469,7 @@ export const EXPECTED_PER_PAGE: Record<string, number> = {
     "django-flask": 5,
 };
 
-export const EXPECTED_TOTAL = 205;
+export const EXPECTED_TOTAL = 207;
 /** 16 outside the stack (Spring, Django) + 3 duplicates. */
 export const EXPECTED_HIDDEN = 19;
-export const EXPECTED_VISIBLE = 186;
+export const EXPECTED_VISIBLE = 188;

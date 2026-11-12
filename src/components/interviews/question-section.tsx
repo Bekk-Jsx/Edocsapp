@@ -3,6 +3,7 @@ import type { AssetInfo, QuestionEntry } from "@/server/interviews";
 import Blocks from "./blocks";
 import { Text, type Lang } from "./inline";
 import { LangPair, LangText } from "./lang-provider";
+import ListenButton from "./listen-button";
 import PracticeSection from "./practice-section";
 import PriorityBadge from "./priority-badge";
 import SectionLangToggle from "./section-lang-toggle";
@@ -53,17 +54,29 @@ function ShortAnswer({
     entry: QuestionEntry;
     lang: Lang;
 }) {
-    if (!entry.shortAnswer) return null;
+    const shortAnswer = entry.shortAnswer;
+    if (!shortAnswer) return null;
     return (
         <div
             className="rounded-lg border-l-2 bg-[var(--surface-2)] px-4 py-3"
             style={{ borderLeftColor: "var(--mint)" }}
         >
-            <p className="mb-1 font-mono text-[0.6rem] uppercase tracking-widest text-[var(--mint)]">
-                Short answer
-            </p>
+            <div className="mb-1 flex items-center gap-2">
+                <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--mint)]">
+                    Short answer
+                </p>
+                {/* Reads the whole short answer, nothing else. In practice
+                    mode this box is unmounted until "Show answer", so the
+                    button cannot give the answer away early. */}
+                <ListenButton
+                    sectionId={entry.slug}
+                    speechKey={`${entry.slug}:short-answer`}
+                    what="short answer"
+                    text={shortAnswer}
+                />
+            </div>
             <p className="text-[0.95rem] leading-[1.65] text-[var(--text)]">
-                <Text text={entry.shortAnswer} lang={lang} />
+                <Text text={shortAnswer} lang={lang} />
             </p>
         </div>
     );
@@ -98,7 +111,12 @@ export default function QuestionSection({
     const body = (lang: Lang) => (
         <div className="space-y-4">
             <ShortAnswer entry={entry} lang={lang} />
-            <Blocks blocks={entry.blocks} ctx={{ lang, assets }} />
+            {/* keyBase is the entry slug, so a code block's open/closed state
+                is shared between this section's two language copies. */}
+            <Blocks
+                blocks={entry.blocks}
+                ctx={{ lang, assets, keyBase: entry.slug }}
+            />
             <FollowUps entry={entry} lang={lang} />
         </div>
     );
@@ -121,6 +139,10 @@ export default function QuestionSection({
                         de={<Text text={entry.title} lang="de" />}
                     />
                 </p>
+                {/* Reads the TITLE only, in whatever language this section
+                    is showing. Stays available in practice mode — saying the
+                    question out loud is the point there. */}
+                <ListenButton sectionId={entry.slug} text={entry.title} />
                 {/* Renders nothing unless this section has a rail card. */}
                 <AddNoteButton sectionId={entry.slug} />
                 <SectionLangToggle sectionId={entry.slug} />

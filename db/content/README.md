@@ -31,7 +31,17 @@ reads in the order the content was written.
 
 ## Shape
 
-The file exports `entries`, typed by `ContentEntry` from `src/server/schema.ts`:
+A batch may export three arrays, applied in this order: `items`, then `pages`,
+then `entries`. All three are optional, so a batch can bring an item's whole
+structure with its first content, or just fill questions.
+
+| export | type | does |
+| --- | --- | --- |
+| `items` | `ContentItem[]` | `{ slug, status }` — flips an item between `planned` and `active`. The seed owns the item itself. |
+| `pages` | `ContentPage[]` | `{ item, slug, name, summary?, order, status }` — upserts a page node under that item, creating it if needed. |
+| `entries` | `ContentEntry[]` | the questions themselves (below). |
+
+`entries` is typed by `ContentEntry` from `src/server/schema.ts`:
 
 | field         | required | notes                                                        |
 | ------------- | -------- | ------------------------------------------------------------ |
@@ -46,8 +56,47 @@ The file exports `entries`, typed by `ContentEntry` from `src/server/schema.ts`:
 | `status`      | yes      | `active` to publish                                          |
 
 Every translatable field is `LocalizedText`: `{ en: string; de?: string }`.
-German is written later — a reader falls back to English whenever `de` is
-missing. The `code` field of a code block is **never** translated.
+The `code` field of a code block is **never** translated.
+
+### German is required for anything you publish
+
+**Every active entry must have `de` for every text field; `db:content` rejects
+the batch otherwise.** The check walks the whole entry — title, short answer,
+follow-ups, and every block recursively (nested list items, table columns and
+cells, callout label and text, captions, and both `compare` columns including
+their nested blocks) — and runs *before* the database is touched, so a rejected
+batch writes nothing at all. Each missing field is printed as
+`<page>/<slug> → <field path>`.
+
+`pages` entries are checked the same way (`name`, `summary`) when their status
+is `active`. `items` carry only a slug and a status, so there is nothing to
+translate there.
+
+Planned and hidden entries are exempt — they are scaffolding, and the seed
+creates them English-only on purpose.
+
+To land English now and translate in a follow-up batch, pass the flag:
+
+```bash
+npm run db:content -- db/content/batch-00X-name.ts --allow-missing-de
+```
+
+That downgrades the refusal to a warning and still lists every field. Until the
+German arrives the page shows the English text with a small muted `EN` marker
+beside it.
+
+To see what is already live and untranslated:
+
+```bash
+npm run db:check-de     # exits 1 if anything is missing
+```
+
+### Clearing an optional field
+
+Omitting a field leaves whatever is stored alone. To **empty** one, pass `null`
+explicitly — `shortAnswer: null`, `followUps: null`. That is how a published
+answer is taken back down to `status: "planned"` without leaving its short
+answer behind.
 
 ## Inline markup
 

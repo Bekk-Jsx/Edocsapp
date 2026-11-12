@@ -1,6 +1,7 @@
 import { BADGE_CLASS } from "@/components/ui/badge-class";
 import type { QuestionEntry } from "@/server/interviews";
 import { Text, type Lang } from "./inline";
+import ListenButton from "./listen-button";
 import PriorityBadge from "./priority-badge";
 
 // A question that exists but has no answer yet: the title, its priority, and
@@ -26,6 +27,9 @@ export default function PlannedCard({
             <h3 className="min-w-0 flex-1 text-[0.95rem] font-medium text-[var(--muted)]">
                 <Text text={entry.title} lang={lang} />
             </h3>
+            {/* A planned question has no answer yet, but it does have a title —
+                and hearing the question is exactly what is useful here. */}
+            <ListenButton sectionId={entry.slug} text={entry.title} />
             <span
                 className={BADGE_CLASS}
                 style={{

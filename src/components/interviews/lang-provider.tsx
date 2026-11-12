@@ -8,7 +8,8 @@ import {
     useState,
     type ReactNode,
 } from "react";
-import { LANG_COOKIE, otherLang, type Lang } from "./inline";
+import { LANG_COOKIE, Text, otherLang, type Lang } from "./inline";
+import type { LocalizedText } from "@/server/schema";
 
 // ===================================================================
 // LANG — the global EN/DE choice and the per-section overrides.
@@ -111,6 +112,26 @@ export function LangPair({
             <div hidden={lang !== "de"}>{de}</div>
         </>
     );
+}
+
+/**
+ * A rail card's title, in the language ITS section is showing.
+ *
+ * The rail used to be rendered twice, once per language, which meant a card
+ * could only follow the GLOBAL switch — a per-section override left its card
+ * in the other language. One card that reads the section's language itself
+ * fixes that and halves the rail's DOM (and its scroll spies) at the same
+ * time.
+ */
+export function RailCardTitle({
+    sectionId,
+    text,
+}: {
+    sectionId: string;
+    text: LocalizedText;
+}) {
+    const lang = useSectionLang(sectionId);
+    return <Text text={text} lang={lang} />;
 }
 
 /** The same, inline — for a heading or a lead, where a <div> would break flow. */

@@ -13,6 +13,7 @@
     "db:migrate": "tsx scripts/db/migrate.ts",
     "db:seed": "tsx scripts/db/seed.ts",
     "db:content": "tsx scripts/db/content.ts",
+    "db:check-de": "tsx scripts/db/check-de.ts",
     "db:export": "tsx scripts/db/export.ts",
     "db:restore": "tsx scripts/db/restore.ts",
     "db:asset": "tsx scripts/db/add-asset.ts"

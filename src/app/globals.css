@@ -332,3 +332,12 @@ body {
 .page-alerts a:has([data-practice-dim="true"]) {
   opacity: 0.5;
 }
+
+/* A list item's listen button is revealed on hover or focus so a long list is
+   not a column of icons. Where there is no hover at all — touch — there is
+   nothing to reveal it, so it stays visible. */
+@media (hover: none) {
+  .listen-subtle {
+    opacity: 1;
+  }
+}

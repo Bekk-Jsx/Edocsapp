@@ -57,6 +57,21 @@ const TOKEN = /`([^`]+)`|\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
 const CODE_CLASS =
     "code-token rounded px-1.5 py-0.5 font-mono text-[0.85em]";
 
+/**
+ * The same markup, reduced to the words a reader would say out loud:
+ * `code` -> code, **bold** -> bold, [label](url) -> label (the URL is dropped).
+ *
+ * It lives beside the parser on purpose — speech and rendering must agree on
+ * what the markup means, and one regex is the only way to guarantee that.
+ */
+export function plainText(value: string): string {
+    return value.replace(
+        new RegExp(TOKEN),
+        (_match, code?: string, bold?: string, label?: string) =>
+            code ?? bold ?? label ?? "",
+    );
+}
+
 /** True for anything that leaves the app. */
 function isExternal(url: string): boolean {
     return /^(https?:)?\/\//.test(url) || url.startsWith("mailto:");

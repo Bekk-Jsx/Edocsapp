@@ -377,6 +377,143 @@ export const contentItemSchema = z.object({
 export type ContentItem = z.infer<typeof contentItemSchema>;
 
 // -------------------------------------------------------------------
+// translation coverage
+// -------------------------------------------------------------------
+//
+// Walks every LocalizedText a document carries, so "is this fully
+// translated?" is answered in ONE place: db:content enforces it before a
+// write, db:check-de reports it for what is already stored. Keeping the walk
+// here means a block type added to the union above cannot quietly escape the
+// check — the switch below has to grow with it.
+
+/** One translatable field, with the path that identifies it in a report. */
+export type LocalizedField = { path: string; text: LocalizedText };
+
+/**
+ * True when nothing is left to translate.
+ *
+ * A usable German string counts, and so does an EMPTY English one: a
+ * deliberately blank cell — the header above a table's row-label column — has
+ * nothing to translate and must not be reported as missing. Otherwise an
+ * empty or whitespace-only `de` is missing.
+ */
+export function hasGerman(text: LocalizedText): boolean {
+    if (text.en.trim().length === 0) return true;
+    return typeof text.de === "string" && text.de.trim().length > 0;
+}
+
+function listFields(items: ListItem[], base: string): LocalizedField[] {
+    const out: LocalizedField[] = [];
+    items.forEach((item, i) => {
+        out.push({ path: `${base}[${i}].text`, text: item.text });
+        if (item.children?.length) {
+            out.push(...listFields(item.children, `${base}[${i}].children`));
+        }
+    });
+    return out;
+}
+
+/** Every translatable field inside a block array, recursively. */
+export function blockLocalizedFields(
+    blocks: Block[],
+    base = "blocks",
+): LocalizedField[] {
+    const out: LocalizedField[] = [];
+    blocks.forEach((block, i) => {
+        const p = `${base}[${i}]:${block.type}`;
+        switch (block.type) {
+            case "paragraph":
+                out.push({ path: `${p}.text`, text: block.text });
+                break;
+            case "heading":
+                out.push({ path: `${p}.text`, text: block.text });
+                break;
+            case "list":
+                out.push(...listFields(block.items, `${p}.items`));
+                break;
+            case "table":
+                block.columns.forEach((c, ci) =>
+                    out.push({ path: `${p}.columns[${ci}]`, text: c }),
+                );
+                block.rows.forEach((row, ri) =>
+                    row.forEach((cell, ci) =>
+                        out.push({ path: `${p}.rows[${ri}][${ci}]`, text: cell }),
+                    ),
+                );
+                if (block.caption) {
+                    out.push({ path: `${p}.caption`, text: block.caption });
+                }
+                break;
+            case "code":
+                // `code` itself is source and never translated; its caption is.
+                if (block.caption) {
+                    out.push({ path: `${p}.caption`, text: block.caption });
+                }
+                break;
+            case "callout":
+                out.push({ path: `${p}.label`, text: block.label });
+                out.push({ path: `${p}.text`, text: block.text });
+                break;
+            case "image":
+                // alt text belongs to the asset, not the block.
+                if (block.caption) {
+                    out.push({ path: `${p}.caption`, text: block.caption });
+                }
+                break;
+            case "compare":
+                out.push({ path: `${p}.left.label`, text: block.left.label });
+                out.push(
+                    ...blockLocalizedFields(block.left.blocks, `${p}.left.blocks`),
+                );
+                out.push({ path: `${p}.right.label`, text: block.right.label });
+                out.push(
+                    ...blockLocalizedFields(block.right.blocks, `${p}.right.blocks`),
+                );
+                break;
+        }
+    });
+    return out;
+}
+
+/** Shared by a stored entry and a batch entry — both carry these fields. */
+export type LocalizedEntrySource = {
+    title: LocalizedText;
+    shortAnswer?: LocalizedText | null;
+    blocks: Block[];
+    followUps?: LocalizedText[] | null;
+};
+
+/** Every translatable field of one question. */
+export function entryLocalizedFields(
+    entry: LocalizedEntrySource,
+): LocalizedField[] {
+    const out: LocalizedField[] = [{ path: "title", text: entry.title }];
+    if (entry.shortAnswer) {
+        out.push({ path: "shortAnswer", text: entry.shortAnswer });
+    }
+    (entry.followUps ?? []).forEach((text, i) =>
+        out.push({ path: `followUps[${i}]`, text }),
+    );
+    out.push(...blockLocalizedFields(entry.blocks));
+    return out;
+}
+
+/** Every translatable field of a tree node (area, category, item, page). */
+export function nodeLocalizedFields(node: {
+    name: LocalizedText;
+    summary?: LocalizedText;
+}): LocalizedField[] {
+    const out: LocalizedField[] = [{ path: "name", text: node.name }];
+    if (node.summary) out.push({ path: "summary", text: node.summary });
+    return out;
+}
+
+/** The fields of `fields` that have no German yet. */
+export function missingGerman(fields: LocalizedField[]): string[] {
+    return fields.filter((f) => !hasGerman(f.text)).map((f) => f.path);
+}
+
+// -------------------------------------------------------------------
 // collection names — one place, so a typo is a type error
 // -------------------------------------------------------------------
 
