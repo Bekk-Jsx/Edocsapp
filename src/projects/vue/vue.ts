@@ -160,14 +160,7 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "network-panel", name: "The Network Panel", chapter: "networking",
-        summary: "Watching requests and responses in Chrome DevTools.",
-        parts: [
-            "request list + filters",
-            "headers / payload / response",
-            "status codes",
-            "timing waterfall",
-            "throttling and preserve log",
-        ],
+        summary: "Reading requests in Chrome DevTools: the request list and its filters, the Headers, Payload and Response tabs, status codes, timing phases, throttling and canceled requests.",
     },
     {
         slug: "cors-and-caching", name: "CORS & Caching", chapter: "networking",

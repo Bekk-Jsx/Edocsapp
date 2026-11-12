@@ -2261,32 +2261,64 @@
       "name": "The Network Panel",
       "chapter": "Networking",
       "href": "/projects/vue/network-panel",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "request list + filters",
-          "href": "/projects/vue/network-panel",
-          "titles": []
+          "name": "The request list",
+          "href": "/projects/vue/network-panel#columns",
+          "titles": [
+            {
+              "title": "Columns",
+              "href": "/projects/vue/network-panel#columns",
+              "keywords": []
+            },
+            {
+              "title": "Filters and settings",
+              "href": "/projects/vue/network-panel#filters-and-settings",
+              "keywords": []
+            }
+          ]
         },
         {
-          "name": "headers / payload / response",
-          "href": "/projects/vue/network-panel",
-          "titles": []
+          "name": "Reading one request",
+          "href": "/projects/vue/network-panel#headers-payload-and-response",
+          "titles": [
+            {
+              "title": "Headers, Payload and Response",
+              "href": "/projects/vue/network-panel#headers-payload-and-response",
+              "keywords": [
+                "content-type",
+                "cache-control",
+                "etag",
+                "set-cookie",
+                "Authorization",
+                "{}",
+                "SyntaxError",
+                "json()"
+              ]
+            },
+            {
+              "title": "Status codes worth recognising",
+              "href": "/projects/vue/network-panel#status-codes-worth-recognising",
+              "keywords": []
+            }
+          ]
         },
         {
-          "name": "status codes",
-          "href": "/projects/vue/network-panel",
-          "titles": []
-        },
-        {
-          "name": "timing waterfall",
-          "href": "/projects/vue/network-panel",
-          "titles": []
-        },
-        {
-          "name": "throttling and preserve log",
-          "href": "/projects/vue/network-panel",
-          "titles": []
+          "name": "Timing and conditions",
+          "href": "/projects/vue/network-panel#where-the-time-goes",
+          "titles": [
+            {
+              "title": "Where the time goes",
+              "href": "/projects/vue/network-panel#where-the-time-goes",
+              "keywords": []
+            },
+            {
+              "title": "Throttling, offline and canceled requests",
+              "href": "/projects/vue/network-panel#throttling-offline-and-canceled-requests",
+              "keywords": []
+            }
+          ]
         }
       ]
     },
