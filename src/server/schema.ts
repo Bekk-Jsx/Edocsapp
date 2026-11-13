@@ -197,6 +197,67 @@ export function safeBlocks(input: unknown, where: string): Block[] {
 }
 
 // -------------------------------------------------------------------
+// cards — the aside beside one answer
+// -------------------------------------------------------------------
+//
+// A card is a short aside that belongs to a question as a whole rather than to
+// a position in its body: a term worth defining, or the mistake people make.
+// It is NOT a block, which is why it is a field of its own — blocks are a
+// sequence and a card has no place in that sequence; it sits in the margin.
+//
+// `title` and `text` are LocalizedText like everything else, and carry the
+// same inline markup (`code`, **bold**, [label](url)). The TYPE LABEL above
+// the title ("Note" / "Hinweis") is not stored: it comes from the type, so a
+// card can never disagree with its own label. See CARD_LABEL in
+// components/interviews/question-cards.tsx.
+
+/**
+ * The kinds of card.
+ *
+ * Deliberately a subset of BLOCK_SEVERITIES, not a new vocabulary: a card
+ * borrows the severity palette and icon, so a note reads the same in the
+ * margin as it does in the body. Adding a kind here is one line plus its
+ * label — CARD_LABEL is a Record<CardType, …>, so the compiler names the
+ * omission.
+ */
+export const CARD_TYPES = ["note", "trap"] as const;
+export type CardType = (typeof CARD_TYPES)[number];
+
+export const questionCardSchema = z.object({
+    type: z.enum(CARD_TYPES),
+    title: localizedTextSchema,
+    text: localizedTextSchema,
+});
+export type QuestionCard = z.infer<typeof questionCardSchema>;
+
+/**
+ * Read path: parse a stored card array, DROPPING anything invalid.
+ *
+ * The same contract as safeBlocks, for the same reason: a card written by a
+ * later build — a kind this build does not know — must not take the page
+ * down. It is skipped and reported once on the server. Writes use
+ * questionCardSchema directly and do throw.
+ */
+export function safeCards(input: unknown, where: string): QuestionCard[] {
+    if (input === undefined || input === null) return [];
+    if (!Array.isArray(input)) {
+        console.warn(`[schema] ${where}: cards is not an array — ignored`);
+        return [];
+    }
+    const out: QuestionCard[] = [];
+    for (const [index, raw] of input.entries()) {
+        const parsed = questionCardSchema.safeParse(raw);
+        if (parsed.success) out.push(parsed.data);
+        else {
+            console.warn(
+                `[schema] ${where}: dropped invalid card #${index} — ${parsed.error.issues[0]?.message ?? "unknown"}`,
+            );
+        }
+    }
+    return out;
+}
+
+// -------------------------------------------------------------------
 // shared enums
 // -------------------------------------------------------------------
 
@@ -254,6 +315,12 @@ export const entrySchema = z.object({
     /** The ~30-second spoken answer. */
     shortAnswer: localizedTextSchema.optional(),
     blocks: z.array(blockSchema),
+    /**
+     * Asides shown beside the answer rather than in it. Optional, and absent
+     * on every question written before cards existed — a reader must treat
+     * "no cards" and "no such field" as the same thing.
+     */
+    cards: z.array(questionCardSchema).optional(),
     /** Follow-up questions an interviewer is likely to ask next. */
     followUps: z.array(localizedTextSchema).optional(),
     priority: prioritySchema,
@@ -396,6 +463,7 @@ export const contentEntrySchema = z.object({
     title: localizedTextSchema,
     shortAnswer: localizedTextSchema.nullable().optional(),
     blocks: z.array(blockSchema),
+    cards: z.array(questionCardSchema).nullable().optional(),
     followUps: z.array(localizedTextSchema).nullable().optional(),
     tags: z.array(z.string()).optional(),
     priority: prioritySchema.optional(),
@@ -528,6 +596,7 @@ export type LocalizedEntrySource = {
     title: LocalizedText;
     shortAnswer?: LocalizedText | null;
     blocks: Block[];
+    cards?: QuestionCard[] | null;
     followUps?: LocalizedText[] | null;
 };
 
@@ -542,6 +611,12 @@ export function entryLocalizedFields(
     (entry.followUps ?? []).forEach((text, i) =>
         out.push({ path: `followUps[${i}]`, text }),
     );
+    // Cards are text like everything else, so the German gate covers them by
+    // walking them here — not by a second check anywhere.
+    (entry.cards ?? []).forEach((card, i) => {
+        out.push({ path: `cards[${i}]:${card.type}.title`, text: card.title });
+        out.push({ path: `cards[${i}]:${card.type}.text`, text: card.text });
+    });
     out.push(...blockLocalizedFields(entry.blocks));
     return out;
 }

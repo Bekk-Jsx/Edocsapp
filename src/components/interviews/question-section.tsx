@@ -6,6 +6,7 @@ import { LangPair, LangText } from "./lang-provider";
 import ListenButton from "./listen-button";
 import PracticeSection from "./practice-section";
 import PriorityBadge from "./priority-badge";
+import QuestionCards from "./question-cards";
 import SectionLangToggle from "./section-lang-toggle";
 
 // ===================================================================
@@ -19,7 +20,13 @@ import SectionLangToggle from "./section-lang-toggle";
 //
 // Both languages are rendered here, on the server, and LangPair/LangText pick
 // one. The chrome — badge, note button, toggle — is rendered ONCE and is not
-// translated: UI stays English.
+// translated: UI stays English. The one exception is a card's type label
+// ("Note" / "Hinweis"), which sits inside the author's prose and is rendered
+// per language with the rest of the body — see question-cards.tsx.
+//
+// A question that has cards renders as two columns: the answer, and the cards
+// in the margin beside it. A question without cards renders exactly as it did
+// before cards existed — no grid, no wrapper, the answer at full width.
 // ===================================================================
 
 /** The divider above a priority part, matching the doc pages' PartHeading. */
@@ -107,9 +114,12 @@ export default function QuestionSection({
     entry: QuestionEntry;
     assets: Map<string, AssetInfo>;
 }) {
-    // One language's whole body. Called twice; only one is ever visible.
-    const body = (lang: Lang) => (
-        <div className="space-y-4">
+    const hasCards = entry.cards.length > 0;
+
+    // The answer itself — the left column when there are cards, the whole
+    // body when there are not.
+    const answer = (lang: Lang) => (
+        <div className="min-w-0 space-y-4">
             <ShortAnswer entry={entry} lang={lang} />
             {/* keyBase is the entry slug, so a code block's open/closed state
                 is shared between this section's two language copies. */}
@@ -120,6 +130,24 @@ export default function QuestionSection({
             <FollowUps entry={entry} lang={lang} />
         </div>
     );
+
+    // One language's whole body. Called twice; only one is ever visible.
+    //
+    // The split is a CONTAINER query, not a media query: what decides whether
+    // a margin fits is the width of this body column — which the page's 550px
+    // summary rail takes a fixed bite out of — and not the width of the
+    // window. Below the threshold the cards stack under the answer.
+    const body = (lang: Lang) =>
+        hasCards ? (
+            <div className="answer-grid">
+                <div className="answer-cols">
+                    {answer(lang)}
+                    <QuestionCards cards={entry.cards} lang={lang} />
+                </div>
+            </div>
+        ) : (
+            answer(lang)
+        );
 
     // Both halves are server-rendered and handed to PracticeSection, which
     // owns the <section> and decides how much of it is visible. With practice

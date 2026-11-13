@@ -1,14 +1,14 @@
 [
   {
     "_id": {
-      "$oid": "6af5f43e8ac117be4d5fa732"
+      "$oid": "6af5f58c77ede912b146cd18"
     },
     "schemaVersion": {
       "$numberInt": "1"
     },
     "owner": "local",
-    "en": "Authentication",
-    "de": "Authentifizierung",
+    "en": "generate",
+    "de": "erzeugen",
     "link": {
       "item": "fullstack-questions",
       "page": "web-fundamentals",
@@ -17,12 +17,120 @@
     },
     "createdAt": {
       "$date": {
-        "$numberLong": "1794503742073"
+        "$numberLong": "1794504076791"
       }
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794503787250"
+        "$numberLong": "1794504096202"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5f68377ede912b146cd19"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "collect",
+    "de": "sammeln",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "jwt-auth",
+      "href": "/interviews/fullstack-questions/web-fundamentals#jwt-auth"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794504323936"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794504323936"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5f73077ede912b146cd1a"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "collection of the user's credentials",
+    "de": "Erfassung der Anmeldedaten des Benutzers",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "jwt-auth",
+      "href": "/interviews/fullstack-questions/web-fundamentals#jwt-auth"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794504496549"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794504496549"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5f79a77ede912b146cd1b"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "protected resources",
+    "de": "geschützte Ressourcen",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "jwt-auth",
+      "href": "/interviews/fullstack-questions/web-fundamentals#jwt-auth"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794504602562"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794504602562"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af5f80877ede912b146cd1c"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "common approach",
+    "de": "gängiger Ansatz",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "jwt-auth",
+      "href": "/interviews/fullstack-questions/web-fundamentals#jwt-auth"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794504712248"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794504712248"
       }
     }
   }

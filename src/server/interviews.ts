@@ -6,11 +6,13 @@ import { getDb } from "./db";
 import {
     COLLECTIONS,
     safeBlocks,
+    safeCards,
     type AssetDoc,
     type Block,
     type EntryDoc,
     type NodeDoc,
     type Priority,
+    type QuestionCard,
 } from "./schema";
 
 // ===================================================================
@@ -63,6 +65,8 @@ export type QuestionEntry = {
     title: EntryDoc["title"];
     shortAnswer?: EntryDoc["shortAnswer"];
     blocks: Block[];
+    /** Asides for the margin beside the answer; empty when there are none. */
+    cards: QuestionCard[];
     followUps?: EntryDoc["followUps"];
     priority: Priority;
     /** Only "active" or "planned" ever reach a page. */
@@ -197,6 +201,10 @@ export const getPage = cache(
             // Read path: an invalid block is dropped with a server warning
             // rather than taking the page down.
             blocks: safeBlocks(doc.blocks, `${doc.page}/${doc.slug}`),
+            // Same read-path contract as blocks: an unknown or malformed card
+            // is dropped with a warning, and an entry stored before cards
+            // existed simply has none.
+            cards: safeCards(doc.cards, `${doc.page}/${doc.slug}`),
             followUps: doc.followUps,
             priority: doc.priority,
             status: doc.status === "active" ? "active" : "planned",

@@ -40,6 +40,7 @@ const CONTENT_FIELDS = [
     "title",
     "shortAnswer",
     "blocks",
+    "cards",
     "followUps",
     "tags",
     "status",

@@ -50,6 +50,7 @@ structure with its first content, or just fill questions.
 | `title`       | yes      | `LocalizedText` — overrides the seeded title                  |
 | `shortAnswer` | no       | the ~30-second spoken answer                                 |
 | `blocks`      | yes      | the long answer; `[]` is valid                               |
+| `cards`       | no       | asides shown in the margin beside the answer (below)         |
 | `followUps`   | no       | questions an interviewer is likely to ask next               |
 | `tags`        | no       |                                                              |
 | `priority`    | no       | `high` / `medium` / `low`; omit to keep the seeded priority  |
@@ -191,6 +192,45 @@ export const entries: ContentEntry[] = [
     },
 ];
 ```
+
+## Cards
+
+A card is a short aside that belongs to the question as a whole rather than to
+a position in its body — a term worth defining, or the mistake people make. It
+is therefore **not** a block: cards are a separate optional array, rendered in
+a margin beside the answer (and stacked under it when that column is too
+narrow), while blocks are the answer's own sequence.
+
+```ts
+cards: [
+    {
+        type: "note",
+        title: { en: "Call stack", de: "Call Stack" },
+        text: {
+            en: "What it is, in two or three sentences with `code` if it helps.",
+            de: "Was es ist, in zwei bis drei Sätzen.",
+        },
+    },
+    {
+        type: "trap",
+        title: { en: "The usual mistake", de: "Der übliche Fehler" },
+        text: { en: "What people get wrong.", de: "Was oft falsch gemacht wird." },
+    },
+]
+```
+
+`type` is `note` or `trap` — a subset of the callout severities, so a card
+borrows the same colour and icon. The label above the title (`Note` /
+`Hinweis`, `Trap` / `Falle`) comes from the type and is **not** stored, so it
+cannot disagree with the card.
+
+`title` and `text` are `LocalizedText` and carry the same inline markup as
+anything else, so German is required for them exactly as it is for a block.
+Pass `cards: null` to clear the stored ones, as with `shortAnswer`.
+
+Choosing between a card and a `callout` block: a callout interrupts the answer
+at the point it is about, a card sits beside the whole answer. A remark that
+only makes sense after a particular paragraph is a callout.
 
 ## Callout severities
 

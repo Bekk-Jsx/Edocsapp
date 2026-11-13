@@ -349,3 +349,43 @@ body {
     opacity: 1;
   }
 }
+
+/* ── One answer plus its cards ─────────────────────────────────────────────
+   A question that carries cards renders them in a margin beside the answer
+   instead of inside it, so a note or a trap is readable without scrolling
+   past the prose and without pushing the prose down.
+
+   This is a CONTAINER query on purpose. The deciding width is the question's
+   own column, which the 550px summary rail (--alerts-w) already takes a fixed
+   bite out of — a media query on the viewport would promise a margin at
+   widths where there is no room for one. Below the threshold the grid stays
+   one column and the cards stack under the answer, which is also what a phone
+   gets.
+
+   38rem is the narrowest column in which both halves still work: the answer
+   keeps ~376px for its code blocks, and the margin 13.5rem. Widening the
+   margin, or lowering --alerts-w, is a change to make here in one place. */
+.answer-grid {
+  container-type: inline-size;
+}
+
+.answer-cols {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@container (min-width: 38rem) {
+  .answer-cols {
+    grid-template-columns: minmax(0, 1fr) 13.5rem;
+    align-items: start;
+  }
+
+  /* `align-items: start` leaves the row taller than this box, which is what
+     gives a sticky card somewhere to travel: a long answer scrolls past while
+     its cards stay in view. The 2rem offset is the summary rail's own
+     (--rail-top, which is local to .page-alerts), so the two line up. */
+  .answer-aside {
+    position: sticky;
+    top: 2rem;
+  }
+}
