@@ -164,12 +164,7 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "cors-and-caching", name: "CORS & Caching", chapter: "networking",
-        summary: "Why requests get blocked or served from cache.",
-        parts: [
-            "CORS",
-            "preflight (OPTIONS)",
-            "cache headers + 304",
-        ],
+        summary: "Why a cross-origin response cannot be read, what the browser and the server each decide, how cookies travel cross-origin, and when a wildcard is dangerous.",
     },
 
     // — Debugging —

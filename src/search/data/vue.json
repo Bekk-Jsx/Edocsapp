@@ -2327,22 +2327,65 @@
       "name": "CORS & Caching",
       "chapter": "Networking",
       "href": "/projects/vue/cors-and-caching",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "CORS",
-          "href": "/projects/vue/cors-and-caching",
-          "titles": []
-        },
-        {
-          "name": "preflight (OPTIONS)",
-          "href": "/projects/vue/cors-and-caching",
-          "titles": []
-        },
-        {
-          "name": "cache headers + 304",
-          "href": "/projects/vue/cors-and-caching",
-          "titles": []
+          "name": "Cross-origin requests",
+          "href": "/projects/vue/cors-and-caching#reading-the-error",
+          "titles": [
+            {
+              "title": "Reading the error",
+              "href": "/projects/vue/cors-and-caching#reading-the-error",
+              "keywords": [
+                "fetch",
+                "TypeError",
+                "failed"
+              ]
+            },
+            {
+              "title": "Why the rule exists",
+              "href": "/projects/vue/cors-and-caching#why-the-rule-exists",
+              "keywords": [
+                "bank.com",
+                "POST",
+                "SameSite",
+                "Lax",
+                "fetch",
+                "localhost"
+              ]
+            },
+            {
+              "title": "Origins, browser and server",
+              "href": "/projects/vue/cors-and-caching#origins-browser-and-server",
+              "keywords": [
+                "Origin",
+                "curl"
+              ]
+            },
+            {
+              "title": "Cookies across origins",
+              "href": "/projects/vue/cors-and-caching#cookies-across-origins",
+              "keywords": [
+                "SameSite",
+                "Strict",
+                "Lax",
+                "None",
+                "Secure",
+                "fetch",
+                "document.cookie",
+                "set-cookie"
+              ]
+            },
+            {
+              "title": "Wildcards and private data",
+              "href": "/projects/vue/cors-and-caching#wildcards-and-private-data",
+              "keywords": [
+                "credentials: 'include'",
+                "HttpOnly",
+                "fetch"
+              ]
+            }
+          ]
         }
       ]
     },
