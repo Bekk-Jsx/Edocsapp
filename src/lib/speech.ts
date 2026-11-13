@@ -73,11 +73,28 @@ export function subscribeVoices(onChange: () => void): () => void {
 }
 
 /**
+ * Names that mark a voice as one of the good ones.
+ *
+ * There is no flag for "natural": the API offers only `name`, `lang` and
+ * `localService`. Every vendor does say so in the name, though — "Microsoft
+ * Katja Online (Natural)", "Google Deutsch", "Samantha (Enhanced)" — so the
+ * name is what there is to go on. Matched case-insensitively.
+ */
+const NATURAL = ["natural", "neural", "enhanced", "premium", "google", "siri"];
+
+function isNatural(voice: SpeechSynthesisVoice): boolean {
+    const name = voice.name.toLowerCase();
+    return NATURAL.some((hint) => name.includes(hint));
+}
+
+/**
  * The best installed voice for a language, or null when there is none.
  *
  * Exact locale first ("de-DE"), then any voice whose lang starts with the
- * two-letter code ("de-AT" counts), and within each step a local voice wins:
- * local ones start instantly and work offline, remote ones lag.
+ * two-letter code ("de-AT" counts). Within each step a natural-sounding voice
+ * wins, and a local one breaks the tie after that: the better voice is worth
+ * the wait, but between two equals the local one starts instantly and works
+ * offline.
  */
 export function getVoice(lang: SpeechLang): SpeechSynthesisVoice | null {
     const cached = voiceCache.get(lang);
@@ -87,19 +104,22 @@ export function getVoice(lang: SpeechLang): SpeechSynthesisVoice | null {
     // Nothing to choose from yet — do NOT cache, the list is still coming.
     if (!list.length) return null;
 
-    const byLocal = (a: SpeechSynthesisVoice, b: SpeechSynthesisVoice) =>
+    // Natural first, then local — Array.prototype.sort is stable, so voices
+    // that tie on both keep the order the browser listed them in.
+    const best = (a: SpeechSynthesisVoice, b: SpeechSynthesisVoice) =>
+        Number(isNatural(b)) - Number(isNatural(a)) ||
         Number(b.localService) - Number(a.localService);
 
     let pick: SpeechSynthesisVoice | undefined;
     for (const locale of PREFERRED[lang]) {
         pick = list
             .filter((v) => v.lang.replace("_", "-") === locale)
-            .sort(byLocal)[0];
+            .sort(best)[0];
         if (pick) break;
     }
     pick ??= list
         .filter((v) => v.lang.replace("_", "-").toLowerCase().startsWith(lang))
-        .sort(byLocal)[0];
+        .sort(best)[0];
 
     const chosen = pick ?? null;
     voiceCache.set(lang, chosen);

@@ -21,9 +21,10 @@ import SectionLangToggle from "./section-lang-toggle";
 //
 // Both languages are rendered here, on the server, and LangPair/LangText pick
 // one. The chrome — badge, note button, toggle — is rendered ONCE and is not
-// translated: UI stays English. The one exception is a card's type label
-// ("Note" / "Hinweis"), which sits inside the author's prose and is rendered
-// per language with the rest of the body — see question-cards.tsx.
+// translated: UI stays English. The exceptions are the labels that sit INSIDE
+// the author's prose and are rendered per language with the rest of the body:
+// a card's kind (see question-cards.tsx), "Show code" (see code-collapse.tsx)
+// and the short answer's label below.
 //
 // A question's cards are stacked full width under its prose and above the
 // "Show code" toggle, at every screen size. A question without cards renders
@@ -72,6 +73,19 @@ export function PartHeading({
     );
 }
 
+/**
+ * The label on the short answer box.
+ *
+ * Translated, like the kind of a card and "Show code": it labels the author's
+ * own sentence, so an English word there would sit inside German prose. Kept
+ * beside the component that renders it, exactly as CodeCollapse keeps its
+ * own.
+ */
+const SHORT_ANSWER_LABEL: Record<Lang, string> = {
+    en: "Short answer",
+    de: "Kurze Antwort",
+};
+
 /** The ~30-second spoken answer: the one thing to say out loud. */
 function ShortAnswer({
     entry,
@@ -89,7 +103,7 @@ function ShortAnswer({
         >
             <div className="mb-1 flex items-center gap-2">
                 <p className="font-mono text-[0.6rem] uppercase tracking-widest text-[var(--mint)]">
-                    Short answer
+                    {SHORT_ANSWER_LABEL[lang]}
                 </p>
                 {/* Reads the whole short answer, nothing else. In practice
                     mode this box is unmounted until "Show answer", so the

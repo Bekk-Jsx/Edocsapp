@@ -764,13 +764,6 @@
     "page": "interviews/preparation/fullstack-questions/javascript",
     "blocks": [
       {
-        "type": "paragraph",
-        "text": {
-          "en": "JavaScript is single-threaded, so it can only run one task at a time. The event loop lets it handle asynchronous operations without blocking the main thread.",
-          "de": "JavaScript ist single-threaded und kann deshalb immer nur eine Aufgabe gleichzeitig ausführen. Der Event Loop sorgt dafür, dass asynchrone Operationen den Main Thread nicht blockieren."
-        }
-      },
-      {
         "type": "list",
         "ordered": false,
         "items": [
@@ -829,7 +822,7 @@
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794583436213"
+        "$numberLong": "1794585241884"
       }
     },
     "cards": [
@@ -855,7 +848,11 @@
           "de": "Code, der nach einem async-Aufruf steht, läuft sofort, also bevor das Ergebnis da ist. Code, der vom Ergebnis abhängt, gehört in `.then()` oder hinter `await`. `await` pausiert nur die aktuelle Funktion, der Rest des Programms läuft weiter."
         }
       }
-    ]
+    ],
+    "shortAnswer": {
+      "en": "JavaScript is single-threaded, so it can only run one task at a time. The event loop lets it handle asynchronous operations without blocking the main thread.",
+      "de": "JavaScript ist single-threaded und kann deshalb immer nur eine Aufgabe gleichzeitig ausführen. Der Event Loop sorgt dafür, dass asynchrone Operationen den Main Thread nicht blockieren."
+    }
   },
   {
     "_id": {
