@@ -133,5 +133,32 @@
         "$numberLong": "1794504712248"
       }
     }
+  },
+  {
+    "_id": {
+      "$oid": "6af754ddcc981c50e966f207"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "lightweight",
+    "de": "leichtgewichtige",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "react",
+      "entry": "virtual-dom",
+      "href": "/interviews/fullstack-questions/react#virtual-dom"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794594013694"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794594013694"
+      }
+    }
   }
 ]
