@@ -1,47 +1,53 @@
 import { Suspense } from "react";
-import NotesBoard, { type NotesChapter } from "@/components/notes/notes-board";
+import PhrasebookBoard, {
+    type PhrasebookGroup,
+} from "@/components/interviews/phrasebook-board";
+import { InterviewsUnavailable } from "@/components/home/interviews-content";
 import PageShell from "@/components/ui/page-shell";
-import { listNotes } from "@/lib/notes-store";
 import { getInterviewTree } from "@/lib/interviews";
 import { getItemPages } from "@/server/interviews";
+import { listPhrases, type Phrase } from "@/server/phrasebook";
 
-// Interview notes, the same board the projects use.
+// The PHRASEBOOK: the EN/DE pairs collected while reading questions.
 //
-// Notes taken on an interview section are stored under the "interviews" key
-// (src/data/notes/interviews.json), grouped by the page they came from, and
-// each keeps the full path plus its anchor — so "open →" lands back on the
-// question. The add-note button on a question section links here.
+// It replaces what was the interview notes page, in the same place and with
+// the same grouping and links — one block per item, its pages in sidebar
+// order, each phrase linking back to the question it came from. The add button
+// on a question section still points here.
 //
-// This is a STATIC segment, so it wins over /interviews/[item] and no item
-// may be called "notes".
+// Project notes are a different thing entirely and are untouched: they keep
+// their own storage (src/data/notes/<project>.json), their own board and their
+// own pages under /projects/<project>/notes.
+//
+// This is a STATIC segment, so it wins over /interviews/[item] and no item may
+// be called "notes".
 
-// The notes file is read per request, not at build time — otherwise the page
-// would ship whatever happened to be on disk when it was compiled.
+// Phrases live in MongoDB and change as you add them, so the page is read per
+// request rather than captured at build time.
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-    const notes = await listNotes("interviews");
+    let phrases: Phrase[] = [];
+    let groups: PhrasebookGroup[] = [];
+    let reachable = true;
 
-    // One chapter per item, its pages standing in for topics — the same shape
-    // the board gets from a project registry.
-    let chapters: NotesChapter[] = [];
     try {
+        phrases = await listPhrases();
         const categories = await getInterviewTree();
-        chapters = await Promise.all(
+        groups = await Promise.all(
             categories
                 .flatMap((category) => category.items)
                 .map(async (item) => ({
                     label: item.name,
-                    items: (await getItemPages(item.slug)).map((page) => ({
+                    pages: (await getItemPages(item.slug)).map((page) => ({
                         slug: page.slug,
                         name: page.name.en,
                     })),
                 })),
         );
     } catch (error) {
-        // Without the tree the board still lists every note, just all under
-        // "Other" — far better than failing the page.
-        console.error("[interviews] notes chapters unavailable", error);
+        console.error("[phrasebook] unavailable", error);
+        reachable = false;
     }
 
     return (
@@ -52,29 +58,34 @@ export default async function Page() {
                         interviews · section
                     </p>
                     <h1 className="mt-1 text-3xl font-semibold text-[var(--text)]">
-                        Notes
+                        Phrasebook
                     </h1>
                     <div className="mt-3 leading-relaxed text-[var(--muted)]">
-                        Your own notes on interview questions, grouped by the page
-                        they came from. Anything without a page lands under Other.
+                        The phrases you want to be able to say, in both languages,
+                        grouped by the page they came from. 🔊 reads each side in
+                        its own language.
                     </div>
                 </header>
 
-                {/* useSearchParams reads request-time data, so the board renders
-                    inside a boundary rather than opting the route out of static. */}
-                <Suspense
-                    fallback={
-                        <p className="font-mono text-xs text-[var(--muted)]">
-                            loading notes…
-                        </p>
-                    }
-                >
-                    <NotesBoard
-                        project="interviews"
-                        chapters={chapters}
-                        initialNotes={notes}
-                    />
-                </Suspense>
+                {reachable ? (
+                    // useSearchParams reads request-time data, so the board
+                    // renders inside a boundary rather than opting the route
+                    // out of static.
+                    <Suspense
+                        fallback={
+                            <p className="font-mono text-xs text-[var(--muted)]">
+                                loading phrasebook…
+                            </p>
+                        }
+                    >
+                        <PhrasebookBoard
+                            initialPhrases={phrases}
+                            groups={groups}
+                        />
+                    </Suspense>
+                ) : (
+                    <InterviewsUnavailable />
+                )}
             </article>
         </PageShell>
     );

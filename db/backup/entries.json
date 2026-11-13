@@ -247,7 +247,7 @@
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794427305845"
+        "$numberLong": "1794496074750"
       }
     }
   },
@@ -372,17 +372,20 @@
         "items": [
           {
             "text": {
-              "en": "The user sends their credentials through a login form, and we verify them on the server."
+              "en": "The user sends their credentials through a login form, and we verify them on the server.",
+              "de": "Der User schickt seine Login-Daten über ein Formular, und wir prüfen sie auf dem Server."
             }
           },
           {
             "text": {
-              "en": "If authentication is successful, the server generates a signed JWT and returns it to the client."
+              "en": "If authentication is successful, the server generates a signed JWT and returns it to the client.",
+              "de": "Ist der Login erfolgreich, erzeugt der Server ein signiertes JWT und gibt es an den Client zurück."
             }
           },
           {
             "text": {
-              "en": "The client sends the JWT with every protected request, and the server validates it before allowing access."
+              "en": "The client sends the JWT with every protected request, and the server validates it before allowing access.",
+              "de": "Der Client schickt das JWT bei jedem geschützten Request mit, und der Server validiert es, bevor er den Zugriff erlaubt."
             }
           }
         ]
@@ -417,15 +420,16 @@
     ],
     "title": {
       "en": "How does user authentication work with JWT (JSON Web Token)?",
-      "de": "Wie funktioniert die Benutzer-Authentifizierung mit JWT (JSON Web Token)?"
+      "de": "Wie funktioniert die User-Authentifizierung mit JWT (JSON Web Token)?"
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794492715471"
+        "$numberLong": "1794496617856"
       }
     },
     "shortAnswer": {
-      "en": "User authentication verifies a user's identity before granting access to protected resources. A common approach is to use JWT (JSON Web Token) for secure authentication."
+      "en": "User authentication verifies a user's identity before granting access to protected resources. A common approach is to use JWT (JSON Web Token) for secure authentication.",
+      "de": "Authentifizierung prüft die Identität eines Users, bevor er Zugriff auf geschützte Ressourcen bekommt. Ein gängiger Ansatz dafür ist JWT (JSON Web Token)."
     }
   },
   {
@@ -7409,17 +7413,20 @@
         "items": [
           {
             "text": {
-              "en": "The user sends their credentials through a login form, and we verify them on the server."
+              "en": "The user sends their credentials through a login form, and we verify them on the server.",
+              "de": "Der User schickt seine Login-Daten über ein Formular, und wir prüfen sie auf dem Server."
             }
           },
           {
             "text": {
-              "en": "If authentication is successful, the server creates a session, stores it, and sends the session ID back in a cookie."
+              "en": "If authentication is successful, the server creates a session, stores it, and sends the session ID back in a cookie.",
+              "de": "Ist der Login erfolgreich, legt der Server eine Session an, speichert sie und schickt die Session-ID als Cookie zurück."
             }
           },
           {
             "text": {
-              "en": "The browser sends the cookie with every request automatically, and the server looks up the session to allow access."
+              "en": "The browser sends the cookie with every request automatically, and the server looks up the session to allow access.",
+              "de": "Der Browser schickt das Cookie bei jedem Request automatisch mit, und der Server sucht die passende Session, um den Zugriff zu erlauben."
             }
           }
         ]
@@ -7454,15 +7461,16 @@
     ],
     "title": {
       "en": "How does user authentication work with sessions?",
-      "de": "Wie funktioniert die Authentifizierung mit Sessions?"
+      "de": "Wie funktioniert die User-Authentifizierung mit Sessions?"
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794492715502"
+        "$numberLong": "1794496617896"
       }
     },
     "shortAnswer": {
-      "en": "User authentication verifies a user's identity before granting access to protected resources. Another common approach is session-based authentication, where the user's login state is stored on the server."
+      "en": "User authentication verifies a user's identity before granting access to protected resources. Another common approach is session-based authentication, where the user's login state is stored on the server.",
+      "de": "Authentifizierung prüft die Identität eines Users, bevor er Zugriff auf geschützte Ressourcen bekommt. Ein weiterer gängiger Ansatz ist die Session-basierte Authentifizierung – dabei wird der Login-Status auf dem Server gespeichert."
     }
   },
   {
@@ -7476,69 +7484,87 @@
         "type": "table",
         "columns": [
           {
-            "en": ""
+            "en": "",
+            "de": ""
           },
           {
-            "en": "Session (stateful)"
+            "en": "Session (stateful)",
+            "de": "Session (stateful)"
           },
           {
-            "en": "JWT (stateless)"
+            "en": "JWT (stateless)",
+            "de": "JWT (stateless)"
           }
         ],
         "rows": [
           [
             {
-              "en": "What the client holds"
+              "en": "What the client holds",
+              "de": "Was der Client hat"
             },
             {
-              "en": "A random session ID (in a cookie)"
+              "en": "A random session ID (in a cookie)",
+              "de": "Eine zufällige Session-ID (im Cookie)"
             },
             {
-              "en": "A signed token with data inside (user id, role, expiry)"
+              "en": "A signed token with data inside (user id, role, expiry)",
+              "de": "Ein signiertes Token mit Daten (User-ID, Rolle, Ablaufzeit)"
             }
           ],
           [
             {
-              "en": "Where the “truth” lives"
+              "en": "Where the “truth” lives",
+              "de": "Wo die Daten liegen"
             },
             {
-              "en": "Server side (memory, Redis, DB)"
+              "en": "Server side (memory, Redis, DB)",
+              "de": "Auf dem Server (Memory, Redis, DB)"
             },
             {
-              "en": "Inside the token itself"
+              "en": "Inside the token itself",
+              "de": "Im Token selbst"
             }
           ],
           [
             {
-              "en": "How the server checks"
+              "en": "How the server checks",
+              "de": "Wie der Server prüft"
             },
             {
-              "en": "Looks up the ID in the store"
+              "en": "Looks up the ID in the store",
+              "de": "Sucht die ID im Store"
             },
             {
-              "en": "Verifies the signature, no lookup"
+              "en": "Verifies the signature, no lookup",
+              "de": "Prüft die Signatur, kein Lookup"
             }
           ],
           [
             {
-              "en": "Logout / revoke"
+              "en": "Logout / revoke",
+              "de": "Logout / Widerruf"
             },
             {
-              "en": "Easy: delete the session"
+              "en": "Easy: delete the session",
+              "de": "Einfach: Session löschen"
             },
             {
-              "en": "Hard: the token stays valid until it expires"
+              "en": "Hard: the token stays valid until it expires",
+              "de": "Schwierig: Das Token bleibt bis zum Ablauf gültig"
             }
           ],
           [
             {
-              "en": "Scaling"
+              "en": "Scaling",
+              "de": "Skalierung"
             },
             {
-              "en": "Needs a shared store (e.g. Redis)"
+              "en": "Needs a shared store (e.g. Redis)",
+              "de": "Braucht einen gemeinsamen Store (z. B. Redis)"
             },
             {
-              "en": "Easy across services and servers"
+              "en": "Easy across services and servers",
+              "de": "Einfach über mehrere Services und Server"
             }
           ]
         ]
@@ -7573,11 +7599,12 @@
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794492715538"
+        "$numberLong": "1794496617926"
       }
     },
     "shortAnswer": {
-      "en": "Both approaches keep the user logged in. The main difference is where the user's state is stored: on the server with sessions, or inside the token with JWT."
+      "en": "Both approaches keep the user logged in. The main difference is where the user's state is stored: on the server with sessions, or inside the token with JWT.",
+      "de": "Beide Ansätze halten den User eingeloggt. Der Hauptunterschied ist, wo der Zustand gespeichert wird: bei Sessions auf dem Server, bei JWT im Token selbst."
     }
   }
 ]

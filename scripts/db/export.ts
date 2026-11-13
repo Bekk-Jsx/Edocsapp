@@ -22,6 +22,7 @@ const ALL = [
     COLLECTIONS.entries,
     COLLECTIONS.assets,
     COLLECTIONS.progress,
+    COLLECTIONS.phrasebook,
     COLLECTIONS.migrations,
 ] as const;
 

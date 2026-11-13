@@ -57,6 +57,21 @@ export function useSectionLang(sectionId?: string): Lang {
     return overrides[sectionId] ? otherLang(lang) : lang;
 }
 
+/**
+ * The same, but null outside a provider instead of throwing.
+ *
+ * For a component that only needs the section language when it has not been
+ * told one outright — a phrase's listen button is pinned to its own language
+ * and must keep working wherever phrases are listed, with or without the
+ * language context around it.
+ */
+export function useSectionLangOptional(sectionId?: string): Lang | null {
+    const ctx = useContext(Ctx);
+    if (!ctx) return null;
+    if (!sectionId) return ctx.lang;
+    return ctx.overrides[sectionId] ? otherLang(ctx.lang) : ctx.lang;
+}
+
 export default function LangProvider({
     initialLang,
     children,

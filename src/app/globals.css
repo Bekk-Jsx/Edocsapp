@@ -341,3 +341,11 @@ body {
     opacity: 1;
   }
 }
+
+/* Phrasebook row tools (edit / delete) are revealed on hover or focus so a
+   long list stays calm. Where there is no hover — touch — they stay visible. */
+@media (hover: none) {
+  .phrase-tool {
+    opacity: 1;
+  }
+}

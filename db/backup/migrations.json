@@ -14,5 +14,13 @@
         "$numberLong": "1794438309229"
       }
     }
+  },
+  {
+    "_id": "0003-phrasebook",
+    "appliedAt": {
+      "$date": {
+        "$numberLong": "1794503531997"
+      }
+    }
   }
 ]

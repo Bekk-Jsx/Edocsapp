@@ -318,6 +318,54 @@ export function entryKey(pagePath: string, slug: string): string {
 }
 
 // -------------------------------------------------------------------
+// phrasebook — EN/DE phrase pairs, taken while reading a question
+// -------------------------------------------------------------------
+//
+// The interview answer to a question is prose; what you actually have to say
+// out loud is a handful of phrases. A phrase is one EN/DE pair, anchored to
+// the question it came from, so it can be grouped and linked back exactly as
+// a note was.
+//
+// Both languages are REQUIRED here, unlike content blocks: a pair with one
+// side missing is not a phrase. They are typed by hand — nothing is machine
+// translated.
+
+/** Where a phrase came from: the same anchor a note's link carried. */
+export const phraseLinkSchema = z.object({
+    /** Interview item slug, e.g. "fullstack-questions". */
+    item: z.string().min(1),
+    /** Page slug, e.g. "web-fundamentals" — the grouping key. */
+    page: z.string().min(1),
+    /** The question's slug, when the phrase came from one. */
+    entry: z.string().min(1).optional(),
+    /** The full path + anchor, e.g. "/interviews/<item>/<page>#<entry>". */
+    href: z.string().min(1),
+});
+export type PhraseLink = z.infer<typeof phraseLinkSchema>;
+
+/** One side of a pair: trimmed, non-empty, and short enough to say. */
+const phraseText = z.string().trim().min(1).max(500);
+
+export const phrasebookSchema = z.object({
+    schemaVersion,
+    owner: z.string().min(1),
+    en: phraseText,
+    de: phraseText,
+    link: phraseLinkSchema,
+    createdAt: z.date(),
+    updatedAt: z.date(),
+});
+export type PhraseDoc = z.infer<typeof phrasebookSchema>;
+
+/** What a caller may set — the rest belongs to the server. */
+export const phraseInputSchema = z.object({
+    en: phraseText,
+    de: phraseText,
+    link: phraseLinkSchema,
+});
+export type PhraseInput = z.infer<typeof phraseInputSchema>;
+
+// -------------------------------------------------------------------
 // migrations — one document per applied migration
 // -------------------------------------------------------------------
 
@@ -522,6 +570,7 @@ export const COLLECTIONS = {
     entries: "entries",
     assets: "assets",
     progress: "progress",
+    phrasebook: "phrasebook",
     migrations: "migrations",
 } as const;
 

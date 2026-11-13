@@ -13,8 +13,8 @@ import {
     voicesLoaded,
 } from "@/lib/speech";
 import type { LocalizedText } from "@/server/schema";
-import { plainText, resolve } from "./inline";
-import { useSectionLang } from "./lang-provider";
+import { plainText, resolve, type Lang } from "./inline";
+import { useSectionLangOptional } from "./lang-provider";
 
 // ===================================================================
 // LISTEN — reads ONE piece of text aloud, in the language that section is
@@ -63,9 +63,13 @@ export default function ListenButton({
     speechKey,
     what = "question",
     subtle = false,
+    lang: langProp,
 }: {
-    /** The question's slug — the key for its language override. */
-    sectionId: string;
+    /**
+     * The question's slug — the key for its language override. Only consulted
+     * when `lang` is not given.
+     */
+    sectionId?: string;
     /** The text this button may read, and nothing more. */
     text: LocalizedText;
     /** Unique per button. Defaults to this section's title. */
@@ -79,9 +83,18 @@ export default function ListenButton({
      * globals.css.
      */
     subtle?: boolean;
+    /**
+     * Pins the language outright, ignoring the section and global switches.
+     * A phrase needs it: an EN/DE pair has one button per language, and each
+     * must stay in its own language whatever the page is set to.
+     */
+    lang?: Lang;
 }) {
-    // The section's current language — global switch plus its own override.
-    const lang = useSectionLang(sectionId);
+    // Without an explicit `lang`, follow the section (global switch plus its
+    // own override). Read optionally, so a phrase button keeps working in a
+    // list that has no language context around it; "en" is the last resort.
+    const sectionLang = useSectionLangOptional(sectionId);
+    const lang = langProp ?? sectionLang ?? "en";
     const key = speechKey ?? `${sectionId}:title`;
 
     // Re-render when the browser finishes loading its voice list.

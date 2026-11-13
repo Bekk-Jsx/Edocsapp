@@ -71,7 +71,7 @@ export default async function InterviewsLayout({
                     aside={<LangSwitch />}
                     // Section-level page, listed apart from the question pages
                     // exactly as a project lists its own notes.
-                    projectLinks={[{ id: "notes", label: "Notes" }]}
+                    projectLinks={[{ id: "notes", label: "Phrasebook" }]}
                 />
                 <main className="flex-1 px-8 py-10 lg:px-14">{children}</main>
             </div>

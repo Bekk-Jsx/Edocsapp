@@ -1,0 +1,29 @@
+[
+  {
+    "_id": {
+      "$oid": "6af5f43e8ac117be4d5fa732"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "Authentication",
+    "de": "Authentifizierung",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "jwt-auth",
+      "href": "/interviews/fullstack-questions/web-fundamentals#jwt-auth"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794503742073"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794503787250"
+      }
+    }
+  }
+]

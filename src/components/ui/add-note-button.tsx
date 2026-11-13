@@ -52,10 +52,23 @@ export default function AddNoteButton({ sectionId }: { sectionId: string }) {
     const project = parseProjectPath(pathname);
     const interview = parseInterviewPath(pathname);
 
+    // Inside Interviews the same button feeds the PHRASEBOOK (EN/DE pairs),
+    // which is why it carries the item as well and says so in its label.
+    // Projects are untouched: same href, same wording as before.
     const target = project?.page
-        ? { notes: pageHref(project.project, "notes"), page: project.page }
+        ? {
+              notes: pageHref(project.project, "notes"),
+              page: project.page,
+              item: null,
+              label: "add note here",
+          }
         : interview?.page
-          ? { notes: interviewNotesHref(), page: interview.page }
+          ? {
+                notes: interviewNotesHref(),
+                page: interview.page,
+                item: interview.item,
+                label: "add to phrasebook",
+            }
           : null;
 
     if (!inRail || !target) return null;
@@ -64,12 +77,13 @@ export default function AddNoteButton({ sectionId }: { sectionId: string }) {
     const href =
         `${target.notes}?add=1` +
         `&hookSlug=${encodeURIComponent(target.page)}` +
+        (target.item ? `&item=${encodeURIComponent(target.item)}` : "") +
         `&link=${encodeURIComponent(link)}`;
 
     return (
         <Link
             href={href}
-            aria-label="add note here"
+            aria-label={target.label}
             // Muted until hovered, like the other secondary controls here; the
             // tooltip is the same CSS-only sibling span the FAQ button uses.
             className="group relative inline-flex h-[1.35em] w-[1.35em] shrink-0 items-center justify-center rounded text-[var(--muted)] transition-colors duration-150 hover:text-[var(--accent)] focus-visible:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
@@ -95,7 +109,7 @@ export default function AddNoteButton({ sectionId }: { sectionId: string }) {
                 aria-hidden="true"
                 className="pointer-events-none absolute bottom-[calc(100%+0.35rem)] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-2 py-1 font-mono text-[0.65rem] normal-case tracking-normal text-[var(--text)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
             >
-                add note here
+                {target.label}
             </span>
         </Link>
     );
