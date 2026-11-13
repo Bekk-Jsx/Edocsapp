@@ -16,14 +16,18 @@ import CodeBlock from "@/components/ui/code-block";
 // three places and nothing else.
 export const SECTION_SEVERITIES: SectionSeverities = {
     // --- part 1 (Cross-origin requests) ---
-    // inline `trap · a CORS block looks like a network failure`
-    "reading-the-error": ["trap"],
-    // "why-the-rule-exists" and "origins-browser-and-server" carry no callout,
-    // so they have no entry.
+    // inline `trap · in code both look identical`
+    "the-error": ["trap"],
+    // inline `note · no browser, no CORS`
+    "what-counts-as-another-origin": ["note"],
+    // inline `note · the rule`
+    "why-reading-is-blocked": ["note"],
+    // inline `note · CORS still matters without cookies`
+    "what-cors-does-not-do": ["note"],
     // inline `danger · XSS bypasses all of it`
     "cookies-across-origins": ["danger"],
-    // inline `trap · calling a service from the page shares user data`
-    "wildcards-and-private-data": ["trap"],
+    // inline `trap · a browser call shares user data`
+    "wildcards-and-whose-header-counts": ["trap"],
 };
 
 // Top-level divider between the parts of the page — mirrors the groups in
@@ -90,16 +94,19 @@ function GridTable({
     );
 }
 
-// PAGE RULES — those of the network-panel page:
+// PAGE RULES — readability is the point of this page:
 //
-// 1. A section opens with prose; every fragment is introduced by the sentence
-//    above it. Two fragments never touch.
-// 2. PURPOSE FIRST: the problem, then the solution, then how it works, then
-//    details.
-// 3. Every fragment declares its language: ts, or text for a header, an error
+// 1. Never more than two consecutive sentences of prose; a table, a list, a
+//    code block or a callout breaks every run.
+// 2. Every claim arrives next to its artifact — a header line, a diagram, a
+//    comparison row. No paragraph runs longer than three rendered lines.
+// 3. Tables carry the comparisons, lists carry the sequences, callouts carry
+//    the traps.
+// 4. PURPOSE FIRST per section: what goes wrong, then the rule, then the detail.
+// 5. Every fragment declares its language: ts, or text for a header, an error
 //    message or a diagram.
-// 4. Reference-doc tone: no "we", no tutorial or chat wording, no Q&A.
-// 5. Nothing on this page is Vue-version specific, so it carries no
+// 6. Reference-doc tone: no "we", no tutorial or chat wording, no Q&A.
+// 7. Nothing on this page is Vue-version specific, so it carries no
 //    "vue 2 → 3" callout.
 
 // ===================================================================
@@ -110,11 +117,9 @@ const CORS_ERROR = `Access to fetch at 'https://api.example.com/users' from orig
 'http://localhost:5173' has been blocked by CORS policy:
 No 'Access-Control-Allow-Origin' header is present on the requested resource.`;
 
-const SET_COOKIE = `set-cookie: session=abc123        ← stored for bank.com`;
-
-const CROSS_SITE_READ = `evil.com's JS  ──request──▶  bank.com
-               cookie: session=abc123
-                        ◀──200 { "balance": 48210, "iban": "…" }`;
+const ORIGIN_PARTS = `https :// api.example.com : 443
+─────    ───────────────    ───
+scheme        host          port`;
 
 const ORIGIN_SPLIT = `browser                                     server
   ├─ knows the page's origin
@@ -123,140 +128,98 @@ const ORIGIN_SPLIT = `browser                                     server
   │                      ◀─ access-control-allow-origin: *
   └─ compares, then allows or blocks the read`;
 
+const CROSS_SITE_READ = `evil.com's JS  ──request──▶  bank.com
+               cookie: session=abc123
+                        ◀──200 { "balance": 48210, "iban": "…" }`;
+
 const CREDENTIALS_INCLUDE = `fetch(url, { credentials: 'include' }) // cross-origin: send cookies`;
 
 const WILDCARD = `access-control-allow-origin: *`;
 
+const CORS_REFLECT = `cors({ origin: true, credentials: true })
+// ❌ echoes any Origin and allows cookies:
+//    access-control-allow-origin: https://evil.com
+//    access-control-allow-credentials: true`;
+
+const CORS_LIST = `cors({ origin: ['https://app.mybank.com'], credentials: true }) // ✅`;
+
 export function CorsAndCachingDocs() {
     return (
         <>
-            {/* Page lead — before the first divider. */}
+            {/* Page lead — before the first divider. Two sentences, nothing more. */}
             <div className="space-y-[0.9rem] text-[0.95rem] leading-[1.65] text-[var(--muted)]">
                 <p>
-                    A cross-origin request is sent, answered, and then withheld:
-                    the browser refuses to hand the response to the page&apos;s
-                    JavaScript unless the responding server allows that origin.
+                    A cross-origin request is sent and answered — and then
+                    withheld: the browser hands the response to the page only if
+                    the responding server allows that origin.
                 </p>
                 <p>
-                    This part covers the error, the rule behind it, what an origin
-                    is, how cookies travel cross-origin, and when a wildcard is the
-                    wrong answer.
+                    This part covers the error, what counts as another origin, the
+                    rule behind the block, what it does not cover, how cookies
+                    travel, and when a wildcard is wrong.
                 </p>
             </div>
 
             {/* ---------- part 1 — cross-origin requests ---------- */}
             <PartHeading kicker="part 1">Cross-origin requests</PartHeading>
             <div>
-                <DocSection title="Reading the error">
+                <DocSection title="The error">
                     <p>
-                        An application on one origin calls an API on another. The
-                        request leaves, the server answers 200, and the calling code
-                        still fails.
+                        A cross-origin call fails in the browser even though the
+                        server answered normally.
                     </p>
                     <CodeBlock code={CORS_ERROR} lang="text" />
+                    <ol className="list-decimal space-y-1 pl-5">
+                        <li>
+                            The request was sent — the server received it and did
+                            the work.
+                        </li>
+                        <li>
+                            The browser withheld the response; <Code>fetch</Code>{" "}
+                            rejects with a <Code>TypeError</Code> and no status.
+                        </li>
+                        <li>
+                            No client-side change can fix it: a header is missing
+                            from the server&apos;s answer.
+                        </li>
+                    </ol>
                     <p>
-                        Three details of this message are regularly misread. The
-                        request was sent: the server received it and did its work,
-                        and the browser withheld the response afterwards.{" "}
-                        <Code>fetch</Code> rejects with a <Code>TypeError</Code> and
-                        exposes no status, so the calling code cannot tell a CORS
-                        block from a failed network — both end up in the same branch
-                        (see Fetching Data). And nothing in the client can fix it,
-                        because what is missing is a header in the server&apos;s
-                        answer.
+                        The Network panel still lists the exchange, which is what
+                        separates this from an offline failure.
                     </p>
-                    <p>
-                        The Network panel still lists the request, often with a{" "}
-                        <Code>failed</Code> status, which is how a CORS block is
-                        distinguished from an offline failure: the panel shows the
-                        exchange and the Console shows the policy message.
-                    </p>
+                    <GridTable
+                        cols="grid-cols-[max-content_1fr_1fr]"
+                        head={["Symptom", "CORS block", "Offline"]}
+                        rows={[
+                            ["fetch result", "rejects, TypeError", "rejects, TypeError"],
+                            ["Network panel row", "present, often failed", "present, failed"],
+                            [
+                                "Console message",
+                                "names the CORS policy",
+                                "names a connection failure",
+                            ],
+                        ]}
+                    />
 
                     <Callout
                         severity="trap"
-                        label="trap · a CORS block looks like a network failure"
+                        label="trap · in code both look identical"
                     >
                         <p>
-                            In code both appear as a rejected <Code>fetch</Code> with
-                            no status. The difference is only visible in the Console
-                            and the Network panel.
+                            Error handling cannot distinguish a CORS block from a
+                            dead network, because neither exposes a status (see
+                            Fetching Data). The Console is the only place that says
+                            which happened.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="Why the rule exists">
+                <DocSection title="What counts as another origin">
                     <p>
-                        A cookie is attached by destination, not by the page that
-                        triggered the request. After signing in at{" "}
-                        <Code>bank.com</Code>, every request going to{" "}
-                        <Code>bank.com</Code> carries its session cookie, whichever
-                        page started it.
+                        An origin is scheme, host and port — the path plays no
+                        part.
                     </p>
-                    <CodeBlock code={SET_COOKIE} lang="text" />
-                    <p>
-                        That asymmetry is what the rule addresses. A script on
-                        another site can trigger a request to <Code>bank.com</Code>,
-                        and the browser attaches the cookie on the way out.
-                    </p>
-                    <CodeBlock code={CROSS_SITE_READ} lang="text" />
-                    <p>
-                        The server sees a valid session and answers correctly; it has
-                        no way to know the request originated elsewhere. Without a
-                        rule, the calling script would read the response and hold the
-                        account data without ever learning the password.
-                    </p>
-                    <p>
-                        The browser cannot stop the server from answering, but it can
-                        refuse to pass the answer on: a page may send cross-origin
-                        requests, but may only read the response when the responding
-                        server names that origin as allowed.
-                    </p>
-                    <p>
-                        The rule covers reads, not side effects. A cross-origin{" "}
-                        <Code>POST</Code> that transfers money still arrives and
-                        executes — the attacker merely cannot read the result.
-                        Preventing that is the job of <Code>SameSite</Code> cookies
-                        and CSRF tokens, a different mechanism for a different
-                        attack. Cookies are also no longer attached in that scenario
-                        by default: browsers treat a cookie without an explicit{" "}
-                        <Code>SameSite</Code> as <Code>Lax</Code>, which excludes
-                        cross-site <Code>fetch</Code>. CORS remains the broader,
-                        older layer, and it still blocks reads where no cookie is
-                        involved at all — a service that trusts whoever can reach it,
-                        such as an intranet API, a router page or a development server
-                        on <Code>localhost</Code>.
-                    </p>
-                    <GridTable
-                        cols="grid-cols-[1fr_max-content]"
-                        head={["", "Covered by CORS"]}
-                        rows={[
-                            ["Another origin reading a response", "yes"],
-                            [
-                                "Another origin triggering a request",
-                                "no — the request still runs",
-                            ],
-                            [
-                                "A side effect caused by that request",
-                                "no — SameSite and CSRF tokens",
-                            ],
-                            [
-                                "Server-to-server calls",
-                                "no — without a browser there is no enforcement",
-                            ],
-                            ["Same-origin requests", "no check takes place"],
-                        ]}
-                    />
-                </DocSection>
-
-                <DocSection title="Origins, browser and server">
-                    <p>
-                        &quot;Cross-origin&quot; is decided by an exact comparison,
-                        and the parts that count are easy to get wrong.
-                    </p>
-                    <p>
-                        An origin is a property of a URL: scheme, host and port. The
-                        path plays no part.
-                    </p>
+                    <CodeBlock code={ORIGIN_PARTS} lang="text" />
                     <GridTable
                         cols="grid-cols-[max-content_max-content_1fr]"
                         head={["From", "To", "Same origin?"]}
@@ -264,56 +227,140 @@ export function CorsAndCachingDocs() {
                             [
                                 "http://localhost:5173",
                                 "http://localhost:5173/api",
-                                "yes — the path is irrelevant",
+                                "yes — path is irrelevant",
                             ],
                             [
                                 "http://localhost:5173",
                                 "http://localhost:3000",
-                                "no — different port",
+                                "no — port differs",
                             ],
-                            [
-                                "https://app.com",
-                                "http://app.com",
-                                "no — different scheme",
-                            ],
+                            ["https://app.com", "http://app.com", "no — scheme differs"],
                             [
                                 "https://app.com",
                                 "https://api.app.com",
-                                "no — different host",
+                                "no — host differs",
                             ],
                         ]}
                     />
                     <p>
-                        Every cross-origin request therefore involves two origins: the
-                        page&apos;s own, which is where its document was loaded from,
-                        and the target&apos;s. A page has exactly one origin for its
-                        lifetime and may call many targets; an iframe is a separate
-                        document with an origin of its own.
-                    </p>
-                    <p>
-                        The responsibilities are split, and knowing the split explains
-                        most confusion about where a fix belongs.
+                        Every cross-origin request involves exactly two origins,
+                        and the work is split between them.
                     </p>
                     <CodeBlock code={ORIGIN_SPLIT} lang="text" />
+                    <ul className="list-disc space-y-1 pl-5">
+                        <li>
+                            The browser sends <Code>Origin</Code>; page scripts
+                            cannot set or forge it.
+                        </li>
+                        <li>
+                            The server only states a policy; it blocks nothing
+                            itself.
+                        </li>
+                        <li>The browser enforces that policy.</li>
+                    </ul>
+
+                    <Callout severity="note" label="note · no browser, no CORS">
+                        <p>
+                            <Code>curl</Code> and server-side code ignore CORS
+                            entirely. A fix therefore always ships on the
+                            responding server, never in the client.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="Why reading is blocked">
                     <p>
-                        The browser sends the <Code>Origin</Code> header, and page
-                        scripts cannot set or forge it — it is a forbidden header
-                        precisely so the server can rely on it. The server only states
-                        a policy; the browser enforces it. Two consequences follow:{" "}
-                        <Code>curl</Code> and server-side code ignore CORS entirely,
-                        and a CORS fix always ships on the responding server, never in
-                        the client.
+                        Cookies are attached by destination, not by the page that
+                        triggered the request.
                     </p>
+                    <ol className="list-decimal space-y-1 pl-5">
+                        <li>
+                            A user signs in at <Code>bank.com</Code>, which answers
+                            with <Code>set-cookie: session=abc123</Code>.
+                        </li>
+                        <li>
+                            From then on, every request going to{" "}
+                            <Code>bank.com</Code> carries that cookie.
+                        </li>
+                        <li>
+                            The user visits <Code>evil.com</Code>, whose script runs
+                            in the same browser.
+                        </li>
+                        <li>
+                            That script calls <Code>bank.com</Code>; the browser
+                            attaches the cookie on the way out.
+                        </li>
+                        <li>
+                            The bank sees a valid session and answers correctly.
+                        </li>
+                    </ol>
+                    <CodeBlock code={CROSS_SITE_READ} lang="text" />
+                    <p>
+                        Without a rule, that script would read the response and
+                        hold the account data without ever learning the password.
+                    </p>
+
+                    <Callout severity="note" label="note · the rule">
+                        <p>
+                            A page may send cross-origin requests, but may only
+                            read the response when the responding server names its
+                            origin as allowed.
+                        </p>
+                    </Callout>
+                </DocSection>
+
+                <DocSection title="What CORS does not do">
+                    <p>
+                        The rule covers reads, which leaves three neighbouring
+                        problems to other mechanisms.
+                    </p>
+                    <GridTable
+                        cols="grid-cols-[1fr_max-content_max-content]"
+                        head={["Situation", "Blocked by CORS?", "Handled by"]}
+                        rows={[
+                            ["Another origin reads a response", "yes", "CORS"],
+                            [
+                                "Another origin triggers a request",
+                                "no — it still runs",
+                                "SameSite cookies",
+                            ],
+                            [
+                                "That request causes a side effect (a transfer, a delete)",
+                                "no",
+                                "CSRF tokens",
+                            ],
+                            [
+                                "Server-to-server call",
+                                "no — no browser involved",
+                                "network rules, API keys",
+                            ],
+                            ["Same-origin request", "no check takes place", "—"],
+                        ]}
+                    />
+                    <p>
+                        Browsers now treat a cookie without an explicit{" "}
+                        <Code>SameSite</Code> as <Code>Lax</Code>, so the cookie in
+                        the previous section is no longer attached to a cross-site{" "}
+                        <Code>fetch</Code> by default.
+                    </p>
+
+                    <Callout
+                        severity="note"
+                        label="note · CORS still matters without cookies"
+                    >
+                        <p>
+                            It blocks reads from services that trust whoever can
+                            reach them — an intranet API, a router page, a
+                            development server on <Code>localhost</Code> — where
+                            the network position is the credential.
+                        </p>
+                    </Callout>
                 </DocSection>
 
                 <DocSection title="Cookies across origins">
                     <p>
-                        Whether a cookie reaches an API is decided by rules that do
-                        not match the origin rules above, which makes the behaviour
-                        surprising in development.
-                    </p>
-                    <p>
-                        A cookie&apos;s scope is domain and path, not origin.
+                        A cookie&apos;s scope is domain and path, which does not
+                        match the origin rules above.
                     </p>
                     <GridTable
                         cols="grid-cols-[max-content_1fr]"
@@ -321,50 +368,48 @@ export function CorsAndCachingDocs() {
                         rows={[
                             [
                                 "Host (example.com)",
-                                "yes — plus subdomains when Domain=example.com is set",
+                                "yes — plus subdomains with Domain=example.com",
                             ],
-                            ["Path (Path=/api)", "yes — sent only to /api and below"],
+                            ["Path (Path=/api)", "yes — sent to /api and below only"],
                             [
                                 "Port",
                                 "no — localhost:5173 and localhost:3000 share cookies",
                             ],
                             [
                                 "Scheme",
-                                "mostly no — a Secure cookie is only sent over HTTPS",
+                                "mostly no — a Secure cookie only travels over HTTPS",
                             ],
                         ]}
                     />
                     <p>
-                        The port row explains a common development setup: a frontend
-                        on one port and an API on another are different origins, so
-                        CORS applies, yet they share one cookie jar. Two further rules
-                        decide whether the cookie actually travels:{" "}
-                        <Code>SameSite</Code>, set by the server (<Code>Strict</Code>{" "}
-                        never on cross-site requests, <Code>Lax</Code> only on
-                        top-level navigations, <Code>None</Code> always but then{" "}
-                        <Code>Secure</Code> is required), and credentials, set by the
-                        caller — <Code>fetch</Code> sends cookies to the same origin
-                        by default and cross-origin only on request.
+                        The port row explains the usual development setup: a
+                        frontend and an API on different ports are different
+                        origins with one shared cookie jar.
                     </p>
+                    <ul className="list-disc space-y-1 pl-5">
+                        <li>
+                            <Code>SameSite</Code>, set by the server:{" "}
+                            <Code>Strict</Code> never cross-site, <Code>Lax</Code>{" "}
+                            only on top-level navigations, <Code>None</Code> always
+                            but then <Code>Secure</Code> is required.
+                        </li>
+                        <li>
+                            <Code>credentials</Code>, set by the caller:{" "}
+                            <Code>same-origin</Code> by default, cross-origin only
+                            on request.
+                        </li>
+                    </ul>
                     <CodeBlock code={CREDENTIALS_INCLUDE} lang="ts" />
-                    <p>
-                        What another origin can do with those cookies is narrow. The
-                        value is never readable: <Code>document.cookie</Code> only
-                        lists the page&apos;s own origin, the <Code>set-cookie</Code>{" "}
-                        response header cannot be exposed to scripts, and an{" "}
-                        <Code>HttpOnly</Code> cookie is invisible even to the
-                        site&apos;s own JavaScript. What another origin can do is
-                        cause a request that carries the cookie — the classic confused
-                        deputy, where the browser acts on the user&apos;s authority
-                        for someone else&apos;s instructions.
-                    </p>
                     <GridTable
                         cols="grid-cols-[1fr_max-content]"
                         head={["Another origin can", ""]}
                         rows={[
                             ["Read the cookie value or session id", "no"],
-                            ["Read the set-cookie header", "no"],
-                            ["Cause a request that carries it", "yes"],
+                            [
+                                "Read the set-cookie header",
+                                "no — it cannot be exposed to scripts",
+                            ],
+                            ["Cause a request that carries the cookie", "yes"],
                             [
                                 "Read that response",
                                 "only if the server allows its origin",
@@ -375,52 +420,71 @@ export function CorsAndCachingDocs() {
                             ],
                         ]}
                     />
+                    <p>
+                        The borrowed-authority pattern in that table is the classic
+                        confused deputy: the browser acts on the user&apos;s
+                        authority for someone else&apos;s instructions.
+                    </p>
 
                     <Callout severity="danger" label="danger · XSS bypasses all of it">
                         <p>
-                            A script injected into a site&apos;s own page runs with
+                            A script injected into a site&apos;s own pages runs with
                             that site&apos;s origin, so no CORS check applies and{" "}
                             <Code>document.cookie</Code> works. <Code>HttpOnly</Code>{" "}
-                            is the second line of defence that keeps a session cookie
-                            unreadable even then.
+                            keeps the session cookie unreadable even then.
                         </p>
                     </Callout>
                 </DocSection>
 
-                <DocSection title="Wildcards and private data">
+                <DocSection title="Wildcards, and whose header counts">
                     <p>
-                        The quickest way to make an error disappear is to answer every
-                        origin with a wildcard, which is why it is the most frequently
-                        copied fix.
+                        Answering every origin removes the error, which is why it
+                        is the most copied fix.
                     </p>
                     <CodeBlock code={WILDCARD} lang="text" />
+                    <ul className="list-disc space-y-1 pl-5">
+                        <li>
+                            Correct for data that is public, unauthenticated and
+                            read-only — the policy of public APIs.
+                        </li>
+                        <li>
+                            Wrong for anything user-specific: list the origins
+                            actually served.
+                        </li>
+                    </ul>
                     <p>
-                        A wildcard is correct for data that is public, unauthenticated
-                        and read-only — the policy public APIs use. For anything
-                        user-specific, the server lists the origins it actually serves.
+                        A wildcard alone cannot expose a cookie session, because
+                        the browser refuses it together with credentials — the
+                        dangerous configuration is the one that reflects the origin
+                        back.
+                    </p>
+                    <CodeBlock code={CORS_REFLECT} lang="ts" />
+                    <CodeBlock code={CORS_LIST} lang="ts" />
+                    <p>
+                        Services authenticated by network position are exposed by a
+                        wildcard alone: while a development server or an admin page
+                        runs, any site the user visits can call it from their
+                        browser and read the answer.
                     </p>
                     <p>
-                        The browser refuses a wildcard together with{" "}
-                        <Code>credentials: &apos;include&apos;</Code>, so a
-                        cookie-session API cannot be exposed to every origin by that
-                        mistake alone. The genuinely exposed services are those
-                        authenticated by network position or by IP: an intranet API, an
-                        admin page, a development server. While such a server runs, any
-                        website the developer visits can call it from their browser, and
-                        a wildcard lets that site read the answer.
+                        Whose policy applies is a second common confusion — the
+                        responding server&apos;s, never the caller&apos;s.
                     </p>
-                    <p>
-                        A second confusion is whose policy applies. Reading a
-                        third-party service&apos;s response depends on that
-                        service&apos;s headers; changing the configuration of one&apos;s
-                        own server has no effect on it. Public services such as IP or
-                        geolocation lookups already answer with a wildcard, so they can
-                        be called from the browser while the application&apos;s own API
-                        stays restricted — two servers, two independent policies. When a
-                        service sends no such header, the call belongs on the server
-                        side, where no enforcement exists; a frontend then calls its own
-                        API, same-origin, and that API calls the service.
-                    </p>
+                    <GridTable
+                        cols="grid-cols-[max-content_1fr]"
+                        head={["Goal", "Which server is configured"]}
+                        rows={[
+                            ["Let your own frontend read your API", "your API"],
+                            [
+                                "Read a third-party service from the browser",
+                                "theirs — it already sends a wildcard, or the call is impossible",
+                            ],
+                            [
+                                "Read a third-party service that sends no header",
+                                "none — call it from your server, where no enforcement exists",
+                            ],
+                        ]}
+                    />
                     <GridTable
                         cols="grid-cols-[max-content_1fr]"
                         head={["Suggested fix", "Verdict"]}
@@ -431,27 +495,27 @@ export function CorsAndCachingDocs() {
                             ],
                             [
                                 "A browser extension that disables the check",
-                                "never — it only patches one developer's browser while the app stays broken",
+                                "never — it patches one developer's browser, the app stays broken",
                             ],
                             [
                                 "A development proxy on the app's own origin",
-                                "the correct development fix — the browser sees one origin",
+                                "correct for development — the browser sees one origin",
                             ],
                         ]}
                     />
 
                     <Callout
                         severity="trap"
-                        label="trap · calling a service from the page shares user data"
+                        label="trap · a browser call shares user data"
                     >
                         <p>
-                            A browser call to a third-party service sends every
-                            user&apos;s IP address to that company, which in the EU is
-                            personal data. Calling it from the server instead exposes
-                            only the server. A third-party script is a different
-                            magnitude again: it runs with the page&apos;s own origin and
-                            can read its DOM, storage and non-<Code>HttpOnly</Code>{" "}
-                            cookies, where a <Code>fetch</Code> cannot.
+                            Calling a third-party service from the page sends every
+                            user&apos;s IP address to that company, which in the EU
+                            is personal data; calling it server-side exposes only
+                            the server. A third-party script is a larger risk again:
+                            it runs with the page&apos;s own origin and can read its
+                            DOM, storage and non-<Code>HttpOnly</Code> cookies,
+                            where a <Code>fetch</Code> cannot.
                         </p>
                     </Callout>
                 </DocSection>

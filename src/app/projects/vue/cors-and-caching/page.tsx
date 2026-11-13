@@ -14,38 +14,48 @@ import { topicBySlug } from "@/projects/vue/vue";
 // Each href targets a DocSection id (slugged from its title in the content file).
 // AUDIT RULE: every DocSection on this page must have exactly one article here,
 // and every article must point at a real section id. No pinned footer sections,
-// so the rule holds for both without exception: 5 sections, 5 cards.
+// so the rule holds for both without exception: 6 sections, 6 cards.
 //
 // This page is written in parts: the caching part arrives in its own prompt as
 // a second *_TEXT array and a second group below.
 const CROSS_ORIGIN_TEXT = [
     {
-        title: "Reading the error",
-        href: "#reading-the-error",
+        title: "The error",
+        href: "#the-error",
         text: (
             <>
-                The request was sent; the browser withheld the response; no status
-                is exposed.
+                The request was sent; the response was withheld; no status is
+                exposed.
             </>
         ),
     },
     {
-        title: "Why the rule exists",
-        href: "#why-the-rule-exists",
-        text: (
-            <>
-                Cookies attach by destination; reads are blocked, side effects are
-                not.
-            </>
-        ),
-    },
-    {
-        title: "Origins, browser and server",
-        href: "#origins-browser-and-server",
+        title: "What counts as another origin",
+        href: "#what-counts-as-another-origin",
         text: (
             <>
                 <Mono>scheme + host + port</Mono>; the browser enforces, the server
-                states the policy.
+                states.
+            </>
+        ),
+    },
+    {
+        title: "Why reading is blocked",
+        href: "#why-reading-is-blocked",
+        text: (
+            <>
+                Cookies attach by destination, so a foreign script could read
+                private data.
+            </>
+        ),
+    },
+    {
+        title: "What CORS does not do",
+        href: "#what-cors-does-not-do",
+        text: (
+            <>
+                Requests still run; side effects need <Mono>SameSite</Mono> and CSRF
+                tokens.
             </>
         ),
     },
@@ -59,12 +69,11 @@ const CROSS_ORIGIN_TEXT = [
         ),
     },
     {
-        title: "Wildcards and private data",
-        href: "#wildcards-and-private-data",
+        title: "Wildcards, and whose header counts",
+        href: "#wildcards-and-whose-header-counts",
         text: (
             <>
-                A wildcard suits public data only; the third party&apos;s headers
-                decide, not yours.
+                Wildcard for public data only; the responding server decides.
             </>
         ),
     },

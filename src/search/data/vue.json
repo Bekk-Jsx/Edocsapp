@@ -2331,35 +2331,40 @@
       "parts": [
         {
           "name": "Cross-origin requests",
-          "href": "/projects/vue/cors-and-caching#reading-the-error",
+          "href": "/projects/vue/cors-and-caching#the-error",
           "titles": [
             {
-              "title": "Reading the error",
-              "href": "/projects/vue/cors-and-caching#reading-the-error",
+              "title": "The error",
+              "href": "/projects/vue/cors-and-caching#the-error",
               "keywords": [
                 "fetch",
-                "TypeError",
-                "failed"
+                "TypeError"
               ]
             },
             {
-              "title": "Why the rule exists",
-              "href": "/projects/vue/cors-and-caching#why-the-rule-exists",
+              "title": "What counts as another origin",
+              "href": "/projects/vue/cors-and-caching#what-counts-as-another-origin",
+              "keywords": [
+                "curl"
+              ]
+            },
+            {
+              "title": "Why reading is blocked",
+              "href": "/projects/vue/cors-and-caching#why-reading-is-blocked",
               "keywords": [
                 "bank.com",
-                "POST",
+                "set-cookie: session=abc123",
+                "evil.com"
+              ]
+            },
+            {
+              "title": "What CORS does not do",
+              "href": "/projects/vue/cors-and-caching#what-cors-does-not-do",
+              "keywords": [
                 "SameSite",
                 "Lax",
                 "fetch",
                 "localhost"
-              ]
-            },
-            {
-              "title": "Origins, browser and server",
-              "href": "/projects/vue/cors-and-caching#origins-browser-and-server",
-              "keywords": [
-                "Origin",
-                "curl"
               ]
             },
             {
@@ -2371,16 +2376,15 @@
                 "Lax",
                 "None",
                 "Secure",
-                "fetch",
-                "document.cookie",
-                "set-cookie"
+                "credentials",
+                "same-origin",
+                "document.cookie"
               ]
             },
             {
-              "title": "Wildcards and private data",
-              "href": "/projects/vue/cors-and-caching#wildcards-and-private-data",
+              "title": "Wildcards, and whose header counts",
+              "href": "/projects/vue/cors-and-caching#wildcards-and-whose-header-counts",
               "keywords": [
-                "credentials: 'include'",
                 "HttpOnly",
                 "fetch"
               ]
