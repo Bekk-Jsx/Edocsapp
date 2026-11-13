@@ -14,10 +14,10 @@ import { topicBySlug } from "@/projects/vue/vue";
 // Each href targets a DocSection id (slugged from its title in the content file).
 // AUDIT RULE: every DocSection on this page must have exactly one article here,
 // and every article must point at a real section id. No pinned footer sections,
-// so the rule holds for both without exception: 6 sections, 6 cards.
+// so the rule holds for both without exception: 14 sections, 14 cards.
 //
-// This page is written in parts: the caching part arrives in its own prompt as
-// a second *_TEXT array and a second group below.
+// The page is written in four parts; each one is a *_TEXT array here and one
+// group in the rail, in the same order as the parts in the content file.
 const CROSS_ORIGIN_TEXT = [
     {
         title: "The error",
@@ -79,6 +79,94 @@ const CROSS_ORIGIN_TEXT = [
     },
 ];
 
+const PREFLIGHT_TEXT = [
+    {
+        title: "When the browser asks first",
+        href: "#when-the-browser-asks-first",
+        text: (
+            <>
+                Cross-origin and not simple: JSON bodies and auth headers trigger
+                it.
+            </>
+        ),
+    },
+    {
+        title: "The OPTIONS exchange",
+        href: "#the-options-exchange",
+        text: (
+            <>
+                Requested method and headers against allowed ones; the server must
+                route <Mono>OPTIONS</Mono>.
+            </>
+        ),
+    },
+];
+
+const FIXING_TEXT = [
+    {
+        title: "A proxy, in dev and in production",
+        href: "#a-proxy-in-dev-and-in-production",
+        text: (
+            <>
+                One entry point forwards; <Mono>vite.config</Mono> is dev-only, prod
+                needs nginx or Node.
+            </>
+        ),
+    },
+    {
+        title: "CORS on the server",
+        href: "#cors-on-the-server",
+        text: (
+            <>
+                List real origins; cookies across domains need subdomains or a
+                token.
+            </>
+        ),
+    },
+    {
+        title: "Why a proxy is not a bypass",
+        href: "#why-a-proxy-is-not-a-bypass",
+        text: (
+            <>
+                A hostile proxy carries no session cookie, so it is just{" "}
+                <Mono>curl</Mono>.
+            </>
+        ),
+    },
+];
+
+const CACHING_TEXT = [
+    {
+        title: "Two mechanisms",
+        href: "#two-mechanisms",
+        text: (
+            <>
+                <Mono>max-age</Mono> skips the request; <Mono>etag</Mono> makes it
+                cheap.
+            </>
+        ),
+    },
+    {
+        title: "The directives",
+        href: "#the-directives",
+        text: (
+            <>
+                <Mono>no-cache</Mono> validates, <Mono>no-store</Mono> stores
+                nothing, <Mono>immutable</Mono> never revalidates.
+            </>
+        ),
+    },
+    {
+        title: "What this looks like in an app",
+        href: "#what-this-looks-like-in-an-app",
+        text: (
+            <>
+                APIs uncached, hashed assets forever, <Mono>index.html</Mono> fresh.
+            </>
+        ),
+    },
+];
+
 // Severities are DERIVED from SECTION_SEVERITIES by href — never hand-set here,
 // so every card matches the section it links to by construction.
 const withSeverities = (item: {
@@ -91,6 +179,9 @@ const withSeverities = (item: {
 });
 
 const CROSS_ORIGIN: SummaryArticle[] = CROSS_ORIGIN_TEXT.map(withSeverities);
+const PREFLIGHT: SummaryArticle[] = PREFLIGHT_TEXT.map(withSeverities);
+const FIXING: SummaryArticle[] = FIXING_TEXT.map(withSeverities);
+const CACHING: SummaryArticle[] = CACHING_TEXT.map(withSeverities);
 
 export default function Page() {
     const topic = topicBySlug("cors-and-caching");
@@ -102,6 +193,9 @@ export default function Page() {
                 <SummaryArticles
                     groups={[
                         { label: "Cross-origin requests", items: CROSS_ORIGIN },
+                        { label: "Preflight", items: PREFLIGHT },
+                        { label: "Where CORS gets fixed", items: FIXING },
+                        { label: "Caching", items: CACHING },
                     ]}
                 />
             }

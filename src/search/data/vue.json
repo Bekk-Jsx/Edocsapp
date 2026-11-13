@@ -2390,6 +2390,98 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Preflight",
+          "href": "/projects/vue/cors-and-caching#when-the-browser-asks-first",
+          "titles": [
+            {
+              "title": "When the browser asks first",
+              "href": "/projects/vue/cors-and-caching#when-the-browser-asks-first",
+              "keywords": [
+                "OPTIONS",
+                "DELETE"
+              ]
+            },
+            {
+              "title": "The OPTIONS exchange",
+              "href": "/projects/vue/cors-and-caching#the-options-exchange",
+              "keywords": [
+                "access-control-max-age",
+                "POST /posts",
+                "404",
+                "405",
+                "POST"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Where CORS gets fixed",
+          "href": "/projects/vue/cors-and-caching#a-proxy-in-dev-and-in-production",
+          "titles": [
+            {
+              "title": "A proxy, in dev and in production",
+              "href": "/projects/vue/cors-and-caching#a-proxy-in-dev-and-in-production",
+              "keywords": [
+                "vite.config.ts",
+                "/api"
+              ]
+            },
+            {
+              "title": "CORS on the server",
+              "href": "/projects/vue/cors-and-caching#cors-on-the-server",
+              "keywords": [
+                "app.example.com",
+                "api.example.com",
+                "SameSite=Lax",
+                "Authorization",
+                "SameSite",
+                "credentials: 'include'",
+                "vary: Origin"
+              ]
+            },
+            {
+              "title": "Why a proxy is not a bypass",
+              "href": "/projects/vue/cors-and-caching#why-a-proxy-is-not-a-bypass",
+              "keywords": [
+                "bank.com",
+                "curl"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Caching",
+          "href": "/projects/vue/cors-and-caching#two-mechanisms",
+          "titles": [
+            {
+              "title": "Two mechanisms",
+              "href": "/projects/vue/cors-and-caching#two-mechanisms",
+              "keywords": [
+                "(disk cache)",
+                "(memory cache)",
+                "if-none-match: \"a7f3b2\"",
+                "304 Not Modified",
+                "200",
+                "etag"
+              ]
+            },
+            {
+              "title": "The directives",
+              "href": "/projects/vue/cors-and-caching#the-directives",
+              "keywords": [
+                "no-store"
+              ]
+            },
+            {
+              "title": "What this looks like in an app",
+              "href": "/projects/vue/cors-and-caching#what-this-looks-like-in-an-app",
+              "keywords": [
+                "Disable cache"
+              ]
+            }
+          ]
         }
       ]
     },
