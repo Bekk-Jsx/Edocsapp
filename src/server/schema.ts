@@ -231,6 +231,17 @@ export const questionCardSchema = z.object({
 export type QuestionCard = z.infer<typeof questionCardSchema>;
 
 /**
+ * The card kinds a question carries: deduped, and in CARD_TYPES order.
+ *
+ * Ordered by the declaration rather than by the data, so two questions with
+ * the same kinds of card always mark them in the same order — note, then
+ * trap — however their cards happen to be arranged.
+ */
+export function cardTypesOf(cards: QuestionCard[]): CardType[] {
+    return CARD_TYPES.filter((type) => cards.some((card) => card.type === type));
+}
+
+/**
  * Read path: parse a stored card array, DROPPING anything invalid.
  *
  * The same contract as safeBlocks, for the same reason: a card written by a

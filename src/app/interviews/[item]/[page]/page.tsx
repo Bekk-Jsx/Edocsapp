@@ -11,11 +11,12 @@ import PlannedCard from "@/components/interviews/planned-card";
 import PracticeProvider from "@/components/interviews/practice-provider";
 import { RailState } from "@/components/interviews/practice-section";
 import PracticeToggle from "@/components/interviews/practice-toggle";
+import RailCardMarks from "@/components/interviews/rail-card-marks";
 import QuestionSection, {
     PartHeading,
 } from "@/components/interviews/question-section";
 import { getProgress } from "@/server/progress";
-import { entryKey, type ProgressState } from "@/server/schema";
+import { cardTypesOf, entryKey, type ProgressState } from "@/server/schema";
 import PageShell from "@/components/ui/page-shell";
 import SummaryArticles, {
     type SummaryArticle,
@@ -59,6 +60,12 @@ type Parts = ReturnType<typeof byPriority>;
  * language — the global switch and that section's own override alike. That is
  * why the rail is rendered ONCE rather than once per language.
  *
+ * Beside the title sit the marks for the kinds of card that question carries
+ * (📝 note, ⚠️ trap) — one per kind, from the entry already loaded here, so
+ * the rail says what a question holds without a second request. They go in
+ * the existing title slot, so the rail's own structure and design are
+ * untouched; a question with no cards adds nothing.
+ *
  * The `key` on each `text` element is required, not decorative. These elements
  * are built inside a .map(), so React has not key-validated them, and they
  * then travel inside the `items` array from this server component into the
@@ -68,7 +75,15 @@ type Parts = ReturnType<typeof byPriority>;
  */
 function railCard(entry: QuestionEntry): SummaryArticle {
     return {
-        title: <RailCardTitle sectionId={entry.slug} text={entry.title} />,
+        title: (
+            <>
+                <RailCardTitle sectionId={entry.slug} text={entry.title} />
+                <RailCardMarks
+                    sectionId={entry.slug}
+                    types={cardTypesOf(entry.cards)}
+                />
+            </>
+        ),
         href: `#${entry.slug}`,
         text:
             entry.status === "planned" ? (

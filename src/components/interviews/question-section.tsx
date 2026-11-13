@@ -1,5 +1,6 @@
 import AddNoteButton from "@/components/ui/add-note-button";
 import type { AssetInfo, QuestionEntry } from "@/server/interviews";
+import type { Block } from "@/server/schema";
 import Blocks from "./blocks";
 import { Text, type Lang } from "./inline";
 import { LangPair, LangText } from "./lang-provider";
@@ -24,10 +25,28 @@ import SectionLangToggle from "./section-lang-toggle";
 // ("Note" / "Hinweis"), which sits inside the author's prose and is rendered
 // per language with the rest of the body — see question-cards.tsx.
 //
-// A question that has cards renders as two columns: the answer, and the cards
-// in the margin beside it. A question without cards renders exactly as it did
-// before cards existed — no grid, no wrapper, the answer at full width.
+// A question's cards are stacked full width under its prose and above the
+// "Show code" toggle, at every screen size. A question without cards renders
+// exactly as it did before cards existed — one Blocks call, no wrapper.
 // ===================================================================
+
+/**
+ * Splits an answer's blocks at the run of code blocks that ENDS it.
+ *
+ * The reading order for a question is prose, then its cards, then the code:
+ * a trailing code block is a collapsed "Show code" toggle, which belongs at
+ * the bottom of the section and not above the cards. A code block in the
+ * MIDDLE of an answer is part of the prose flow, so it is left where the
+ * author put it and the cards land after everything.
+ *
+ * Only used when there ARE cards; otherwise the blocks are rendered in one
+ * call exactly as before.
+ */
+function splitTrailingCode(blocks: Block[]): [Block[], Block[]] {
+    let cut = blocks.length;
+    while (cut > 0 && blocks[cut - 1].type === "code") cut--;
+    return [blocks.slice(0, cut), blocks.slice(cut)];
+}
 
 /** The divider above a priority part, matching the doc pages' PartHeading. */
 export function PartHeading({
@@ -115,39 +134,34 @@ export default function QuestionSection({
     assets: Map<string, AssetInfo>;
 }) {
     const hasCards = entry.cards.length > 0;
+    // Without cards there is nothing to place, so the blocks stay in ONE
+    // Blocks call — the same markup, and the same code-collapse keys, as
+    // before cards existed.
+    const [prose, trailingCode] = hasCards
+        ? splitTrailingCode(entry.blocks)
+        : [entry.blocks, []];
 
-    // The answer itself — the left column when there are cards, the whole
-    // body when there are not.
-    const answer = (lang: Lang) => (
-        <div className="min-w-0 space-y-4">
+    // One language's whole body. Called twice; only one is ever visible.
+    const body = (lang: Lang) => (
+        <div className="space-y-4">
             <ShortAnswer entry={entry} lang={lang} />
             {/* keyBase is the entry slug, so a code block's open/closed state
                 is shared between this section's two language copies. */}
             <Blocks
-                blocks={entry.blocks}
+                blocks={prose}
                 ctx={{ lang, assets, keyBase: entry.slug }}
+            />
+            <QuestionCards cards={entry.cards} lang={lang} />
+            {/* `path` keeps these blocks' keys distinct from the prose call's
+                indices, so two code blocks can never share a collapse key. */}
+            <Blocks
+                blocks={trailingCode}
+                ctx={{ lang, assets, keyBase: entry.slug }}
+                path="tail"
             />
             <FollowUps entry={entry} lang={lang} />
         </div>
     );
-
-    // One language's whole body. Called twice; only one is ever visible.
-    //
-    // The split is a CONTAINER query, not a media query: what decides whether
-    // a margin fits is the width of this body column — which the page's 550px
-    // summary rail takes a fixed bite out of — and not the width of the
-    // window. Below the threshold the cards stack under the answer.
-    const body = (lang: Lang) =>
-        hasCards ? (
-            <div className="answer-grid">
-                <div className="answer-cols">
-                    {answer(lang)}
-                    <QuestionCards cards={entry.cards} lang={lang} />
-                </div>
-            </div>
-        ) : (
-            answer(lang)
-        );
 
     // Both halves are server-rendered and handed to PracticeSection, which
     // owns the <section> and decides how much of it is visible. With practice

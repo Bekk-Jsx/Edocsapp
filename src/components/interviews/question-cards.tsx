@@ -1,41 +1,27 @@
-import { SeverityIcon, severityStyle } from "@/lib/severity";
-import type { CardType, QuestionCard } from "@/server/schema";
+import { severityStyle } from "@/lib/severity";
+import type { QuestionCard } from "@/server/schema";
+import { CARD_GLYPH, CARD_LABEL } from "./card-kinds";
 import { Text, type Lang } from "./inline";
 
 // ===================================================================
 // QUESTION CARDS — the asides in the margin beside one answer.
 //
 // A card is not part of the answer's flow: it is a term worth defining, or
-// the mistake people make. It therefore sits in its own column (see
-// .answer-cols in globals.css) instead of interrupting the prose, and stacks
-// under the answer when that column is too narrow to be a margin.
+// the mistake people make. It therefore comes AFTER the answer's prose rather
+// than interrupting it — full width, one card under the next, in data order,
+// at every screen size.
 //
-// Colour and icon come from the SEVERITY system (src/lib/severity.tsx), the
-// same source the doc pages and the inline callouts read — a `note` card in
-// the margin and a `note` callout in the body are the same mark, so the page
-// has one visual vocabulary rather than two.
+// The frame colour comes from the SEVERITY system (src/lib/severity.tsx), the
+// same source the doc pages and the inline callouts read, so a `note` card
+// and a `note` callout are the same blue-neutral and a trap the same amber.
+// The glyph is the card's own (see CARD_GLYPH).
 //
 // Server component: both languages are rendered, and the section's LangPair
 // shows one. Switching language therefore changes the cards with no refetch
 // and no client rendering.
 // ===================================================================
 
-/**
- * The type label above a card's title.
- *
- * TRANSLATED, unlike the rest of the question chrome (badge, buttons,
- * "Short answer"), because the label is the only words on a card that are not
- * the author's: leaving it English would put one English word inside German
- * prose. It is derived from `type` rather than stored, so a card cannot
- * contradict its own label — and being a Record<CardType, …>, adding a card
- * type is a type error until its label exists.
- */
-const CARD_LABEL: Record<CardType, Record<Lang, string>> = {
-    note: { en: "Note", de: "Hinweis" },
-    trap: { en: "Trap", de: "Falle" },
-};
-
-/** One card. The icon carries the label for a screen reader, not twice. */
+/** One card. The glyph is decorative — the label beside it is the text. */
 function Card({ card, lang }: { card: QuestionCard; lang: Lang }) {
     const { color, bg } = severityStyle[card.type];
     const label = CARD_LABEL[card.type][lang];
@@ -49,10 +35,9 @@ function Card({ card, lang }: { card: QuestionCard; lang: Lang }) {
                 className="mb-1.5 flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest"
                 style={{ color }}
             >
-                <SeverityIcon
-                    severity={card.type}
-                    className="h-[1.3em] w-[1.3em] shrink-0"
-                />
+                <span aria-hidden="true" className="text-[1.15em] leading-none">
+                    {CARD_GLYPH[card.type]}
+                </span>
                 {label}
             </p>
             <p className="text-[0.85rem] font-semibold leading-snug text-[var(--text)]">
@@ -72,11 +57,11 @@ function Card({ card, lang }: { card: QuestionCard; lang: Lang }) {
 }
 
 /**
- * The card column for one question, or nothing at all.
+ * The cards for one question, or nothing at all.
  *
  * Returning null for an empty list is what keeps every question written
- * before cards existed rendering exactly as it did: the caller only builds
- * the two-column grid when this has something to show.
+ * before cards existed rendering exactly as it did — the caller adds no
+ * wrapper of its own.
  */
 export default function QuestionCards({
     cards,
@@ -87,10 +72,10 @@ export default function QuestionCards({
 }) {
     if (!cards.length) return null;
     return (
-        <aside className="answer-aside space-y-2.5">
+        <div className="space-y-3">
             {cards.map((card, i) => (
                 <Card key={i} card={card} lang={lang} />
             ))}
-        </aside>
+        </div>
     );
 }
