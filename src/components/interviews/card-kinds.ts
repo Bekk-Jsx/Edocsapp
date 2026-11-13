@@ -2,33 +2,23 @@ import type { CardType } from "@/server/schema";
 import type { Lang } from "./inline";
 
 // ===================================================================
-// CARD KINDS — the glyph and the label for each kind of card.
+// CARD KINDS — what to call each kind of card, in each language.
 //
-// Shared by the cards themselves (a server component) and the marks on a
-// rail card (a client one), so the two can never show a question as a note
-// and a trap respectively. No "use client" and no JSX here, which is what
-// lets both import it.
+// There is deliberately no glyph here: a card and its mark on the rail both
+// draw their icon from the SEVERITY system (SeverityIcon in
+// src/lib/severity.tsx), the same one the project doc pages use, so the whole
+// site has one set of marks and Interviews introduces none of its own.
 //
-// Both maps are Record<CardType, …>: adding a card type to CARD_TYPES is a
-// type error until its glyph and its label exist.
+// Shared by the cards (a server component) and the rail (a client one). No
+// "use client" and no JSX here, which is what lets both import it.
+//
+// A Record<CardType, …>: adding a card type to CARD_TYPES is a type error
+// until its label exists.
 // ===================================================================
 
 /**
- * The glyph for a kind of card.
- *
- * An emoji, not one of the severity SVGs: it is the same mark in the card's
- * label and on its rail card, where an inline SVG would need sizing against
- * the surrounding text at both sizes. The severity COLOUR still frames the
- * card (see severityStyle), so a note still reads blue-neutral and a trap
- * amber — the glyph carries its own colours and is not tinted.
- */
-export const CARD_GLYPH: Record<CardType, string> = {
-    note: "📝",
-    trap: "⚠️",
-};
-
-/**
- * The label above a card's title, and the tooltip on a rail mark.
+ * What a kind of card is called: part of the callout's label, and the
+ * tooltip on its mark in the rail.
  *
  * TRANSLATED, unlike the rest of the question chrome (badge, buttons,
  * "Short answer"), because the label is the only words on a card that are not

@@ -17,7 +17,7 @@ import ListenButton from "./listen-button";
 // interview notes were.
 //
 // A phrase is one SLIM ROW, not a card: EN and DE side by side on a wide
-// screen, stacked on a narrow one, each with its own 🔊 pinned to its own
+// screen, stacked on a narrow one, each with its own listen button on its own
 // language. Rows are divided by hairlines rather than boxed, so a page of
 // them stays scannable.
 //
@@ -318,7 +318,7 @@ export default function PhrasebookBoard({
 
             {!phrases.length ? (
                 <p className="font-mono text-sm text-[var(--muted)]">
-                    No phrases yet. Use the 🔊-adjacent button on a question to add
+                    No phrases yet. Use the add button on a question to add
                     one.
                 </p>
             ) : null}

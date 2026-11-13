@@ -32,9 +32,21 @@ export type SummaryGroup = { label: string; items: SummaryArticle[] };
  * Either a flat rail (`items`) or a grouped one (`groups`) — never both. Pages
  * that don't need headings keep passing `items` and render exactly as before.
  */
-export type SummaryArticlesProps =
+export type SummaryArticlesProps = (
     | { items: SummaryArticle[]; groups?: never }
-    | { groups: SummaryGroup[]; items?: never };
+    | { groups: SummaryGroup[]; items?: never }
+) & {
+    /**
+     * What to call each severity mark, for the tooltip and the screen-reader
+     * text. Omitted — which is every project rail — the marks keep their
+     * severityStyle labels and carry no tooltip at all, exactly as before.
+     *
+     * The interview rail passes these so the marks are named in the language
+     * the reader chose; it is one map for the whole rail, since a `title`
+     * attribute is a string and cannot be a component.
+     */
+    markLabels?: Partial<Record<Severity, string>>;
+};
 
 // Compact code token for summary lines — lighter than the doc-prose <Code>
 // so a one-line takeaway stays one line.
@@ -199,18 +211,39 @@ export default function SummaryArticles(props: SummaryArticlesProps) {
                     {/* icon(s) + title on one row, so a glance reads
                         "what kind of note, about what" */}
                     <span className="mb-1 flex items-center gap-1.5">
-                        {marks.map((s) => (
-                            <SeverityIcon
-                                key={s}
-                                severity={s}
-                                className="h-[0.95rem] w-[0.95rem] shrink-0"
-                                style={{ color: severityStyle[s].color }}
-                            />
-                        ))}
+                        {marks.map((s) => {
+                            const icon = (
+                                <SeverityIcon
+                                    key={s}
+                                    severity={s}
+                                    className="h-[0.95rem] w-[0.95rem] shrink-0"
+                                    style={{ color: severityStyle[s].color }}
+                                />
+                            );
+                            // Only a NAMED mark gets a wrapper, and the wrapper
+                            // exists solely to carry `title`. A rail that
+                            // passes no labels — every project rail — renders
+                            // the bare icon it always did, unwrapped.
+                            const named = props.markLabels?.[s];
+                            if (!named) return icon;
+                            return (
+                                <span
+                                    key={s}
+                                    title={named}
+                                    className="inline-flex shrink-0"
+                                >
+                                    {icon}
+                                </span>
+                            );
+                        })}
                         {marks.length ? (
                             <span className="sr-only">
                                 {marks
-                                    .map((s) => severityStyle[s].label)
+                                    .map(
+                                        (s) =>
+                                            props.markLabels?.[s] ??
+                                            severityStyle[s].label,
+                                    )
                                     .join(", ")}{" "}
                                 ·{" "}
                             </span>

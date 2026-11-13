@@ -62,8 +62,8 @@ export default async function Page() {
                     </h1>
                     <div className="mt-3 leading-relaxed text-[var(--muted)]">
                         The phrases you want to be able to say, in both languages,
-                        grouped by the page they came from. 🔊 reads each side in
-                        its own language.
+                        grouped by the page they came from. The listen button
+                        reads each side in its own language.
                     </div>
                 </header>
 
