@@ -188,13 +188,7 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "hydration", name: "Hydration", chapter: "ssr",
-        summary: "Hydration mismatches and how to debug them.",
-        parts: [
-            "what hydration does",
-            "mismatches",
-            "debugging mismatches",
-            "lazy hydration",
-        ],
+        summary: "How Vue adopts server HTML instead of rebuilding it, what causes a hydration mismatch and what it costs, how to debug one, and how to delay hydration.",
     },
     {
         slug: "ssr-safe-code", name: "SSR-Safe Code", chapter: "ssr",

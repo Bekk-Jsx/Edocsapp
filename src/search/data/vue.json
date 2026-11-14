@@ -2755,27 +2755,68 @@
       "name": "Hydration",
       "chapter": "SSR",
       "href": "/projects/vue/hydration",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "what hydration does",
-          "href": "/projects/vue/hydration",
-          "titles": []
+          "name": "Taking over the DOM",
+          "href": "/projects/vue/hydration#adopting-instead-of-rebuilding",
+          "titles": [
+            {
+              "title": "Adopting instead of rebuilding",
+              "href": "/projects/vue/hydration#adopting-instead-of-rebuilding",
+              "keywords": [
+                "createSSRApp",
+                "createApp().mount()",
+                "createSSRApp().mount()",
+                "onMounted"
+              ]
+            }
+          ]
         },
         {
-          "name": "mismatches",
-          "href": "/projects/vue/hydration",
-          "titles": []
+          "name": "Mismatches",
+          "href": "/projects/vue/hydration#what-a-mismatch-costs",
+          "titles": [
+            {
+              "title": "What a mismatch costs",
+              "href": "/projects/vue/hydration#what-a-mismatch-costs",
+              "keywords": []
+            },
+            {
+              "title": "What causes one",
+              "href": "/projects/vue/hydration#what-causes-one",
+              "keywords": [
+                "onMounted"
+              ]
+            }
+          ]
         },
         {
-          "name": "debugging mismatches",
-          "href": "/projects/vue/hydration",
-          "titles": []
-        },
-        {
-          "name": "lazy hydration",
-          "href": "/projects/vue/hydration",
-          "titles": []
+          "name": "Debugging and delaying",
+          "href": "/projects/vue/hydration#finding-the-cause",
+          "titles": [
+            {
+              "title": "Finding the cause",
+              "href": "/projects/vue/hydration#finding-the-cause",
+              "keywords": []
+            },
+            {
+              "title": "Delaying hydration",
+              "href": "/projects/vue/hydration#delaying-hydration",
+              "keywords": [
+                "hydrate",
+                "defineAsyncComponent"
+              ]
+            },
+            {
+              "title": "Keeping both renders equal",
+              "href": "/projects/vue/hydration#keeping-both-renders-equal",
+              "keywords": [
+                "onMounted",
+                "setup()"
+              ]
+            }
+          ]
         }
       ]
     },
