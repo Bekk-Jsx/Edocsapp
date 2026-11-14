@@ -174,21 +174,11 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "source-maps", name: "Source Maps", chapter: "debugging",
-        summary: "How .vue code maps back from what the browser runs.",
-        parts: [
-            "what source maps are",
-            "Vite source maps for .vue files",
-        ],
+        summary: "How compiled and minified code maps back to .vue files, what Vite serves in development, and the production options from false to hidden maps.",
     },
     {
         slug: "vue-devtools", name: "Vue DevTools", chapter: "debugging",
-        summary: "Inspecting components, events and reactivity.",
-        parts: [
-            "component tree",
-            "editing props / state",
-            "events timeline",
-            "onRenderTracked / onRenderTriggered",
-        ],
+        summary: "The component inspector: tree, props, setup state and live editing — and which panel answers which debugging question.",
     },
 
     // — SSR —

@@ -2570,17 +2570,48 @@
       "name": "Source Maps",
       "chapter": "Debugging",
       "href": "/projects/vue/source-maps",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "what source maps are",
-          "href": "/projects/vue/source-maps",
-          "titles": []
+          "name": "What a source map is",
+          "href": "/projects/vue/source-maps#mapping-generated-code-back",
+          "titles": [
+            {
+              "title": "Mapping generated code back",
+              "href": "/projects/vue/source-maps#mapping-generated-code-back",
+              "keywords": []
+            },
+            {
+              "title": "Maps in development",
+              "href": "/projects/vue/source-maps#maps-in-development",
+              "keywords": [
+                ".vue",
+                "vue-tsc"
+              ]
+            }
+          ]
         },
         {
-          "name": "Vite source maps for .vue files",
-          "href": "/projects/vue/source-maps",
-          "titles": []
+          "name": "Production builds",
+          "href": "/projects/vue/source-maps#the-four-options",
+          "titles": [
+            {
+              "title": "The four options",
+              "href": "/projects/vue/source-maps#the-four-options",
+              "keywords": []
+            },
+            {
+              "title": "Hidden maps and error tracking",
+              "href": "/projects/vue/source-maps#hidden-maps-and-error-tracking",
+              "keywords": [
+                "sourcemap: 'hidden'",
+                "dist",
+                "<style scoped>",
+                ".vue",
+                "css.devSourcemap"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2589,27 +2620,47 @@
       "name": "Vue DevTools",
       "chapter": "Debugging",
       "href": "/projects/vue/vue-devtools",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "component tree",
-          "href": "/projects/vue/vue-devtools",
-          "titles": []
+          "name": "The component inspector",
+          "href": "/projects/vue/vue-devtools#tree-props-and-setup-state",
+          "titles": [
+            {
+              "title": "Tree, props and setup state",
+              "href": "/projects/vue/vue-devtools#tree-props-and-setup-state",
+              "keywords": [
+                "$vm",
+                "$vm.items",
+                "$vm.total",
+                "$vm.addOne(...)",
+                "devtools"
+              ]
+            },
+            {
+              "title": "Editing state live",
+              "href": "/projects/vue/vue-devtools#editing-state-live",
+              "keywords": []
+            }
+          ]
         },
         {
-          "name": "editing props / state",
-          "href": "/projects/vue/vue-devtools",
-          "titles": []
-        },
-        {
-          "name": "events timeline",
-          "href": "/projects/vue/vue-devtools",
-          "titles": []
-        },
-        {
-          "name": "onRenderTracked / onRenderTriggered",
-          "href": "/projects/vue/vue-devtools",
-          "titles": []
+          "name": "Choosing a tool",
+          "href": "/projects/vue/vue-devtools#which-panel-answers-which-question",
+          "titles": [
+            {
+              "title": "Which panel answers which question",
+              "href": "/projects/vue/vue-devtools#which-panel-answers-which-question",
+              "keywords": []
+            },
+            {
+              "title": "Timelines and performance",
+              "href": "/projects/vue/vue-devtools#timelines-and-performance",
+              "keywords": [
+                "preview"
+              ]
+            }
+          ]
         }
       ]
     },
