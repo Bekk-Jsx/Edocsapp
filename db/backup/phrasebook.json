@@ -160,5 +160,59 @@
         "$numberLong": "1794594013694"
       }
     }
+  },
+  {
+    "_id": {
+      "$oid": "6af8564600b16c4e659dd3fc"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "Security mechanism",
+    "de": "Sicherheitsmechanismus",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "cors",
+      "href": "/interviews/fullstack-questions/web-fundamentals#cors"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794659910787"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794659910787"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af8571c00b16c4e659dd3fd"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "owner": "local",
+    "en": "steer",
+    "de": "steuern",
+    "link": {
+      "item": "fullstack-questions",
+      "page": "web-fundamentals",
+      "entry": "cors",
+      "href": "/interviews/fullstack-questions/web-fundamentals#cors"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794660124873"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794660124873"
+      }
+    }
   }
 ]
