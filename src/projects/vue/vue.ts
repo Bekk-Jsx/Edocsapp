@@ -192,13 +192,7 @@ export const TOPICS: VueTopic[] = [
     },
     {
         slug: "ssr-safe-code", name: "SSR-Safe Code", chapter: "ssr",
-        summary: "Writing components that run on server and client.",
-        parts: [
-            "browser-only APIs",
-            "lifecycle on the server",
-            "per-request state",
-            "server data fetching + state transfer",
-        ],
+        summary: "Writing components that run on the server too: where browser APIs are allowed, which hooks never run, what leaks without cleanup, and how to handle browser-only libraries.",
     },
 ];
 

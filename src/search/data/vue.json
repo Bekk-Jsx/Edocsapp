@@ -2825,27 +2825,75 @@
       "name": "SSR-Safe Code",
       "chapter": "SSR",
       "href": "/projects/vue/ssr-safe-code",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "browser-only APIs",
-          "href": "/projects/vue/ssr-safe-code",
-          "titles": []
+          "name": "Browser-only APIs",
+          "href": "/projects/vue/ssr-safe-code#where-they-are-allowed",
+          "titles": [
+            {
+              "title": "Where they are allowed",
+              "href": "/projects/vue/ssr-safe-code#where-they-are-allowed",
+              "keywords": [
+                "localStorage"
+              ]
+            },
+            {
+              "title": "The three guards",
+              "href": "/projects/vue/ssr-safe-code#the-three-guards",
+              "keywords": [
+                "setup",
+                "onMounted"
+              ]
+            }
+          ]
         },
         {
-          "name": "lifecycle on the server",
-          "href": "/projects/vue/ssr-safe-code",
-          "titles": []
+          "name": "Lifecycle on the server",
+          "href": "/projects/vue/ssr-safe-code#what-runs-and-what-does-not",
+          "titles": [
+            {
+              "title": "What runs and what does not",
+              "href": "/projects/vue/ssr-safe-code#what-runs-and-what-does-not",
+              "keywords": [
+                "onServerPrefetch",
+                "useAsyncData",
+                "useFetch"
+              ]
+            },
+            {
+              "title": "What leaks without unmount",
+              "href": "/projects/vue/ssr-safe-code#what-leaks-without-unmount",
+              "keywords": [
+                "onUnmounted",
+                "setup"
+              ]
+            }
+          ]
         },
         {
-          "name": "per-request state",
-          "href": "/projects/vue/ssr-safe-code",
-          "titles": []
-        },
-        {
-          "name": "server data fetching + state transfer",
-          "href": "/projects/vue/ssr-safe-code",
-          "titles": []
+          "name": "Libraries and review",
+          "href": "/projects/vue/ssr-safe-code#libraries-that-expect-a-browser",
+          "titles": [
+            {
+              "title": "Libraries that expect a browser",
+              "href": "/projects/vue/ssr-safe-code#libraries-that-expect-a-browser",
+              "keywords": [
+                "document",
+                "window",
+                "onMounted",
+                "ClientOnly"
+              ]
+            },
+            {
+              "title": "A review checklist",
+              "href": "/projects/vue/ssr-safe-code#a-review-checklist",
+              "keywords": [
+                "setup",
+                "onMounted"
+              ]
+            }
+          ]
         }
       ]
     }
