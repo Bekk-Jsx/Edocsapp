@@ -7115,7 +7115,37 @@
     },
     "page": "interviews/preparation/fullstack-questions/git-tools",
     "slug": "git-rebase",
-    "blocks": [],
+    "blocks": [
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          {
+            "text": {
+              "en": "`git merge main` (run on the feature branch) creates a merge commit that joins both histories. Nothing is rewritten.",
+              "de": "`git merge main` (auf dem Feature-Branch) erstellt einen Merge-Commit, der beide Histories zusammenführt. Dabei wird nichts umgeschrieben."
+            }
+          },
+          {
+            "text": {
+              "en": "`git rebase main` replays your feature commits one by one on top of the latest main. The commits get new hashes.",
+              "de": "`git rebase main` spielt deine Feature-Commits einzeln auf dem aktuellen main neu ab. Die Commits bekommen dabei neue Hashes."
+            }
+          },
+          {
+            "text": {
+              "en": "Many teams rebase a feature branch to keep it up to date, then merge (or squash) when the pull request goes into main.",
+              "de": "In vielen Teams rebased man den Feature-Branch, um ihn aktuell zu halten, und merged (oder squasht) erst, wenn der Pull Request in main geht."
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "bash",
+        "code": "# Merge: keeps history, adds a merge commit\ngit checkout feature\ngit merge main\n\n# Rebase: replays feature commits on top of main\ngit checkout feature\ngit rebase main\n\n# Conflict during rebase: fix it, then continue\ngit add .\ngit rebase --continue\n\n# Branch already pushed? Update the remote safely\ngit push --force-with-lease"
+      }
+    ],
     "createdAt": {
       "$date": {
         "$numberLong": "1794427308694"
@@ -7133,16 +7163,48 @@
       "name": "GeeksforGeeks",
       "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
     },
-    "status": "planned",
-    "tags": [],
+    "status": "active",
+    "tags": [
+      "git",
+      "merge",
+      "rebase"
+    ],
     "title": {
-      "en": "What does git rebase do (vs merge)?",
-      "de": "Was macht git rebase (vs. merge)?"
+      "en": "What is the difference between `git merge` and `git rebase`?",
+      "de": "Was ist der Unterschied zwischen `git merge` und `git rebase`?"
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794427308694"
+        "$numberLong": "1794662664823"
       }
+    },
+    "cards": [
+      {
+        "type": "note",
+        "title": {
+          "en": "Merge conflicts",
+          "de": "Merge-Konflikte"
+        },
+        "text": {
+          "en": "Both can cause conflicts. With merge, you resolve them once. With rebase, you may have to resolve them for each commit and then continue with `git rebase --continue`.",
+          "de": "Konflikte kann es bei beiden geben. Beim Merge löst man sie einmal. Beim Rebase muss man sie eventuell pro Commit lösen und dann mit `git rebase --continue` weitermachen."
+        }
+      },
+      {
+        "type": "trap",
+        "title": {
+          "en": "Don't rebase shared branches",
+          "de": "Keine geteilten Branches rebasen"
+        },
+        "text": {
+          "en": "Rebase rewrites history. If other people already work on the branch (e.g. main), their history no longer matches yours. Only rebase your own branches, and push with `git push --force-with-lease`.",
+          "de": "Rebase schreibt die History um. Wenn andere schon auf dem Branch arbeiten (z. B. main), passt ihre History nicht mehr zu deiner. Deshalb nur eigene Branches rebasen und danach mit `git push --force-with-lease` pushen."
+        }
+      }
+    ],
+    "shortAnswer": {
+      "en": "Both combine changes from one branch into another. Merge keeps the full history and adds a merge commit. Rebase moves your commits on top of the other branch, which gives you a clean, linear history.",
+      "de": "Beide übernehmen Änderungen von einem Branch in einen anderen. Merge behält die komplette History und erstellt einen Merge-Commit. Rebase setzt deine Commits dagegen auf den anderen Branch drauf und sorgt so für eine saubere, lineare History."
     }
   },
   {
