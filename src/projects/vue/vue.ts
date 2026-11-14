@@ -170,14 +170,7 @@ export const TOPICS: VueTopic[] = [
     // — Debugging —
     {
         slug: "breakpoints-and-stepping", name: "Breakpoints & Stepping", chapter: "debugging",
-        summary: "Pausing and walking through code in the Sources panel.",
-        parts: [
-            "debugger statement",
-            "breakpoints",
-            "step over / into / out",
-            "scope, watch and call stack",
-            "conditional breakpoints + logpoints",
-        ],
+        summary: "Pausing code instead of logging it: breakpoints and logpoints, stepping with Scope and Call stack, and the Vue-specific cases — templates, re-render causes and async.",
     },
     {
         slug: "source-maps", name: "Source Maps", chapter: "debugging",

@@ -2490,32 +2490,78 @@
       "name": "Breakpoints & Stepping",
       "chapter": "Debugging",
       "href": "/projects/vue/breakpoints-and-stepping",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "debugger statement",
-          "href": "/projects/vue/breakpoints-and-stepping",
-          "titles": []
+          "name": "Setting breakpoints",
+          "href": "/projects/vue/breakpoints-and-stepping#three-ways-to-pause",
+          "titles": [
+            {
+              "title": "Three ways to pause",
+              "href": "/projects/vue/breakpoints-and-stepping#three-ways-to-pause",
+              "keywords": [
+                "debugger",
+                "no-debugger"
+              ]
+            },
+            {
+              "title": "Logpoints",
+              "href": "/projects/vue/breakpoints-and-stepping#logpoints",
+              "keywords": []
+            }
+          ]
         },
         {
-          "name": "breakpoints",
-          "href": "/projects/vue/breakpoints-and-stepping",
-          "titles": []
+          "name": "Stepping through code",
+          "href": "/projects/vue/breakpoints-and-stepping#the-four-controls",
+          "titles": [
+            {
+              "title": "The four controls",
+              "href": "/projects/vue/breakpoints-and-stepping#the-four-controls",
+              "keywords": []
+            },
+            {
+              "title": "Scope, Call stack and Watch",
+              "href": "/projects/vue/breakpoints-and-stepping#scope-call-stack-and-watch",
+              "keywords": [
+                "setup",
+                "items.value",
+                "lineTotal(item)",
+                "node_modules"
+              ]
+            }
+          ]
         },
         {
-          "name": "step over / into / out",
-          "href": "/projects/vue/breakpoints-and-stepping",
-          "titles": []
-        },
-        {
-          "name": "scope, watch and call stack",
-          "href": "/projects/vue/breakpoints-and-stepping",
-          "titles": []
-        },
-        {
-          "name": "conditional breakpoints + logpoints",
-          "href": "/projects/vue/breakpoints-and-stepping",
-          "titles": []
+          "name": "Debugging a Vue app",
+          "href": "/projects/vue/breakpoints-and-stepping#templates-are-not-steppable",
+          "titles": [
+            {
+              "title": "Templates are not steppable",
+              "href": "/projects/vue/breakpoints-and-stepping#templates-are-not-steppable",
+              "keywords": []
+            },
+            {
+              "title": "Why did it re-render?",
+              "href": "/projects/vue/breakpoints-and-stepping#why-did-it-re-render",
+              "keywords": [
+                "key",
+                "type",
+                "debugger",
+                "onRenderTriggered",
+                "onRenderTracked"
+              ]
+            },
+            {
+              "title": "Async code and the call stack",
+              "href": "/projects/vue/breakpoints-and-stepping#async-code-and-the-call-stack",
+              "keywords": [
+                "await",
+                "errorCaptured",
+                "app.config.errorHandler"
+              ]
+            }
+          ]
         }
       ]
     },
