@@ -2669,22 +2669,84 @@
       "name": "How SSR Works",
       "chapter": "SSR",
       "href": "/projects/vue/how-ssr-works",
-      "planned": true,
+      "planned": false,
       "parts": [
         {
-          "name": "server render to HTML",
-          "href": "/projects/vue/how-ssr-works",
-          "titles": []
+          "name": "What the browser receives",
+          "href": "/projects/vue/how-ssr-works#an-empty-div-or-the-page",
+          "titles": [
+            {
+              "title": "An empty div, or the page",
+              "href": "/projects/vue/how-ssr-works#an-empty-div-or-the-page",
+              "keywords": []
+            },
+            {
+              "title": "The application renders twice",
+              "href": "/projects/vue/how-ssr-works#the-application-renders-twice",
+              "keywords": [
+                "window",
+                "renderToString"
+              ]
+            }
+          ]
         },
         {
-          "name": "client hydration",
-          "href": "/projects/vue/how-ssr-works",
-          "titles": []
+          "name": "Universal components",
+          "href": "/projects/vue/how-ssr-works#the-same-component-runs-in-both-places",
+          "titles": [
+            {
+              "title": "The same component runs in both places",
+              "href": "/projects/vue/how-ssr-works#the-same-component-runs-in-both-places",
+              "keywords": [
+                "document",
+                "window",
+                "setup",
+                "onMounted"
+              ]
+            },
+            {
+              "title": "When the HTML needs browser data",
+              "href": "/projects/vue/how-ssr-works#when-the-html-needs-browser-data",
+              "keywords": [
+                "onMounted",
+                "ClientOnly"
+              ]
+            }
+          ]
         },
         {
-          "name": "CSR vs SSR",
-          "href": "/projects/vue/how-ssr-works",
-          "titles": []
+          "name": "One app per request",
+          "href": "/projects/vue/how-ssr-works#module-state-is-shared-on-the-server",
+          "titles": [
+            {
+              "title": "Module state is shared on the server",
+              "href": "/projects/vue/how-ssr-works#module-state-is-shared-on-the-server",
+              "keywords": [
+                "createSSRApp",
+                "createApp",
+                "createMemoryHistory",
+                "createPinia()"
+              ]
+            },
+            {
+              "title": "Transferring the state",
+              "href": "/projects/vue/how-ssr-works#transferring-the-state",
+              "keywords": [
+                "</script>",
+                "devalue",
+                "useState",
+                "useFetch",
+                "renderToString"
+              ]
+            },
+            {
+              "title": "Turning SSR on",
+              "href": "/projects/vue/how-ssr-works#turning-ssr-on",
+              "keywords": [
+                "create-vue"
+              ]
+            }
+          ]
         }
       ]
     },

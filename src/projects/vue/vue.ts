@@ -184,12 +184,7 @@ export const TOPICS: VueTopic[] = [
     // — SSR —
     {
         slug: "how-ssr-works", name: "How SSR Works", chapter: "ssr",
-        summary: "Rendering on the server and taking over in the browser.",
-        parts: [
-            "server render to HTML",
-            "client hydration",
-            "CSR vs SSR",
-        ],
+        summary: "What the browser receives with and without SSR, how a component renders twice, why Vue components are universal, and why the server builds a fresh app per request.",
     },
     {
         slug: "hydration", name: "Hydration", chapter: "ssr",
