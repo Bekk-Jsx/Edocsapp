@@ -221,7 +221,37 @@
     },
     "page": "interviews/preparation/fullstack-questions/web-fundamentals",
     "slug": "cors",
-    "blocks": [],
+    "blocks": [
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          {
+            "text": {
+              "en": "An origin is protocol + domain + port, e.g. `https://app.com:443`. If any part is different, the request is cross-origin.",
+              "de": "Ein Origin besteht aus Protokoll, Domain und Port, z. B. `https://app.com:443`. Ist ein Teil davon anders, ist der Request cross-origin."
+            }
+          },
+          {
+            "text": {
+              "en": "The browser sends the request with an `Origin` header, and the server answers with `Access-Control-Allow-Origin`.",
+              "de": "Der Browser schickt den Request mit einem `Origin`-Header, und der Server antwortet mit `Access-Control-Allow-Origin`."
+            }
+          },
+          {
+            "text": {
+              "en": "For more complex requests (e.g. `PUT`, `DELETE`, custom headers like `Authorization`, or `Content-Type: application/json`), the browser first sends a preflight `OPTIONS` request to ask for permission.",
+              "de": "Bei komplexeren Requests (z. B. `PUT`, `DELETE`, eigene Header wie `Authorization` oder `Content-Type: application/json`) schickt der Browser vorher einen Preflight-Request mit `OPTIONS`, um die Erlaubnis abzufragen."
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "js",
+        "code": "const cors = require(\"cors\");\n\napp.use(cors({\n  origin: \"https://app.com\",   // allowed origin\n  credentials: true            // allow cookies\n}));\n\n// Request header (sent by the browser):\n// Origin: https://app.com\n\n// Response header (sent by the server):\n// Access-Control-Allow-Origin: https://app.com"
+      }
+    ],
     "createdAt": {
       "$date": {
         "$numberLong": "1794427305845"
@@ -239,16 +269,48 @@
       "name": "GeeksforGeeks",
       "url": "https://www.geeksforgeeks.org/html/full-stack-developer-interview-questions-and-answers/"
     },
-    "status": "planned",
-    "tags": [],
+    "status": "active",
+    "tags": [
+      "cors",
+      "http",
+      "security"
+    ],
     "title": {
-      "en": "What is CORS?",
-      "de": "Was ist CORS?"
+      "en": "What is CORS (Cross-Origin Resource Sharing)?",
+      "de": "Was ist CORS (Cross-Origin Resource Sharing)?"
     },
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794496074750"
+        "$numberLong": "1794659264273"
       }
+    },
+    "cards": [
+      {
+        "type": "note",
+        "title": {
+          "en": "Same-Origin Policy",
+          "de": "Same-Origin Policy"
+        },
+        "text": {
+          "en": "By default, the browser blocks a page from reading responses from another origin. CORS is the controlled way to relax this rule.",
+          "de": "Standardmäßig verhindert der Browser, dass eine Seite Antworten von einem anderen Origin lesen kann. CORS ist der kontrollierte Weg, diese Regel zu lockern."
+        }
+      },
+      {
+        "type": "trap",
+        "title": {
+          "en": "CORS doesn't protect your API",
+          "de": "CORS schützt nicht deine API"
+        },
+        "text": {
+          "en": "CORS is enforced by the browser, not the server. Postman or server-to-server requests ignore it completely, so your API still needs authentication.",
+          "de": "CORS wird vom Browser durchgesetzt, nicht vom Server. Postman oder Server-zu-Server-Requests ignorieren es komplett, deshalb braucht die API trotzdem Authentifizierung."
+        }
+      }
+    ],
+    "shortAnswer": {
+      "en": "CORS is a browser security mechanism that controls whether a website can request data from a different origin. The server decides which origins are allowed by sending special HTTP headers.",
+      "de": "CORS ist ein Sicherheitsmechanismus im Browser, der steuert, ob eine Website Daten von einem anderen Origin abfragen darf. Der Server entscheidet über spezielle HTTP-Header, welche Origins erlaubt sind."
     }
   },
   {
