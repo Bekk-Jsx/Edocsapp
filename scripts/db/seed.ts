@@ -40,6 +40,15 @@ import { fail, log, withDb } from "./lib";
 // written at all.
 // ===================================================================
 
+/**
+ * The item path a page hangs under. `page.item` is a slug; omitted means
+ * fullstack-questions, which is where every page lived while this file
+ * described only one item.
+ */
+function itemPathFor(page: SeedPage): string {
+    return page.item ? `${CATEGORY.path}/${page.item}` : ITEM.path;
+}
+
 function assertCounts() {
     const problems: string[] = [];
     let total = 0;
@@ -70,6 +79,33 @@ function assertCounts() {
         if (!PAGES.some((p) => p.slug === slug)) {
             problems.push(`EXPECTED_PER_PAGE lists "${slug}", which no page provides`);
         }
+    }
+
+    // Now that PAGES spans more than one item, three things that used to be
+    // true by construction have to be checked: that a page's item exists,
+    // that page slugs stay unique (EXPECTED_PER_PAGE is keyed by slug alone),
+    // and that two pages under the same item do not claim one `order`, which
+    // would make the sidebar order depend on the database's own tie-break.
+    const pageSlugs = new Set<string>();
+    const ordersPerItem = new Map<string, Set<number>>();
+    for (const page of PAGES) {
+        if (page.item && !ITEMS.some((i) => i.slug === page.item)) {
+            problems.push(`page "${page.slug}": no such item "${page.item}"`);
+        }
+        if (pageSlugs.has(page.slug)) {
+            problems.push(`duplicate page slug "${page.slug}"`);
+        }
+        pageSlugs.add(page.slug);
+
+        const key = itemPathFor(page);
+        const taken = ordersPerItem.get(key) ?? new Set<number>();
+        if (taken.has(page.order)) {
+            problems.push(
+                `page "${page.slug}": order ${page.order} is already taken under ${key}`,
+            );
+        }
+        taken.add(page.order);
+        ordersPerItem.set(key, taken);
     }
     if (total !== EXPECTED_TOTAL) {
         problems.push(`${total} questions in total, expected ${EXPECTED_TOTAL}`);
@@ -160,15 +196,18 @@ async function seedTree(db: Db) {
         `${ITEMS.length} items (${ITEMS.map((i) => `${i.slug}:${i.order}`).join(", ")})`,
     );
 
-    for (const [index, page] of PAGES.entries()) {
+    for (const page of PAGES) {
+        const itemPath = itemPathFor(page);
         await upsertNode(db, {
             schemaVersion: SCHEMA_VERSION,
             type: "page",
-            path: `${ITEM.path}/${page.slug}`,
-            parent: ITEM.path,
+            path: `${itemPath}/${page.slug}`,
+            parent: itemPath,
             slug: page.slug,
             name: page.name,
-            order: index + 1,
+            // From the data, not the array index: PAGES spans two items now,
+            // so a position in one flat array is not a sidebar position.
+            order: page.order,
             status: page.status,
         });
     }
@@ -177,12 +216,18 @@ async function seedTree(db: Db) {
 
 /** Inserts only. An existing entry is left exactly as it is. */
 async function seedQuestions(db: Db, page: SeedPage) {
-    const pagePath = `${ITEM.path}/${page.slug}`;
+    const pagePath = `${itemPathFor(page)}/${page.slug}`;
     const now = new Date();
     let inserted = 0;
     let present = 0;
 
     for (const [index, question] of page.questions.entries()) {
+        const source =
+            question.source !== undefined
+                ? question.source
+                : page.source !== undefined
+                  ? page.source
+                  : SOURCE;
         const doc: EntryDoc = {
             schemaVersion: SCHEMA_VERSION,
             kind: "question",
@@ -194,7 +239,11 @@ async function seedQuestions(db: Db, page: SeedPage) {
             status: question.status,
             order: index + 1,
             tags: [],
-            source: SOURCE,
+            // A question's own source wins, then its page's, then the
+            // GeeksforGeeks list the original 207 came from. `null` at either
+            // level means the question is ours and the field is left off
+            // entirely — `source` is optional in the schema.
+            ...(source ? { source } : {}),
             ...(question.duplicateOf ? { duplicateOf: question.duplicateOf } : {}),
             createdAt: now,
             updatedAt: now,

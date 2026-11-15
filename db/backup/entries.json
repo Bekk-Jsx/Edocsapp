@@ -8009,5 +8009,1977 @@
       "en": "Both approaches keep the user logged in. The main difference is where the user's state is stored: on the server with sessions, or inside the token with JWT.",
       "de": "Beide Ansätze halten den User eingeloggt. Der Hauptunterschied ist, wo der Zustand gespeichert wird: bei Sessions auf dem Server, bei JWT im Token selbst."
     }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13392b"
+    },
+    "slug": "merge-conflicts",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116215"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "git"
+    ],
+    "title": {
+      "en": "How do you resolve a merge conflict?",
+      "de": "Wie löst du einen Merge-Konflikt?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123330"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13392c"
+    },
+    "slug": "branching-strategies",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116215"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "git"
+    ],
+    "title": {
+      "en": "Branching strategies: Git Flow, GitHub Flow, trunk-based",
+      "de": "Branching-Strategien: Git Flow, GitHub Flow, Trunk-based"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123357"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13392d"
+    },
+    "slug": "reset-revert-restore",
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116215"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "git"
+    ],
+    "title": {
+      "en": "git reset vs. git revert vs. git restore",
+      "de": "git reset vs. git revert vs. git restore"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123394"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13392e"
+    },
+    "page": "interviews/preparation/fullstack-questions/git-tools",
+    "slug": "cherry-pick-stash",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116215"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "14"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "git"
+    ],
+    "title": {
+      "en": "git cherry-pick and git stash: when do you use them?",
+      "de": "git cherry-pick und git stash: Wann setzt du sie ein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123421"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13392f"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "unit-integration-e2e",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "Unit, integration and end-to-end tests: what is the difference?",
+      "de": "Unit-, Integrations- und End-to-End-Tests: Was ist der Unterschied?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121727"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133930"
+    },
+    "slug": "testing-pyramid",
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "What is the testing pyramid?",
+      "de": "Was ist die Testpyramide?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121771"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133931"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "jest-vs-vitest",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "Jest vs. Vitest: when do you use which?",
+      "de": "Jest vs. Vitest: Wann nimmst du was?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121799"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133932"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "mocking",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "How do you mock dependencies, API calls and timers?",
+      "de": "Wie mockst du Abhängigkeiten, API-Aufrufe und Timer?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121828"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133933"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "component-testing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "How do you test a React or Vue component with Testing Library?",
+      "de": "Wie testest du eine React- oder Vue-Komponente mit der Testing Library?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121877"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133934"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "cypress-vs-playwright",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "Cypress vs. Playwright: what are the differences?",
+      "de": "Cypress vs. Playwright: Was sind die Unterschiede?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121905"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133935"
+    },
+    "slug": "tdd",
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "What is TDD and how does it work?",
+      "de": "Was ist TDD und wie funktioniert es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121933"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133936"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "api-testing",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "How do you test a Node.js / Express API endpoint?",
+      "de": "Wie testest du einen Node.js-/Express-API-Endpunkt?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762121960"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133937"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "code-coverage",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "What is code coverage, and is 100% a good goal?",
+      "de": "Was ist Code Coverage, und sind 100 % ein sinnvolles Ziel?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122002"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133939"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "snapshot-tests",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "What are snapshot tests and when are they useful?",
+      "de": "Was sind Snapshot-Tests und wann sind sie sinnvoll?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122031"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393a"
+    },
+    "page": "interviews/preparation/fullstack-questions/testing",
+    "slug": "flaky-tests",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116635"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "testing"
+    ],
+    "title": {
+      "en": "How do you avoid flaky end-to-end tests?",
+      "de": "Wie vermeidest du instabile (flaky) End-to-End-Tests?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122058"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393b"
+    },
+    "slug": "graphql-vs-rest",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "What is GraphQL and how is it different from REST?",
+      "de": "Was ist GraphQL und wie unterscheidet es sich von REST?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122086"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393c"
+    },
+    "slug": "graphql-operations",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "Queries, mutations and subscriptions in GraphQL",
+      "de": "Queries, Mutations und Subscriptions in GraphQL"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122113"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393d"
+    },
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "slug": "websocket-vs-http",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "What is a WebSocket and how is it different from HTTP?",
+      "de": "Was ist ein WebSocket und wie unterscheidet er sich von HTTP?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122140"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393e"
+    },
+    "slug": "websocket-polling-sse",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "WebSockets vs. polling vs. Server-Sent Events: when to use which?",
+      "de": "WebSockets vs. Polling vs. Server-Sent Events: Wann nimmt man was?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122167"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f13393f"
+    },
+    "slug": "graphql-schema-resolvers",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "What are a GraphQL schema and resolvers?",
+      "de": "Was sind ein GraphQL-Schema und Resolver?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122194"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133941"
+    },
+    "slug": "graphql-n-plus-one",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "What is the N+1 problem in GraphQL and how does DataLoader solve it?",
+      "de": "Was ist das N+1-Problem in GraphQL und wie löst DataLoader es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122227"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133942"
+    },
+    "slug": "socketio-vs-websocket",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "Socket.IO vs. native WebSockets",
+      "de": "Socket.IO vs. native WebSockets"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122255"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133943"
+    },
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "slug": "scaling-websockets",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "How do you scale WebSockets across several servers?",
+      "de": "Wie skalierst du WebSockets über mehrere Server?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122293"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133944"
+    },
+    "slug": "graphql-security",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "How do you secure a GraphQL API?",
+      "de": "Wie sicherst du eine GraphQL-API ab?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122320"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133945"
+    },
+    "slug": "webrtc-signaling",
+    "page": "interviews/preparation/fullstack-questions/apis-realtime",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116804"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "apis-realtime"
+    ],
+    "title": {
+      "en": "What is WebRTC and what is signaling?",
+      "de": "Was ist WebRTC und was ist Signaling?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122347"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133946"
+    },
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "slug": "what-is-docker",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "What is Docker and what problem does it solve?",
+      "de": "Was ist Docker und welches Problem löst es?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122374"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133947"
+    },
+    "slug": "image-vs-container",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "Docker image vs. container",
+      "de": "Docker-Image vs. Container"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122415"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5842c696ace7f133948"
+    },
+    "slug": "dockerfile-best-practices",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "Dockerfile: main instructions and best practices (layers, caching, multi-stage builds)",
+      "de": "Dockerfile: wichtigste Anweisungen und Best Practices (Layer, Caching, Multi-Stage-Builds)"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122445"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133949"
+    },
+    "slug": "docker-compose",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "What is Docker Compose and when do you use it?",
+      "de": "Was ist Docker Compose und wann setzt du es ein?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122474"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13394b"
+    },
+    "slug": "ci-cd-pipeline",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "What is CI/CD and what does a typical pipeline look like?",
+      "de": "Was ist CI/CD und wie sieht eine typische Pipeline aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122510"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13394f"
+    },
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "slug": "aws-core-services",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "Main AWS services for a web app (EC2, S3, RDS, Lambda, CloudFront)",
+      "de": "Die wichtigsten AWS-Services für eine Web-App (EC2, S3, RDS, Lambda, CloudFront)"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122549"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133950"
+    },
+    "slug": "containers-vs-vms",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "Containers vs. virtual machines",
+      "de": "Container vs. virtuelle Maschinen"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122576"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133951"
+    },
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "slug": "serverless",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "What is serverless (AWS Lambda, Google Cloud Functions)? Pros and cons",
+      "de": "Was ist Serverless (AWS Lambda, Google Cloud Functions)? Vor- und Nachteile"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122605"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133952"
+    },
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "slug": "env-and-secrets",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "9"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "How do you manage environment variables and secrets?",
+      "de": "Wie verwaltest du Umgebungsvariablen und Secrets?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122632"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133953"
+    },
+    "slug": "aws-iam",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "10"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "AWS IAM: users, roles and least privilege",
+      "de": "AWS IAM: Benutzer, Rollen und Least Privilege"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122659"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133954"
+    },
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "slug": "gcp-core-services",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "11"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "Main Google Cloud services (Cloud Run, Cloud Functions, BigQuery, Cloud Storage)",
+      "de": "Die wichtigsten Google-Cloud-Services (Cloud Run, Cloud Functions, BigQuery, Cloud Storage)"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122688"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133955"
+    },
+    "slug": "deploy-node-docker",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "12"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "How do you deploy a Node.js app with Docker to AWS or Google Cloud?",
+      "de": "Wie deployst du eine Node.js-App mit Docker auf AWS oder Google Cloud?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122714"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133956"
+    },
+    "slug": "bigquery-vs-sql",
+    "page": "interviews/preparation/fullstack-questions/cloud-devops",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762116961"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "13"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "cloud-devops"
+    ],
+    "title": {
+      "en": "What is BigQuery and how is it different from a normal SQL database?",
+      "de": "Was ist BigQuery und wie unterscheidet es sich von einer normalen SQL-Datenbank?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122751"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133957"
+    },
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "slug": "stripe-payment-flow",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "How does a typical Stripe payment flow work (PaymentIntent)?",
+      "de": "Wie läuft ein typischer Stripe-Zahlungsablauf ab (PaymentIntent)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122780"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133959"
+    },
+    "slug": "payment-webhooks",
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "What are webhooks and why are they important for payments?",
+      "de": "Was sind Webhooks und warum sind sie bei Zahlungen wichtig?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122807"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395a"
+    },
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "slug": "webhook-security",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "How do you secure webhooks (signature verification, idempotency)?",
+      "de": "Wie sicherst du Webhooks ab (Signaturprüfung, Idempotenz)?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122834"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395b"
+    },
+    "slug": "sca-3ds",
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "What is SCA / 3-D Secure and how does it affect checkout?",
+      "de": "Was ist SCA / 3-D Secure und wie wirkt es sich auf den Checkout aus?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122860"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395c"
+    },
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "slug": "checkout-vs-elements",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "Stripe Checkout vs. Stripe Elements",
+      "de": "Stripe Checkout vs. Stripe Elements"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122887"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395d"
+    },
+    "slug": "refunds-failed-payments",
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "How do you handle refunds and failed payments?",
+      "de": "Wie gehst du mit Erstattungen und fehlgeschlagenen Zahlungen um?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122914"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395e"
+    },
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "slug": "pci-dss",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "7"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "What is PCI DSS and how do you avoid handling card data yourself?",
+      "de": "Was ist PCI DSS und wie vermeidest du es, selbst Kartendaten zu verarbeiten?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122942"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13395f"
+    },
+    "slug": "payment-provider-migration",
+    "page": "interviews/preparation/fullstack-questions/payments",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117165"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "8"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "payments"
+    ],
+    "title": {
+      "en": "How do you migrate from one payment provider to another?",
+      "de": "Wie migrierst du von einem Zahlungsanbieter zu einem anderen?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122973"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133960"
+    },
+    "slug": "choose-chart-type",
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "How do you choose the right chart type for your data?",
+      "de": "Wie wählst du den passenden Diagrammtyp für deine Daten?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762122999"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133962"
+    },
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "slug": "large-datasets-charts",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "How do you handle large datasets in charts?",
+      "de": "Wie gehst du mit großen Datenmengen in Diagrammen um?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123026"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133963"
+    },
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "slug": "chart-libraries",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "3"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "Recharts vs. Chart.js vs. ApexCharts vs. D3: what are the differences?",
+      "de": "Recharts vs. Chart.js vs. ApexCharts vs. D3: Was sind die Unterschiede?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123054"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133964"
+    },
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "slug": "svg-vs-canvas",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "4"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "SVG vs. Canvas rendering for charts",
+      "de": "SVG- vs. Canvas-Rendering für Diagramme"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123082"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133965"
+    },
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "slug": "performant-dashboards",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "5"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "How do you build a fast dashboard?",
+      "de": "Wie baust du ein performantes Dashboard?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123109"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133966"
+    },
+    "slug": "accessible-charts",
+    "page": "interviews/preparation/fullstack-questions/data-visualization",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117288"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "6"
+    },
+    "priority": "low",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "data-visualization"
+    ],
+    "title": {
+      "en": "How do you make charts accessible?",
+      "de": "Wie machst du Diagramme barrierefrei?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123137"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133967"
+    },
+    "page": "interviews/preparation/ai-in-development/your-ai-workflow",
+    "slug": "ai-daily-workflow",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117387"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-workflow"
+    ],
+    "title": {
+      "en": "How do you use AI tools in your daily development work?",
+      "de": "Wie nutzt du KI-Tools in deiner täglichen Entwicklungsarbeit?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123165"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133968"
+    },
+    "slug": "ai-limits",
+    "page": "interviews/preparation/ai-in-development/your-ai-workflow",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117387"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "medium",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-workflow"
+    ],
+    "title": {
+      "en": "Which tasks do you not give to AI, and why?",
+      "de": "Welche Aufgaben gibst du nicht an die KI ab, und warum?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123192"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f133969"
+    },
+    "page": "interviews/preparation/ai-in-development/quality-responsibility",
+    "slug": "verify-ai-code",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117418"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-quality"
+    ],
+    "title": {
+      "en": "How do you check and verify AI-generated code?",
+      "de": "Wie prüfst du KI-generierten Code?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123220"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13396c"
+    },
+    "slug": "ai-data-privacy",
+    "page": "interviews/preparation/ai-in-development/quality-responsibility",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117418"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "2"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-quality"
+    ],
+    "title": {
+      "en": "How do you handle company code and data privacy when using AI tools?",
+      "de": "Wie gehst du bei KI-Tools mit Firmencode und Datenschutz um?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123247"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13396d"
+    },
+    "slug": "copilot-cursor-claude-code",
+    "page": "interviews/preparation/ai-in-development/tool-landscape",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117449"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-tools"
+    ],
+    "title": {
+      "en": "GitHub Copilot vs. Cursor vs. Claude Code: what is the difference?",
+      "de": "GitHub Copilot vs. Cursor vs. Claude Code: Was ist der Unterschied?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123275"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5852c696ace7f13396e"
+    },
+    "slug": "integrating-llms",
+    "page": "interviews/preparation/ai-in-development/ai-tech-stack",
+    "blocks": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762117464"
+      }
+    },
+    "kind": "question",
+    "order": {
+      "$numberInt": "1"
+    },
+    "priority": "high",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "status": "planned",
+    "tags": [
+      "ai-stack"
+    ],
+    "title": {
+      "en": "What does \"integrating an LLM\" (e.g. the OpenAI API) into an app mean?",
+      "de": "Was bedeutet es, ein LLM (z. B. die OpenAI-API) in eine App zu integrieren?"
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762123303"
+      }
+    }
   }
 ]

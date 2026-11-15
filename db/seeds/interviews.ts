@@ -1,7 +1,7 @@
 import type { LocalizedText, Priority, Status } from "../../src/server/schema";
 
 // ===================================================================
-// SEED — the Interviews tree and its 205 questions.
+// SEED — the Interviews tree and its 265 questions.
 //
 // This file is DATA, not a script: db:seed reads it, inserts what is missing,
 // and never modifies an entry that already exists. Answers arrive later
@@ -22,12 +22,19 @@ const PRIORITY: Record<"H" | "M" | "L", Priority> = {
     L: "low",
 };
 
+export type EntrySource = { name: string; url: string };
+
 export type SeedQuestion = {
     slug: string;
     priority: Priority;
     title: LocalizedText;
     status: Status;
     duplicateOf?: string;
+    /**
+     * Overrides the page's source. `null` means the question is ours and
+     * carries no source at all — see `own()` below.
+     */
+    source?: EntrySource | null;
 };
 
 /** A question to be written: visible, planned, both languages. */
@@ -52,6 +59,18 @@ const dup = (slug: string, en: string, duplicateOf: string): SeedQuestion => ({
     duplicateOf,
 });
 
+/**
+ * A question of our own, on a page that otherwise carries a source: same as
+ * `q`, but sourceless. Used for the Git questions appended to Git & Tools,
+ * which are not from the GeeksforGeeks list the rest of that page came from.
+ */
+const own = (
+    slug: string,
+    priority: "H" | "M" | "L",
+    en: string,
+    de: string,
+): SeedQuestion => ({ ...q(slug, priority, en, de), source: null });
+
 /** Outside the stack (Spring, Django): kept for later, never served. */
 const hid = (slug: string, en: string): SeedQuestion => ({
     slug,
@@ -62,8 +81,26 @@ const hid = (slug: string, en: string): SeedQuestion => ({
 
 export type SeedPage = {
     slug: string;
+    /**
+     * The item this page hangs under, by slug. Omitted means
+     * fullstack-questions — where every page lived while this file described
+     * only one item.
+     */
+    item?: string;
     name: LocalizedText;
+    /**
+     * Sidebar order within its item. Explicit rather than the array index,
+     * because PAGES now spans two items — and because the AI pages leave gaps
+     * for the parts of the v1 plan that are not written yet.
+     */
+    order: number;
     status: Status;
+    /**
+     * Where this page's questions came from. Omitted means the GeeksforGeeks
+     * list the original 207 were taken from; `null` means they are ours and
+     * carry no source.
+     */
+    source?: EntrySource | null;
     questions: SeedQuestion[];
 };
 
@@ -109,10 +146,14 @@ export type SeedItem = {
 /**
  * The items under Preparation, in sidebar order.
  *
- * Only Full-Stack Questions has pages today; the other two are scaffolded and
- * empty, and become "active" later through a content batch
- * (`items: [{ slug, status: "active" }]`). The seed's $set on `order` is what
- * moves Full-Stack Questions from 0 to 2 on an existing database.
+ * Full-Stack Questions and AI in Development have pages; About Me is still
+ * scaffolded and empty. An item becomes "active" through a content batch
+ * (`items: [{ slug, status: "active" }]`) — AI in Development is deliberately
+ * left "planned", because nothing in the serving code gates a page on its
+ * item's status (only "hidden" is filtered, in src/lib/interviews.ts and
+ * src/server/interviews.ts), so its pages are listed either way and the badge
+ * stays honest while the answers are unwritten. The seed's $set on `order` is
+ * what moves Full-Stack Questions from 0 to 2 on an existing database.
  */
 export const ITEMS: SeedItem[] = [
     {
@@ -161,6 +202,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "web-fundamentals",
         name: { en: "Web Fundamentals", de: "Web-Grundlagen" },
+        order: 1,
         status: "active",
         questions: [
             q("mern-stack", "M", "What is the MERN stack?", "Was ist der MERN-Stack?"),
@@ -195,6 +237,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "javascript",
         name: { en: "JavaScript", de: "JavaScript" },
+        order: 2,
         status: "active",
         questions: [
             q("event-loop", "H", "How does the event loop work?", "Wie funktioniert der Event Loop?"),
@@ -229,6 +272,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "react",
         name: { en: "React", de: "React" },
+        order: 3,
         status: "active",
         questions: [
             q("what-is-react", "M", "What is React?", "Was ist React?"),
@@ -262,6 +306,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "node-express",
         name: { en: "Node.js & Express", de: "Node.js & Express" },
+        order: 4,
         status: "active",
         questions: [
             q("what-is-express", "M", "What is Express?", "Was ist Express?"),
@@ -285,6 +330,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "databases",
         name: { en: "Databases", de: "Datenbanken" },
+        order: 5,
         status: "active",
         questions: [
             q("sql-vs-nosql", "H", "Relational vs non-relational databases", "Relationale vs. nicht-relationale Datenbanken"),
@@ -302,6 +348,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "browser-dom",
         name: { en: "Browser & DOM", de: "Browser & DOM" },
+        order: 6,
         status: "active",
         questions: [
             q("event-bubbling", "H", "What are event bubbling and capturing?", "Was sind Event Bubbling und Event Capturing?"),
@@ -330,6 +377,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "html",
         name: { en: "HTML", de: "HTML" },
+        order: 7,
         status: "active",
         questions: [
             q("html-vs-html5", "M", "HTML vs HTML5", "HTML vs. HTML5"),
@@ -368,6 +416,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "css",
         name: { en: "CSS", de: "CSS" },
+        order: 8,
         status: "active",
         questions: [
             q("what-is-css", "L", "What is CSS?", "Was ist CSS?"),
@@ -404,6 +453,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "git-tools",
         name: { en: "Git & Tools", de: "Git & Tools" },
+        order: 9,
         status: "active",
         questions: [
             q("package-json", "M", "What is package.json?", "Was ist package.json?"),
@@ -416,11 +466,23 @@ export const PAGES: SeedPage[] = [
             q("git-object-model", "L", "What is the Git object model?", "Was ist das Git-Objektmodell?"),
             q("git-rebase", "H", "What does git rebase do (vs merge)?", "Was macht git rebase (vs. merge)?"),
             q("git-hooks", "M", "What are Git hooks?", "Was sind Git Hooks?"),
+            // Appended, and sourceless: these four are ours, not from the
+            // GeeksforGeeks list above. Two more were proposed and dropped as
+            // duplicates — `merge-vs-rebase` is `git-rebase` (order 9, the
+            // only answered question on this page, whose title batch-007
+            // already widened to "merge vs rebase"), and a "what is a pull
+            // request / what do you check in review" question is
+            // `pull-requests` (order 6).
+            own("merge-conflicts", "H", "How do you resolve a merge conflict?", "Wie löst du einen Merge-Konflikt?"),
+            own("branching-strategies", "H", "Branching strategies: Git Flow, GitHub Flow, trunk-based", "Branching-Strategien: Git Flow, GitHub Flow, Trunk-based"),
+            own("reset-revert-restore", "M", "git reset vs. git revert vs. git restore", "git reset vs. git revert vs. git restore"),
+            own("cherry-pick-stash", "L", "git cherry-pick and git stash: when do you use them?", "git cherry-pick und git stash: Wann setzt du sie ein?"),
         ],
     },
     {
         slug: "spring",
         name: { en: "Spring" },
+        order: 10,
         status: "hidden",
         questions: [
             hid("spring-boot", "What is Spring Boot?"),
@@ -439,6 +501,7 @@ export const PAGES: SeedPage[] = [
     {
         slug: "django-flask",
         name: { en: "Django & Flask" },
+        order: 11,
         status: "hidden",
         questions: [
             hid("what-is-django", "What is Django?"),
@@ -446,6 +509,158 @@ export const PAGES: SeedPage[] = [
             hid("django-orm", "What is the Django ORM?"),
             hid("django-superuser", "What is a superuser in Django?"),
             hid("django-nosql", "Does Django support NoSQL databases?"),
+        ],
+    },
+    // -----------------------------------------------------------------
+    // Appended after django-flask (order 11) rather than slotted next to the
+    // topics they belong beside: `order` is what the sidebar sorts on, and
+    // renumbering the nine pages above would be a migration. Sourceless —
+    // these are ours.
+    // -----------------------------------------------------------------
+    {
+        slug: "testing",
+        name: { en: "Testing", de: "Testing" },
+        order: 12,
+        status: "active",
+        source: null,
+        questions: [
+            q("unit-integration-e2e", "H", "Unit, integration and end-to-end tests: what is the difference?", "Unit-, Integrations- und End-to-End-Tests: Was ist der Unterschied?"),
+            q("testing-pyramid", "H", "What is the testing pyramid?", "Was ist die Testpyramide?"),
+            q("jest-vs-vitest", "H", "Jest vs. Vitest: when do you use which?", "Jest vs. Vitest: Wann nimmst du was?"),
+            q("mocking", "H", "How do you mock dependencies, API calls and timers?", "Wie mockst du Abhängigkeiten, API-Aufrufe und Timer?"),
+            q("component-testing", "H", "How do you test a React or Vue component with Testing Library?", "Wie testest du eine React- oder Vue-Komponente mit der Testing Library?"),
+            q("cypress-vs-playwright", "M", "Cypress vs. Playwright: what are the differences?", "Cypress vs. Playwright: Was sind die Unterschiede?"),
+            q("tdd", "M", "What is TDD and how does it work?", "Was ist TDD und wie funktioniert es?"),
+            q("api-testing", "M", "How do you test a Node.js / Express API endpoint?", "Wie testest du einen Node.js-/Express-API-Endpunkt?"),
+            q("code-coverage", "M", "What is code coverage, and is 100% a good goal?", "Was ist Code Coverage, und sind 100 % ein sinnvolles Ziel?"),
+            q("snapshot-tests", "L", "What are snapshot tests and when are they useful?", "Was sind Snapshot-Tests und wann sind sie sinnvoll?"),
+            q("flaky-tests", "L", "How do you avoid flaky end-to-end tests?", "Wie vermeidest du instabile (flaky) End-to-End-Tests?"),
+        ],
+    },
+    {
+        slug: "apis-realtime",
+        name: { en: "APIs & Real-Time", de: "APIs & Echtzeit" },
+        order: 13,
+        status: "active",
+        source: null,
+        questions: [
+            q("graphql-vs-rest", "H", "What is GraphQL and how is it different from REST?", "Was ist GraphQL und wie unterscheidet es sich von REST?"),
+            q("graphql-operations", "H", "Queries, mutations and subscriptions in GraphQL", "Queries, Mutations und Subscriptions in GraphQL"),
+            q("websocket-vs-http", "H", "What is a WebSocket and how is it different from HTTP?", "Was ist ein WebSocket und wie unterscheidet er sich von HTTP?"),
+            q("websocket-polling-sse", "H", "WebSockets vs. polling vs. Server-Sent Events: when to use which?", "WebSockets vs. Polling vs. Server-Sent Events: Wann nimmt man was?"),
+            q("graphql-schema-resolvers", "M", "What are a GraphQL schema and resolvers?", "Was sind ein GraphQL-Schema und Resolver?"),
+            q("graphql-n-plus-one", "M", "What is the N+1 problem in GraphQL and how does DataLoader solve it?", "Was ist das N+1-Problem in GraphQL und wie löst DataLoader es?"),
+            q("socketio-vs-websocket", "M", "Socket.IO vs. native WebSockets", "Socket.IO vs. native WebSockets"),
+            q("scaling-websockets", "M", "How do you scale WebSockets across several servers?", "Wie skalierst du WebSockets über mehrere Server?"),
+            q("graphql-security", "L", "How do you secure a GraphQL API?", "Wie sicherst du eine GraphQL-API ab?"),
+            q("webrtc-signaling", "L", "What is WebRTC and what is signaling?", "Was ist WebRTC und was ist Signaling?"),
+        ],
+    },
+    {
+        slug: "cloud-devops",
+        name: { en: "Cloud & DevOps", de: "Cloud & DevOps" },
+        order: 14,
+        status: "active",
+        source: null,
+        questions: [
+            q("what-is-docker", "H", "What is Docker and what problem does it solve?", "Was ist Docker und welches Problem löst es?"),
+            q("image-vs-container", "H", "Docker image vs. container", "Docker-Image vs. Container"),
+            q("dockerfile-best-practices", "H", "Dockerfile: main instructions and best practices (layers, caching, multi-stage builds)", "Dockerfile: wichtigste Anweisungen und Best Practices (Layer, Caching, Multi-Stage-Builds)"),
+            q("docker-compose", "H", "What is Docker Compose and when do you use it?", "Was ist Docker Compose und wann setzt du es ein?"),
+            q("ci-cd-pipeline", "H", "What is CI/CD and what does a typical pipeline look like?", "Was ist CI/CD und wie sieht eine typische Pipeline aus?"),
+            q("aws-core-services", "H", "Main AWS services for a web app (EC2, S3, RDS, Lambda, CloudFront)", "Die wichtigsten AWS-Services für eine Web-App (EC2, S3, RDS, Lambda, CloudFront)"),
+            q("containers-vs-vms", "M", "Containers vs. virtual machines", "Container vs. virtuelle Maschinen"),
+            q("serverless", "M", "What is serverless (AWS Lambda, Google Cloud Functions)? Pros and cons", "Was ist Serverless (AWS Lambda, Google Cloud Functions)? Vor- und Nachteile"),
+            q("env-and-secrets", "M", "How do you manage environment variables and secrets?", "Wie verwaltest du Umgebungsvariablen und Secrets?"),
+            q("aws-iam", "M", "AWS IAM: users, roles and least privilege", "AWS IAM: Benutzer, Rollen und Least Privilege"),
+            q("gcp-core-services", "M", "Main Google Cloud services (Cloud Run, Cloud Functions, BigQuery, Cloud Storage)", "Die wichtigsten Google-Cloud-Services (Cloud Run, Cloud Functions, BigQuery, Cloud Storage)"),
+            q("deploy-node-docker", "L", "How do you deploy a Node.js app with Docker to AWS or Google Cloud?", "Wie deployst du eine Node.js-App mit Docker auf AWS oder Google Cloud?"),
+            q("bigquery-vs-sql", "L", "What is BigQuery and how is it different from a normal SQL database?", "Was ist BigQuery und wie unterscheidet es sich von einer normalen SQL-Datenbank?"),
+        ],
+    },
+    {
+        slug: "payments",
+        name: { en: "Payments", de: "Zahlungen" },
+        order: 15,
+        status: "active",
+        source: null,
+        questions: [
+            q("stripe-payment-flow", "H", "How does a typical Stripe payment flow work (PaymentIntent)?", "Wie läuft ein typischer Stripe-Zahlungsablauf ab (PaymentIntent)?"),
+            q("payment-webhooks", "H", "What are webhooks and why are they important for payments?", "Was sind Webhooks und warum sind sie bei Zahlungen wichtig?"),
+            q("webhook-security", "H", "How do you secure webhooks (signature verification, idempotency)?", "Wie sicherst du Webhooks ab (Signaturprüfung, Idempotenz)?"),
+            q("sca-3ds", "M", "What is SCA / 3-D Secure and how does it affect checkout?", "Was ist SCA / 3-D Secure und wie wirkt es sich auf den Checkout aus?"),
+            q("checkout-vs-elements", "M", "Stripe Checkout vs. Stripe Elements", "Stripe Checkout vs. Stripe Elements"),
+            q("refunds-failed-payments", "M", "How do you handle refunds and failed payments?", "Wie gehst du mit Erstattungen und fehlgeschlagenen Zahlungen um?"),
+            q("pci-dss", "M", "What is PCI DSS and how do you avoid handling card data yourself?", "Was ist PCI DSS und wie vermeidest du es, selbst Kartendaten zu verarbeiten?"),
+            q("payment-provider-migration", "L", "How do you migrate from one payment provider to another?", "Wie migrierst du von einem Zahlungsanbieter zu einem anderen?"),
+        ],
+    },
+    {
+        slug: "data-visualization",
+        name: { en: "Data Visualization", de: "Datenvisualisierung" },
+        order: 16,
+        status: "active",
+        source: null,
+        questions: [
+            q("choose-chart-type", "H", "How do you choose the right chart type for your data?", "Wie wählst du den passenden Diagrammtyp für deine Daten?"),
+            q("large-datasets-charts", "H", "How do you handle large datasets in charts?", "Wie gehst du mit großen Datenmengen in Diagrammen um?"),
+            q("chart-libraries", "M", "Recharts vs. Chart.js vs. ApexCharts vs. D3: what are the differences?", "Recharts vs. Chart.js vs. ApexCharts vs. D3: Was sind die Unterschiede?"),
+            q("svg-vs-canvas", "M", "SVG vs. Canvas rendering for charts", "SVG- vs. Canvas-Rendering für Diagramme"),
+            q("performant-dashboards", "M", "How do you build a fast dashboard?", "Wie baust du ein performantes Dashboard?"),
+            q("accessible-charts", "L", "How do you make charts accessible?", "Wie machst du Diagramme barrierefrei?"),
+        ],
+    },
+
+    // -----------------------------------------------------------------
+    // AI in Development — the first pages under a second item. The orders
+    // are the agreed v1 plan's, gaps included: 2, 4 and 5 are reserved for
+    // pages that are not written yet, so the ones that exist keep their
+    // intended position instead of being renumbered later.
+    // -----------------------------------------------------------------
+    {
+        slug: "your-ai-workflow",
+        item: "ai-in-development",
+        name: { en: "Your AI Workflow", de: "Dein KI-Workflow" },
+        order: 1,
+        status: "active",
+        source: null,
+        questions: [
+            q("ai-daily-workflow", "H", "How do you use AI tools in your daily development work?", "Wie nutzt du KI-Tools in deiner täglichen Entwicklungsarbeit?"),
+            q("ai-limits", "M", "Which tasks do you not give to AI, and why?", "Welche Aufgaben gibst du nicht an die KI ab, und warum?"),
+        ],
+    },
+    {
+        slug: "quality-responsibility",
+        item: "ai-in-development",
+        name: { en: "Quality & Responsibility", de: "Qualität & Verantwortung" },
+        order: 3,
+        status: "active",
+        source: null,
+        questions: [
+            q("verify-ai-code", "H", "How do you check and verify AI-generated code?", "Wie prüfst du KI-generierten Code?"),
+            q("ai-data-privacy", "H", "How do you handle company code and data privacy when using AI tools?", "Wie gehst du bei KI-Tools mit Firmencode und Datenschutz um?"),
+        ],
+    },
+    {
+        slug: "tool-landscape",
+        item: "ai-in-development",
+        name: { en: "Tool Landscape", de: "Tool-Landschaft" },
+        order: 6,
+        status: "active",
+        source: null,
+        questions: [
+            q("copilot-cursor-claude-code", "H", "GitHub Copilot vs. Cursor vs. Claude Code: what is the difference?", "GitHub Copilot vs. Cursor vs. Claude Code: Was ist der Unterschied?"),
+        ],
+    },
+    {
+        slug: "ai-tech-stack",
+        item: "ai-in-development",
+        name: { en: "AI Tech Stack", de: "KI-Tech-Stack" },
+        order: 7,
+        status: "active",
+        source: null,
+        questions: [
+            q("integrating-llms", "H", 'What does "integrating an LLM" (e.g. the OpenAI API) into an app mean?', "Was bedeutet es, ein LLM (z. B. die OpenAI-API) in eine App zu integrieren?"),
         ],
     },
 ];
@@ -464,12 +679,23 @@ export const EXPECTED_PER_PAGE: Record<string, number> = {
     "browser-dom": 21,
     html: 31,
     css: 28,
-    "git-tools": 10,
+    // 10 seeded + 4 appended; two of the six proposed were duplicates.
+    "git-tools": 14,
     spring: 11,
     "django-flask": 5,
+    testing: 11,
+    "apis-realtime": 10,
+    "cloud-devops": 13,
+    payments: 8,
+    "data-visualization": 6,
+    "your-ai-workflow": 2,
+    "quality-responsibility": 2,
+    "tool-landscape": 1,
+    "ai-tech-stack": 1,
 };
 
-export const EXPECTED_TOTAL = 207;
+/** 207 seeded first, then 58 appended. */
+export const EXPECTED_TOTAL = 265;
 /** 16 outside the stack (Spring, Django) + 3 duplicates. */
 export const EXPECTED_HIDDEN = 19;
-export const EXPECTED_VISIBLE = 188;
+export const EXPECTED_VISIBLE = 246;

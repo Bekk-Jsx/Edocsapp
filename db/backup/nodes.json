@@ -29,7 +29,7 @@
     "type": "area",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670221"
+        "$numberLong": "1794762113108"
       }
     }
   },
@@ -59,7 +59,7 @@
     "type": "category",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670248"
+        "$numberLong": "1794762113151"
       }
     }
   },
@@ -93,7 +93,7 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670280"
+        "$numberLong": "1794762113187"
       }
     }
   },
@@ -123,7 +123,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670312"
+        "$numberLong": "1794762113225"
       }
     }
   },
@@ -153,7 +153,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670329"
+        "$numberLong": "1794762113243"
       }
     }
   },
@@ -183,7 +183,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670345"
+        "$numberLong": "1794762113259"
       }
     }
   },
@@ -213,7 +213,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670363"
+        "$numberLong": "1794762113279"
       }
     }
   },
@@ -243,7 +243,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670378"
+        "$numberLong": "1794762113298"
       }
     }
   },
@@ -273,7 +273,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670393"
+        "$numberLong": "1794762113315"
       }
     }
   },
@@ -303,7 +303,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670408"
+        "$numberLong": "1794762113333"
       }
     }
   },
@@ -333,7 +333,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670439"
+        "$numberLong": "1794762113353"
       }
     }
   },
@@ -363,7 +363,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670455"
+        "$numberLong": "1794762113370"
       }
     }
   },
@@ -392,7 +392,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670470"
+        "$numberLong": "1794762113389"
       }
     }
   },
@@ -421,7 +421,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670484"
+        "$numberLong": "1794762113408"
       }
     }
   },
@@ -455,7 +455,7 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670264"
+        "$numberLong": "1794762113170"
       }
     }
   },
@@ -489,7 +489,277 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794662670296"
+        "$numberLong": "1794762113208"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f133919"
+    },
+    "path": "interviews/preparation/fullstack-questions/testing",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113428"
+      }
+    },
+    "name": {
+      "en": "Testing",
+      "de": "Testing"
+    },
+    "order": {
+      "$numberInt": "12"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "testing",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113428"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391a"
+    },
+    "path": "interviews/preparation/fullstack-questions/apis-realtime",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113452"
+      }
+    },
+    "name": {
+      "en": "APIs & Real-Time",
+      "de": "APIs & Echtzeit"
+    },
+    "order": {
+      "$numberInt": "13"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "apis-realtime",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113452"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391b"
+    },
+    "path": "interviews/preparation/fullstack-questions/cloud-devops",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113469"
+      }
+    },
+    "name": {
+      "en": "Cloud & DevOps",
+      "de": "Cloud & DevOps"
+    },
+    "order": {
+      "$numberInt": "14"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "cloud-devops",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113469"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391c"
+    },
+    "path": "interviews/preparation/fullstack-questions/payments",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113487"
+      }
+    },
+    "name": {
+      "en": "Payments",
+      "de": "Zahlungen"
+    },
+    "order": {
+      "$numberInt": "15"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "payments",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113487"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391d"
+    },
+    "path": "interviews/preparation/fullstack-questions/data-visualization",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113504"
+      }
+    },
+    "name": {
+      "en": "Data Visualization",
+      "de": "Datenvisualisierung"
+    },
+    "order": {
+      "$numberInt": "16"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "data-visualization",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113504"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391e"
+    },
+    "path": "interviews/preparation/ai-in-development/your-ai-workflow",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113522"
+      }
+    },
+    "name": {
+      "en": "Your AI Workflow",
+      "de": "Dein KI-Workflow"
+    },
+    "order": {
+      "$numberInt": "1"
+    },
+    "parent": "interviews/preparation/ai-in-development",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "your-ai-workflow",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113522"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f13391f"
+    },
+    "path": "interviews/preparation/ai-in-development/quality-responsibility",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113540"
+      }
+    },
+    "name": {
+      "en": "Quality & Responsibility",
+      "de": "Qualität & Verantwortung"
+    },
+    "order": {
+      "$numberInt": "3"
+    },
+    "parent": "interviews/preparation/ai-in-development",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "quality-responsibility",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113540"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f133920"
+    },
+    "path": "interviews/preparation/ai-in-development/tool-landscape",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113557"
+      }
+    },
+    "name": {
+      "en": "Tool Landscape",
+      "de": "Tool-Landschaft"
+    },
+    "order": {
+      "$numberInt": "6"
+    },
+    "parent": "interviews/preparation/ai-in-development",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "tool-landscape",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113557"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6af9e5812c696ace7f133921"
+    },
+    "path": "interviews/preparation/ai-in-development/ai-tech-stack",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794762113576"
+      }
+    },
+    "name": {
+      "en": "AI Tech Stack",
+      "de": "KI-Tech-Stack"
+    },
+    "order": {
+      "$numberInt": "7"
+    },
+    "parent": "interviews/preparation/ai-in-development",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "ai-tech-stack",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794762113576"
       }
     }
   }
