@@ -18,8 +18,20 @@ export type NavItem = { id: string; label: string };
  * groups by. `note` stands in for the rows when a group has none and the
  * caller wants to say why (the home nav uses it when the database is down);
  * omit it and nothing extra renders.
+ *
+ * `href` makes the HEADING itself a destination — the home nav uses it so that
+ * "Interviews" goes to /?section=interviews and "Projects" back to /, which is
+ * the only way to reach a section without also naming a sub-category in the
+ * hash. A group whose heading names a chapter rather than a place (every
+ * project nav, every interview item) omits it, and renders the same bare <p>
+ * it always did.
  */
-export type NavGroup = { heading: string; items: NavItem[]; note?: string };
+export type NavGroup = {
+    heading: string;
+    items: NavItem[];
+    note?: string;
+    href?: string;
+};
 
 /** A row nested one level under a NavItem. Always a route link. */
 export type NavSubItem = { label: string; href: string };
@@ -273,6 +285,40 @@ function Chevron({
 const SECTION_HEADING =
     "font-mono text-[0.65rem] uppercase tracking-widest text-[var(--muted)]";
 
+/**
+ * A group's heading: the same <p> it always was, or a link when the group
+ * names a place (NavGroup.href).
+ *
+ * `className` carries the caller's margin so neither branch needs a wrapper —
+ * a group without an href renders exactly the element and classes it did
+ * before headings could be links. Both branches carry SECTION_HEADING, so a
+ * linked heading sits on the same baseline as an unlinked one and the row's
+ * layout does not shift; the link adds only a hover/focus colour, a focus
+ * ring and the pointer. `inline-block` is what lets a margin apply to it at
+ * all, since an inline box would drop the vertical one.
+ */
+function SectionHeading({
+    group,
+    className = "",
+}: {
+    group: NavGroup;
+    className?: string;
+}) {
+    const classes = className
+        ? `${className} ${SECTION_HEADING}`
+        : SECTION_HEADING;
+    if (!group.href) return <p className={classes}>{group.heading}</p>;
+    return (
+        <Link
+            href={group.href}
+            replace
+            className={`${classes} inline-block rounded transition-colors hover:text-[var(--text)] focus-visible:text-[var(--text)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]`}
+        >
+            {group.heading}
+        </Link>
+    );
+}
+
 // Expand-all / collapse-all for ONE section. Rendered only for a section that
 // actually has collapsible groups, so every project nav — none of which passes
 // subItems — keeps its heading markup exactly as it was.
@@ -484,7 +530,7 @@ export default function Navbar({
                     <div key={group.heading}>
                         {ids.length ? (
                             <div className="mb-2 flex items-center justify-between gap-2">
-                                <p className={SECTION_HEADING}>{group.heading}</p>
+                                <SectionHeading group={group} />
                                 <SectionToggle
                                     allOpen={allOpen}
                                     section={group.heading}
@@ -492,9 +538,7 @@ export default function Navbar({
                                 />
                             </div>
                         ) : (
-                            <p className={`mb-2 ${SECTION_HEADING}`}>
-                                {group.heading}
-                            </p>
+                            <SectionHeading group={group} className="mb-2" />
                         )}
                         {!group.items.length && group.note ? (
                             <p

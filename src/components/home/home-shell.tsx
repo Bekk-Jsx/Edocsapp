@@ -33,6 +33,13 @@ import { projectHref } from "@/lib/routes";
 // A sub-category NAME and its CHEVRON are two separate buttons with two
 // separate jobs (see Navbar): the name selects (opens + switches section +
 // rewrites the URL + scrolls), the chevron only expands or collapses.
+//
+// The section HEADING is a third job: it is a link to the section itself —
+// /?section=interviews and / — naming no sub-category, so it is the only way
+// to switch halves without putting a hash on the URL. Because it names none,
+// the selection it leaves behind would still point into the other half, so
+// what the sidebar shows as selected is DERIVED from the section rather than
+// read straight out of state (shownSelected below).
 // ===================================================================
 
 type Section = "projects" | "interviews";
@@ -154,6 +161,34 @@ export default function HomeShell({
         return () => cancelAnimationFrame(frame);
     }, [pendingScroll, section]);
 
+    // --- the selection the sidebar shows, DERIVED ---
+    //
+    // A heading link carries no hash on purpose (/?section=interviews is the
+    // URL asked for), so nothing names a sub-category and the stored selection
+    // is left pointing into the half that is no longer shown — the sidebar
+    // would highlight "Web Development" under Projects while the Interviews
+    // half is on screen.
+    //
+    // Computed here rather than corrected in an effect: the section is already
+    // derived from the URL, so a selection that disagrees with it is a render
+    // of stale state, not a state to be written back. Nothing is stored, so
+    // there is no cascading render and no order to get wrong — and clicking
+    // back to the other half restores exactly the sub-category that was left
+    // selected there.
+    const sectionIds = section === "interviews" ? interviewIds : projectIds;
+    const shownSelected = sectionIds.includes(selected)
+        ? selected
+        : (sectionIds[0] ?? "");
+
+    // The same for open/closed: a group the selection has just moved to is
+    // shown open, unless the reader has already said otherwise about it. Only
+    // `undefined` counts as "never touched", so an explicit collapse survives
+    // a trip through the other section.
+    const shownOpen =
+        shownSelected && open[shownSelected] === undefined
+            ? { ...open, [shownSelected]: true }
+            : open;
+
     // --- clicking a sub-category NAME ---
     const onSelect = (id: GroupId) => {
         const nextSection: Section = isInterviewId(id)
@@ -178,10 +213,13 @@ export default function HomeShell({
     const groups = [
         {
             heading: "Projects",
+            // The section's own URL: no ?section, no hash.
+            href: "/",
             items: types.map((t) => ({ id: t.id, label: t.label })),
         },
         {
             heading: "Interviews",
+            href: "/?section=interviews",
             items: categories.map((c) => ({ id: c.slug, label: c.name })),
             // With no tree there are no groups to list, so the section says why
             // instead of rendering an empty heading.
@@ -215,9 +253,9 @@ export default function HomeShell({
                 homeHref="/"
                 brand={{ eyebrow: "learn", sub: "projects" }}
                 subItems={subItems}
-                openGroups={open}
+                openGroups={shownOpen}
                 onOpenGroupsChange={setOpen}
-                selectedId={selected}
+                selectedId={shownSelected}
                 onSelect={onSelect}
             />
 
