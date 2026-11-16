@@ -29,7 +29,7 @@
     "type": "area",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113108"
+        "$numberLong": "1794854049354"
       }
     }
   },
@@ -59,7 +59,7 @@
     "type": "category",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113151"
+        "$numberLong": "1794854049390"
       }
     }
   },
@@ -93,7 +93,7 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113187"
+        "$numberLong": "1794854049425"
       }
     }
   },
@@ -123,7 +123,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113225"
+        "$numberLong": "1794854049457"
       }
     }
   },
@@ -153,7 +153,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113243"
+        "$numberLong": "1794854049473"
       }
     }
   },
@@ -183,7 +183,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113259"
+        "$numberLong": "1794854049489"
       }
     }
   },
@@ -213,7 +213,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113279"
+        "$numberLong": "1794854049504"
       }
     }
   },
@@ -243,7 +243,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113298"
+        "$numberLong": "1794854049535"
       }
     }
   },
@@ -273,7 +273,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113315"
+        "$numberLong": "1794854049550"
       }
     }
   },
@@ -303,7 +303,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113333"
+        "$numberLong": "1794854049565"
       }
     }
   },
@@ -333,7 +333,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113353"
+        "$numberLong": "1794854049580"
       }
     }
   },
@@ -363,7 +363,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113370"
+        "$numberLong": "1794854049596"
       }
     }
   },
@@ -392,7 +392,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113389"
+        "$numberLong": "1794854049611"
       }
     }
   },
@@ -421,7 +421,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113408"
+        "$numberLong": "1794854049625"
       }
     }
   },
@@ -455,7 +455,7 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113170"
+        "$numberLong": "1794854049408"
       }
     }
   },
@@ -489,7 +489,7 @@
     "type": "item",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113208"
+        "$numberLong": "1794854049440"
       }
     }
   },
@@ -519,7 +519,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113428"
+        "$numberLong": "1794854049641"
       }
     }
   },
@@ -549,7 +549,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113452"
+        "$numberLong": "1794854049656"
       }
     }
   },
@@ -579,7 +579,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113469"
+        "$numberLong": "1794854049671"
       }
     }
   },
@@ -609,7 +609,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113487"
+        "$numberLong": "1794854049686"
       }
     }
   },
@@ -639,7 +639,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113504"
+        "$numberLong": "1794854049701"
       }
     }
   },
@@ -669,7 +669,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113522"
+        "$numberLong": "1794854049737"
       }
     }
   },
@@ -699,7 +699,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113540"
+        "$numberLong": "1794854049752"
       }
     }
   },
@@ -729,7 +729,7 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113557"
+        "$numberLong": "1794854049767"
       }
     }
   },
@@ -759,7 +759,37 @@
     "type": "page",
     "updatedAt": {
       "$date": {
-        "$numberLong": "1794762113576"
+        "$numberLong": "1794854049782"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6afb4ca10aa3d8576ab20f4e"
+    },
+    "path": "interviews/preparation/fullstack-questions/typescript",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1794854049716"
+      }
+    },
+    "name": {
+      "en": "TypeScript",
+      "de": "TypeScript"
+    },
+    "order": {
+      "$numberInt": "17"
+    },
+    "parent": "interviews/preparation/fullstack-questions",
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "slug": "typescript",
+    "status": "active",
+    "type": "page",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1794854049716"
       }
     }
   }

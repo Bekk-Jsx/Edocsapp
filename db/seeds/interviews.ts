@@ -325,6 +325,8 @@ export const PAGES: SeedPage[] = [
             q("dns-module", "L", "What is the dns module?", "Was ist das dns-Modul?"),
             q("child-processes", "M", "What are child processes?", "Was sind Child Processes?"),
             q("tracing", "L", "What is tracing in Node.js?", "Was ist Tracing in Node.js?"),
+            // Ours, not from the GeeksforGeeks list the rest of this page came from.
+            own("node-express-middleware", "H", "What is middleware in Express?", "Was ist Middleware in Express?"),
         ],
     },
     {
@@ -610,6 +612,16 @@ export const PAGES: SeedPage[] = [
             q("accessible-charts", "L", "How do you make charts accessible?", "Wie machst du Diagramme barrierefrei?"),
         ],
     },
+    {
+        slug: "typescript",
+        name: { en: "TypeScript", de: "TypeScript" },
+        order: 17,
+        status: "active",
+        source: null,
+        questions: [
+            q("ts-interface-vs-type", "H", "What is the difference between `interface` and `type` in TypeScript?", "Was ist der Unterschied zwischen `interface` und `type` in TypeScript?"),
+        ],
+    },
 
     // -----------------------------------------------------------------
     // AI in Development — the first pages under a second item. The orders
@@ -674,7 +686,7 @@ export const EXPECTED_PER_PAGE: Record<string, number> = {
     "web-fundamentals": 22,
     javascript: 27,
     react: 26,
-    "node-express": 16,
+    "node-express": 17,
     databases: 10,
     "browser-dom": 21,
     html: 31,
@@ -688,14 +700,15 @@ export const EXPECTED_PER_PAGE: Record<string, number> = {
     "cloud-devops": 13,
     payments: 8,
     "data-visualization": 6,
+    typescript: 1,
     "your-ai-workflow": 2,
     "quality-responsibility": 2,
     "tool-landscape": 1,
     "ai-tech-stack": 1,
 };
 
-/** 207 seeded first, then 58 appended. */
-export const EXPECTED_TOTAL = 265;
+/** 207 seeded first, then 58 appended, then 2 written answers. */
+export const EXPECTED_TOTAL = 267;
 /** 16 outside the stack (Spring, Django) + 3 duplicates. */
 export const EXPECTED_HIDDEN = 19;
-export const EXPECTED_VISIBLE = 246;
+export const EXPECTED_VISIBLE = 248;
